@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="AUDIT_MG_CV001" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="AUDIT_MG_CV002" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
 <origin/>
-  <descriptions defaultDescription="Audit Management"/>
-  <metadata changedAt="2021-11-05 13:17:37.824"/>
-  <localVariables/>
+  <descriptions defaultDescription="AUDIT_MG_CV002"/>
+  <metadata changedAt="2021-11-05 15:16:54.131"/>
+  <localVariables>
+    <variable id="CENTRO">
+      <descriptions defaultDescription="Ingreso de Centro(s)"/>
+      <variableProperties mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZZCENTRO"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="PERIODO">
+      <descriptions defaultDescription="Periodo de consulta (aaaamm)"/>
+      <variableProperties mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="FECHA"/>
+        </valueDomain>
+        <selection multiLine="false" type="Interval"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
   <variableMappings/>
-  <informationModelLayout relativeWidthScenario="33"/>
+  <informationModelLayout relativeWidthScenario="49"/>
   <dataSources>
     <DataSource id="PLMM_AUDIT">
       <resourceUri>PLMM_AUDIT</resourceUri>
@@ -24,6 +43,9 @@
     </DataSource>
     <DataSource id="TJ30">
       <resourceUri>TJ30</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CENTRO">
+      <resourceUri>DIM_CENTRO</resourceUri>
     </DataSource>
   </dataSources>
 <calculationViews>
@@ -65,7 +87,11 @@
         <viewAttribute id="ZZAREA"/>
         <viewAttribute id="ZZBUKRS"/>
       </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="GUID2" length="40" expressionLanguage="SQL">
+          <formula>to_nvarchar(&quot;GUID&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
       <input node="PLMM_AUDIT"/>
     </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
@@ -105,14 +131,17 @@
         <viewAttribute id="FORECAST_START"/>
         <viewAttribute id="FORECAST_FINISH"/>
       </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="GUID2" length="35" expressionLanguage="SQL">
+          <formula>to_nvarchar(&quot;GUID&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
       <input node="CGPL_PROJECT"/>
     </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
     <descriptions/>
     <viewAttributes>
         <viewAttribute id="CLIENT"/>
-        <viewAttribute id="GUID"/>
         <viewAttribute id="ORIGINAL_LANGU"/>
         <viewAttribute id="AUDIT_TYPE"/>
         <viewAttribute id="AUTH_GROUP"/>
@@ -176,11 +205,11 @@
         <viewAttribute id="OBJECT_TYPE"/>
         <viewAttribute id="EXTERNAL_ID"/>
         <viewAttribute id="PROJECT_GUID"/>
+        <viewAttribute id="GUID2"/>
       </viewAttributes>
     <calculatedViewAttributes/>
       <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ORIGINAL_LANGU" source="ORIGINAL_LANGU"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_TYPE" source="AUDIT_TYPE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_GROUP" source="AUTH_GROUP"/>
@@ -213,6 +242,7 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="ZZGERENCIA" source="ZZGERENCIA"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZZAREA" source="ZZAREA"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZZBUKRS" source="ZZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID2" source="GUID2"/>
       </input>
       <input node="Projection_2">
         <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_FINISH" source="FORECAST_FINISH"/>
@@ -246,15 +276,14 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="EXTERNAL_ID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PROJECT_GUID" source="PROJECT_GUID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID2" source="GUID2"/>
       </input>
-    <joinAttribute name="GUID"/>
+    <joinAttribute name="GUID2"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
     <descriptions/>
     <viewAttributes>
         <viewAttribute id="CLIENT"/>
-        <viewAttribute id="GUID"/>
         <viewAttribute id="OBJECT_GUID"/>
         <viewAttribute id="ROLE_SORTNR"/>
         <viewAttribute id="ROLE"/>
@@ -262,7 +291,14 @@
         <viewAttribute id="PARTNER_GUID"/>
         <viewAttribute id="ROLE_1"/>
       </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="OBJECT_GUID2" length="35" expressionLanguage="SQL">
+          <formula>to_nvarchar(&quot;OBJECT_GUID&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="PARTNER_GUID2" length="35" expressionLanguage="SQL">
+          <formula>to_nvarchar(&quot;PARTNER_GUID&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
       <input node="PLMM_AUDIT_ROLES">
         <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_1" source="ROLE"/>
       </input>
@@ -272,7 +308,6 @@
     <descriptions/>
     <viewAttributes>
         <viewAttribute id="CLIENT"/>
-        <viewAttribute id="GUID"/>
         <viewAttribute id="ORIGINAL_LANGU"/>
         <viewAttribute id="AUDIT_TYPE"/>
         <viewAttribute id="AUTH_GROUP"/>
@@ -336,16 +371,17 @@
         <viewAttribute id="OBJECT_TYPE"/>
         <viewAttribute id="EXTERNAL_ID"/>
         <viewAttribute id="PROJECT_GUID"/>
-        <viewAttribute id="OBJECT_GUID"/>
         <viewAttribute id="ROLE_SORTNR"/>
         <viewAttribute id="ROLE"/>
         <viewAttribute id="PARTNER_ROLE"/>
         <viewAttribute id="PARTNER_GUID"/>
+        <viewAttribute id="OBJECT_GUID2"/>
+        <viewAttribute id="PARTNER_GUID2"/>
+        <viewAttribute id="GUID2"/>
       </viewAttributes>
     <calculatedViewAttributes/>
       <input node="Join_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ORIGINAL_LANGU" source="ORIGINAL_LANGU"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_TYPE" source="AUDIT_TYPE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_GROUP" source="AUTH_GROUP"/>
@@ -409,16 +445,18 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="EXTERNAL_ID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PROJECT_GUID" source="PROJECT_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID2" source="GUID2"/>
       </input>
       <input node="Projection_3">
-        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_GUID" source="OBJECT_GUID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_SORTNR" source="ROLE_SORTNR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_ROLE" source="PARTNER_ROLE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID" source="PARTNER_GUID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="OBJECT_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_GUID2" source="OBJECT_GUID2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID2" source="PARTNER_GUID2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID2" source="OBJECT_GUID2"/>
       </input>
-    <joinAttribute name="GUID"/>
+    <joinAttribute name="GUID2"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
     <descriptions/>
@@ -514,14 +552,17 @@
         <viewAttribute id="KBANKS"/>
         <viewAttribute id="KBANKL"/>
       </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="PARTNER_GUID2" length="35" expressionLanguage="SQL">
+          <formula>to_nvarchar(&quot;PARTNER_GUID&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
       <input node="BUT000"/>
     </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
     <descriptions/>
     <viewAttributes>
         <viewAttribute id="CLIENT"/>
-        <viewAttribute id="GUID"/>
         <viewAttribute id="ORIGINAL_LANGU"/>
         <viewAttribute id="AUDIT_TYPE"/>
         <viewAttribute id="AUTH_GROUP"/>
@@ -585,17 +626,19 @@
         <viewAttribute id="OBJECT_TYPE"/>
         <viewAttribute id="EXTERNAL_ID"/>
         <viewAttribute id="PROJECT_GUID"/>
-        <viewAttribute id="OBJECT_GUID"/>
         <viewAttribute id="ROLE_SORTNR"/>
         <viewAttribute id="ROLE"/>
         <viewAttribute id="PARTNER_ROLE"/>
         <viewAttribute id="PARTNER_GUID"/>
         <viewAttribute id="PARTNER"/>
+        <viewAttribute id="OBJECT_GUID2"/>
+        <viewAttribute id="PARTNER_GUID2"/>
+        <viewAttribute id="GUID2"/>
+        <viewAttribute id="BU_SORT1"/>
       </viewAttributes>
     <calculatedViewAttributes/>
       <input node="Join_2">
         <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ORIGINAL_LANGU" source="ORIGINAL_LANGU"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_TYPE" source="AUDIT_TYPE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_GROUP" source="AUTH_GROUP"/>
@@ -659,17 +702,20 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="EXTERNAL_ID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PROJECT_GUID" source="PROJECT_GUID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_GUID" source="OBJECT_GUID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_SORTNR" source="ROLE_SORTNR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_ROLE" source="PARTNER_ROLE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID" source="PARTNER_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_GUID2" source="OBJECT_GUID2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID2" source="PARTNER_GUID2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID2" source="GUID2"/>
       </input>
       <input node="Projection_4">
         <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="PARTNER_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_SORT1" source="BU_SORT1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID2" source="PARTNER_GUID2"/>
       </input>
-    <joinAttribute name="EXTERNAL_ID"/>
+    <joinAttribute name="PARTNER_GUID2"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
     <descriptions/>
@@ -680,14 +726,17 @@
         <viewAttribute id="INACT"/>
         <viewAttribute id="CHGNR"/>
       </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="OBJNR2" length="35" expressionLanguage="SQL">
+          <formula>to_nvarchar(&quot;OBJNR&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
       <input node="CRM_JEST"/>
     </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="leftOuter">
     <descriptions/>
     <viewAttributes>
         <viewAttribute id="CLIENT"/>
-        <viewAttribute id="GUID"/>
         <viewAttribute id="ORIGINAL_LANGU"/>
         <viewAttribute id="AUDIT_TYPE"/>
         <viewAttribute id="AUTH_GROUP"/>
@@ -751,7 +800,6 @@
         <viewAttribute id="OBJECT_TYPE"/>
         <viewAttribute id="EXTERNAL_ID"/>
         <viewAttribute id="PROJECT_GUID"/>
-        <viewAttribute id="OBJECT_GUID"/>
         <viewAttribute id="ROLE_SORTNR"/>
         <viewAttribute id="ROLE"/>
         <viewAttribute id="PARTNER_ROLE"/>
@@ -760,11 +808,14 @@
         <viewAttribute id="STAT"/>
         <viewAttribute id="INACT"/>
         <viewAttribute id="CHGNR"/>
+        <viewAttribute id="GUID2"/>
+        <viewAttribute id="OBJECT_GUID2"/>
+        <viewAttribute id="PARTNER_GUID2"/>
+        <viewAttribute id="BU_SORT1"/>
       </viewAttributes>
     <calculatedViewAttributes/>
       <input node="Join_3">
         <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ORIGINAL_LANGU" source="ORIGINAL_LANGU"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_TYPE" source="AUDIT_TYPE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_GROUP" source="AUTH_GROUP"/>
@@ -828,20 +879,23 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="EXTERNAL_ID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PROJECT_GUID" source="PROJECT_GUID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_GUID" source="OBJECT_GUID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_SORTNR" source="ROLE_SORTNR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_ROLE" source="PARTNER_ROLE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID" source="PARTNER_GUID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID2" source="GUID2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_GUID2" source="OBJECT_GUID2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID2" source="PARTNER_GUID2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_SORT1" source="BU_SORT1"/>
       </input>
       <input node="Projection_5">
         <mapping xsi:type="Calculation:AttributeMapping" target="STAT" source="STAT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="INACT" source="INACT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CHGNR" source="CHGNR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID2" source="OBJNR2"/>
       </input>
-    <joinAttribute name="GUID"/>
+    <joinAttribute name="GUID2"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
     <descriptions/>
@@ -861,11 +915,10 @@
     <calculatedViewAttributes/>
       <input node="TJ30"/>
     </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="C1_N" joinType="leftOuter">
     <descriptions/>
     <viewAttributes>
         <viewAttribute id="CLIENT"/>
-        <viewAttribute id="GUID"/>
         <viewAttribute id="ORIGINAL_LANGU"/>
         <viewAttribute id="AUDIT_TYPE"/>
         <viewAttribute id="AUTH_GROUP"/>
@@ -929,7 +982,6 @@
         <viewAttribute id="OBJECT_TYPE"/>
         <viewAttribute id="EXTERNAL_ID"/>
         <viewAttribute id="PROJECT_GUID"/>
-        <viewAttribute id="OBJECT_GUID"/>
         <viewAttribute id="ROLE_SORTNR"/>
         <viewAttribute id="ROLE"/>
         <viewAttribute id="PARTNER_ROLE"/>
@@ -939,11 +991,11 @@
         <viewAttribute id="INACT"/>
         <viewAttribute id="CHGNR"/>
         <viewAttribute id="ESTAT"/>
+        <viewAttribute id="BU_SORT1"/>
       </viewAttributes>
     <calculatedViewAttributes/>
       <input node="Join_4">
         <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ORIGINAL_LANGU" source="ORIGINAL_LANGU"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_TYPE" source="AUDIT_TYPE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_GROUP" source="AUTH_GROUP"/>
@@ -1007,7 +1059,6 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="EXTERNAL_ID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PROJECT_GUID" source="PROJECT_GUID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_GUID" source="OBJECT_GUID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_SORTNR" source="ROLE_SORTNR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_ROLE" source="PARTNER_ROLE"/>
@@ -1016,6 +1067,7 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="STAT" source="STAT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="INACT" source="INACT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CHGNR" source="CHGNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_SORT1" source="BU_SORT1"/>
       </input>
       <input node="Projection_6">
         <mapping xsi:type="Calculation:AttributeMapping" target="ESTAT" source="ESTAT"/>
@@ -1023,48 +1075,431 @@
       </input>
     <joinAttribute name="STAT"/>
   </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CENTRO"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_CENTRO"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CLIENT"/>
+        <viewAttribute id="ORIGINAL_LANGU"/>
+        <viewAttribute id="AUDIT_TYPE"/>
+        <viewAttribute id="AUTH_GROUP"/>
+        <viewAttribute id="GROUPING"/>
+        <viewAttribute id="SEARCH_FIELD"/>
+        <viewAttribute id="CAUSE"/>
+        <viewAttribute id="UNPLANNED"/>
+        <viewAttribute id="NEXT_AUDIT_DATE"/>
+        <viewAttribute id="NEXT_AUDIT_OBLIG"/>
+        <viewAttribute id="SCORE_RES"/>
+        <viewAttribute id="SCORE_MANUAL"/>
+        <viewAttribute id="SCORE_MAX"/>
+        <viewAttribute id="AUDIT_CALCULATE"/>
+        <viewAttribute id="RESULT_PERCENT"/>
+        <viewAttribute id="MIN_RESULT"/>
+        <viewAttribute id="CLASSIFICATION"/>
+        <viewAttribute id="CLASSIFI_CODE"/>
+        <viewAttribute id="CLASSIFI_MAN"/>
+        <viewAttribute id="OK_NOK"/>
+        <viewAttribute id="CONFIDENTIAL"/>
+        <viewAttribute id="RELEASED_ON"/>
+        <viewAttribute id="RELEASED_BY"/>
+        <viewAttribute id="PROC_STATUS"/>
+        <viewAttribute id="ZZCASINO"/>
+        <viewAttribute id="ZZCENTRO"/>
+        <viewAttribute id="ZZPROVEEDOR"/>
+        <viewAttribute id="ZZLABORATORIO"/>
+        <viewAttribute id="ZZDIVISION"/>
+        <viewAttribute id="ZZDIVISIONT"/>
+        <viewAttribute id="ZZGERENCIA"/>
+        <viewAttribute id="ZZAREA"/>
+        <viewAttribute id="ZZBUKRS"/>
+        <viewAttribute id="FORECAST_FINISH"/>
+        <viewAttribute id="FORECAST_START"/>
+        <viewAttribute id="APPLICATION"/>
+        <viewAttribute id="CONSTR_TYPE_FIN"/>
+        <viewAttribute id="CALENDAR_ID"/>
+        <viewAttribute id="CONSTR_TIME_FIN"/>
+        <viewAttribute id="DURATION_UNIT"/>
+        <viewAttribute id="DURATION"/>
+        <viewAttribute id="TOTAL_FLOAT"/>
+        <viewAttribute id="LATEST_FINISH"/>
+        <viewAttribute id="LATEST_START"/>
+        <viewAttribute id="PLANGROUP"/>
+        <viewAttribute id="BWIDENTIFIER"/>
+        <viewAttribute id="UPDATED_IN_BW"/>
+        <viewAttribute id="CHANGED_ON"/>
+        <viewAttribute id="CHANGED_BY"/>
+        <viewAttribute id="CREATED_IN_BW"/>
+        <viewAttribute id="CREATED_ON"/>
+        <viewAttribute id="CREATED_BY"/>
+        <viewAttribute id="CONSTRAINT_TIME"/>
+        <viewAttribute id="CONSTRAINT_TYPE"/>
+        <viewAttribute id="MILESTONE"/>
+        <viewAttribute id="COMPLETION"/>
+        <viewAttribute id="PLANFINISH"/>
+        <viewAttribute id="PLANSTART"/>
+        <viewAttribute id="ACTUALFINISH"/>
+        <viewAttribute id="ACTUALSTART"/>
+        <viewAttribute id="PRIORITY"/>
+        <viewAttribute id="OBJECT_TYPE"/>
+        <viewAttribute id="EXTERNAL_ID"/>
+        <viewAttribute id="PROJECT_GUID"/>
+        <viewAttribute id="ROLE_SORTNR"/>
+        <viewAttribute id="ROLE"/>
+        <viewAttribute id="PARTNER_ROLE"/>
+        <viewAttribute id="PARTNER_GUID"/>
+        <viewAttribute id="PARTNER"/>
+        <viewAttribute id="STAT"/>
+        <viewAttribute id="INACT"/>
+        <viewAttribute id="CHGNR"/>
+        <viewAttribute id="ESTAT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="BU_SORT1"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORIGINAL_LANGU" source="ORIGINAL_LANGU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_TYPE" source="AUDIT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_GROUP" source="AUTH_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GROUPING" source="GROUPING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEARCH_FIELD" source="SEARCH_FIELD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CAUSE" source="CAUSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNPLANNED" source="UNPLANNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_DATE" source="NEXT_AUDIT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_OBLIG" source="NEXT_AUDIT_OBLIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_RES" source="SCORE_RES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MANUAL" source="SCORE_MANUAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MAX" source="SCORE_MAX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_CALCULATE" source="AUDIT_CALCULATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RESULT_PERCENT" source="RESULT_PERCENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MIN_RESULT" source="MIN_RESULT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFICATION" source="CLASSIFICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_CODE" source="CLASSIFI_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_MAN" source="CLASSIFI_MAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OK_NOK" source="OK_NOK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONFIDENTIAL" source="CONFIDENTIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_ON" source="RELEASED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_BY" source="RELEASED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROC_STATUS" source="PROC_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCASINO" source="ZZCASINO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCENTRO" source="ZZCENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZPROVEEDOR" source="ZZPROVEEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZLABORATORIO" source="ZZLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISION" source="ZZDIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISIONT" source="ZZDIVISIONT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZGERENCIA" source="ZZGERENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZAREA" source="ZZAREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZBUKRS" source="ZZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_FINISH" source="FORECAST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_START" source="FORECAST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="APPLICATION" source="APPLICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TYPE_FIN" source="CONSTR_TYPE_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALENDAR_ID" source="CALENDAR_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TIME_FIN" source="CONSTR_TIME_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION_UNIT" source="DURATION_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION" source="DURATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOTAL_FLOAT" source="TOTAL_FLOAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_FINISH" source="LATEST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_START" source="LATEST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANGROUP" source="PLANGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWIDENTIFIER" source="BWIDENTIFIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UPDATED_IN_BW" source="UPDATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_ON" source="CHANGED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_IN_BW" source="CREATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_ON" source="CREATED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TIME" source="CONSTRAINT_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TYPE" source="CONSTRAINT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MILESTONE" source="MILESTONE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION" source="COMPLETION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANFINISH" source="PLANFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANSTART" source="PLANSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALFINISH" source="ACTUALFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALSTART" source="ACTUALSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="EXTERNAL_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROJECT_GUID" source="PROJECT_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_SORTNR" source="ROLE_SORTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_ROLE" source="PARTNER_ROLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID" source="PARTNER_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STAT" source="STAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="INACT" source="INACT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHGNR" source="CHGNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTAT" source="ESTAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_SORT1" source="BU_SORT1"/>
+      </input>
+      <input node="Projection_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCENTRO" source="CENTRO"/>
+      </input>
+    <joinAttribute name="ZZCENTRO"/>
+  </calculationView>
 </calculationViews>
-  <logicalModel id="Join_5">
+  <logicalModel id="Join_6">
     <descriptions/>
     <attributes>
-      <attribute id="AUTH_GROUP" order="1" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="AUTH_GROUP"/>
-        <keyMapping columnObjectName="Join_5" columnName="AUTH_GROUP"/>
+      <attribute id="CLIENT" hidden="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENT"/>
+        <keyMapping columnObjectName="Join_6" columnName="CLIENT"/>
       </attribute>
-      <attribute id="ZZGERENCIA" order="2" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="ZZGERENCIA"/>
-        <keyMapping columnObjectName="Join_5" columnName="ZZGERENCIA"/>
+      <attribute id="ORIGINAL_LANGU" hidden="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORIGINAL_LANGU"/>
+        <keyMapping columnObjectName="Join_6" columnName="ORIGINAL_LANGU"/>
       </attribute>
-      <attribute id="ZZCENTRO" order="3" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="ZZCENTRO"/>
-        <keyMapping columnObjectName="Join_5" columnName="ZZCENTRO"/>
+      <attribute id="Clase" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Clase"/>
+        <keyMapping columnObjectName="Join_6" columnName="AUDIT_TYPE"/>
       </attribute>
-      <attribute id="ZZAREA" order="4" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="ZZAREA"/>
-        <keyMapping columnObjectName="Join_5" columnName="ZZAREA"/>
+      <attribute id="AUTH_GROUP" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRP Autorización"/>
+        <keyMapping columnObjectName="Join_6" columnName="AUTH_GROUP"/>
       </attribute>
-      <attribute id="ESTAT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="GROUPING" hidden="true" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GROUPING"/>
+        <keyMapping columnObjectName="Join_6" columnName="GROUPING"/>
+      </attribute>
+      <attribute id="SEARCH_FIELD" hidden="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SEARCH_FIELD"/>
+        <keyMapping columnObjectName="Join_6" columnName="SEARCH_FIELD"/>
+      </attribute>
+      <attribute id="CAUSE" hidden="true" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CAUSE"/>
+        <keyMapping columnObjectName="Join_6" columnName="CAUSE"/>
+      </attribute>
+      <attribute id="UNPLANNED" hidden="true" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNPLANNED"/>
+        <keyMapping columnObjectName="Join_6" columnName="UNPLANNED"/>
+      </attribute>
+      <attribute id="NEXT_AUDIT_DATE" hidden="true" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NEXT_AUDIT_DATE"/>
+        <keyMapping columnObjectName="Join_6" columnName="NEXT_AUDIT_DATE"/>
+      </attribute>
+      <attribute id="NEXT_AUDIT_OBLIG" hidden="true" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NEXT_AUDIT_OBLIG"/>
+        <keyMapping columnObjectName="Join_6" columnName="NEXT_AUDIT_OBLIG"/>
+      </attribute>
+      <attribute id="SCORE_MANUAL" hidden="true" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SCORE_MANUAL"/>
+        <keyMapping columnObjectName="Join_6" columnName="SCORE_MANUAL"/>
+      </attribute>
+      <attribute id="AUDIT_CALCULATE" hidden="true" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AUDIT_CALCULATE"/>
+        <keyMapping columnObjectName="Join_6" columnName="AUDIT_CALCULATE"/>
+      </attribute>
+      <attribute id="CLASSIFICATION" hidden="true" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSIFICATION"/>
+        <keyMapping columnObjectName="Join_6" columnName="CLASSIFICATION"/>
+      </attribute>
+      <attribute id="CLASSIFI_CODE" hidden="true" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSIFI_CODE"/>
+        <keyMapping columnObjectName="Join_6" columnName="CLASSIFI_CODE"/>
+      </attribute>
+      <attribute id="CLASSIFI_MAN" hidden="true" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSIFI_MAN"/>
+        <keyMapping columnObjectName="Join_6" columnName="CLASSIFI_MAN"/>
+      </attribute>
+      <attribute id="OK_NOK" hidden="true" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OK_NOK"/>
+        <keyMapping columnObjectName="Join_6" columnName="OK_NOK"/>
+      </attribute>
+      <attribute id="CONFIDENTIAL" hidden="true" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CONFIDENTIAL"/>
+        <keyMapping columnObjectName="Join_6" columnName="CONFIDENTIAL"/>
+      </attribute>
+      <attribute id="RELEASED_BY" hidden="true" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="RELEASED_BY"/>
+        <keyMapping columnObjectName="Join_6" columnName="RELEASED_BY"/>
+      </attribute>
+      <attribute id="PROC_STATUS" hidden="true" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROC_STATUS"/>
+        <keyMapping columnObjectName="Join_6" columnName="PROC_STATUS"/>
+      </attribute>
+      <attribute id="ZZCASINO" hidden="true" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZCASINO"/>
+        <keyMapping columnObjectName="Join_6" columnName="ZZCASINO"/>
+      </attribute>
+      <attribute id="ZZCENTRO" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro ID"/>
+        <localVariable>CENTRO</localVariable>
+        <keyMapping columnObjectName="Join_6" columnName="ZZCENTRO"/>
+      </attribute>
+      <attribute id="ZZPROVEEDOR" hidden="true" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZPROVEEDOR"/>
+        <keyMapping columnObjectName="Join_6" columnName="ZZPROVEEDOR"/>
+      </attribute>
+      <attribute id="ZZLABORATORIO" hidden="true" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZLABORATORIO"/>
+        <keyMapping columnObjectName="Join_6" columnName="ZZLABORATORIO"/>
+      </attribute>
+      <attribute id="ZZDIVISION" hidden="true" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZDIVISION"/>
+        <keyMapping columnObjectName="Join_6" columnName="ZZDIVISION"/>
+      </attribute>
+      <attribute id="ZZDIVISIONT" hidden="true" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZDIVISIONT"/>
+        <keyMapping columnObjectName="Join_6" columnName="ZZDIVISIONT"/>
+      </attribute>
+      <attribute id="ZZGERENCIA" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Gerencia"/>
+        <keyMapping columnObjectName="Join_6" columnName="ZZGERENCIA"/>
+      </attribute>
+      <attribute id="ZZAREA" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Area"/>
+        <keyMapping columnObjectName="Join_6" columnName="ZZAREA"/>
+      </attribute>
+      <attribute id="ZZBUKRS" hidden="true" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZBUKRS"/>
+        <keyMapping columnObjectName="Join_6" columnName="ZZBUKRS"/>
+      </attribute>
+      <attribute id="APPLICATION" hidden="true" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="APPLICATION"/>
+        <keyMapping columnObjectName="Join_6" columnName="APPLICATION"/>
+      </attribute>
+      <attribute id="CONSTR_TYPE_FIN" hidden="true" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CONSTR_TYPE_FIN"/>
+        <keyMapping columnObjectName="Join_6" columnName="CONSTR_TYPE_FIN"/>
+      </attribute>
+      <attribute id="CALENDAR_ID" hidden="true" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CALENDAR_ID"/>
+        <keyMapping columnObjectName="Join_6" columnName="CALENDAR_ID"/>
+      </attribute>
+      <attribute id="DURATION_UNIT" hidden="true" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DURATION_UNIT"/>
+        <keyMapping columnObjectName="Join_6" columnName="DURATION_UNIT"/>
+      </attribute>
+      <attribute id="PLANGROUP" hidden="true" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PLANGROUP"/>
+        <keyMapping columnObjectName="Join_6" columnName="PLANGROUP"/>
+      </attribute>
+      <attribute id="BWIDENTIFIER" hidden="true" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BWIDENTIFIER"/>
+        <keyMapping columnObjectName="Join_6" columnName="BWIDENTIFIER"/>
+      </attribute>
+      <attribute id="UPDATED_IN_BW" hidden="true" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UPDATED_IN_BW"/>
+        <keyMapping columnObjectName="Join_6" columnName="UPDATED_IN_BW"/>
+      </attribute>
+      <attribute id="CHANGED_ON" hidden="true" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CHANGED_ON"/>
+        <keyMapping columnObjectName="Join_6" columnName="CHANGED_ON"/>
+      </attribute>
+      <attribute id="CHANGED_BY" hidden="true" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CHANGED_BY"/>
+        <keyMapping columnObjectName="Join_6" columnName="CHANGED_BY"/>
+      </attribute>
+      <attribute id="CREATED_IN_BW" hidden="true" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CREATED_IN_BW"/>
+        <keyMapping columnObjectName="Join_6" columnName="CREATED_IN_BW"/>
+      </attribute>
+      <attribute id="CREATED_ON" hidden="true" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CREATED_ON"/>
+        <keyMapping columnObjectName="Join_6" columnName="CREATED_ON"/>
+      </attribute>
+      <attribute id="CREATED_BY" hidden="true" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CREATED_BY"/>
+        <keyMapping columnObjectName="Join_6" columnName="CREATED_BY"/>
+      </attribute>
+      <attribute id="CONSTRAINT_TYPE" hidden="true" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CONSTRAINT_TYPE"/>
+        <keyMapping columnObjectName="Join_6" columnName="CONSTRAINT_TYPE"/>
+      </attribute>
+      <attribute id="MILESTONE" hidden="true" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MILESTONE"/>
+        <keyMapping columnObjectName="Join_6" columnName="MILESTONE"/>
+      </attribute>
+      <attribute id="COMPLETION" hidden="true" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COMPLETION"/>
+        <keyMapping columnObjectName="Join_6" columnName="COMPLETION"/>
+      </attribute>
+      <attribute id="PLANSTART" order="58" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="fecha planificación"/>
+        <keyMapping columnObjectName="Join_6" columnName="PLANSTART"/>
+      </attribute>
+      <attribute id="PRIORITY" hidden="true" order="61" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PRIORITY"/>
+        <keyMapping columnObjectName="Join_6" columnName="PRIORITY"/>
+      </attribute>
+      <attribute id="OBJECT_TYPE" hidden="true" order="62" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OBJECT_TYPE"/>
+        <keyMapping columnObjectName="Join_6" columnName="OBJECT_TYPE"/>
+      </attribute>
+      <attribute id="EXTERNAL_ID" order="63" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Auditoría"/>
+        <keyMapping columnObjectName="Join_6" columnName="EXTERNAL_ID"/>
+      </attribute>
+      <attribute id="PROJECT_GUID" hidden="true" order="64" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROJECT_GUID"/>
+        <keyMapping columnObjectName="Join_6" columnName="PROJECT_GUID"/>
+      </attribute>
+      <attribute id="ROLE" hidden="true" order="66" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ROLE"/>
+        <keyMapping columnObjectName="Join_6" columnName="ROLE"/>
+      </attribute>
+      <attribute id="PARTNER_ROLE" hidden="true" order="67" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PARTNER_ROLE"/>
+        <keyMapping columnObjectName="Join_6" columnName="PARTNER_ROLE"/>
+      </attribute>
+      <attribute id="PARTNER_GUID" hidden="true" order="68" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PARTNER_GUID"/>
+        <keyMapping columnObjectName="Join_6" columnName="PARTNER_GUID"/>
+      </attribute>
+      <attribute id="PARTNER" order="69" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Auditor Lider"/>
+        <keyMapping columnObjectName="Join_6" columnName="PARTNER"/>
+      </attribute>
+      <attribute id="STAT" order="70" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Status Usuario"/>
+        <keyMapping columnObjectName="Join_6" columnName="STAT"/>
+      </attribute>
+      <attribute id="INACT" hidden="true" order="71" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="INACT"/>
+        <keyMapping columnObjectName="Join_6" columnName="INACT"/>
+      </attribute>
+      <attribute id="CHGNR" hidden="true" order="72" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CHGNR"/>
+        <keyMapping columnObjectName="Join_6" columnName="CHGNR"/>
+      </attribute>
+      <attribute id="ESTAT" order="73" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="ESTAT"/>
-        <keyMapping columnObjectName="Join_5" columnName="ESTAT"/>
+        <keyMapping columnObjectName="Join_6" columnName="ESTAT"/>
       </attribute>
-      <attribute id="PLANSTART" order="8" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="PLANSTART"/>
-        <keyMapping columnObjectName="Join_5" columnName="PLANSTART"/>
+      <attribute id="CENTRO_TEXT" order="74" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro Txt"/>
+        <keyMapping columnObjectName="Join_6" columnName="CENTRO_TEXT"/>
       </attribute>
-      <attribute id="PARTNER" order="9" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="PARTNER"/>
-        <keyMapping columnObjectName="Join_5" columnName="PARTNER"/>
-      </attribute>
-      <attribute id="EXTERNAL_ID" order="10" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="EXTERNAL_ID"/>
-        <keyMapping columnObjectName="Join_5" columnName="EXTERNAL_ID"/>
-      </attribute>
-      <attribute id="STAT" order="11" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="STAT"/>
-        <keyMapping columnObjectName="Join_5" columnName="STAT"/>
+      <attribute id="BU_SORT1" order="75" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nombre Auditor Lider"/>
+        <keyMapping columnObjectName="Join_6" columnName="BU_SORT1"/>
       </attribute>
     </attributes>
-    <calculatedAttributes/>
+    <calculatedAttributes>
+      <calculatedAttribute id="FECHA" hidden="false" order="76" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="fecha planificación (aaaamm)"/>
+        <localVariable>PERIODO</localVariable>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="6">
+          <formula>leftstr(string(&quot;PLANSTART&quot;),6)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CALDAY" hidden="false" order="77" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="fecha planificación (aaaammdd)"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="8">
+          <formula>leftstr(string(&quot;PLANSTART&quot;),8)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
     <privateDataFoundation>
       <tableProxies/>
       <joins/>
@@ -1073,13 +1508,73 @@
       </layout>
     </privateDataFoundation>
     <baseMeasures>
-      <measure id="RESULT_PERCENT" order="5" aggregationType="sum" measureType="simple">
-        <descriptions defaultDescription="RESULT_PERCENT"/>
-        <measureMapping columnObjectName="Join_5" columnName="RESULT_PERCENT"/>
+      <measure id="SCORE_RES" hidden="true" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SCORE_RES"/>
+        <measureMapping columnObjectName="Join_6" columnName="SCORE_RES"/>
       </measure>
-      <measure id="MIN_RESULT" order="6" aggregationType="sum" measureType="simple">
-        <descriptions defaultDescription="MIN_RESULT"/>
-        <measureMapping columnObjectName="Join_5" columnName="MIN_RESULT"/>
+      <measure id="SCORE_MAX" hidden="true" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SCORE_MAX"/>
+        <measureMapping columnObjectName="Join_6" columnName="SCORE_MAX"/>
+      </measure>
+      <measure id="RESULT_PERCENT" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="% Cumplimiento"/>
+        <measureMapping columnObjectName="Join_6" columnName="RESULT_PERCENT"/>
+      </measure>
+      <measure id="MIN_RESULT" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Resultado mín."/>
+        <measureMapping columnObjectName="Join_6" columnName="MIN_RESULT"/>
+      </measure>
+      <measure id="RELEASED_ON" hidden="true" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="RELEASED_ON"/>
+        <measureMapping columnObjectName="Join_6" columnName="RELEASED_ON"/>
+      </measure>
+      <measure id="FORECAST_FINISH" hidden="true" order="34" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="FORECAST_FINISH"/>
+        <measureMapping columnObjectName="Join_6" columnName="FORECAST_FINISH"/>
+      </measure>
+      <measure id="FORECAST_START" hidden="true" order="35" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="FORECAST_START"/>
+        <measureMapping columnObjectName="Join_6" columnName="FORECAST_START"/>
+      </measure>
+      <measure id="CONSTR_TIME_FIN" hidden="true" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CONSTR_TIME_FIN"/>
+        <measureMapping columnObjectName="Join_6" columnName="CONSTR_TIME_FIN"/>
+      </measure>
+      <measure id="DURATION" hidden="true" order="41" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DURATION"/>
+        <measureMapping columnObjectName="Join_6" columnName="DURATION"/>
+      </measure>
+      <measure id="TOTAL_FLOAT" hidden="true" order="42" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TOTAL_FLOAT"/>
+        <measureMapping columnObjectName="Join_6" columnName="TOTAL_FLOAT"/>
+      </measure>
+      <measure id="LATEST_FINISH" hidden="true" order="43" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="LATEST_FINISH"/>
+        <measureMapping columnObjectName="Join_6" columnName="LATEST_FINISH"/>
+      </measure>
+      <measure id="LATEST_START" hidden="true" order="44" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="LATEST_START"/>
+        <measureMapping columnObjectName="Join_6" columnName="LATEST_START"/>
+      </measure>
+      <measure id="CONSTRAINT_TIME" hidden="true" order="53" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CONSTRAINT_TIME"/>
+        <measureMapping columnObjectName="Join_6" columnName="CONSTRAINT_TIME"/>
+      </measure>
+      <measure id="PLANFINISH" hidden="true" order="57" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PLANFINISH"/>
+        <measureMapping columnObjectName="Join_6" columnName="PLANFINISH"/>
+      </measure>
+      <measure id="ACTUALFINISH" hidden="true" order="59" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ACTUALFINISH"/>
+        <measureMapping columnObjectName="Join_6" columnName="ACTUALFINISH"/>
+      </measure>
+      <measure id="ACTUALSTART" hidden="true" order="60" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ACTUALSTART"/>
+        <measureMapping columnObjectName="Join_6" columnName="ACTUALSTART"/>
+      </measure>
+      <measure id="ROLE_SORTNR" hidden="true" order="65" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ROLE_SORTNR"/>
+        <measureMapping columnObjectName="Join_6" columnName="ROLE_SORTNR"/>
       </measure>
     </baseMeasures>
     <calculatedMeasures/>
@@ -1089,20 +1584,20 @@
 <layout>
   <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="660.3038801290666" y="112"/>
-        <rectangleSize height="0" width="160"/>
+        <upperLeftCorner x="20" y="70"/>
+        <rectangleSize height="0" width="0"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="91.99999999999999" y="1016.9999940395355"/>
-        <rectangleSize height="-1" width="160"/>
+        <upperLeftCorner x="20" y="820"/>
+        <rectangleSize height="-1" width="-1"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="302.00000000000006" y="1016.9999940395355"/>
-        <rectangleSize height="-1" width="160"/>
+        <upperLeftCorner x="200" y="820"/>
+        <rectangleSize height="-1" width="-1"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="118.66666666666661" y="856.9999952316284"/>
-        <rectangleSize height="-1" width="160"/>
+        <upperLeftCorner x="20" y="720"/>
+        <rectangleSize height="-1" width="-1"/>
       </shape>
     <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
@@ -1113,12 +1608,12 @@
       <rectangleSize width="250"/>
     </shape>
       <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="380.18794682697023" y="856.9999952316284"/>
-        <rectangleSize height="-1" width="160"/>
+        <upperLeftCorner x="200" y="729"/>
+        <rectangleSize height="-1" width="-1"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="145.33333333333337" y="696.9999964237213"/>
-        <rectangleSize height="-1" width="160"/>
+        <upperLeftCorner x="20" y="622"/>
+        <rectangleSize height="-1" width="-1"/>
       </shape>
     <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
@@ -1129,12 +1624,12 @@
       <rectangleSize width="250"/>
     </shape>
       <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="474.7983235081821" y="696.9999964237213"/>
-        <rectangleSize height="-1" width="160"/>
+        <upperLeftCorner x="200" y="640"/>
+        <rectangleSize height="-1" width="-1"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="172" y="536.9999976158142"/>
-        <rectangleSize height="-1" width="160"/>
+        <upperLeftCorner x="20" y="520"/>
+        <rectangleSize height="-1" width="-1"/>
       </shape>
     <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
@@ -1145,12 +1640,12 @@
       <rectangleSize width="250"/>
     </shape>
       <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="584.5795303100989" y="536.9999976158142"/>
-        <rectangleSize height="-1" width="160"/>
+        <upperLeftCorner x="200" y="529"/>
+        <rectangleSize height="-1" width="-1"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="198.66666666666663" y="376.9999988079071"/>
-        <rectangleSize height="-1" width="160"/>
+        <upperLeftCorner x="20" y="420"/>
+        <rectangleSize height="-1" width="-1"/>
       </shape>
     <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
@@ -1161,19 +1656,35 @@
       <rectangleSize width="250"/>
     </shape>
       <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="708.3361339234377" y="376.9999988079071"/>
-        <rectangleSize height="-1" width="160"/>
+        <upperLeftCorner x="200" y="438"/>
+        <rectangleSize height="-1" width="-1"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="660.3038801290664" y="217"/>
-        <rectangleSize height="-1" width="160"/>
+        <upperLeftCorner x="20" y="320"/>
+        <rectangleSize height="-1" width="-1"/>
       </shape>
-    
     <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
     <shape modelObjectName="Projection_6" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="329"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="210"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_7" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="250"/>
     </shape>

@@ -1,0 +1,557 @@
+FUNCTION "TABLE_FUNCTION_dimensionCostoPeru" ()
+RETURNS TABLE ("MATNR" NVARCHAR (18), "ZCOMP" NVARCHAR (18), "KSTAR" NVARCHAR (10), "AUFNR" NVARCHAR (12), "PRODMES" DECIMAL (15, 3), "VALOR_STANDARD" DECIMAL (15, 3), "CONSUMO_STANDARD" DECIMAL (15, 3), "PRODORD" DECIMAL (15, 3), "TAM_LOTE_STANDARD" DOUBLE, "VAL" DOUBLE, "ZTR_COSTO" INTEGER, "CANT" DOUBLE, "OPREIS" DECIMAL (15, 2), "KLVAR" NVARCHAR (4), "GJAHR" NVARCHAR (4), "PERIO" DECIMAL (3, 0), "FECHA_CALC" NVARCHAR (8), "BWKEY" NVARCHAR (4), "POSNR" NVARCHAR (5), "0CALMONTH" NVARCHAR (6), "TIP_MAT" NVARCHAR (4), "SECTOR" NVARCHAR (2), "MARCA" NVARCHAR (30), "GPO_MAT" NVARCHAR (9), "MATERIAL_TEXT" NVARCHAR (40), "MEINS" NVARCHAR (3), "OWAER" NVARCHAR (5), "VOL_PRODUCCION" DECIMAL (15, 3), "EXISTE_TL" INTEGER, "TAM_LOTE" DECIMAL (15, 3), "CONSUMO_STAND_TOTAL" DECIMAL (15, 3), "VALOR_STANDARD_TOTAL" DECIMAL (15, 3), "PRECIO_STANDARD" DECIMAL (15, 7), "CONSUMO_REAL" DECIMAL (15, 5), "CONSUMO_REAL_TOTAL_SIN_UM" DECIMAL (15, 3), "VALOR_REAL" DECIMAL (15, 3), "VALOR_REAL_TOTAL" DECIMAL (15, 3), "PRECIO_REAL" DECIMAL (15, 3), "DESV_CONS_VOL" DECIMAL (15, 3), "DESV_CONS_TOTAL_VAL" DECIMAL (15, 3), "DESV_CONS_XVOL" DECIMAL (15, 3), "DESV_CONS_XTOTAL" DECIMAL (15, 3), "CALC_DESV_CONS_PREC" DECIMAL (15, 3), "VOLGLO" DECIMAL (15, 3), "TOTEST" DECIMAL (15, 3), "TOTVALEST" DECIMAL (15, 3), "TOTPRECIOEST" DECIMAL (15, 7), "TOTCONSUMEST" DECIMAL (15, 3), "TESTPRECIO" DECIMAL (15, 6), "TOTCONSUNREAL" DECIMAL (15, 3), "SCONSUMO_REAL_TOTAL" DECIMAL (15, 3), "TESTCONSREAL" DECIMAL (15, 3), "LOTMGLO" DECIMAL (15, 3), "TESTREAL" DECIMAL (15, 3), "TESTVALOR_REAL" DECIMAL (15, 3), "TESTVALOR_REALTOTAL" DECIMAL (15, 3), "TESTPRECIOREAL" DECIMAL (15, 3), "TESTDESV_CONS_VOL" DECIMAL (15, 3), "TEXT_VALOR_STANDARD" NVARCHAR (20), "TEXT_CONSUMO_STANDARD" NVARCHAR (20), "DELETE_PRECIO_STANDARD" DECIMAL (12, 3), "MATERIAL_ID_TEXT" NVARCHAR (40))
+LANGUAGE SQLSCRIPT
+SQL SECURITY DEFINER
+  AS 
+
+/********* Begin Procedure Script ************/ 
+BEGIN 
+   DECLARE LV_KVAL nvarchar(4);
+   DECLARE LV_MTART nvarchar(4);
+   DECLARE LV_GPO nvarchar(9);
+   DECLARE LV_FECHA_DESDE nvarchar(6);
+   DECLARE LV_FECHA nvarchar(6);
+   DECLARE LV_MATE nvarchar(18);
+   
+
+/* Real */
+    FACTREAL1 = SELECT TOP 10  A."0MATERIAL" AS MATNR, A."0COMPONENT" AS ZCOMP,
+                CASE WHEN A.ZTRCOSTO = 9 THEN '0'
+                         ELSE '0'
+                END AS KSTAR,
+                A."0PRODORDER" AS AUFNR, A."zbw_ZCANFABR" AS PRODMES,
+                CASE WHEN A.ZTRCOSTO = 8 THEN 0
+                         ELSE 0
+                END AS PRODORD,
+                A."ZBW_Z0LOTSIZE" AS TAM_LOTE_STANDARD, A.ZBW_ZVALOR_T AS VAL,
+                A.ZTRCOSTO AS ZTR_COSTO, A.ZBW_ZCANCOMP AS CANT,
+                A."0NETPRICE" AS OPREIS, A.ZVAR_CALC AS KLVAR, 
+                SUBSTRING(A."0CALMONTH",1,4) AS GJAHR,
+                SUBSTRING(A."0CALMONTH",5,2) AS  PERIO,
+                A.ZFEC_CALC AS FECHA_CALC, A."0PLANT" AS BWKEY,
+                A.ZPOSNR AS POSNR, A."0CALMONTH", A."0UNIT" AS MEINS, A."0LOC_CURRY" AS OWAER,
+                    CASE WHEN A.ZTRCOSTO = 1 THEN A.ZBW_Z0LOTSIZE
+                         ELSE 0
+                    END AS TAM_LOT_STAND,
+                     CASE WHEN A.ZTRCOSTO = 1 THEN A.ZBW_ZCANCOMP
+                         ELSE 0
+                    END AS SCONSUMO_STANDARD,
+                    CASE WHEN A.ZTRCOSTO = 0 THEN 0
+                         ELSE 1
+                    END AS EXISTE_TL,
+                    CASE WHEN A.ZTRCOSTO = 1 THEN A.ZBW_ZVALOR_T
+                         ELSE 0
+                    END AS SVALOR_STANDARD,
+                    CASE WHEN A.ZTRCOSTO = 2 THEN 0
+                         ELSE 0
+                    END AS SCONSUMO_REAL_TOTAL,
+                    CASE WHEN A.ZTRCOSTO = 2 THEN 0
+                         ELSE 0
+                    END AS SVALOR_REAL_TOTAL, B.*
+                    
+            FROM "ZBW_COSTOS_PERU_HIST" AS A
+           LEFT JOIN 
+                (SELECT A.MATNR AS MATERIAL, A.MTART AS MATERIAL_ATTR_TIPO_MATERIAL, 
+                       A.MATKL AS MATERIAL_ATTR_GRUPO_MATERIAL, A.SPART AS MATERIAL_ATTR_SECTOR,
+                	   A.ROTMG AS MATERIAL_ATTR_IND_MARGEN_ROTACION, A.TOKEN AS MATERIAL_ATTR_IND_SKU_ESTRATEGICO,
+                       A.TANEG AS MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO, A.PRNEW AS MATERIAL_ATTR_IND_PRODUCTO_NUEVO, 
+                	   A.GMROI AS MATERIAL_ATTR_MARGEN_SOBRE_ROTACION, A.MATMR AS MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO, 
+                	   A.ZZMEST AS MATERIAL_ATTR_MATERIAL_ESTRATEGICO, A.ZZFLAGSEG AS MATERIAL_ATTR_SEGUIMIENTO,
+                       B.MAKTX AS MATERIAL_TEXT, C.MATERIAL_ATTR_MARCA, D.MATERIAL_ATTR_CLASIF_MAR,
+                       E.MATERIAL_ATTR_ESTACIONALIDAD, F.MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW,
+                       CAST(A.MATNR as INTEGER) AS MATERIAL_CORTO, 
+                       CONCAT(CONCAT(CAST(A.MATNR as INTEGER), ' - '),B.MAKTX) AS MATERIAL_ID_TEXT
+                FROM "MARA" AS A 
+                LEFT JOIN "MAKT" AS B
+                ON B.MATNR = A.MATNR
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_MARCA 
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001082'
+                            AND KLART = '001' ) AS C
+                ON C.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_CLASIF_MAR
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001324'
+                            AND KLART = '001' ) AS D
+                ON D.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_ESTACIONALIDAD
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001297'
+                            AND KLART = '001' ) AS E
+                ON E.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW
+                             FROM "AUSP"
+                            WHERE ATINN = '0000001353'
+                            AND KLART = '001' ) AS F
+                ON F.OBJEK = A.MATNR  
+                
+                WHERE B.SPRAS = 'S' AND A.MTART LIKE LV_MTART AND A.MATKL LIKE LV_GPO) AS B
+                ON B.MATERIAL = A."0MATERIAL"; 
+
+            
+ FACTREAL2 = SELECT TOP 10  A.MATNR, A.ZCOMP, A.KSTAR, A.AUFNR, A.PRODMES, 
+                   A.PRODORD, A.LOSGR AS TAM_LOTE_STANDARD, 
+                   A.VAL, ZTR_COSTO, CANT,  A.OPREIS, A.KLVAR, A.GJAHR, A.PERIO, 
+                   A.KADKY AS FECHA_CALC,  A.BWKEY, A.POSNR, A."0CALMONTH", A.MEINS, A.OWAER,
+                    CASE WHEN A.ZTR_COSTO = 1 THEN A.LOSGR
+                         ELSE 0
+                    END AS TAM_LOT_STAND,
+                    CASE WHEN A.ZTR_COSTO = 1 THEN A.CANT
+                         ELSE 0
+                    END AS SCONSUMO_STANDARD,
+                    CASE WHEN A.ZTR_COSTO = 0 THEN 0
+                         ELSE 1
+                    END AS EXISTE_TL,
+                    CASE WHEN A.ZTR_COSTO = 1 THEN A.VAL
+                         ELSE 0
+                    END AS SVALOR_STANDARD,
+                    CASE WHEN A.ZTR_COSTO = 2 THEN 0
+                         ELSE 0
+                    END AS SCONSUMO_REAL_TOTAL,
+                    CASE WHEN A.ZTR_COSTO = 2 THEN 0
+                         ELSE 0
+                    END AS SVALOR_REAL_TOTAL, B.*
+                    
+            FROM "ZTCOSTOS_PERU" AS A
+           LEFT JOIN 
+                (SELECT A.MATNR AS MATERIAL, A.MTART AS MATERIAL_ATTR_TIPO_MATERIAL, 
+                       A.MATKL AS MATERIAL_ATTR_GRUPO_MATERIAL, A.SPART AS MATERIAL_ATTR_SECTOR,
+                	   A.ROTMG AS MATERIAL_ATTR_IND_MARGEN_ROTACION, A.TOKEN AS MATERIAL_ATTR_IND_SKU_ESTRATEGICO,
+                       A.TANEG AS MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO, A.PRNEW AS MATERIAL_ATTR_IND_PRODUCTO_NUEVO, 
+                	   A.GMROI AS MATERIAL_ATTR_MARGEN_SOBRE_ROTACION, A.MATMR AS MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO, 
+                	   A.ZZMEST AS MATERIAL_ATTR_MATERIAL_ESTRATEGICO, A.ZZFLAGSEG AS MATERIAL_ATTR_SEGUIMIENTO,
+                       B.MAKTX AS MATERIAL_TEXT, C.MATERIAL_ATTR_MARCA, D.MATERIAL_ATTR_CLASIF_MAR,
+                       E.MATERIAL_ATTR_ESTACIONALIDAD, F.MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW,
+                       CAST(A.MATNR as INTEGER) AS MATERIAL_CORTO, 
+                       CONCAT(CONCAT(CAST(A.MATNR as INTEGER), ' - '),B.MAKTX) AS MATERIAL_ID_TEXT
+                FROM "MARA" AS A 
+                LEFT JOIN "MAKT" AS B
+                ON B.MATNR = A.MATNR
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_MARCA 
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001082'
+                            AND KLART = '001' ) AS C
+                ON C.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_CLASIF_MAR
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001324'
+                            AND KLART = '001' ) AS D
+                ON D.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_ESTACIONALIDAD
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001297'
+                            AND KLART = '001' ) AS E
+                ON E.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW
+                             FROM "AUSP"
+                            WHERE ATINN = '0000001353'
+                            AND KLART = '001' ) AS F
+                ON F.OBJEK = A.MATNR  
+                
+                WHERE B.SPRAS = 'S' AND A.MTART = LV_MTART AND A.MATKL LIKE LV_GPO) AS B
+                ON B.MATERIAL = A.MATNR; 
+        
+  
+         TAMR1 = select *, ((TAM_LOTE_STANDARD*EXISTE_TL)+1000*(1-EXISTE_TL)) AS STAM_LOTE FROM :FACTREAL1;
+         TAMR2 = select *, ((TAM_LOTE_STANDARD*EXISTE_TL)+1000*(1-EXISTE_TL)) AS STAM_LOTE FROM :FACTREAL2;  
+    
+         unionR1 = select MATNR, ZCOMP, KSTAR, AUFNR, PRODMES,
+                         SVALOR_STANDARD,
+                         SCONSUMO_STANDARD,
+                         PRODORD, 
+                         TAM_LOTE_STANDARD,
+                         VAL, ZTR_COSTO,
+                         CANT, OPREIS, KLVAR, GJAHR, PERIO,
+                         FECHA_CALC, BWKEY, POSNR, "0CALMONTH",
+                         MATERIAL_ATTR_TIPO_MATERIAL,
+                         MATERIAL_ATTR_SECTOR,
+                         MATERIAL_ATTR_MARCA,
+                         MATERIAL_ATTR_GRUPO_MATERIAL,
+                         MATERIAL_TEXT,
+                         MEINS,
+                         OWAER,
+                         EXISTE_TL,
+                         (SELECT MAX(PRODMES) FROM :TAMR1) AS VOLMAX,
+                         (SELECT MAX(STAM_LOTE) FROM :TAMR1) AS LOTMAX,
+                         SCONSUMO_REAL_TOTAL,
+                         SVALOR_REAL_TOTAL,
+                         MATERIAL_ID_TEXT
+
+
+        FROM :TAMR1; 
+        
+        unionR2 = select MATNR, ZCOMP, KSTAR, AUFNR, PRODMES,
+                         SVALOR_STANDARD,
+                         SCONSUMO_STANDARD,
+                         PRODORD, 
+                         TAM_LOTE_STANDARD,
+                         VAL, ZTR_COSTO,
+                         CANT, OPREIS, KLVAR, GJAHR, PERIO,
+                         FECHA_CALC, BWKEY, POSNR, "0CALMONTH",
+                         MATERIAL_ATTR_TIPO_MATERIAL,
+                         MATERIAL_ATTR_SECTOR,
+                         MATERIAL_ATTR_MARCA,
+                         MATERIAL_ATTR_GRUPO_MATERIAL,
+                         MATERIAL_TEXT,
+                         MEINS,
+                         OWAER,
+                         EXISTE_TL,
+                         (SELECT MAX(PRODMES) FROM :TAMR2) AS VOLMAX,
+                         (SELECT MAX(STAM_LOTE) FROM :TAMR2) AS LOTMAX,
+                         SCONSUMO_REAL_TOTAL,
+                         SVALOR_REAL_TOTAL,
+                         MATERIAL_ID_TEXT
+
+
+         FROM :TAMR2; 
+        
+                
+        UNIOR = SELECT * FROM :unionR1 UNION ALL
+                SELECT * FROM :unionR2; 
+
+/* *************** */
+
+/* Estardad */
+    FACTESTA1 =  SELECT TOP 10 A."0MATERIAL" AS MATNR, A."0COMPONENT" AS ZCOMP,
+                CASE WHEN A.ZTRCOSTO = 9 THEN '0'
+                         ELSE '0'
+                END AS KSTAR,
+                A."0PRODORDER" AS AUFNR, A."zbw_ZCANFABR" AS PRODMES,
+                CASE WHEN A.ZTRCOSTO = 8 THEN 0
+                         ELSE 0
+                END AS PRODORD,
+                A."ZBW_Z0LOTSIZE" AS TAM_LOTE_STANDARD, A.ZBW_ZVALOR_T AS VAL,
+                A.ZTRCOSTO AS ZTR_COSTO, A.ZBW_ZCANCOMP AS CANT,
+                A."0NETPRICE" AS OPREIS, A.ZVAR_CALC AS KLVAR, 
+                SUBSTRING(A."0CALMONTH",1,4) AS GJAHR,
+                SUBSTRING(A."0CALMONTH",5,2) AS  PERIO,
+                A.ZFEC_CALC AS FECHA_CALC, A."0PLANT" AS BWKEY,
+                A.ZPOSNR AS POSNR, A."0CALMONTH", A."0UNIT" AS MEINS, A."0LOC_CURRY" AS OWAER,
+                    CASE WHEN A.ZTRCOSTO = 1 THEN A.ZBW_Z0LOTSIZE
+                         ELSE 0
+                    END AS TAM_LOT_STAND,
+                     CASE WHEN A.ZTRCOSTO = 1 THEN 0
+                         ELSE 0
+                    END AS SCONSUMO_STANDARD,
+                    CASE WHEN A.ZTRCOSTO = 0 THEN 0
+                         ELSE 1
+                    END AS EXISTE_TL,
+                    CASE WHEN A.ZTRCOSTO = 1 THEN 0
+                         ELSE 0
+                    END AS SVALOR_STANDARD,
+                    CASE WHEN A.ZTRCOSTO = 2 THEN A.ZBW_ZCANCOMP
+                         ELSE 0
+                    END AS SCONSUMO_REAL_TOTAL,
+                    CASE WHEN A.ZTRCOSTO = 2 THEN A.ZBW_ZVALOR_T
+                         ELSE 0
+                    END AS SVALOR_REAL_TOTAL, B.*
+                    
+            FROM "ZBW_COSTOS_PERU_HIST" AS A
+           LEFT JOIN 
+                (SELECT A.MATNR AS MATERIAL, A.MTART AS MATERIAL_ATTR_TIPO_MATERIAL, 
+                       A.MATKL AS MATERIAL_ATTR_GRUPO_MATERIAL, A.SPART AS MATERIAL_ATTR_SECTOR,
+                	   A.ROTMG AS MATERIAL_ATTR_IND_MARGEN_ROTACION, A.TOKEN AS MATERIAL_ATTR_IND_SKU_ESTRATEGICO,
+                       A.TANEG AS MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO, A.PRNEW AS MATERIAL_ATTR_IND_PRODUCTO_NUEVO, 
+                	   A.GMROI AS MATERIAL_ATTR_MARGEN_SOBRE_ROTACION, A.MATMR AS MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO, 
+                	   A.ZZMEST AS MATERIAL_ATTR_MATERIAL_ESTRATEGICO, A.ZZFLAGSEG AS MATERIAL_ATTR_SEGUIMIENTO,
+                       B.MAKTX AS MATERIAL_TEXT, C.MATERIAL_ATTR_MARCA, D.MATERIAL_ATTR_CLASIF_MAR,
+                       E.MATERIAL_ATTR_ESTACIONALIDAD, F.MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW,
+                       CAST(A.MATNR as INTEGER) AS MATERIAL_CORTO, 
+                       CONCAT(CONCAT(CAST(A.MATNR as INTEGER), ' - '),B.MAKTX) AS MATERIAL_ID_TEXT
+                FROM "MARA" AS A 
+                LEFT JOIN "MAKT" AS B
+                ON B.MATNR = A.MATNR
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_MARCA 
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001082'
+                            AND KLART = '001' ) AS C
+                ON C.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_CLASIF_MAR
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001324'
+                            AND KLART = '001' ) AS D
+                ON D.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_ESTACIONALIDAD
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001297'
+                            AND KLART = '001' ) AS E
+                ON E.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW
+                             FROM "AUSP"
+                            WHERE ATINN = '0000001353'
+                            AND KLART = '001' ) AS F
+                ON F.OBJEK = A.MATNR  
+                
+                WHERE B.SPRAS = 'S' AND A.MTART LIKE LV_MTART AND A.MATKL LIKE LV_GPO) AS B
+                ON B.MATERIAL = A."0MATERIAL";
+        
+      
+ FACTESTA2 = SELECT TOP 10 A.MATNR, A.ZCOMP, A.KSTAR, A.AUFNR, A.PRODMES, 
+                   A.PRODORD, A.LOSGR AS TAM_LOTE_STANDARD, 
+                   A.VAL, ZTR_COSTO, CANT,  A.OPREIS, A.KLVAR, A.GJAHR, A.PERIO, 
+                   A.KADKY AS FECHA_CALC,  A.BWKEY, A.POSNR, A."0CALMONTH", A.MEINS, A.OWAER,
+                    CASE WHEN A.ZTR_COSTO = 1 THEN A.LOSGR
+                         ELSE 0
+                    END AS TAM_LOT_STAND,
+                    CASE WHEN A.ZTR_COSTO = 1 THEN 0
+                         ELSE 0
+                    END AS SCONSUMO_STANDARD,
+                    CASE WHEN A.ZTR_COSTO = 0 THEN 0
+                         ELSE 1
+                    END AS EXISTE_TL,
+                    CASE WHEN A.ZTR_COSTO = 1 THEN 0
+                         ELSE 0
+                    END AS SVALOR_STANDARD,
+                    CASE WHEN A.ZTR_COSTO = 2 THEN A.CANT
+                         ELSE 0
+                    END AS SCONSUMO_REAL_TOTAL,
+                    CASE WHEN A.ZTR_COSTO = 2 THEN A.VAL
+                         ELSE 0
+                    END AS SVALOR_REAL_TOTAL, B.*
+                    
+            FROM "ZTCOSTOS_PERU" AS A
+           LEFT JOIN 
+                (SELECT A.MATNR AS MATERIAL, A.MTART AS MATERIAL_ATTR_TIPO_MATERIAL, 
+                       A.MATKL AS MATERIAL_ATTR_GRUPO_MATERIAL, A.SPART AS MATERIAL_ATTR_SECTOR,
+                	   A.ROTMG AS MATERIAL_ATTR_IND_MARGEN_ROTACION, A.TOKEN AS MATERIAL_ATTR_IND_SKU_ESTRATEGICO,
+                       A.TANEG AS MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO, A.PRNEW AS MATERIAL_ATTR_IND_PRODUCTO_NUEVO, 
+                	   A.GMROI AS MATERIAL_ATTR_MARGEN_SOBRE_ROTACION, A.MATMR AS MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO, 
+                	   A.ZZMEST AS MATERIAL_ATTR_MATERIAL_ESTRATEGICO, A.ZZFLAGSEG AS MATERIAL_ATTR_SEGUIMIENTO,
+                       B.MAKTX AS MATERIAL_TEXT, C.MATERIAL_ATTR_MARCA, D.MATERIAL_ATTR_CLASIF_MAR,
+                       E.MATERIAL_ATTR_ESTACIONALIDAD, F.MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW,
+                       CAST(A.MATNR as INTEGER) AS MATERIAL_CORTO, 
+                       CONCAT(CONCAT(CAST(A.MATNR as INTEGER), ' - '),B.MAKTX) AS MATERIAL_ID_TEXT
+                FROM "MARA" AS A 
+                LEFT JOIN "MAKT" AS B
+                ON B.MATNR = A.MATNR
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_MARCA 
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001082'
+                            AND KLART = '001' ) AS C
+                ON C.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_CLASIF_MAR
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001324'
+                            AND KLART = '001' ) AS D
+                ON D.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_ESTACIONALIDAD
+                            FROM "AUSP"
+                            WHERE ATINN = '0000001297'
+                            AND KLART = '001' ) AS E
+                ON E.OBJEK = A.MATNR  
+                LEFT JOIN ( SELECT OBJEK, ATINN, KLART, ATWRT AS MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW
+                             FROM "AUSP"
+                            WHERE ATINN = '0000001353'
+                            AND KLART = '001' ) AS F
+                ON F.OBJEK = A.MATNR  
+                
+                WHERE B.SPRAS = 'S' AND A.MTART = LV_MTART AND A.MATKL LIKE LV_GPO) AS B
+                ON B.MATERIAL = A.MATNR; 
+
+
+  
+         TAME1 = select *, ((TAM_LOTE_STANDARD*EXISTE_TL)+1000*(1-EXISTE_TL)) AS STAM_LOTE FROM :FACTESTA1;
+         TAME2 = select *, ((TAM_LOTE_STANDARD*EXISTE_TL)+1000*(1-EXISTE_TL)) AS STAM_LOTE FROM :FACTESTA2;  
+
+
+         unionE1 = select MATNR, ZCOMP, KSTAR, AUFNR, PRODMES,
+                         SVALOR_STANDARD,
+                         SCONSUMO_STANDARD,
+                         PRODORD, 
+                         TAM_LOTE_STANDARD,
+                         VAL, ZTR_COSTO,
+                         CANT, OPREIS, KLVAR, GJAHR, PERIO,
+                         FECHA_CALC, BWKEY, POSNR, "0CALMONTH",
+                         MATERIAL_ATTR_TIPO_MATERIAL,
+                         MATERIAL_ATTR_SECTOR,
+                         MATERIAL_ATTR_MARCA,
+                         MATERIAL_ATTR_GRUPO_MATERIAL,
+                         MATERIAL_TEXT,
+                         MEINS,
+                         OWAER,
+                         EXISTE_TL,
+                         (SELECT MAX(PRODMES) FROM :TAME1) AS VOLMAX,
+                         (SELECT MAX(STAM_LOTE) FROM :TAME1) AS LOTMAX,
+                         SCONSUMO_REAL_TOTAL,
+                         SVALOR_REAL_TOTAL,
+                         MATERIAL_ID_TEXT
+
+        FROM :TAME1; 
+ 
+      
+        unionE2 = select MATNR, ZCOMP, KSTAR, AUFNR, PRODMES,
+                         SVALOR_STANDARD,
+                         SCONSUMO_STANDARD,
+                         PRODORD, 
+                         TAM_LOTE_STANDARD,
+                         VAL, ZTR_COSTO,
+                         CANT, OPREIS, KLVAR, GJAHR, PERIO,
+                         FECHA_CALC, BWKEY, POSNR, "0CALMONTH",
+                         MATERIAL_ATTR_TIPO_MATERIAL,
+                         MATERIAL_ATTR_SECTOR,
+                         MATERIAL_ATTR_MARCA,
+                         MATERIAL_ATTR_GRUPO_MATERIAL,
+                         MATERIAL_TEXT,
+                         MEINS,
+                         OWAER,
+                         EXISTE_TL,
+                         (SELECT MAX(PRODMES) FROM :TAME2) AS VOLMAX,
+                         (SELECT MAX(STAM_LOTE) FROM :TAME2) AS LOTMAX,
+                         SCONSUMO_REAL_TOTAL,
+                         SVALOR_REAL_TOTAL,
+                         MATERIAL_ID_TEXT
+
+        FROM :TAME2; 
+        
+                
+        UNIOE = SELECT * FROM :unionE1 UNION ALL
+                SELECT * FROM :unionE2; 
+
+/* *************** */
+     GRANUNION = SELECT * FROM :UNIOR UNION ALL
+                 SELECT * FROM :UNIOE;
+ 
+                 
+     VOL      = SELECT "0CALMONTH" AS FECHA, MAX(PRODMES) AS VOLM FROM :GRANUNION GROUP BY "0CALMONTH";
+     LOT      = SELECT "0CALMONTH" AS FECHA, MAX(TAM_LOTE_STANDARD) AS LOTM FROM :GRANUNION GROUP BY "0CALMONTH";
+     VOLIND   = SELECT "0CALMONTH" AS FECHA, MAX(PRODMES) AS VOLI, COUNT(*)  AS PROMEDIO FROM :GRANUNION WHERE PRODMES <> 0 GROUP BY "0CALMONTH";
+     
+     AGREGADO = SELECT *, 
+     			(SELECT VOLM FROM :VOL WHERE FECHA = "0CALMONTH") AS VOLGLO,
+                (SELECT LOTM FROM :LOT WHERE FECHA = "0CALMONTH") AS LOTMGLO,
+                CASE WHEN PRODMES <> 0
+                THEN (SELECT (VOLI/PROMEDIO) FROM :VOLIND WHERE FECHA = "0CALMONTH")
+                ELSE 0
+                END AS VOL_PRODUCCION   
+                 FROM :GRANUNION; 
+                 
+/* VOLMAX AS VOL_PRODUCCION,*/  
+
+     CALCULO1 = SELECT *,
+              LOTMAX AS TAM_LOTE,
+              CASE WHEN ((TAM_LOTE_STANDARD*EXISTE_TL)+1000*(1-EXISTE_TL)) <> 0 AND VOLGLO <> 0 AND SCONSUMO_STANDARD <> 0
+              THEN (SCONSUMO_STANDARD/((TAM_LOTE_STANDARD*EXISTE_TL)+1000*(1-EXISTE_TL))*VOLGLO)
+              ELSE 0
+              END AS CONSUMO_STAND_TOTAL,          
+              CASE WHEN LOTMAX <> 0 AND VOLGLO <> 0 AND SVALOR_STANDARD <> 0
+              THEN (SVALOR_STANDARD/LOTMAX*VOLGLO)
+              ELSE 0
+              END AS VALOR_STANDARD_TOTAL,
+              CASE WHEN SCONSUMO_STANDARD <> 0
+              THEN (SVALOR_STANDARD/SCONSUMO_STANDARD)
+              ELSE 0
+              END AS PRECIO_STANDARD,
+             CASE WHEN LOTMGLO <> 0 AND VOLGLO <> 0
+              THEN (SCONSUMO_REAL_TOTAL/VOLGLO*LOTMGLO)
+              ELSE 0
+              END AS CONSUMO_REAL,
+              CASE WHEN LOTMGLO <> 0 AND VOLGLO <> 0
+              THEN (SVALOR_REAL_TOTAL/VOLGLO*LOTMGLO)
+              ELSE 0
+              END AS VALOR_REAL,
+              CASE WHEN SCONSUMO_REAL_TOTAL <> 0 
+              THEN (SVALOR_REAL_TOTAL/SCONSUMO_REAL_TOTAL)
+              ELSE 0
+              END AS PRECIO_REALIND
+              FROM :AGREGADO;
+     
+      CALCULO2 = SELECT *, 
+                ((SCONSUMO_REAL_TOTAL-CONSUMO_STAND_TOTAL)*PRECIO_STANDARD) AS DESV_CONS_VOL,
+                (SVALOR_REAL_TOTAL-VALOR_STANDARD_TOTAL) AS DESV_CONS_TOTAL_VAL
+                FROM :CALCULO1;  
+   
+     CALCULO3 = SELECT *,
+                CASE WHEN VALOR_STANDARD_TOTAL <> 0 
+                THEN ((DESV_CONS_VOL/VALOR_STANDARD_TOTAL)*100)
+                ELSE 0
+                END AS DESV_CONS_XVOL,
+                CASE WHEN VALOR_STANDARD_TOTAL <> 0 
+                THEN (((SVALOR_REAL_TOTAL-VALOR_STANDARD_TOTAL)/VALOR_STANDARD_TOTAL)*100)
+                ELSE 0
+                END AS DESV_CONS_XTOTAL,
+                ((PRECIO_REALIND-PRECIO_STANDARD)*SCONSUMO_REAL_TOTAL) AS CALC_DESV_CONS_PREC
+                FROM :CALCULO2;
+                
+
+        SALIDA = SELECT *, (SELECT SUM(VALOR_STANDARD_TOTAL) FROM :CALCULO3) AS TOTEST,
+                           (SELECT SUM(SVALOR_STANDARD) FROM :CALCULO3) AS TOTVALEST,
+                           (SELECT SUM(PRECIO_STANDARD) FROM :CALCULO3) AS TOTPRECIOEST,
+                           (SELECT SUM(SCONSUMO_STANDARD) FROM :CALCULO3) AS TOTCONSUMEST,
+                           (SELECT SUM(CONSUMO_REAL) FROM :CALCULO3) AS TOTCONSUNREAL,
+                           (SELECT SUM(SCONSUMO_REAL_TOTAL) FROM :CALCULO3) AS TESTREAL,
+                           (SELECT SUM(VALOR_REAL) FROM :CALCULO3) AS TESTVALOR_REAL,
+                           (SELECT SUM(SVALOR_REAL_TOTAL) FROM :CALCULO3) AS TESTVALOR_REALTOTAL,
+                           (SELECT SUM(PRECIO_REALIND) FROM :CALCULO3) AS TESTPRECIOREAL,
+                           (SELECT SUM(DESV_CONS_VOL) FROM :CALCULO3) AS TESTDESV_CONS_VOL,
+                           (SELECT SUM(SVALOR_REAL_TOTAL) FROM :CALCULO3) AS STVALOR_REAL_TOTAL,
+                           (SELECT SUM(SCONSUMO_REAL_TOTAL) FROM :CALCULO3) AS STCONSUMO_REAL_TOTAL,
+                           PRECIO_STANDARD AS DELETE_PRECIO_STANDARD
+                         
+                        
+               FROM :CALCULO3; 
+               
+        
+               
+         var_out = select MATNR, ZCOMP, KSTAR, AUFNR, PRODMES,
+                         SVALOR_STANDARD   as VALOR_STANDARD,
+                         SCONSUMO_STANDARD as CONSUMO_STANDARD,
+                         PRODORD, 
+                         TAM_LOTE_STANDARD,
+                         VAL, ZTR_COSTO,
+                         CANT, OPREIS, KLVAR, GJAHR, PERIO,
+                         FECHA_CALC, BWKEY, POSNR, "0CALMONTH",
+                         MATERIAL_ATTR_TIPO_MATERIAL AS TIP_MAT,
+                         MATERIAL_ATTR_SECTOR AS SECTOR,
+                         MATERIAL_ATTR_MARCA AS MARCA,
+                         MATERIAL_ATTR_GRUPO_MATERIAL AS GPO_MAT,
+                         MATERIAL_TEXT,
+                         MEINS,
+                         OWAER,
+                         VOL_PRODUCCION,
+                         EXISTE_TL,
+                         TAM_LOTE,
+                         CONSUMO_STAND_TOTAL,
+                         VALOR_STANDARD_TOTAL,
+                         CASE WHEN TOTCONSUMEST <> 0 
+                         THEN (TOTVALEST/TOTCONSUMEST)
+                         ELSE 0
+                         END AS PRECIO_STANDARD,
+                         CONSUMO_REAL,
+                         SCONSUMO_REAL_TOTAL AS CONSUMO_REAL_TOTAL_SIN_UM,
+                         VALOR_REAL,
+                         SVALOR_REAL_TOTAL AS VALOR_REAL_TOTAL,
+                         CASE WHEN SCONSUMO_REAL_TOTAL <> 0 
+                         THEN (STVALOR_REAL_TOTAL/STCONSUMO_REAL_TOTAL)
+                         ELSE 0
+                         END AS PRECIO_REAL,
+                         DESV_CONS_VOL,
+                         DESV_CONS_TOTAL_VAL,
+                         DESV_CONS_XVOL,
+                         DESV_CONS_XTOTAL,
+                         CALC_DESV_CONS_PREC,
+                         VOLGLO,
+                         TOTEST,
+                         TOTVALEST,
+                         TOTPRECIOEST,
+                         TOTCONSUMEST,
+                         TOTVALEST AS TESTPRECIO,
+                         TOTCONSUNREAL,
+                         SCONSUMO_REAL_TOTAL,
+                         SCONSUMO_REAL_TOTAL AS TESTCONSREAL,
+                         LOTMGLO,
+                         TESTREAL,
+                         TESTVALOR_REAL,
+                         TESTVALOR_REALTOTAL,
+                         TESTPRECIOREAL,
+                         TESTDESV_CONS_VOL,
+                         SVALOR_STANDARD   as TEXT_VALOR_STANDARD,
+                         SCONSUMO_STANDARD as TEXT_CONSUMO_STANDARD,
+                         DELETE_PRECIO_STANDARD,
+                         MATERIAL_ID_TEXT
+        FROM :SALIDA;
+        
+
+
+
+return :var_out;
+END;

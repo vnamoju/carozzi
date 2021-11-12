@@ -1,0 +1,1757 @@
+PROCEDURE "SCP_CAROZZI_SAC.Integridad_Datos::OLD_VALIDAR_CONSISTENCIA_REPLICAS" ( OUT MESSAGE string )
+   LANGUAGE SQLSCRIPT
+   -- SQL SECURITY INVOKER
+   AS
+BEGIN
+    DECLARE realRows INTEGER DEFAULT 0;
+    DECLARE virtualRows INTEGER DEFAULT 0; 
+
+-- ADRC
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_ADRC";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "ADRC";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla ADRC - Replica RT_ADRC');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla ADRC - Replica RT_ADRC');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- AUSP
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_AUSP"
+        WHERE ( ATINN = '0000001082' OR ATINN = '0000001324' OR ATINN = '0000001297' or ATINN = '0000001364'  )  AND KLART = '001';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "AUSP";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla AUSP - Replica RT_AUSP');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla AUSP - Replica RT_AUSP');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- BUT000
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_BUT000";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "BUT000";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla BUT000 - Replica RT_BUT000');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla BUT000 - Replica RT_BUT000');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- CASCADA
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "Z1CASCADA1_NEW";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1CASCADA1";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1CASCADA - Replica RT_CASCADA');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1CASCADA - Replica RT_CASCADA');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- CE41100
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_CE41100";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "CE41100";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla CE41100 - Replica RT_CE41100');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla CE41100 - Replica RT_CE41100');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- CE41300
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_CE41300";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "CE41300";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla CE41300 - Replica RT_CE41300');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla CE41300 - Replica RT_CE41300');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- CE45100
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_CE45100"
+        WHERE (AKTBO ='X') AND (PASUBNR ='0001') AND PAOBJNR>='0010570000';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "CE45100";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla CE45100 - Replica RT_CE45100');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla CE45100 - Replica RT_CE45100');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- CE4GC02
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_CE4GC02"
+        WHERE (AKTBO ='X') AND (PASUBNR ='0001');
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "CE4GC02";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla CE4GC02 - Replica RT_CE4GC02');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla CE4GC02 - Replica RT_CE4GC02');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- CE4SPA2
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_CE4SPA2"
+        WHERE (AKTBO ='X') AND (PASUBNR ='0001');
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "CE4SPA2";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla CE4SPA2 - Replica RT_CE4SPA2');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla CE4SPA2 - Replica RT_CE4SPA2');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- CGPL_PROJECT
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_CGPL_PROJECT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "CGPL_PROJECT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla CGPL_PROJECT - Replica RT_CGPL_PROJECT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla CGPL_PROJECT - Replica RT_CGPL_PROJECT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;   
+
+-- COBK2021
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_2021COBK"
+        WHERE GJAHR = '2021';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "COBK_2021";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla COBK_2021 - Replica RT_COBK2021');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla COBK_2021 - Replica RT_COBK2021');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- COEP_2021
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_2021COEP"
+        WHERE ( GJAHR = '2021') AND (PAOBJNR <> '0000000000') AND ( WRTTP='04' );
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "COEP_2021";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla COEP_2021 - Replica RT_COEP_2021');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla COEP_2021 - Replica RT_COEP_2021');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- COSP
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_COSP"
+        WHERE GJAHR >= '2019' AND (OBJNR='KSEC01CG22' OR OBJNR='KSEC01CG125');
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "COSP";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla COSP - Replica RT_COSP');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla COSP - Replica RT_COSP');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- CRM_JEST
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_CRM_JEST";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "CRM_JEST";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla CRM_JEST - Replica RT_CRM_JEST');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla CRM_JEST - Replica RT_CRM_JEST');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- CSKU
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_CSKU";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "CSKU";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla CSKU - Replica RT_CSKU');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla CSKU - Replica RT_CSKU');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- K9RECD3000001
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_K9RECD3000001";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "K9RECD3000001";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla K9RECD3000001 - Replica RT_K9RECD3000001');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla K9RECD3000001 - Replica RT_K9RECD3000001');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- K9RECD3000016
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_K9RECD3000016";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "K9RECD3000016";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla K9RECD3000016 - Replica RT_K9RECD3000016');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla K9RECD3000016 - Replica RT_K9RECD3000016');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- K9RECD3000020
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_K9RECD3000020";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "K9RECD3000020";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla K9RECD3000020 - Replica RT_K9RECD3000020');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla K9RECD3000020 - Replica RT_K9RECD3000020');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- K9RECD3000005
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_K9RECD3000005";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "K9RECD3000005";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla K9RECD3000005 - Replica RT_K9RECD3000005');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla K9RECD3000005 - Replica RT_K9RECD3000005');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- K9RECD3000006
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_K9RECD3000006";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "K9RECD3000006";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla K9RECD3000006 - Replica RT_K9RECD3000006');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla K9RECD3000006 - Replica RT_K9RECD3000006');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- K9RECD3000007
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_K9RECD3000007";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "K9RECD3000007";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla K9RECD3000007 - Replica RT_K9RECD3000007');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla K9RECD3000007 - Replica RT_K9RECD3000007');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- K9RECD3000014
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_K9RECD3000014";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "K9RECD3000014";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla K9RECD3000014 - Replica RT_K9RECD3000014');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla K9RECD3000014 - Replica RT_K9RECD3000014');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- K9RECD3000015
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_K9RECD3000015";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "K9RECD3000015";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla K9RECD3000015 - Replica RT_K9RECD3000015');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla K9RECD3000015 - Replica RT_K9RECD3000015');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- K9RECD3000017
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_K9RECD3000017";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "K9RECD3000017";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla K9RECD3000017 - Replica RT_K9RECD3000017');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla K9RECD3000017 - Replica RT_K9RECD3000017');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- K9RECD3000019
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows FROM "VT_K9RECD3000019";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "K9RECD3000019";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla K9RECD3000019 - Replica RT_K9RECD3000019');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla K9RECD3000019 - Replica RT_K9RECD3000019');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- KNA1    
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_ KNA1";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "KNA1";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla KNA1 - Replica RT_KNA1');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla KNA1 - Replica RT_KNA1');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;   
+
+-- KNB1    
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_KNB1";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "KNB1";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla KNB1 - Replica RT_KNB1');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla KNB1 - Replica RT_KNB1');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;  
+
+-- KNVH    
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_KNVH";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "KNVH";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla KNVH - Replica RT_KNVH');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla KNVH - Replica RT_KNVH');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- KNVV    
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_KNVV";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "KNVV";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla KNVV - Replica RT_KNVV');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla KNVV - Replica RT_KNVV');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- LFA1   
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_LFA1";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "LFA1";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla LFA1 - Replica RT_LFA1');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla LFA1 - Replica RT_LFA1');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- LIKP   
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_LIKP"
+        where TDDAT >= '20190101' AND VBTYP =  'J';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "LIKP";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla LIKP - Replica RT_LIKP');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla LIKP - Replica RT_LIKP');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- LIPS   
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_LIPS"
+        where ERDAT >= '20200101' AND (WERKS = '1307' OR WERKS = 'A071' OR WERKS = 'A072' OR WERKS = 'A073' OR WERKS = 'A074');
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "LIPS";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla LIPS - Replica RT_LIPS');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla LIPS - Replica RT_LIPS');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+ 
+-- MAKT   
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_MAKT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "MAKT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla MAKT - Replica RT_MAKT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla MAKT - Replica RT_MAKT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;   
+
+-- MARA   
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_MARA";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "MARA";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla MARA - Replica RT_MARA');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla MARA - Replica RT_MARA');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+    
+-- MARC   
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_MARC";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "MARC";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla MARC - Replica RT_MARC');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla MARC - Replica RT_MARC');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+    
+-- MARD   
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_MARD";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "MARD";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla MARD - Replica RT_MARD');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla MARD - Replica RT_MARD');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+    
+-- MARM   
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_MARM";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "MARM";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla MARM - Replica RT_MARM');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla MARM - Replica RT_MARM');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- MBEW  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_MBEW" 
+        where LFGJA >= '2020';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "MBEW";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla MBEW - Replica RT_MBEW');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla MBEW - Replica RT_MBEW');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- MVKE  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_MVKE";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "MVKE";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla MVKE - Replica RT_MVKE');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla MVKE - Replica RT_MVKE');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- PA0001  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_PA0001";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "PA0001";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla PA0001 - Replica RT_PA0001');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla PA0001 - Replica RT_PA0001');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- PLAF  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_PLAF";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "PLAF";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla PLAF - Replica RT_PLAF');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla PLAF - Replica RT_PLAF');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;   
+    
+-- PLAF  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_PLAF" 
+        where PSTTR  >= '20200101';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "PLAF";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla PLAF - Replica RT_PLAF');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla PLAF - Replica RT_PLAF');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;     
+    
+-- PLMM_AUDIT  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_PLMM_AUDIT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "PLMM_AUDIT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla PLMM_AUDIT - Replica RT_PLMM_AUDIT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla PLMM_AUDIT - Replica RT_PLMM_AUDIT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- PLMM_AUDIT_ROLES  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_PLMM_AUDIT_ROLES";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "PLMM_AUDIT_ROLES";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla PLMM_AUDIT_ROLES - Replica RT_PLMM_AUDIT_ROLES');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla PLMM_AUDIT_ROLES - Replica RT_PLMM_AUDIT_ROLES');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- S618  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_S618"
+        where VRSIO='001' AND SPMON>='201501';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "S618";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla S618 - Replica RT_S618');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla S618 - Replica RT_S618');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- SELLOUTCL  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1SELLOUTCL";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1SELLOUTCL";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1SELLOUTCL - Replica RT_SELLOUTCL');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1SELLOUTCL - Replica RT_SELLOUTCL');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- SETHEADERT  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_ SETHEADERT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "SETHEADERT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla SETHEADERT - Replica RT_SETHEADERT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla SETHEADERT - Replica RT_SETHEADERT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- SETLEAF  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_SETLEAF";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "SETLEAF";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla SETLEAF - Replica RT_SETLEAF');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla SETLEAF - Replica RT_SETLEAF');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- SETNODE  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_SETNODE";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "SETNODE";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla SETNODE - Replica RT_SETNODE');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla SETNODE - Replica RT_SETNODE');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- SETNODE  
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_SETNODE";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "SETNODE";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla SETNODE - Replica RT_SETNODE');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla SETNODE - Replica RT_SETNODE');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- T001 
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T001";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T001";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T001 - Replica RT_T001');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T001 - Replica RT_T001');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- T001W
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T001W";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T001W";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T001W - Replica RT_T001W');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T001W - Replica RT_T001W');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;    
+    
+-- T005F
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T005F";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T005F";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T005F - Replica RT_T005F');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T005F - Replica RT_T005F');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;    
+
+-- T005H
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T005H";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T005H";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T005H - Replica RT_T005H');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T005H - Replica RT_T005H');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- T005T
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T005T";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T005T";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T005T - Replica RT_T005T');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T005T - Replica RT_T005T');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+    
+-- T005U
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T005U";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T005U";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T005U - Replica RT_T005U');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T001U - Replica RT_T005U');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+    
+-- T023T
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T023T";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T023T";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T023T - Replica RT_T023T');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T023T - Replica RT_T023T');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;     
+    
+-- T024F
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T024F";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T024F";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T024F - Replica RT_T024F');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T024F - Replica RT_T024F');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;    
+
+-- T030
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T030";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T030";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T030 - Replica RT_T030');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T030 - Replica RT_T030');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- T25A4
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T25A4";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T25A4";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T25A4 - Replica RT_T25A4');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T25A4 - Replica RT_T25A4');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- T25A5
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T25A5";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T25A5";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T25A5 - Replica RT_T25A5');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T25A5 - Replica RT_T25A5');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- T499S
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_T499S";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "T499S";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla T499S - Replica RT_T499S');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla T499S - Replica RT_T499S');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- TCKH1
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TCKH1";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TCKH1";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TCKH1 - Replica RT_TCKH1');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TCKH1 - Replica RT_TCKH1');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;    
+    
+-- TJ30
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TJ30";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TJ30";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TJ30 - Replica RT_TJ30');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TJ30 - Replica RT_TJ30');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- TJ30T
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TJ30T";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TJ30T";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TJ30T - Replica RT_TJ30T');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TJ30T - Replica RT_TJ30T');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- TKA01
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TKA01";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TKA01";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TKA01 - Replica RT_TKA01');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TKA01 - Replica RT_TKA01');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- TKA02
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TKA02";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TKA02";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TKA02 - Replica RT_TKA02');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TKA02 - Replica RT_TKA02');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- TSPAT
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TSPAT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TSPAT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TSPAT - Replica RT_TSPAT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TSPAT - Replica RT_TSPAT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- TVGRT
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TVGRT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TVGRT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TVGRT - Replica RT_TVGRT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TVGRT - Replica RT_TVGRT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- TVKBT
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TVKBT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TVKBT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TVKBT - Replica RT_TVKBT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TVKBT - Replica RT_TVKBT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;   
+    
+-- TVKO
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TVKO";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TVKO";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TVKO - Replica RT_TVKO');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TVKO - Replica RT_TVKO');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;     
+
+-- TVKOT
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TVKOT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TVKOT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TVKOT - Replica RT_TVKOT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TVKOT - Replica RT_TVKOT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- TVTWT
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TVTWT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TVTWT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TVTWT - Replica RT_TVTWT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TVTWT - Replica RT_TVTWT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- TVZBT
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_TVZBT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "TVZBT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla TVZBT - Replica RT_TVZBT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla TVZBT - Replica RT_TVZBT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- VBAK
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBAK" 
+        where ERDAT >= '20190101' AND AUART IN ('ZKFE', 'ZKFF', 'ZKFN', 'ZKFS', 'ZKM', 'ZKMN', 'ZPET', 'ZPNT');
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBAK";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBAK - Replica RT_VBAK');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBAK - Replica RT_VBAK');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- VBAK2
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBAK2" 
+        where ERDAT >= '20180101';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBAK2";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBAK2 - Replica RT_VBAK2');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBAK2 - Replica RT_VBAK2');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+    
+-- VBAP
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBAP" 
+        where ERDAT >= '20190101' AND WERKS IN ( 'A072', 'A073', 'C130');
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBAP";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBAP - Replica RT_VBAP');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBAP - Replica RT_VBAP');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+    
+-- VBAP2
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBAP2" 
+        where ERDAT >= '20210101';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBAP2";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBAP2 - Replica RT_VBAP2');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBAP2 - Replica RT_VBAP2');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;    
+
+-- VBEP2
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBEP2" 
+        where EDATU>='20200101';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBEP2";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBEP2 - Replica RT_VBEP2');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBEP2 - Replica RT_VBEP2');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- VBFA
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBFA" 
+        where ERDAT >= '20200101' AND VBTYP_N IN ('C', 'G','J') AND VBTYP_V IN ('C', 'G');
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBFA";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBFA - Replica RT_VBFA');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBFA - Replica RT_VBFA');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- VBFA_AZ
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBFA" 
+        where ERDAT >= '20200101' AND VBTYP_N IN ('C', 'G','J') AND VBTYP_V IN ('C', 'G');
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBFA";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBFA - Replica RT_VBFA_AZ');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBFA - Replica RT_VBFA_AZ');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- VBKD
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBKD" 
+        where FKDAT >= '20200101';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBKD";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBKD - Replica RT_VBKD');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBKD - Replica RT_VBKD');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- VBPA
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBPA" 
+        where PARVW = 'NT' OR PARVW = 'VE' OR PARVW = 'BR' OR PARVW = 'AT' OR PARVW = 'CG';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBPA";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBPA - Replica RT_VBPA');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBPA - Replica RT_VBPA');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- VBRK
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBRK" 
+        where FKDAT >= '20210101';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBRK";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBRK - Replica RT_VBRK');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBRK - Replica RT_VBRK');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;    
+    
+-- VBRP
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBRP" 
+        where FBUDA >= '20210101';
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBRP";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBRP - Replica RT_VBRP');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBRP - Replica RT_VBRP');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;     
+
+-- VBFA2
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_VBFA2" 
+        where ERDAT>='20200101' and ( VBTYP_N='M'  OR VBTYP_N='O'  );
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "VBFA2";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla VBFA2 - Replica RT_VBFA2');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla VBFA2 - Replica RT_VBFA2');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+    
+-- Z1AGENCIAS
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1AGENCIAS" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1AGENCIAS";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1AGENCIAS - Replica RT_Z1AGENCIAS');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1AGENCIAS - Replica RT_Z1AGENCIAS');
+    END IF;
+    realRows = 0;
+    virtualRows = 0; 
+
+-- Z1AGENGEST
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1AGENGEST" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1AGENGEST";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1AGENGEST - Replica RT_Z1AGENGEST');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1AGENGEST - Replica RT_Z1AGENGEST');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- Z1AGENGESTCAD
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1AGENGESTCAD" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1AGENGESTCAD";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1AGENGESTCAD - Replica RT_Z1AGENGESTCAD');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1AGENGESTCAD - Replica RT_Z1AGENGESTCAD');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1BOUNINEG
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1BOUNINEG" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1BOUNINEG";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1BOUNINEG - Replica RT_Z1BOUNINEG');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1BOUNINEG - Replica RT_Z1BOUNINEG');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1CADENAS
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1CADENAS" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1CADENAS";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1CADENAS - Replica RT_Z1CADENAS');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1CADENAS - Replica RT_Z1CADENAS');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1CADFORM
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1CADFORM" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1CADFORM";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1CADFORM - Replica RT_Z1CADFORM');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1CADFORM - Replica RT_Z1CADFORM');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1CADLOC
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1CADLOC" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1CADLOC";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1CADLOC - Replica RT_Z1CADLOC');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1CADLOC - Replica RT_Z1CADLOC');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1CADSUP
+    -- Contamos las filas reales.
+    -- SELECT COUNT(*) INTO realRows from "SCP_CAROZZI_SAC"."VT_Z1CADSUP" ;
+    -- Contamos las filas virtuales.
+    -- SELECT COUNT(*) INTO virtualRows FROM "SCP_CAROZZI_SAC"."Z1CADSUP";
+    
+    -- IF realRows = virtualRows THEN
+        -- INSERT INTO "SCP_CAROZZI_SAC"."CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1CADSUP - Replica RT_Z1CADSUP');
+    -- ELSE
+        -- INSERT INTO "SCP_CAROZZI_SAC"."CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1CADSUP - Replica RT_Z1CADSUP');
+    -- END IF;
+    -- realRows = 0;
+    -- virtualRows = 0;
+    
+-- Z1CADSUPLC
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1CADSUPLC" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1CADSUPLC";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1CADSUPLC - Replica RT_Z1CADSUPLC');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1CADSUPLC - Replica RT_Z1CADSUPLC');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1CASCADA1
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1CASCADA1" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1CASCADA1";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1CASCADA1 - Replica RT_Z1CASCADA1');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1CASCADA1 - Replica RT_Z1CASCADA1');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1CASCADA2
+    -- Contamos las filas reales.
+    -- SELECT COUNT(*) INTO realRows from "SCP_CAROZZI_SAC"."VT_Z1CASCADA2" ;
+    -- Contamos las filas virtuales.
+    -- SELECT COUNT(*) INTO virtualRows FROM "SCP_CAROZZI_SAC"."Z1CASCADA2";
+    
+    --IF realRows = virtualRows THEN
+        -- INSERT INTO "SCP_CAROZZI_SAC"."CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1CASCADA2 - Replica RT_Z1CASCADA2');
+    -- ELSE
+        -- INSERT INTO "SCP_CAROZZI_SAC"."CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1CASCADA2 - Replica RT_Z1CASCADA2');
+    -- END IF;
+    -- realRows = 0;
+    -- virtualRows = 0;
+    
+-- Z1CLASIFCLIE
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1CLASIFCLIE" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1CLASIFCLIE";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1CLASIFCLIE - Replica RT_Z1CLASIFCLIE');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1CLASIFCLIE - Replica RT_Z1CLASIFCLIE');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1DT_AREA
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1DT_AREA" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1DT_AREA";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1DT_AREA - Replica RT_Z1DT_AREA');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1DT_AREA - Replica RT_Z1DT_AREA');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1DT_GERENCIA
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1DT_GERENCIA" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1DT_GERENCIA";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1DT_GERENCIA - Replica RT_Z1DT_GERENCIA');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1DT_GERENCIA - Replica RT_Z1DT_GERENCIA');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1FCODER
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1FCODER" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1FCODER";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1FCODER - Replica RT_Z1FCODER');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1FCODER - Replica RT_Z1FCODER');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1FFMTER
+    -- Contamos las filas reales.
+    -- SELECT COUNT(*) INTO realRows from "SCP_CAROZZI_SAC"."VT_Z1FFMTER" ;
+    -- Contamos las filas virtuales.
+    -- SELECT COUNT(*) INTO virtualRows FROM "SCP_CAROZZI_SAC"."Z1FFMTER";
+    
+    -- IF realRows = virtualRows THEN
+        -- INSERT INTO "SCP_CAROZZI_SAC"."CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1FFMTER - Replica RT_Z1FFMTER');
+    -- ELSE
+        -- INSERT INTO "SCP_CAROZZI_SAC"."CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1FFMTER - Replica RT_Z1FFMTER');
+    -- END IF;
+    -- realRows = 0;
+    -- virtualRows = 0;    
+
+-- ZIMPRDHOM
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1MPRDHOM" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1MPRDHOM";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla ZIMPRDHOM - Replica RT_ZIMPRDHOM');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla ZIMPRDHOM - Replica RT_ZIMPRDHOM');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+-- ZIMPRDHOM
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1MPRDHOM" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1MPRDHOM";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla ZIMPRDHOM - Replica RT_ZIMPRDHOM');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla ZIMPRDHOM - Replica RT_ZIMPRDHOM');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1MPRDSELL
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1MPRDSELL" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1MPRDSELL";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1MPRDSELL - Replica RT_Z1MPRDSELL');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1MPRDSELL - Replica RT_Z1MPRDSELL');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1RUBROS
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1RUBROS" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1RUBROS";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1RUBROS - Replica RT_Z1RUBROS');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1RUBROS - Replica RT_Z1RUBROS');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1SCPMEFI
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1SCPMEFI" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1SCPMEFI";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1SCPMEFI - Replica RT_Z1SCPMEFI');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1SCPMEFI - Replica RT_Z1SCPMEFI');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1SCP_CLIENHIST
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1SCP_CLIENHIST" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1SCP_CLIENHIST";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1SCP_CLIENHIST - Replica RT_Z1SCP_CLIENHIST');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1SCP_CLIENHIST - Replica RT_Z1SCP_CLIENHIST');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1SCP_POP
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1SCP_POP" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1SCP_POP";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1SCP_POP - Replica RT_Z1SCP_POP');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1SCP_POP - Replica RT_Z1SCP_POP');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1SCP_VENTADIR_V2
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1SCP_VENTADIR_V2" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1SCP_VENTADIR_V2";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1SCP_VENTADIR_V2 - Replica RT_Z1SCP_VENTADIR_V2');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1SCP_VENTADIR_V2 - Replica RT_Z1SCP_VENTADIR_V2');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1VCLIENTEXREMO
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "RT_Z1VCLIENTEXREMO.VT_Z1VCLIENTEXREMO" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1VCLIENTEXREMO";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1VCLIENTEXREMO - Replica RT_Z1VCLIENTEXREMO');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1VCLIENTEXREMO - Replica RT_Z1VCLIENTEXREMO');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1VICAPE
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1VICAPE" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1VICAPE";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1VICAPE - Replica RT_Z1VICAPE');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1VICAPE - Replica RT_Z1VICAPE');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1VICAPEH
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1VICAPEH" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1VICAPEH";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1VICAPEH - Replica RT_Z1VICAPEH');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1VICAPEH - Replica RT_Z1VICAPEH');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1VIDEPE
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1VIDEPE" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1VIDEPE";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1VIDEPE - Replica RT_Z1VIDEPE');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1VIDEPE - Replica RT_Z1VIDEPE');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1VIDEPEH
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1VIDEPEH" ;
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1VIDEPEH";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1VIDEPEH - Replica RT_Z1VIDEPEH');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1VIDEPEH - Replica RT_Z1VIDEPEH');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z1VIDEPEH
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z1VIDEPEH" WHERE BUKRS IN ('EC01', '1100', '4100', '5100', '1300');
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z1VIDEPEH";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z1VIDEPEH - Replica RT_Z1VIDEPEH');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z1VIDEPEH - Replica RT_Z1VIDEPEH');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- Z4CASCADA2V2
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_Z4CASCADA2V2";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "Z4CASCADA2V2";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla Z4CASCADA2V2 - Replica RT_Z4CASCADA2V2');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla Z4CASCADA2V2 - Replica RT_Z4CASCADA2V2');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- ZBWCT
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_ZBWCT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "ZBWCT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla ZBWCT - Replica RT_ZBWCT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla ZBWCT - Replica RT_ZBWCT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- ZBWGA_CT
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_ZBWGA_CT";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "ZBWGA_CT";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla ZBWGA_CT - Replica RT_ZBWGA_CT');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla ZBWGA_CT - Replica RT_ZBWGA_CT');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- ZOFIDIV
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_ZOFIDIV";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "ZOFIDIV";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla ZOFIDIV - Replica RT_ZOFIDIV');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla ZOFIDIV - Replica RT_ZOFIDIV');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- ZSOCCAL
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_ZSOCCAL";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "ZSOCCAL";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla ZSOCCAL - Replica RT_ZSOCCAL');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla ZSOCCAL - Replica RT_ZSOCCAL');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- ZTFACS
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_ZTFACS";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "ZTFACS";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla ZTFACS - Replica RT_ZTFACS');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla ZTFACS - Replica RT_ZTFACS');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+    
+-- ZTSD_PROEMBEXP_AZ
+    -- Contamos las filas reales.
+    SELECT COUNT(*) INTO realRows from "VT_ZTSD_PROEMBEXP";
+    -- Contamos las filas virtuales.
+    SELECT COUNT(*) INTO virtualRows FROM "ZTSD_PROEMBEXP";
+    
+    IF realRows = virtualRows THEN
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'S','El respaldo es correcto. Tabla ZTSD_PROEMBEXP - Replica RT_ZTSD_PROEMBEXP_AZ');
+    ELSE
+        INSERT INTO "CR_OUTPUT" ("DATE","TYPE","MESSAGE") VALUES(CURRENT_TIMESTAMP,'E','Existen diferencias en el respaldo de los datos. Tabla ZTSD_PROEMBEXP - Replica RT_ZTSD_PROEMBEXP_AZ');
+    END IF;
+    realRows = 0;
+    virtualRows = 0;
+
+    message = 'Validación finalizada, resultados en la tabla CR_OUTPUT filtrar por fecha';
+
+END

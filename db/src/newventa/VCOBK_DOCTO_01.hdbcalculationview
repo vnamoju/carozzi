@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="VCOBK" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="VCOBK_DOCTO_01" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
 <origin/>
-  <descriptions defaultDescription="VCOBK"/>
-  <metadata changedAt="2021-01-04 17:01:06.086"/>
+  <descriptions defaultDescription="VCOBK_DOCTO_01"/>
+  <metadata changedAt="2021-10-29 10:02:15.135"/>
   <localVariables/>
   <variableMappings/>
   <informationModelLayout relativeWidthScenario="44"/>
   <dataSources>
-    <DataSource id="COBK_2019">
-      <resourceUri>SCP_CAROZZI_SAC::COBK_2019</resourceUri>
-    </DataSource>
-    <DataSource id="COBK_2020">
-      <resourceUri>SCP_CAROZZI_SAC::COBK_2020</resourceUri>
-    </DataSource>
     <DataSource id="COBK_2021">
-      <resourceUri>SCP_CAROZZI_SAC::COBK_2021</resourceUri>
+      <resourceUri>COBK_2021</resourceUri>
     </DataSource>
   </dataSources>
 <calculationViews>
@@ -65,94 +59,6 @@
         <viewAttribute id="VALDT"/>
       </viewAttributes>
     <calculatedViewAttributes/>
-      <input emptyUnionBehavior="NO_ROW" node="COBK_2019">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="KOKRS" source="KOKRS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BELNR" source="BELNR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VRGNG" source="VRGNG"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTMP" source="TIMESTMP"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PERAB" source="PERAB"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PERBI" source="PERBI"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BLDAT" source="BLDAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUDAT" source="BUDAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CPUDT" source="CPUDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="USNAM" source="USNAM"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BLART" source="BLART"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="AWTYP" source="AWTYP"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CPUTM" source="CPUTM"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BLTXT" source="BLTXT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="STFLG" source="STFLG"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="STOKZ" source="STOKZ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="REFBT" source="REFBT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="REFBN" source="REFBN"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="REFBK" source="REFBK"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="REFGJ" source="REFGJ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ORGVG" source="ORGVG"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUMBZ" source="SUMBZ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DELBZ" source="DELBZ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="WSDAT" source="WSDAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="KURST" source="KURST"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VARNR" source="VARNR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="KWAER" source="KWAER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP1" source="CTYP1"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP2" source="CTYP2"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP3" source="CTYP3"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP4" source="CTYP4"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="AWORG" source="AWORG"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="LOGSYSTEM" source="LOGSYSTEM"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ALEBZ" source="ALEBZ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ALEBN" source="ALEBN"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="AWSYS" source="AWSYS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="AWREF_REV" source="AWREF_REV"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="AWORG_REV" source="AWORG_REV"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VALDT" source="VALDT"/>
-      </input>
-      <input emptyUnionBehavior="NO_ROW" node="COBK_2020">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="KOKRS" source="KOKRS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BELNR" source="BELNR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VRGNG" source="VRGNG"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTMP" source="TIMESTMP"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PERAB" source="PERAB"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PERBI" source="PERBI"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BLDAT" source="BLDAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUDAT" source="BUDAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CPUDT" source="CPUDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="USNAM" source="USNAM"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BLART" source="BLART"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="AWTYP" source="AWTYP"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CPUTM" source="CPUTM"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BLTXT" source="BLTXT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="STFLG" source="STFLG"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="STOKZ" source="STOKZ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="REFBT" source="REFBT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="REFBN" source="REFBN"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="REFBK" source="REFBK"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="REFGJ" source="REFGJ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ORGVG" source="ORGVG"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUMBZ" source="SUMBZ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DELBZ" source="DELBZ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="WSDAT" source="WSDAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="KURST" source="KURST"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VARNR" source="VARNR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="KWAER" source="KWAER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP1" source="CTYP1"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP2" source="CTYP2"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP3" source="CTYP3"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP4" source="CTYP4"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="AWORG" source="AWORG"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="LOGSYSTEM" source="LOGSYSTEM"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ALEBZ" source="ALEBZ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ALEBN" source="ALEBN"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="AWSYS" source="AWSYS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="AWREF_REV" source="AWREF_REV"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="AWORG_REV" source="AWORG_REV"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VALDT" source="VALDT"/>
-      </input>
       <input emptyUnionBehavior="NO_ROW" node="COBK_2021">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="KOKRS" source="KOKRS"/>
@@ -167,6 +73,9 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="BUDAT" source="BUDAT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CPUDT" source="CPUDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="USNAM" source="USNAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BLART" source="BLART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AWTYP" source="AWTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CPUTM" source="CPUTM"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="BLTXT" source="BLTXT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="STFLG" source="STFLG"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="STOKZ" source="STOKZ"/>
@@ -174,7 +83,6 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="REFBN" source="REFBN"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="REFBK" source="REFBK"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="REFGJ" source="REFGJ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BLART" source="BLART"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ORGVG" source="ORGVG"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUMBZ" source="SUMBZ"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DELBZ" source="DELBZ"/>
@@ -186,10 +94,8 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="CTYP2" source="CTYP2"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CTYP3" source="CTYP3"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CTYP4" source="CTYP4"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="AWTYP" source="AWTYP"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AWORG" source="AWORG"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="LOGSYSTEM" source="LOGSYSTEM"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CPUTM" source="CPUTM"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ALEBZ" source="ALEBZ"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ALEBN" source="ALEBN"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="AWSYS" source="AWSYS"/>
@@ -261,6 +167,10 @@
       <attribute id="CPUTM" order="16" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="CPUTM"/>
         <keyMapping columnObjectName="Union_1" columnName="CPUTM"/>
+      </attribute>
+      <attribute id="REFBN" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REFBN"/>
+        <keyMapping columnObjectName="Union_1" columnName="REFBN"/>
       </attribute>
     </attributes>
     <calculatedAttributes/>

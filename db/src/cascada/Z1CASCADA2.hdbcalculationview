@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="Z1CASCADA2" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection">
-  <origin/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="3.0" id="Z1CASCADA2" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection">
+<origin/>
   <descriptions defaultDescription="x"/>
   <metadata changedAt="2020-05-07 15:20:00.289"/>
   <localVariables>
@@ -27,10 +27,10 @@
       <resourceUri>Z1CASCADA2</resourceUri>
     </DataSource>
   </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
-      <descriptions/>
-      <viewAttributes>
+<calculationViews>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="Sociedad_CO"/>
         <viewAttribute id="Cliente_Padre"/>
         <viewAttribute id="Cliente"/>
@@ -53,8 +53,9 @@
         <viewAttribute aggregationType="sum" id="KILOS"/>
         <viewAttribute id="MEINH"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Z1CASCADA2">
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Z1CASCADA2">
         <mapping xsi:type="Calculation:AttributeMapping" target="Sociedad_CO" source="KOKRS"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Cliente_Padre" source="HKUNNR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Cliente" source="KNDNR"/>
@@ -67,19 +68,12 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="Pais" source="LAND1"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Valor" source="WOGBTR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Volumen" source="MEGBTR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Ejercicio" source="GJAHR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Periodo" source="PERIO"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Mes_Anio" source="MES_ANO"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ARTNR" source="ARTNR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="KILOS" source="KILOS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
-      </input>
-      <filter>&quot;Ejercicio&quot;>'$$ejercicio_3$$' or '$$historico$$' = 'S'</filter>
-    </calculationView>
-  </calculationViews>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Mes_Anio" source="MES_ANO"/></input>
+    <filter>&quot;Ejercicio&quot;&gt;'$$ejercicio_3$$' or '$$historico$$' = 'S'</filter>
+  </calculationView>
+</calculationViews>
   <logicalModel id="Aggregation_1">
     <descriptions/>
     <attributes>
@@ -204,8 +198,8 @@
       </localDimension>
     </localDimensions>
   </logicalModel>
-  <layout>
-    <shapes>
+<layout>
+  <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
         <upperLeftCorner x="176" y="87"/>
         <rectangleSize height="0" width="0"/>
@@ -215,5 +209,5 @@
         <rectangleSize height="-1" width="-1"/>
       </shape>
     </shapes>
-  </layout>
+</layout>
 </Calculation:scenario>

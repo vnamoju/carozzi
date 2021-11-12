@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="3.0" id="MODELO_FG_NEWVTA_DOCTO_01" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection">
+<origin/>
+  <descriptions defaultDescription="MODELO Venta por Documento"/>
+  <metadata changedAt="2021-10-29 14:35:20.842"/>
+  <localVariables>
+    <variable id="V_SOCIEDAD_CO">
+      <descriptions defaultDescription="V_SOCIEDAD_CO"/>
+      <variableProperties datatype="VARCHAR" defaultValue="EC01" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="SOCIEDAD_CO"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="V_EJERCICIO">
+      <descriptions defaultDescription="V_EJERCICIO"/>
+      <variableProperties datatype="VARCHAR" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="EJERCICIO"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="V_PERIODO">
+      <descriptions defaultDescription="PERIODO"/>
+      <variableProperties datatype="VARCHAR" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="PERIODO"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="30"/>
+  <dataSources>
+    <DataSource id="NEWVTA_DOCTO_01">
+      <resourceUri>NEWVTA_DOCTO_01</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="NEWVTA_DOCTO_01">
+    <descriptions/>
+    <attributes>
+      <attribute id="SOCIEDAD_CO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_CO"/>
+        <localVariable>V_SOCIEDAD_CO</localVariable>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="SOCIEDAD_CO"/>
+      </attribute>
+      <attribute id="EJERCICIO" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="EJERCICIO"/>
+        <localVariable>V_EJERCICIO</localVariable>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="EJERCICIO"/>
+      </attribute>
+      <attribute id="FECHA_CONTABILIZACION" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FECHA_CONTABILIZACION"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="FECHA_CONTABILIZACION"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="SOCIEDAD_FI"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORGANIZACION_VENTA"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="ORGANIZACION_VENTA"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_VENTA"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="OFICINA_VENTA"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_COMERCIAL"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="DIVISION_COMERCIAL"/>
+      </attribute>
+      <attribute id="PERIODO" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERIODO"/>
+        <localVariable>V_PERIODO</localVariable>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="PERIODO"/>
+      </attribute>
+      <attribute id="CLIENTE" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="CLIENTE"/>
+      </attribute>
+      <attribute id="UNIDAD_MEDIDA" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIDAD_MEDIDA"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="UNIDAD_MEDIDA"/>
+      </attribute>
+      <attribute id="VENDEDOR" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VENDEDOR"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="VENDEDOR"/>
+      </attribute>
+      <attribute id="CANAL_DISTRIBUCION" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_DISTRIBUCION"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="CANAL_DISTRIBUCION"/>
+      </attribute>
+      <attribute id="PAIS" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PAIS"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="PAIS"/>
+      </attribute>
+      <attribute id="SECTOR" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SECTOR"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="SECTOR"/>
+      </attribute>
+      <attribute id="AREA_NEGOCIO" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AREA_NEGOCIO"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="AREA_NEGOCIO"/>
+      </attribute>
+      <attribute id="GRUPO_VENDEDOR" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_VENDEDOR"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="GRUPO_VENDEDOR"/>
+      </attribute>
+      <attribute id="CENTRO" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CENTRO"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="CENTRO"/>
+      </attribute>
+      <attribute id="BELNR" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BELNR"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="BELNR"/>
+      </attribute>
+      <attribute id="BUDAT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUDAT"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="BUDAT"/>
+      </attribute>
+      <attribute id="ARTNR" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ARTNR"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="ARTNR"/>
+      </attribute>
+      <attribute id="REFBN" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REFBN"/>
+        <keyMapping columnObjectName="NEWVTA_DOCTO_01" columnName="REFBN"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Volumen_UMV" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen_UMV"/>
+        <measureMapping columnObjectName="NEWVTA_DOCTO_01" columnName="Volumen_UMV"/>
+      </measure>
+      <measure id="Ingreso" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Ingreso"/>
+        <measureMapping columnObjectName="NEWVTA_DOCTO_01" columnName="Ingreso"/>
+      </measure>
+      <measure id="Descto_Dif_Precio_Fact" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Descto_Dif_Precio_Fact"/>
+        <measureMapping columnObjectName="NEWVTA_DOCTO_01" columnName="Descto_Dif_Precio_Fact"/>
+      </measure>
+      <measure id="Descto_Base" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Descto_Base"/>
+        <measureMapping columnObjectName="NEWVTA_DOCTO_01" columnName="Descto_Base"/>
+      </measure>
+      <measure id="Descto_comision" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Descto_comision"/>
+        <measureMapping columnObjectName="NEWVTA_DOCTO_01" columnName="Descto_comision"/>
+      </measure>
+      <measure id="Descto_promocional" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Descto_promocional"/>
+        <measureMapping columnObjectName="NEWVTA_DOCTO_01" columnName="Descto_promocional"/>
+      </measure>
+      <measure id="Descto_oferta" order="29" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Descto_oferta"/>
+        <measureMapping columnObjectName="NEWVTA_DOCTO_01" columnName="Descto_oferta"/>
+      </measure>
+      <measure id="Descto_especial" order="30" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Descto_especial"/>
+        <measureMapping columnObjectName="NEWVTA_DOCTO_01" columnName="Descto_especial"/>
+      </measure>
+      <measure id="Descto_nota_cred" order="31" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Descto_nota_cred"/>
+        <measureMapping columnObjectName="NEWVTA_DOCTO_01" columnName="Descto_nota_cred"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="Jer_Clientes">
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Jer_Clientes" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="Jer Clientes"/>
+            <levels/>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+      <localDimension id="Jer_Paises">
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Jer_Paises" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="Jer_Paises"/>
+            <levels/>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>
