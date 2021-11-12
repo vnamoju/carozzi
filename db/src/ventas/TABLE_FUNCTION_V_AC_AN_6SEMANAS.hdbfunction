@@ -1,0 +1,85 @@
+FUNCTION "TABLE_FUNCTION_V_AC_AN_6SEMANAS" (FECHA DATE)
+RETURNS TABLE ("TIEMPO" VARCHAR (8), "TIEMPO_ATTR_WEEK" VARCHAR (2), "MARCA" VARCHAR (2), "DAY_OF_WEEK" VARCHAR (2))
+LANGUAGE SQLSCRIPT
+SQL SECURITY DEFINER
+  AS 
+
+
+ /********* Begin Procedure Script ************/ 
+
+ BEGIN 
+ 	 var_out = 
+ 	 
+ 	 SELECT "TIEMPO", "TIEMPO_ATTR_WEEK",'0' AS "MARCA", to_varchar(to_int("TIEMPO_ATTR_DAY_OF_WEEK")+1) AS "DAY_OF_WEEK"
+ 	 FROM
+ 	 "DIM_TIEMPO"
+ 	 WHERE "TIEMPO" <=
+ 	 (
+ 	 	SELECT "TIEMPO" 
+ 	 	FROM "DIM_TIEMPO"
+ 	 	WHERE 
+ 	 	"TIEMPO_ATTR_WEEK" = (
+ 	 	SELECT "TIEMPO_ATTR_WEEK" 
+ 	 	FROM "DIM_TIEMPO"
+ 	 	WHERE 
+ 	 	"TIEMPO"  = add_days(last_day(:FECHA),7)
+ 	 		) 
+ 	 	AND
+ 	 	
+ 	 	 "TIEMPO_ATTR_YEAR" = (
+ 				SELECT "TIEMPO_ATTR_YEAR" 
+ 		 		FROM "DIM_TIEMPO"
+ 		 		WHERE 
+ 	 			"TIEMPO" =  add_days(last_day(:FECHA),7)
+ 	 			 )
+
+ 	   
+ 	  	AND 
+ 	  		"TIEMPO_ATTR_DAY_OF_WEEK" = '06'
+ 	  )
+ 	  
+ 	  AND
+ 	  
+ 	  "TIEMPO" >= replace(concat(left(:FECHA,7),'01'),'-','')
+ 	  
+
+ 	UNION
+ 	 	 SELECT "TIEMPO", "TIEMPO_ATTR_WEEK",'1' AS "MARCA", to_varchar(to_int("TIEMPO_ATTR_DAY_OF_WEEK")+1)  AS "DAY_OF_WEEK"
+ 	 	 	 FROM
+ 	 "DIM_TIEMPO"
+ 	 WHERE "TIEMPO" <=
+ 	 (
+ 	 	SELECT "TIEMPO" 
+ 	 	FROM "DIM_TIEMPO"
+ 	 	WHERE 
+ 	 	"TIEMPO_ATTR_WEEK" = (
+ 	 	SELECT "TIEMPO_ATTR_WEEK" 
+ 	 	FROM "DIM_TIEMPO"
+ 	 	WHERE 
+ 	 	"TIEMPO"  = add_days(add_days(last_day(:FECHA),7),-365)
+ 	 		) 
+ 	 	AND
+ 	 	
+ 	 	 "TIEMPO_ATTR_YEAR" = (
+ 				SELECT "TIEMPO_ATTR_YEAR" 
+ 		 		FROM "DIM_TIEMPO"
+ 		 		WHERE 
+ 	 			"TIEMPO" =  add_days(add_days(last_day(:FECHA),7),-365)
+ 	 			 )
+
+ 	   
+ 	  	AND 
+ 	  		"TIEMPO_ATTR_DAY_OF_WEEK" = '06'
+ 	  )
+ 	  
+ 	  AND
+ 	  
+ 	  "TIEMPO" >=  concat(to_int(left(:FECHA,4))-1,  concat(replace(right(left(:FECHA,7),2),'-',''),'01'))
+ 	  
+ 	  
+ 	
+ 	 ;
+
+
+return :var_out;
+END;

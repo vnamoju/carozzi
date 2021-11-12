@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_CLIENTE_VD" applyPrivilegeType="NONE" defaultClient="" dataCategory="DIMENSION" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="DIM_CLIENTE_VD"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="Z1SCP_CLIENTE">
+      <resourceUri>Z1SCP_CLIENTE</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <viewAttributes>
+        <viewAttribute id="BEDAT"/>
+        <viewAttribute id="DISTR"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="FECHA"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="NAMEL"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="RUBRO"/>
+        <viewAttribute id="RUBRO_TEX"/>
+        <viewAttribute id="STCDL"/>
+        <viewAttribute id="STRAS"/>
+        <viewAttribute id="XCOMU"/>
+        <viewAttribute id="XFLAG"/>
+        <viewAttribute id="XFONO"/>
+        <viewAttribute id="XPAIS"/>
+        <viewAttribute id="XPROV"/>
+        <viewAttribute id="XREGI"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1SCP_CLIENTE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BEDAT" source="BEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTR" source="DISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA" source="FECHA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAMEL" source="NAMEL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO" source="RUBRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO_TEX" source="RUBRO_TEX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCDL" source="STCDL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STRAS" source="STRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XCOMU" source="XCOMU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XFLAG" source="XFLAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XFONO" source="XFONO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPAIS" source="XPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPROV" source="XPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XREGI" source="XREGI"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <attributes>
+      <attribute id="BEDAT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BEDAT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BEDAT"/>
+      </attribute>
+      <attribute id="DISTR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DISTR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DISTR"/>
+      </attribute>
+      <attribute id="ERDAT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ERDAT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ERDAT"/>
+      </attribute>
+      <attribute id="FECHA" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FECHA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FECHA"/>
+      </attribute>
+      <attribute id="KUNNR" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KUNNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KUNNR"/>
+      </attribute>
+      <attribute id="MANDT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="NAMEL" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NAMEL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="NAMEL"/>
+      </attribute>
+      <attribute id="PERNR" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PERNR"/>
+      </attribute>
+      <attribute id="RUBRO" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="RUBRO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="RUBRO"/>
+      </attribute>
+      <attribute id="RUBRO_TEX" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="RUBRO_TEX"/>
+        <keyMapping columnObjectName="Projection_1" columnName="RUBRO_TEX"/>
+      </attribute>
+      <attribute id="STCDL" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="STCDL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="STCDL"/>
+      </attribute>
+      <attribute id="STRAS" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="STRAS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="STRAS"/>
+      </attribute>
+      <attribute id="XCOMU" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="XCOMU"/>
+        <keyMapping columnObjectName="Projection_1" columnName="XCOMU"/>
+      </attribute>
+      <attribute id="XFLAG" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="XFLAG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="XFLAG"/>
+      </attribute>
+      <attribute id="XFONO" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="XFONO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="XFONO"/>
+      </attribute>
+      <attribute id="XPAIS" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="XPAIS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="XPAIS"/>
+      </attribute>
+      <attribute id="XPROV" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="XPROV"/>
+        <keyMapping columnObjectName="Projection_1" columnName="XPROV"/>
+      </attribute>
+      <attribute id="XREGI" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="XREGI"/>
+        <keyMapping columnObjectName="Projection_1" columnName="XREGI"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="91" y="227"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

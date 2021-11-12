@@ -1,0 +1,174 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/Contabilidad_Coste/ZKKB_IS2_VAC02.hdbreptask:workspace" Description="" Type="REALTIME" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="false" RemoteSourceName="HANA_ERP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZKKB_IS2_VAC02&quot;" SourceDisplayName="ZKKB_IS2_VAC02">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="ZKKB_IS2_VAC02" DropTargetTableIfExists="TRUE">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="FECHA_CARGA" Datatype="NVARCHAR" Length="8" Precision="8" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="FISCVARNT" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="FISCPER" Datatype="NVARCHAR" Length="7" Precision="7" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="CO_AREA" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="PLANT" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="MATERIAL" Datatype="NVARCHAR" Length="18" Precision="18" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="PRODORDER" Datatype="NVARCHAR" Length="12" Precision="12" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="ORDERITEM" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="ZRANGO" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="PRODVRSN" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="PRODPROCNR" Datatype="NVARCHAR" Length="12" Precision="12" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="FLG_DELFLG" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VTYPE" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="MEASTYPE" Datatype="NVARCHAR" Length="6" Precision="6" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VTDETAIL" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VERSION" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VALUTYP" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="COSTELMNT" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="SENRECEIV" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="POBJTYPE" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="PARTOBJ" Datatype="NVARCHAR" Length="28" Precision="28" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="AMOUNT" Datatype="DECIMAL" Length="15" Precision="15" Scale="2" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="AMOUNTFX" Datatype="DECIMAL" Length="15" Precision="15" Scale="2" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="AMOUNTVR" Datatype="DECIMAL" Length="15" Precision="15" Scale="2" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CONTRAM" Datatype="DECIMAL" Length="15" Precision="15" Scale="2" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="QUANTIN" Datatype="DECIMAL" Length="15" Precision="15" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="QUANTINFX" Datatype="DECIMAL" Length="15" Precision="15" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="QUANTINVR" Datatype="DECIMAL" Length="15" Precision="15" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="QUANTOUT" Datatype="DECIMAL" Length="15" Precision="15" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CURTYPE" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CURRENCY" Datatype="NVARCHAR" Length="5" Precision="5" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="UNIT_IN" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="UNIT_OUT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="MAT_INPUT" Datatype="NVARCHAR" Length="18" Precision="18" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="PLT_INPUT" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CCT_INPUT" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ACT_INPUT" Datatype="NVARCHAR" Length="6" Precision="6" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="BP_INPUT" Datatype="NVARCHAR" Length="12" Precision="12" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="ZKKB_IS2_VAC02" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZKKB_IS2_VAC02&quot;" FilterExpression="" ReplicationBehavior="InitAndRealtime" VTObjectName="ZKKB_IS2_VAC02">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="FECHA_CARGA" ProjectionExpression="&quot;FECHA_CARGA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="FISCVARNT" ProjectionExpression="&quot;FISCVARNT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="FISCPER" ProjectionExpression="&quot;FISCPER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CO_AREA" ProjectionExpression="&quot;CO_AREA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PLANT" ProjectionExpression="&quot;PLANT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MATERIAL" ProjectionExpression="&quot;MATERIAL&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PRODORDER" ProjectionExpression="&quot;PRODORDER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ORDERITEM" ProjectionExpression="&quot;ORDERITEM&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZRANGO" ProjectionExpression="&quot;ZRANGO&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PRODVRSN" ProjectionExpression="&quot;PRODVRSN&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PRODPROCNR" ProjectionExpression="&quot;PRODPROCNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="FLG_DELFLG" ProjectionExpression="&quot;FLG_DELFLG&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VTYPE" ProjectionExpression="&quot;VTYPE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MEASTYPE" ProjectionExpression="&quot;MEASTYPE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VTDETAIL" ProjectionExpression="&quot;VTDETAIL&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VERSION" ProjectionExpression="&quot;VERSION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VALUTYP" ProjectionExpression="&quot;VALUTYP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="COSTELMNT" ProjectionExpression="&quot;COSTELMNT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="SENRECEIV" ProjectionExpression="&quot;SENRECEIV&quot;">
+        </TargetColumn>
+        <TargetColumn Name="POBJTYPE" ProjectionExpression="&quot;POBJTYPE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PARTOBJ" ProjectionExpression="&quot;PARTOBJ&quot;">
+        </TargetColumn>
+        <TargetColumn Name="AMOUNT" ProjectionExpression="&quot;AMOUNT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="AMOUNTFX" ProjectionExpression="&quot;AMOUNTFX&quot;">
+        </TargetColumn>
+        <TargetColumn Name="AMOUNTVR" ProjectionExpression="&quot;AMOUNTVR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CONTRAM" ProjectionExpression="&quot;CONTRAM&quot;">
+        </TargetColumn>
+        <TargetColumn Name="QUANTIN" ProjectionExpression="&quot;QUANTIN&quot;">
+        </TargetColumn>
+        <TargetColumn Name="QUANTINFX" ProjectionExpression="&quot;QUANTINFX&quot;">
+        </TargetColumn>
+        <TargetColumn Name="QUANTINVR" ProjectionExpression="&quot;QUANTINVR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="QUANTOUT" ProjectionExpression="&quot;QUANTOUT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CURTYPE" ProjectionExpression="&quot;CURTYPE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CURRENCY" ProjectionExpression="&quot;CURRENCY&quot;">
+        </TargetColumn>
+        <TargetColumn Name="UNIT_IN" ProjectionExpression="&quot;UNIT_IN&quot;">
+        </TargetColumn>
+        <TargetColumn Name="UNIT_OUT" ProjectionExpression="&quot;UNIT_OUT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MAT_INPUT" ProjectionExpression="&quot;MAT_INPUT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PLT_INPUT" ProjectionExpression="&quot;PLT_INPUT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CCT_INPUT" ProjectionExpression="&quot;CCT_INPUT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ACT_INPUT" ProjectionExpression="&quot;ACT_INPUT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BP_INPUT" ProjectionExpression="&quot;BP_INPUT&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

@@ -1,0 +1,1774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_INO_002" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="Modelo Inocuidad RT"/>
+  <metadata changedAt="2021-03-12 13:28:03.956"/>
+  <localVariables>
+    <variable id="INP_PERI">
+      <descriptions defaultDescription="Ingreso Año-Mes(aaaa-mm)"/>
+      <variableProperties datatype="VARCHAR" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="PERIODO"/>
+        </valueDomain>
+        <selection multiLine="true" type="Interval"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="51"/>
+  <dataSources>
+    <DataSource id="ZQM_REGINOCUIDAD">
+      <resourceUri>ZQM_REGINOCUIDAD</resourceUri>
+    </DataSource>
+    <DataSource id="ZQM_REGINOCUIDAD_RES">
+      <resourceUri>ZQM_REGINOCUIDAD_RES</resourceUri>
+    </DataSource>
+    <DataSource id="ZQM_INO_CATALOGO">
+      <resourceUri>ZQM_INO_CATALOGO</resourceUri>
+    </DataSource>
+    <DataSource id="ZQM_INO_TIPO_CATALOGO">
+      <resourceUri>ZQM_INO_TIPO_CATALOGO</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_1$$$$ZQM_INO_CATALOGO$$">
+      <resourceUri>ZQM_INO_CATALOGO</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_3$$$$ZQM_INO_CATALOGO$$">
+      <resourceUri>ZQM_INO_CATALOGO</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MATERIAL">
+      <resourceUri>DIM_MATERIAL</resourceUri>
+    </DataSource>
+    <DataSource id="PA0001">
+      <resourceUri>PA0001</resourceUri>
+    </DataSource>
+    <DataSource id="T499S">
+      <resourceUri>T499S</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_7$$$$PA0001$$">
+      <resourceUri>PA0001</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CENTRO">
+      <resourceUri>DIM_CENTRO</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CABECERA">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ESTADO"/>
+        <viewAttribute id="FECHA_CREACION"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="IDFORMULARIO"/>
+        <viewAttribute id="ID_AREA"/>
+        <viewAttribute id="ID_EJECUCION"/>
+        <viewAttribute id="ID_PLANTA"/>
+        <viewAttribute id="ID_SECCION"/>
+        <viewAttribute id="ID_UBICACION"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="TITULO"/>
+        <viewAttribute id="USUARIO"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="AUX5"/>
+        <viewAttribute id="AUX6"/>
+        <viewAttribute id="AUX7"/>
+        <viewAttribute id="AUX8"/>
+        <viewAttribute id="AUX9"/>
+        <viewAttribute id="AUX10"/>
+        <viewAttribute id="AUX12"/>
+        <viewAttribute id="AUX11"/>
+        <viewAttribute id="AUX13"/>
+        <viewAttribute id="AUX14"/>
+        <viewAttribute id="AUX15"/>
+        <viewAttribute id="AUX16"/>
+        <viewAttribute id="AUX17"/>
+        <viewAttribute id="AUX18"/>
+        <viewAttribute id="AUX19"/>
+        <viewAttribute id="AUX20"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="FTOT" length="19" expressionLanguage="COLUMN_ENGINE">
+          <formula>date(leftstr(string(&quot;FECHA_CREACION&quot;),19))</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="ZQM_REGINOCUIDAD"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="RESPUESTAS" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DETALLE_ACC"/>
+        <viewAttribute id="DETALLE_RESP"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_FORMULARIO"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_ACC"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_RESP"/>
+        <viewAttribute id="OBSERVACION_ACC"/>
+        <viewAttribute id="OBSERVACION_RESP"/>
+        <viewAttribute id="TIPODETALLE"/>
+        <viewAttribute id="DETALLE_RESP_1"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="AUX5"/>
+        <viewAttribute id="AUX6"/>
+        <viewAttribute id="AUX7"/>
+        <viewAttribute id="AUX8"/>
+        <viewAttribute id="AUX9"/>
+        <viewAttribute id="AUX10"/>
+        <viewAttribute id="AUX11"/>
+        <viewAttribute id="AUX12"/>
+        <viewAttribute id="AUX13"/>
+        <viewAttribute id="AUX14"/>
+        <viewAttribute id="AUX15"/>
+        <viewAttribute id="AUX16"/>
+        <viewAttribute id="AUX17"/>
+        <viewAttribute id="AUX18"/>
+        <viewAttribute id="AUX20"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="AUX19"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="ZQM_REGINOCUIDAD_RES">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP_1" source="DETALLE_RESP"/></input>
+    <filter>(&quot;DETALLE_RESP&quot; !='On')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CATALOGO">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DESCRIPTION_P"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="IDACCOREC"/>
+        <viewAttribute id="IDCATEGORIA"/>
+        <viewAttribute id="IDTIPOCATALOGO_P"/>
+        <viewAttribute id="NOMBRE_P"/>
+        <viewAttribute id="ORDEN"/>
+        <viewAttribute id="PONDERACION"/>
+        <viewAttribute id="TIPO_RESPUESTA"/>
+        <viewAttribute id="VALORMAXIMO"/>
+        <viewAttribute id="VALORMINIMO"/>
+        <viewAttribute id="CAMPOAUXILIARES"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX3"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="ZQM_INO_CATALOGO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_P" source="DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO_P" source="IDTIPOCATALOGO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_P" source="NOMBRE"/></input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="TPO_CATALOGO">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="T_DES_P"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="T_NOMBRE_P"/>
+        <viewAttribute id="PLANTA"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="ZQM_INO_TIPO_CATALOGO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_DES_P" source="DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_NOMBRE_P" source="NOMBRE"/></input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ESTADO"/>
+        <viewAttribute id="FECHA_CREACION"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_AREA"/>
+        <viewAttribute id="ID_EJECUCION"/>
+        <viewAttribute id="ID_PLANTA"/>
+        <viewAttribute id="ID_SECCION"/>
+        <viewAttribute id="ID_UBICACION"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="TITULO"/>
+        <viewAttribute id="USUARIO"/>
+        <viewAttribute id="DETALLE_ACC"/>
+        <viewAttribute id="DETALLE_RESP"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_ACC"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_RESP"/>
+        <viewAttribute id="OBSERVACION_ACC"/>
+        <viewAttribute id="OBSERVACION_RESP"/>
+        <viewAttribute id="TIPODETALLE"/>
+        <viewAttribute id="IDFORMULARIO"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="FTOT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CABECERA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTADO" source="ESTADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CREACION" source="FECHA_CREACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_AREA" source="ID_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_EJECUCION" source="ID_EJECUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="ID_PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SECCION" source="ID_SECCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_UBICACION" source="ID_UBICACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE" source="NOMBRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TITULO" source="TITULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO" source="USUARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDFORMULARIO" source="IDFORMULARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FTOT" source="FTOT"/>
+      </input>
+      <input node="RESPUESTAS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_ACC" source="DETALLE_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="DETALLE_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_ACC" source="ID_TIPO_CATALOGO_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_RESP" source="ID_TIPO_CATALOGO_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_ACC" source="OBSERVACION_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_RESP" source="OBSERVACION_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPODETALLE" source="TIPODETALLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX1" source="AUX1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX2" source="AUX2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX4" source="AUX4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX3" source="AUX3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID_FORMULARIO"/>
+      </input>
+    <joinAttribute name="ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DESCRIPCION_R"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="IDACCOREC"/>
+        <viewAttribute id="IDCATEGORIA"/>
+        <viewAttribute id="IDTIPOCATALOGO_R"/>
+        <viewAttribute id="NOMBRE_R"/>
+        <viewAttribute id="ORDEN"/>
+        <viewAttribute id="PONDERACION"/>
+        <viewAttribute id="TIPO_RESPUESTA"/>
+        <viewAttribute id="VALORMAXIMO"/>
+        <viewAttribute id="VALORMINIMO"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ID2" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>string(&quot;ID&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Projection_1$$$$ZQM_INO_CATALOGO$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPCION_R" source="DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO_R" source="IDTIPOCATALOGO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_R" source="NOMBRE"/></input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ESTADO"/>
+        <viewAttribute id="FECHA_CREACION"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_AREA"/>
+        <viewAttribute id="ID_EJECUCION"/>
+        <viewAttribute id="ID_PLANTA"/>
+        <viewAttribute id="ID_SECCION"/>
+        <viewAttribute id="ID_UBICACION"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="TITULO"/>
+        <viewAttribute id="USUARIO"/>
+        <viewAttribute id="DETALLE_ACC"/>
+        <viewAttribute id="DETALLE_RESP"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_ACC"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_RESP"/>
+        <viewAttribute id="OBSERVACION_ACC"/>
+        <viewAttribute id="OBSERVACION_RESP"/>
+        <viewAttribute id="TIPODETALLE"/>
+        <viewAttribute id="IDFORMULARIO"/>
+        <viewAttribute id="DESCRIPCION_R"/>
+        <viewAttribute id="NOMBRE_R"/>
+        <viewAttribute id="IDTIPOCATALOGO_R"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="FTOT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTADO" source="ESTADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CREACION" source="FECHA_CREACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_AREA" source="ID_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_EJECUCION" source="ID_EJECUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="ID_PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SECCION" source="ID_SECCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_UBICACION" source="ID_UBICACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE" source="NOMBRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TITULO" source="TITULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO" source="USUARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_ACC" source="DETALLE_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="DETALLE_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_ACC" source="ID_TIPO_CATALOGO_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_RESP" source="ID_TIPO_CATALOGO_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_ACC" source="OBSERVACION_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_RESP" source="OBSERVACION_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPODETALLE" source="TIPODETALLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDFORMULARIO" source="IDFORMULARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX1" source="AUX1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX2" source="AUX2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX4" source="AUX4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX3" source="AUX3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FTOT" source="FTOT"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPCION_R" source="DESCRIPCION_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_R" source="NOMBRE_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO_R" source="IDTIPOCATALOGO_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="ID2"/>
+      </input>
+    <joinAttribute name="DETALLE_RESP"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ESTADO"/>
+        <viewAttribute id="FECHA_CREACION"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_AREA"/>
+        <viewAttribute id="ID_EJECUCION"/>
+        <viewAttribute id="ID_PLANTA"/>
+        <viewAttribute id="ID_SECCION"/>
+        <viewAttribute id="ID_UBICACION"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="TITULO"/>
+        <viewAttribute id="USUARIO"/>
+        <viewAttribute id="DETALLE_ACC"/>
+        <viewAttribute id="DETALLE_RESP"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_ACC"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_RESP"/>
+        <viewAttribute id="OBSERVACION_ACC"/>
+        <viewAttribute id="OBSERVACION_RESP"/>
+        <viewAttribute id="TIPODETALLE"/>
+        <viewAttribute id="IDFORMULARIO"/>
+        <viewAttribute id="DESCRIPCION_R"/>
+        <viewAttribute id="NOMBRE_R"/>
+        <viewAttribute id="DESCRIPTION_P"/>
+        <viewAttribute id="IDACCOREC"/>
+        <viewAttribute id="IDCATEGORIA"/>
+        <viewAttribute id="IDTIPOCATALOGO"/>
+        <viewAttribute id="NOMBRE_P"/>
+        <viewAttribute id="ORDEN"/>
+        <viewAttribute id="PONDERACION"/>
+        <viewAttribute id="TIPO_RESPUESTA"/>
+        <viewAttribute id="VALORMAXIMO"/>
+        <viewAttribute id="VALORMINIMO"/>
+        <viewAttribute id="IDTIPOCATALOGO_R"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="FTOT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTADO" source="ESTADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CREACION" source="FECHA_CREACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_AREA" source="ID_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_EJECUCION" source="ID_EJECUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="ID_PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SECCION" source="ID_SECCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_UBICACION" source="ID_UBICACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE" source="NOMBRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TITULO" source="TITULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO" source="USUARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_ACC" source="DETALLE_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="DETALLE_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_ACC" source="ID_TIPO_CATALOGO_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_RESP" source="ID_TIPO_CATALOGO_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_ACC" source="OBSERVACION_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_RESP" source="OBSERVACION_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPODETALLE" source="TIPODETALLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDFORMULARIO" source="IDFORMULARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPCION_R" source="DESCRIPCION_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_R" source="NOMBRE_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO_R" source="IDTIPOCATALOGO_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX1" source="AUX1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX2" source="AUX2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX4" source="AUX4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX3" source="AUX3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FTOT" source="FTOT"/>
+      </input>
+      <input node="CATALOGO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_P" source="DESCRIPTION_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDACCOREC" source="IDACCOREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDCATEGORIA" source="IDCATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO" source="IDTIPOCATALOGO_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_P" source="NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDEN" source="ORDEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PONDERACION" source="PONDERACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RESPUESTA" source="TIPO_RESPUESTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMAXIMO" source="VALORMAXIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMINIMO" source="VALORMINIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_RESP" source="ID"/>
+      </input>
+    <joinAttribute name="ID_TIPO_CATALOGO_RESP"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ACC_CORREC"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="IDACCOREC"/>
+        <viewAttribute id="IDCATEGORIA"/>
+        <viewAttribute id="IDTIPOCATALOGO"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="ORDEN"/>
+        <viewAttribute id="PONDERACION"/>
+        <viewAttribute id="TIPO_RESPUESTA"/>
+        <viewAttribute id="VALORMAXIMO"/>
+        <viewAttribute id="VALORMINIMO"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ID2" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>string(&quot;ID&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Projection_3$$$$ZQM_INO_CATALOGO$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACC_CORREC" source="DESCRIPTION"/></input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_BLOQUEO"/>
+        <viewAttribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+        <viewAttribute id="MATERIAL_ATTR_ESTACIONALIDAD"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_CORTO"/>
+        <viewAttribute id="MATERIAL_ID_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_MATERIAL"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ABKRS"/>
+        <viewAttribute id="AEDTM"/>
+        <viewAttribute id="ANSVH"/>
+        <viewAttribute id="BEGDA"/>
+        <viewAttribute id="BTRTL"/>
+        <viewAttribute id="BUDGET_PD"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ENAME"/>
+        <viewAttribute id="ENDDA"/>
+        <viewAttribute id="FISTL"/>
+        <viewAttribute id="FKBER"/>
+        <viewAttribute id="FLAG1"/>
+        <viewAttribute id="FLAG2"/>
+        <viewAttribute id="FLAG3"/>
+        <viewAttribute id="FLAG4"/>
+        <viewAttribute id="GEBER"/>
+        <viewAttribute id="GRANT_NBR"/>
+        <viewAttribute id="GRPVL"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="HISTO"/>
+        <viewAttribute id="ITBLD"/>
+        <viewAttribute id="ITXEX"/>
+        <viewAttribute id="JUPER"/>
+        <viewAttribute id="KOKRS"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MSTBR"/>
+        <viewAttribute id="OBJPS"/>
+        <viewAttribute id="ORDEX"/>
+        <viewAttribute id="ORGEH"/>
+        <viewAttribute id="OTYPE"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="PERSG"/>
+        <viewAttribute id="PERSK"/>
+        <viewAttribute id="PLANS"/>
+        <viewAttribute id="PREAS"/>
+        <viewAttribute id="REFEX"/>
+        <viewAttribute id="RESE1"/>
+        <viewAttribute id="RESE2"/>
+        <viewAttribute id="SACHA"/>
+        <viewAttribute id="SACHP"/>
+        <viewAttribute id="SACHZ"/>
+        <viewAttribute id="SBMOD"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="SGMNT"/>
+        <viewAttribute id="SNAME"/>
+        <viewAttribute id="SPRPS"/>
+        <viewAttribute id="STELL"/>
+        <viewAttribute id="SUBTY"/>
+        <viewAttribute id="UNAME"/>
+        <viewAttribute id="VDSK1"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="ZZCODAG"/>
+        <viewAttribute id="ZZINEANUAL"/>
+        <viewAttribute id="BEGDA_1"/>
+        <viewAttribute id="BEGDA_2"/>
+        <viewAttribute id="BEGDA_3"/>
+        <viewAttribute id="BEGDA_4"/>
+        <viewAttribute id="BEGDA_5"/>
+        <viewAttribute id="BEGDA_6"/>
+        <viewAttribute id="ENDDA_1"/>
+        <viewAttribute id="ENDDA_2"/>
+        <viewAttribute id="ENDDA_3"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="USUARIO" length="10" expressionLanguage="COLUMN_ENGINE">
+          <formula>rightstr(&quot;PERNR&quot;,6)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PA0001">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BEGDA_1" source="BEGDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BEGDA_2" source="BEGDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BEGDA_3" source="BEGDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BEGDA_4" source="BEGDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BEGDA_5" source="BEGDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BEGDA_6" source="BEGDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENDDA_1" source="ENDDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENDDA_2" source="ENDDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENDDA_3" source="ENDDA"/>
+      </input>
+    <filter>(&quot;ENDDA&quot; ='99991231')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ESTADO"/>
+        <viewAttribute id="FECHA_CREACION"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_AREA"/>
+        <viewAttribute id="ID_EJECUCION"/>
+        <viewAttribute id="ID_PLANTA"/>
+        <viewAttribute id="ID_SECCION"/>
+        <viewAttribute id="ID_UBICACION"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="TITULO"/>
+        <viewAttribute id="USUARIO"/>
+        <viewAttribute id="DETALLE_ACC"/>
+        <viewAttribute id="DETALLE_RESP"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_ACC"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_RESP"/>
+        <viewAttribute id="OBSERVACION_ACC"/>
+        <viewAttribute id="OBSERVACION_RESP"/>
+        <viewAttribute id="TIPODETALLE"/>
+        <viewAttribute id="IDFORMULARIO"/>
+        <viewAttribute id="DESCRIPCION_R"/>
+        <viewAttribute id="NOMBRE_R"/>
+        <viewAttribute id="DESCRIPTION_P"/>
+        <viewAttribute id="IDACCOREC"/>
+        <viewAttribute id="IDCATEGORIA"/>
+        <viewAttribute id="IDTIPOCATALOGO"/>
+        <viewAttribute id="NOMBRE_P"/>
+        <viewAttribute id="ORDEN"/>
+        <viewAttribute id="PONDERACION"/>
+        <viewAttribute id="TIPO_RESPUESTA"/>
+        <viewAttribute id="VALORMAXIMO"/>
+        <viewAttribute id="VALORMINIMO"/>
+        <viewAttribute id="IDTIPOCATALOGO_R"/>
+        <viewAttribute id="ACC_CORREC"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="FTOT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTADO" source="ESTADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CREACION" source="FECHA_CREACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_AREA" source="ID_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_EJECUCION" source="ID_EJECUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="ID_PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SECCION" source="ID_SECCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_UBICACION" source="ID_UBICACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE" source="NOMBRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TITULO" source="TITULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO" source="USUARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_ACC" source="DETALLE_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="DETALLE_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_ACC" source="ID_TIPO_CATALOGO_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_RESP" source="ID_TIPO_CATALOGO_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_ACC" source="OBSERVACION_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_RESP" source="OBSERVACION_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPODETALLE" source="TIPODETALLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDFORMULARIO" source="IDFORMULARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPCION_R" source="DESCRIPCION_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_R" source="NOMBRE_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_P" source="DESCRIPTION_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDACCOREC" source="IDACCOREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDCATEGORIA" source="IDCATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO" source="IDTIPOCATALOGO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_P" source="NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDEN" source="ORDEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PONDERACION" source="PONDERACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RESPUESTA" source="TIPO_RESPUESTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMAXIMO" source="VALORMAXIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMINIMO" source="VALORMINIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO_R" source="IDTIPOCATALOGO_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX1" source="AUX1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX2" source="AUX2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX4" source="AUX4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX3" source="AUX3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FTOT" source="FTOT"/>
+      </input>
+      <input node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACC_CORREC" source="ACC_CORREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_ACC" source="ID2"/>
+      </input>
+    <joinAttribute name="DETALLE_ACC"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ESTADO"/>
+        <viewAttribute id="FECHA_CREACION"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_AREA"/>
+        <viewAttribute id="ID_EJECUCION"/>
+        <viewAttribute id="ID_PLANTA"/>
+        <viewAttribute id="ID_SECCION"/>
+        <viewAttribute id="ID_UBICACION"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="TITULO"/>
+        <viewAttribute id="USUARIO"/>
+        <viewAttribute id="DETALLE_ACC"/>
+        <viewAttribute id="DETALLE_RESP"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_ACC"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_RESP"/>
+        <viewAttribute id="OBSERVACION_ACC"/>
+        <viewAttribute id="OBSERVACION_RESP"/>
+        <viewAttribute id="TIPODETALLE"/>
+        <viewAttribute id="IDFORMULARIO"/>
+        <viewAttribute id="DESCRIPCION_R"/>
+        <viewAttribute id="NOMBRE_R"/>
+        <viewAttribute id="DESCRIPTION_P"/>
+        <viewAttribute id="IDACCOREC"/>
+        <viewAttribute id="IDCATEGORIA"/>
+        <viewAttribute id="IDTIPOCATALOGO"/>
+        <viewAttribute id="NOMBRE_P"/>
+        <viewAttribute id="ORDEN"/>
+        <viewAttribute id="PONDERACION"/>
+        <viewAttribute id="TIPO_RESPUESTA"/>
+        <viewAttribute id="VALORMAXIMO"/>
+        <viewAttribute id="VALORMINIMO"/>
+        <viewAttribute id="IDTIPOCATALOGO_R"/>
+        <viewAttribute id="ACC_CORREC"/>
+        <viewAttribute id="T_DES_P"/>
+        <viewAttribute id="T_NOMBRE_P"/>
+        <viewAttribute id="PLANTA"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="FTOT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTADO" source="ESTADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CREACION" source="FECHA_CREACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_AREA" source="ID_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_EJECUCION" source="ID_EJECUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="ID_PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SECCION" source="ID_SECCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_UBICACION" source="ID_UBICACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE" source="NOMBRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TITULO" source="TITULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO" source="USUARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_ACC" source="DETALLE_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="DETALLE_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_ACC" source="ID_TIPO_CATALOGO_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_RESP" source="ID_TIPO_CATALOGO_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_ACC" source="OBSERVACION_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_RESP" source="OBSERVACION_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPODETALLE" source="TIPODETALLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDFORMULARIO" source="IDFORMULARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPCION_R" source="DESCRIPCION_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_R" source="NOMBRE_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_P" source="DESCRIPTION_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDACCOREC" source="IDACCOREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDCATEGORIA" source="IDCATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO" source="IDTIPOCATALOGO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_P" source="NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDEN" source="ORDEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PONDERACION" source="PONDERACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RESPUESTA" source="TIPO_RESPUESTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMAXIMO" source="VALORMAXIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMINIMO" source="VALORMINIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO_R" source="IDTIPOCATALOGO_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACC_CORREC" source="ACC_CORREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX1" source="AUX1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX2" source="AUX2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX4" source="AUX4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX3" source="AUX3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FTOT" source="FTOT"/>
+      </input>
+      <input node="TPO_CATALOGO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_DES_P" source="T_DES_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_NOMBRE_P" source="T_NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANTA" source="PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO" source="ID"/>
+      </input>
+    <joinAttribute name="IDTIPOCATALOGO"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ESTADO"/>
+        <viewAttribute id="FECHA_CREACION"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_AREA"/>
+        <viewAttribute id="ID_EJECUCION"/>
+        <viewAttribute id="ID_PLANTA"/>
+        <viewAttribute id="ID_SECCION"/>
+        <viewAttribute id="ID_UBICACION"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="TITULO"/>
+        <viewAttribute id="USUARIO"/>
+        <viewAttribute id="DETALLE_ACC"/>
+        <viewAttribute id="DETALLE_RESP"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_ACC"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_RESP"/>
+        <viewAttribute id="OBSERVACION_ACC"/>
+        <viewAttribute id="OBSERVACION_RESP"/>
+        <viewAttribute id="TIPODETALLE"/>
+        <viewAttribute id="IDFORMULARIO"/>
+        <viewAttribute id="DESCRIPCION_R"/>
+        <viewAttribute id="NOMBRE_R"/>
+        <viewAttribute id="DESCRIPTION_P"/>
+        <viewAttribute id="IDACCOREC"/>
+        <viewAttribute id="IDCATEGORIA"/>
+        <viewAttribute id="IDTIPOCATALOGO"/>
+        <viewAttribute id="NOMBRE_P"/>
+        <viewAttribute id="ORDEN"/>
+        <viewAttribute id="PONDERACION"/>
+        <viewAttribute id="TIPO_RESPUESTA"/>
+        <viewAttribute id="VALORMAXIMO"/>
+        <viewAttribute id="VALORMINIMO"/>
+        <viewAttribute id="IDTIPOCATALOGO_R"/>
+        <viewAttribute id="ACC_CORREC"/>
+        <viewAttribute id="T_DES_P"/>
+        <viewAttribute id="T_NOMBRE_P"/>
+        <viewAttribute id="PLANTA"/>
+        <viewAttribute id="ENAME"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="FTOT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTADO" source="ESTADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CREACION" source="FECHA_CREACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_AREA" source="ID_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_EJECUCION" source="ID_EJECUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="ID_PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SECCION" source="ID_SECCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_UBICACION" source="ID_UBICACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE" source="NOMBRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TITULO" source="TITULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO" source="USUARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_ACC" source="DETALLE_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="DETALLE_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_ACC" source="ID_TIPO_CATALOGO_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_RESP" source="ID_TIPO_CATALOGO_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_ACC" source="OBSERVACION_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_RESP" source="OBSERVACION_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPODETALLE" source="TIPODETALLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDFORMULARIO" source="IDFORMULARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPCION_R" source="DESCRIPCION_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_R" source="NOMBRE_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_P" source="DESCRIPTION_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDACCOREC" source="IDACCOREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDCATEGORIA" source="IDCATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO" source="IDTIPOCATALOGO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_P" source="NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDEN" source="ORDEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PONDERACION" source="PONDERACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RESPUESTA" source="TIPO_RESPUESTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMAXIMO" source="VALORMAXIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMINIMO" source="VALORMINIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO_R" source="IDTIPOCATALOGO_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACC_CORREC" source="ACC_CORREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_DES_P" source="T_DES_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_NOMBRE_P" source="T_NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANTA" source="PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX1" source="AUX1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX2" source="AUX2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX3" source="AUX3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX4" source="AUX4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FTOT" source="FTOT"/>
+      </input>
+      <input node="Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENAME" source="ENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO" source="USUARIO"/>
+      </input>
+    <joinAttribute name="USUARIO"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ADDRNUM"/>
+        <viewAttribute id="DES_SECCION"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="STAND"/>
+        <viewAttribute id="WERKS"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="T499S">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DES_SECCION" source="KTEXT"/></input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_7" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ESTADO"/>
+        <viewAttribute id="FECHA_CREACION"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_AREA"/>
+        <viewAttribute id="ID_EJECUCION"/>
+        <viewAttribute id="ID_PLANTA"/>
+        <viewAttribute id="ID_SECCION"/>
+        <viewAttribute id="ID_UBICACION"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="TITULO"/>
+        <viewAttribute id="USUARIO"/>
+        <viewAttribute id="DETALLE_ACC"/>
+        <viewAttribute id="DETALLE_RESP"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_ACC"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_RESP"/>
+        <viewAttribute id="OBSERVACION_ACC"/>
+        <viewAttribute id="OBSERVACION_RESP"/>
+        <viewAttribute id="TIPODETALLE"/>
+        <viewAttribute id="IDFORMULARIO"/>
+        <viewAttribute id="DESCRIPCION_R"/>
+        <viewAttribute id="NOMBRE_R"/>
+        <viewAttribute id="DESCRIPTION_P"/>
+        <viewAttribute id="IDACCOREC"/>
+        <viewAttribute id="IDCATEGORIA"/>
+        <viewAttribute id="IDTIPOCATALOGO"/>
+        <viewAttribute id="NOMBRE_P"/>
+        <viewAttribute id="ORDEN"/>
+        <viewAttribute id="PONDERACION"/>
+        <viewAttribute id="TIPO_RESPUESTA"/>
+        <viewAttribute id="VALORMAXIMO"/>
+        <viewAttribute id="VALORMINIMO"/>
+        <viewAttribute id="IDTIPOCATALOGO_R"/>
+        <viewAttribute id="ACC_CORREC"/>
+        <viewAttribute id="T_DES_P"/>
+        <viewAttribute id="T_NOMBRE_P"/>
+        <viewAttribute id="PLANTA"/>
+        <viewAttribute id="ENAME"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="KTEXT"/>
+        <viewAttribute id="FTOT"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ID_MATERIAL" length="18" expressionLanguage="COLUMN_ENGINE">
+          <formula>rightstr('0000000000000'+&quot;DETALLE_RESP&quot;,18)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Join_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTADO" source="ESTADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CREACION" source="FECHA_CREACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_AREA" source="ID_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_EJECUCION" source="ID_EJECUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="ID_PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SECCION" source="ID_SECCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_UBICACION" source="ID_UBICACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE" source="NOMBRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TITULO" source="TITULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO" source="USUARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_ACC" source="DETALLE_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="DETALLE_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_ACC" source="ID_TIPO_CATALOGO_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_RESP" source="ID_TIPO_CATALOGO_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_ACC" source="OBSERVACION_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_RESP" source="OBSERVACION_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPODETALLE" source="TIPODETALLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDFORMULARIO" source="IDFORMULARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPCION_R" source="DESCRIPCION_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_R" source="NOMBRE_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_P" source="DESCRIPTION_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDACCOREC" source="IDACCOREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDCATEGORIA" source="IDCATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO" source="IDTIPOCATALOGO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_P" source="NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDEN" source="ORDEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PONDERACION" source="PONDERACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RESPUESTA" source="TIPO_RESPUESTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMAXIMO" source="VALORMAXIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMINIMO" source="VALORMINIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO_R" source="IDTIPOCATALOGO_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACC_CORREC" source="ACC_CORREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_DES_P" source="T_DES_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_NOMBRE_P" source="T_NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANTA" source="PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENAME" source="ENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX1" source="AUX1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX2" source="AUX2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX3" source="AUX3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX4" source="AUX4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FTOT" source="FTOT"/>
+      </input>
+      <input node="Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTEXT" source="DES_SECCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SECCION" source="STAND"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="WERKS"/>
+      </input>
+    <joinAttribute name="ID_SECCION"/>
+    <joinAttribute name="ID_PLANTA"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_8" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ESTADO"/>
+        <viewAttribute id="FECHA_CREACION"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_AREA"/>
+        <viewAttribute id="ID_EJECUCION"/>
+        <viewAttribute id="ID_PLANTA"/>
+        <viewAttribute id="ID_SECCION"/>
+        <viewAttribute id="ID_UBICACION"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="TITULO"/>
+        <viewAttribute id="USUARIO"/>
+        <viewAttribute id="DETALLE_ACC"/>
+        <viewAttribute id="DETALLE_RESP"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_ACC"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_RESP"/>
+        <viewAttribute id="OBSERVACION_ACC"/>
+        <viewAttribute id="OBSERVACION_RESP"/>
+        <viewAttribute id="TIPODETALLE"/>
+        <viewAttribute id="IDFORMULARIO"/>
+        <viewAttribute id="DESCRIPCION_R"/>
+        <viewAttribute id="NOMBRE_R"/>
+        <viewAttribute id="DESCRIPTION_P"/>
+        <viewAttribute id="IDACCOREC"/>
+        <viewAttribute id="IDCATEGORIA"/>
+        <viewAttribute id="IDTIPOCATALOGO"/>
+        <viewAttribute id="NOMBRE_P"/>
+        <viewAttribute id="ORDEN"/>
+        <viewAttribute id="PONDERACION"/>
+        <viewAttribute id="TIPO_RESPUESTA"/>
+        <viewAttribute id="VALORMAXIMO"/>
+        <viewAttribute id="VALORMINIMO"/>
+        <viewAttribute id="IDTIPOCATALOGO_R"/>
+        <viewAttribute id="ACC_CORREC"/>
+        <viewAttribute id="T_DES_P"/>
+        <viewAttribute id="T_NOMBRE_P"/>
+        <viewAttribute id="PLANTA"/>
+        <viewAttribute id="ENAME"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="KTEXT"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="ID_MATERIAL"/>
+        <viewAttribute id="FTOT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTADO" source="ESTADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CREACION" source="FECHA_CREACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_AREA" source="ID_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_EJECUCION" source="ID_EJECUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="ID_PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SECCION" source="ID_SECCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_UBICACION" source="ID_UBICACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE" source="NOMBRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TITULO" source="TITULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO" source="USUARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_ACC" source="DETALLE_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="DETALLE_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_ACC" source="ID_TIPO_CATALOGO_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_RESP" source="ID_TIPO_CATALOGO_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_ACC" source="OBSERVACION_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_RESP" source="OBSERVACION_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPODETALLE" source="TIPODETALLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDFORMULARIO" source="IDFORMULARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPCION_R" source="DESCRIPCION_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_R" source="NOMBRE_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_P" source="DESCRIPTION_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDACCOREC" source="IDACCOREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDCATEGORIA" source="IDCATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO" source="IDTIPOCATALOGO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_P" source="NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDEN" source="ORDEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PONDERACION" source="PONDERACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RESPUESTA" source="TIPO_RESPUESTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMAXIMO" source="VALORMAXIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMINIMO" source="VALORMINIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO_R" source="IDTIPOCATALOGO_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACC_CORREC" source="ACC_CORREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_DES_P" source="T_DES_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_NOMBRE_P" source="T_NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANTA" source="PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENAME" source="ENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX1" source="AUX1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX2" source="AUX2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX3" source="AUX3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX4" source="AUX4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTEXT" source="KTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_MATERIAL" source="ID_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FTOT" source="FTOT"/>
+      </input>
+      <input node="Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_MATERIAL" source="MATERIAL"/>
+      </input>
+    <joinAttribute name="ID_MATERIAL"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ABKRS"/>
+        <viewAttribute id="AEDTM"/>
+        <viewAttribute id="ANSVH"/>
+        <viewAttribute id="BEGDA"/>
+        <viewAttribute id="BTRTL"/>
+        <viewAttribute id="BUDGET_PD"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="USUARIO_F"/>
+        <viewAttribute id="ENDDA"/>
+        <viewAttribute id="FISTL"/>
+        <viewAttribute id="FKBER"/>
+        <viewAttribute id="FLAG1"/>
+        <viewAttribute id="FLAG2"/>
+        <viewAttribute id="FLAG3"/>
+        <viewAttribute id="FLAG4"/>
+        <viewAttribute id="GEBER"/>
+        <viewAttribute id="GRANT_NBR"/>
+        <viewAttribute id="GRPVL"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="HISTO"/>
+        <viewAttribute id="ITBLD"/>
+        <viewAttribute id="ITXEX"/>
+        <viewAttribute id="JUPER"/>
+        <viewAttribute id="KOKRS"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MSTBR"/>
+        <viewAttribute id="OBJPS"/>
+        <viewAttribute id="ORDEX"/>
+        <viewAttribute id="ORGEH"/>
+        <viewAttribute id="OTYPE"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="PERSG"/>
+        <viewAttribute id="PERSK"/>
+        <viewAttribute id="PLANS"/>
+        <viewAttribute id="PREAS"/>
+        <viewAttribute id="REFEX"/>
+        <viewAttribute id="RESE1"/>
+        <viewAttribute id="RESE2"/>
+        <viewAttribute id="SACHA"/>
+        <viewAttribute id="SACHP"/>
+        <viewAttribute id="SACHZ"/>
+        <viewAttribute id="SBMOD"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="SGMNT"/>
+        <viewAttribute id="SNAME"/>
+        <viewAttribute id="SPRPS"/>
+        <viewAttribute id="STELL"/>
+        <viewAttribute id="SUBTY"/>
+        <viewAttribute id="UNAME"/>
+        <viewAttribute id="VDSK1"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="ZZCODAG"/>
+        <viewAttribute id="ZZINEANUAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="USUARIO_FUN" length="10" expressionLanguage="COLUMN_ENGINE">
+          <formula>rightstr(&quot;PERNR&quot;,6)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Projection_7$$$$PA0001$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO_F" source="ENAME"/></input>
+    <filter>(&quot;ENDDA&quot; ='99991231')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_9" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ESTADO"/>
+        <viewAttribute id="FECHA_CREACION"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_AREA"/>
+        <viewAttribute id="ID_EJECUCION"/>
+        <viewAttribute id="ID_PLANTA"/>
+        <viewAttribute id="ID_SECCION"/>
+        <viewAttribute id="ID_UBICACION"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="TITULO"/>
+        <viewAttribute id="USUARIO"/>
+        <viewAttribute id="DETALLE_ACC"/>
+        <viewAttribute id="DETALLE_RESP"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_ACC"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_RESP"/>
+        <viewAttribute id="OBSERVACION_ACC"/>
+        <viewAttribute id="OBSERVACION_RESP"/>
+        <viewAttribute id="TIPODETALLE"/>
+        <viewAttribute id="IDFORMULARIO"/>
+        <viewAttribute id="DESCRIPCION_R"/>
+        <viewAttribute id="NOMBRE_R"/>
+        <viewAttribute id="DESCRIPTION_P"/>
+        <viewAttribute id="IDACCOREC"/>
+        <viewAttribute id="IDCATEGORIA"/>
+        <viewAttribute id="IDTIPOCATALOGO"/>
+        <viewAttribute id="NOMBRE_P"/>
+        <viewAttribute id="ORDEN"/>
+        <viewAttribute id="PONDERACION"/>
+        <viewAttribute id="TIPO_RESPUESTA"/>
+        <viewAttribute id="VALORMAXIMO"/>
+        <viewAttribute id="VALORMINIMO"/>
+        <viewAttribute id="IDTIPOCATALOGO_R"/>
+        <viewAttribute id="ACC_CORREC"/>
+        <viewAttribute id="T_DES_P"/>
+        <viewAttribute id="T_NOMBRE_P"/>
+        <viewAttribute id="PLANTA"/>
+        <viewAttribute id="ENAME"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="KTEXT"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="ENAME_1"/>
+        <viewAttribute id="FTOT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTADO" source="ESTADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CREACION" source="FECHA_CREACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_AREA" source="ID_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_EJECUCION" source="ID_EJECUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="ID_PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SECCION" source="ID_SECCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_UBICACION" source="ID_UBICACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE" source="NOMBRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TITULO" source="TITULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO" source="USUARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_ACC" source="DETALLE_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="DETALLE_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_ACC" source="ID_TIPO_CATALOGO_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_RESP" source="ID_TIPO_CATALOGO_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_ACC" source="OBSERVACION_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_RESP" source="OBSERVACION_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPODETALLE" source="TIPODETALLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDFORMULARIO" source="IDFORMULARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPCION_R" source="DESCRIPCION_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_R" source="NOMBRE_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_P" source="DESCRIPTION_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDACCOREC" source="IDACCOREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDCATEGORIA" source="IDCATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO" source="IDTIPOCATALOGO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_P" source="NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDEN" source="ORDEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PONDERACION" source="PONDERACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RESPUESTA" source="TIPO_RESPUESTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMAXIMO" source="VALORMAXIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMINIMO" source="VALORMINIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO_R" source="IDTIPOCATALOGO_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACC_CORREC" source="ACC_CORREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_DES_P" source="T_DES_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_NOMBRE_P" source="T_NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANTA" source="PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENAME" source="ENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX1" source="AUX1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX2" source="AUX2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX3" source="AUX3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX4" source="AUX4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTEXT" source="KTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FTOT" source="FTOT"/>
+      </input>
+      <input node="Projection_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENAME_1" source="USUARIO_F"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="USUARIO_FUN"/>
+      </input>
+    <joinAttribute name="DETALLE_RESP"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_8">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CENTRO"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="MANDT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_CENTRO"/>
+    <filter>(&quot;MANDT&quot; ='900')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_10" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ESTADO"/>
+        <viewAttribute id="FECHA_CREACION"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_AREA"/>
+        <viewAttribute id="ID_EJECUCION"/>
+        <viewAttribute id="ID_PLANTA"/>
+        <viewAttribute id="ID_SECCION"/>
+        <viewAttribute id="ID_UBICACION"/>
+        <viewAttribute id="NOMBRE"/>
+        <viewAttribute id="TITULO"/>
+        <viewAttribute id="USUARIO"/>
+        <viewAttribute id="DETALLE_ACC"/>
+        <viewAttribute id="DETALLE_RESP"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_ACC"/>
+        <viewAttribute id="ID_TIPO_CATALOGO_RESP"/>
+        <viewAttribute id="OBSERVACION_ACC"/>
+        <viewAttribute id="OBSERVACION_RESP"/>
+        <viewAttribute id="TIPODETALLE"/>
+        <viewAttribute id="IDFORMULARIO"/>
+        <viewAttribute id="DESCRIPCION_R"/>
+        <viewAttribute id="NOMBRE_R"/>
+        <viewAttribute id="DESCRIPTION_P"/>
+        <viewAttribute id="IDACCOREC"/>
+        <viewAttribute id="IDCATEGORIA"/>
+        <viewAttribute id="IDTIPOCATALOGO"/>
+        <viewAttribute id="NOMBRE_P"/>
+        <viewAttribute id="ORDEN"/>
+        <viewAttribute id="PONDERACION"/>
+        <viewAttribute id="TIPO_RESPUESTA"/>
+        <viewAttribute id="VALORMAXIMO"/>
+        <viewAttribute id="VALORMINIMO"/>
+        <viewAttribute id="IDTIPOCATALOGO_R"/>
+        <viewAttribute id="ACC_CORREC"/>
+        <viewAttribute id="T_DES_P"/>
+        <viewAttribute id="T_NOMBRE_P"/>
+        <viewAttribute id="PLANTA"/>
+        <viewAttribute id="ENAME"/>
+        <viewAttribute id="AUX1"/>
+        <viewAttribute id="AUX2"/>
+        <viewAttribute id="AUX3"/>
+        <viewAttribute id="AUX4"/>
+        <viewAttribute id="KTEXT"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="ENAME_1"/>
+        <viewAttribute id="FTOT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTADO" source="ESTADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CREACION" source="FECHA_CREACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_AREA" source="ID_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_EJECUCION" source="ID_EJECUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="ID_PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SECCION" source="ID_SECCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_UBICACION" source="ID_UBICACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE" source="NOMBRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TITULO" source="TITULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USUARIO" source="USUARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_ACC" source="DETALLE_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DETALLE_RESP" source="DETALLE_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_ACC" source="ID_TIPO_CATALOGO_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TIPO_CATALOGO_RESP" source="ID_TIPO_CATALOGO_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_ACC" source="OBSERVACION_ACC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACION_RESP" source="OBSERVACION_RESP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPODETALLE" source="TIPODETALLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDFORMULARIO" source="IDFORMULARIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPCION_R" source="DESCRIPCION_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_R" source="NOMBRE_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_P" source="DESCRIPTION_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDACCOREC" source="IDACCOREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDCATEGORIA" source="IDCATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO" source="IDTIPOCATALOGO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOMBRE_P" source="NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDEN" source="ORDEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PONDERACION" source="PONDERACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RESPUESTA" source="TIPO_RESPUESTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMAXIMO" source="VALORMAXIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALORMINIMO" source="VALORMINIMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDTIPOCATALOGO_R" source="IDTIPOCATALOGO_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACC_CORREC" source="ACC_CORREC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_DES_P" source="T_DES_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="T_NOMBRE_P" source="T_NOMBRE_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANTA" source="PLANTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENAME" source="ENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX1" source="AUX1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX2" source="AUX2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX3" source="AUX3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUX4" source="AUX4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTEXT" source="KTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENAME_1" source="ENAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FTOT" source="FTOT"/>
+      </input>
+      <input node="Projection_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_PLANTA" source="CENTRO"/>
+      </input>
+    <joinAttribute name="ID_PLANTA"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_10">
+    <descriptions/>
+    <attributes>
+      <attribute id="ESTADO" hidden="true" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ESTADO"/>
+        <keyMapping columnObjectName="Join_10" columnName="ESTADO"/>
+      </attribute>
+      <attribute id="FECHA_CREACION" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha/Hora"/>
+        <keyMapping columnObjectName="Join_10" columnName="FECHA_CREACION"/>
+      </attribute>
+      <attribute id="ID" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID"/>
+        <keyMapping columnObjectName="Join_10" columnName="ID"/>
+      </attribute>
+      <attribute id="ID_AREA" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Area"/>
+        <keyMapping columnObjectName="Join_10" columnName="ID_AREA"/>
+      </attribute>
+      <attribute id="ID_EJECUCION" hidden="true" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_EJECUCION"/>
+        <keyMapping columnObjectName="Join_10" columnName="ID_EJECUCION"/>
+      </attribute>
+      <attribute id="ID_PLANTA" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Planta"/>
+        <keyMapping columnObjectName="Join_10" columnName="ID_PLANTA"/>
+      </attribute>
+      <attribute id="ID_SECCION" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Seccion"/>
+        <keyMapping columnObjectName="Join_10" columnName="ID_SECCION"/>
+      </attribute>
+      <attribute id="ID_UBICACION" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Linea"/>
+        <keyMapping columnObjectName="Join_10" columnName="ID_UBICACION"/>
+      </attribute>
+      <attribute id="NOMBRE" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nombre de Formulario"/>
+        <keyMapping columnObjectName="Join_10" columnName="NOMBRE"/>
+      </attribute>
+      <attribute id="TITULO" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Titulo"/>
+        <keyMapping columnObjectName="Join_10" columnName="TITULO"/>
+      </attribute>
+      <attribute id="USUARIO" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Usuario"/>
+        <keyMapping columnObjectName="Join_10" columnName="USUARIO"/>
+      </attribute>
+      <attribute id="DETALLE_ACC" hidden="true" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DETALLE_ACC"/>
+        <keyMapping columnObjectName="Join_10" columnName="DETALLE_ACC"/>
+      </attribute>
+      <attribute id="DETALLE_RESP" hidden="true" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DETALLE_RESP"/>
+        <keyMapping columnObjectName="Join_10" columnName="DETALLE_RESP"/>
+      </attribute>
+      <attribute id="ID_TIPO_CATALOGO_ACC" hidden="true" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_TIPO_CATALOGO_ACC"/>
+        <keyMapping columnObjectName="Join_10" columnName="ID_TIPO_CATALOGO_ACC"/>
+      </attribute>
+      <attribute id="ID_TIPO_CATALOGO_RESP" hidden="true" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_TIPO_CATALOGO_RESP"/>
+        <keyMapping columnObjectName="Join_10" columnName="ID_TIPO_CATALOGO_RESP"/>
+      </attribute>
+      <attribute id="OBSERVACION_ACC" hidden="true" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OBSERVACION_ACC"/>
+        <keyMapping columnObjectName="Join_10" columnName="OBSERVACION_ACC"/>
+      </attribute>
+      <attribute id="OBSERVACION_RESP" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Observacion "/>
+        <keyMapping columnObjectName="Join_10" columnName="OBSERVACION_RESP"/>
+      </attribute>
+      <attribute id="TIPODETALLE" hidden="true" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIPODETALLE"/>
+        <keyMapping columnObjectName="Join_10" columnName="TIPODETALLE"/>
+      </attribute>
+      <attribute id="IDFORMULARIO" hidden="true" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="IDFORMULARIO"/>
+        <keyMapping columnObjectName="Join_10" columnName="IDFORMULARIO"/>
+      </attribute>
+      <attribute id="DESCRIPCION_R" hidden="true" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPCION_R"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPCION_R"/>
+      </attribute>
+      <attribute id="NOMBRE_R" hidden="true" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NOMBRE_R"/>
+        <keyMapping columnObjectName="Join_10" columnName="NOMBRE_R"/>
+      </attribute>
+      <attribute id="DESCRIPTION_P" hidden="true" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPTION_P"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPTION_P"/>
+      </attribute>
+      <attribute id="IDACCOREC" hidden="true" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="IDACCOREC"/>
+        <keyMapping columnObjectName="Join_10" columnName="IDACCOREC"/>
+      </attribute>
+      <attribute id="IDCATEGORIA" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Categoria"/>
+        <keyMapping columnObjectName="Join_10" columnName="IDCATEGORIA"/>
+      </attribute>
+      <attribute id="IDTIPOCATALOGO" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo Catalogo"/>
+        <keyMapping columnObjectName="Join_10" columnName="IDTIPOCATALOGO"/>
+      </attribute>
+      <attribute id="NOMBRE_P" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Pregunta"/>
+        <keyMapping columnObjectName="Join_10" columnName="NOMBRE_P"/>
+      </attribute>
+      <attribute id="ORDEN" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Orden"/>
+        <keyMapping columnObjectName="Join_10" columnName="ORDEN"/>
+      </attribute>
+      <attribute id="PONDERACION" hidden="true" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PONDERACION"/>
+        <keyMapping columnObjectName="Join_10" columnName="PONDERACION"/>
+      </attribute>
+      <attribute id="TIPO_RESPUESTA" hidden="true" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIPO_RESPUESTA"/>
+        <keyMapping columnObjectName="Join_10" columnName="TIPO_RESPUESTA"/>
+      </attribute>
+      <attribute id="VALORMAXIMO" hidden="true" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VALORMAXIMO"/>
+        <keyMapping columnObjectName="Join_10" columnName="VALORMAXIMO"/>
+      </attribute>
+      <attribute id="VALORMINIMO" hidden="true" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VALORMINIMO"/>
+        <keyMapping columnObjectName="Join_10" columnName="VALORMINIMO"/>
+      </attribute>
+      <attribute id="IDTIPOCATALOGO_R" hidden="true" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="IDTIPOCATALOGO_R"/>
+        <keyMapping columnObjectName="Join_10" columnName="IDTIPOCATALOGO_R"/>
+      </attribute>
+      <attribute id="ACC_CORREC" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Accion Correctiva"/>
+        <keyMapping columnObjectName="Join_10" columnName="ACC_CORREC"/>
+      </attribute>
+      <attribute id="T_DES_P" hidden="true" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="T_DES_P"/>
+        <keyMapping columnObjectName="Join_10" columnName="T_DES_P"/>
+      </attribute>
+      <attribute id="T_NOMBRE_P" hidden="true" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="T_NOMBRE_P"/>
+        <keyMapping columnObjectName="Join_10" columnName="T_NOMBRE_P"/>
+      </attribute>
+      <attribute id="PLANTA" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Planta"/>
+        <keyMapping columnObjectName="Join_10" columnName="PLANTA"/>
+      </attribute>
+      <attribute id="ENAME" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Usuario Text"/>
+        <keyMapping columnObjectName="Join_10" columnName="ENAME"/>
+      </attribute>
+      <attribute id="AUX1" hidden="true" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AUX1"/>
+        <keyMapping columnObjectName="Join_10" columnName="AUX1"/>
+      </attribute>
+      <attribute id="AUX2" hidden="true" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AUX2"/>
+        <keyMapping columnObjectName="Join_10" columnName="AUX2"/>
+      </attribute>
+      <attribute id="AUX3" hidden="true" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AUX3"/>
+        <keyMapping columnObjectName="Join_10" columnName="AUX3"/>
+      </attribute>
+      <attribute id="AUX4" hidden="true" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AUX4"/>
+        <keyMapping columnObjectName="Join_10" columnName="AUX4"/>
+      </attribute>
+      <attribute id="KTEXT" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Seccion Txt"/>
+        <keyMapping columnObjectName="Join_10" columnName="KTEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" hidden="true" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_TEXT"/>
+        <keyMapping columnObjectName="Join_10" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="CENTRO_TEXT" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro Txt"/>
+        <keyMapping columnObjectName="Join_10" columnName="CENTRO_TEXT"/>
+      </attribute>
+      <attribute id="ENAME_1" hidden="true" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nombre "/>
+        <keyMapping columnObjectName="Join_10" columnName="ENAME_1"/>
+      </attribute>
+      <attribute id="FTOT" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FTOT"/>
+        <keyMapping columnObjectName="Join_10" columnName="FTOT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="PERIODO" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Periodo"/>
+        <localVariable>INP_PERI</localVariable>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
+          <formula>date(leftstr(string(&quot;FECHA_CREACION&quot;),7))</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="RESPUESTA" hidden="false" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Respuesta "/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="25">
+          <formula>if(isnull(&quot;NOMBRE_R&quot;),&quot;DETALLE_RESP&quot;,&quot;NOMBRE_R&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="RESP_DET" hidden="false" order="4" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Detalle Respuesta"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="40">
+          <formula>if(isnull(&quot;ENAME_1&quot;),&quot;MATERIAL_TEXT&quot;,&quot;ENAME_1&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="SEG1" hidden="false" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Seguimiento 1"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="50">
+          <formula>replace(&quot;AUX1&quot;, '$' ,' | ')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="SEG2" hidden="false" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Seguimiento 2"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="50">
+          <formula>replace(&quot;AUX2&quot;, '$' ,' | ')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="SEG3" hidden="false" order="7" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Seguimiento 3"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="50">
+          <formula>replace(&quot;AUX3&quot;, '$' ,' | ')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="SEG4" hidden="false" order="8" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Seguimiento 4"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="50">
+          <formula>replace(&quot;AUX4&quot;, '$' ,' | ')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="FHOURS" hidden="false" order="56" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Hora"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="8">
+          <formula>rightstr(&quot;FTOT&quot;,8)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="FDAY" hidden="false" order="57" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="F.Día"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
+          <formula>leftstr(&quot;FTOT&quot;,10)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="COUNT" hidden="false" order="1" aggregationType="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Contador ID"/>
+        <exceptionAggregation exceptionAggregationType="countDistinct">
+          <attribute attributeName="ID"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+      <measure id="CONT_RESP" hidden="false" order="54" aggregationType="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Contador P"/>
+        <exceptionAggregation exceptionAggregationType="countDistinct">
+          <attribute attributeName="NOMBRE_P"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="false" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="249" y="60"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="CABECERA" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="1210"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="RESPUESTAS" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="190" y="1190"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="CATALOGO" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="180" y="999"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="TPO_CATALOGO" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="190" y="779"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="1090"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="CABECERA" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="RESPUESTAS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="190" y="1099"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="990"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="880"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="CATALOGO" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="190" y="889"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="469"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="190" y="679"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="770"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="670"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="TPO_CATALOGO" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="570"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="579"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="460"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="350"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_7" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="190" y="359"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="250"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_8" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_7" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="259"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="140"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Join_9" modelObjectNameSpace="Join_10" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_8" modelObjectNameSpace="Join_10" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="V_AC_6SEMANAS" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" analyticViewCompatibilityMode="true" dataCategory="DEFAULT" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" propagateInstantiation="true" runWithInvokerPrivileges="true" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="V_AC_6SEMANAS"/>
+  <localVariables>
+    <variable id="FECHA" parameter="true">
+      <descriptions defaultDescription="FECHA"/>
+      <variableProperties datatype="DATE" mandatory="true" defaultValue="undefined">
+        <valueDomain type="Date"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="TABLE_FUNCTION_V_AC_6SEMANAS">
+      <targetVariable name="FECHA" resourceUri="TABLE_FUNCTION_V_AC_6SEMANAS"/>
+      <localVariable>FECHA</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="TABLE_FUNCTION_V_AC_6SEMANAS" type="TABLE_FUNCTION">
+      <resourceUri>TABLE_FUNCTION_V_AC_6SEMANAS</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="TABLE_FUNCTION_V_AC_6SEMANAS">
+    <descriptions/>
+    <attributes>
+      <attribute id="TIEMPO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_DATE_SAP"/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_V_AC_6SEMANAS" columnName="TIEMPO"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_WEEK" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_WEEK"/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_V_AC_6SEMANAS" columnName="TIEMPO_ATTR_WEEK"/>
+      </attribute>
+      <attribute id="MARCA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_MARCA"/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_V_AC_6SEMANAS" columnName="MARCA"/>
+      </attribute>
+      <attribute id="DAY_OF_WEEK" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DAY_OF_WEEK"/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_V_AC_6SEMANAS" columnName="DAY_OF_WEEK"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup" expanded="true">
+        <upperLeftCorner x="40" y="85"/></shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

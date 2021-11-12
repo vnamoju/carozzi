@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="JERARQUIA_CLIENTE" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="JERARQUIA_CLIENTE"/>
+  <metadata changedAt="2019-11-24 16:34:18.714"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="19"/>
+  <dataSources>
+    <DataSource id="JERARQUIA_CLIENTE_2">
+      <resourceUri>JERARQUIA_CLIENTE_2</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CLIENTE_CECO_SETLEAF_AUX">
+      <resourceUri>DIM_CLIENTE_CECO_SETLEAF_AUX</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+        <viewAttribute id="DESCRIPT_2"/>
+        <viewAttribute id="DESCRIPT_3"/>
+        <viewAttribute id="DESCRIPT_4"/>
+        <viewAttribute id="DESCRIPT_5"/>
+        <viewAttribute id="HOJA_5"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SOCIEDAD_CO" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>rightstr(&quot;SETNAME&quot;,4)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="HOJA" length="10" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;HOJA_5&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#JERARQUIA_CLIENTE_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_2" source="DESCRIPT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_3" source="DESCRIPT_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_4" source="DESCRIPT_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_5" source="DESCRIPT_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_5" source="HOJA_5"/>
+      </input>
+      <filter>(in (&quot;SETNAME&quot;,'JER_CLIENTES_5100','JER_CLIENTES_EC01','JER_CLIENTES_4100','JER_CLIENTES_1100','JER_CLIENTES_1300'))</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME_D1"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="SUBSETNAME_D4"/>
+        <viewAttribute id="SUBSETNAME_D5"/>
+        <viewAttribute id="DESCRIPT_3"/>
+        <viewAttribute id="SUBSETNAME_D1"/>
+        <viewAttribute id="SUBSATNAME_D2"/>
+        <viewAttribute id="SUBSETNAME_D3"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+        <viewAttribute id="DESCRIPT_2"/>
+        <viewAttribute id="DESCRIPT_4"/>
+        <viewAttribute id="DESCRIPT_5"/>
+        <viewAttribute id="HOJA"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_CLIENTE_CECO_SETLEAF_AUX">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+      <input node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_D1" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_D4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_D5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_D1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_D2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_D3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_2" source="DESCRIPT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_3" source="DESCRIPT_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_4" source="DESCRIPT_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_5" source="DESCRIPT_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA" source="HOJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="HOJA"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="BUKRS"/>
+      <joinAttribute name="KUNNR"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_2" columnName="MANDT"/>
+      </attribute>
+      <attribute id="ID_NODO" hidden="false" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_NODO"/>
+        <keyMapping columnObjectName="Join_2" columnName="KUNNR"/>
+      </attribute>
+      <attribute id="BUKRS" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUKRS"/>
+        <keyMapping columnObjectName="Join_2" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="Nivel6" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel6"/>
+        <keyMapping columnObjectName="Join_2" columnName="SUBSETNAME_D4"/>
+      </attribute>
+      <attribute id="Nivel7" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel7"/>
+        <keyMapping columnObjectName="Join_2" columnName="SUBSETNAME_D5"/>
+      </attribute>
+      <attribute id="SETNAME_D1" hidden="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME_D1"/>
+        <keyMapping columnObjectName="Join_2" columnName="SETNAME_D1"/>
+      </attribute>
+      <attribute id="SUBSETNAME_D1" hidden="true" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME_D1"/>
+        <keyMapping columnObjectName="Join_2" columnName="SUBSETNAME_D1"/>
+      </attribute>
+      <attribute id="SUBSATNAME_D2" hidden="true" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSATNAME_D2"/>
+        <keyMapping columnObjectName="Join_2" columnName="SUBSATNAME_D2"/>
+      </attribute>
+      <attribute id="SUBSETNAME_D3" hidden="true" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME_D3"/>
+        <keyMapping columnObjectName="Join_2" columnName="SUBSETNAME_D3"/>
+      </attribute>
+      <attribute id="ID_TEXT" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_TEXT"/>
+        <keyMapping columnObjectName="Join_2" columnName="ID_TEXT"/>
+      </attribute>
+      <attribute id="Nivel2" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel2"/>
+        <keyMapping columnObjectName="Join_2" columnName="SUBSETNAME"/>
+      </attribute>
+      <attribute id="Nivel1_text" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel1_text"/>
+        <keyMapping columnObjectName="Join_2" columnName="DESCRIPT"/>
+      </attribute>
+      <attribute id="Nivel2_text" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel2_text"/>
+        <keyMapping columnObjectName="Join_2" columnName="DESCRIPT_1"/>
+      </attribute>
+      <attribute id="Nivel3_text" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel3_text"/>
+        <keyMapping columnObjectName="Join_2" columnName="DESCRIPT_2"/>
+      </attribute>
+      <attribute id="Nivel4_text" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel4_text"/>
+        <keyMapping columnObjectName="Join_2" columnName="DESCRIPT_3"/>
+      </attribute>
+      <attribute id="Nivel5_text" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel5_text"/>
+        <keyMapping columnObjectName="Join_2" columnName="DESCRIPT_4"/>
+      </attribute>
+      <attribute id="Nivel6_text" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel6_text"/>
+        <keyMapping columnObjectName="Join_2" columnName="DESCRIPT_5"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="Nivel1" hidden="false" order="7" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel1"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="40">
+          <formula>if(isnull(&quot;SETNAME_D1&quot;),'JER_CLIENTES_'+&quot;BUKRS&quot;,&quot;SETNAME_D1&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="Nivel3" hidden="false" order="11" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel3"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="50">
+          <formula>if(isnull(&quot;SUBSETNAME_D1&quot;),'Sin Asignar',&quot;SUBSETNAME_D1&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="Nivel4" hidden="false" order="12" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel4"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="50">
+          <formula>if(isnull(&quot;SUBSATNAME_D2&quot;),'Sin Asignar',&quot;SUBSATNAME_D2&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="Nivel5" hidden="false" order="13" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel5"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="50">
+          <formula>if(isnull(&quot;SUBSETNAME_D3&quot;),&quot;ID_TEXT&quot;,&quot;SUBSETNAME_D3&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="310"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="180"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

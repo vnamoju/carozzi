@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="MODELO_FG_RENTABILIDAD_02" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="MODELO DE RENTABILIDAD"/>
+  <metadata changedAt="2021-02-01 16:06:49.255"/>
+  <localVariables>
+    <variable id="Sociedad_CO">
+      <descriptions defaultDescription="Sociedad_CO"/>
+      <variableProperties datatype="VARCHAR" defaultValue="EC01" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="SOCIEDAD_CO_ID"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="Periodo_Contable">
+      <descriptions defaultDescription="Periodo Contable (aaaamm)"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="EJERCICIO_PERIODO"/>
+        </valueDomain>
+        <selection multiLine="true" type="Interval"/>
+      </variableProperties>
+    </variable>
+    <variable id="Division_Comercial">
+      <descriptions defaultDescription="Division Comercial (txt)"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="DIVISION_COMERCIAL_TEXT"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="Unidad_Negocio">
+      <descriptions defaultDescription="Unidad Negocio"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="UNIDAD_NEGOCIO_TEXT"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="21"/>
+  <dataSources>
+    <DataSource id="FG_RENTABILIDAD_02">
+      <resourceUri>FG_RENTABILIDAD_02</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="FG_RENTABILIDAD_02">
+    <descriptions/>
+    <attributes>
+      <attribute id="PERIODO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="PERIODO"/>
+      </attribute>
+      <attribute id="EJERCICIO" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="EJERCICIO"/>
+      </attribute>
+      <attribute id="CUENTA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CUENTA"/>
+      </attribute>
+      <attribute id="MONEDA_LOCAL" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Moneda"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="MONEDA_LOCAL"/>
+      </attribute>
+      <attribute id="UNIDAD_MEDIDA" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UMB"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="UNIDAD_MEDIDA"/>
+      </attribute>
+      <attribute id="EJERCICIO_PERIODO" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio /Mes"/>
+        <localVariable>#Periodo_Contable</localVariable>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="EJERCICIO_PERIODO"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio Descr"/>
+        <localVariable>#Unidad_Negocio</localVariable>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ID_TEXT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Articulo IDescr"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="GRUPO_MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_TIPO_MATERIAL" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="29.Tipo Material"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="MATERIAL_ATTR_TIPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ID_TEXT" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material IDescr"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CANAL_COMERCIAL" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="46.Canal Comercial"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL2" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="42.Jer.Clientes - Sociedad"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL3" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="43.Jer. Clientes - Cluster"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL4" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="44.Jer.Clientes - Cadena/Cliente"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL5" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="45.Jer. Clientes - Formato"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="CANAL_COMERCIAL_TEXT" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="46.Canal Comercial Descr"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CANAL_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL2" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="46.Jer. Canales - Macro Canal"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CANAL_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL3" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="46.Jer. Canales - Canal"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CANAL_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Cliente Padre"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_ATTR_CLIENTE_PADRE"/>
+      </attribute>
+      <attribute id="SALA_FISICA" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="52.Sala Fisica"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="SALA_FISICA"/>
+      </attribute>
+      <attribute id="REGION_TEXT" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="49.Region"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="REGION_TEXT"/>
+      </attribute>
+      <attribute id="PROVINCIA_TEXT" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="50.Provincia"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="PROVINCIA_TEXT"/>
+      </attribute>
+      <attribute id="COMUNA_TEXT" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="51.Comuna"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="COMUNA_TEXT"/>
+      </attribute>
+      <attribute id="CLIENTE_ID_TEXT_1" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="40.Cliente IDescr"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_ID_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ID_TEXT_2" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="40.Cliente IDescr (fantasia)"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_ID_TEXT_2"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Cliente Padre IDescr "/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Cliente Padre IDescr (fantasia)"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2"/>
+      </attribute>
+      <attribute id="SECTOR_TEXT" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="36.Sector Descr"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="SECTOR_TEXT"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL_TEXT" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="13.Division Descr"/>
+        <localVariable>#Division_Comercial</localVariable>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="DIVISION_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N3_TEXT" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N3"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="JER_CUENTA_N3_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N4_TEXT" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N4"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="JER_CUENTA_N4_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N5_TEXT" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N5"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="JER_CUENTA_N5_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N6_TEXT" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N6"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="JER_CUENTA_N6_TEXT"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL1" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL1"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="OFICINA_JER_NIVEL1"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL2" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL2"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="OFICINA_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL3" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL3"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="OFICINA_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL4" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL4"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="OFICINA_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL5" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL5"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="OFICINA_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID_TEXT" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina IDescr"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="OFICINA_VENTA_ID_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MARCA" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="25.Marca"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="MATERIAL_ATTR_MARCA"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="27.Clasificacion Ventas Valor"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_ESTACIONALIDAD" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="26.Estacionalidad"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="MATERIAL_ATTR_ESTACIONALIDAD"/>
+      </attribute>
+      <attribute id="VENDEDOR_ID_TEXT" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Vendedor IDescr"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="VENDEDOR_ID_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N7_TEXT" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N7"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="JER_CUENTA_N7_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N8_TEXT" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N8"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="JER_CUENTA_N8_TEXT"/>
+      </attribute>
+      <attribute id="CUENTA_ID_TEXT" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUENTA_ID_TEXT"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CUENTA_ID_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N2_TEXT" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N2_TEXT"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="JER_CUENTA_N2_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_BLOQUEO" order="57" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="28.Estado Material"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="MATERIAL_ATTR_BLOQUEO"/>
+      </attribute>
+      <attribute id="FECHA_PROCESO" order="58" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FECHA_PROCESO"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="FECHA_PROCESO"/>
+      </attribute>
+      <attribute id="HORA_UTC" order="59" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HORA_UTC"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="HORA_UTC"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="22.Categoria"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CATEGORIA_TEXT"/>
+      </attribute>
+      <attribute id="AREA_NEGOCIO_TEXT" order="61" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="24.Area Negocio Descr"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="AREA_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_AGRUPACION_ESPECIAL" order="62" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="37.Agrupacion especial"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+      </attribute>
+      <attribute id="UMV" order="63" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UMV"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="UMV"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO_ID" order="64" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="10.Sociedad CO"/>
+        <localVariable>#Sociedad_CO</localVariable>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="SOCIEDAD_CO"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIALID" order="65" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Articulo"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="GRUPO_MATERIALx"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL_ID" order="66" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_COMERCIAL_ID"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="DIVISION_COMERCIALx"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI" order="67" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sociedad FI"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="SOCIEDAD_FIx"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA_ID" order="68" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORGANIZACION_VENTA_ID"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="ORGANIZACION_VENTA"/>
+      </attribute>
+      <attribute id="MATERIAL_ID" order="69" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="MATERIALx"/>
+      </attribute>
+      <attribute id="CLIENTE_ID" order="70" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="40.Cliente"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTEx"/>
+      </attribute>
+      <attribute id="VENDEDOR_ID" order="71" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Vendedor"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="VENDEDORx"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID" order="72" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="OFICINA_VENTAx"/>
+      </attribute>
+      <attribute id="SECTOR_ID" order="73" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="36.Sector Descr"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="SECTORx"/>
+      </attribute>
+      <attribute id="AREA_NEGOCIO_ID" order="74" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="24.Area Negocio"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="AREA_NEGOCIOx"/>
+      </attribute>
+      <attribute id="CANAL_DISTRIBUCION_TEXT" order="76" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_DISTRIBUCION_TEXT"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CANAL_DISTRIBUCION_TEXT"/>
+      </attribute>
+      <attribute id="CANAL_DISTRIBUCION" order="77" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_DISTRIBUCION"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CANAL_DISTRIBUCIONx"/>
+      </attribute>
+      <attribute id="PAIS_ID" order="78" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="PAIS_ID"/>
+      </attribute>
+      <attribute id="PAIS_TEXT" order="79" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais Descr"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="PAIS_TEXT"/>
+      </attribute>
+      <attribute id="PAIS_N1" order="80" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais N1"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="DESCRIPT"/>
+      </attribute>
+      <attribute id="PAIS_N2" order="81" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais N2"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="DESCRIPT_1"/>
+      </attribute>
+      <attribute id="ZZCDCLASIF" order="82" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZCDCLASIF"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="ZZCDCLASIF"/>
+      </attribute>
+      <attribute id="ZZCDCLASIF_TEXTO" order="83" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="54.Clasificación Especial Clientes"/>
+        <keyMapping columnObjectName="FG_RENTABILIDAD_02" columnName="ZZCDCLASIF_TEXTO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="CLIENTE_ATTR_LATITUD" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Latitud"/>
+        <measureMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_ATTR_LATITUD"/>
+      </measure>
+      <measure id="CLIENTE_ATTR_LONGITUD" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Longitud"/>
+        <measureMapping columnObjectName="FG_RENTABILIDAD_02" columnName="CLIENTE_ATTR_LONGITUD"/>
+      </measure>
+      <measure id="VALOR_PPTO" order="42" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor Ppto"/>
+        <measureMapping columnObjectName="FG_RENTABILIDAD_02" columnName="VALOR_PPTO"/>
+      </measure>
+      <measure id="VOLUMEN_PPTO" order="43" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen Ppto"/>
+        <measureMapping columnObjectName="FG_RENTABILIDAD_02" columnName="VOLUMEN_PPTO"/>
+      </measure>
+      <measure id="VOLUMEN_REAL" order="44" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen"/>
+        <measureMapping columnObjectName="FG_RENTABILIDAD_02" columnName="VOLUMEN_REAL"/>
+      </measure>
+      <measure id="VOLUMEN_UMV_REAL" order="45" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen UMV"/>
+        <measureMapping columnObjectName="FG_RENTABILIDAD_02" columnName="VOLUMEN_UMV_REAL"/>
+      </measure>
+      <measure id="VALOR_REAL_ML" order="46" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor "/>
+        <measureMapping columnObjectName="FG_RENTABILIDAD_02" columnName="VALOR_REAL_ML"/>
+      </measure>
+      <measure id="VALOR_REAL_MT" order="47" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor Mon Trans"/>
+        <measureMapping columnObjectName="FG_RENTABILIDAD_02" columnName="VALOR_REAL_MT"/>
+      </measure>
+      <measure id="Volumen_KG" order="75" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen Kg"/>
+        <measureMapping columnObjectName="FG_RENTABILIDAD_02" columnName="Volumen_KG"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="Jer_Cuentas">
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N2_TEXT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N3_TEXT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N4_TEXT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N5_TEXT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N6_TEXT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N7_TEXT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N8_TEXT</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Jer_Cuentas" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="Jer_Cuentas"/>
+            <levels>
+              <level levelAttribute="#JER_CUENTA_N2_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#JER_CUENTA_N2_TEXT"/>
+              <level levelAttribute="#JER_CUENTA_N3_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#JER_CUENTA_N3_TEXT"/>
+              <level levelAttribute="#JER_CUENTA_N4_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#JER_CUENTA_N4_TEXT"/>
+              <level levelAttribute="#JER_CUENTA_N5_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="#JER_CUENTA_N5_TEXT"/>
+              <level levelAttribute="#JER_CUENTA_N6_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="5" orderAttribute="#JER_CUENTA_N6_TEXT"/>
+              <level levelAttribute="#JER_CUENTA_N7_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="6" orderAttribute="#JER_CUENTA_N7_TEXT"/>
+              <level levelAttribute="#JER_CUENTA_N8_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="7" orderAttribute="#JER_CUENTA_N8_TEXT"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+      <localDimension id="Jer_Clientes">
+        <attributeRef xsi:type="DataFoundation:Attribute">#CLIENTE_JER_NIVEL2</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#CLIENTE_JER_NIVEL3</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#CLIENTE_JER_NIVEL4</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#CLIENTE_JER_NIVEL5</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Jer_Clientes" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="Jer_Clientes"/>
+            <levels>
+              <level levelAttribute="#CLIENTE_JER_NIVEL2" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#CLIENTE_JER_NIVEL2"/>
+              <level levelAttribute="#CLIENTE_JER_NIVEL3" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#CLIENTE_JER_NIVEL3"/>
+              <level levelAttribute="#CLIENTE_JER_NIVEL4" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#CLIENTE_JER_NIVEL4"/>
+              <level levelAttribute="#CLIENTE_JER_NIVEL5" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="#CLIENTE_JER_NIVEL5"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+      <localDimension id="Jer_Pais">
+        <attributeRef xsi:type="DataFoundation:Attribute">#PAIS_N1</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#PAIS_N2</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Jer_Pais" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="Jer_Pais"/>
+            <levels>
+              <level levelAttribute="#PAIS_N1" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#PAIS_N1"/>
+              <level levelAttribute="#PAIS_N2" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#PAIS_N2"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

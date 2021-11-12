@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="MODELO_FG_Z4CASCADA2_02" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="MODELO CASCADA (Tableau)"/>
+  <metadata changedAt="2020-10-28 16:30:20.569"/>
+  <localVariables>
+    <variable id="V_SOCIEDAD_CO">
+      <descriptions defaultDescription="Sociedad CO"/>
+      <variableProperties datatype="VARCHAR" defaultValue="EC01" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="DIVISION_COMERCIAL">
+      <descriptions defaultDescription="Division Comercial"/>
+      <variableProperties datatype="VARCHAR" defaultValue="" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="DIVISION_COMERCIAL_ID"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="UNIDAD_NEGOCIO">
+      <descriptions defaultDescription="Unidad de Negocio"/>
+      <variableProperties datatype="VARCHAR" defaultValue="" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="UNIDAD_NEGOCIO_TEXT"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="EJERCICIO_MES">
+      <descriptions defaultDescription="Ejercicio Mes (aaaamm)"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="MES_ANO"/>
+        </valueDomain>
+        <selection multiLine="true" type="Interval"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="36"/>
+  <dataSources>
+    <DataSource id="FG_Z4CASCADA2_02">
+      <resourceUri>FG_Z4CASCADA2_02</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="FG_Z4CASCADA2_02">
+    <descriptions/>
+    <attributes>
+      <attribute id="OFICINA_VENTA_ID" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="VKBUR"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL_ID" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="13.Division"/>
+        <localVariable>#DIVISION_COMERCIAL</localVariable>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="WWDIV"/>
+      </attribute>
+      <attribute id="EJERCICIO" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="GJAHR"/>
+      </attribute>
+      <attribute id="MES" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="PERIO"/>
+      </attribute>
+      <attribute id="MES_ANO" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes/ Ejercicio"/>
+        <localVariable>#EJERCICIO_MES</localVariable>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MES_ANO"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_TEXT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina Descr"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="OFICINA_VENTA_TEXT"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID_TEXT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina IDescr"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="OFICINA_VENTA_ID_TEXT"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA_TEXT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="11.Org Venta Descr"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="ORGANIZACION_VENTA_TEXT"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO_TEXT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="10.Sociedad CO Descr"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="SOCIEDAD_CO_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Articulo Descr"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="22.Categoria Descr"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CATEGORIA_TEXT"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio Descr"/>
+        <localVariable>#UNIDAD_NEGOCIO</localVariable>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ID_TEXT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Articulo IDescr"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="GRUPO_MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_TIPO_MATERIAL" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="29.Tipo Material"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MATERIAL_ATTR_TIPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_SECTOR" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="30.Sector"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MATERIAL_ATTR_SECTOR"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MARCA" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="25.Marca"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MATERIAL_ATTR_MARCA"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="27.Clasificacion Ventas Valor"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_ESTACIONALIDAD" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="26.Estacionalidad"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MATERIAL_ATTR_ESTACIONALIDAD"/>
+      </attribute>
+      <attribute id="PAIS_TEXT" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais Descr"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="PAIS_TEXT"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL_TEXT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="13.Division Descr"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="DIVISION_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="CUENTA_TEXT" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta Descr"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CUENTA_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N3_TEXT" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N3_TEXT"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="JER_CUENTA_N3_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N4_TEXT" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N4_TEXT"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="JER_CUENTA_N4_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N5_TEXT" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N5_TEXT"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="JER_CUENTA_N5_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N6_TEXT" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N6_TEXT"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="JER_CUENTA_N6_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="24.Area Negocios"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_BLOQUEO" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="28.Estado Material"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MATERIAL_ATTR_BLOQUEO"/>
+      </attribute>
+      <attribute id="FECHA_PROCESO" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FECHA_PROCESO"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="FECHA_PROCESO"/>
+      </attribute>
+      <attribute id="HORA_UTC" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HORA_UTC"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="HORA_UTC"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_AGRUPACION_ESPECIAL" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="37.Agrupacion especial"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO_ID" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="10.Sociedad CO "/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="KOKRS"/>
+      </attribute>
+      <attribute id="VKORG" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="11.Org Venta"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="VKORG"/>
+      </attribute>
+      <attribute id="KSTAR" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="KSTAR"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL3" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL3"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="OFICINA_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL4" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL4"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="OFICINA_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL5" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL5"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="OFICINA_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_GRUPO_MATERIAL" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CANAL_COMERCIAL" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+      </attribute>
+      <attribute id="CANAL_COMERCIAL_TEXT" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_COMERCIAL_TEXT"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CANAL_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL7" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL7"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CLIENTE_JER_NIVEL7"/>
+      </attribute>
+      <attribute id="REGION_TEXT" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REGION_TEXT"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="REGION_TEXT"/>
+      </attribute>
+      <attribute id="PROVINCIA_TEXT" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROVINCIA_TEXT"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="PROVINCIA_TEXT"/>
+      </attribute>
+      <attribute id="COMUNA_TEXT" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COMUNA_TEXT"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="COMUNA_TEXT"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL3" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL3"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CLIENTE_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL4" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL4"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CLIENTE_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL5" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL5"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CLIENTE_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL6" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL6"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CLIENTE_JER_NIVEL6"/>
+      </attribute>
+      <attribute id="ARTNR" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="ARTNR"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_VENTA"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="OFICINA_VENTA"/>
+      </attribute>
+      <attribute id="LAND1" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Pais"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="LAND1"/>
+      </attribute>
+      <attribute id="MEINH" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UMB"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MEINH"/>
+      </attribute>
+      <attribute id="MATERIAL_ID_TEXT" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ID_TEXT"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL2" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL2"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CANAL_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL3" order="57" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL3"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CANAL_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL4" order="58" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL4"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CANAL_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL5" order="59" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL5"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CANAL_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_PAIS" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_PAIS"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="CLIENTE_ATTR_PAIS"/>
+      </attribute>
+      <attribute id="DESCRIPT" order="61" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="49.Pais N2"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="DESCRIPT"/>
+      </attribute>
+      <attribute id="DESCRIPT_1" order="62" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="49.Pais N1"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="DESCRIPT_1"/>
+      </attribute>
+      <attribute id="MATKL" order="64" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Material"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MATKL"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N1_TEXT" order="65" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N1_TEXT"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="JER_CUENTA_N1_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N2_TEXT" order="66" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N2_TEXT"/>
+        <keyMapping columnObjectName="FG_Z4CASCADA2_02" columnName="JER_CUENTA_N2_TEXT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="VOLUMEN" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen"/>
+        <measureMapping columnObjectName="FG_Z4CASCADA2_02" columnName="MEGBTR"/>
+      </measure>
+      <measure id="VALOR_CUENTA" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor Cuenta"/>
+        <measureMapping columnObjectName="FG_Z4CASCADA2_02" columnName="VALOR_CUENTA"/>
+      </measure>
+      <measure id="Vol_KG" order="63" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Vol_KG"/>
+        <measureMapping columnObjectName="FG_Z4CASCADA2_02" columnName="Vol_KG"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

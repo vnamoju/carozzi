@@ -1,0 +1,2071 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_JER_CLASES_DE_COSTOS2" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription=""/>
+  <metadata changedAt="2019-12-29 09:09:21.256"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="40"/>
+  <dataSources>
+    <DataSource id="SETNODE">
+      <resourceUri>SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_2$$$$SETNODE$$">
+      <resourceUri>SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_3$$$$SETNODE$$">
+      <resourceUri>SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_4$$$$SETNODE$$">
+      <resourceUri>SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_5$$$$SETNODE$$">
+      <resourceUri>SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_6$$$$SETNODE$$">
+      <resourceUri>SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_7$$$$SETNODE$$">
+      <resourceUri>SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="SETHEADERT">
+      <resourceUri>SETHEADERT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_19$$$$SETNODE$$">
+      <resourceUri>SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_9$$$$SETHEADERT$$">
+      <resourceUri>SETHEADERT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_10$$$$SETHEADERT$$">
+      <resourceUri>SETHEADERT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_11$$$$SETHEADERT$$">
+      <resourceUri>SETHEADERT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_12$$$$SETHEADERT$$">
+      <resourceUri>SETHEADERT</resourceUri>
+    </DataSource>
+    <DataSource id="SETLEAF">
+      <resourceUri>SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_20$$$$SETHEADERT$$">
+      <resourceUri>SETHEADERT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_22$$$$SETHEADERT$$">
+      <resourceUri>SETHEADERT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_21$$$$SETHEADERT$$">
+      <resourceUri>SETHEADERT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_14$$$$SETLEAF$$">
+      <resourceUri>SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_15$$$$SETLEAF$$">
+      <resourceUri>SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_16$$$$SETLEAF$$">
+      <resourceUri>SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_17$$$$SETLEAF$$">
+      <resourceUri>SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_18$$$$SETLEAF$$">
+      <resourceUri>SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_23$$$$SETLEAF$$">
+      <resourceUri>SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_24$$$$SETLEAF$$">
+      <resourceUri>SETLEAF</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#SETNODE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="SUBSETNAME"/>
+      </input>
+      <filter>(&quot;MANDT&quot; ='900') AND (&quot;J1&quot; ='JER_CUENTAS_SCP')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_2$$$$SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="nivel2" joinType="leftOuter">
+      <descriptions defaultDescription="J1"/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+      <joinAttribute name="N1"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_3$$$$SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="nivel3" joinType="leftOuter">
+      <descriptions defaultDescription="N1"/>
+      <viewAttributes>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#nivel2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="N2"/>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_4$$$$SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="nivel4" joinType="leftOuter">
+      <descriptions defaultDescription="N2"/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#nivel3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="N3"/>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_5$$$$SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="nivel5" joinType="leftOuter">
+      <descriptions defaultDescription="N3"/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#nivel4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="N4"/>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_6$$$$SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="nivel6" joinType="leftOuter">
+      <descriptions defaultDescription="N4"/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#nivel5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="N5"/>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_7$$$$SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="nivel7" joinType="leftOuter">
+      <descriptions defaultDescription="N5"/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#nivel6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="N6"/>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_8">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SUBCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="LANGU"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#SETHEADERT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASS" source="SUBCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGU" source="LANGU"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_19">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_19$$$$SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="nivel8" joinType="leftOuter">
+      <descriptions defaultDescription="N6"/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N8"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#nivel7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_19">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="N7"/>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="n1_text" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N8"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="LANGU"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#nivel8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="N8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGU" source="LANGU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="N1"/>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_9">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SUBCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="LANGU"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_9$$$$SETHEADERT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASS" source="SUBCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGU" source="LANGU"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="n2_text" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N8"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="LANGU"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#n1_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="N8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGU" source="LANGU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="N2"/>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_10">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SUBCLASS"/>
+        <viewAttribute id="LANGU"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_10$$$$SETHEADERT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASS" source="SUBCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGU" source="LANGU"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_11">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SUBCLASS"/>
+        <viewAttribute id="SETNAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_11$$$$SETHEADERT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASS" source="SUBCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="n3_text" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N8"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#n2_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="N8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_10">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="N3"/>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="n4_text" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N8"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#n3_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="N8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_11">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="N4"/>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_12">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SUBCLASS"/>
+        <viewAttribute id="SETNAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_12$$$$SETHEADERT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASS" source="SUBCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="n5_text" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N8"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#n4_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="N8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_12">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+      <joinAttribute name="SETCLASS"/>
+      <joinAttribute name="N5"/>
+      <joinAttribute name="MANDT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_13">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#SETLEAF">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_20">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_20$$$$SETHEADERT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="n6_text" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N6_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N8"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#n5_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="N8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_20">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="N6"/>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_22">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="DESCRIPT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_22$$$$SETHEADERT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="n7_text" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N6_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N8"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="N7_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#n6_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="N8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#Projection_22">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7_TEXT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+      <joinAttribute name="N7"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_21">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SETNAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_21$$$$SETHEADERT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="n8_text" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N6_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N8"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="N7_TEXT"/>
+        <viewAttribute id="N8_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#n7_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="N8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7_TEXT" source="N7_TEXT"/>
+      </input>
+      <input node="#Projection_21">
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8_TEXT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+      <joinAttribute name="N8"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute hidden="true" id="JOIN$SETNAME$N3"/>
+        <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+        <viewAttribute hidden="true" id="JOIN$SETCLASS$SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_13">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N3" source="SETNAME"/>
+      </input>
+      <input node="#n8_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N3" source="N3"/>
+      </input>
+      <joinAttribute name="JOIN$MANDT$MANDT"/>
+      <joinAttribute name="JOIN$SETCLASS$SETCLASS"/>
+      <joinAttribute name="JOIN$SETNAME$N3"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_14">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_14$$$$SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_7" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+        <viewAttribute hidden="true" id="JOIN$SETNAME$N2"/>
+        <viewAttribute hidden="true" id="JOIN$SETCLASS$SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_14">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N2" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+      </input>
+      <input node="#n8_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+      </input>
+      <joinAttribute name="JOIN$SETNAME$N2"/>
+      <joinAttribute name="JOIN$MANDT$MANDT"/>
+      <joinAttribute name="JOIN$SETCLASS$SETCLASS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_15">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_15$$$$SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_16">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_16$$$$SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_17">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_17$$$$SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_8" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+        <viewAttribute hidden="true" id="JOIN$SETNAME$N1"/>
+        <viewAttribute hidden="true" id="JOIN$SETCLASS$SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_15">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N1" source="SETNAME"/>
+      </input>
+      <input node="#n8_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N1" source="N1"/>
+      </input>
+      <joinAttribute name="JOIN$MANDT$MANDT"/>
+      <joinAttribute name="JOIN$SETCLASS$SETCLASS"/>
+      <joinAttribute name="JOIN$SETNAME$N1"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_9" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+        <viewAttribute hidden="true" id="JOIN$SETCLASS$SETCLASS"/>
+        <viewAttribute hidden="true" id="JOIN$SETNAME$N5"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_16">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N5" source="SETNAME"/>
+      </input>
+      <input node="#n8_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N5" source="N5"/>
+      </input>
+      <joinAttribute name="JOIN$MANDT$MANDT"/>
+      <joinAttribute name="JOIN$SETCLASS$SETCLASS"/>
+      <joinAttribute name="JOIN$SETNAME$N5"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_10" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N6_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+        <viewAttribute hidden="true" id="JOIN$SETCLASS$SETCLASS"/>
+        <viewAttribute hidden="true" id="JOIN$SETNAME$N6"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_17">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N6" source="SETNAME"/>
+      </input>
+      <input node="#n8_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N6" source="N6"/>
+      </input>
+      <joinAttribute name="JOIN$MANDT$MANDT"/>
+      <joinAttribute name="JOIN$SETCLASS$SETCLASS"/>
+      <joinAttribute name="JOIN$SETNAME$N6"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_18">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_18$$$$SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_11" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute hidden="true" id="JOIN$SETNAME$N4"/>
+        <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+        <viewAttribute hidden="true" id="JOIN$SETCLASS$SETCLASS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_18">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N4" source="SETNAME"/>
+      </input>
+      <input node="#n8_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N4" source="N4"/>
+      </input>
+      <joinAttribute name="JOIN$MANDT$MANDT"/>
+      <joinAttribute name="JOIN$SETCLASS$SETCLASS"/>
+      <joinAttribute name="JOIN$SETNAME$N4"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_23">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_23$$$$SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N6_TEXT"/>
+        <viewAttribute id="N7_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+        <viewAttribute hidden="true" id="JOIN$SETCLASS$SETCLASS"/>
+        <viewAttribute hidden="true" id="JOIN$SETNAME$N7"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_23">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N7" source="SETNAME"/>
+      </input>
+      <input node="#n8_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7_TEXT" source="N7_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N7" source="N7"/>
+      </input>
+      <joinAttribute name="JOIN$MANDT$MANDT"/>
+      <joinAttribute name="JOIN$SETCLASS$SETCLASS"/>
+      <joinAttribute name="JOIN$SETNAME$N7"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_24">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="SEQNR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_24$$$$SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N8"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N6_TEXT"/>
+        <viewAttribute id="N7_TEXT"/>
+        <viewAttribute id="N8_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+        <viewAttribute hidden="true" id="JOIN$SETCLASS$SETCLASS"/>
+        <viewAttribute hidden="true" id="JOIN$SETNAME$N8"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_24">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N8" source="SETNAME"/>
+      </input>
+      <input node="#n8_text">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="N8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7_TEXT" source="N7_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8_TEXT" source="N8_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETCLASS$SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SETNAME$N8" source="N8"/>
+      </input>
+      <joinAttribute name="JOIN$MANDT$MANDT"/>
+      <joinAttribute name="JOIN$SETCLASS$SETCLASS"/>
+      <joinAttribute name="JOIN$SETNAME$N8"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N6_TEXT"/>
+        <viewAttribute id="N7"/>
+        <viewAttribute id="N7_TEXT"/>
+        <viewAttribute id="N8"/>
+        <viewAttribute id="N8_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Join_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N4_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N5_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N6" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N6_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Join_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N3" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N3_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N4_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N5_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N6" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N6_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8_TEXT" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Join_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N3" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N2_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N3_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N4_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N5_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N6" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N6_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8_TEXT" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Join_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SEQNR" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N6" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N6_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8_TEXT" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Join_10">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8_TEXT" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Join_11">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N5_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N6" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N6_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N7_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8_TEXT" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7_TEXT" source="N7_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="N8_TEXT" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7" source="N7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N7_TEXT" source="N7_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8" source="N8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N8_TEXT" source="N8_TEXT"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="VALFROM" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VALFROM"/>
+        <keyMapping columnObjectName="Union_1" columnName="VALFROM"/>
+      </attribute>
+      <attribute id="J1" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="J1"/>
+        <keyMapping columnObjectName="Union_1" columnName="J1"/>
+      </attribute>
+      <attribute id="N1" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N1"/>
+        <keyMapping columnObjectName="Union_1" columnName="N1"/>
+      </attribute>
+      <attribute id="N2" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N2"/>
+        <keyMapping columnObjectName="Union_1" columnName="N2"/>
+      </attribute>
+      <attribute id="N3" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N3"/>
+        <keyMapping columnObjectName="Union_1" columnName="N3"/>
+      </attribute>
+      <attribute id="N4" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N4"/>
+        <keyMapping columnObjectName="Union_1" columnName="N4"/>
+      </attribute>
+      <attribute id="N5" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N5"/>
+        <keyMapping columnObjectName="Union_1" columnName="N5"/>
+      </attribute>
+      <attribute id="N6" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N6"/>
+        <keyMapping columnObjectName="Union_1" columnName="N6"/>
+      </attribute>
+      <attribute id="N7" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N7"/>
+        <keyMapping columnObjectName="Union_1" columnName="N7"/>
+      </attribute>
+      <attribute id="N8" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N8"/>
+        <keyMapping columnObjectName="Union_1" columnName="N8"/>
+      </attribute>
+      <attribute id="N1_TEXT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N1_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N1_TEXT"/>
+      </attribute>
+      <attribute id="N2_TEXT" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N2_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N2_TEXT"/>
+      </attribute>
+      <attribute id="N3_TEXT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N3_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N3_TEXT"/>
+      </attribute>
+      <attribute id="N4_TEXT" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N4_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N4_TEXT"/>
+      </attribute>
+      <attribute id="N5_TEXT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N5_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N5_TEXT"/>
+      </attribute>
+      <attribute id="N6_TEXT" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N6_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N6_TEXT"/>
+      </attribute>
+      <attribute id="N7_TEXT" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N7_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N7_TEXT"/>
+      </attribute>
+      <attribute id="N8_TEXT" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="N8_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N8_TEXT"/>
+      </attribute>
+      <attribute id="MANDT" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Union_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="SETCLASS" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETCLASS"/>
+        <keyMapping columnObjectName="Union_1" columnName="SETCLASS"/>
+      </attribute>
+      <attribute id="SEQNR" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SEQNR"/>
+        <keyMapping columnObjectName="Union_1" columnName="SEQNR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="JER_CUENTA_N8_TEXT" hidden="false" order="22" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N8_Text"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="35">
+          <formula>if (isnull(&quot;N8_TEXT&quot;),&quot;VALFROM&quot;,&quot;N8_TEXT&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="JER_CUENTA_N7_TEXT" hidden="false" order="23" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N7_Text"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="35">
+          <formula>if (isnull(&quot;N7_TEXT&quot;),&quot;VALFROM&quot;,&quot;N7_TEXT&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="JER_CUENTA_N6_TEXT" hidden="false" order="24" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N6_Text"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="35">
+          <formula>if (isnull(&quot;N6_TEXT&quot;),&quot;VALFROM&quot;,&quot;N6_TEXT&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="JER_CUENTA_N5_TEXT" hidden="false" order="25" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N5_Text"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="35">
+          <formula>if (isnull(&quot;N5_TEXT&quot;),&quot;VALFROM&quot;,&quot;N5_TEXT&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="JER_CUENTA_N4_TEXT" hidden="false" order="26" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N4_Text"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="35">
+          <formula>if (isnull(&quot;N4_TEXT&quot;),&quot;VALFROM&quot;,&quot;N4_TEXT&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="JER_CUENTA_N3_TEXT" hidden="false" order="27" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jer_Cuenta_N3_Text"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="35">
+          <formula>if (isnull(&quot;N3_TEXT&quot;),&quot;VALFROM&quot;,&quot;N3_TEXT&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="944" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="589" y="2001"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="739" y="2011"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="nivel2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="600" y="1920"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="750" y="1929"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="nivel3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="1810"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="771" y="1819"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="nivel4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="1700"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="771" y="1700"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="nivel5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="1610"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="771" y="1619"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="nivel6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="1529"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="771" y="1538"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="nivel7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="1440"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="780" y="1359"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_19" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="771" y="1449"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="nivel8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="1350"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="n1_text" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="1206"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="780" y="1215"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="n2_text" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="1125"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="780" y="1134"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_11" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="780" y="1045"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="n3_text" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="1036"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="n4_text" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="946"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_12" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="780" y="955"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="n5_text" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="856"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_13" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="791" y="449"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_20" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="780" y="874"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="n6_text" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="766"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_22" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="780" y="775"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="n7_text" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="621" y="690"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_21" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="780" y="699"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="n8_text" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="700" y="560"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="710" y="365"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_14" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="637" y="449"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="550" y="365"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_15" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="483" y="449"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_16" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1130" y="460"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_17" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1310" y="455"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="370" y="365"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1060" y="365"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1220" y="365"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_18" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="960" y="455"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_11" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="900" y="365"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_23" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1510" y="446"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1470" y="365"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_24" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1680" y="459"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1649" y="365"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="944" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

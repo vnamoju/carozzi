@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="e630ddd4708b4664d6b755d5ad373000" name="FG_SELLOUT_BW" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="419f600004b3c63ebde174ca2c649386" key="sap.afm.layout">
+    <annotations xmi:id="d9bf90b3a6b666a348a32af95df549ac" key="x" value="10"/>
+    <annotations xmi:id="1ea6ba300bc8d5f50fa478d9950c5d49" key="y" value="10"/>
+    <annotations xmi:id="ed901a2976a2b05f9c8d71a887f9d17a" key="width" value="100"/>
+    <annotations xmi:id="7b6c05a0fc5129b3fff1f7ef11c99d28" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="e2de1fb0d5f56de06d96a2edf663ccb6" key="sap.afm.palette">
+    <annotations xmi:id="e0f943e8f21ff4812f43935ea1c991a3" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="66cfa0045f96fbc0ddabe9f1b587ff42" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="140ddcd7d2a2b2df40ee6ecfbd16c03a" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="c32a9397d258280dda8aa81672a56809" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="6e895ed4af64ca145a5988ed17c30942" name="HANA_BWP_FG_MIGRA_SELLOUT_BW" type="VIRTUAL_TABLE" catalogObjectName="SCP_CAROZZI_SAC::HANA_BWP_FG_MIGRA_SELLOUT_BW" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="3154daafe9790dac9ed92b58446bf886" key="sap.afm.description" value=""/>
+    <annotations xmi:id="06e2e36275d65266f62950e29714ef90" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="e60d54428135d81aa4a912f82f79f2ea" key="sap.afm.layout">
+      <annotations xmi:id="8141f65c6db87b7408d140c749fa0977" key="x" value="133"/>
+      <annotations xmi:id="014cabda79b188ea7b0a780c96c99dab" key="y" value="74"/>
+      <annotations xmi:id="3c435be02905a0659aa3257b82cc2924" key="width" value="100"/>
+      <annotations xmi:id="6842f77100076c4d3ed25b443b35f3dc" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="c9b42c39aa68a686344e099db687d40b" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="3c646cb0ae1be2bca63301ee42ca3860" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="932512d7ba05f78b49268c78f337760a" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="51fcf5a1d108a6f0cc0866b1186c68d1" key="HANA_BWP_FG_MIGRA_SELLOUT_BW_Output" value="FG_SELLOUT_BW_Input"/>
+    </annotations>
+    <annotations xmi:id="1b2829df7a241aeae9401ff46a2bbb46" key="sap.im.remoteSourceTableDefinitions" value="">
+      <annotations xmi:id="2cf69acbd19dee8246303a90cfa66b4c" key="type" value=""/>
+    </annotations>
+    <outputs name="HANA_BWP_FG_MIGRA_SELLOUT_BW_Output" kind="TABLE" xmi:id="7831a50e6b93257855f8f5a714df488d">
+      <attributes name="_BIC_ZCDCADENA" type="NVARCHAR" length="10" scale="0" nullable="true" xmi:id="56460c8464b95e22d1ac81d997c08e39"/>
+      <attributes name="_BIC_ZSUSUPER" type="NVARCHAR" length="10" scale="0" nullable="true" xmi:id="fad00e39fb73af9d0ef2a466fda939d6"/>
+      <attributes name="Periodo" type="NVARCHAR" length="2" scale="0" nullable="true" xmi:id="d1a5588ef3010a328548741ef5d25ca1"/>
+      <attributes name="ZWAERS" type="VARCHAR" length="6" scale="0" nullable="true" xmi:id="8ca08c0b3c6e09aea25a394cf9a5dbb2"/>
+      <attributes name="ZCADENA_NUM" type="NVARCHAR" length="10" scale="0" nullable="true" xmi:id="5af49b10450f831054a5a33846172678"/>
+      <attributes name="valor" type="DECIMAL" length="20" scale="0" nullable="true" xmi:id="241c7c5b9aacf76361f685caea861f06"/>
+      <attributes name="valor_costo" type="DECIMAL" length="20" scale="0" nullable="true" xmi:id="0968bdfcc3dc92fbf92bcb7936c85487"/>
+      <attributes name="_BIC_ZCDPROSUP" type="NVARCHAR" length="18" scale="0" nullable="true" xmi:id="8aa501f6e7c893003d56cdb187952d4a"/>
+      <attributes name="CALYEAR_1" type="NVARCHAR" length="4" scale="0" nullable="true" xmi:id="e03128550ecfca11ddf3fff16ee329bc"/>
+      <attributes name="TR_1" type="NVARCHAR" length="2" scale="0" nullable="true" xmi:id="5391a6c26142974fa95d47c9fed36245"/>
+      <attributes name="MATERIAL_1" type="NVARCHAR" length="18" scale="0" nullable="true" xmi:id="3f3a1fb0c59d5cf7aa7c4816d1e5f9b2"/>
+      <attributes name="CALMONTH_1" type="NVARCHAR" length="6" scale="0" nullable="true" xmi:id="672d9949e04d93e43450238cb0aa7664"/>
+      <attributes name="BILL_QTY" type="DECIMAL" length="17" scale="3" nullable="true" xmi:id="993b507114e78082a017062e2f76611b"/>
+      <attributes name="_BIC_ZCANTVTA_1" type="DECIMAL" length="17" scale="3" nullable="true" xmi:id="155937733f73f8ab2fbd89946fa14ee9"/>
+      <attributes name="_BIC_ZVALCOSML_1" type="DECIMAL" length="17" scale="2" nullable="true" xmi:id="6e2927e60be860e7324c82803e0902fa"/>
+      <attributes name="_BIC_ZVALOR_ML_1" type="DECIMAL" length="17" scale="2" nullable="true" xmi:id="256d2b0ca3de1327fdb42138b457b441"/>
+      <attributes xmi:id="c724801302846059ab4b6e293ab36173" name="UNIT_1" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="ee85c9e5c465a864954dc44a953c8155" name="FG_SELLOUT_BW" type="TEMPLATE_TABLE" catalogObjectName="FG_SELLOUT_BW" dataLayout="COLUMN" truncateTable="true">
+    <annotations xmi:id="7d90a3eb342bf98b0bf5bb68f4f9f636" key="sap.afm.layout">
+      <annotations xmi:id="a101169cdb44cbc11b73ae056fa72651" key="x" value="253"/>
+      <annotations xmi:id="e7fa9846867f4ffd24432ca8e75d5e5f" key="y" value="83"/>
+      <annotations xmi:id="8c5c54233721c3dc0269421b6882325d" key="width" value="100"/>
+      <annotations xmi:id="04890469df46925f4e844065a4d28854" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="aa157759ef4b7d896e85b81c0a7e6635" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="060fecbc2ae624fc639a5cf4b2a05b28" key="sap.afm.nodeInputs">
+      <annotations xmi:id="500bbfb4dec2e961bf6afe982f6466f2" key="FG_SELLOUT_BW_Input" value="HANA_BWP_FG_MIGRA_SELLOUT_BW_Output"/>
+    </annotations>
+    <annotations xmi:id="988f3cdba160431d5e96730357256224" key="sap.afm.nodeOutputs">
+      <annotations/>
+    </annotations>
+    <inputs name="FG_SELLOUT_BW_Input" kind="TABLE" xmi:id="7473c053007fdb037698e0d9f06c72bb">
+      <attributes xmi:id="54a9d9428e8042c2ab4471e5ebd7ec7e" name="_BIC_ZCDCADENA" type="NVARCHAR" nullable="true" length="10" scale="0"/>
+      <attributes xmi:id="c4fff263b034daab2a8073b02ad870d6" name="_BIC_ZSUSUPER" type="NVARCHAR" nullable="true" length="10" scale="0"/>
+      <attributes xmi:id="da5933e21988699179d205237bdfde44" name="Periodo" type="NVARCHAR" nullable="true" length="2" scale="0"/>
+      <attributes xmi:id="8bf2f70cc0c25024007fee43500ebe88" name="ZWAERS" type="VARCHAR" nullable="true" length="6" scale="0"/>
+      <attributes xmi:id="9053e867bb77a6a266f8481965ace736" name="ZCADENA_NUM" type="NVARCHAR" nullable="true" length="10" scale="0"/>
+      <attributes xmi:id="cf7e570c05afbcde5ae9790d9239619b" name="valor" type="DECIMAL" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="243e84e9fa0c356f791e51d748c2511b" name="valor_costo" type="DECIMAL" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="e1c046b931ceee6c500df6027f7e6a3d" name="_BIC_ZCDPROSUP" type="NVARCHAR" nullable="true" length="18" scale="0"/>
+      <attributes xmi:id="caddba101b5c78ea20d252a0ae5563a0" name="CALYEAR_1" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="0247f01a2b95d648d08dafa22a8589d6" name="TR_1" type="NVARCHAR" nullable="true" length="2" scale="0"/>
+      <attributes xmi:id="1273d72db2ec55e157d849d7625d0817" name="MATERIAL_1" type="NVARCHAR" nullable="true" length="18" scale="0"/>
+      <attributes xmi:id="3d6603bad1b294787438073ba28bba79" name="CALMONTH_1" type="NVARCHAR" nullable="true" length="6" scale="0"/>
+      <attributes xmi:id="a616e2a5679936841fee40ba760981cf" name="BILL_QTY" type="DECIMAL" nullable="true" length="17" scale="3"/>
+      <attributes xmi:id="d3efdeb5ce43eeb456acfacb542c89c7" name="_BIC_ZCANTVTA_1" type="DECIMAL" nullable="true" length="17" scale="3"/>
+      <attributes xmi:id="e3252ed3cb0b0bd5249e12c0c9adb118" name="_BIC_ZVALCOSML_1" type="DECIMAL" nullable="true" length="17" scale="2"/>
+      <attributes xmi:id="61279a20d66fac7e4bbf601574086a87" name="_BIC_ZVALOR_ML_1" type="DECIMAL" nullable="true" length="17" scale="2"/>
+      <attributes xmi:id="8d37788f789f81c9caf98f2c7a21502d" name="UNIT_1" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+    </inputs>
+  </nodes>
+  <tableMappings xmi:id="f67072f14f0eb17780e2bcc35072f83f" source="7831a50e6b93257855f8f5a714df488d" target="7473c053007fdb037698e0d9f06c72bb">
+    <attributeMappings source="56460c8464b95e22d1ac81d997c08e39" target="54a9d9428e8042c2ab4471e5ebd7ec7e" xmi:id="4daf4efc88b54b1bf04c9c8da841b4d1"/>
+    <attributeMappings source="fad00e39fb73af9d0ef2a466fda939d6" target="c4fff263b034daab2a8073b02ad870d6" xmi:id="82f38b29ae18d36ef9addfa7d9d472db"/>
+    <attributeMappings source="d1a5588ef3010a328548741ef5d25ca1" target="da5933e21988699179d205237bdfde44" xmi:id="6700f0ea510c566a7bd6e786d6534802"/>
+    <attributeMappings source="8ca08c0b3c6e09aea25a394cf9a5dbb2" target="8bf2f70cc0c25024007fee43500ebe88" xmi:id="feb76886c4b04b155ff79f68023ff2d3"/>
+    <attributeMappings source="5af49b10450f831054a5a33846172678" target="9053e867bb77a6a266f8481965ace736" xmi:id="d909abaa37fcaf6eecc52f96762e9376"/>
+    <attributeMappings source="241c7c5b9aacf76361f685caea861f06" target="cf7e570c05afbcde5ae9790d9239619b" xmi:id="503a4f668fcc5c1308d4925420faa21b"/>
+    <attributeMappings source="0968bdfcc3dc92fbf92bcb7936c85487" target="243e84e9fa0c356f791e51d748c2511b" xmi:id="c9dca95a900e24e6610415b565e44fd4"/>
+    <attributeMappings xmi:id="23db9b42f549cfab1fbdf9b12e41a664" source="8aa501f6e7c893003d56cdb187952d4a" target="e1c046b931ceee6c500df6027f7e6a3d"/>
+    <attributeMappings xmi:id="d46cce9a2d20e674b0f8c5e789233e98" source="e03128550ecfca11ddf3fff16ee329bc" target="caddba101b5c78ea20d252a0ae5563a0"/>
+    <attributeMappings xmi:id="451dbc160a05c4fdd0b4a1b2f7e1d433" source="5391a6c26142974fa95d47c9fed36245" target="0247f01a2b95d648d08dafa22a8589d6"/>
+    <attributeMappings xmi:id="eb631f29776c3ae012dc3ec665163f23" source="3f3a1fb0c59d5cf7aa7c4816d1e5f9b2" target="1273d72db2ec55e157d849d7625d0817"/>
+    <attributeMappings xmi:id="023c6ba6fa72a13b2f71d9a194847884" source="672d9949e04d93e43450238cb0aa7664" target="3d6603bad1b294787438073ba28bba79"/>
+    <attributeMappings xmi:id="1ca541b803034686f541b2d9f3e95b8d" source="993b507114e78082a017062e2f76611b" target="a616e2a5679936841fee40ba760981cf"/>
+    <attributeMappings xmi:id="c80a5aef963521aa57892ca713359e90" source="155937733f73f8ab2fbd89946fa14ee9" target="d3efdeb5ce43eeb456acfacb542c89c7"/>
+    <attributeMappings xmi:id="57dbbba099d5099b200ceaa3e89bc7ea" source="6e2927e60be860e7324c82803e0902fa" target="e3252ed3cb0b0bd5249e12c0c9adb118"/>
+    <attributeMappings xmi:id="b34d5c05f1a20ba90cb74011ecc23cae" source="256d2b0ca3de1327fdb42138b457b441" target="61279a20d66fac7e4bbf601574086a87"/>
+    <attributeMappings xmi:id="ca3b0b5bec0068c40ab0041e8ea5137d" source="c724801302846059ab4b6e293ab36173" target="8d37788f789f81c9caf98f2c7a21502d"/>
+  </tableMappings>
+</flowgraph:ContainerNode>

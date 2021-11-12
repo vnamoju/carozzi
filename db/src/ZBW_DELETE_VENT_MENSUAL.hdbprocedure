@@ -1,0 +1,14 @@
+PROCEDURE "SCP_CAROZZI_SAC::ZBW_DELETE_VENT_MENSUAL" (IN ZFECHA VARCHAR(6) )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   delete from "SCP_CAROZZI_SAC::ZBW_SCP_SALE_EXT"
+   WHERE "SCP_CAROZZI_SAC"."ZBW_SCP_SALE_EXT"."0CALMONTH" = ZFECHA;  
+   
+   
+END

@@ -1,0 +1,1465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" schemaVersion="2.3" id="Z_0PC_C01_01_IND" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="Informe Global Costos"/>
+  <metadata changedAt="2020-09-02 10:53:29.409"/>
+  <localVariables>
+    <variable id="0FISCPER">
+      <descriptions defaultDescription="Ejercicio/Periodo (aaaammm)"/>
+      <variableProperties datatype="VARCHAR" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="FISCPER"/>
+        </valueDomain>
+        <selection multiLine="false" type="Interval"/>
+        <defaultRange operator="BT" including="true" lowValue="" highValue="" lowExpression="true" highExpression="true"/>
+      </variableProperties>
+    </variable>
+    <variable id="Z_SOCIEDA">
+      <descriptions defaultDescription="Sociedad CO"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="CO_AREA"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="Z0CURTYPE">
+      <descriptions defaultDescription="Tipo de Moneda"/>
+      <variableProperties datatype="VARCHAR" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="CURTYPE"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="Z_VERSION">
+      <descriptions defaultDescription="VERSION"/>
+      <variableProperties datatype="VARCHAR" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="VERSION"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="Z_MATERAL">
+      <descriptions defaultDescription="Material"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="MATERIAL"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="Z_VTYPE">
+      <descriptions defaultDescription="Tipo de Valor"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="VTYPE"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="Z_CENTRO">
+      <descriptions defaultDescription="Centro"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="PLANT"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="47"/>
+  <dataSources>
+    <DataSource id="ZBW_0COPC_01">
+      <resourceUri>ZBW_0COPC_01</resourceUri>
+    </DataSource>
+    <DataSource id="ZBW_0COPC_02">
+      <resourceUri>ZBW_0COPC_02</resourceUri>
+    </DataSource>
+    <DataSource id="ZBW_0COPC_SCP">
+      <resourceUri>ZBW_0COPC_SCP</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ACT_INPUT"/>
+        <viewAttribute id="AMOUNT"/>
+        <viewAttribute id="AMOUNTFX"/>
+        <viewAttribute id="AMOUNTVR"/>
+        <viewAttribute id="BP_INPUT"/>
+        <viewAttribute id="CCT_INPUT"/>
+        <viewAttribute id="COSTELMNT"/>
+        <viewAttribute id="CO_AREA"/>
+        <viewAttribute id="CURRENCY"/>
+        <viewAttribute id="CURTYPE"/>
+        <viewAttribute id="FISCPER"/>
+        <viewAttribute id="FISCVARNT"/>
+        <viewAttribute id="FLG_DELFLG"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MAT_INPUT"/>
+        <viewAttribute id="ORDERITEM"/>
+        <viewAttribute id="PARTOBJ"/>
+        <viewAttribute id="PLANT"/>
+        <viewAttribute id="PLT_INPUT"/>
+        <viewAttribute id="POBJTYPE"/>
+        <viewAttribute id="PRODORDER"/>
+        <viewAttribute id="PRODPROCNR"/>
+        <viewAttribute id="PRODVRSN"/>
+        <viewAttribute id="QUANTIN"/>
+        <viewAttribute id="QUANTINFX"/>
+        <viewAttribute id="QUANTINVR"/>
+        <viewAttribute id="QUANTOUT"/>
+        <viewAttribute id="SENRECEIV"/>
+        <viewAttribute id="UNIT_IN"/>
+        <viewAttribute id="UNIT_OUT"/>
+        <viewAttribute id="VALUTYP"/>
+        <viewAttribute id="VERSION"/>
+        <viewAttribute id="VTYPE"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_AMOUNT" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CURRENCY&quot; = 'CLP' OR &quot;CURRENCY&quot; = 'PESOS',&quot;AMOUNT&quot;*100,&quot;AMOUNT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_AMOUNTFX" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CURRENCY&quot; = 'CLP' OR &quot;CURRENCY&quot; = 'PESOS',&quot;AMOUNTFX&quot;*100,&quot;AMOUNTFX&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_AMOUNTVR" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CURRENCY&quot; = 'CLP' OR &quot;CURRENCY&quot; = 'PESOS',&quot;AMOUNTVR&quot;*100,&quot;AMOUNTVR&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTIN" length="18" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;QUANTIN&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTINFX" length="18" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;QUANTINFX&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTINVR" length="18" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;QUANTINVR&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTOUT" length="18" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;QUANTOUT&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#ZBW_0COPC_01">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACT_INPUT" source="ACT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNTFX" source="AMOUNTFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNTVR" source="AMOUNTVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BP_INPUT" source="BP_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CCT_INPUT" source="CCT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COSTELMNT" source="COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CO_AREA" source="CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURTYPE" source="CURTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCPER" source="FISCPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCVARNT" source="FISCVARNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FLG_DELFLG" source="FLG_DELFLG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAT_INPUT" source="MAT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDERITEM" source="ORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTOBJ" source="PARTOBJ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLT_INPUT" source="PLT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POBJTYPE" source="POBJTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODORDER" source="PRODORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODPROCNR" source="PRODPROCNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODVRSN" source="PRODVRSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIN" source="QUANTIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUANTINFX" source="QUANTINFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUANTINVR" source="QUANTINVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUANTOUT" source="QUANTOUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SENRECEIV" source="SENRECEIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_IN" source="UNIT_IN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OUT" source="UNIT_OUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALUTYP" source="VALUTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSION" source="VERSION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTYPE" source="VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ACT_INPUT"/>
+        <viewAttribute id="BP_INPUT"/>
+        <viewAttribute id="CCT_INPUT"/>
+        <viewAttribute id="COSTELMNT"/>
+        <viewAttribute id="CO_AREA"/>
+        <viewAttribute id="CURRENCY"/>
+        <viewAttribute id="CURTYPE"/>
+        <viewAttribute id="FISCPER"/>
+        <viewAttribute id="FISCVARNT"/>
+        <viewAttribute id="FLG_DELFLG"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MAT_INPUT"/>
+        <viewAttribute id="ORDERITEM"/>
+        <viewAttribute id="PARTOBJ"/>
+        <viewAttribute id="PLANT"/>
+        <viewAttribute id="PLT_INPUT"/>
+        <viewAttribute id="POBJTYPE"/>
+        <viewAttribute id="PRODORDER"/>
+        <viewAttribute id="PRODPROCNR"/>
+        <viewAttribute id="PRODVRSN"/>
+        <viewAttribute id="SENRECEIV"/>
+        <viewAttribute id="UNIT_IN"/>
+        <viewAttribute id="UNIT_OUT"/>
+        <viewAttribute id="VALUTYP"/>
+        <viewAttribute id="VERSION"/>
+        <viewAttribute id="VTYPE"/>
+        <viewAttribute aggregationType="sum" id="Total_AMOUNT"/>
+        <viewAttribute aggregationType="sum" id="Total_AMOUNTFX"/>
+        <viewAttribute aggregationType="sum" id="Total_AMOUNTVR"/>
+        <viewAttribute aggregationType="sum" id="Total_QUANTIN"/>
+        <viewAttribute aggregationType="sum" id="Total_QUANTINFX"/>
+        <viewAttribute aggregationType="sum" id="Total_QUANTINVR"/>
+        <viewAttribute aggregationType="sum" id="Total_QUANTOUT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACT_INPUT" source="ACT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BP_INPUT" source="BP_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CCT_INPUT" source="CCT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COSTELMNT" source="COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CO_AREA" source="CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURTYPE" source="CURTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCPER" source="FISCPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCVARNT" source="FISCVARNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FLG_DELFLG" source="FLG_DELFLG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAT_INPUT" source="MAT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDERITEM" source="ORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTOBJ" source="PARTOBJ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLT_INPUT" source="PLT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POBJTYPE" source="POBJTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODORDER" source="PRODORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODPROCNR" source="PRODPROCNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODVRSN" source="PRODVRSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SENRECEIV" source="SENRECEIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_IN" source="UNIT_IN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OUT" source="UNIT_OUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALUTYP" source="VALUTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSION" source="VERSION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTYPE" source="VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNT" source="Total_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTFX" source="Total_AMOUNTFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTVR" source="Total_AMOUNTVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTIN" source="Total_QUANTIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINFX" source="Total_QUANTINFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINVR" source="Total_QUANTINVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTOUT" source="Total_QUANTOUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ACT_INPUT"/>
+        <viewAttribute id="AMOUNT"/>
+        <viewAttribute id="AMOUNTFX"/>
+        <viewAttribute id="AMOUNTVR"/>
+        <viewAttribute id="BP_INPUT"/>
+        <viewAttribute id="CCT_INPUT"/>
+        <viewAttribute id="CONTRAM"/>
+        <viewAttribute id="COSTELMNT"/>
+        <viewAttribute id="CO_AREA"/>
+        <viewAttribute id="CURRENCY"/>
+        <viewAttribute id="CURTYPE"/>
+        <viewAttribute id="FISCPER"/>
+        <viewAttribute id="FISCVARNT"/>
+        <viewAttribute id="FLG_DELFLG"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MAT_INPUT"/>
+        <viewAttribute id="MEASTYPE"/>
+        <viewAttribute id="ORDERITEM"/>
+        <viewAttribute id="PARTOBJ"/>
+        <viewAttribute id="PLANT"/>
+        <viewAttribute id="PLT_INPUT"/>
+        <viewAttribute id="POBJTYPE"/>
+        <viewAttribute id="PRODORDER"/>
+        <viewAttribute id="PRODPROCNR"/>
+        <viewAttribute id="PRODVRSN"/>
+        <viewAttribute id="QUANTIN"/>
+        <viewAttribute id="QUANTINFX"/>
+        <viewAttribute id="QUANTINVR"/>
+        <viewAttribute id="QUANTOUT"/>
+        <viewAttribute id="SENRECEIV"/>
+        <viewAttribute id="UNIT_IN"/>
+        <viewAttribute id="UNIT_OUT"/>
+        <viewAttribute id="VALUTYP"/>
+        <viewAttribute id="VERSION"/>
+        <viewAttribute id="VTDETAIL"/>
+        <viewAttribute id="VTYPE"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+        <viewAttribute id="ZRANGO"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_AMOUNT" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CURRENCY&quot; = 'CLP' OR &quot;CURRENCY&quot; = 'PESOS',&quot;AMOUNT&quot;*100,&quot;AMOUNT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_AMOUNTFX" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CURRENCY&quot; = 'CLP' OR &quot;CURRENCY&quot; = 'PESOS',&quot;AMOUNTFX&quot;*100,&quot;AMOUNTFX&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_AMOUNTVR" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CURRENCY&quot; = 'CLP' OR &quot;CURRENCY&quot; = 'PESOS',&quot;AMOUNTVR&quot;*100,&quot;AMOUNTVR&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_CONTRAM" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;CONTRAM&quot;/100</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTIN" length="18" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;QUANTIN&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTINFX" length="18" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;QUANTINFX&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTINVR" length="18" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;QUANTINVR&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTOUT" length="18" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;QUANTOUT&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#ZBW_0COPC_02">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACT_INPUT" source="ACT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNTFX" source="AMOUNTFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNTVR" source="AMOUNTVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BP_INPUT" source="BP_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CCT_INPUT" source="CCT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTRAM" source="CONTRAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COSTELMNT" source="COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CO_AREA" source="CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURTYPE" source="CURTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCPER" source="FISCPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCVARNT" source="FISCVARNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FLG_DELFLG" source="FLG_DELFLG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAT_INPUT" source="MAT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEASTYPE" source="MEASTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDERITEM" source="ORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTOBJ" source="PARTOBJ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLT_INPUT" source="PLT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POBJTYPE" source="POBJTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODORDER" source="PRODORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODPROCNR" source="PRODPROCNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODVRSN" source="PRODVRSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIN" source="QUANTIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUANTINFX" source="QUANTINFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUANTINVR" source="QUANTINVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUANTOUT" source="QUANTOUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SENRECEIV" source="SENRECEIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_IN" source="UNIT_IN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OUT" source="UNIT_OUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALUTYP" source="VALUTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSION" source="VERSION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTDETAIL" source="VTDETAIL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTYPE" source="VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZRANGO" source="ZRANGO"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ACT_INPUT"/>
+        <viewAttribute id="BP_INPUT"/>
+        <viewAttribute id="CCT_INPUT"/>
+        <viewAttribute id="COSTELMNT"/>
+        <viewAttribute id="CO_AREA"/>
+        <viewAttribute id="CURRENCY"/>
+        <viewAttribute id="CURTYPE"/>
+        <viewAttribute id="FISCPER"/>
+        <viewAttribute id="FISCVARNT"/>
+        <viewAttribute id="FLG_DELFLG"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MAT_INPUT"/>
+        <viewAttribute id="MEASTYPE"/>
+        <viewAttribute id="ORDERITEM"/>
+        <viewAttribute id="PARTOBJ"/>
+        <viewAttribute id="PLANT"/>
+        <viewAttribute id="PLT_INPUT"/>
+        <viewAttribute id="POBJTYPE"/>
+        <viewAttribute id="PRODORDER"/>
+        <viewAttribute id="PRODPROCNR"/>
+        <viewAttribute id="PRODVRSN"/>
+        <viewAttribute id="SENRECEIV"/>
+        <viewAttribute id="UNIT_IN"/>
+        <viewAttribute id="UNIT_OUT"/>
+        <viewAttribute id="VALUTYP"/>
+        <viewAttribute id="VERSION"/>
+        <viewAttribute id="VTDETAIL"/>
+        <viewAttribute id="VTYPE"/>
+        <viewAttribute aggregationType="sum" id="Total_AMOUNT"/>
+        <viewAttribute aggregationType="sum" id="Total_AMOUNTFX"/>
+        <viewAttribute aggregationType="sum" id="Total_AMOUNTVR"/>
+        <viewAttribute aggregationType="sum" id="Total_CONTRAM"/>
+        <viewAttribute aggregationType="sum" id="Total_QUANTIN"/>
+        <viewAttribute aggregationType="sum" id="Total_QUANTINFX"/>
+        <viewAttribute aggregationType="sum" id="Total_QUANTINVR"/>
+        <viewAttribute aggregationType="sum" id="Total_QUANTOUT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+        <viewAttribute id="ZRANGO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACT_INPUT" source="ACT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BP_INPUT" source="BP_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CCT_INPUT" source="CCT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COSTELMNT" source="COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CO_AREA" source="CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURTYPE" source="CURTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCPER" source="FISCPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCVARNT" source="FISCVARNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FLG_DELFLG" source="FLG_DELFLG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAT_INPUT" source="MAT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEASTYPE" source="MEASTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDERITEM" source="ORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTOBJ" source="PARTOBJ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLT_INPUT" source="PLT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POBJTYPE" source="POBJTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODORDER" source="PRODORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODPROCNR" source="PRODPROCNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODVRSN" source="PRODVRSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SENRECEIV" source="SENRECEIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_IN" source="UNIT_IN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OUT" source="UNIT_OUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALUTYP" source="VALUTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSION" source="VERSION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTDETAIL" source="VTDETAIL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTYPE" source="VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNT" source="Total_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTFX" source="Total_AMOUNTFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTVR" source="Total_AMOUNTVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_CONTRAM" source="Total_CONTRAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTIN" source="Total_QUANTIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINFX" source="Total_QUANTINFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINVR" source="Total_QUANTINVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTOUT" source="Total_QUANTOUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZRANGO" source="ZRANGO"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="0ABCPROCESS"/>
+        <viewAttribute id="0ABCPROCESS_DESCRIPTION"/>
+        <viewAttribute id="0ACTTYPE"/>
+        <viewAttribute id="0ACTTYPE_DESCRIPTION"/>
+        <viewAttribute id="0ACT_UNIT"/>
+        <viewAttribute id="0ACT_UNIT_DESCRIPTION"/>
+        <viewAttribute id="0COMPONENT"/>
+        <viewAttribute id="0COMPONENT_DESCRIPTION"/>
+        <viewAttribute id="0COMPONENT_0MATL_GROUP"/>
+        <viewAttribute id="0COMPONENT_0MATL_GROUP_DESCRIPTION"/>
+        <viewAttribute id="0COSTCENTER"/>
+        <viewAttribute id="0COSTCENTER_DESCRIPTION"/>
+        <viewAttribute id="0COSTELMNT"/>
+        <viewAttribute id="0COSTELMNT_DESCRIPTION"/>
+        <viewAttribute id="0CO_AREA"/>
+        <viewAttribute id="0CO_AREA_DESCRIPTION"/>
+        <viewAttribute id="0CURRENCY"/>
+        <viewAttribute id="0CURRENCY_DESCRIPTION"/>
+        <viewAttribute id="0CURTYPE"/>
+        <viewAttribute id="0CURTYPE_DESCRIPTION"/>
+        <viewAttribute id="0DB_CR_IND"/>
+        <viewAttribute id="0DB_CR_IND_DESCRIPTION"/>
+        <viewAttribute id="0FISCPER"/>
+        <viewAttribute id="0FISCPER3"/>
+        <viewAttribute id="0FISCYEAR"/>
+        <viewAttribute id="0FISVARNT"/>
+        <viewAttribute id="0MATERIAL"/>
+        <viewAttribute id="0MATERIAL_DESCRIPTION"/>
+        <viewAttribute id="0MATERIAL_0MATL_GROUP"/>
+        <viewAttribute id="0MATERIAL_0MATL_GROUP_DESCRIPTION"/>
+        <viewAttribute id="0MATERIAL_0MATL_TYPE"/>
+        <viewAttribute id="0MATERIAL_0MATL_TYPE_DESCRIPTION"/>
+        <viewAttribute id="0MATERIAL_0PROD_HIER"/>
+        <viewAttribute id="0MATERIAL_0PROD_HIER_DESCRIPTION"/>
+        <viewAttribute id="0METYPE"/>
+        <viewAttribute id="0METYPE_DESCRIPTION"/>
+        <viewAttribute id="0ORDERITEM"/>
+        <viewAttribute id="0PIOBJSV"/>
+        <viewAttribute id="0PIOBJSV_DESCRIPTION"/>
+        <viewAttribute id="0PIOVALUE"/>
+        <viewAttribute id="0PLANT"/>
+        <viewAttribute id="0PLANT_DESCRIPTION"/>
+        <viewAttribute id="0PLANT_COMP"/>
+        <viewAttribute id="0PLANT_COMP_DESCRIPTION"/>
+        <viewAttribute id="0PRODORDER"/>
+        <viewAttribute id="0PRODORDER_DESCRIPTION"/>
+        <viewAttribute id="0PRODORDER_0CUSTOMER"/>
+        <viewAttribute id="0PRODORDER_0CUSTOMER_DESCRIPTION"/>
+        <viewAttribute id="0PRODORDER_0DOC_NUMBER"/>
+        <viewAttribute id="0PRODORDER_0DOC_NUMBER_DESCRIPTION"/>
+        <viewAttribute id="0PRODORDER_0PROYECT"/>
+        <viewAttribute id="0PRODORDER_0PROYECT_DESCRIPTION"/>
+        <viewAttribute id="0PRODORDER_0WBS_ELEMT"/>
+        <viewAttribute id="0PRODORDER_0WBS_ELEMT_DESCRIPTION"/>
+        <viewAttribute id="0PRODPROCNR"/>
+        <viewAttribute id="0PRODPROCNR_DESCRIPTION"/>
+        <viewAttribute id="0PRODVERS"/>
+        <viewAttribute id="0PRODVERS_DESCRIPTION"/>
+        <viewAttribute id="0UNIT"/>
+        <viewAttribute id="0UNIT_DESCRIPTION"/>
+        <viewAttribute id="0VALUATION"/>
+        <viewAttribute id="0VALUATION_DESCRIPTION"/>
+        <viewAttribute id="0VERSION"/>
+        <viewAttribute id="0VERSION_DESCRIPTION"/>
+        <viewAttribute id="0VTDETAIL"/>
+        <viewAttribute id="0VTDETAIL_DESCRIPTION"/>
+        <viewAttribute id="0VTYPE"/>
+        <viewAttribute id="0VTYPE_DESCRIPTION"/>
+        <viewAttribute id="ZBW_0AMOUNT"/>
+        <viewAttribute id="ZBW_0AMOUNTFX"/>
+        <viewAttribute id="ZBW_0AMOUNTVR"/>
+        <viewAttribute id="ZBW_0CONTCOST"/>
+        <viewAttribute id="ZBW_0QUANTITYFX"/>
+        <viewAttribute id="ZBW_0QUANTITYVR"/>
+        <viewAttribute id="ZBW_0QUANTOUT"/>
+        <viewAttribute id="ZBW_0QUENTITY"/>
+        <viewAttribute id="ZCLAVE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_AMOUNTFX" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;ZBW_0AMOUNTFX&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_AMOUNTVR" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;ZBW_0AMOUNTVR&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTINFX" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;ZBW_0QUANTITYFX&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_Amount" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;ZBW_0AMOUNT&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTINVR" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;ZBW_0QUANTITYVR&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTOUT" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;ZBW_0QUANTOUT&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_QUANTIN" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;ZBW_0QUENTITY&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="Total_CONTRAM" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;ZBW_0CONTCOST&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#ZBW_0COPC_SCP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0ABCPROCESS" source="0ABCPROCESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0ABCPROCESS_DESCRIPTION" source="0ABCPROCESS.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0ACTTYPE" source="0ACTTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0ACTTYPE_DESCRIPTION" source="0ACTTYPE.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0ACT_UNIT" source="0ACT_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0ACT_UNIT_DESCRIPTION" source="0ACT_UNIT.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT" source="0COMPONENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT_DESCRIPTION" source="0COMPONENT.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT_0MATL_GROUP" source="0COMPONENT_0MATL_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT_0MATL_GROUP_DESCRIPTION" source="0COMPONENT_0MATL_GROUP.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCENTER" source="0COSTCENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCENTER_DESCRIPTION" source="0COSTCENTER.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTELMNT" source="0COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTELMNT_DESCRIPTION" source="0COSTELMNT.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CO_AREA" source="0CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CO_AREA_DESCRIPTION" source="0CO_AREA.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CURRENCY" source="0CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CURRENCY_DESCRIPTION" source="0CURRENCY.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CURTYPE" source="0CURTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CURTYPE_DESCRIPTION" source="0CURTYPE.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0DB_CR_IND" source="0DB_CR_IND"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0DB_CR_IND_DESCRIPTION" source="0DB_CR_IND.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0FISCPER" source="0FISCPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0FISCPER3" source="0FISCPER3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0FISCYEAR" source="0FISCYEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0FISVARNT" source="0FISVARNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL" source="0MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL_DESCRIPTION" source="0MATERIAL.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL_0MATL_GROUP" source="0MATERIAL_0MATL_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL_0MATL_GROUP_DESCRIPTION" source="0MATERIAL_0MATL_GROUP.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL_0MATL_TYPE" source="0MATERIAL_0MATL_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL_0MATL_TYPE_DESCRIPTION" source="0MATERIAL_0MATL_TYPE.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL_0PROD_HIER" source="0MATERIAL_0PROD_HIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL_0PROD_HIER_DESCRIPTION" source="0MATERIAL_0PROD_HIER.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0METYPE" source="0METYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0METYPE_DESCRIPTION" source="0METYPE.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0ORDERITEM" source="0ORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PIOBJSV" source="0PIOBJSV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PIOBJSV_DESCRIPTION" source="0PIOBJSV.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PIOVALUE" source="0PIOVALUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT" source="0PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT_DESCRIPTION" source="0PLANT.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT_COMP" source="0PLANT_COMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT_COMP_DESCRIPTION" source="0PLANT_COMP.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODORDER" source="0PRODORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODORDER_DESCRIPTION" source="0PRODORDER.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODORDER_0CUSTOMER" source="0PRODORDER_0CUSTOMER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODORDER_0CUSTOMER_DESCRIPTION" source="0PRODORDER_0CUSTOMER.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODORDER_0DOC_NUMBER" source="0PRODORDER_0DOC_NUMBER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODORDER_0DOC_NUMBER_DESCRIPTION" source="0PRODORDER_0DOC_NUMBER.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODORDER_0PROYECT" source="0PRODORDER_0PROYECT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODORDER_0PROYECT_DESCRIPTION" source="0PRODORDER_0PROYECT.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODORDER_0WBS_ELEMT" source="0PRODORDER_0WBS_ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODORDER_0WBS_ELEMT_DESCRIPTION" source="0PRODORDER_0WBS_ELEMT.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODPROCNR" source="0PRODPROCNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODPROCNR_DESCRIPTION" source="0PRODPROCNR.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODVERS" source="0PRODVERS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PRODVERS_DESCRIPTION" source="0PRODVERS.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0UNIT" source="0UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0UNIT_DESCRIPTION" source="0UNIT.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VALUATION" source="0VALUATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VALUATION_DESCRIPTION" source="0VALUATION.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VERSION" source="0VERSION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VERSION_DESCRIPTION" source="0VERSION.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VTDETAIL" source="0VTDETAIL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VTDETAIL_DESCRIPTION" source="0VTDETAIL.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VTYPE" source="0VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VTYPE_DESCRIPTION" source="0VTYPE.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBW_0AMOUNT" source="ZBW_0AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBW_0AMOUNTFX" source="ZBW_0AMOUNTFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBW_0AMOUNTVR" source="ZBW_0AMOUNTVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBW_0CONTCOST" source="ZBW_0CONTCOST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBW_0QUANTITYFX" source="ZBW_0QUANTITYFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBW_0QUANTITYVR" source="ZBW_0QUANTITYVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBW_0QUANTOUT" source="ZBW_0QUANTOUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBW_0QUENTITY" source="ZBW_0QUENTITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLAVE" source="ZCLAVE"/>
+      </input>
+      <filter>(&quot;0FISCPER&quot; &lt;='2019008')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ACT_INPUT"/>
+        <viewAttribute id="BP_INPUT"/>
+        <viewAttribute id="CCT_INPUT"/>
+        <viewAttribute id="COSTELMNT"/>
+        <viewAttribute id="CO_AREA"/>
+        <viewAttribute id="CURRENCY"/>
+        <viewAttribute id="CURTYPE"/>
+        <viewAttribute id="FISCPER"/>
+        <viewAttribute id="FISCVARNT"/>
+        <viewAttribute id="FLG_DELFLG"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MAT_INPUT"/>
+        <viewAttribute id="ORDERITEM"/>
+        <viewAttribute id="PARTOBJ"/>
+        <viewAttribute id="PLANT"/>
+        <viewAttribute id="PLT_INPUT"/>
+        <viewAttribute id="POBJTYPE"/>
+        <viewAttribute id="PRODORDER"/>
+        <viewAttribute id="PRODPROCNR"/>
+        <viewAttribute id="PRODVRSN"/>
+        <viewAttribute id="SENRECEIV"/>
+        <viewAttribute id="UNIT_IN"/>
+        <viewAttribute id="UNIT_OUT"/>
+        <viewAttribute id="VALUTYP"/>
+        <viewAttribute id="VERSION"/>
+        <viewAttribute id="VTYPE"/>
+        <viewAttribute id="VTDETAIL"/>
+        <viewAttribute id="MEASTYPE"/>
+        <viewAttribute id="Total_AMOUNT"/>
+        <viewAttribute id="Total_AMOUNTFX"/>
+        <viewAttribute id="Total_AMOUNTVR"/>
+        <viewAttribute id="Total_QUANTIN"/>
+        <viewAttribute id="Total_QUANTINFX"/>
+        <viewAttribute id="Total_QUANTINVR"/>
+        <viewAttribute id="Total_QUANTOUT"/>
+        <viewAttribute id="Total_CONTRAM"/>
+        <viewAttribute id="CENTRO_TEXT" transparentFilter="false"/>
+        <viewAttribute id="CUENTA_TEXT" transparentFilter="false"/>
+        <viewAttribute id="MATERIAL_TEXT_1" transparentFilter="false"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACT_INPUT" source="ACT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BP_INPUT" source="BP_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CCT_INPUT" source="CCT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COSTELMNT" source="COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CO_AREA" source="CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURTYPE" source="CURTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCPER" source="FISCPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCVARNT" source="FISCVARNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FLG_DELFLG" source="FLG_DELFLG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAT_INPUT" source="MAT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDERITEM" source="ORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTOBJ" source="PARTOBJ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLT_INPUT" source="PLT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POBJTYPE" source="POBJTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODORDER" source="PRODORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODPROCNR" source="PRODPROCNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODVRSN" source="PRODVRSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SENRECEIV" source="SENRECEIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_IN" source="UNIT_IN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OUT" source="UNIT_OUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALUTYP" source="VALUTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSION" source="VERSION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTYPE" source="VTYPE"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VTDETAIL" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MEASTYPE" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNT" source="Total_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTFX" source="Total_AMOUNTFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTVR" source="Total_AMOUNTVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTIN" source="Total_QUANTIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINFX" source="Total_QUANTINFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINVR" source="Total_QUANTINVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTOUT" source="Total_QUANTOUT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Total_CONTRAM" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Aggregation_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACT_INPUT" source="ACT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BP_INPUT" source="BP_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CCT_INPUT" source="CCT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COSTELMNT" source="COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CO_AREA" source="CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURTYPE" source="CURTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCPER" source="FISCPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCVARNT" source="FISCVARNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FLG_DELFLG" source="FLG_DELFLG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAT_INPUT" source="MAT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDERITEM" source="ORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTOBJ" source="PARTOBJ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLT_INPUT" source="PLT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POBJTYPE" source="POBJTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODORDER" source="PRODORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODPROCNR" source="PRODPROCNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODVRSN" source="PRODVRSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SENRECEIV" source="SENRECEIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_IN" source="UNIT_IN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OUT" source="UNIT_OUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALUTYP" source="VALUTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSION" source="VERSION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTYPE" source="VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTDETAIL" source="VTDETAIL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEASTYPE" source="MEASTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNT" source="Total_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTFX" source="Total_AMOUNTFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTVR" source="Total_AMOUNTVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTIN" source="Total_QUANTIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINFX" source="Total_QUANTINFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINVR" source="Total_QUANTINVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTOUT" source="Total_QUANTOUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_CONTRAM" source="Total_CONTRAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACT_INPUT" source="0ACTTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BP_INPUT" source="0ABCPROCESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CCT_INPUT" source="0COSTCENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COSTELMNT" source="0COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CO_AREA" source="0CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="0CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURTYPE" source="0CURTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCPER" source="0FISCPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCVARNT" source="0FISVARNT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="FLG_DELFLG" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GRUPO_MATERIAL_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="0MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="0MATERIAL_0MATL_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="0MATERIAL_0MATL_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="0MATERIAL_DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAT_INPUT" source="0COMPONENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDERITEM" source="0ORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTOBJ" source="0PIOVALUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="0PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLT_INPUT" source="0PLANT_COMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POBJTYPE" source="0PIOBJSV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODORDER" source="0PRODORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODPROCNR" source="0PRODPROCNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODVRSN" source="0PRODVERS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SENRECEIV" source="0DB_CR_IND"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_IN" source="0UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OUT" source="0ACT_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALUTYP" source="0VALUATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSION" source="0VERSION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTYPE" source="0VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTDETAIL" source="0VTDETAIL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEASTYPE" source="0METYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNT" source="Total_Amount"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTFX" source="Total_AMOUNTFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTVR" source="Total_AMOUNTVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTIN" source="Total_QUANTIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINFX" source="Total_QUANTINFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINVR" source="Total_QUANTINVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTOUT" source="Total_QUANTOUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_CONTRAM" source="Total_CONTRAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="0PLANT_DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="0COSTELMNT_DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="0COMPONENT_DESCRIPTION"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ACT_INPUT"/>
+        <viewAttribute id="BP_INPUT"/>
+        <viewAttribute id="CCT_INPUT"/>
+        <viewAttribute id="COSTELMNT"/>
+        <viewAttribute id="CO_AREA"/>
+        <viewAttribute id="CURRENCY"/>
+        <viewAttribute id="CURTYPE"/>
+        <viewAttribute id="FISCPER"/>
+        <viewAttribute id="FISCVARNT"/>
+        <viewAttribute id="FLG_DELFLG"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MAT_INPUT"/>
+        <viewAttribute id="ORDERITEM"/>
+        <viewAttribute id="PARTOBJ"/>
+        <viewAttribute id="PLANT"/>
+        <viewAttribute id="PLT_INPUT"/>
+        <viewAttribute id="POBJTYPE"/>
+        <viewAttribute id="PRODORDER"/>
+        <viewAttribute id="PRODPROCNR"/>
+        <viewAttribute id="PRODVRSN"/>
+        <viewAttribute id="SENRECEIV"/>
+        <viewAttribute id="UNIT_IN"/>
+        <viewAttribute id="UNIT_OUT"/>
+        <viewAttribute id="VALUTYP"/>
+        <viewAttribute id="VERSION"/>
+        <viewAttribute id="VTYPE"/>
+        <viewAttribute id="VTDETAIL"/>
+        <viewAttribute id="MEASTYPE"/>
+        <viewAttribute id="Total_AMOUNT"/>
+        <viewAttribute id="Total_AMOUNTFX"/>
+        <viewAttribute id="Total_AMOUNTVR"/>
+        <viewAttribute id="Total_QUANTIN"/>
+        <viewAttribute id="Total_QUANTINFX"/>
+        <viewAttribute id="Total_QUANTINVR"/>
+        <viewAttribute id="Total_QUANTOUT"/>
+        <viewAttribute id="Total_CONTRAM"/>
+        <viewAttribute id="CENTRO_TEXT" transparentFilter="false"/>
+        <viewAttribute id="CUENTA_TEXT" transparentFilter="false"/>
+        <viewAttribute id="MATERIAL_TEXT_1" transparentFilter="false"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAND_C_REALES" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'S' OR &quot;SENRECEIV&quot; = 'H', if(&quot;VALUTYP&quot; = '0',if(&quot;VERSION&quot; = '000',if(&quot;VTYPE&quot; = '010',1,0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAND_C_PLAN" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'S' OR &quot;SENRECEIV&quot; = 'H', if(&quot;VALUTYP&quot; = '0',if(&quot;VERSION&quot; = '000',if(&quot;VTYPE&quot; = '020',1,0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAND_C_TEORICO" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'S' , if(&quot;VALUTYP&quot; = '0' ,if(&quot;VTYPE&quot; = '030',1,0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAND_C_CANT" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula> if(&quot;VALUTYP&quot; = '0',if(&quot;VTYPE&quot; = '010',1,0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_C_CANTTEO" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'S', if(&quot;VALUTYP&quot; = '0',if(&quot;VTYPE&quot; = '030',1,0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_C_DESVIESTRU" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'S', if(&quot;VALUTYP&quot; = '0',if(&quot;MEASTYPE&quot; = '001300',if(&quot;VTYPE&quot; = '070',if(&quot;VTDETAIL&quot; = '06',1,0),0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_C_DESVIACANTINP" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'S', if(&quot;VALUTYP&quot; = '0',if(&quot;MEASTYPE&quot; = '001300',if(&quot;VTYPE&quot; = '070',if(&quot;VTDETAIL&quot; = '04',1,0),0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_DESV_PRECIO" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'L', if(&quot;VALUTYP&quot; = '0',if(&quot;MEASTYPE&quot; = '001300',if(&quot;VTYPE&quot; = '070',if(&quot;VTDETAIL&quot; = '21',1,0),0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_DESV_TAM_LOTE" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'L', if(&quot;VALUTYP&quot; = '0',if(&quot;MEASTYPE&quot; = '001300',if(&quot;VTYPE&quot; = '070',if(&quot;VTDETAIL&quot; = '22',1,0),0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_DESV_PRECIO_INPUT" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'S', if(&quot;VALUTYP&quot; = '0',if(&quot;MEASTYPE&quot; = '001300',if(&quot;VTYPE&quot; = '070',if(&quot;VTDETAIL&quot; = '01',1,0),0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_DESVIAC_TOTA_IMPUTA" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'L', if(&quot;VALUTYP&quot; = '0',if(&quot;MEASTYPE&quot; = '001300',if(&quot;VTYPE&quot; = '070',if(&quot;VTDETAIL&quot; = '20' OR &quot;VTDETAIL&quot; = '21' OR  &quot;VTDETAIL&quot; = '22' OR &quot;VTDETAIL&quot; = '31',1,0),0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_DESVIAC_RESTANTE" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'L', if(&quot;VALUTYP&quot; = '0',if(&quot;MEASTYPE&quot; = '001300',if(&quot;VTYPE&quot; = '070',if(&quot;VTDETAIL&quot; = '31' ,1,0),0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_DESVIAC_TOTAL_INPUT" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'S', if(&quot;VALUTYP&quot; = '0',if(&quot;MEASTYPE&quot; = '001300',if(&quot;VTYPE&quot; = '070',if(&quot;VTDETAIL&quot; = '01' OR &quot;VTDETAIL&quot; = '04' OR  &quot;VTDETAIL&quot; = '06' OR &quot;VTDETAIL&quot; = '11',1,0),0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_DESVIACI_RESTANTE_INPUT" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'S', if(&quot;VALUTYP&quot; = '0',if(&quot;MEASTYPE&quot; = '001300',if(&quot;VTYPE&quot; = '070',if(&quot;VTDETAIL&quot; = '11',1,0),0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_DESVIAC_TOTAL" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SENRECEIV&quot; = 'S' OR &quot;SENRECEIV&quot; = 'L', if(&quot;VALUTYP&quot; = '0',if(&quot;MEASTYPE&quot; = '001300',if(&quot;VTYPE&quot; = '070',if(&quot;VTDETAIL&quot; = '01'OR  &quot;VTDETAIL&quot; = '04' OR &quot;VTDETAIL&quot; = '06' OR &quot;VTDETAIL&quot; = '11' OR &quot;VTDETAIL&quot; = '20' OR &quot;VTDETAIL&quot; = '21' OR &quot;VTDETAIL&quot; = '22' OR &quot;VTDETAIL&quot; = '31', 1,0),0),0),0),0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZBAN_TRABAJO_CURSO" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;VERSION&quot; = '000', if(&quot;VALUTYP&quot; = '0',if(&quot;MEASTYPE&quot; = '001410',if(&quot;VTYPE&quot; = '080',if(&quot;VTDETAIL&quot; = '01'OR  &quot;VTDETAIL&quot; = '02' OR &quot;VTDETAIL&quot; = '03', 1,0),0),0),0),0)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Union_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACT_INPUT" source="ACT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BP_INPUT" source="BP_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CCT_INPUT" source="CCT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COSTELMNT" source="COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CO_AREA" source="CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURTYPE" source="CURTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCPER" source="FISCPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FISCVARNT" source="FISCVARNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FLG_DELFLG" source="FLG_DELFLG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAT_INPUT" source="MAT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDERITEM" source="ORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTOBJ" source="PARTOBJ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLT_INPUT" source="PLT_INPUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POBJTYPE" source="POBJTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODORDER" source="PRODORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODPROCNR" source="PRODPROCNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODVRSN" source="PRODVRSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SENRECEIV" source="SENRECEIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_IN" source="UNIT_IN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OUT" source="UNIT_OUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALUTYP" source="VALUTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSION" source="VERSION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTYPE" source="VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTDETAIL" source="VTDETAIL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEASTYPE" source="MEASTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNT" source="Total_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTFX" source="Total_AMOUNTFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_AMOUNTVR" source="Total_AMOUNTVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTIN" source="Total_QUANTIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINFX" source="Total_QUANTINFX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTINVR" source="Total_QUANTINVR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_QUANTOUT" source="Total_QUANTOUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_CONTRAM" source="Total_CONTRAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_3">
+    <descriptions/>
+    <attributes>
+      <attribute id="ACT_INPUT" hidden="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ACT_INPUT"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ACT_INPUT"/>
+      </attribute>
+      <attribute id="BP_INPUT" hidden="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BP_INPUT"/>
+        <keyMapping columnObjectName="Projection_3" columnName="BP_INPUT"/>
+      </attribute>
+      <attribute id="CCT_INPUT" hidden="false" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro de Costo"/>
+        <keyMapping columnObjectName="Projection_3" columnName="CCT_INPUT"/>
+      </attribute>
+      <attribute id="COSTELMNT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuentas Contables"/>
+        <keyMapping columnObjectName="Projection_3" columnName="COSTELMNT"/>
+      </attribute>
+      <attribute id="CO_AREA" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sociedad CO"/>
+        <localVariable>#Z_SOCIEDA</localVariable>
+        <keyMapping columnObjectName="Projection_3" columnName="CO_AREA"/>
+      </attribute>
+      <attribute id="CURRENCY" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Moneda"/>
+        <keyMapping columnObjectName="Projection_3" columnName="CURRENCY"/>
+      </attribute>
+      <attribute id="CURTYPE" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo de Moneda"/>
+        <localVariable>#Z0CURTYPE</localVariable>
+        <keyMapping columnObjectName="Projection_3" columnName="CURTYPE"/>
+      </attribute>
+      <attribute id="FISCPER" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio/Período"/>
+        <localVariable>#0FISCPER</localVariable>
+        <keyMapping columnObjectName="Projection_3" columnName="FISCPER"/>
+      </attribute>
+      <attribute id="FISCVARNT" hidden="true" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FISCVARNT"/>
+        <keyMapping columnObjectName="Projection_3" columnName="FISCVARNT"/>
+      </attribute>
+      <attribute id="FLG_DELFLG" hidden="true" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FLG_DELFLG"/>
+        <keyMapping columnObjectName="Projection_3" columnName="FLG_DELFLG"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo de Material Texto"/>
+        <keyMapping columnObjectName="Projection_3" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material"/>
+        <localVariable>#Z_MATERAL</localVariable>
+        <keyMapping columnObjectName="Projection_3" columnName="MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_GRUPO_MATERIAL" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo de Material"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_TIPO_MATERIAL" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo de material"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MATERIAL_ATTR_TIPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Texto de Material"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="MAT_INPUT" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Componente"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MAT_INPUT"/>
+      </attribute>
+      <attribute id="ORDERITEM" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo de ratio"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ORDERITEM"/>
+      </attribute>
+      <attribute id="PARTOBJ" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Objeto interlocutor"/>
+        <keyMapping columnObjectName="Projection_3" columnName="PARTOBJ"/>
+      </attribute>
+      <attribute id="PLANT" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro."/>
+        <localVariable>#Z_CENTRO</localVariable>
+        <keyMapping columnObjectName="Projection_3" columnName="PLANT"/>
+      </attribute>
+      <attribute id="PLT_INPUT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro suministrador"/>
+        <keyMapping columnObjectName="Projection_3" columnName="PLT_INPUT"/>
+      </attribute>
+      <attribute id="POBJTYPE" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tp.obj.interlocutor"/>
+        <keyMapping columnObjectName="Projection_3" columnName="POBJTYPE"/>
+      </attribute>
+      <attribute id="PRODORDER" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Orden"/>
+        <keyMapping columnObjectName="Projection_3" columnName="PRODORDER"/>
+      </attribute>
+      <attribute id="PRODPROCNR" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Proceso fabricación"/>
+        <keyMapping columnObjectName="Projection_3" columnName="PRODPROCNR"/>
+      </attribute>
+      <attribute id="PRODVRSN" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Versión fabr."/>
+        <keyMapping columnObjectName="Projection_3" columnName="PRODVRSN"/>
+      </attribute>
+      <attribute id="SENRECEIV" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Emisor/Receptor"/>
+        <keyMapping columnObjectName="Projection_3" columnName="SENRECEIV"/>
+      </attribute>
+      <attribute id="UNIT_IN" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad medida"/>
+        <keyMapping columnObjectName="Projection_3" columnName="UNIT_IN"/>
+      </attribute>
+      <attribute id="UNIT_OUT" hidden="true" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIT_OUT"/>
+        <keyMapping columnObjectName="Projection_3" columnName="UNIT_OUT"/>
+      </attribute>
+      <attribute id="VALUTYP" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Vista valoración"/>
+        <keyMapping columnObjectName="Projection_3" columnName="VALUTYP"/>
+      </attribute>
+      <attribute id="VERSION" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Version"/>
+        <localVariable>#Z_VERSION</localVariable>
+        <keyMapping columnObjectName="Projection_3" columnName="VERSION"/>
+      </attribute>
+      <attribute id="VTYPE" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo de valor"/>
+        <localVariable>#Z_VTYPE</localVariable>
+        <keyMapping columnObjectName="Projection_3" columnName="VTYPE"/>
+      </attribute>
+      <attribute id="VTDETAIL" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Detalle p.tp.valor"/>
+        <keyMapping columnObjectName="Projection_3" columnName="VTDETAIL"/>
+      </attribute>
+      <attribute id="MEASTYPE" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo de ratio"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MEASTYPE"/>
+      </attribute>
+      <attribute id="ZBAND_C_REALES" hidden="true" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAND_C_REALES"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAND_C_REALES"/>
+      </attribute>
+      <attribute id="ZBAND_C_PLAN" hidden="true" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAND_C_PLAN"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAND_C_PLAN"/>
+      </attribute>
+      <attribute id="ZBAND_C_TEORICO" hidden="true" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAND_C_TEORICO"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAND_C_TEORICO"/>
+      </attribute>
+      <attribute id="ZBAND_C_CANT" hidden="true" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAND_C_CANT"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAND_C_CANT"/>
+      </attribute>
+      <attribute id="ZBAN_C_CANTTEO" hidden="true" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_C_CANTTEO"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_C_CANTTEO"/>
+      </attribute>
+      <attribute id="ZBAN_C_DESVIESTRU" hidden="true" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_C_DESVIESTRU"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_C_DESVIESTRU"/>
+      </attribute>
+      <attribute id="ZBAN_C_DESVIACANTINP" hidden="true" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_C_DESVIACANTINP"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_C_DESVIACANTINP"/>
+      </attribute>
+      <attribute id="ZBAN_DESV_PRECIO" hidden="true" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_DESV_PRECIO"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_DESV_PRECIO"/>
+      </attribute>
+      <attribute id="ZBAN_DESV_TAM_LOTE" hidden="true" order="58" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_DESV_TAM_LOTE"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_DESV_TAM_LOTE"/>
+      </attribute>
+      <attribute id="ZBAN_DESV_PRECIO_INPUT" hidden="true" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_DESV_PRECIO_INPUT"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_DESV_PRECIO_INPUT"/>
+      </attribute>
+      <attribute id="ZBAN_DESVIAC_TOTA_IMPUTA" hidden="true" order="62" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_DESVIAC_TOTA_IMPUTA"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_DESVIAC_TOTA_IMPUTA"/>
+      </attribute>
+      <attribute id="ZBAN_DESVIAC_TOTAL_INPUT" hidden="true" order="65" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_DESVIAC_TOTAL_INPUT"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_DESVIAC_TOTAL_INPUT"/>
+      </attribute>
+      <attribute id="ZBAN_DESVIAC_RESTANTE" hidden="true" order="67" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_DESVIAC_RESTANTE"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_DESVIAC_RESTANTE"/>
+      </attribute>
+      <attribute id="ZBAN_DESVIACI_RESTANTE_INPUT" hidden="true" order="68" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_DESVIACI_RESTANTE_INPUT"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_DESVIACI_RESTANTE_INPUT"/>
+      </attribute>
+      <attribute id="ZBAN_DESVIAC_TOTAL" hidden="true" order="70" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_DESVIAC_TOTAL"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_DESVIAC_TOTAL"/>
+      </attribute>
+      <attribute id="ZBAN_TRABAJO_CURSO" hidden="true" order="72" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBAN_TRABAJO_CURSO"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZBAN_TRABAJO_CURSO"/>
+      </attribute>
+      <attribute id="CENTRO_TEXT" order="74" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="Texto de Centro"/>
+        <keyMapping columnObjectName="Projection_3" columnName="CENTRO_TEXT"/>
+      </attribute>
+      <attribute id="CUENTA_TEXT" order="75" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="Texto de Cuenta"/>
+        <keyMapping columnObjectName="Projection_3" columnName="CUENTA_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT_1" order="76" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="Componente Texto"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MATERIAL_TEXT_1"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Total_QUANTOUT" order="33" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen de actividad"/>
+        <measureMapping columnObjectName="Projection_3" columnName="Total_QUANTOUT"/>
+      </measure>
+      <measure id="Total_AMOUNT" order="34" semanticType="amount" aggregationType="sum" measureType="amount">
+        <descriptions defaultDescription="Importe"/>
+        <unitCurrencyAttribute attributeName="CURRENCY"/>
+        <measureMapping columnObjectName="Projection_3" columnName="Total_AMOUNT"/>
+      </measure>
+      <measure id="Total_AMOUNTFX" hidden="true" order="35" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Total_AMOUNTFX"/>
+        <measureMapping columnObjectName="Projection_3" columnName="Total_AMOUNTFX"/>
+      </measure>
+      <measure id="Total_AMOUNTVR" hidden="true" order="36" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Total_AMOUNTVR"/>
+        <measureMapping columnObjectName="Projection_3" columnName="Total_AMOUNTVR"/>
+      </measure>
+      <measure id="Total_QUANTIN" hidden="false" order="37" semanticType="quantity" aggregationType="sum" measureType="quantity">
+        <descriptions defaultDescription="Cantidad"/>
+        <unitCurrencyAttribute attributeName="UNIT_IN"/>
+        <measureMapping columnObjectName="Projection_3" columnName="Total_QUANTIN"/>
+      </measure>
+      <measure id="Total_QUANTINFX" hidden="true" order="38" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Total_QUANTINFX"/>
+        <measureMapping columnObjectName="Projection_3" columnName="Total_QUANTINFX"/>
+      </measure>
+      <measure id="Total_QUANTINVR" hidden="true" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Total_QUANTINVR"/>
+        <measureMapping columnObjectName="Projection_3" columnName="Total_QUANTINVR"/>
+      </measure>
+      <measure id="Total_CONTRAM" hidden="true" order="40" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Total_CONTRAM"/>
+        <measureMapping columnObjectName="Projection_3" columnName="Total_CONTRAM"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="Z_PRECIO_ORDEN" hidden="false" order="41" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="2">
+        <descriptions defaultDescription="Precio Orden"/>
+        <formula>IF(&quot;Total_QUANTOUT&quot;!= 0,&quot;ZCOSTOS_REALES&quot;/&quot;Total_QUANTOUT&quot;,0)</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures>
+      <measure id="ZCOSTOS_REALES" hidden="false" key="true" order="43" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Costos Reales"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAND_C_REALES">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAND_C_REALES</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZCOSTOS_PLAN" hidden="false" order="45" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Costes Plan"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAND_C_PLAN">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAND_C_PLAN</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZCOSTOS_TEORICO" hidden="false" order="47" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Costes teóricos"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAND_C_TEORICO">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAND_C_TEORICO</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZCANTREAL" hidden="false" order="48" baseMeasure="#Total_QUANTIN">
+        <descriptions defaultDescription="Cantidad Real"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAND_C_CANT">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAND_C_CANT</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZCANTTEO" hidden="false" order="50" baseMeasure="#Total_QUANTIN">
+        <descriptions defaultDescription="Cantidad Teorica"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_C_CANTTEO">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_C_CANTTEO</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZDESVI_ESTRUCT" hidden="false" order="52" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Desviaciones de estructura"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_C_DESVIESTRU">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_C_DESVIESTRU</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZDESVI_CANT_INPUT" hidden="false" order="54" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Desviaciones de la cantidad input"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_C_DESVIACANTINP">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_C_DESVIACANTINP</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZDESVI_PRECIO_IMPUTA" hidden="false" order="57" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Desviaciones del precio de imputación"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_DESV_PRECIO">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_DESV_PRECIO</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZDESVI_TAM_LOTE" hidden="false" order="59" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Desviaciones tamaño lote"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_DESV_TAM_LOTE">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_DESV_TAM_LOTE</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZDESVI_PRECIO_INPUT1" hidden="false" order="61" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Desviaciones del precio del input"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_DESV_PRECIO_INPUT">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_DESV_PRECIO_INPUT</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZDESVI_TOTAL_IMPUTA" hidden="false" order="63" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Desviaciones totales imputación"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_DESVIAC_TOTA_IMPUTA">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_DESVIAC_TOTA_IMPUTA</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZDESVIACIO_RESTANTE" hidden="false" order="64" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Desviaciones restantes"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_DESVIAC_RESTANTE">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_DESVIAC_RESTANTE</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZDESVI_TOTAL_INPUT" hidden="false" order="66" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Desviaciones totales del input"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_DESVIAC_TOTAL_INPUT">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_DESVIAC_TOTAL_INPUT</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZDESVIAC_RESTANTE_INPUT" hidden="false" order="69" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Desviaciones restantes del input"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_DESVIACI_RESTANTE_INPUT">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_DESVIACI_RESTANTE_INPUT</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZDESVI_TOTALES" hidden="false" order="71" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="Desviaciones totales"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_DESVIAC_TOTAL">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_DESVIAC_TOTAL</attributeName>
+        </restriction>
+      </measure>
+      <measure id="ZTRABAJO_CURSO" hidden="false" order="73" baseMeasure="#Total_AMOUNT">
+        <descriptions defaultDescription="WIP: Trabajo en curso"/>
+        <restriction logicalOperator="AND">
+          <filter xsi:type="Privilege:AttributeFilter" attributeName="ZBAN_TRABAJO_CURSO">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </filter>
+          <attributeName>ZBAN_TRABAJO_CURSO</attributeName>
+        </restriction>
+      </measure>
+    </restrictedMeasures>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="176" y="120"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="470"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="392"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="470"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="392"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="420" y="392"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="276"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="198"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

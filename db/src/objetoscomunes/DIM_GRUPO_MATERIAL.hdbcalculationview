@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_GRUPO_MATERIAL" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_GRUPO_MATERIAL"/>
+  <metadata changedAt="2019-02-26 16:32:37.558"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="40"/>
+  <dataSources>
+    <DataSource id="ZBWGA_CT">
+      <resourceUri>ZBWGA_CT</resourceUri>
+    </DataSource>
+    <DataSource id="T023T">
+      <resourceUri>T023T</resourceUri>
+    </DataSource>
+    <DataSource id="ZBWCT">
+      <resourceUri>ZBWCT</resourceUri>
+    </DataSource>
+    <DataSource id="Z1BOUNINEG">
+      <resourceUri>Z1BOUNINEG</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="ZANEG"/>
+        <viewAttribute id="ZCTCOM"/>
+        <viewAttribute id="ZCTGES"/>
+        <viewAttribute id="ZCATEG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#ZBWGA_CT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANEG" source="ZANEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCTCOM" source="ZCTCOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCTGES" source="ZCTGES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCATEG" source="ZCATEG"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="WGBEZ"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="WGBEZ60"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#T023T">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WGBEZ" source="WGBEZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WGBEZ60" source="WGBEZ60"/>
+      </input>
+      <filter>(&quot;SPRAS&quot; ='S')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinOrder="OUTSIDE_IN" joinType="rightOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZCTCOM"/>
+        <viewAttribute id="ZCTGES"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="WGBEZ"/>
+        <viewAttribute id="ZANEG"/>
+        <viewAttribute hidden="true" id="JOIN$MATKL$MATKL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCTCOM" source="ZCTCOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCTGES" source="ZCTGES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANEG" source="ZANEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MATKL$MATKL" source="MATKL"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WGBEZ" source="WGBEZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MATKL$MATKL" source="MATKL"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="JOIN$MATKL$MATKL"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZCATEG"/>
+        <viewAttribute id="ZDESCRIP"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#ZBWCT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCATEG" source="ZCATEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDESCRIP" source="ZDESCRIP"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZCTCOM"/>
+        <viewAttribute id="ZCTGES"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="WGBEZ"/>
+        <viewAttribute id="ZDESCRIP"/>
+        <viewAttribute id="ZANEG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCTCOM" source="ZCTCOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCTGES" source="ZCTGES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WGBEZ" source="WGBEZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANEG" source="ZANEG"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDESCRIP" source="ZDESCRIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCTGES" source="ZCATEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+      <joinAttribute name="ZCTGES"/>
+      <joinAttribute name="BUKRS"/>
+      <joinAttribute name="MANDT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZUNINEG"/>
+        <viewAttribute id="ZNOMUNINEG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1BOUNINEG">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZUNINEG" source="ZUNINEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZNOMUNINEG" source="ZNOMUNINEG"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="C1_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZCTCOM"/>
+        <viewAttribute id="ZCTGES"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="WGBEZ"/>
+        <viewAttribute id="ZDESCRIP"/>
+        <viewAttribute id="ZNOMUNINEG"/>
+        <viewAttribute id="ZANEG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCTCOM" source="ZCTCOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCTGES" source="ZCTGES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WGBEZ" source="WGBEZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDESCRIP" source="ZDESCRIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANEG" source="ZANEG"/>
+      </input>
+      <input node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZNOMUNINEG" source="ZNOMUNINEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCTCOM" source="ZUNINEG"/>
+      </input>
+      <joinAttribute name="BUKRS"/>
+      <joinAttribute name="ZCTCOM"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_3">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_3" columnName="MANDT"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI"/>
+        <keyMapping columnObjectName="Join_3" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <keyMapping columnObjectName="Join_3" columnName="ZCTCOM"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_CATEGORIA" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <keyMapping columnObjectName="Join_3" columnName="ZCTGES"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATKL"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="WGBEZ"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CATEGORIA_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="ZDESCRIP"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIDAD_NEGOCIO_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="ZNOMUNINEG"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <keyMapping columnObjectName="Join_3" columnName="ZANEG"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="GRUPO_MATERIAL_ID_TEXT" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ID_TEXT"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="32">
+          <formula>&quot;GRUPO_MATERIAL&quot;+' - '+&quot;GRUPO_MATERIAL_TEXT&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

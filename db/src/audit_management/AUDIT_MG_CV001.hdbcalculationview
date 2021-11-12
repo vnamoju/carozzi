@@ -1,0 +1,1178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="AUDIT_MG_CV001" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="Audit Management"/>
+  <metadata changedAt="2021-04-28 17:32:17.918"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="33"/>
+  <dataSources>
+    <DataSource id="PLMM_AUDIT">
+      <resourceUri>PLMM_AUDIT</resourceUri>
+    </DataSource>
+    <DataSource id="CGPL_PROJECT">
+      <resourceUri>CGPL_PROJECT</resourceUri>
+    </DataSource>
+    <DataSource id="PLMM_AUDIT_ROLES">
+      <resourceUri>PLMM_AUDIT_ROLES</resourceUri>
+    </DataSource>
+    <DataSource id="BUT000">
+      <resourceUri>BUT000</resourceUri>
+    </DataSource>
+    <DataSource id="CRM_JEST">
+      <resourceUri>CRM_JEST</resourceUri>
+    </DataSource>
+    <DataSource id="TJ30">
+      <resourceUri>TJ30</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CLIENT"/>
+        <viewAttribute id="GUID"/>
+        <viewAttribute id="ORIGINAL_LANGU"/>
+        <viewAttribute id="AUDIT_TYPE"/>
+        <viewAttribute id="AUTH_GROUP"/>
+        <viewAttribute id="GROUPING"/>
+        <viewAttribute id="SEARCH_FIELD"/>
+        <viewAttribute id="CAUSE"/>
+        <viewAttribute id="UNPLANNED"/>
+        <viewAttribute id="NEXT_AUDIT_DATE"/>
+        <viewAttribute id="NEXT_AUDIT_OBLIG"/>
+        <viewAttribute id="SCORE_RES"/>
+        <viewAttribute id="SCORE_MANUAL"/>
+        <viewAttribute id="SCORE_MAX"/>
+        <viewAttribute id="AUDIT_CALCULATE"/>
+        <viewAttribute id="RESULT_PERCENT"/>
+        <viewAttribute id="MIN_RESULT"/>
+        <viewAttribute id="CLASSIFICATION"/>
+        <viewAttribute id="CLASSIFI_CODE"/>
+        <viewAttribute id="CLASSIFI_MAN"/>
+        <viewAttribute id="OK_NOK"/>
+        <viewAttribute id="CONFIDENTIAL"/>
+        <viewAttribute id="RELEASED_ON"/>
+        <viewAttribute id="RELEASED_BY"/>
+        <viewAttribute id="PROC_STATUS"/>
+        <viewAttribute id="ZZCASINO"/>
+        <viewAttribute id="ZZCENTRO"/>
+        <viewAttribute id="ZZPROVEEDOR"/>
+        <viewAttribute id="ZZLABORATORIO"/>
+        <viewAttribute id="ZZDIVISION"/>
+        <viewAttribute id="ZZDIVISIONT"/>
+        <viewAttribute id="ZZGERENCIA"/>
+        <viewAttribute id="ZZAREA"/>
+        <viewAttribute id="ZZBUKRS"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="PLMM_AUDIT"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CLIENT"/>
+        <viewAttribute id="GUID"/>
+        <viewAttribute id="EXTERNAL_ID"/>
+        <viewAttribute id="PROJECT_GUID"/>
+        <viewAttribute id="OBJECT_TYPE"/>
+        <viewAttribute id="PRIORITY"/>
+        <viewAttribute id="ACTUALSTART"/>
+        <viewAttribute id="ACTUALFINISH"/>
+        <viewAttribute id="PLANSTART"/>
+        <viewAttribute id="PLANFINISH"/>
+        <viewAttribute id="COMPLETION"/>
+        <viewAttribute id="MILESTONE"/>
+        <viewAttribute id="CONSTRAINT_TYPE"/>
+        <viewAttribute id="CONSTRAINT_TIME"/>
+        <viewAttribute id="CREATED_BY"/>
+        <viewAttribute id="CREATED_ON"/>
+        <viewAttribute id="CREATED_IN_BW"/>
+        <viewAttribute id="CHANGED_BY"/>
+        <viewAttribute id="CHANGED_ON"/>
+        <viewAttribute id="UPDATED_IN_BW"/>
+        <viewAttribute id="BWIDENTIFIER"/>
+        <viewAttribute id="PLANGROUP"/>
+        <viewAttribute id="LATEST_START"/>
+        <viewAttribute id="LATEST_FINISH"/>
+        <viewAttribute id="TOTAL_FLOAT"/>
+        <viewAttribute id="DURATION"/>
+        <viewAttribute id="DURATION_UNIT"/>
+        <viewAttribute id="CALENDAR_ID"/>
+        <viewAttribute id="CONSTR_TYPE_FIN"/>
+        <viewAttribute id="CONSTR_TIME_FIN"/>
+        <viewAttribute id="APPLICATION"/>
+        <viewAttribute id="FORECAST_START"/>
+        <viewAttribute id="FORECAST_FINISH"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CGPL_PROJECT"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CLIENT"/>
+        <viewAttribute id="GUID"/>
+        <viewAttribute id="ORIGINAL_LANGU"/>
+        <viewAttribute id="AUDIT_TYPE"/>
+        <viewAttribute id="AUTH_GROUP"/>
+        <viewAttribute id="GROUPING"/>
+        <viewAttribute id="SEARCH_FIELD"/>
+        <viewAttribute id="CAUSE"/>
+        <viewAttribute id="UNPLANNED"/>
+        <viewAttribute id="NEXT_AUDIT_DATE"/>
+        <viewAttribute id="NEXT_AUDIT_OBLIG"/>
+        <viewAttribute id="SCORE_RES"/>
+        <viewAttribute id="SCORE_MANUAL"/>
+        <viewAttribute id="SCORE_MAX"/>
+        <viewAttribute id="AUDIT_CALCULATE"/>
+        <viewAttribute id="RESULT_PERCENT"/>
+        <viewAttribute id="MIN_RESULT"/>
+        <viewAttribute id="CLASSIFICATION"/>
+        <viewAttribute id="CLASSIFI_CODE"/>
+        <viewAttribute id="CLASSIFI_MAN"/>
+        <viewAttribute id="OK_NOK"/>
+        <viewAttribute id="CONFIDENTIAL"/>
+        <viewAttribute id="RELEASED_ON"/>
+        <viewAttribute id="RELEASED_BY"/>
+        <viewAttribute id="PROC_STATUS"/>
+        <viewAttribute id="ZZCASINO"/>
+        <viewAttribute id="ZZCENTRO"/>
+        <viewAttribute id="ZZPROVEEDOR"/>
+        <viewAttribute id="ZZLABORATORIO"/>
+        <viewAttribute id="ZZDIVISION"/>
+        <viewAttribute id="ZZDIVISIONT"/>
+        <viewAttribute id="ZZGERENCIA"/>
+        <viewAttribute id="ZZAREA"/>
+        <viewAttribute id="ZZBUKRS"/>
+        <viewAttribute id="FORECAST_FINISH"/>
+        <viewAttribute id="FORECAST_START"/>
+        <viewAttribute id="APPLICATION"/>
+        <viewAttribute id="CONSTR_TYPE_FIN"/>
+        <viewAttribute id="CALENDAR_ID"/>
+        <viewAttribute id="CONSTR_TIME_FIN"/>
+        <viewAttribute id="DURATION_UNIT"/>
+        <viewAttribute id="DURATION"/>
+        <viewAttribute id="TOTAL_FLOAT"/>
+        <viewAttribute id="LATEST_FINISH"/>
+        <viewAttribute id="LATEST_START"/>
+        <viewAttribute id="PLANGROUP"/>
+        <viewAttribute id="BWIDENTIFIER"/>
+        <viewAttribute id="UPDATED_IN_BW"/>
+        <viewAttribute id="CHANGED_ON"/>
+        <viewAttribute id="CHANGED_BY"/>
+        <viewAttribute id="CREATED_IN_BW"/>
+        <viewAttribute id="CREATED_ON"/>
+        <viewAttribute id="CREATED_BY"/>
+        <viewAttribute id="CONSTRAINT_TIME"/>
+        <viewAttribute id="CONSTRAINT_TYPE"/>
+        <viewAttribute id="MILESTONE"/>
+        <viewAttribute id="COMPLETION"/>
+        <viewAttribute id="PLANFINISH"/>
+        <viewAttribute id="PLANSTART"/>
+        <viewAttribute id="ACTUALFINISH"/>
+        <viewAttribute id="ACTUALSTART"/>
+        <viewAttribute id="PRIORITY"/>
+        <viewAttribute id="OBJECT_TYPE"/>
+        <viewAttribute id="EXTERNAL_ID"/>
+        <viewAttribute id="PROJECT_GUID"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORIGINAL_LANGU" source="ORIGINAL_LANGU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_TYPE" source="AUDIT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_GROUP" source="AUTH_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GROUPING" source="GROUPING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEARCH_FIELD" source="SEARCH_FIELD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CAUSE" source="CAUSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNPLANNED" source="UNPLANNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_DATE" source="NEXT_AUDIT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_OBLIG" source="NEXT_AUDIT_OBLIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_RES" source="SCORE_RES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MANUAL" source="SCORE_MANUAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MAX" source="SCORE_MAX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_CALCULATE" source="AUDIT_CALCULATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RESULT_PERCENT" source="RESULT_PERCENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MIN_RESULT" source="MIN_RESULT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFICATION" source="CLASSIFICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_CODE" source="CLASSIFI_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_MAN" source="CLASSIFI_MAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OK_NOK" source="OK_NOK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONFIDENTIAL" source="CONFIDENTIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_ON" source="RELEASED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_BY" source="RELEASED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROC_STATUS" source="PROC_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCASINO" source="ZZCASINO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCENTRO" source="ZZCENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZPROVEEDOR" source="ZZPROVEEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZLABORATORIO" source="ZZLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISION" source="ZZDIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISIONT" source="ZZDIVISIONT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZGERENCIA" source="ZZGERENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZAREA" source="ZZAREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZBUKRS" source="ZZBUKRS"/>
+      </input>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_FINISH" source="FORECAST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_START" source="FORECAST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="APPLICATION" source="APPLICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TYPE_FIN" source="CONSTR_TYPE_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALENDAR_ID" source="CALENDAR_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TIME_FIN" source="CONSTR_TIME_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION_UNIT" source="DURATION_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION" source="DURATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOTAL_FLOAT" source="TOTAL_FLOAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_FINISH" source="LATEST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_START" source="LATEST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANGROUP" source="PLANGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWIDENTIFIER" source="BWIDENTIFIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UPDATED_IN_BW" source="UPDATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_ON" source="CHANGED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_IN_BW" source="CREATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_ON" source="CREATED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TIME" source="CONSTRAINT_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TYPE" source="CONSTRAINT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MILESTONE" source="MILESTONE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION" source="COMPLETION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANFINISH" source="PLANFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANSTART" source="PLANSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALFINISH" source="ACTUALFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALSTART" source="ACTUALSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="EXTERNAL_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROJECT_GUID" source="PROJECT_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+      </input>
+    <joinAttribute name="GUID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CLIENT"/>
+        <viewAttribute id="GUID"/>
+        <viewAttribute id="OBJECT_GUID"/>
+        <viewAttribute id="ROLE_SORTNR"/>
+        <viewAttribute id="ROLE"/>
+        <viewAttribute id="PARTNER_ROLE"/>
+        <viewAttribute id="PARTNER_GUID"/>
+        <viewAttribute id="ROLE_1"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="PLMM_AUDIT_ROLES">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_1" source="ROLE"/>
+      </input>
+    <filter>(&quot;ROLE&quot; ='52')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CLIENT"/>
+        <viewAttribute id="GUID"/>
+        <viewAttribute id="ORIGINAL_LANGU"/>
+        <viewAttribute id="AUDIT_TYPE"/>
+        <viewAttribute id="AUTH_GROUP"/>
+        <viewAttribute id="GROUPING"/>
+        <viewAttribute id="SEARCH_FIELD"/>
+        <viewAttribute id="CAUSE"/>
+        <viewAttribute id="UNPLANNED"/>
+        <viewAttribute id="NEXT_AUDIT_DATE"/>
+        <viewAttribute id="NEXT_AUDIT_OBLIG"/>
+        <viewAttribute id="SCORE_RES"/>
+        <viewAttribute id="SCORE_MANUAL"/>
+        <viewAttribute id="SCORE_MAX"/>
+        <viewAttribute id="AUDIT_CALCULATE"/>
+        <viewAttribute id="RESULT_PERCENT"/>
+        <viewAttribute id="MIN_RESULT"/>
+        <viewAttribute id="CLASSIFICATION"/>
+        <viewAttribute id="CLASSIFI_CODE"/>
+        <viewAttribute id="CLASSIFI_MAN"/>
+        <viewAttribute id="OK_NOK"/>
+        <viewAttribute id="CONFIDENTIAL"/>
+        <viewAttribute id="RELEASED_ON"/>
+        <viewAttribute id="RELEASED_BY"/>
+        <viewAttribute id="PROC_STATUS"/>
+        <viewAttribute id="ZZCASINO"/>
+        <viewAttribute id="ZZCENTRO"/>
+        <viewAttribute id="ZZPROVEEDOR"/>
+        <viewAttribute id="ZZLABORATORIO"/>
+        <viewAttribute id="ZZDIVISION"/>
+        <viewAttribute id="ZZDIVISIONT"/>
+        <viewAttribute id="ZZGERENCIA"/>
+        <viewAttribute id="ZZAREA"/>
+        <viewAttribute id="ZZBUKRS"/>
+        <viewAttribute id="FORECAST_FINISH"/>
+        <viewAttribute id="FORECAST_START"/>
+        <viewAttribute id="APPLICATION"/>
+        <viewAttribute id="CONSTR_TYPE_FIN"/>
+        <viewAttribute id="CALENDAR_ID"/>
+        <viewAttribute id="CONSTR_TIME_FIN"/>
+        <viewAttribute id="DURATION_UNIT"/>
+        <viewAttribute id="DURATION"/>
+        <viewAttribute id="TOTAL_FLOAT"/>
+        <viewAttribute id="LATEST_FINISH"/>
+        <viewAttribute id="LATEST_START"/>
+        <viewAttribute id="PLANGROUP"/>
+        <viewAttribute id="BWIDENTIFIER"/>
+        <viewAttribute id="UPDATED_IN_BW"/>
+        <viewAttribute id="CHANGED_ON"/>
+        <viewAttribute id="CHANGED_BY"/>
+        <viewAttribute id="CREATED_IN_BW"/>
+        <viewAttribute id="CREATED_ON"/>
+        <viewAttribute id="CREATED_BY"/>
+        <viewAttribute id="CONSTRAINT_TIME"/>
+        <viewAttribute id="CONSTRAINT_TYPE"/>
+        <viewAttribute id="MILESTONE"/>
+        <viewAttribute id="COMPLETION"/>
+        <viewAttribute id="PLANFINISH"/>
+        <viewAttribute id="PLANSTART"/>
+        <viewAttribute id="ACTUALFINISH"/>
+        <viewAttribute id="ACTUALSTART"/>
+        <viewAttribute id="PRIORITY"/>
+        <viewAttribute id="OBJECT_TYPE"/>
+        <viewAttribute id="EXTERNAL_ID"/>
+        <viewAttribute id="PROJECT_GUID"/>
+        <viewAttribute id="OBJECT_GUID"/>
+        <viewAttribute id="ROLE_SORTNR"/>
+        <viewAttribute id="ROLE"/>
+        <viewAttribute id="PARTNER_ROLE"/>
+        <viewAttribute id="PARTNER_GUID"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORIGINAL_LANGU" source="ORIGINAL_LANGU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_TYPE" source="AUDIT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_GROUP" source="AUTH_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GROUPING" source="GROUPING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEARCH_FIELD" source="SEARCH_FIELD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CAUSE" source="CAUSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNPLANNED" source="UNPLANNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_DATE" source="NEXT_AUDIT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_OBLIG" source="NEXT_AUDIT_OBLIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_RES" source="SCORE_RES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MANUAL" source="SCORE_MANUAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MAX" source="SCORE_MAX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_CALCULATE" source="AUDIT_CALCULATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RESULT_PERCENT" source="RESULT_PERCENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MIN_RESULT" source="MIN_RESULT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFICATION" source="CLASSIFICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_CODE" source="CLASSIFI_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_MAN" source="CLASSIFI_MAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OK_NOK" source="OK_NOK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONFIDENTIAL" source="CONFIDENTIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_ON" source="RELEASED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_BY" source="RELEASED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROC_STATUS" source="PROC_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCASINO" source="ZZCASINO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCENTRO" source="ZZCENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZPROVEEDOR" source="ZZPROVEEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZLABORATORIO" source="ZZLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISION" source="ZZDIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISIONT" source="ZZDIVISIONT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZGERENCIA" source="ZZGERENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZAREA" source="ZZAREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZBUKRS" source="ZZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_FINISH" source="FORECAST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_START" source="FORECAST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="APPLICATION" source="APPLICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TYPE_FIN" source="CONSTR_TYPE_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALENDAR_ID" source="CALENDAR_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TIME_FIN" source="CONSTR_TIME_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION_UNIT" source="DURATION_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION" source="DURATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOTAL_FLOAT" source="TOTAL_FLOAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_FINISH" source="LATEST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_START" source="LATEST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANGROUP" source="PLANGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWIDENTIFIER" source="BWIDENTIFIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UPDATED_IN_BW" source="UPDATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_ON" source="CHANGED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_IN_BW" source="CREATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_ON" source="CREATED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TIME" source="CONSTRAINT_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TYPE" source="CONSTRAINT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MILESTONE" source="MILESTONE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION" source="COMPLETION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANFINISH" source="PLANFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANSTART" source="PLANSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALFINISH" source="ACTUALFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALSTART" source="ACTUALSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="EXTERNAL_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROJECT_GUID" source="PROJECT_GUID"/>
+      </input>
+      <input node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_GUID" source="OBJECT_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_SORTNR" source="ROLE_SORTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_ROLE" source="PARTNER_ROLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID" source="PARTNER_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="OBJECT_GUID"/>
+      </input>
+    <joinAttribute name="GUID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CLIENT"/>
+        <viewAttribute id="PARTNER"/>
+        <viewAttribute id="TYPE"/>
+        <viewAttribute id="BPKIND"/>
+        <viewAttribute id="BU_GROUP"/>
+        <viewAttribute id="BPEXT"/>
+        <viewAttribute id="BU_SORT1"/>
+        <viewAttribute id="BU_SORT2"/>
+        <viewAttribute id="SOURCE"/>
+        <viewAttribute id="TITLE"/>
+        <viewAttribute id="XDELE"/>
+        <viewAttribute id="XBLCK"/>
+        <viewAttribute id="AUGRP"/>
+        <viewAttribute id="TITLE_LET"/>
+        <viewAttribute id="BU_LOGSYS"/>
+        <viewAttribute id="CONTACT"/>
+        <viewAttribute id="NOT_RELEASED"/>
+        <viewAttribute id="NOT_LG_COMPETENT"/>
+        <viewAttribute id="PRINT_MODE"/>
+        <viewAttribute id="BP_EEW_DUMMY"/>
+        <viewAttribute id="NAME_ORG1"/>
+        <viewAttribute id="NAME_ORG2"/>
+        <viewAttribute id="NAME_ORG3"/>
+        <viewAttribute id="NAME_ORG4"/>
+        <viewAttribute id="LEGAL_ENTY"/>
+        <viewAttribute id="IND_SECTOR"/>
+        <viewAttribute id="LEGAL_ORG"/>
+        <viewAttribute id="FOUND_DAT"/>
+        <viewAttribute id="LIQUID_DAT"/>
+        <viewAttribute id="LOCATION_1"/>
+        <viewAttribute id="LOCATION_2"/>
+        <viewAttribute id="LOCATION_3"/>
+        <viewAttribute id="NAME_LAST"/>
+        <viewAttribute id="NAME_FIRST"/>
+        <viewAttribute id="NAME_LST2"/>
+        <viewAttribute id="NAME_LAST2"/>
+        <viewAttribute id="NAMEMIDDLE"/>
+        <viewAttribute id="TITLE_ACA1"/>
+        <viewAttribute id="TITLE_ACA2"/>
+        <viewAttribute id="TITLE_ROYL"/>
+        <viewAttribute id="PREFIX1"/>
+        <viewAttribute id="PREFIX2"/>
+        <viewAttribute id="NAME1_TEXT"/>
+        <viewAttribute id="NICKNAME"/>
+        <viewAttribute id="INITIALS"/>
+        <viewAttribute id="NAMEFORMAT"/>
+        <viewAttribute id="NAMCOUNTRY"/>
+        <viewAttribute id="LANGU_CORR"/>
+        <viewAttribute id="XSEXM"/>
+        <viewAttribute id="XSEXF"/>
+        <viewAttribute id="BIRTHPL"/>
+        <viewAttribute id="MARST"/>
+        <viewAttribute id="EMPLO"/>
+        <viewAttribute id="JOBGR"/>
+        <viewAttribute id="NATIO"/>
+        <viewAttribute id="CNTAX"/>
+        <viewAttribute id="CNDSC"/>
+        <viewAttribute id="PERSNUMBER"/>
+        <viewAttribute id="XSEXU"/>
+        <viewAttribute id="XUBNAME"/>
+        <viewAttribute id="BU_LANGU"/>
+        <viewAttribute id="BIRTHDT"/>
+        <viewAttribute id="DEATHDT"/>
+        <viewAttribute id="PERNO"/>
+        <viewAttribute id="CHILDREN"/>
+        <viewAttribute id="MEM_HOUSE"/>
+        <viewAttribute id="PARTGRPTYP"/>
+        <viewAttribute id="NAME_GRP1"/>
+        <viewAttribute id="NAME_GRP2"/>
+        <viewAttribute id="MC_NAME1"/>
+        <viewAttribute id="MC_NAME2"/>
+        <viewAttribute id="CRUSR"/>
+        <viewAttribute id="CRDAT"/>
+        <viewAttribute id="CRTIM"/>
+        <viewAttribute id="CHUSR"/>
+        <viewAttribute id="CHDAT"/>
+        <viewAttribute id="CHTIM"/>
+        <viewAttribute id="PARTNER_GUID"/>
+        <viewAttribute id="ADDRCOMM"/>
+        <viewAttribute id="TD_SWITCH"/>
+        <viewAttribute id="IS_ORG_CENTRE"/>
+        <viewAttribute id="DB_KEY"/>
+        <viewAttribute id="VALID_FROM"/>
+        <viewAttribute id="VALID_TO"/>
+        <viewAttribute id="XPCPT"/>
+        <viewAttribute id="NATPERS"/>
+        <viewAttribute id="PAR_REL"/>
+        <viewAttribute id="BP_SORT"/>
+        <viewAttribute id="KBANKS"/>
+        <viewAttribute id="KBANKL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="BUT000"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CLIENT"/>
+        <viewAttribute id="GUID"/>
+        <viewAttribute id="ORIGINAL_LANGU"/>
+        <viewAttribute id="AUDIT_TYPE"/>
+        <viewAttribute id="AUTH_GROUP"/>
+        <viewAttribute id="GROUPING"/>
+        <viewAttribute id="SEARCH_FIELD"/>
+        <viewAttribute id="CAUSE"/>
+        <viewAttribute id="UNPLANNED"/>
+        <viewAttribute id="NEXT_AUDIT_DATE"/>
+        <viewAttribute id="NEXT_AUDIT_OBLIG"/>
+        <viewAttribute id="SCORE_RES"/>
+        <viewAttribute id="SCORE_MANUAL"/>
+        <viewAttribute id="SCORE_MAX"/>
+        <viewAttribute id="AUDIT_CALCULATE"/>
+        <viewAttribute id="RESULT_PERCENT"/>
+        <viewAttribute id="MIN_RESULT"/>
+        <viewAttribute id="CLASSIFICATION"/>
+        <viewAttribute id="CLASSIFI_CODE"/>
+        <viewAttribute id="CLASSIFI_MAN"/>
+        <viewAttribute id="OK_NOK"/>
+        <viewAttribute id="CONFIDENTIAL"/>
+        <viewAttribute id="RELEASED_ON"/>
+        <viewAttribute id="RELEASED_BY"/>
+        <viewAttribute id="PROC_STATUS"/>
+        <viewAttribute id="ZZCASINO"/>
+        <viewAttribute id="ZZCENTRO"/>
+        <viewAttribute id="ZZPROVEEDOR"/>
+        <viewAttribute id="ZZLABORATORIO"/>
+        <viewAttribute id="ZZDIVISION"/>
+        <viewAttribute id="ZZDIVISIONT"/>
+        <viewAttribute id="ZZGERENCIA"/>
+        <viewAttribute id="ZZAREA"/>
+        <viewAttribute id="ZZBUKRS"/>
+        <viewAttribute id="FORECAST_FINISH"/>
+        <viewAttribute id="FORECAST_START"/>
+        <viewAttribute id="APPLICATION"/>
+        <viewAttribute id="CONSTR_TYPE_FIN"/>
+        <viewAttribute id="CALENDAR_ID"/>
+        <viewAttribute id="CONSTR_TIME_FIN"/>
+        <viewAttribute id="DURATION_UNIT"/>
+        <viewAttribute id="DURATION"/>
+        <viewAttribute id="TOTAL_FLOAT"/>
+        <viewAttribute id="LATEST_FINISH"/>
+        <viewAttribute id="LATEST_START"/>
+        <viewAttribute id="PLANGROUP"/>
+        <viewAttribute id="BWIDENTIFIER"/>
+        <viewAttribute id="UPDATED_IN_BW"/>
+        <viewAttribute id="CHANGED_ON"/>
+        <viewAttribute id="CHANGED_BY"/>
+        <viewAttribute id="CREATED_IN_BW"/>
+        <viewAttribute id="CREATED_ON"/>
+        <viewAttribute id="CREATED_BY"/>
+        <viewAttribute id="CONSTRAINT_TIME"/>
+        <viewAttribute id="CONSTRAINT_TYPE"/>
+        <viewAttribute id="MILESTONE"/>
+        <viewAttribute id="COMPLETION"/>
+        <viewAttribute id="PLANFINISH"/>
+        <viewAttribute id="PLANSTART"/>
+        <viewAttribute id="ACTUALFINISH"/>
+        <viewAttribute id="ACTUALSTART"/>
+        <viewAttribute id="PRIORITY"/>
+        <viewAttribute id="OBJECT_TYPE"/>
+        <viewAttribute id="EXTERNAL_ID"/>
+        <viewAttribute id="PROJECT_GUID"/>
+        <viewAttribute id="OBJECT_GUID"/>
+        <viewAttribute id="ROLE_SORTNR"/>
+        <viewAttribute id="ROLE"/>
+        <viewAttribute id="PARTNER_ROLE"/>
+        <viewAttribute id="PARTNER_GUID"/>
+        <viewAttribute id="PARTNER"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORIGINAL_LANGU" source="ORIGINAL_LANGU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_TYPE" source="AUDIT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_GROUP" source="AUTH_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GROUPING" source="GROUPING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEARCH_FIELD" source="SEARCH_FIELD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CAUSE" source="CAUSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNPLANNED" source="UNPLANNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_DATE" source="NEXT_AUDIT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_OBLIG" source="NEXT_AUDIT_OBLIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_RES" source="SCORE_RES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MANUAL" source="SCORE_MANUAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MAX" source="SCORE_MAX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_CALCULATE" source="AUDIT_CALCULATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RESULT_PERCENT" source="RESULT_PERCENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MIN_RESULT" source="MIN_RESULT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFICATION" source="CLASSIFICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_CODE" source="CLASSIFI_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_MAN" source="CLASSIFI_MAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OK_NOK" source="OK_NOK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONFIDENTIAL" source="CONFIDENTIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_ON" source="RELEASED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_BY" source="RELEASED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROC_STATUS" source="PROC_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCASINO" source="ZZCASINO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCENTRO" source="ZZCENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZPROVEEDOR" source="ZZPROVEEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZLABORATORIO" source="ZZLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISION" source="ZZDIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISIONT" source="ZZDIVISIONT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZGERENCIA" source="ZZGERENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZAREA" source="ZZAREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZBUKRS" source="ZZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_FINISH" source="FORECAST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_START" source="FORECAST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="APPLICATION" source="APPLICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TYPE_FIN" source="CONSTR_TYPE_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALENDAR_ID" source="CALENDAR_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TIME_FIN" source="CONSTR_TIME_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION_UNIT" source="DURATION_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION" source="DURATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOTAL_FLOAT" source="TOTAL_FLOAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_FINISH" source="LATEST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_START" source="LATEST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANGROUP" source="PLANGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWIDENTIFIER" source="BWIDENTIFIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UPDATED_IN_BW" source="UPDATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_ON" source="CHANGED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_IN_BW" source="CREATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_ON" source="CREATED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TIME" source="CONSTRAINT_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TYPE" source="CONSTRAINT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MILESTONE" source="MILESTONE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION" source="COMPLETION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANFINISH" source="PLANFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANSTART" source="PLANSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALFINISH" source="ACTUALFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALSTART" source="ACTUALSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="EXTERNAL_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROJECT_GUID" source="PROJECT_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_GUID" source="OBJECT_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_SORTNR" source="ROLE_SORTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_ROLE" source="PARTNER_ROLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID" source="PARTNER_GUID"/>
+      </input>
+      <input node="Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="PARTNER_GUID"/>
+      </input>
+    <joinAttribute name="EXTERNAL_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="STAT"/>
+        <viewAttribute id="INACT"/>
+        <viewAttribute id="CHGNR"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CRM_JEST"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CLIENT"/>
+        <viewAttribute id="GUID"/>
+        <viewAttribute id="ORIGINAL_LANGU"/>
+        <viewAttribute id="AUDIT_TYPE"/>
+        <viewAttribute id="AUTH_GROUP"/>
+        <viewAttribute id="GROUPING"/>
+        <viewAttribute id="SEARCH_FIELD"/>
+        <viewAttribute id="CAUSE"/>
+        <viewAttribute id="UNPLANNED"/>
+        <viewAttribute id="NEXT_AUDIT_DATE"/>
+        <viewAttribute id="NEXT_AUDIT_OBLIG"/>
+        <viewAttribute id="SCORE_RES"/>
+        <viewAttribute id="SCORE_MANUAL"/>
+        <viewAttribute id="SCORE_MAX"/>
+        <viewAttribute id="AUDIT_CALCULATE"/>
+        <viewAttribute id="RESULT_PERCENT"/>
+        <viewAttribute id="MIN_RESULT"/>
+        <viewAttribute id="CLASSIFICATION"/>
+        <viewAttribute id="CLASSIFI_CODE"/>
+        <viewAttribute id="CLASSIFI_MAN"/>
+        <viewAttribute id="OK_NOK"/>
+        <viewAttribute id="CONFIDENTIAL"/>
+        <viewAttribute id="RELEASED_ON"/>
+        <viewAttribute id="RELEASED_BY"/>
+        <viewAttribute id="PROC_STATUS"/>
+        <viewAttribute id="ZZCASINO"/>
+        <viewAttribute id="ZZCENTRO"/>
+        <viewAttribute id="ZZPROVEEDOR"/>
+        <viewAttribute id="ZZLABORATORIO"/>
+        <viewAttribute id="ZZDIVISION"/>
+        <viewAttribute id="ZZDIVISIONT"/>
+        <viewAttribute id="ZZGERENCIA"/>
+        <viewAttribute id="ZZAREA"/>
+        <viewAttribute id="ZZBUKRS"/>
+        <viewAttribute id="FORECAST_FINISH"/>
+        <viewAttribute id="FORECAST_START"/>
+        <viewAttribute id="APPLICATION"/>
+        <viewAttribute id="CONSTR_TYPE_FIN"/>
+        <viewAttribute id="CALENDAR_ID"/>
+        <viewAttribute id="CONSTR_TIME_FIN"/>
+        <viewAttribute id="DURATION_UNIT"/>
+        <viewAttribute id="DURATION"/>
+        <viewAttribute id="TOTAL_FLOAT"/>
+        <viewAttribute id="LATEST_FINISH"/>
+        <viewAttribute id="LATEST_START"/>
+        <viewAttribute id="PLANGROUP"/>
+        <viewAttribute id="BWIDENTIFIER"/>
+        <viewAttribute id="UPDATED_IN_BW"/>
+        <viewAttribute id="CHANGED_ON"/>
+        <viewAttribute id="CHANGED_BY"/>
+        <viewAttribute id="CREATED_IN_BW"/>
+        <viewAttribute id="CREATED_ON"/>
+        <viewAttribute id="CREATED_BY"/>
+        <viewAttribute id="CONSTRAINT_TIME"/>
+        <viewAttribute id="CONSTRAINT_TYPE"/>
+        <viewAttribute id="MILESTONE"/>
+        <viewAttribute id="COMPLETION"/>
+        <viewAttribute id="PLANFINISH"/>
+        <viewAttribute id="PLANSTART"/>
+        <viewAttribute id="ACTUALFINISH"/>
+        <viewAttribute id="ACTUALSTART"/>
+        <viewAttribute id="PRIORITY"/>
+        <viewAttribute id="OBJECT_TYPE"/>
+        <viewAttribute id="EXTERNAL_ID"/>
+        <viewAttribute id="PROJECT_GUID"/>
+        <viewAttribute id="OBJECT_GUID"/>
+        <viewAttribute id="ROLE_SORTNR"/>
+        <viewAttribute id="ROLE"/>
+        <viewAttribute id="PARTNER_ROLE"/>
+        <viewAttribute id="PARTNER_GUID"/>
+        <viewAttribute id="PARTNER"/>
+        <viewAttribute id="STAT"/>
+        <viewAttribute id="INACT"/>
+        <viewAttribute id="CHGNR"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORIGINAL_LANGU" source="ORIGINAL_LANGU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_TYPE" source="AUDIT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_GROUP" source="AUTH_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GROUPING" source="GROUPING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEARCH_FIELD" source="SEARCH_FIELD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CAUSE" source="CAUSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNPLANNED" source="UNPLANNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_DATE" source="NEXT_AUDIT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_OBLIG" source="NEXT_AUDIT_OBLIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_RES" source="SCORE_RES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MANUAL" source="SCORE_MANUAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MAX" source="SCORE_MAX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_CALCULATE" source="AUDIT_CALCULATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RESULT_PERCENT" source="RESULT_PERCENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MIN_RESULT" source="MIN_RESULT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFICATION" source="CLASSIFICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_CODE" source="CLASSIFI_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_MAN" source="CLASSIFI_MAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OK_NOK" source="OK_NOK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONFIDENTIAL" source="CONFIDENTIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_ON" source="RELEASED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_BY" source="RELEASED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROC_STATUS" source="PROC_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCASINO" source="ZZCASINO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCENTRO" source="ZZCENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZPROVEEDOR" source="ZZPROVEEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZLABORATORIO" source="ZZLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISION" source="ZZDIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISIONT" source="ZZDIVISIONT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZGERENCIA" source="ZZGERENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZAREA" source="ZZAREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZBUKRS" source="ZZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_FINISH" source="FORECAST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_START" source="FORECAST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="APPLICATION" source="APPLICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TYPE_FIN" source="CONSTR_TYPE_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALENDAR_ID" source="CALENDAR_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TIME_FIN" source="CONSTR_TIME_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION_UNIT" source="DURATION_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION" source="DURATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOTAL_FLOAT" source="TOTAL_FLOAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_FINISH" source="LATEST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_START" source="LATEST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANGROUP" source="PLANGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWIDENTIFIER" source="BWIDENTIFIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UPDATED_IN_BW" source="UPDATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_ON" source="CHANGED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_IN_BW" source="CREATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_ON" source="CREATED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TIME" source="CONSTRAINT_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TYPE" source="CONSTRAINT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MILESTONE" source="MILESTONE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION" source="COMPLETION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANFINISH" source="PLANFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANSTART" source="PLANSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALFINISH" source="ACTUALFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALSTART" source="ACTUALSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="EXTERNAL_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROJECT_GUID" source="PROJECT_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_GUID" source="OBJECT_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_SORTNR" source="ROLE_SORTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_ROLE" source="PARTNER_ROLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID" source="PARTNER_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
+      </input>
+      <input node="Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="STAT" source="STAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="INACT" source="INACT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHGNR" source="CHGNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="OBJNR"/>
+      </input>
+    <joinAttribute name="GUID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="STSMA"/>
+        <viewAttribute id="ESTAT"/>
+        <viewAttribute id="INIST"/>
+        <viewAttribute id="STONR"/>
+        <viewAttribute id="HSONR"/>
+        <viewAttribute id="NSONR"/>
+        <viewAttribute id="LINEP"/>
+        <viewAttribute id="STATP"/>
+        <viewAttribute id="BERSL"/>
+        <viewAttribute id="CRM_VRGNG"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="TJ30"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CLIENT"/>
+        <viewAttribute id="GUID"/>
+        <viewAttribute id="ORIGINAL_LANGU"/>
+        <viewAttribute id="AUDIT_TYPE"/>
+        <viewAttribute id="AUTH_GROUP"/>
+        <viewAttribute id="GROUPING"/>
+        <viewAttribute id="SEARCH_FIELD"/>
+        <viewAttribute id="CAUSE"/>
+        <viewAttribute id="UNPLANNED"/>
+        <viewAttribute id="NEXT_AUDIT_DATE"/>
+        <viewAttribute id="NEXT_AUDIT_OBLIG"/>
+        <viewAttribute id="SCORE_RES"/>
+        <viewAttribute id="SCORE_MANUAL"/>
+        <viewAttribute id="SCORE_MAX"/>
+        <viewAttribute id="AUDIT_CALCULATE"/>
+        <viewAttribute id="RESULT_PERCENT"/>
+        <viewAttribute id="MIN_RESULT"/>
+        <viewAttribute id="CLASSIFICATION"/>
+        <viewAttribute id="CLASSIFI_CODE"/>
+        <viewAttribute id="CLASSIFI_MAN"/>
+        <viewAttribute id="OK_NOK"/>
+        <viewAttribute id="CONFIDENTIAL"/>
+        <viewAttribute id="RELEASED_ON"/>
+        <viewAttribute id="RELEASED_BY"/>
+        <viewAttribute id="PROC_STATUS"/>
+        <viewAttribute id="ZZCASINO"/>
+        <viewAttribute id="ZZCENTRO"/>
+        <viewAttribute id="ZZPROVEEDOR"/>
+        <viewAttribute id="ZZLABORATORIO"/>
+        <viewAttribute id="ZZDIVISION"/>
+        <viewAttribute id="ZZDIVISIONT"/>
+        <viewAttribute id="ZZGERENCIA"/>
+        <viewAttribute id="ZZAREA"/>
+        <viewAttribute id="ZZBUKRS"/>
+        <viewAttribute id="FORECAST_FINISH"/>
+        <viewAttribute id="FORECAST_START"/>
+        <viewAttribute id="APPLICATION"/>
+        <viewAttribute id="CONSTR_TYPE_FIN"/>
+        <viewAttribute id="CALENDAR_ID"/>
+        <viewAttribute id="CONSTR_TIME_FIN"/>
+        <viewAttribute id="DURATION_UNIT"/>
+        <viewAttribute id="DURATION"/>
+        <viewAttribute id="TOTAL_FLOAT"/>
+        <viewAttribute id="LATEST_FINISH"/>
+        <viewAttribute id="LATEST_START"/>
+        <viewAttribute id="PLANGROUP"/>
+        <viewAttribute id="BWIDENTIFIER"/>
+        <viewAttribute id="UPDATED_IN_BW"/>
+        <viewAttribute id="CHANGED_ON"/>
+        <viewAttribute id="CHANGED_BY"/>
+        <viewAttribute id="CREATED_IN_BW"/>
+        <viewAttribute id="CREATED_ON"/>
+        <viewAttribute id="CREATED_BY"/>
+        <viewAttribute id="CONSTRAINT_TIME"/>
+        <viewAttribute id="CONSTRAINT_TYPE"/>
+        <viewAttribute id="MILESTONE"/>
+        <viewAttribute id="COMPLETION"/>
+        <viewAttribute id="PLANFINISH"/>
+        <viewAttribute id="PLANSTART"/>
+        <viewAttribute id="ACTUALFINISH"/>
+        <viewAttribute id="ACTUALSTART"/>
+        <viewAttribute id="PRIORITY"/>
+        <viewAttribute id="OBJECT_TYPE"/>
+        <viewAttribute id="EXTERNAL_ID"/>
+        <viewAttribute id="PROJECT_GUID"/>
+        <viewAttribute id="OBJECT_GUID"/>
+        <viewAttribute id="ROLE_SORTNR"/>
+        <viewAttribute id="ROLE"/>
+        <viewAttribute id="PARTNER_ROLE"/>
+        <viewAttribute id="PARTNER_GUID"/>
+        <viewAttribute id="PARTNER"/>
+        <viewAttribute id="STAT"/>
+        <viewAttribute id="INACT"/>
+        <viewAttribute id="CHGNR"/>
+        <viewAttribute id="ESTAT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORIGINAL_LANGU" source="ORIGINAL_LANGU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_TYPE" source="AUDIT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_GROUP" source="AUTH_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GROUPING" source="GROUPING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEARCH_FIELD" source="SEARCH_FIELD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CAUSE" source="CAUSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNPLANNED" source="UNPLANNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_DATE" source="NEXT_AUDIT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEXT_AUDIT_OBLIG" source="NEXT_AUDIT_OBLIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_RES" source="SCORE_RES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MANUAL" source="SCORE_MANUAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORE_MAX" source="SCORE_MAX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDIT_CALCULATE" source="AUDIT_CALCULATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RESULT_PERCENT" source="RESULT_PERCENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MIN_RESULT" source="MIN_RESULT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFICATION" source="CLASSIFICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_CODE" source="CLASSIFI_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSIFI_MAN" source="CLASSIFI_MAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OK_NOK" source="OK_NOK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONFIDENTIAL" source="CONFIDENTIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_ON" source="RELEASED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RELEASED_BY" source="RELEASED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROC_STATUS" source="PROC_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCASINO" source="ZZCASINO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCENTRO" source="ZZCENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZPROVEEDOR" source="ZZPROVEEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZLABORATORIO" source="ZZLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISION" source="ZZDIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZDIVISIONT" source="ZZDIVISIONT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZGERENCIA" source="ZZGERENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZAREA" source="ZZAREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZBUKRS" source="ZZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_FINISH" source="FORECAST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORECAST_START" source="FORECAST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="APPLICATION" source="APPLICATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TYPE_FIN" source="CONSTR_TYPE_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALENDAR_ID" source="CALENDAR_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTR_TIME_FIN" source="CONSTR_TIME_FIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION_UNIT" source="DURATION_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DURATION" source="DURATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOTAL_FLOAT" source="TOTAL_FLOAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_FINISH" source="LATEST_FINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATEST_START" source="LATEST_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANGROUP" source="PLANGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWIDENTIFIER" source="BWIDENTIFIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UPDATED_IN_BW" source="UPDATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_ON" source="CHANGED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_IN_BW" source="CREATED_IN_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_ON" source="CREATED_ON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TIME" source="CONSTRAINT_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSTRAINT_TYPE" source="CONSTRAINT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MILESTONE" source="MILESTONE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION" source="COMPLETION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANFINISH" source="PLANFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANSTART" source="PLANSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALFINISH" source="ACTUALFINISH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTUALSTART" source="ACTUALSTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXTERNAL_ID" source="EXTERNAL_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROJECT_GUID" source="PROJECT_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_GUID" source="OBJECT_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE_SORTNR" source="ROLE_SORTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROLE" source="ROLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_ROLE" source="PARTNER_ROLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID" source="PARTNER_GUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STAT" source="STAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="INACT" source="INACT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CHGNR" source="CHGNR"/>
+      </input>
+      <input node="Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ESTAT" source="ESTAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STAT" source="ESTAT"/>
+      </input>
+    <joinAttribute name="STAT"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_5">
+    <descriptions/>
+    <attributes>
+      <attribute id="AUTH_GROUP" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AUTH_GROUP"/>
+        <keyMapping columnObjectName="Join_5" columnName="AUTH_GROUP"/>
+      </attribute>
+      <attribute id="ZZGERENCIA" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZGERENCIA"/>
+        <keyMapping columnObjectName="Join_5" columnName="ZZGERENCIA"/>
+      </attribute>
+      <attribute id="ZZCENTRO" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZCENTRO"/>
+        <keyMapping columnObjectName="Join_5" columnName="ZZCENTRO"/>
+      </attribute>
+      <attribute id="ZZAREA" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZAREA"/>
+        <keyMapping columnObjectName="Join_5" columnName="ZZAREA"/>
+      </attribute>
+      <attribute id="ESTAT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ESTAT"/>
+        <keyMapping columnObjectName="Join_5" columnName="ESTAT"/>
+      </attribute>
+      <attribute id="PLANSTART" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PLANSTART"/>
+        <keyMapping columnObjectName="Join_5" columnName="PLANSTART"/>
+      </attribute>
+      <attribute id="PARTNER" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PARTNER"/>
+        <keyMapping columnObjectName="Join_5" columnName="PARTNER"/>
+      </attribute>
+      <attribute id="EXTERNAL_ID" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="EXTERNAL_ID"/>
+        <keyMapping columnObjectName="Join_5" columnName="EXTERNAL_ID"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="RESULT_PERCENT" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="RESULT_PERCENT"/>
+        <measureMapping columnObjectName="Join_5" columnName="RESULT_PERCENT"/>
+      </measure>
+      <measure id="MIN_RESULT" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="MIN_RESULT"/>
+        <measureMapping columnObjectName="Join_5" columnName="MIN_RESULT"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="660"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="660"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="560"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="569"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="460"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="469"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="368"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="368"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="280"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_5" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="288"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="180"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_6" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

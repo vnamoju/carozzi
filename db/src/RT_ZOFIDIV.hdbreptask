@@ -1,0 +1,54 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/RT_ZOFIDIV.hdbreptask:workspace" Description="" Type="REALTIME" DropTargetTableIfExists="FALSE" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="false" RemoteSourceName="HANA_ERP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZOFIDIV&quot;" SourceDisplayName="ZOFIDIV">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="ZOFIDIV">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="VKBUR" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="BUKRS" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="KOKRS" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VKORG" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="WWDIV" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZLATT" Datatype="DECIMAL" Length="20" Precision="20" Scale="13" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZLENG" Datatype="DECIMAL" Length="20" Precision="20" Scale="13" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+      <Annotations Key="sap.im.properties" Value="">
+        <Annotation Key="truncateTable" Value="FALSE">
+        </Annotation>
+      </Annotations>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="ZOFIDIV" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZOFIDIV&quot;" FilterExpression="" ReplicationBehavior="InitAndRealtime" VTObjectName="ZOFIDIV">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VKBUR" ProjectionExpression="&quot;VKBUR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BUKRS" ProjectionExpression="&quot;BUKRS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KOKRS" ProjectionExpression="&quot;KOKRS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VKORG" ProjectionExpression="&quot;VKORG&quot;">
+        </TargetColumn>
+        <TargetColumn Name="WWDIV" ProjectionExpression="&quot;WWDIV&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZLATT" ProjectionExpression="&quot;ZLATT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZLENG" ProjectionExpression="&quot;ZLENG&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_GRUPO_CUENTA_EERR" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_GRUPO_CUENTA_EERR"/>
+  <metadata changedAt="2018-05-15 15:07:12.054"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="24"/>
+  <dataSources>
+    <DataSource id="Z1FFMTER">
+      <resourceUri>Z1FFMTER</resourceUri>
+    </DataSource>
+    <DataSource id="Z1FCODER">
+      <resourceUri>Z1FCODER</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="GRUPO_CUENTA_EERR"/>
+        <viewAttribute id="CUENTA"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1FFMTER">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_CUENTA_EERR" source="ZCDGR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA" source="HKONT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="GRUPO_CUENTA_EERR"/>
+        <viewAttribute id="GRUPO_CUENTA_EERR_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1FCODER">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_CUENTA_EERR" source="ZCDGR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_CUENTA_EERR_TEXT" source="ZTXGR"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="GRUPO_CUENTA_EERR"/>
+        <viewAttribute id="CUENTA"/>
+        <viewAttribute id="GRUPO_CUENTA_EERR_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_CUENTA_EERR" source="GRUPO_CUENTA_EERR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA" source="CUENTA"/>
+      </input>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_CUENTA_EERR_TEXT" source="GRUPO_CUENTA_EERR_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_CUENTA_EERR" source="GRUPO_CUENTA_EERR"/>
+      </input>
+      <joinAttribute name="SOCIEDAD_FI"/>
+      <joinAttribute name="GRUPO_CUENTA_EERR"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="SOCIEDAD_FI" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI"/>
+        <keyMapping columnObjectName="Join_1" columnName="SOCIEDAD_FI"/>
+      </attribute>
+      <attribute id="GRUPO_CUENTA_EERR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_CUENTA_EERR"/>
+        <keyMapping columnObjectName="Join_1" columnName="GRUPO_CUENTA_EERR"/>
+      </attribute>
+      <attribute id="CUENTA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUENTA"/>
+        <keyMapping columnObjectName="Join_1" columnName="CUENTA"/>
+      </attribute>
+      <attribute id="GRUPO_CUENTA_EERR_TEXT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_CUENTA_EERR_TEXT"/>
+        <keyMapping columnObjectName="Join_1" columnName="GRUPO_CUENTA_EERR_TEXT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

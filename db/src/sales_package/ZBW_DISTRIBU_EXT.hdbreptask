@@ -1,0 +1,46 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/SALES_PACKAGE/ZBW_DISTRIBU_EXT.hdbreptask:workspace" Description="" Type="REALTIME" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="false" RemoteSourceName="HANA_ERP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZBW_DISTRIBU_EXT&quot;" SourceDisplayName="ZBW_DISTRIBU_EXT">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="ZBW_DISTRIBU_EXT" DropTargetTableIfExists="TRUE">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="CDZDISTR" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="SUDISTR" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="Z0CUSTOMER" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="NOMDISTR" Datatype="NVARCHAR" Length="35" Precision="35" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="NOMSUC" Datatype="NVARCHAR" Length="30" Precision="30" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="Z0CUSTO_TEXT" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="ZBW_DISTRIBU_EXT" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZBW_DISTRIBU_EXT&quot;" FilterExpression="" ReplicationBehavior="InitAndRealtime" VTObjectName="ZBW_DISTRIBU_EXT">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CDZDISTR" ProjectionExpression="&quot;CDZDISTR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="SUDISTR" ProjectionExpression="&quot;SUDISTR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="Z0CUSTOMER" ProjectionExpression="&quot;Z0CUSTOMER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="NOMDISTR" ProjectionExpression="&quot;NOMDISTR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="NOMSUC" ProjectionExpression="&quot;NOMSUC&quot;">
+        </TargetColumn>
+        <TargetColumn Name="Z0CUSTO_TEXT" ProjectionExpression="&quot;Z0CUSTO_TEXT&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="MODELORENTABILIDAD_TABLA_SCP_002_O" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="MODELORENTABILIDAD_TABLA_SCP002_O"/>
+  <metadata changedAt="2018-05-15 17:08:55.473"/>
+  <localVariables>
+    <variable id="V_FECHA" parameter="true">
+      <descriptions defaultDescription="V_FECHA"/>
+      <variableProperties datatype="DATE" defaultExpressionLanguage="COLUMN_ENGINE" mandatory="true">
+        <valueDomain type="Date"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>replace(leftstr(string(now()),10),'-','')</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="41"/>
+  <dataSources>
+    <DataSource id="SCP_002">
+      <resourceUri>SCP_002</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="ORGANIZACION_VENTA_ID"/>
+        <viewAttribute id="GRUPO_MATERIAL_ID"/>
+        <viewAttribute id="OFICINA_VENTA_ID"/>
+        <viewAttribute id="DIVISION_COMERCIAL_ID"/>
+        <viewAttribute id="CLIENTE_ID"/>
+        <viewAttribute id="MATERIAL_ID"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="SOCIEDAD_CO_ID"/>
+        <viewAttribute id="VENDEDOR_ID"/>
+        <viewAttribute id="MANDT_ID"/>
+        <viewAttribute id="OFICINA_VENTA_TEXT"/>
+        <viewAttribute id="OFICINA_VENTA_ID_TEXT"/>
+        <viewAttribute id="ORGANIZACION_VENTA_TEXT"/>
+        <viewAttribute id="SOCIEDAD_CO_TEXT"/>
+        <viewAttribute id="DIM_SOCIEDAD_CO_PLAN_CUENTA"/>
+        <viewAttribute id="SOCIEDAD_FI_TEXT"/>
+        <viewAttribute id="DIM_SOCIEDAD_FI_PLAN_CUENTA"/>
+        <viewAttribute id="DIVISION_COMERCIAL_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ID_TEXT"/>
+        <viewAttribute id="CLIENTE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_REGION"/>
+        <viewAttribute id="CLIENTE_TEXT_2"/>
+        <viewAttribute id="CLIENTE_ATTR_PROVINCIA"/>
+        <viewAttribute id="CLIENTE_ATTR_COMUNA"/>
+        <viewAttribute id="CLIENTE_ATTR_PAIS"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE"/>
+        <viewAttribute id="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <viewAttribute id="CLIENTE_ATTR_LATITUD"/>
+        <viewAttribute id="CLIENTE_ATTR_LONGITUD"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <viewAttribute id="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <viewAttribute id="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+        <viewAttribute id="MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW"/>
+        <viewAttribute id="VENDEDOR_TEXT"/>
+        <viewAttribute id="VOLUMEN_PPTO"/>
+        <viewAttribute id="VOLUMEN_REAL"/>
+        <viewAttribute id="EJERCICIO_PERIODO"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="LOCAL"/>
+        <viewAttribute id="SALA_FISICA"/>
+        <viewAttribute id="AGENCIA"/>
+        <viewAttribute id="SUPERVISOR"/>
+        <viewAttribute id="SOCIEDAD_FI_ID"/>
+        <viewAttribute id="CLIENTE_ID_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ID_TEXT_2"/>
+        <viewAttribute id="VENDEDOR_ID_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_ESTACIONALIDAD"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL1"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL2"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL3"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL4"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL5"/>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CANAL_JER_NIVEL1"/>
+        <viewAttribute id="CANAL_JER_NIVEL2"/>
+        <viewAttribute id="CANAL_JER_NIVEL3"/>
+        <viewAttribute id="CANAL_JER_NIVEL4"/>
+        <viewAttribute id="CANAL_JER_NIVEL5"/>
+        <viewAttribute id="MATERIAL_ID_TEXT"/>
+        <viewAttribute id="DIA_MES_ANIO"/>
+        <viewAttribute id="VALOR_REAL"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL6"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL7"/>
+        <viewAttribute id="VALOR_PPTO"/>
+        <viewAttribute id="CUENTA_ID"/>
+        <viewAttribute id="CUENTA_TEXT_1"/>
+        <viewAttribute id="CUENTA_TEXT_2"/>
+        <viewAttribute id="VALOR_FACTURACION_REAL"/>
+        <viewAttribute id="VALOR_INGRESOS_REAL"/>
+        <viewAttribute id="VALOR_INGRESO_NETO_REAL"/>
+        <viewAttribute id="VALOR_COSTO_VENTA_REAL"/>
+        <viewAttribute id="VALOR_FACTURACION_PPTO"/>
+        <viewAttribute id="VALOR_INGRESOS_PPTO"/>
+        <viewAttribute id="VALOR_INGRESO_NETO_PPTO"/>
+        <viewAttribute id="VALOR_COSTO_VENTA_PPTO"/>
+        <viewAttribute id="VALOR_MARGEN_EXPLOTACION_PPTO"/>
+        <viewAttribute id="VALOR_MARGEN_EXPLOTACION_REAL"/>
+        <viewAttribute id="VALOR_DESCUENTO_REAL"/>
+        <viewAttribute id="VALOR_ACUERDOS_COMERCIALES_REAL"/>
+        <viewAttribute id="VALOR_ACTIVIDADES_PUNTO_VENTA_REAL"/>
+        <viewAttribute id="VALOR_COMISION_DISTRIBUIDORES_REAL"/>
+        <viewAttribute id="VALOR_COSTOS_DIRECTOS_REAL"/>
+        <viewAttribute id="VALOR_COSTOS_TRANSFERENCIA_REAL"/>
+        <viewAttribute id="VALOR_COSTOS_SOBRE_STANDARD_REAL"/>
+        <viewAttribute id="CUENTA_JER_Nivel1"/>
+        <viewAttribute id="CUENTA_JER_Nivel2"/>
+        <viewAttribute id="CUENTA_JER_Nivel3"/>
+        <viewAttribute id="CUENTA_JER_Nivel4"/>
+        <viewAttribute id="CUENTA_JER_Nivel5"/>
+        <viewAttribute id="CUENTA_JER_Nivel6"/>
+        <viewAttribute id="CUENTA_JER_Nivel7"/>
+        <viewAttribute id="CUENTA_JER_Nivel8"/>
+        <viewAttribute id="CUENTA_JER_Nivel9"/>
+        <viewAttribute id="VALOR_RESULTADO_OPERACIONAL_REAL"/>
+        <viewAttribute id="VALOR_RESULTADO_OPERACIONAL_PPTO"/>
+        <viewAttribute id="VALOR_DESCUENTO_PPTO"/>
+        <viewAttribute id="CADENA_TEXT"/>
+        <viewAttribute id="SUBCADENA_TEXT"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="VALOR_DESCUENTO_XXY_REAL"/>
+        <viewAttribute id="VALOR_DESCUENTO_XXY_PPTO"/>
+        <viewAttribute id="VALOR_COMISION_DISTRIBUIDORES_PPTO"/>
+        <viewAttribute id="CUENTA_JER_Nivel10"/>
+        <viewAttribute id="CUENTA_JER_Nivel11"/>
+        <viewAttribute id="CUENTA_JER_Nivel12"/>
+        <viewAttribute id="VALOR_INGRESO_EXPLOTACION_REAL"/>
+        <viewAttribute id="VALOR_INGRESO_EXPLOTACION_PPTO"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+        <viewAttribute id="JER_CUENTA_ID_9"/>
+        <viewAttribute id="JER_CUENTA_ID_10"/>
+        <viewAttribute id="JER_CUENTA_ID_11"/>
+        <viewAttribute id="JER_CUENTA_ID_12"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#SCP_002">
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA_ID" source="ORGANIZACION_VENTA_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ID" source="GRUPO_MATERIAL_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA_ID" source="OFICINA_VENTA_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL_ID" source="DIVISION_COMERCIAL_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ID" source="CLIENTE_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ID" source="MATERIAL_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="MONEDA_LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO_ID" source="SOCIEDAD_CO_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_ID" source="VENDEDOR_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT_ID" source="MANDT_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA_TEXT" source="OFICINA_VENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA_ID_TEXT" source="OFICINA_VENTA_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA_TEXT" source="ORGANIZACION_VENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO_TEXT" source="SOCIEDAD_CO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIM_SOCIEDAD_CO_PLAN_CUENTA" source="DIM_SOCIEDAD_CO_PLAN_CUENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI_TEXT" source="SOCIEDAD_FI_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIM_SOCIEDAD_FI_PLAN_CUENTA" source="DIM_SOCIEDAD_FI_PLAN_CUENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL_TEXT" source="DIVISION_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ID_TEXT" source="GRUPO_MATERIAL_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_1" source="CLIENTE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="CLIENTE_ATTR_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_2" source="CLIENTE_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="CLIENTE_ATTR_PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="CLIENTE_ATTR_COMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="CLIENTE_ATTR_PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE" source="CLIENTE_ATTR_CLIENTE_PADRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LATITUD" source="CLIENTE_ATTR_LATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LONGITUD" source="CLIENTE_ATTR_LONGITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SECTOR" source="MATERIAL_ATTR_SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_MARGEN_ROTACION" source="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_SKU_ESTRATEGICO" source="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO" source="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_PRODUCTO_NUEVO" source="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION" source="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO" source="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MATERIAL_ESTRATEGICO" source="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SEGUIMIENTO" source="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" source="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW" source="MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_TEXT" source="VENDEDOR_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_PPTO" source="VOLUMEN_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_REAL" source="VOLUMEN_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO_PERIODO" source="EJERCICIO_PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="SALA_FISICA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI_ID" source="SOCIEDAD_FI_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ID_TEXT_1" source="CLIENTE_ID_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ID_TEXT_2" source="CLIENTE_ID_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_ID_TEXT" source="VENDEDOR_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_ESTACIONALIDAD" source="MATERIAL_ATTR_ESTACIONALIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1" source="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2" source="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL1" source="CLIENTE_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL2" source="CLIENTE_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL3" source="CLIENTE_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL4" source="CLIENTE_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL5" source="CLIENTE_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL1" source="CANAL_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL2" source="CANAL_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL3" source="CANAL_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL4" source="CANAL_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL5" source="CANAL_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ID_TEXT" source="MATERIAL_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIA_MES_ANIO" source="DIA_MES_ANIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_REAL" source="VALOR_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL6" source="CLIENTE_JER_NIVEL6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL7" source="CLIENTE_JER_NIVEL7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_PPTO" source="VALOR_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_ID" source="CUENTA_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT_1" source="CUENTA_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT_2" source="CUENTA_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_FACTURACION_REAL" source="VALOR_FACTURACION_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_INGRESOS_REAL" source="VALOR_INGRESOS_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_INGRESO_NETO_REAL" source="VALOR_INGRESO_NETO_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_COSTO_VENTA_REAL" source="VALOR_COSTO_VENTA_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_FACTURACION_PPTO" source="VALOR_FACTURACION_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_INGRESOS_PPTO" source="VALOR_INGRESOS_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_INGRESO_NETO_PPTO" source="VALOR_INGRESO_NETO_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_COSTO_VENTA_PPTO" source="VALOR_COSTO_VENTA_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_MARGEN_EXPLOTACION_PPTO" source="VALOR_MARGEN_EXPLOTACION_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_MARGEN_EXPLOTACION_REAL" source="VALOR_MARGEN_EXPLOTACION_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_DESCUENTO_REAL" source="VALOR_DESCUENTO_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_ACUERDOS_COMERCIALES_REAL" source="VALOR_ACUERDOS_COMERCIALES_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_ACTIVIDADES_PUNTO_VENTA_REAL" source="VALOR_ACTIVIDADES_PUNTO_VENTA_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_COMISION_DISTRIBUIDORES_REAL" source="VALOR_COMISION_DISTRIBUIDORES_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_COSTOS_DIRECTOS_REAL" source="VALOR_COSTOS_DIRECTOS_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_COSTOS_TRANSFERENCIA_REAL" source="VALOR_COSTOS_TRANSFERENCIA_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_COSTOS_SOBRE_STANDARD_REAL" source="VALOR_COSTOS_SOBRE_STANDARD_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel1" source="CUENTA_JER_Nivel1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2" source="CUENTA_JER_Nivel2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel3" source="CUENTA_JER_Nivel3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel4" source="CUENTA_JER_Nivel4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel5" source="CUENTA_JER_Nivel5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel6" source="CUENTA_JER_Nivel6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel7" source="CUENTA_JER_Nivel7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel8" source="CUENTA_JER_Nivel8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel9" source="CUENTA_JER_Nivel9"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_RESULTADO_OPERACIONAL_REAL" source="VALOR_RESULTADO_OPERACIONAL_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_RESULTADO_OPERACIONAL_PPTO" source="VALOR_RESULTADO_OPERACIONAL_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_DESCUENTO_PPTO" source="VALOR_DESCUENTO_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA_TEXT" source="CADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCADENA_TEXT" source="SUBCADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_DESCUENTO_XXY_REAL" source="VALOR_DESCUENTO_XXY_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_DESCUENTO_XXY_PPTO" source="VALOR_DESCUENTO_XXY_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_COMISION_DISTRIBUIDORES_PPTO" source="VALOR_COMISION_DISTRIBUIDORES_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel10" source="CUENTA_JER_Nivel10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel11" source="CUENTA_JER_Nivel11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel12" source="CUENTA_JER_Nivel12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_INGRESO_EXPLOTACION_REAL" source="VALOR_INGRESO_EXPLOTACION_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_INGRESO_EXPLOTACION_PPTO" source="VALOR_INGRESO_EXPLOTACION_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_9" source="JER_CUENTA_ID_9"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_10" source="JER_CUENTA_ID_10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_11" source="JER_CUENTA_ID_11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_12" source="JER_CUENTA_ID_12"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="EJERCICIO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="EJERCICIO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="EJERCICIO"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA_ID" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORGANIZACION_VENTA_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ORGANIZACION_VENTA_ID"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ID" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUPO_MATERIAL_ID"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_VENTA_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="OFICINA_VENTA_ID"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL_ID" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_COMERCIAL_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DIVISION_COMERCIAL_ID"/>
+      </attribute>
+      <attribute id="CLIENTE_ID" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ID"/>
+      </attribute>
+      <attribute id="MATERIAL_ID" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ID"/>
+      </attribute>
+      <attribute id="PERIODO" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERIODO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PERIODO"/>
+      </attribute>
+      <attribute id="MONEDA_LOCAL" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONEDA_LOCAL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MONEDA_LOCAL"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO_ID" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_CO_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SOCIEDAD_CO_ID"/>
+      </attribute>
+      <attribute id="VENDEDOR_ID" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VENDEDOR_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VENDEDOR_ID"/>
+      </attribute>
+      <attribute id="MANDT_ID" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MANDT_ID"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_TEXT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_VENTA_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="OFICINA_VENTA_TEXT"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID_TEXT" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_VENTA_ID_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="OFICINA_VENTA_ID_TEXT"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA_TEXT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORGANIZACION_VENTA_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ORGANIZACION_VENTA_TEXT"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO_TEXT" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_CO_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SOCIEDAD_CO_TEXT"/>
+      </attribute>
+      <attribute id="DIM_SOCIEDAD_CO_PLAN_CUENTA" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIM_SOCIEDAD_CO_PLAN_CUENTA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DIM_SOCIEDAD_CO_PLAN_CUENTA"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI_TEXT" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SOCIEDAD_FI_TEXT"/>
+      </attribute>
+      <attribute id="DIM_SOCIEDAD_FI_PLAN_CUENTA" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIM_SOCIEDAD_FI_PLAN_CUENTA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DIM_SOCIEDAD_FI_PLAN_CUENTA"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL_TEXT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_COMERCIAL_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DIVISION_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_CATEGORIA" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CATEGORIA_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CATEGORIA_TEXT"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIDAD_NEGOCIO_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ID_TEXT" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ID_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUPO_MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="CLIENTE_TEXT_1" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_TEXT_1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_REGION" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_REGION"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_REGION"/>
+      </attribute>
+      <attribute id="CLIENTE_TEXT_2" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_TEXT_2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_TEXT_2"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_PROVINCIA" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_PROVINCIA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_PROVINCIA"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_COMUNA" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_COMUNA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_COMUNA"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_PAIS" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_PAIS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_PAIS"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CLIENTE_PADRE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_CLIENTE_PADRE"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CANAL_COMERCIAL" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_TIPO_MATERIAL" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_TIPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_GRUPO_MATERIAL" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_SECTOR" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_SECTOR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_SECTOR"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_IND_MARGEN_ROTACION" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_IND_SKU_ESTRATEGICO" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_IND_PRODUCTO_NUEVO" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MATERIAL_ESTRATEGICO" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_SEGUIMIENTO" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_SEGUIMIENTO"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MARCA" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_MARCA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_MARCA"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_CLASIF_SEGUIMIENTO_BW"/>
+      </attribute>
+      <attribute id="VENDEDOR_TEXT" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VENDEDOR_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VENDEDOR_TEXT"/>
+      </attribute>
+      <attribute id="EJERCICIO_PERIODO" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="EJERCICIO_PERIODO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="EJERCICIO_PERIODO"/>
+      </attribute>
+      <attribute id="CADENA" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CADENA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CADENA"/>
+      </attribute>
+      <attribute id="SUB_CADENA" order="57" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_CADENA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SUB_CADENA"/>
+      </attribute>
+      <attribute id="LOCAL" order="58" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LOCAL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="LOCAL"/>
+      </attribute>
+      <attribute id="SALA_FISICA" order="59" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALA_FISICA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SALA_FISICA"/>
+      </attribute>
+      <attribute id="AGENCIA" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AGENCIA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="AGENCIA"/>
+      </attribute>
+      <attribute id="SUPERVISOR" order="61" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUPERVISOR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SUPERVISOR"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI_ID" order="62" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SOCIEDAD_FI_ID"/>
+      </attribute>
+      <attribute id="CLIENTE_ID_TEXT_1" order="63" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ID_TEXT_1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ID_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ID_TEXT_2" order="64" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ID_TEXT_2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ID_TEXT_2"/>
+      </attribute>
+      <attribute id="VENDEDOR_ID_TEXT" order="65" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VENDEDOR_ID_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VENDEDOR_ID_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_ESTACIONALIDAD" order="66" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_ESTACIONALIDAD"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ATTR_ESTACIONALIDAD"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1" order="67" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2" order="68" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1" order="69" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2" order="70" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL1" order="71" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_JER_NIVEL1"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL2" order="72" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL3" order="73" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL4" order="74" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL4"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL5" order="75" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL5"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="CANAL_COMERCIAL_TEXT" order="76" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_COMERCIAL_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CANAL_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL1" order="77" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CANAL_JER_NIVEL1"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL2" order="78" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CANAL_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL3" order="79" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CANAL_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL4" order="80" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL4"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CANAL_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL5" order="81" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL5"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CANAL_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="MATERIAL_ID_TEXT" order="82" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="MATERIAL_ID_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="DIA_MES_ANIO" order="83" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIA_MES_ANIO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DIA_MES_ANIO"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL6" order="85" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL6"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_JER_NIVEL6"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL7" order="86" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL7"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CLIENTE_JER_NIVEL7"/>
+      </attribute>
+      <attribute id="CUENTA_ID" order="88" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUENTA_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_ID"/>
+      </attribute>
+      <attribute id="CUENTA_TEXT_1" order="89" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUENTA_TEXT_1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_TEXT_1"/>
+      </attribute>
+      <attribute id="CUENTA_TEXT_2" order="90" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUENTA_TEXT_2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_TEXT_2"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel1" order="108" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel1"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel2" order="109" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel2"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel3" order="110" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel3"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel4" order="111" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel4"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel5" order="112" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel5"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel6" order="113" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel6"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel7" order="114" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel7"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel8" order="115" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel8"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel9" order="116" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel9"/>
+      </attribute>
+      <attribute id="CADENA_TEXT" order="120" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CADENA_TEXT"/>
+      </attribute>
+      <attribute id="SUBCADENA_TEXT" order="121" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="SUBCADENA_TEXT"/>
+      </attribute>
+      <attribute id="REGION_TEXT" order="122" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="REGION_TEXT"/>
+      </attribute>
+      <attribute id="PROVINCIA_TEXT" order="123" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="PROVINCIA_TEXT"/>
+      </attribute>
+      <attribute id="COMUNA_TEXT" order="124" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="COMUNA_TEXT"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel10" order="128" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel10"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel11" order="129" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel11"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel12" order="130" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CUENTA_JER_Nivel12"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_2" order="133" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="JER_CUENTA_ID_2"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_3" order="134" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="JER_CUENTA_ID_3"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_4" order="135" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="JER_CUENTA_ID_4"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_5" order="136" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="JER_CUENTA_ID_5"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_6" order="137" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="JER_CUENTA_ID_6"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_7" order="138" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="JER_CUENTA_ID_7"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_8" order="139" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="JER_CUENTA_ID_8"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_9" order="140" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="JER_CUENTA_ID_9"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_10" order="141" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="JER_CUENTA_ID_10"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_11" order="142" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="JER_CUENTA_ID_11"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_12" order="143" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="JER_CUENTA_ID_12"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="CLIENTE_ATTR_LATITUD" order="35" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CLIENTE_ATTR_LATITUD"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_LATITUD"/>
+      </measure>
+      <measure id="CLIENTE_ATTR_LONGITUD" order="36" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CLIENTE_ATTR_LONGITUD"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CLIENTE_ATTR_LONGITUD"/>
+      </measure>
+      <measure id="VOLUMEN_PPTO" order="53" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VOLUMEN_PPTO"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VOLUMEN_PPTO"/>
+      </measure>
+      <measure id="VOLUMEN_REAL" order="54" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VOLUMEN_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VOLUMEN_REAL"/>
+      </measure>
+      <measure id="VALOR_REAL" order="84" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_REAL"/>
+      </measure>
+      <measure id="VALOR_PPTO" order="87" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_PPTO"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_PPTO"/>
+      </measure>
+      <measure id="VALOR_FACTURACION_REAL" order="91" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_FACTURACION_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_FACTURACION_REAL"/>
+      </measure>
+      <measure id="VALOR_INGRESOS_REAL" order="92" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_INGRESOS_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_INGRESOS_REAL"/>
+      </measure>
+      <measure id="VALOR_INGRESO_NETO_REAL" order="93" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_INGRESO_NETO_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_INGRESO_NETO_REAL"/>
+      </measure>
+      <measure id="VALOR_COSTO_VENTA_REAL" order="94" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_COSTO_VENTA_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_COSTO_VENTA_REAL"/>
+      </measure>
+      <measure id="VALOR_FACTURACION_PPTO" order="95" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_FACTURACION_PPTO"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_FACTURACION_PPTO"/>
+      </measure>
+      <measure id="VALOR_INGRESOS_PPTO" order="96" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_INGRESOS_PPTO"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_INGRESOS_PPTO"/>
+      </measure>
+      <measure id="VALOR_INGRESO_NETO_PPTO" order="97" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_INGRESO_NETO_PPTO"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_INGRESO_NETO_PPTO"/>
+      </measure>
+      <measure id="VALOR_COSTO_VENTA_PPTO" order="98" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_COSTO_VENTA_PPTO"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_COSTO_VENTA_PPTO"/>
+      </measure>
+      <measure id="VALOR_MARGEN_EXPLOTACION_PPTO" order="99" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_MARGEN_EXPLOTACION_PPTO"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_MARGEN_EXPLOTACION_PPTO"/>
+      </measure>
+      <measure id="VALOR_MARGEN_EXPLOTACION_REAL" order="100" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_MARGEN_EXPLOTACION_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_MARGEN_EXPLOTACION_REAL"/>
+      </measure>
+      <measure id="VALOR_DESCUENTO_REAL" order="101" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_DESCUENTO_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_DESCUENTO_REAL"/>
+      </measure>
+      <measure id="VALOR_ACUERDOS_COMERCIALES_REAL" order="102" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_ACUERDOS_COMERCIALES_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_ACUERDOS_COMERCIALES_REAL"/>
+      </measure>
+      <measure id="VALOR_ACTIVIDADES_PUNTO_VENTA_REAL" order="103" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_ACTIVIDADES_PUNTO_VENTA_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_ACTIVIDADES_PUNTO_VENTA_REAL"/>
+      </measure>
+      <measure id="VALOR_COMISION_DISTRIBUIDORES_REAL" order="104" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_COMISION_DISTRIBUIDORES_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_COMISION_DISTRIBUIDORES_REAL"/>
+      </measure>
+      <measure id="VALOR_COSTOS_DIRECTOS_REAL" order="105" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_COSTOS_DIRECTOS_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_COSTOS_DIRECTOS_REAL"/>
+      </measure>
+      <measure id="VALOR_COSTOS_TRANSFERENCIA_REAL" order="106" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_COSTOS_TRANSFERENCIA_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_COSTOS_TRANSFERENCIA_REAL"/>
+      </measure>
+      <measure id="VALOR_COSTOS_SOBRE_STANDARD_REAL" order="107" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_COSTOS_SOBRE_STANDARD_REAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_COSTOS_SOBRE_STANDARD_REAL"/>
+      </measure>
+      <measure id="VALOR_RESULTADO_OPERACIONAL_REAL" order="117" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_RESULTADO_OPERACIONAL_REAL"/>
+      </measure>
+      <measure id="VALOR_RESULTADO_OPERACIONAL_PPTO" order="118" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_RESULTADO_OPERACIONAL_PPTO"/>
+      </measure>
+      <measure id="VALOR_DESCUENTO_PPTO" order="119" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_DESCUENTO_PPTO"/>
+      </measure>
+      <measure id="VALOR_DESCUENTO_XXY_REAL" order="125" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_DESCUENTO_XXY_REAL"/>
+      </measure>
+      <measure id="VALOR_DESCUENTO_XXY_PPTO" order="126" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_DESCUENTO_XXY_PPTO"/>
+      </measure>
+      <measure id="VALOR_COMISION_DISTRIBUIDORES_PPTO" order="127" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_COMISION_DISTRIBUIDORES_PPTO"/>
+      </measure>
+      <measure id="VALOR_INGRESO_EXPLOTACION_REAL" order="131" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_INGRESO_EXPLOTACION_REAL"/>
+      </measure>
+      <measure id="VALOR_INGRESO_EXPLOTACION_PPTO" order="132" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_INGRESO_EXPLOTACION_PPTO"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="230"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

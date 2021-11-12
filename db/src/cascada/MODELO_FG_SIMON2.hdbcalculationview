@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="MODELO_FG_SIMON2" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="MODELO CASCADA SIMON"/>
+  <metadata changedAt="2021-07-05 12:41:47.871"/>
+  <localVariables>
+    <variable id="V_SOCIEDAD_CO">
+      <descriptions defaultDescription="Sociedad CO"/>
+      <variableProperties datatype="VARCHAR" defaultValue="EC01" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="DIVISION_COMERCIAL">
+      <descriptions defaultDescription="Division Comercial"/>
+      <variableProperties datatype="VARCHAR" defaultValue="" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="UNIDAD_NEGOCIO">
+      <descriptions defaultDescription="Unidad de Negocio"/>
+      <variableProperties datatype="VARCHAR" defaultValue="" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="EJERCICIO_MES">
+      <descriptions defaultDescription="Ejercicio Mes (aaaamm)"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="true" type="Interval"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="24"/>
+  <dataSources>
+    <DataSource id="FG_SIMON2_EXPORT">
+      <resourceUri>FG_SIMON2_EXPORT</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="MES_ANO"/>
+        <viewAttribute id="MEINH"/>
+        <viewAttribute id="Cuentax"/>
+        <viewAttribute id="KNDNR"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="KMVTNR"/>
+        <viewAttribute id="WWDIV"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="ARTNR"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="GRUPO_MATERIAL_ID_TEXT"/>
+        <viewAttribute id="MEGBTR"/>
+        <viewAttribute id="WOGBTR"/>
+        <viewAttribute id="VALOR_CUENTA"/>
+        <viewAttribute id="KILOS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#FG_SIMON2_EXPORT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MES_ANO" source="MES_ANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cuentax" source="Cuentax"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KNDNR" source="KNDNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KMVTNR" source="KMVTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WWDIV" source="WWDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ARTNR" source="ARTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ID_TEXT" source="GRUPO_MATERIAL_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEGBTR" source="MEGBTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WOGBTR" source="WOGBTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_CUENTA" source="VALOR_CUENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KILOS" source="KILOS"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MATKL" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATKL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATKL"/>
+      </attribute>
+      <attribute id="BUKRS" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUKRS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="GJAHR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GJAHR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GJAHR"/>
+      </attribute>
+      <attribute id="PERIO" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERIO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PERIO"/>
+      </attribute>
+      <attribute id="MES_ANO" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MES_ANO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MES_ANO"/>
+      </attribute>
+      <attribute id="MEINH" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MEINH"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MEINH"/>
+      </attribute>
+      <attribute id="Cuentax" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuentax"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Cuentax"/>
+      </attribute>
+      <attribute id="KNDNR" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KNDNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KNDNR"/>
+      </attribute>
+      <attribute id="VKORG" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKORG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VKORG"/>
+      </attribute>
+      <attribute id="VKBUR" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKBUR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VKBUR"/>
+      </attribute>
+      <attribute id="KMVTNR" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KMVTNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KMVTNR"/>
+      </attribute>
+      <attribute id="WWDIV" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WWDIV"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WWDIV"/>
+      </attribute>
+      <attribute id="LAND1" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LAND1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="LAND1"/>
+      </attribute>
+      <attribute id="ARTNR" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ARTNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ARTNR"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_CATEGORIA" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ID_TEXT" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ID_TEXT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUPO_MATERIAL_ID_TEXT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="MEGBTR" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="MEGBTR"/>
+        <measureMapping columnObjectName="Projection_1" columnName="MEGBTR"/>
+      </measure>
+      <measure id="WOGBTR" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WOGBTR"/>
+        <measureMapping columnObjectName="Projection_1" columnName="WOGBTR"/>
+      </measure>
+      <measure id="VALOR_CUENTA" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_CUENTA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_CUENTA"/>
+      </measure>
+      <measure id="KILOS" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="KILOS"/>
+        <measureMapping columnObjectName="Projection_1" columnName="KILOS"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="60" y="210"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

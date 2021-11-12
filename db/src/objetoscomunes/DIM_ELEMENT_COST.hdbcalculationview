@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_ELEMENT_COST" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="DIMENSION" dimensionType="STANDARD" enforceSqlExecution="false" outputViewType="Projection">
+  <descriptions defaultDescription="DIM_ELEMENT_COST"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="TCKH_1" clientColumn="MANDT">
+      <resourceUri>TCKH_1</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <viewAttributes>
+        <viewAttribute id="ELEHK"/>
+        <viewAttribute id="ELEMT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="TXELE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#TCKH_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEHK" source="ELEHK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEMT" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXELE" source="TXELE"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <attributes>
+      <attribute id="ELEHK" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ELEHK"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ELEHK"/>
+      </attribute>
+      <attribute id="ELEMT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ELEMT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ELEMT"/>
+      </attribute>
+      <attribute id="MANDT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="SPRAS" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPRAS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SPRAS"/>
+      </attribute>
+      <attribute id="TXELE" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TXELE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="TXELE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="28" y="309"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

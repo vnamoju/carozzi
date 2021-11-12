@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_CATEGORIA" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_CATEGORIA"/>
+  <metadata changedAt="2018-04-19 22:49:51.359" createdAt="2018-03-26 11:31:56.872"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="ZBWCT" clientColumn="MANDT">
+      <resourceUri>ZBWCT</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="ZBWCT">
+    <descriptions defaultDescription="DIM_CATEGORIA"/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="ZBWCT" columnName="MANDT"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI"/>
+        <keyMapping columnObjectName="ZBWCT" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="CATEGORIA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CATEGORIA"/>
+        <keyMapping columnObjectName="ZBWCT" columnName="ZCATEG"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CATEGORIA_TEXT"/>
+        <keyMapping columnObjectName="ZBWCT" columnName="ZDESCRIP"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

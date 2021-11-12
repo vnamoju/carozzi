@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="69ef8b802ce6c93ab49a6057df8a0b6d" name="dummy" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="c9a2b88241394876b71bb51702f31b8f" key="sap.afm.layout">
+    <annotations xmi:id="9650a2920736bf6b2cefc6a063fa7e85" key="x" value="10"/>
+    <annotations xmi:id="21b1d1ccdc6b4c212c3ce9960d249c27" key="y" value="10"/>
+    <annotations xmi:id="038130e41451a3d9116db613be2e8926" key="width" value="100"/>
+    <annotations xmi:id="81c3fce59e9a3e4e6ed575f806969e1f" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="e484af223ec5ad0b50b93207e24c4f62" key="sap.afm.palette">
+    <annotations xmi:id="9de13c099d1ee90104ef003839a38bf0" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="dfe78a61d51dd1141ec682ad23e9943b" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="76bc30f41c788c76e86b263c088bfef2" key="sap.afm.nodeInputs">
+    <annotations xmi:id="ab81535a74bcc2e749abf789fb2cf927" key="B" value=""/>
+  </annotations>
+  <annotations xmi:id="20fe8c712d3e526477363dc4abd1f0be" key="sap.afm.nodeOutputs">
+    <annotations xmi:id="349339cfb8b650563f74e919a17ec2f2" key="B_1" value=""/>
+  </annotations>
+  <inputs xmi:id="975abd9b03857a81e291af2a9dec650d" name="B" kind="TABLE">
+    <annotations/>
+    <attributes xmi:id="cb2b65c1c49a3d1fa6007ae0745eba4d" name="ID" type="INTEGER" length="0" scale="0" nullable="false">
+      <annotations xmi:id="d7a96176108ea3fd0eb5278382b36539" key="sap.im.primaryKey" value="true"/>
+    </attributes>
+    <attributes xmi:id="5b8b44341379a07320432e2a95060492" name="NAME" type="VARCHAR" length="10" scale="0" nullable="true"/>
+  </inputs>
+  <outputs xmi:id="72bdcb96668c3a48312bf5fa38520bfc" name="B_1" kind="TABLE">
+    <attributes xmi:id="def4882abbd8dc9efebb34271e02f057" name="ID" type="INTEGER" length="0" scale="0" nullable="false">
+      <annotations xmi:id="bca63b4fc81793297cebd29f3906e3f3" key="sap.im.primaryKey" value="true"/>
+    </attributes>
+    <attributes xmi:id="ccf3f5b35fbf8aff7fbfb19a70606b9d" name="NAME" type="VARCHAR" length="10" scale="0" nullable="true"/>
+    <annotations xmi:id="e46f75a3899cc59de744eb4b998d8f2f" key="sap.im.writerType" value="update"/>
+  </outputs>
+  <tableMappings xmi:id="8b4692ffb8c661e2e592221f732e78d7" source="975abd9b03857a81e291af2a9dec650d" target="ab619c5cc03c5f4fc387948c08e01c1d">
+    <attributeMappings source="cb2b65c1c49a3d1fa6007ae0745eba4d" target="c157d7fb81df5d1550174226a0659cca" xmi:id="b53a1594ab11ceadc9a6952a9c559cf8"/>
+    <attributeMappings source="5b8b44341379a07320432e2a95060492" target="71d2088b5cb23568e8835137eb21cbac" xmi:id="9d048116e0143b255120ef2c315ea827"/>
+  </tableMappings>
+  <tableMappings xmi:id="60fa5dd3bc42745ee70516e652c11557" source="efab48c43e11260ad692139ca02c8d56" target="72bdcb96668c3a48312bf5fa38520bfc">
+    <attributeMappings source="6b9d968f65d80b5d1541e45c60128cc9" target="def4882abbd8dc9efebb34271e02f057" xmi:id="851a3fd66a1d0fa21d600f63fdae80e2"/>
+    <attributeMappings source="53a03d9ee9b2cfc80cfc3dc5010f7fb9" target="ccf3f5b35fbf8aff7fbfb19a70606b9d" xmi:id="20df763b588856d3f5c47b4ca15bc964"/>
+  </tableMappings>
+  <nodes xsi:type="flowgraph:SortNode" xmi:id="6ea87be86d5bf436cdb8b05fc48f1711" name="Sort2" sortAttributes="c157d7fb81df5d1550174226a0659cca">
+    <annotations xmi:id="ee9127c71503e86b0a2f124d9f1ff07a" key="sap.afm.description" value=""/>
+    <annotations xmi:id="05a14726a8e8c73215aa2d69fd065b8d" key="sap.afm.displayName" value="Sort"/>
+    <annotations xmi:id="9cda4d21d6a5e0403eb1a52b176e7192" key="sap.afm.layout">
+      <annotations xmi:id="a1da40aaeb0a86f836ae1e43584ba218" key="x" value="377"/>
+      <annotations xmi:id="d7b31389810316a2517a059c1d7a581a" key="y" value="82"/>
+      <annotations xmi:id="2ef20bdf08f7f6cc7a205dc5165ca83e" key="width" value="100"/>
+      <annotations xmi:id="692c5c2b24adc149e86d402489f3efb8" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="ab669eb5d7a4dc737d412df3855d7eba" key="sap.afm.nodeType" value="SortNode"/>
+    <annotations xmi:id="58083f98a120bf97dd60e30036d55bc3" key="sap.afm.nodeInputs">
+      <annotations xmi:id="40c1d102284face5f1fd21cd05318f78" key="Sort2_Input" value="B"/>
+    </annotations>
+    <annotations xmi:id="1bdb9bb164f8b096c66d865418f866aa" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="e6d7561db8a4216506389f87ccadc02d" key="Sort2" value="B_1"/>
+    </annotations>
+    <outputs name="Sort2" kind="TABLE" xmi:id="efab48c43e11260ad692139ca02c8d56">
+      <attributes xmi:id="6b9d968f65d80b5d1541e45c60128cc9" name="ID" type="INTEGER" nullable="false" length="0" scale="0">
+        <annotations xmi:id="bab79dbeda9b41e3528d45e34e9967e4" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="53a03d9ee9b2cfc80cfc3dc5010f7fb9" name="NAME" type="VARCHAR" nullable="true" length="10" scale="0"/>
+    </outputs>
+    <inputs name="Sort2_Input" xmi:id="ab619c5cc03c5f4fc387948c08e01c1d" kind="TABLE">
+      <attributes xmi:id="c157d7fb81df5d1550174226a0659cca" name="ID" type="INTEGER" nullable="false" length="0" scale="0">
+        <annotations xmi:id="d24bf4d911347b5b351dab8418bb78b4" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="71d2088b5cb23568e8835137eb21cbac" name="NAME" type="VARCHAR" nullable="true" length="10" scale="0"/>
+    </inputs>
+    <tableMappings xmi:id="1fdf02b22bae398e47089b7116d7e0a6" source="ab619c5cc03c5f4fc387948c08e01c1d" target="efab48c43e11260ad692139ca02c8d56">
+      <attributeMappings source="c157d7fb81df5d1550174226a0659cca" target="6b9d968f65d80b5d1541e45c60128cc9" xmi:id="175f5c236b9fc4b0b6b69c8058a297f3"/>
+      <attributeMappings source="71d2088b5cb23568e8835137eb21cbac" target="53a03d9ee9b2cfc80cfc3dc5010f7fb9" xmi:id="eae2a57fea0c285358d180d3eed694c1"/>
+    </tableMappings>
+    <sortOrders>ASCENDING</sortOrders>
+  </nodes>
+</flowgraph:ContainerNode>

@@ -1,0 +1,72 @@
+namespace SCP_CAROZZI_SAC.data;
+
+
+context historicoPeru {
+
+   Entity ZTCOSTOS_PERU_HIST {
+   key CALMONTH: String(6);
+   key MATERIAL: String(18);   
+   key ZBW_CONSECUTIVO: Integer;
+   ACT_UNIT: String(3);
+   ACT_UNIT_DESCRIPTION: String(40);
+   CCOMPSTRUC: String(2);
+   COMPONNT: String(18);
+   COMPONENT_DESCRIPTION: String(40);
+   COSTCENTER: String(10);
+    COSTCENTER_DESCRIPTION: String(40);
+    COSTCOMP: String(3);
+    COSTCOMP_DESCRIPTION: String(40);
+    COSTELMNT: String(10);
+    COSTELMNT_DESCRIPTION: String(40);
+    CO_AREA: String(4);
+    CO_AREA_DESCRIPTION: String(40);
+    LOC_CURRY: String(5);
+    LOC_CURRY_DESCRIPTION: String(40);
+    MATERIAL_DESCRIPTION: String(40);
+    MATERIAL_0DIVISION: String(2);
+    MATERIAL_0DIVISION_DESCRIPTION: String(40);
+    MATERIAL_0MATL_GROUP: String(9);
+    MATERIAL_0MATL_GROUP_DESC: String(40);
+    MAT_0MATL_TYPE: String(4);
+    MAT_0MATL_TYPE_DESC: String(40);
+    MATERIAL_ZMARPRD: String(15);
+    MATERIAL_ZMSTAE: String(2);
+    MATERIAL_ZMSTAE_DESC: String(40);
+    PLANT: String(4);
+    PLANT_DESCR: String(40);
+    PRODORDER: String(12);
+    PRODORDER_DESCRIPTION: String(40);
+    UNIT: String(3);
+    UNT_DESCRI: String(40);
+    ZFEC_CALC: String(8);
+    ZGRP_ART: String(9);
+    ZGRP_ART_DESCRIPTION: String(40);
+    ZGRP_ART_0G_CWWNEG: String(4);
+    ZGRP_ART_0G_CWWNEG_DESC: String(40);
+    ZGRP_ART_ZCAT_COM: String(4);
+    ZGRP_ART_ZCAT_COM_DESC: String(40);
+    ZGRP_ART_ZCAT_COM2: String(4);
+    ZGRP_ART_ZCAT_COM2_DESC: String(40);
+    ZGRP_ART_ZCAT_GES: String(4);
+    ZGRP_ART_ZCAT_GES_DESC: String(40);
+    ZPLANT_P: String(4);
+    ZPLANT_P_DESC: String(40);
+    ZPOSNR: String(5);
+    ZTRCOSTO: String(1);
+    ZTRCOSTO_DESC: String(40);
+    ZVAR_CALC: String(4);
+    ZBW_0NETPRICE: Decimal(18,3);
+    ZBW_Z0LOTSIZE: Decimal(18,3);
+    ZBW_ZCANCOMP: Decimal(18,3);
+    ZNW_ZCANCONS: Decimal(18,3);
+    zbw_ZCANFABR: Decimal(18,3);
+    zbw_ZCANFABRO: Decimal(18,3);
+    ZBW_ZVALOR_T: Decimal(18,3);
+   } technical configuration {
+    column store;
+   };    
+
+  
+  };
+
+ 

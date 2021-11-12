@@ -1,0 +1,33 @@
+<RepTask RepVersion="2.1" DropTargetTableIfExists="FALSE" Type="REALTIME" Description="" Name="file:/SCP_CAROZZI_SAC/RT_Z1BOUNINEG.hdbreptask:workspace">
+  <SourceObjects VirtualTableNamePrefix="VT_" VirtualTableSchema="SCP_CAROZZI_SAC" RemoteSourceName="HANA_ERP" VTFullyQualifiedName="false" TTFullyQualifiedName="false" SourceType="REMOTE_OBJ">
+    <SourceObject SourceDisplayName="Z1BOUNINEG" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;Z1BOUNINEG&quot;">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="Z1BOUNINEG" DropTargetTableIfExists="FALSE">
+      <TargetColumns>
+        <TargetColumn Name="BUKRS" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="4" Length="4" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="ZUNINEG" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="4" Length="4" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="ZNOMUNINEG" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="20" Length="20" Datatype="NVARCHAR">
+        </TargetColumn>
+      </TargetColumns>
+      <Annotations Value="" Key="sap.im.properties">
+        <Annotation Value="FALSE" Key="truncateTable"/>
+      </Annotations>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;Z1BOUNINEG&quot;" ObjectName="Z1BOUNINEG" VTObjectName="Z1BOUNINEG" ReplicationBehavior="InitAndRealtime" FilterExpression="">
+      <TargetColumns>
+        <TargetColumn Name="BUKRS" ProjectionExpression="&quot;BUKRS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZUNINEG" ProjectionExpression="&quot;ZUNINEG&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZNOMUNINEG" ProjectionExpression="&quot;ZNOMUNINEG&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

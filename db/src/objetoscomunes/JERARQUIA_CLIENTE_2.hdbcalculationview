@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="JERARQUIA_CLIENTE_2" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="TEST_JER"/>
+  <metadata changedAt="2019-11-29 17:31:17.634"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="52"/>
+  <dataSources>
+    <DataSource id="DIM_SETNODE">
+      <resourceUri>DIM_SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_2$$$$DIM_SETNODE$$">
+      <resourceUri>DIM_SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CLIENTE_SETLEAF_AUX">
+      <resourceUri>DIM_CLIENTE_SETLEAF_AUX</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_3$$$$DIM_SETNODE$$">
+      <resourceUri>DIM_SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_4$$$$DIM_CLIENTE_SETLEAF_AUX$$">
+      <resourceUri>DIM_CLIENTE_SETLEAF_AUX</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_5$$$$DIM_SETNODE$$">
+      <resourceUri>DIM_SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_7$$$$DIM_CLIENTE_SETLEAF_AUX$$">
+      <resourceUri>DIM_CLIENTE_SETLEAF_AUX</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_8$$$$DIM_SETNODE$$">
+      <resourceUri>DIM_SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_9$$$$DIM_CLIENTE_SETLEAF_AUX$$">
+      <resourceUri>DIM_CLIENTE_SETLEAF_AUX</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_10$$$$DIM_SETNODE$$">
+      <resourceUri>DIM_SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_11$$$$DIM_CLIENTE_SETLEAF_AUX$$">
+      <resourceUri>DIM_CLIENTE_SETLEAF_AUX</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="DESCRIPT"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;SUBSETNAME&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#DIM_SETNODE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+      </input>
+      <filter>(in (&quot;SETNAME&quot;,'JER_CLIENTES_5100','JER_CLIENTES_EC01','JER_CLIENTES_4100','JER_CLIENTES_1100','JER_CLIENTES_1300'))</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="DESCRIPT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_2$$$$DIM_SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="HOJA"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA" source="HOJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_CLIENTE_SETLEAF_AUX">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME1"/>
+        <viewAttribute id="HOJA"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_1" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME1&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA1" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM&quot;),&quot;SUBSETNAME1&quot;,&quot;VALFROM&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA" source="HOJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+      </input>
+      <input node="#Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_3$$$$DIM_SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSETNAME_2"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+        <viewAttribute id="DESCRIPT_2"/>
+        <viewAttribute id="DESCRIPT_1_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_2" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_2" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_1" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_1"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_4$$$$DIM_CLIENTE_SETLEAF_AUX$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSETNAME2"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+        <viewAttribute id="DESCRIPT_2"/>
+        <viewAttribute id="DESCRIPT_1_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSATNAME_2" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(ISNULL(&quot;ID_TEXT&quot;),&quot;SUBSETNAME2&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_2" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(ISNULL(&quot;SUBSATNAME_22&quot;),&quot;HOJA1&quot;,&quot;SUBSATNAME_22&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSATNAME_22" length="24" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(ISNULL(&quot;VALFROM&quot;),&quot;SUBSETNAME2&quot;,&quot;VALFROM&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME2" source="SUBSETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_2" source="DESCRIPT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_1" source="DESCRIPT_1_1"/>
+      </input>
+      <input node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_1"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_5$$$$DIM_SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+        <viewAttribute id="DESCRIPT_2"/>
+        <viewAttribute id="DESCRIPT_3"/>
+        <viewAttribute id="DESCRIPT_1_1"/>
+        <viewAttribute id="DESCRIPT_1_2"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_2" source="DESCRIPT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_1" source="DESCRIPT_1_1"/>
+      </input>
+      <input node="#Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_3" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_2" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+      <joinAttribute name="SUBSATNAME_2"/>
+      <joinAttribute name="MANDT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_7$$$$DIM_CLIENTE_SETLEAF_AUX$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+        <viewAttribute id="DESCRIPT_2"/>
+        <viewAttribute id="DESCRIPT_3"/>
+        <viewAttribute id="DESCRIPT_1_1"/>
+        <viewAttribute id="DESCRIPT_1_2"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_3" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME3&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_3" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(ISNULL(&quot;SUBSETNAME_33&quot;),&quot;HOJA_2&quot;,&quot;SUBSETNAME_33&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_33" length="24" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM&quot;),&quot;SUBSETNAME3&quot;,&quot;VALFROM&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_2" source="DESCRIPT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_3" source="DESCRIPT_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_1" source="DESCRIPT_1_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_2" source="DESCRIPT_1_2"/>
+      </input>
+      <input node="#Projection_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSATNAME_2"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_8">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_8$$$$DIM_SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_7" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_2"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+        <viewAttribute id="DESCRIPT_2"/>
+        <viewAttribute id="DESCRIPT_3"/>
+        <viewAttribute id="DESCRIPT_4"/>
+        <viewAttribute id="DESCRIPT_1_1"/>
+        <viewAttribute id="DESCRIPT_1_2"/>
+        <viewAttribute id="DESCRIPT_1_3"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_2" source="DESCRIPT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_3" source="DESCRIPT_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_1" source="DESCRIPT_1_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_2" source="DESCRIPT_1_2"/>
+      </input>
+      <input node="#Projection_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_2" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_4" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_3" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME3"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_9">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_9$$$$DIM_CLIENTE_SETLEAF_AUX$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_8" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME4"/>
+        <viewAttribute id="VALFROM_1"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+        <viewAttribute id="DESCRIPT_2"/>
+        <viewAttribute id="DESCRIPT_3"/>
+        <viewAttribute id="DESCRIPT_4"/>
+        <viewAttribute id="DESCRIPT_1_1"/>
+        <viewAttribute id="DESCRIPT_1_2"/>
+        <viewAttribute id="DESCRIPT_1_3"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_4" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;), &quot;SUBSETNAME4&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_4" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;SUBSETNAME_44&quot;),&quot;HOJA_3&quot;,&quot;SUBSETNAME_44&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_44" length="26" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM_1&quot;), &quot;SUBSETNAME4&quot;,&quot;VALFROM_1&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME4" source="SUBSETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_2" source="DESCRIPT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_3" source="DESCRIPT_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_4" source="DESCRIPT_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_1" source="DESCRIPT_1_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_2" source="DESCRIPT_1_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_3" source="DESCRIPT_1_3"/>
+      </input>
+      <input node="#Projection_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_1" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+      <joinAttribute name="SUBSETNAME_3"/>
+      <joinAttribute name="MANDT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_10">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_10$$$$DIM_SETNODE$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_9" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME4"/>
+        <viewAttribute id="VALFROM_1"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME_2"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+        <viewAttribute id="DESCRIPT_2"/>
+        <viewAttribute id="DESCRIPT_3"/>
+        <viewAttribute id="DESCRIPT_4_1"/>
+        <viewAttribute id="DESCRIPT_4"/>
+        <viewAttribute id="DESCRIPT_1_1"/>
+        <viewAttribute id="DESCRIPT_1_2"/>
+        <viewAttribute id="DESCRIPT_1_3"/>
+        <viewAttribute id="DESCRIPT_1_4"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME4" source="SUBSETNAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_1" source="VALFROM_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_2" source="DESCRIPT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_3" source="DESCRIPT_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_4_1" source="DESCRIPT_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_1" source="DESCRIPT_1_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_2" source="DESCRIPT_1_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_3" source="DESCRIPT_1_3"/>
+      </input>
+      <input node="#Projection_10">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_2" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_4" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_4" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_4"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_11">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_11$$$$DIM_CLIENTE_SETLEAF_AUX$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_10" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME4"/>
+        <viewAttribute id="VALFROM_1"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME5"/>
+        <viewAttribute id="VALFROM_2"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="DESCRIPT_1"/>
+        <viewAttribute id="DESCRIPT_2"/>
+        <viewAttribute id="DESCRIPT_3"/>
+        <viewAttribute id="DESCRIPT_4_1"/>
+        <viewAttribute id="DESCRIPT_4"/>
+        <viewAttribute id="DESCRIPT_1_1"/>
+        <viewAttribute id="DESCRIPT_1_2"/>
+        <viewAttribute id="DESCRIPT_1_3"/>
+        <viewAttribute id="DESCRIPT_1_4"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_5" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME5&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_5" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;SUBSETNAME_55&quot;),&quot;HOJA_4&quot;,&quot;SUBSETNAME_55&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_55" length="26" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM_2&quot;),&quot;SUBSETNAME5&quot;,&quot;VALFROM_2&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME4" source="SUBSETNAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_1" source="VALFROM_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME5" source="SUBSETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1" source="DESCRIPT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_2" source="DESCRIPT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_3" source="DESCRIPT_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_4_1" source="DESCRIPT_4_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_4" source="DESCRIPT_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_1" source="DESCRIPT_1_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_2" source="DESCRIPT_1_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_3" source="DESCRIPT_1_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT_1_4" source="DESCRIPT_1_4"/>
+      </input>
+      <input node="#Projection_11">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_2" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_4"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_10">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_10" columnName="MANDT"/>
+      </attribute>
+      <attribute id="SETNAME" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME"/>
+        <keyMapping columnObjectName="Join_10" columnName="SETNAME"/>
+      </attribute>
+      <attribute id="SUBSETNAME" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME"/>
+        <keyMapping columnObjectName="Join_10" columnName="SUBSETNAME"/>
+      </attribute>
+      <attribute id="SUBSETNAME_1" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME_1"/>
+        <keyMapping columnObjectName="Join_10" columnName="SUBSETNAME_1"/>
+      </attribute>
+      <attribute id="SUBSATNAME_2" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSATNAME_2"/>
+        <keyMapping columnObjectName="Join_10" columnName="SUBSATNAME_2"/>
+      </attribute>
+      <attribute id="SUBSETNAME3" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME3"/>
+        <keyMapping columnObjectName="Join_10" columnName="SUBSETNAME3"/>
+      </attribute>
+      <attribute id="SUBSETNAME_3" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME_3"/>
+        <keyMapping columnObjectName="Join_10" columnName="SUBSETNAME_3"/>
+      </attribute>
+      <attribute id="HOJA_3" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HOJA_3"/>
+        <keyMapping columnObjectName="Join_10" columnName="HOJA_3"/>
+      </attribute>
+      <attribute id="SUBSETNAME4" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME4"/>
+        <keyMapping columnObjectName="Join_10" columnName="SUBSETNAME4"/>
+      </attribute>
+      <attribute id="SUBSETNAME_4" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME_4"/>
+        <keyMapping columnObjectName="Join_10" columnName="SUBSETNAME_4"/>
+      </attribute>
+      <attribute id="DESCRIPT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPT"/>
+      </attribute>
+      <attribute id="DESCRIPT_1" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT_1"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPT_1"/>
+      </attribute>
+      <attribute id="DESCRIPT_2" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT_2"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPT_2"/>
+      </attribute>
+      <attribute id="DESCRIPT_3x" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT_3x"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPT_3"/>
+      </attribute>
+      <attribute id="SUBSETNAME_5" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME_5"/>
+        <keyMapping columnObjectName="Join_10" columnName="SUBSETNAME_5"/>
+      </attribute>
+      <attribute id="HOJA_5" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HOJA_5"/>
+        <keyMapping columnObjectName="Join_10" columnName="HOJA_5"/>
+      </attribute>
+      <attribute id="DESCRIPT_5x" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT_5x"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPT_4_1"/>
+      </attribute>
+      <attribute id="DESCRIPT_4x" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPT_4"/>
+      </attribute>
+      <attribute id="DESCRIPT_1_1" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT_1"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPT_1_1"/>
+      </attribute>
+      <attribute id="DESCRIPT_1_2" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT_1"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPT_1_2"/>
+      </attribute>
+      <attribute id="DESCRIPT_1_3" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT_1"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPT_1_3"/>
+      </attribute>
+      <attribute id="DESCRIPT_1_4" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT_1"/>
+        <keyMapping columnObjectName="Join_10" columnName="DESCRIPT_1_4"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="DESCRIPT_3" hidden="false" order="19" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT_3"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="24">
+          <formula>if ( isNull(&quot;DESCRIPT_3x&quot;), &quot;DESCRIPT_1_1&quot;,&quot;DESCRIPT_3x&quot;)&#xD;
+&#xD;
+</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="DESCRIPT_4" hidden="false" order="20" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT_4"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="24">
+          <formula>if ( isNull(&quot;DESCRIPT_4x&quot;), &quot;DESCRIPT_1_2&quot;,&quot;DESCRIPT_4x&quot;)&#xD;
+&#xD;
+</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="DESCRIPT_5" hidden="false" order="21" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT_5"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="24">
+          <formula>if ( isNull(&quot;DESCRIPT_5x&quot;), &quot;DESCRIPT_1_3&quot;,&quot;DESCRIPT_5x&quot;)&#xD;
+&#xD;
+</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="618" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="37" y="1140"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="1150"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="1029"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="1029"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="175" y="933"/>
+        <rectangleSize height="72" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="329" y="933"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="837"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="404" y="837"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="324" y="741"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="478" y="741"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="397" y="645"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="551" y="645"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="470" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="624" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="541" y="459"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="698" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="619" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="773" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="695" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_11" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="541" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="670" y="180"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

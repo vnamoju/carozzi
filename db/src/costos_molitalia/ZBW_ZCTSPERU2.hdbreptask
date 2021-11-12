@@ -1,0 +1,246 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/Costos_Molitalia/ZBW_ZCTSPERU2.hdbreptask:workspace" Description="" Type="REALTIME" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="false" RemoteSourceName="HANA_BWP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;_SYS_BIC&quot;.&quot;ZBW_ZCTSPERU2&quot;" SourceDisplayName="ZBW_ZCTSPERU2">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="ZCTSPERU2" DropTargetTableIfExists="TRUE">
+      <TargetColumns>
+        <TargetColumn Name="0ACT_UNIT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0ACT_UNIT.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0CALMONTH" Datatype="NVARCHAR" Length="6" Precision="6" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0CCOMPSTRUC" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT" Datatype="NVARCHAR" Length="18" Precision="18" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCENTER" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCENTER.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCOMP" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCOMP.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COSTELMNT" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COSTELMNT.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0CO_AREA" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0CO_AREA.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0LOC_CURRY" Datatype="NVARCHAR" Length="5" Precision="5" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0LOC_CURRY.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL" Datatype="NVARCHAR" Length="18" Precision="18" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0DIVISION" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0DIVISION.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_GROUP" Datatype="NVARCHAR" Length="9" Precision="9" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_GROUP.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MAT_0MATL_TYPE" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MAT_0MATL_TYPE.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_ZMARPRD" Datatype="NVARCHAR" Length="15" Precision="15" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_ZMSTAE" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_ZMSTAE.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER" Datatype="NVARCHAR" Length="12" Precision="12" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0UNIT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0UNT.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZFEC_CALC" Datatype="NVARCHAR" Length="8" Precision="8" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART" Datatype="NVARCHAR" Length="9" Precision="9" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_0G_CWWNEG" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_0G_CWWNEG.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_COM" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_COM.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_COM2" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_COM2.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_GES" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_GES.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZPLANT_P" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZPLANT_P.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZPOSNR" Datatype="NVARCHAR" Length="5" Precision="5" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZTRCOSTO" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZTRCOSTO.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZVAR_CALC" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0NETPRICE" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="Z0LOTSIZE" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZCANCOMP" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZCANCONS" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZCANFABR" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZCANFABRO" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZVALOR_T" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="ZCTSPERU2" RemoteObjectUniqueName="&quot;_SYS_BIC&quot;.&quot;ZBW_ZCTSPERU2&quot;" FilterExpression="" ReplicationBehavior="InitAndRealtime" VTObjectName="ZCTSPERU2">
+      <TargetColumns>
+        <TargetColumn Name="0ACT_UNIT" ProjectionExpression="&quot;0ACT_UNIT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0ACT_UNIT.DESCRIPTION" ProjectionExpression="&quot;0ACT_UNIT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0CALMONTH" ProjectionExpression="&quot;0CALMONTH&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0CCOMPSTRUC" ProjectionExpression="&quot;0CCOMPSTRUC&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT" ProjectionExpression="&quot;0COMPONENT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT.DESCRIPTION" ProjectionExpression="&quot;0COMPONENT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCENTER" ProjectionExpression="&quot;0COSTCENTER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCENTER.DESCRIPTION" ProjectionExpression="&quot;0COSTCENTER.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCOMP" ProjectionExpression="&quot;0COSTCOMP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCOMP.DESCRIPTION" ProjectionExpression="&quot;0COSTCOMP.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COSTELMNT" ProjectionExpression="&quot;0COSTELMNT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COSTELMNT.DESCRIPTION" ProjectionExpression="&quot;0COSTELMNT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0CO_AREA" ProjectionExpression="&quot;0CO_AREA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0CO_AREA.DESCRIPTION" ProjectionExpression="&quot;0CO_AREA.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0LOC_CURRY" ProjectionExpression="&quot;0LOC_CURRY&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0LOC_CURRY.DESCRIPTION" ProjectionExpression="&quot;0LOC_CURRY.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL" ProjectionExpression="&quot;0MATERIAL&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL.DESCRIPTION" ProjectionExpression="&quot;0MATERIAL.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0DIVISION" ProjectionExpression="&quot;0MATERIAL_0DIVISION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0DIVISION.DESCRIPTION" ProjectionExpression="&quot;0MATERIAL_0DIVISION.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_GROUP" ProjectionExpression="&quot;0MATERIAL_0MATL_GROUP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_GROUP.DESCRIPTION" ProjectionExpression="&quot;0MATERIAL_0MATL_GROUP.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MAT_0MATL_TYPE" ProjectionExpression="&quot;0MAT_0MATL_TYPE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MAT_0MATL_TYPE.DESCRIPTION" ProjectionExpression="&quot;0MAT_0MATL_TYPE.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_ZMARPRD" ProjectionExpression="&quot;0MATERIAL_ZMARPRD&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_ZMSTAE" ProjectionExpression="&quot;0MATERIAL_ZMSTAE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_ZMSTAE.DESCRIPTION" ProjectionExpression="&quot;0MATERIAL_ZMSTAE.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT" ProjectionExpression="&quot;0PLANT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT.DESCRIPTION" ProjectionExpression="&quot;0PLANT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER" ProjectionExpression="&quot;0PRODORDER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER.DESCRIPTION" ProjectionExpression="&quot;0PRODORDER.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0UNIT" ProjectionExpression="&quot;0UNIT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0UNT.DESCRIPTION" ProjectionExpression="&quot;0UNT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZFEC_CALC" ProjectionExpression="&quot;ZFEC_CALC&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART" ProjectionExpression="&quot;ZGRP_ART&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART.DESCRIPTION" ProjectionExpression="&quot;ZGRP_ART.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_0G_CWWNEG" ProjectionExpression="&quot;ZGRP_ART_0G_CWWNEG&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_0G_CWWNEG.DESCRIPTION" ProjectionExpression="&quot;ZGRP_ART_0G_CWWNEG.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_COM" ProjectionExpression="&quot;ZGRP_ART_ZCAT_COM&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_COM.DESCRIPTION" ProjectionExpression="&quot;ZGRP_ART_ZCAT_COM.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_COM2" ProjectionExpression="&quot;ZGRP_ART_ZCAT_COM2&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_COM2.DESCRIPTION" ProjectionExpression="&quot;ZGRP_ART_ZCAT_COM2.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_GES" ProjectionExpression="&quot;ZGRP_ART_ZCAT_GES&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZGRP_ART_ZCAT_GES.DESCRIPTION" ProjectionExpression="&quot;ZGRP_ART_ZCAT_GES.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZPLANT_P" ProjectionExpression="&quot;ZPLANT_P&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZPLANT_P.DESCRIPTION" ProjectionExpression="&quot;ZPLANT_P.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZPOSNR" ProjectionExpression="&quot;ZPOSNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZTRCOSTO" ProjectionExpression="&quot;ZTRCOSTO&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZTRCOSTO.DESCRIPTION" ProjectionExpression="&quot;ZTRCOSTO.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZVAR_CALC" ProjectionExpression="&quot;ZVAR_CALC&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0NETPRICE" ProjectionExpression="&quot;0NETPRICE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="Z0LOTSIZE" ProjectionExpression="&quot;Z0LOTSIZE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZCANCOMP" ProjectionExpression="&quot;ZCANCOMP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZCANCONS" ProjectionExpression="&quot;ZCANCONS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZCANFABR" ProjectionExpression="&quot;ZCANFABR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZCANFABRO" ProjectionExpression="&quot;ZCANFABRO&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZVALOR_T" ProjectionExpression="&quot;ZVALOR_T&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

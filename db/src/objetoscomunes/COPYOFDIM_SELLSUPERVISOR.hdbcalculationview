@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="COPYOFDIM_SELLSUPERVISOR" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_SELLSUPERVISOR"/>
+  <metadata changedAt="2020-09-25 11:21:01.438"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="44"/>
+  <dataSources>
+    <DataSource id="Z1AGENGESTCAD">
+      <resourceUri>Z1AGENGESTCAD</resourceUri>
+    </DataSource>
+    <DataSource id="Z1AGENGEST">
+      <resourceUri>Z1AGENGEST</resourceUri>
+    </DataSource>
+    <DataSource id="Z1AGENCIAS">
+      <resourceUri>Z1AGENCIAS</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZKOKRS"/>
+        <viewAttribute id="ZCDAGENCIA"/>
+        <viewAttribute id="ZRUTGEST"/>
+        <viewAttribute id="ZCDCADENA"/>
+        <viewAttribute id="ZCDLOCAL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1AGENGESTCAD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKOKRS" source="ZKOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDAGENCIA" source="ZCDAGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZRUTGEST" source="ZRUTGEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDLOCAL" source="ZCDLOCAL"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZKOKRS"/>
+        <viewAttribute id="ZCDAGENCIA"/>
+        <viewAttribute id="ZRUTGEST"/>
+        <viewAttribute id="ZTXGEST"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1AGENGEST">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKOKRS" source="ZKOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDAGENCIA" source="ZCDAGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZRUTGEST" source="ZRUTGEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXGEST" source="ZTXGEST"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZKOKRS"/>
+        <viewAttribute id="ZCDAGENCIA"/>
+        <viewAttribute id="ZTXAGENCIA"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1AGENCIAS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKOKRS" source="ZKOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDAGENCIA" source="ZCDAGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXAGENCIA" source="ZTXAGENCIA"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZKOKRS"/>
+        <viewAttribute id="ZCDAGENCIA"/>
+        <viewAttribute id="ZTXAGENCIA"/>
+        <viewAttribute id="ZRUTGEST"/>
+        <viewAttribute id="ZTXGEST"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKOKRS" source="ZKOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDAGENCIA" source="ZCDAGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXAGENCIA" source="ZTXAGENCIA"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZRUTGEST" source="ZRUTGEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXGEST" source="ZTXGEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKOKRS" source="ZKOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDAGENCIA" source="ZCDAGENCIA"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="ZKOKRS"/>
+      <joinAttribute name="ZCDAGENCIA"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_1" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZKOKRS"/>
+        <viewAttribute id="ZCDAGENCIA"/>
+        <viewAttribute id="ZTXAGENCIA"/>
+        <viewAttribute id="ZRUTGEST"/>
+        <viewAttribute id="ZTXGEST"/>
+        <viewAttribute id="ZCDCADENA"/>
+        <viewAttribute id="ZCDLOCAL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKOKRS" source="ZKOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDAGENCIA" source="ZCDAGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXAGENCIA" source="ZTXAGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZRUTGEST" source="ZRUTGEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXGEST" source="ZTXGEST"/>
+      </input>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDLOCAL" source="ZCDLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKOKRS" source="ZKOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDAGENCIA" source="ZCDAGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZRUTGEST" source="ZRUTGEST"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="ZKOKRS"/>
+      <joinAttribute name="ZCDAGENCIA"/>
+      <joinAttribute name="ZRUTGEST"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="ZKOKRS" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZKOKRS"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZKOKRS"/>
+      </attribute>
+      <attribute id="ZCDAGENCIA" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCDAGENCIA"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZCDAGENCIA"/>
+      </attribute>
+      <attribute id="ZTXAGENCIA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZTXAGENCIA"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZTXAGENCIA"/>
+      </attribute>
+      <attribute id="ZRUTGEST" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZRUTGEST"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZRUTGEST"/>
+      </attribute>
+      <attribute id="ZTXGEST" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZTXGEST"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZTXGEST"/>
+      </attribute>
+      <attribute id="ZCDCADENA" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCDCADENA"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZCDCADENA"/>
+      </attribute>
+      <attribute id="ZCDLOCAL" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCDLOCAL"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZCDLOCAL"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="270" y="309"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="190" y="420"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="420"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="90" y="300"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="190" y="190"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

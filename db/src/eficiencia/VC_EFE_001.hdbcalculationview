@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="VC_EFE_001" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="VC_EFE_001"/>
+  <metadata changedAt="2021-06-03 18:52:27.786"/>
+  <localVariables>
+    <variable id="CENTRO">
+      <descriptions defaultDescription="Centro"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="Centro"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="INP_AMES">
+      <descriptions defaultDescription="Periodo (aaaamm)"/>
+      <variableProperties datatype="VARCHAR" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZMES"/>
+        </valueDomain>
+        <selection multiLine="true" type="Interval"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="40"/>
+  <dataSources>
+    <DataSource id="Z1SCPMEFI">
+      <resourceUri>Z1SCPMEFI</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="GSTRI"/>
+        <viewAttribute id="GSUZI"/>
+        <viewAttribute id="GLTRI"/>
+        <viewAttribute id="GLUZI"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="LGORT"/>
+        <viewAttribute id="ARBPL"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="FOPER"/>
+        <viewAttribute id="FJEFE"/>
+        <viewAttribute id="GMEIN"/>
+        <viewAttribute id="LINEA"/>
+        <viewAttribute id="TEXTO"/>
+        <viewAttribute id="AUSP1"/>
+        <viewAttribute id="KTEXT"/>
+        <viewAttribute id="NOPER"/>
+        <viewAttribute id="COPER"/>
+        <viewAttribute id="NJEFE"/>
+        <viewAttribute id="CJEFE"/>
+        <viewAttribute id="MAKTX"/>
+        <viewAttribute id="CANTREAL"/>
+        <viewAttribute id="GAMNG"/>
+        <viewAttribute id="TOTAL"/>
+        <viewAttribute id="TDISP"/>
+        <viewAttribute id="TDETP"/>
+        <viewAttribute id="TUTIL"/>
+        <viewAttribute id="TPROG"/>
+        <viewAttribute id="TDETR"/>
+        <viewAttribute id="TPROD"/>
+        <viewAttribute id="TDETI"/>
+        <viewAttribute id="TEFEC"/>
+        <viewAttribute id="UTACT"/>
+        <viewAttribute id="UTOPE"/>
+        <viewAttribute id="UTPRO"/>
+        <viewAttribute id="UTEFE"/>
+        <viewAttribute id="TDETE"/>
+        <viewAttribute id="RMAQR"/>
+        <viewAttribute id="RMAQE"/>
+        <viewAttribute id="RMAQT"/>
+        <viewAttribute id="EFPRO"/>
+        <viewAttribute id="EFOPE"/>
+        <viewAttribute id="NPERS"/>
+        <viewAttribute id="ANZMA"/>
+        <viewAttribute id="PDOTA"/>
+        <viewAttribute id="ZGTER"/>
+        <viewAttribute id="RKGHH"/>
+        <viewAttribute id="SKGHH"/>
+        <viewAttribute id="HHRES"/>
+        <viewAttribute id="POPER"/>
+        <viewAttribute id="PPROD"/>
+        <viewAttribute id="GRD01"/>
+        <viewAttribute id="GRD02"/>
+        <viewAttribute id="GRD03"/>
+        <viewAttribute id="GRD04"/>
+        <viewAttribute id="GRD05"/>
+        <viewAttribute id="GRD06"/>
+        <viewAttribute id="GRD07"/>
+        <viewAttribute id="GRD08"/>
+        <viewAttribute id="GRD09"/>
+        <viewAttribute id="GRD10"/>
+        <viewAttribute id="GRD11"/>
+        <viewAttribute id="GRD12"/>
+        <viewAttribute id="GRD13"/>
+        <viewAttribute id="GRD14"/>
+        <viewAttribute id="GRD15"/>
+        <viewAttribute id="GRD16"/>
+        <viewAttribute id="GRD17"/>
+        <viewAttribute id="GRD18"/>
+        <viewAttribute id="GRD19"/>
+        <viewAttribute id="GRD20"/>
+        <viewAttribute id="GRD21"/>
+        <viewAttribute id="GRD22"/>
+        <viewAttribute id="GRD23"/>
+        <viewAttribute id="GRD24"/>
+        <viewAttribute id="GRD25"/>
+        <viewAttribute id="GRD26"/>
+        <viewAttribute id="GRD27"/>
+        <viewAttribute id="GRD28"/>
+        <viewAttribute id="GRD29"/>
+        <viewAttribute id="GRD30"/>
+        <viewAttribute id="GRD31"/>
+        <viewAttribute id="GRD32"/>
+        <viewAttribute id="GRD33"/>
+        <viewAttribute id="GRD34"/>
+        <viewAttribute id="GRD35"/>
+        <viewAttribute id="GRD36"/>
+        <viewAttribute id="GRD37"/>
+        <viewAttribute id="GRD38"/>
+        <viewAttribute id="GRD39"/>
+        <viewAttribute id="GRD40"/>
+        <viewAttribute id="GRD41"/>
+        <viewAttribute id="GRD42"/>
+        <viewAttribute id="GRD43"/>
+        <viewAttribute id="PDETM"/>
+        <viewAttribute id="PDETE"/>
+        <viewAttribute id="PDETP"/>
+        <viewAttribute id="NUMMEC"/>
+        <viewAttribute id="NUMELE"/>
+        <viewAttribute id="MTBF"/>
+        <viewAttribute id="MTTR"/>
+        <viewAttribute id="DISP"/>
+        <viewAttribute id="NOTES"/>
+        <viewAttribute id="TPLNR"/>
+        <viewAttribute id="PLTXT"/>
+        <viewAttribute id="EQUNR"/>
+        <viewAttribute id="EQKTX"/>
+        <viewAttribute id="QMNUM"/>
+        <viewAttribute id="QMTXT"/>
+        <viewAttribute id="DISPO2"/>
+        <viewAttribute id="TOPEB"/>
+        <viewAttribute id="DESCARTES"/>
+        <viewAttribute id="DGMEIN"/>
+        <viewAttribute id="TOPER"/>
+        <viewAttribute id="TPERDESEM"/>
+        <viewAttribute id="TPERCALIDAD"/>
+        <viewAttribute id="TEFICAZ"/>
+        <viewAttribute id="DAYS_S"/>
+        <viewAttribute id="HOLIDAYS"/>
+        <viewAttribute id="SUNDAYS"/>
+        <viewAttribute id="BUSINESS_DAYS"/>
+        <viewAttribute id="TOPEC"/>
+        <viewAttribute id="DISPO"/>
+        <viewAttribute id="DESEMP"/>
+        <viewAttribute id="DEFECTO"/>
+        <viewAttribute id="EGE"/>
+        <viewAttribute id="TEEP"/>
+        <viewAttribute id="OPP"/>
+        <viewAttribute id="NOMINAL"/>
+        <viewAttribute id="MATD1"/>
+        <viewAttribute id="MATD2"/>
+        <viewAttribute id="MATD3"/>
+        <viewAttribute id="MATD4"/>
+        <viewAttribute id="MATD5"/>
+        <viewAttribute id="MATD6"/>
+        <viewAttribute id="MATD7"/>
+        <viewAttribute id="MATD8"/>
+        <viewAttribute id="MATR1"/>
+        <viewAttribute id="MATR2"/>
+        <viewAttribute id="MATR3"/>
+        <viewAttribute id="MATR4"/>
+        <viewAttribute id="MATR5"/>
+        <viewAttribute id="MATE1"/>
+        <viewAttribute id="MATE2"/>
+        <viewAttribute id="MATE3"/>
+        <viewAttribute id="MATE4"/>
+        <viewAttribute id="MATE5"/>
+        <viewAttribute id="CTDD1"/>
+        <viewAttribute id="CTDD2"/>
+        <viewAttribute id="CTDD3"/>
+        <viewAttribute id="CTDD4"/>
+        <viewAttribute id="CTDD5"/>
+        <viewAttribute id="CTDD6"/>
+        <viewAttribute id="CTDD7"/>
+        <viewAttribute id="CTDD8"/>
+        <viewAttribute id="CTDR1"/>
+        <viewAttribute id="CTDR2"/>
+        <viewAttribute id="CTDR3"/>
+        <viewAttribute id="CTDR4"/>
+        <viewAttribute id="CTDR5"/>
+        <viewAttribute id="CTDE1"/>
+        <viewAttribute id="CTDE2"/>
+        <viewAttribute id="CTDE3"/>
+        <viewAttribute id="CTDE4"/>
+        <viewAttribute id="CTDE5"/>
+        <viewAttribute id="UNDD1"/>
+        <viewAttribute id="UNDD2"/>
+        <viewAttribute id="UNDD3"/>
+        <viewAttribute id="UNDD4"/>
+        <viewAttribute id="UNDD5"/>
+        <viewAttribute id="UNDD6"/>
+        <viewAttribute id="UNDD7"/>
+        <viewAttribute id="UNDD8"/>
+        <viewAttribute id="UNDR1"/>
+        <viewAttribute id="UNDR2"/>
+        <viewAttribute id="UNDR3"/>
+        <viewAttribute id="UNDR4"/>
+        <viewAttribute id="UNDR5"/>
+        <viewAttribute id="UNDE1"/>
+        <viewAttribute id="UNDE2"/>
+        <viewAttribute id="UNDE3"/>
+        <viewAttribute id="UNDE4"/>
+        <viewAttribute id="UNDE5"/>
+        <viewAttribute id="MAKTXD1"/>
+        <viewAttribute id="MAKTXD2"/>
+        <viewAttribute id="MAKTXD3"/>
+        <viewAttribute id="MAKTXD4"/>
+        <viewAttribute id="MAKTXD5"/>
+        <viewAttribute id="MAKTXD6"/>
+        <viewAttribute id="MAKTXD7"/>
+        <viewAttribute id="MAKTXD8"/>
+        <viewAttribute id="MAKTXR1"/>
+        <viewAttribute id="MAKTXR2"/>
+        <viewAttribute id="MAKTXR3"/>
+        <viewAttribute id="MAKTXR4"/>
+        <viewAttribute id="MAKTXR5"/>
+        <viewAttribute id="MAKTXE1"/>
+        <viewAttribute id="MAKTXE2"/>
+        <viewAttribute id="MAKTXE3"/>
+        <viewAttribute id="MAKTXE4"/>
+        <viewAttribute id="MAKTXE5"/>
+        <viewAttribute id="FLAGEGE1"/>
+        <viewAttribute id="FLAGEGE2"/>
+        <viewAttribute id="FLAGEGE3"/>
+        <viewAttribute id="FLAGEGE4"/>
+        <viewAttribute id="FLAGEGE5"/>
+        <viewAttribute id="FLAGEGE6"/>
+        <viewAttribute id="FLAGEGE7"/>
+        <viewAttribute id="FLAGEGE8"/>
+        <viewAttribute id="WERKS_1"/>
+        <viewAttribute id="WERKS_2"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Z1SCPMEFI">
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS_1" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS_2" source="WERKS"/>
+      </input>
+    <filter>(&quot;WERKS&quot; !='')</filter>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" hidden="true" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="GSTRI" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fe.inicio real"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GSTRI"/>
+      </attribute>
+      <attribute id="GSUZI" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Hora in.real"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GSUZI"/>
+      </attribute>
+      <attribute id="GLTRI" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha fin real"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GLTRI"/>
+      </attribute>
+      <attribute id="GLUZI" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fin"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GLUZI"/>
+      </attribute>
+      <attribute id="WERKS" hidden="true" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WERKS"/>
+      </attribute>
+      <attribute id="LGORT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Almacén"/>
+        <keyMapping columnObjectName="Projection_1" columnName="LGORT"/>
+      </attribute>
+      <attribute id="ARBPL" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Puesto trabajo"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ARBPL"/>
+      </attribute>
+      <attribute id="AUFNR" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Orden"/>
+        <keyMapping columnObjectName="Projection_1" columnName="AUFNR"/>
+      </attribute>
+      <attribute id="MATNR" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATNR"/>
+      </attribute>
+      <attribute id="FOPER" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Número de personal Operario"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FOPER"/>
+      </attribute>
+      <attribute id="FJEFE" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Número de personal Supervisor"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FJEFE"/>
+      </attribute>
+      <attribute id="GMEIN" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GMEIN"/>
+      </attribute>
+      <attribute id="TEXTO" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Totales"/>
+        <keyMapping columnObjectName="Projection_1" columnName="TEXTO"/>
+      </attribute>
+      <attribute id="AUSP1" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Planta"/>
+        <keyMapping columnObjectName="Projection_1" columnName="AUSP1"/>
+      </attribute>
+      <attribute id="KTEXT" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Denominación"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KTEXT"/>
+      </attribute>
+      <attribute id="NOPER" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nombre del operador"/>
+        <keyMapping columnObjectName="Projection_1" columnName="NOPER"/>
+      </attribute>
+      <attribute id="COPER" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cargo del Operador"/>
+        <keyMapping columnObjectName="Projection_1" columnName="COPER"/>
+      </attribute>
+      <attribute id="NJEFE" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nombre del supervisor"/>
+        <keyMapping columnObjectName="Projection_1" columnName="NJEFE"/>
+      </attribute>
+      <attribute id="CJEFE" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cargo del Supervisor"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CJEFE"/>
+      </attribute>
+      <attribute id="MAKTX" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Denominación"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTX"/>
+      </attribute>
+      <attribute id="NPERS" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Dot.real"/>
+        <keyMapping columnObjectName="Projection_1" columnName="NPERS"/>
+      </attribute>
+      <attribute id="ANZMA" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Dot.std"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ANZMA"/>
+      </attribute>
+      <attribute id="NOTES" order="106" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Notas"/>
+        <keyMapping columnObjectName="Projection_1" columnName="NOTES"/>
+      </attribute>
+      <attribute id="TPLNR" order="107" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ubic.técn."/>
+        <keyMapping columnObjectName="Projection_1" columnName="TPLNR"/>
+      </attribute>
+      <attribute id="PLTXT" order="108" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descripción Ubicació"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PLTXT"/>
+      </attribute>
+      <attribute id="EQUNR" order="109" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="EQUNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="EQUNR"/>
+      </attribute>
+      <attribute id="EQKTX" order="110" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descripción Equipo"/>
+        <keyMapping columnObjectName="Projection_1" columnName="EQKTX"/>
+      </attribute>
+      <attribute id="QMNUM" order="111" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Aviso"/>
+        <keyMapping columnObjectName="Projection_1" columnName="QMNUM"/>
+      </attribute>
+      <attribute id="QMTXT" order="112" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descripción de aviso"/>
+        <keyMapping columnObjectName="Projection_1" columnName="QMTXT"/>
+      </attribute>
+      <attribute id="DGMEIN" order="116" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DGMEIN"/>
+      </attribute>
+      <attribute id="MATD1" hidden="true" order="133" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte/Recorte 1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATD1"/>
+      </attribute>
+      <attribute id="MATD2" hidden="true" order="134" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte/Recorte 2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATD2"/>
+      </attribute>
+      <attribute id="MATD3" hidden="true" order="135" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte/Recorte 3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATD3"/>
+      </attribute>
+      <attribute id="MATD4" hidden="true" order="136" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte/Recorte 4"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATD4"/>
+      </attribute>
+      <attribute id="MATD5" hidden="true" order="137" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte/Recorte 5"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATD5"/>
+      </attribute>
+      <attribute id="MATD6" hidden="true" order="138" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte/Recorte 6"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATD6"/>
+      </attribute>
+      <attribute id="MATD7" hidden="true" order="139" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte/Recorte 7"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATD7"/>
+      </attribute>
+      <attribute id="MATD8" hidden="true" order="140" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte/Recorte 8"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATD8"/>
+      </attribute>
+      <attribute id="MATR1" hidden="true" order="141" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Reciclado 1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATR1"/>
+      </attribute>
+      <attribute id="MATR2" hidden="true" order="142" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Reciclado 2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATR2"/>
+      </attribute>
+      <attribute id="MATR3" hidden="true" order="143" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Reciclado 3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATR3"/>
+      </attribute>
+      <attribute id="MATR4" hidden="true" order="144" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Reciclado 4"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATR4"/>
+      </attribute>
+      <attribute id="MATR5" hidden="true" order="145" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Reciclado 5"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATR5"/>
+      </attribute>
+      <attribute id="MATE1" hidden="true" order="146" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte Env.1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATE1"/>
+      </attribute>
+      <attribute id="MATE2" hidden="true" order="147" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte Env.2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATE2"/>
+      </attribute>
+      <attribute id="MATE3" hidden="true" order="148" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte Env.3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATE3"/>
+      </attribute>
+      <attribute id="MATE4" hidden="true" order="149" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte Env.4"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATE4"/>
+      </attribute>
+      <attribute id="MATE5" hidden="true" order="150" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descarte Env.5"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATE5"/>
+      </attribute>
+      <attribute id="UNDD1" hidden="true" order="169" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDD1"/>
+      </attribute>
+      <attribute id="UNDD2" hidden="true" order="170" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDD2"/>
+      </attribute>
+      <attribute id="UNDD3" hidden="true" order="171" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDD3"/>
+      </attribute>
+      <attribute id="UNDD4" hidden="true" order="172" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.4"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDD4"/>
+      </attribute>
+      <attribute id="UNDD5" hidden="true" order="173" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.5"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDD5"/>
+      </attribute>
+      <attribute id="UNDD6" hidden="true" order="174" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.6"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDD6"/>
+      </attribute>
+      <attribute id="UNDD7" hidden="true" order="175" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.7"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDD7"/>
+      </attribute>
+      <attribute id="UNDD8" hidden="true" order="176" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.8"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDD8"/>
+      </attribute>
+      <attribute id="UNDR1" hidden="true" order="177" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDR1"/>
+      </attribute>
+      <attribute id="UNDR2" hidden="true" order="178" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDR2"/>
+      </attribute>
+      <attribute id="UNDR3" hidden="true" order="179" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDR3"/>
+      </attribute>
+      <attribute id="UNDR4" hidden="true" order="180" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.4"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDR4"/>
+      </attribute>
+      <attribute id="UNDR5" hidden="true" order="181" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.5"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDR5"/>
+      </attribute>
+      <attribute id="UNDE1" hidden="true" order="182" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDE1"/>
+      </attribute>
+      <attribute id="UNDE2" hidden="true" order="183" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDE2"/>
+      </attribute>
+      <attribute id="UNDE3" hidden="true" order="184" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDE3"/>
+      </attribute>
+      <attribute id="UNDE4" hidden="true" order="185" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.4"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDE4"/>
+      </attribute>
+      <attribute id="UNDE5" hidden="true" order="186" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Und.5"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNDE5"/>
+      </attribute>
+      <attribute id="MAKTXD1" hidden="true" order="187" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte/Recorte 1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXD1"/>
+      </attribute>
+      <attribute id="MAKTXD2" hidden="true" order="188" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte/Recorte 2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXD2"/>
+      </attribute>
+      <attribute id="MAKTXD3" hidden="true" order="189" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte/Recorte 3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXD3"/>
+      </attribute>
+      <attribute id="MAKTXD4" hidden="true" order="190" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte/Recorte 4"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXD4"/>
+      </attribute>
+      <attribute id="MAKTXD5" hidden="true" order="191" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte/Recorte 5"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXD5"/>
+      </attribute>
+      <attribute id="MAKTXD6" hidden="true" order="192" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte/Recorte 6"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXD6"/>
+      </attribute>
+      <attribute id="MAKTXD7" hidden="true" order="193" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte/Recorte 7"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXD7"/>
+      </attribute>
+      <attribute id="MAKTXD8" hidden="true" order="194" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte/Recorte 8"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXD8"/>
+      </attribute>
+      <attribute id="MAKTXR1" hidden="true" order="195" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc. Reciclado 1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXR1"/>
+      </attribute>
+      <attribute id="MAKTXR2" hidden="true" order="196" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc. Reciclado 2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXR2"/>
+      </attribute>
+      <attribute id="MAKTXR3" hidden="true" order="197" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc. Reciclado 3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXR3"/>
+      </attribute>
+      <attribute id="MAKTXR4" hidden="true" order="198" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc. Reciclado 4"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXR4"/>
+      </attribute>
+      <attribute id="MAKTXR5" hidden="true" order="199" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc. Reciclado 5"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXR5"/>
+      </attribute>
+      <attribute id="MAKTXE1" hidden="true" order="200" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte Env.1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXE1"/>
+      </attribute>
+      <attribute id="MAKTXE2" hidden="true" order="201" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte Env.2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXE2"/>
+      </attribute>
+      <attribute id="MAKTXE3" hidden="true" order="202" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte Env.3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXE3"/>
+      </attribute>
+      <attribute id="MAKTXE4" hidden="true" order="203" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte Env.4"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXE4"/>
+      </attribute>
+      <attribute id="MAKTXE5" hidden="true" order="204" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Descarte Env.5"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MAKTXE5"/>
+      </attribute>
+      <attribute id="FLAGEGE1" hidden="true" order="205" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="D1.Afec.EGE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FLAGEGE1"/>
+      </attribute>
+      <attribute id="FLAGEGE2" hidden="true" order="206" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="D2.Afec.EGE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FLAGEGE2"/>
+      </attribute>
+      <attribute id="FLAGEGE3" hidden="true" order="207" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="D3.Afec.EGE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FLAGEGE3"/>
+      </attribute>
+      <attribute id="FLAGEGE4" hidden="true" order="208" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="D4.Afec.EGE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FLAGEGE4"/>
+      </attribute>
+      <attribute id="FLAGEGE5" hidden="true" order="209" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="D5.Afec.EGE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FLAGEGE5"/>
+      </attribute>
+      <attribute id="FLAGEGE6" hidden="true" order="210" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="D6.Afec.EGE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FLAGEGE6"/>
+      </attribute>
+      <attribute id="FLAGEGE7" hidden="true" order="211" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="D7.Afec.EGE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FLAGEGE7"/>
+      </attribute>
+      <attribute id="FLAGEGE8" hidden="true" order="212" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="D8.Afec.EGE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FLAGEGE8"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="ZMES" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Periodo"/>
+        <localVariable>INP_AMES</localVariable>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="6">
+          <formula>leftstr(&quot;GSTRI&quot;,6)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="EQUIPO" hidden="true" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Equipo"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="20">
+          <formula>string(replace(&quot;EQUNR&quot;,'.',','))</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="SEM" hidden="true" order="213" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Semana"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="2">
+          <formula>week(&quot;GSTRI&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="DIV" hidden="false" order="214" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Division"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="13">
+          <formula>if(&quot;WERKS&quot; = 'F131' or &quot;WERKS&quot; ='F132' or  &quot;WERKS&quot; ='F133' or &quot;WERKS&quot; ='F13D' or &quot;WERKS&quot; ='S091','Alimentos',if(&quot;WERKS&quot; = 'F139' or &quot;WERKS&quot; ='C054' or  &quot;WERKS&quot; ='C055' or &quot;WERKS&quot; ='C131','Confites',if(&quot;WERKS&quot; = 'F076' or &quot;WERKS&quot; ='F13F','Mascotas',if(&quot;WERKS&quot; = 'A071' or &quot;WERKS&quot; ='A074','Agrozzi','Molitalia'))))</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="Centro" hidden="false" order="215" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro"/>
+        <localVariable>CENTRO</localVariable>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="40">
+          <formula>if(&quot;WERKS&quot; = 'F131', 'F131 - FIDEOS NOS',if( &quot;WERKS&quot; ='F132', 'F132 - REFRESCOS Y POSTRES NOS',if( &quot;WERKS&quot; ='F133','F133 - MOLINO,ARROZ,PREM.NOS',if( &quot;WERKS&quot; ='F13D', 'F13D - PANCHO VILLA', if( &quot;WERKS&quot; ='S091','S091 - MOLINO VICTORIA',if(&quot;WERKS&quot; = 'F139','F139 - CEREALES NOS',if( &quot;WERKS&quot; ='C054', 'C054 - CARAMELOS', if(  &quot;WERKS&quot; ='C055', 'C055 - CHOCOLATES', if( &quot;WERKS&quot; ='C131','C131 - GALLETAS NOS',if(&quot;WERKS&quot; = 'F076', 'F076 - LONTUÉ', if( &quot;WERKS&quot; ='F13F','F13F - BRESLER',if(&quot;WERKS&quot; = 'A071','A071 - PASTAS Y PULPAS TENO', if( &quot;WERKS&quot; ='A074','A074 - JUGOS TENO',if(&quot;WERKS&quot; ='4102','4102 - FIDEOS VENEZUELA',if(&quot;WERKS&quot; ='4104','4104 - LOS OLIVOS', if(&quot;WERKS&quot; ='4132','4132 - CAJAMARQUILLA',if(&quot;WERKS&quot; ='4101','4101 - MOLINO VENEZUELA',IF(&quot;WERKS&quot; ='4130','4130 - PLANTA AVENA','4103 - MOLINO ECUADOR'))))))))))))))))))</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Numero" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Numero"/>
+        <measureMapping columnObjectName="Projection_1" columnName="LINEA"/>
+      </measure>
+      <measure id="CANTREAL" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cantidad Real"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CANTREAL"/>
+      </measure>
+      <measure id="GAMNG" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Ctd.teórica"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GAMNG"/>
+      </measure>
+      <measure id="TOTAL" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tpo.Total"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TOTAL"/>
+      </measure>
+      <measure id="TDISP" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tpo.disp"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TDISP"/>
+      </measure>
+      <measure id="TDETP" order="29" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tpo.det.plan"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TDETP"/>
+      </measure>
+      <measure id="TUTIL" order="30" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tpo.Utilizado"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TUTIL"/>
+      </measure>
+      <measure id="TPROG" order="31" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tpo.prog.hrs"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TPROG"/>
+      </measure>
+      <measure id="TDETR" order="32" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tpo.det.prev"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TDETR"/>
+      </measure>
+      <measure id="TPROD" order="33" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tpo.prod"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TPROD"/>
+      </measure>
+      <measure id="TDETI" order="34" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tpo.det.imp"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TDETI"/>
+      </measure>
+      <measure id="TEFEC" order="35" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tpo.efect"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TEFEC"/>
+      </measure>
+      <measure id="UTACT" order="36" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Util.act"/>
+        <measureMapping columnObjectName="Projection_1" columnName="UTACT"/>
+      </measure>
+      <measure id="UTOPE" order="37" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Util.op.act"/>
+        <measureMapping columnObjectName="Projection_1" columnName="UTOPE"/>
+      </measure>
+      <measure id="UTPRO" order="38" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Util.prod.act"/>
+        <measureMapping columnObjectName="Projection_1" columnName="UTPRO"/>
+      </measure>
+      <measure id="UTEFE" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Util.efec.act"/>
+        <measureMapping columnObjectName="Projection_1" columnName="UTEFE"/>
+      </measure>
+      <measure id="TDETE" order="40" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tpo.det.hrs"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TDETE"/>
+      </measure>
+      <measure id="RMAQR" order="41" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Rend.maq.real"/>
+        <measureMapping columnObjectName="Projection_1" columnName="RMAQR"/>
+      </measure>
+      <measure id="RMAQE" order="42" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Rend.maq.std"/>
+        <measureMapping columnObjectName="Projection_1" columnName="RMAQE"/>
+      </measure>
+      <measure id="RMAQT" order="43" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Rend.maq.teo"/>
+        <measureMapping columnObjectName="Projection_1" columnName="RMAQT"/>
+      </measure>
+      <measure id="EFPRO" order="44" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="% efic.prod"/>
+        <measureMapping columnObjectName="Projection_1" columnName="EFPRO"/>
+      </measure>
+      <measure id="EFOPE" order="45" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="% efic.ope"/>
+        <measureMapping columnObjectName="Projection_1" columnName="EFOPE"/>
+      </measure>
+      <measure id="PDOTA" order="48" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="% Dotación"/>
+        <measureMapping columnObjectName="Projection_1" columnName="PDOTA"/>
+      </measure>
+      <measure id="ZGTER" order="49" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="% efic. Std"/>
+        <measureMapping columnObjectName="Projection_1" columnName="ZGTER"/>
+      </measure>
+      <measure id="RKGHH" order="50" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Rend.real KG/HH"/>
+        <measureMapping columnObjectName="Projection_1" columnName="RKGHH"/>
+      </measure>
+      <measure id="SKGHH" order="51" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Rend.std KG/HH"/>
+        <measureMapping columnObjectName="Projection_1" columnName="SKGHH"/>
+      </measure>
+      <measure id="HHRES" order="52" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Rendimiento KG/HH"/>
+        <measureMapping columnObjectName="Projection_1" columnName="HHRES"/>
+      </measure>
+      <measure id="POPER" order="53" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="% part.ope"/>
+        <measureMapping columnObjectName="Projection_1" columnName="POPER"/>
+      </measure>
+      <measure id="PPROD" order="54" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="% part.prod"/>
+        <measureMapping columnObjectName="Projection_1" columnName="PPROD"/>
+      </measure>
+      <measure id="GRD01" order="55" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falla mecánica"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD01"/>
+      </measure>
+      <measure id="GRD02" order="56" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falla eléctrica"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD02"/>
+      </measure>
+      <measure id="GRD03" order="57" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Colación"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD03"/>
+      </measure>
+      <measure id="GRD04" order="58" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Aseo general"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD04"/>
+      </measure>
+      <measure id="GRD05" order="59" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falta mat.env/emb"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD05"/>
+      </measure>
+      <measure id="GRD06" order="60" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falta personal"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD06"/>
+      </measure>
+      <measure id="GRD07" order="61" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cambio Formato"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD07"/>
+      </measure>
+      <measure id="GRD08" order="62" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Aseo cambio formato"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD08"/>
+      </measure>
+      <measure id="GRD09" order="63" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falla de servicios"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD09"/>
+      </measure>
+      <measure id="GRD10" order="64" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cambio programación"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD10"/>
+      </measure>
+      <measure id="GRD11" order="65" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Ajuste proceso"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD11"/>
+      </measure>
+      <measure id="GRD12" order="66" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Ajuste equipo"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD12"/>
+      </measure>
+      <measure id="GRD13" order="67" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Pruebas desarrollo"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD13"/>
+      </measure>
+      <measure id="GRD14" order="68" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Mant.planificado"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD14"/>
+      </measure>
+      <measure id="GRD15" order="69" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Inv.planificado"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD15"/>
+      </measure>
+      <measure id="GRD16" order="70" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Corte EE planificado"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD16"/>
+      </measure>
+      <measure id="GRD17" order="71" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falta.plan.mat.serv"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD17"/>
+      </measure>
+      <measure id="GRD18" order="72" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Modif.planificadas"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD18"/>
+      </measure>
+      <measure id="GRD19" order="73" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falta materia prima"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD19"/>
+      </measure>
+      <measure id="GRD20" order="74" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Prod. fuera espec"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD20"/>
+      </measure>
+      <measure id="GRD21" order="75" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Espera prod.proceso"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD21"/>
+      </measure>
+      <measure id="GRD22" order="76" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falta pers.reemplazo"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD22"/>
+      </measure>
+      <measure id="GRD23" order="77" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cambio bobina env"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD23"/>
+      </measure>
+      <measure id="GRD24" order="78" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Exceso prod.envase"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD24"/>
+      </measure>
+      <measure id="GRD25" order="79" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falla operacional"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD25"/>
+      </measure>
+      <measure id="GRD26" order="80" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Detención por envasa"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD26"/>
+      </measure>
+      <measure id="GRD27" order="81" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falla aire comprimid"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD27"/>
+      </measure>
+      <measure id="GRD28" order="82" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Corte interno EE"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD28"/>
+      </measure>
+      <measure id="GRD29" order="83" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Corte externo EE"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD29"/>
+      </measure>
+      <measure id="GRD30" order="84" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falla guillotina"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD30"/>
+      </measure>
+      <measure id="GRD31" order="85" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falla caldera"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD31"/>
+      </measure>
+      <measure id="GRD32" order="86" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falla agua helada"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD32"/>
+      </measure>
+      <measure id="GRD33" order="87" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Pausa saludable"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD33"/>
+      </measure>
+      <measure id="GRD34" order="88" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Charla seguridad"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD34"/>
+      </measure>
+      <measure id="GRD35" order="89" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Capacitación"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD35"/>
+      </measure>
+      <measure id="GRD36" order="90" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falla refrigeración"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD36"/>
+      </measure>
+      <measure id="GRD37" order="91" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Ini/Fin producción"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD37"/>
+      </measure>
+      <measure id="GRD38" order="92" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falla mecánica elab"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD38"/>
+      </measure>
+      <measure id="GRD39" order="93" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Falla eléctrica elab"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD39"/>
+      </measure>
+      <measure id="GRD40" order="94" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cambio de producto"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD40"/>
+      </measure>
+      <measure id="GRD41" order="95" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Feriado Legal"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD41"/>
+      </measure>
+      <measure id="GRD42" order="96" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Inicio Producción"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD42"/>
+      </measure>
+      <measure id="GRD43" order="97" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Fin Producción"/>
+        <measureMapping columnObjectName="Projection_1" columnName="GRD43"/>
+      </measure>
+      <measure id="PDETM" order="98" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="% Falla mecánica"/>
+        <measureMapping columnObjectName="Projection_1" columnName="PDETM"/>
+      </measure>
+      <measure id="PDETE" order="99" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="% Falla eléctrica"/>
+        <measureMapping columnObjectName="Projection_1" columnName="PDETE"/>
+      </measure>
+      <measure id="PDETP" order="100" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="% Planificadas"/>
+        <measureMapping columnObjectName="Projection_1" columnName="PDETP"/>
+      </measure>
+      <measure id="NUMMEC" order="101" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="# Fallas mec."/>
+        <measureMapping columnObjectName="Projection_1" columnName="NUMMEC"/>
+      </measure>
+      <measure id="NUMELE" order="102" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="# Fallas elect."/>
+        <measureMapping columnObjectName="Projection_1" columnName="NUMELE"/>
+      </measure>
+      <measure id="TMEF" order="103" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TMEF"/>
+        <measureMapping columnObjectName="Projection_1" columnName="MTBF"/>
+      </measure>
+      <measure id="MTTR" order="104" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TMPR"/>
+        <measureMapping columnObjectName="Projection_1" columnName="MTTR"/>
+      </measure>
+      <measure id="DISP" order="105" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="% Disponibilidad"/>
+        <measureMapping columnObjectName="Projection_1" columnName="DISP"/>
+      </measure>
+      <measure id="DISPO2" order="113" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tiempo Disponible"/>
+        <measureMapping columnObjectName="Projection_1" columnName="DISPO2"/>
+      </measure>
+      <measure id="TOPEB" order="114" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tmpo.Opera.bruta"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TOPEB"/>
+      </measure>
+      <measure id="DESCARTES" order="115" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Descartes"/>
+        <measureMapping columnObjectName="Projection_1" columnName="DESCARTES"/>
+      </measure>
+      <measure id="TOPER" order="117" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tmpo.Opera.real"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TOPER"/>
+      </measure>
+      <measure id="TPERDESEM" order="118" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Per.Tmpo.Desemp"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TPERDESEM"/>
+      </measure>
+      <measure id="TPERCALIDAD" order="119" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Per.Tmpo.Calidad"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TPERCALIDAD"/>
+      </measure>
+      <measure id="TEFICAZ" order="120" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tmpo.Eficaz"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TEFICAZ"/>
+      </measure>
+      <measure id="DAYS_S" order="121" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Dias calendario"/>
+        <measureMapping columnObjectName="Projection_1" columnName="DAYS_S"/>
+      </measure>
+      <measure id="HOLIDAYS" order="122" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Dias feriados"/>
+        <measureMapping columnObjectName="Projection_1" columnName="HOLIDAYS"/>
+      </measure>
+      <measure id="SUNDAYS" order="123" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Domingos"/>
+        <measureMapping columnObjectName="Projection_1" columnName="SUNDAYS"/>
+      </measure>
+      <measure id="BUSINESS_DAYS" order="124" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Dias laborales"/>
+        <measureMapping columnObjectName="Projection_1" columnName="BUSINESS_DAYS"/>
+      </measure>
+      <measure id="TOPEC" order="125" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Tiempo operación"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TOPEC"/>
+      </measure>
+      <measure id="DISPO" order="126" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Disponibilidad %"/>
+        <measureMapping columnObjectName="Projection_1" columnName="DISPO"/>
+      </measure>
+      <measure id="DESEMP" order="127" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Desempeño %"/>
+        <measureMapping columnObjectName="Projection_1" columnName="DESEMP"/>
+      </measure>
+      <measure id="DEFECTO" order="128" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Defecto %"/>
+        <measureMapping columnObjectName="Projection_1" columnName="DEFECTO"/>
+      </measure>
+      <measure id="EGE" order="129" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="EGE %"/>
+        <measureMapping columnObjectName="Projection_1" columnName="EGE"/>
+      </measure>
+      <measure id="TEEP" order="130" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TEEP %"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TEEP"/>
+      </measure>
+      <measure id="OPP" order="131" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="OPP %"/>
+        <measureMapping columnObjectName="Projection_1" columnName="OPP"/>
+      </measure>
+      <measure id="NOMINAL" order="132" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NOMINAL"/>
+        <measureMapping columnObjectName="Projection_1" columnName="NOMINAL"/>
+      </measure>
+      <measure id="CTDD1" hidden="true" order="151" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.1"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDD1"/>
+      </measure>
+      <measure id="CTDD2" hidden="true" order="152" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.2"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDD2"/>
+      </measure>
+      <measure id="CTDD3" hidden="true" order="153" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.3"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDD3"/>
+      </measure>
+      <measure id="CTDD4" hidden="true" order="154" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.4"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDD4"/>
+      </measure>
+      <measure id="CTDD5" hidden="true" order="155" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.5"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDD5"/>
+      </measure>
+      <measure id="CTDD6" hidden="true" order="156" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.6"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDD6"/>
+      </measure>
+      <measure id="CTDD7" hidden="true" order="157" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.7"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDD7"/>
+      </measure>
+      <measure id="CTDD8" hidden="true" order="158" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.8"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDD8"/>
+      </measure>
+      <measure id="CTDR1" hidden="true" order="159" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.1"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDR1"/>
+      </measure>
+      <measure id="CTDR2" hidden="true" order="160" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.2"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDR2"/>
+      </measure>
+      <measure id="CTDR3" hidden="true" order="161" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.3"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDR3"/>
+      </measure>
+      <measure id="CTDR4" hidden="true" order="162" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.4"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDR4"/>
+      </measure>
+      <measure id="CTDR5" hidden="true" order="163" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.5"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDR5"/>
+      </measure>
+      <measure id="CTDE1" hidden="true" order="164" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.1"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDE1"/>
+      </measure>
+      <measure id="CTDE2" hidden="true" order="165" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.2"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDE2"/>
+      </measure>
+      <measure id="CTDE3" hidden="true" order="166" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.3"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDE3"/>
+      </measure>
+      <measure id="CTDE4" hidden="true" order="167" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.4"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDE4"/>
+      </measure>
+      <measure id="CTDE5" hidden="true" order="168" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant.5"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CTDE5"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="PF_EQUIPO" hidden="false" order="216" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="34" scale="3">
+        <descriptions defaultDescription="% Pérdidas por Falla de Equipos"/>
+        <formula>((&quot;GRD01&quot;+&quot;GRD02&quot;)/&quot;TPROG&quot;)*100</formula>
+      </measure>
+      <measure id="PP_ESTANDAR" hidden="false" order="217" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="34" scale="3">
+        <descriptions defaultDescription="% Pérdidas de Producción Estándar"/>
+        <formula>((&quot;GRD03&quot;+&quot;GRD04&quot;+&quot;GRD07&quot;+&quot;GRD11&quot;+&quot;GRD12&quot;+&quot;GRD23&quot;+&quot;GRD37&quot;)/&quot;TPROG&quot;)*100</formula>
+      </measure>
+      <measure id="PF_PROC" hidden="false" order="218" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="34" scale="3">
+        <descriptions defaultDescription="% Pérdidas por Fallas del Proceso"/>
+        <formula>((&quot;GRD05&quot;+&quot;GRD09&quot;+&quot;GRD25&quot;)/&quot;TPROG&quot;)*100</formula>
+      </measure>
+      <measure id="PA_PLANPROD" hidden="false" order="219" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="34" scale="3">
+        <descriptions defaultDescription="% Pérdidas por Ajuste de Plan de Producción"/>
+        <formula>((&quot;GRD06&quot;+&quot;GRD10&quot;)/&quot;TPROG&quot;)*100</formula>
+      </measure>
+      <measure id="PP_ADM" hidden="false" order="220" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="34" scale="3">
+        <descriptions defaultDescription="% Pérdidas por Paradas Administrativas"/>
+        <formula>((&quot;GRD13&quot;+&quot;GRD14&quot;+&quot;GRD19&quot;+&quot;GRD35&quot;)/&quot;TPROG&quot;)*100</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="280"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

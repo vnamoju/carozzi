@@ -1,0 +1,1555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="COPY_2_OF_DIM_CLIENTE" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="CLIENTE"/>
+  <metadata changedAt="2021-06-25 20:58:33.651"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="52"/>
+  <dataSources>
+    <DataSource id="KNA1">
+      <resourceUri>KNA1</resourceUri>
+    </DataSource>
+    <DataSource id="KNVH">
+      <resourceUri>KNVH</resourceUri>
+    </DataSource>
+    <DataSource id="Z1VCLIENTEXREMO">
+      <resourceUri>Z1VCLIENTEXREMO</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_3$$$$KNA1$$">
+      <resourceUri>KNA1</resourceUri>
+    </DataSource>
+    <DataSource id="KNVV">
+      <resourceUri>KNVV</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CLIENTE_CLASIF_ESPECIAL">
+      <resourceUri>DIM_CLIENTE_CLASIF_ESPECIAL</resourceUri>
+    </DataSource>
+    <DataSource id="JERARQUIA_CLIENTE">
+      <resourceUri>JERARQUIA_CLIENTE</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CANAL_COMERCIAL">
+      <resourceUri>DIM_CANAL_COMERCIAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CADENA_SUBCADENA">
+      <resourceUri>DIM_CADENA_SUBCADENA</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_REGION">
+      <resourceUri>DIM_REGION</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_PROVINCIA">
+      <resourceUri>DIM_PROVINCIA</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_COMUNA">
+      <resourceUri>DIM_COMUNA</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="REGIO"/>
+        <viewAttribute id="NAME4"/>
+        <viewAttribute id="COUNC"/>
+        <viewAttribute id="CITYC"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="ZLATT"/>
+        <viewAttribute id="ZLENG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#KNA1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGIO" source="REGIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME4" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNC" source="COUNC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITYC" source="CITYC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATT" source="ZLATT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLENG" source="ZLENG"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute aggregationType="max" id="CLIENTE_ATTR_CLIENTE_PADRE"/>
+        <viewAttribute id="HZUOR"/>
+        <viewAttribute id="DATBI"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="HITYP"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute aggregationType="count" id="HKUNNR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#KNVH">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE" source="HKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HZUOR" source="HZUOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATBI" source="DATBI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HITYP" source="HITYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HKUNNR" source="HKUNNR"/>
+      </input>
+      <filter>(&quot;CLIENTE_ATTR_CLIENTE_PADRE&quot; !='') AND (&quot;HZUOR&quot; ='02') AND (&quot;DATBI&quot; ='99991231') AND (&quot;HITYP&quot; ='Z') AND (&quot;SPART&quot; ='01')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute aggregationType="max" id="CADENA"/>
+        <viewAttribute aggregationType="max" id="SUB_CADENA"/>
+        <viewAttribute aggregationType="max" id="LOCAL"/>
+        <viewAttribute aggregationType="max" id="SALA_FISICA"/>
+        <viewAttribute aggregationType="max" id="AGENCIA"/>
+        <viewAttribute aggregationType="max" id="SUPERVISOR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1VCLIENTEXREMO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CDCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="CDSCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="CDCADLC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="CDREMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="REGIO"/>
+        <viewAttribute id="NAME4"/>
+        <viewAttribute id="COUNC"/>
+        <viewAttribute id="CITYC"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="ZLATT"/>
+        <viewAttribute id="ZLENG"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="LOCAL"/>
+        <viewAttribute id="SALA_FISICA"/>
+        <viewAttribute id="AGENCIA"/>
+        <viewAttribute id="SUPERVISOR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGIO" source="REGIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME4" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNC" source="COUNC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITYC" source="CITYC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATT" source="ZLATT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLENG" source="ZLENG"/>
+      </input>
+      <input node="#Aggregation_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="SALA_FISICA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="CLIENTE"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="KUNNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1"/>
+        <viewAttribute id="REGIO"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2"/>
+        <viewAttribute id="COUNC"/>
+        <viewAttribute id="CITYC"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="ZLATT"/>
+        <viewAttribute id="ZLENG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_3$$$$KNA1$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGIO" source="REGIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNC" source="COUNC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITYC" source="CITYC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATT" source="ZLATT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLENG" source="ZLENG"/>
+      </input>
+      <filter>(&quot;SPRAS&quot; ='S')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="VKORG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE" source="CLIENTE_ATTR_CLIENTE_PADRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE" source="KUNNR"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="CLIENTE_ATTR_CLIENTE_PADRE"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="VKORG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#KNVV">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_8" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="REGIO"/>
+        <viewAttribute id="NAME4"/>
+        <viewAttribute id="COUNC"/>
+        <viewAttribute id="CITYC"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="ZLATT"/>
+        <viewAttribute id="ZLENG"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="LOCAL"/>
+        <viewAttribute id="SALA_FISICA"/>
+        <viewAttribute id="AGENCIA"/>
+        <viewAttribute id="SUPERVISOR"/>
+        <viewAttribute id="VKORG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGIO" source="REGIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME4" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNC" source="COUNC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITYC" source="CITYC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATT" source="ZLATT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLENG" source="ZLENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="SALA_FISICA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+      </input>
+      <input node="#Aggregation_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="KUNNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_7" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="xCLIENTE_ATTR_CLIENTE_PADRE_TEXT_1"/>
+        <viewAttribute id="xCLIENTE_ATTR_CLIENTE_PADRE_TEXT_2"/>
+        <viewAttribute id="xCLIENTE_ATTR_CLIENTE_PADRE"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="REGIO"/>
+        <viewAttribute id="NAME4"/>
+        <viewAttribute id="COUNC"/>
+        <viewAttribute id="CITYC"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="ZLATT"/>
+        <viewAttribute id="ZLENG"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="LOCAL"/>
+        <viewAttribute id="SALA_FISICA"/>
+        <viewAttribute id="AGENCIA"/>
+        <viewAttribute id="SUPERVISOR"/>
+        <viewAttribute id="VKORG"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1" length="35" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isNull(&quot;xCLIENTE_ATTR_CLIENTE_PADRE&quot;),&quot;NAME1&quot;, &quot;xCLIENTE_ATTR_CLIENTE_PADRE_TEXT_1&quot;)&#xD;
+</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2" length="35" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isNull(&quot;xCLIENTE_ATTR_CLIENTE_PADRE&quot;),&quot;NAME4&quot;, &quot;xCLIENTE_ATTR_CLIENTE_PADRE_TEXT_2&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="CLIENTE_ATTR_CLIENTE_PADRE" length="35" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isNull(&quot;xCLIENTE_ATTR_CLIENTE_PADRE&quot;),&quot;KUNNR&quot;, &quot;xCLIENTE_ATTR_CLIENTE_PADRE&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGIO" source="REGIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME4" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNC" source="COUNC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITYC" source="CITYC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATT" source="ZLATT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLENG" source="ZLENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="SALA_FISICA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      </input>
+      <input node="#Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="xCLIENTE_ATTR_CLIENTE_PADRE_TEXT_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="xCLIENTE_ATTR_CLIENTE_PADRE_TEXT_2" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="xCLIENTE_ATTR_CLIENTE_PADRE" source="CLIENTE_ATTR_CLIENTE_PADRE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="KUNNR"/>
+      <joinAttribute name="VKORG"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ZCDCANAL"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="REGIO"/>
+        <viewAttribute id="NAME4"/>
+        <viewAttribute id="COUNC"/>
+        <viewAttribute id="CITYC"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="ZLATT"/>
+        <viewAttribute id="ZLENG"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="LOCAL"/>
+        <viewAttribute id="SALA_FISICA"/>
+        <viewAttribute id="AGENCIA"/>
+        <viewAttribute id="SUPERVISOR"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="ZZCDCLASIF_TEXTO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGIO" source="REGIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME4" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNC" source="COUNC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITYC" source="CITYC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATT" source="ZLATT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLENG" source="ZLENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="SALA_FISICA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_1" source="CLIENTE_ATTR_CLIENTE_PADRE"/>
+      </input>
+      <input node="#DIM_CLIENTE_CLASIF_ESPECIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCANAL" source="ZCDCANAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF_TEXTO" source="ZZCDCLASIF_TEXTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="KUNNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL1"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL2"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL3"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL4"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL5"/>
+        <viewAttribute id="ID_NODO"/>
+        <viewAttribute id="Nivel6" transparentFilter="false"/>
+        <viewAttribute id="Nivel7" transparentFilter="false"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="Nivel1_text"/>
+        <viewAttribute id="Nivel2_text"/>
+        <viewAttribute id="Nivel3_text"/>
+        <viewAttribute id="Nivel4_text"/>
+        <viewAttribute id="Nivel5_text"/>
+        <viewAttribute id="Nivel6_text"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#JERARQUIA_CLIENTE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL1" source="Nivel1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL2" source="Nivel2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL3" source="Nivel3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL4" source="Nivel4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL5" source="Nivel5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_NODO" source="ID_NODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel6" source="Nivel6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel7" source="Nivel7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel1_text" source="Nivel1_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel2_text" source="Nivel2_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel3_text" source="Nivel3_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel4_text" source="Nivel4_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel5_text" source="Nivel5_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel6_text" source="Nivel6_text"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ZCDCANAL"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL1"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL2"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL3"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL4"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL5"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="REGIO"/>
+        <viewAttribute id="NAME4"/>
+        <viewAttribute id="COUNC"/>
+        <viewAttribute id="CITYC"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="ZLATT"/>
+        <viewAttribute id="ZLENG"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="LOCAL"/>
+        <viewAttribute id="SALA_FISICA"/>
+        <viewAttribute id="AGENCIA"/>
+        <viewAttribute id="SUPERVISOR"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL6" transparentFilter="false"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL7" transparentFilter="false"/>
+        <viewAttribute id="Nivel1_text"/>
+        <viewAttribute id="Nivel2_text"/>
+        <viewAttribute id="Nivel3_text"/>
+        <viewAttribute id="Nivel4_text"/>
+        <viewAttribute id="Nivel5_text"/>
+        <viewAttribute id="Nivel6_text"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="ZZCDCLASIF_TEXTO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCANAL" source="ZCDCANAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGIO" source="REGIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME4" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNC" source="COUNC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITYC" source="CITYC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATT" source="ZLATT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLENG" source="ZLENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="SALA_FISICA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_1" source="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF_TEXTO" source="ZZCDCLASIF_TEXTO"/>
+      </input>
+      <input node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL1" source="CLIENTE_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL2" source="CLIENTE_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL3" source="CLIENTE_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL4" source="CLIENTE_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL5" source="CLIENTE_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL6" source="Nivel6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL7" source="Nivel7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel1_text" source="Nivel1_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel2_text" source="Nivel2_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel3_text" source="Nivel3_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel4_text" source="Nivel4_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel5_text" source="Nivel5_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel6_text" source="Nivel6_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="ID_NODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="KUNNR"/>
+      <joinAttribute name="BUKRS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CANAL_JER_NIVEL1"/>
+        <viewAttribute id="CANAL_JER_NIVEL2"/>
+        <viewAttribute id="CANAL_JER_NIVEL3"/>
+        <viewAttribute id="CANAL_JER_NIVEL4"/>
+        <viewAttribute id="CANAL_JER_NIVEL5"/>
+        <viewAttribute id="CANAL_COMERCIAL"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_CANAL_COMERCIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL1" source="CANAL_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL2" source="CANAL_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL3" source="CANAL_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL4" source="CANAL_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL5" source="CANAL_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL" source="CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <viewAttribute id="CLIENTE_ATTR_SOCIEDAD_FI"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL1"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL2"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL3"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL4"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL5"/>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CANAL_JER_NIVEL1"/>
+        <viewAttribute id="CANAL_JER_NIVEL2"/>
+        <viewAttribute id="CANAL_JER_NIVEL3"/>
+        <viewAttribute id="CANAL_JER_NIVEL4"/>
+        <viewAttribute id="CANAL_JER_NIVEL5"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="CLIENTE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_REGION"/>
+        <viewAttribute id="CLIENTE_TEXT_2"/>
+        <viewAttribute id="CLIENTE_ATTR_PROVINCIA"/>
+        <viewAttribute id="CLIENTE_ATTR_COMUNA"/>
+        <viewAttribute id="CLIENTE_ATTR_PAIS"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="CLIENTE_ATTR_LATITUD"/>
+        <viewAttribute id="CLIENTE_ATTR_LONGITUD"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="LOCAL"/>
+        <viewAttribute id="SALA_FISICA"/>
+        <viewAttribute id="AGENCIA"/>
+        <viewAttribute id="SUPERVISOR"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL6" transparentFilter="false"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL7" transparentFilter="false"/>
+        <viewAttribute id="Nivel1_text"/>
+        <viewAttribute id="Nivel2_text"/>
+        <viewAttribute id="Nivel3_text"/>
+        <viewAttribute id="Nivel4_text"/>
+        <viewAttribute id="Nivel5_text"/>
+        <viewAttribute id="Nivel6_text"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="ZZCDCLASIF_TEXTO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="ZCDCANAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_SOCIEDAD_FI" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL1" source="CLIENTE_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL2" source="CLIENTE_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL3" source="CLIENTE_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL4" source="CLIENTE_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL5" source="CLIENTE_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="REGIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_2" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="COUNC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="CITYC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LATITUD" source="ZLATT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LONGITUD" source="ZLENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="SALA_FISICA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL6" source="CLIENTE_JER_NIVEL6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL7" source="CLIENTE_JER_NIVEL7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel1_text" source="Nivel1_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel2_text" source="Nivel2_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel3_text" source="Nivel3_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel4_text" source="Nivel4_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel5_text" source="Nivel5_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel6_text" source="Nivel6_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_1" source="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF_TEXTO" source="ZZCDCLASIF_TEXTO"/>
+      </input>
+      <input node="#Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL1" source="CANAL_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL2" source="CANAL_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL3" source="CANAL_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL4" source="CANAL_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL5" source="CANAL_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+      </input>
+      <joinAttribute name="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+      <joinAttribute name="CLIENTE_ATTR_SOCIEDAD_FI"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUBCADENA"/>
+        <viewAttribute id="CADENA_TEXT"/>
+        <viewAttribute id="SUBCADENA_TEXT"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_CADENA_SUBCADENA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCADENA" source="SUBCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA_TEXT" source="CADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCADENA_TEXT" source="SUBCADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <viewAttribute id="CLIENTE_ATTR_SOCIEDAD_FI"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL1"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL2"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL3"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL4"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL5"/>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CANAL_JER_NIVEL1"/>
+        <viewAttribute id="CANAL_JER_NIVEL2"/>
+        <viewAttribute id="CANAL_JER_NIVEL3"/>
+        <viewAttribute id="CANAL_JER_NIVEL4"/>
+        <viewAttribute id="CANAL_JER_NIVEL5"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="CLIENTE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_REGION"/>
+        <viewAttribute id="CLIENTE_TEXT_2"/>
+        <viewAttribute id="CLIENTE_ATTR_PROVINCIA"/>
+        <viewAttribute id="CLIENTE_ATTR_COMUNA"/>
+        <viewAttribute id="CLIENTE_ATTR_PAIS"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="CLIENTE_ATTR_LATITUD"/>
+        <viewAttribute id="CLIENTE_ATTR_LONGITUD"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="LOCAL"/>
+        <viewAttribute id="SALA_FISICA"/>
+        <viewAttribute id="AGENCIA"/>
+        <viewAttribute id="SUPERVISOR"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL6" transparentFilter="false"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL7" transparentFilter="false"/>
+        <viewAttribute id="CADENA_TEXT"/>
+        <viewAttribute id="SUBCADENA_TEXT"/>
+        <viewAttribute id="Nivel1_text"/>
+        <viewAttribute id="Nivel2_text"/>
+        <viewAttribute id="Nivel3_text"/>
+        <viewAttribute id="Nivel4_text"/>
+        <viewAttribute id="Nivel5_text"/>
+        <viewAttribute id="Nivel6_text"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="ZZCDCLASIF_TEXTO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_SOCIEDAD_FI" source="CLIENTE_ATTR_SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL1" source="CLIENTE_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL2" source="CLIENTE_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL3" source="CLIENTE_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL4" source="CLIENTE_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL5" source="CLIENTE_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL1" source="CANAL_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL2" source="CANAL_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL3" source="CANAL_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL4" source="CANAL_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL5" source="CANAL_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="CLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_1" source="CLIENTE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="CLIENTE_ATTR_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_2" source="CLIENTE_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="CLIENTE_ATTR_PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="CLIENTE_ATTR_COMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="CLIENTE_ATTR_PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LATITUD" source="CLIENTE_ATTR_LATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LONGITUD" source="CLIENTE_ATTR_LONGITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="SALA_FISICA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL6" source="CLIENTE_JER_NIVEL6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL7" source="CLIENTE_JER_NIVEL7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel1_text" source="Nivel1_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel2_text" source="Nivel2_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel3_text" source="Nivel3_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel4_text" source="Nivel4_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel5_text" source="Nivel5_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel6_text" source="Nivel6_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_1" source="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF_TEXTO" source="ZZCDCLASIF_TEXTO"/>
+      </input>
+      <input node="#Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA_TEXT" source="CADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCADENA_TEXT" source="SUBCADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUBCADENA"/>
+      </input>
+      <joinAttribute name="CADENA"/>
+      <joinAttribute name="SUB_CADENA"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_REGION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_9" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <viewAttribute id="CLIENTE_ATTR_SOCIEDAD_FI"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL1"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL2"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL3"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL4"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL5"/>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CANAL_JER_NIVEL1"/>
+        <viewAttribute id="CANAL_JER_NIVEL2"/>
+        <viewAttribute id="CANAL_JER_NIVEL3"/>
+        <viewAttribute id="CANAL_JER_NIVEL4"/>
+        <viewAttribute id="CANAL_JER_NIVEL5"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="CLIENTE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_REGION"/>
+        <viewAttribute id="CLIENTE_TEXT_2"/>
+        <viewAttribute id="CLIENTE_ATTR_PROVINCIA"/>
+        <viewAttribute id="CLIENTE_ATTR_COMUNA"/>
+        <viewAttribute id="CLIENTE_ATTR_PAIS"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="CLIENTE_ATTR_LATITUD"/>
+        <viewAttribute id="CLIENTE_ATTR_LONGITUD"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="LOCAL"/>
+        <viewAttribute id="SALA_FISICA"/>
+        <viewAttribute id="AGENCIA"/>
+        <viewAttribute id="SUPERVISOR"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL6" transparentFilter="false"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL7" transparentFilter="false"/>
+        <viewAttribute id="CADENA_TEXT"/>
+        <viewAttribute id="SUBCADENA_TEXT"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="Nivel1_text"/>
+        <viewAttribute id="Nivel2_text"/>
+        <viewAttribute id="Nivel3_text"/>
+        <viewAttribute id="Nivel4_text"/>
+        <viewAttribute id="Nivel5_text"/>
+        <viewAttribute id="Nivel6_text"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="ZZCDCLASIF_TEXTO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_SOCIEDAD_FI" source="CLIENTE_ATTR_SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL1" source="CLIENTE_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL2" source="CLIENTE_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL3" source="CLIENTE_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL4" source="CLIENTE_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL5" source="CLIENTE_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL1" source="CANAL_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL2" source="CANAL_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL3" source="CANAL_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL4" source="CANAL_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL5" source="CANAL_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="CLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_1" source="CLIENTE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="CLIENTE_ATTR_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_2" source="CLIENTE_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="CLIENTE_ATTR_PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="CLIENTE_ATTR_COMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="CLIENTE_ATTR_PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LATITUD" source="CLIENTE_ATTR_LATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LONGITUD" source="CLIENTE_ATTR_LONGITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="SALA_FISICA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL6" source="CLIENTE_JER_NIVEL6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL7" source="CLIENTE_JER_NIVEL7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA_TEXT" source="CADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCADENA_TEXT" source="SUBCADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel1_text" source="Nivel1_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel2_text" source="Nivel2_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel3_text" source="Nivel3_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel4_text" source="Nivel4_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel5_text" source="Nivel5_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel6_text" source="Nivel6_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_1" source="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF_TEXTO" source="ZZCDCLASIF_TEXTO"/>
+      </input>
+      <input node="#Projection_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="PAIS"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="CLIENTE_ATTR_REGION"/>
+      <joinAttribute name="CLIENTE_ATTR_PAIS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_8">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="PROVINCIA"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_PROVINCIA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA" source="PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_10" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <viewAttribute id="CLIENTE_ATTR_SOCIEDAD_FI"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL1"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL2"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL3"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL4"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL5"/>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CANAL_JER_NIVEL1"/>
+        <viewAttribute id="CANAL_JER_NIVEL2"/>
+        <viewAttribute id="CANAL_JER_NIVEL3"/>
+        <viewAttribute id="CANAL_JER_NIVEL4"/>
+        <viewAttribute id="CANAL_JER_NIVEL5"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="CLIENTE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_REGION"/>
+        <viewAttribute id="CLIENTE_TEXT_2"/>
+        <viewAttribute id="CLIENTE_ATTR_PROVINCIA"/>
+        <viewAttribute id="CLIENTE_ATTR_COMUNA"/>
+        <viewAttribute id="CLIENTE_ATTR_PAIS"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="CLIENTE_ATTR_LATITUD"/>
+        <viewAttribute id="CLIENTE_ATTR_LONGITUD"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="LOCAL"/>
+        <viewAttribute id="SALA_FISICA"/>
+        <viewAttribute id="AGENCIA"/>
+        <viewAttribute id="SUPERVISOR"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL6" transparentFilter="false"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL7" transparentFilter="false"/>
+        <viewAttribute id="CADENA_TEXT"/>
+        <viewAttribute id="SUBCADENA_TEXT"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="Nivel1_text"/>
+        <viewAttribute id="Nivel2_text"/>
+        <viewAttribute id="Nivel3_text"/>
+        <viewAttribute id="Nivel4_text"/>
+        <viewAttribute id="Nivel5_text"/>
+        <viewAttribute id="Nivel6_text"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="ZZCDCLASIF_TEXTO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_SOCIEDAD_FI" source="CLIENTE_ATTR_SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL1" source="CLIENTE_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL2" source="CLIENTE_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL3" source="CLIENTE_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL4" source="CLIENTE_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL5" source="CLIENTE_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL1" source="CANAL_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL2" source="CANAL_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL3" source="CANAL_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL4" source="CANAL_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL5" source="CANAL_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="CLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_1" source="CLIENTE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="CLIENTE_ATTR_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_2" source="CLIENTE_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="CLIENTE_ATTR_PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="CLIENTE_ATTR_COMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="CLIENTE_ATTR_PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LATITUD" source="CLIENTE_ATTR_LATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LONGITUD" source="CLIENTE_ATTR_LONGITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="SALA_FISICA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL6" source="CLIENTE_JER_NIVEL6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL7" source="CLIENTE_JER_NIVEL7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA_TEXT" source="CADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCADENA_TEXT" source="SUBCADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel1_text" source="Nivel1_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel2_text" source="Nivel2_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel3_text" source="Nivel3_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel4_text" source="Nivel4_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel5_text" source="Nivel5_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel6_text" source="Nivel6_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_1" source="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF_TEXTO" source="ZZCDCLASIF_TEXTO"/>
+      </input>
+      <input node="#Projection_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="PAIS"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="CLIENTE_ATTR_PROVINCIA"/>
+      <joinAttribute name="CLIENTE_ATTR_REGION"/>
+      <joinAttribute name="CLIENTE_ATTR_PAIS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_9">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="COMUNA"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_COMUNA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA" source="COMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_11" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <viewAttribute id="CLIENTE_ATTR_SOCIEDAD_FI"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL1"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL2"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL3"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL4"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL5"/>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CANAL_JER_NIVEL1"/>
+        <viewAttribute id="CANAL_JER_NIVEL2"/>
+        <viewAttribute id="CANAL_JER_NIVEL3"/>
+        <viewAttribute id="CANAL_JER_NIVEL4"/>
+        <viewAttribute id="CANAL_JER_NIVEL5"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="CLIENTE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_REGION"/>
+        <viewAttribute id="CLIENTE_TEXT_2"/>
+        <viewAttribute id="CLIENTE_ATTR_PROVINCIA"/>
+        <viewAttribute id="CLIENTE_ATTR_COMUNA"/>
+        <viewAttribute id="CLIENTE_ATTR_PAIS"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="CLIENTE_ATTR_LATITUD"/>
+        <viewAttribute id="CLIENTE_ATTR_LONGITUD"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="LOCAL"/>
+        <viewAttribute id="SALA_FISICA"/>
+        <viewAttribute id="AGENCIA"/>
+        <viewAttribute id="SUPERVISOR"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL6" transparentFilter="false"/>
+        <viewAttribute id="CLIENTE_JER_NIVEL7" transparentFilter="false"/>
+        <viewAttribute id="CADENA_TEXT"/>
+        <viewAttribute id="SUBCADENA_TEXT"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="Nivel1_text"/>
+        <viewAttribute id="Nivel2_text"/>
+        <viewAttribute id="Nivel3_text"/>
+        <viewAttribute id="Nivel4_text"/>
+        <viewAttribute id="Nivel5_text"/>
+        <viewAttribute id="Nivel6_text"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <viewAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="ZZCDCLASIF_TEXTO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_10">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_SOCIEDAD_FI" source="CLIENTE_ATTR_SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL1" source="CLIENTE_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL2" source="CLIENTE_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL3" source="CLIENTE_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL4" source="CLIENTE_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL5" source="CLIENTE_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL1" source="CANAL_JER_NIVEL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL2" source="CANAL_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL3" source="CANAL_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL4" source="CANAL_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL5" source="CANAL_JER_NIVEL5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="CLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_1" source="CLIENTE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="CLIENTE_ATTR_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_2" source="CLIENTE_TEXT_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="CLIENTE_ATTR_PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="CLIENTE_ATTR_COMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="CLIENTE_ATTR_PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LATITUD" source="CLIENTE_ATTR_LATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_LONGITUD" source="CLIENTE_ATTR_LONGITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOCAL" source="LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALA_FISICA" source="SALA_FISICA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AGENCIA" source="AGENCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUPERVISOR" source="SUPERVISOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL6" source="CLIENTE_JER_NIVEL6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_JER_NIVEL7" source="CLIENTE_JER_NIVEL7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA_TEXT" source="CADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCADENA_TEXT" source="SUBCADENA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel1_text" source="Nivel1_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel2_text" source="Nivel2_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel3_text" source="Nivel3_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel4_text" source="Nivel4_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel5_text" source="Nivel5_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel6_text" source="Nivel6_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1" source="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CLIENTE_PADRE_1" source="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF_TEXTO" source="ZZCDCLASIF_TEXTO"/>
+      </input>
+      <input node="#Projection_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="COMUNA"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="CLIENTE_ATTR_PAIS"/>
+      <joinAttribute name="CLIENTE_ATTR_REGION"/>
+      <joinAttribute name="CLIENTE_ATTR_COMUNA"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_11">
+    <descriptions/>
+    <attributes>
+      <attribute id="CLIENTE_ATTR_CANAL_COMERCIAL" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_SOCIEDAD_FI" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_SOCIEDAD_FI"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_ATTR_SOCIEDAD_FI"/>
+      </attribute>
+      <attribute id="CANAL_COMERCIAL_TEXT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_COMERCIAL_TEXT"/>
+        <keyMapping columnObjectName="Join_11" columnName="CANAL_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL1" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL1"/>
+        <keyMapping columnObjectName="Join_11" columnName="CANAL_JER_NIVEL1"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL2" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL2"/>
+        <keyMapping columnObjectName="Join_11" columnName="CANAL_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL3" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL3"/>
+        <keyMapping columnObjectName="Join_11" columnName="CANAL_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL4" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL4"/>
+        <keyMapping columnObjectName="Join_11" columnName="CANAL_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL5" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL5"/>
+        <keyMapping columnObjectName="Join_11" columnName="CANAL_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="MANDT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_11" columnName="MANDT"/>
+      </attribute>
+      <attribute id="CLIENTE" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE"/>
+      </attribute>
+      <attribute id="CLIENTE_TEXT_1" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_TEXT_1"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_REGION" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_REGION"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_ATTR_REGION"/>
+      </attribute>
+      <attribute id="CLIENTE_TEXT_2" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_TEXT_2"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_TEXT_2"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_PROVINCIA" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_PROVINCIA"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_ATTR_PROVINCIA"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_COMUNA" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_COMUNA"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_ATTR_COMUNA"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_PAIS" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_PAIS"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_ATTR_PAIS"/>
+      </attribute>
+      <attribute id="SPRAS" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPRAS"/>
+        <keyMapping columnObjectName="Join_11" columnName="SPRAS"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_LATITUD" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_LATITUD"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_ATTR_LATITUD"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_LONGITUD" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_LONGITUD"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_ATTR_LONGITUD"/>
+      </attribute>
+      <attribute id="CADENA" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CADENA"/>
+        <keyMapping columnObjectName="Join_11" columnName="CADENA"/>
+      </attribute>
+      <attribute id="SUB_CADENA" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_CADENA"/>
+        <keyMapping columnObjectName="Join_11" columnName="SUB_CADENA"/>
+      </attribute>
+      <attribute id="LOCAL" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LOCAL"/>
+        <keyMapping columnObjectName="Join_11" columnName="LOCAL"/>
+      </attribute>
+      <attribute id="SALA_FISICA" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALA_FISICA"/>
+        <keyMapping columnObjectName="Join_11" columnName="SALA_FISICA"/>
+      </attribute>
+      <attribute id="AGENCIA" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AGENCIA"/>
+        <keyMapping columnObjectName="Join_11" columnName="AGENCIA"/>
+      </attribute>
+      <attribute id="SUPERVISOR" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUPERVISOR"/>
+        <keyMapping columnObjectName="Join_11" columnName="SUPERVISOR"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORGANIZACION_VENTA"/>
+        <keyMapping columnObjectName="Join_11" columnName="VKORG"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL6_1" order="33" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL6_1"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_JER_NIVEL6"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL7" order="34" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL7"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_JER_NIVEL7"/>
+      </attribute>
+      <attribute id="CADENA_TEXT" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CADENA_TEXT"/>
+        <keyMapping columnObjectName="Join_11" columnName="CADENA_TEXT"/>
+      </attribute>
+      <attribute id="SUBCADENA_TEXT" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBCADENA_TEXT"/>
+        <keyMapping columnObjectName="Join_11" columnName="SUBCADENA_TEXT"/>
+      </attribute>
+      <attribute id="REGION_TEXT" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REGION_TEXT"/>
+        <keyMapping columnObjectName="Join_11" columnName="REGION_TEXT"/>
+      </attribute>
+      <attribute id="PROVINCIA_TEXT" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROVINCIA_TEXT"/>
+        <keyMapping columnObjectName="Join_11" columnName="PROVINCIA_TEXT"/>
+      </attribute>
+      <attribute id="COMUNA_TEXT" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COMUNA_TEXT"/>
+        <keyMapping columnObjectName="Join_11" columnName="COMUNA_TEXT"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL1" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL1"/>
+        <keyMapping columnObjectName="Join_11" columnName="Nivel1_text"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL2" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL2"/>
+        <keyMapping columnObjectName="Join_11" columnName="Nivel2_text"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL3" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL3"/>
+        <keyMapping columnObjectName="Join_11" columnName="Nivel3_text"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL4" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL4"/>
+        <keyMapping columnObjectName="Join_11" columnName="Nivel4_text"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL5" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL5"/>
+        <keyMapping columnObjectName="Join_11" columnName="Nivel5_text"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL6" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL6"/>
+        <keyMapping columnObjectName="Join_11" columnName="Nivel6_text"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL1_1" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL1_1"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_JER_NIVEL1"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL2_1" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL2_1"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL3_1" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL3_1"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL4_1" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL4_1"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL5_1" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL5_1"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CLIENTE_PADRE"/>
+        <keyMapping columnObjectName="Join_11" columnName="CLIENTE_ATTR_CLIENTE_PADRE_1"/>
+      </attribute>
+      <attribute id="ZZCDCLASIF" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZCDCLASIF"/>
+        <keyMapping columnObjectName="Join_11" columnName="ZZCDCLASIF"/>
+      </attribute>
+      <attribute id="ZZCDCLASIF_TEXTO" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZCDCLASIF_TEXTO"/>
+        <keyMapping columnObjectName="Join_11" columnName="ZZCDCLASIF_TEXTO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="CLIENTE_ID_TEXT_1" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ID_TEXT_1"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="70">
+          <formula>&quot;CLIENTE_CORTO&quot;+' - '+&quot;CLIENTE_TEXT_1&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CLIENTE_ID_TEXT_2" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ID_TEXT_2"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="70">
+          <formula>&quot;CLIENTE_CORTO&quot;+' - '+&quot;CLIENTE_TEXT_2&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1" hidden="false" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="50">
+          <formula>&quot;CLIENTE_ATTR_CLIENTE_PADRE_CORTO&quot;+' - '+&quot;CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2" hidden="false" order="4" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="50">
+          <formula>&quot;CLIENTE_ATTR_CLIENTE_PADRE_CORTO&quot;+' - '+&quot;CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CLIENTE_CORTO" hidden="false" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_CORTO"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
+          <formula>if(leftstr(&quot;CLIENTE&quot;,1)='0',string(int(&quot;CLIENTE&quot;)),&quot;CLIENTE&quot;)&#xD;
+&#xD;
+</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CLIENTE_ATTR_CLIENTE_PADRE_CORTO" hidden="false" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CLIENTE_PADRE_CORTO"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
+          <formula>if(leftstr(&quot;CLIENTE_ATTR_CLIENTE_PADRE&quot;,1)='0',string(int(&quot;CLIENTE_ATTR_CLIENTE_PADRE&quot;)),&quot;CLIENTE_ATTR_CLIENTE_PADRE&quot;)&#xD;
+</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="618" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="1125"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="407" y="1029"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="1125"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="1029"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="561" y="1029"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="407" y="933"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="1029"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="933"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="325" y="837"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="325" y="741"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="479" y="741"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="397" y="645"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="551" y="645"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="470" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="624" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="544" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="698" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="619" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="773" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="695" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="541" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_11" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="618" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

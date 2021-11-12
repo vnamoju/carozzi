@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="MODELOVENTA_TABLA_SCP_001_O" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="MODELOVENTA_TABLA_SCP001_O"/>
+  <metadata changedAt="2020-05-13 11:18:18.44"/>
+  <localVariables>
+    <variable id="V_FECHA" parameter="true">
+      <descriptions defaultDescription="V_FECHA"/>
+      <variableProperties datatype="DATE" defaultExpressionLanguage="COLUMN_ENGINE" mandatory="true">
+        <valueDomain type="Date"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>replace(leftstr(string(now()),10),'-','')</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="36"/>
+  <dataSources>
+    <DataSource id="COBK_2020">
+      <resourceUri>COBK_2020</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="COBK_2020">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="MANDT"/>
+      </attribute>
+      <attribute id="KOKRS" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KOKRS"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="KOKRS"/>
+      </attribute>
+      <attribute id="BELNR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BELNR"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="BELNR"/>
+      </attribute>
+      <attribute id="GJAHR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GJAHR"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="GJAHR"/>
+      </attribute>
+      <attribute id="VERSN" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VERSN"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="VERSN"/>
+      </attribute>
+      <attribute id="VRGNG" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VRGNG"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="VRGNG"/>
+      </attribute>
+      <attribute id="PERAB" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERAB"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="PERAB"/>
+      </attribute>
+      <attribute id="PERBI" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERBI"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="PERBI"/>
+      </attribute>
+      <attribute id="BLDAT" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BLDAT"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="BLDAT"/>
+      </attribute>
+      <attribute id="BUDAT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUDAT"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="BUDAT"/>
+      </attribute>
+      <attribute id="CPUDT" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CPUDT"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="CPUDT"/>
+      </attribute>
+      <attribute id="USNAM" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USNAM"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="USNAM"/>
+      </attribute>
+      <attribute id="BLTXT" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BLTXT"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="BLTXT"/>
+      </attribute>
+      <attribute id="STFLG" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="STFLG"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="STFLG"/>
+      </attribute>
+      <attribute id="STOKZ" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="STOKZ"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="STOKZ"/>
+      </attribute>
+      <attribute id="REFBT" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REFBT"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="REFBT"/>
+      </attribute>
+      <attribute id="REFBN" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REFBN"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="REFBN"/>
+      </attribute>
+      <attribute id="REFBK" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REFBK"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="REFBK"/>
+      </attribute>
+      <attribute id="REFGJ" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REFGJ"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="REFGJ"/>
+      </attribute>
+      <attribute id="BLART" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BLART"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="BLART"/>
+      </attribute>
+      <attribute id="ORGVG" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORGVG"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="ORGVG"/>
+      </attribute>
+      <attribute id="SUMBZ" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUMBZ"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="SUMBZ"/>
+      </attribute>
+      <attribute id="DELBZ" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DELBZ"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="DELBZ"/>
+      </attribute>
+      <attribute id="WSDAT" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WSDAT"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="WSDAT"/>
+      </attribute>
+      <attribute id="KURST" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KURST"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="KURST"/>
+      </attribute>
+      <attribute id="VARNR" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VARNR"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="VARNR"/>
+      </attribute>
+      <attribute id="KWAER" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KWAER"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="KWAER"/>
+      </attribute>
+      <attribute id="CTYP1" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CTYP1"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="CTYP1"/>
+      </attribute>
+      <attribute id="CTYP2" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CTYP2"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="CTYP2"/>
+      </attribute>
+      <attribute id="CTYP3" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CTYP3"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="CTYP3"/>
+      </attribute>
+      <attribute id="CTYP4" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CTYP4"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="CTYP4"/>
+      </attribute>
+      <attribute id="AWTYP" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AWTYP"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="AWTYP"/>
+      </attribute>
+      <attribute id="AWORG" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AWORG"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="AWORG"/>
+      </attribute>
+      <attribute id="LOGSYSTEM" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LOGSYSTEM"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="LOGSYSTEM"/>
+      </attribute>
+      <attribute id="CPUTM" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CPUTM"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="CPUTM"/>
+      </attribute>
+      <attribute id="ALEBZ" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ALEBZ"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="ALEBZ"/>
+      </attribute>
+      <attribute id="ALEBN" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ALEBN"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="ALEBN"/>
+      </attribute>
+      <attribute id="AWSYS" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AWSYS"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="AWSYS"/>
+      </attribute>
+      <attribute id="AWREF_REV" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AWREF_REV"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="AWREF_REV"/>
+      </attribute>
+      <attribute id="AWORG_REV" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AWORG_REV"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="AWORG_REV"/>
+      </attribute>
+      <attribute id="VALDT" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VALDT"/>
+        <keyMapping columnObjectName="COBK_2020" columnName="VALDT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="TIMESTMP" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TIMESTMP"/>
+        <measureMapping columnObjectName="COBK_2020" columnName="TIMESTMP"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="176" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

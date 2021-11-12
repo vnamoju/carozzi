@@ -1,0 +1,34 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/SALES_PACKAGE/ZBW_VENDEDOR_EXT.hdbreptask:workspace" Description="" Type="REALTIME" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="false" RemoteSourceName="HANA_ERP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZBW_VENDEDOR_EXT&quot;" SourceDisplayName="ZBW_VENDEDOR_EXT">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="ZBW_VENDEDOR_EXT" DropTargetTableIfExists="TRUE">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="VKBUR" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="PERNR" Datatype="NVARCHAR" Length="8" Precision="8" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="TEXTO" Datatype="NVARCHAR" Length="80" Precision="80" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="ZBW_VENDEDOR_EXT" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZBW_VENDEDOR_EXT&quot;" FilterExpression="" ReplicationBehavior="InitAndRealtime" VTObjectName="ZBW_VENDEDOR_EXT">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VKBUR" ProjectionExpression="&quot;VKBUR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PERNR" ProjectionExpression="&quot;PERNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="TEXTO" ProjectionExpression="&quot;TEXTO&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

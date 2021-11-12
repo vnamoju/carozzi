@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_VENDEDOR_VD" applyPrivilegeType="NONE" defaultClient="" dataCategory="DIMENSION" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="DIM_VENDEDOR_VD"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="Z1SCP_VENDEDOR">
+      <resourceUri>Z1SCP_VENDEDOR</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <viewAttributes>
+        <viewAttribute id="CNAME"/>
+        <viewAttribute id="DISTR"/>
+        <viewAttribute id="FECHA"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PERNR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1SCP_VENDEDOR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME" source="CNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTR" source="DISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA" source="FECHA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <attributes>
+      <attribute id="CNAME" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CNAME"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CNAME"/>
+      </attribute>
+      <attribute id="DISTR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DISTR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DISTR"/>
+      </attribute>
+      <attribute id="FECHA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FECHA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FECHA"/>
+      </attribute>
+      <attribute id="MANDT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="PERNR" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PERNR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="87" y="223"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

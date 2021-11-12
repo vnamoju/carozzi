@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="VC_TCKH1" applyPrivilegeType="NONE" defaultClient="" dataCategory="DIMENSION" dimensionType="STANDARD" enforceSqlExecution="false" outputViewType="Projection">
+  <descriptions defaultDescription="VC_TCKH1"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="TCKH_1">
+      <resourceUri>TCKH_1</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="TCKH_1">
+    <attributes>
+      <attribute id="ELEHK" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ELEHK"/>
+        <keyMapping columnObjectName="TCKH_1" columnName="ELEHK"/>
+      </attribute>
+      <attribute id="ELEMT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ELEMT"/>
+        <keyMapping columnObjectName="TCKH_1" columnName="ELEMT"/>
+      </attribute>
+      <attribute id="MANDT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="TCKH_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="SPRAS" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPRAS"/>
+        <keyMapping columnObjectName="TCKH_1" columnName="SPRAS"/>
+      </attribute>
+      <attribute id="TXELE" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TXELE"/>
+        <keyMapping columnObjectName="TCKH_1" columnName="TXELE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

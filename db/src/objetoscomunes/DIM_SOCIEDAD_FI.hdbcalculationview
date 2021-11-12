@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_SOCIEDAD_FI" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_SOCIEDAD_FI"/>
+  <metadata changedAt="2018-04-19 22:50:06.507" createdAt="2018-03-26 11:32:28.423"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="T001">
+      <resourceUri>T001</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="T001">
+    <descriptions defaultDescription="DIM_SOCIEDAD_FI"/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="T001" columnName="MANDT"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI"/>
+        <keyMapping columnObjectName="T001" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI_TEXT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI_TEXT"/>
+        <keyMapping columnObjectName="T001" columnName="BUTXT"/>
+      </attribute>
+      <attribute id="PLAN_CUENTA" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PLAN_CUENTA"/>
+        <keyMapping columnObjectName="T001" columnName="KTOPL"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

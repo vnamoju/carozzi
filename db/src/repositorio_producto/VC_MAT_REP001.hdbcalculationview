@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="VC_MAT_REP001" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="Repositorio Materiales"/>
+  <metadata changedAt="2021-07-21 09:45:31.776"/>
+  <localVariables>
+    <variable id="UN">
+      <descriptions defaultDescription="Unidad negocio"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="UNIDAD_NEGOCIO_TEXT"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="CT">
+      <descriptions defaultDescription="Categoria"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="CATEGORIA_TEXT"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="MC">
+      <descriptions defaultDescription="Marca"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="MATERIAL_ATTR_MARCA"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="GM">
+      <descriptions defaultDescription="Grupo de material"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="GRUPO_MATERIAL_TEXT"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="41"/>
+  <dataSources>
+    <DataSource id="MARM">
+      <resourceUri>MARM</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_4$$$$MARM$$">
+      <resourceUri>MARM</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_5$$$$MARM$$">
+      <resourceUri>MARM</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_6$$$$MARM$$">
+      <resourceUri>MARM</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MATERIAL">
+      <resourceUri>DIM_MATERIAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_GRUPO_MATERIAL">
+      <resourceUri>DIM_GRUPO_MATERIAL</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEINH"/>
+        <viewAttribute id="UMREZ"/>
+        <viewAttribute id="UMREN"/>
+        <viewAttribute id="EAN11"/>
+        <viewAttribute id="NUMTP"/>
+        <viewAttribute id="LAENG"/>
+        <viewAttribute id="BREIT"/>
+        <viewAttribute id="HOEHE"/>
+        <viewAttribute id="MEABM"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="GEWEI"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="NETOO" length="34" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>double(&quot;UMREZ&quot;)/double(&quot;UMREN&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="EAN12" length="12" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;EAN11&quot;,12)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#MARM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMTP" source="NUMTP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG" source="LAENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT" source="BREIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE" source="HOEHE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM" source="MEABM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+      </input>
+      <filter>&quot;NUMTP&quot; = 'HE' and &quot;VOLUM&quot; > 0</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEINH"/>
+        <viewAttribute id="UMREZ"/>
+        <viewAttribute id="UMREN"/>
+        <viewAttribute id="EANNR"/>
+        <viewAttribute id="EAN11"/>
+        <viewAttribute id="NUMTP"/>
+        <viewAttribute id="LAENG"/>
+        <viewAttribute id="BREIT"/>
+        <viewAttribute id="HOEHE"/>
+        <viewAttribute id="MEABM"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="VOLEH"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="MESUB"/>
+        <viewAttribute id="ATINN"/>
+        <viewAttribute id="MESRT"/>
+        <viewAttribute id="XFHDW"/>
+        <viewAttribute id="XBEWW"/>
+        <viewAttribute id="KZWSO"/>
+        <viewAttribute id="MSEHI"/>
+        <viewAttribute id="BFLME_MARM"/>
+        <viewAttribute id="GTIN_VARIANT"/>
+        <viewAttribute id="NEST_FTR"/>
+        <viewAttribute id="MAX_STACK"/>
+        <viewAttribute id="CAPAUSE"/>
+        <viewAttribute id="TY2TQ"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="NETOO2" length="34" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>decfloat(&quot;UMREZ&quot;)/decfloat(&quot;UMREN&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Projection_4$$$$MARM$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EANNR" source="EANNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMTP" source="NUMTP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG" source="LAENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT" source="BREIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE" source="HOEHE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM" source="MEABM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLEH" source="VOLEH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MESUB" source="MESUB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ATINN" source="ATINN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MESRT" source="MESRT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XFHDW" source="XFHDW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XBEWW" source="XBEWW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZWSO" source="KZWSO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MSEHI" source="MSEHI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BFLME_MARM" source="BFLME_MARM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GTIN_VARIANT" source="GTIN_VARIANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NEST_FTR" source="NEST_FTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAX_STACK" source="MAX_STACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CAPAUSE" source="CAPAUSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TY2TQ" source="TY2TQ"/>
+      </input>
+      <filter>(&quot;NUMTP&quot; ='IC')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="UMREZ"/>
+        <viewAttribute id="UMREN"/>
+        <viewAttribute id="MEINH"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="CAP" length="34" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>decfloat(&quot;UMREZ&quot;)/decfloat(&quot;UMREN&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Projection_5$$$$MARM$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+      </input>
+      <filter>(&quot;MEINH&quot; = 'CAP')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:RankView" id="Rank_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEINH"/>
+        <viewAttribute id="UMREZ"/>
+        <viewAttribute id="UMREN"/>
+        <viewAttribute id="EAN11"/>
+        <viewAttribute id="NUMTP"/>
+        <viewAttribute id="LAENG"/>
+        <viewAttribute id="BREIT"/>
+        <viewAttribute id="HOEHE"/>
+        <viewAttribute id="MEABM"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="NETOO"/>
+        <viewAttribute id="EAN12"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMTP" source="NUMTP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG" source="LAENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT" source="BREIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE" source="HOEHE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM" source="MEABM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETOO" source="NETOO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN12" source="EAN12"/>
+      </input>
+      <windowFunction>
+        <partitionViewAttributeName>MATNR</partitionViewAttributeName>
+        <order byViewAttributeName="VOLUM" direction="ASC"/>
+        <rankViewAttributeName>RANK</rankViewAttributeName>
+      </windowFunction>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEINH"/>
+        <viewAttribute id="UMREZ"/>
+        <viewAttribute id="UMREN"/>
+        <viewAttribute id="EAN11"/>
+        <viewAttribute id="NUMTP"/>
+        <viewAttribute id="LAENG"/>
+        <viewAttribute id="BREIT"/>
+        <viewAttribute id="HOEHE"/>
+        <viewAttribute id="MEABM"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="RANK"/>
+        <viewAttribute id="MEINH_1"/>
+        <viewAttribute id="UMREZ_1"/>
+        <viewAttribute id="UMREN_1"/>
+        <viewAttribute id="EAN11_1"/>
+        <viewAttribute id="GEWEI_1"/>
+        <viewAttribute id="BRGEW_1"/>
+        <viewAttribute id="LAENG_1"/>
+        <viewAttribute id="BREIT_1"/>
+        <viewAttribute id="HOEHE_1"/>
+        <viewAttribute id="MEABM_1"/>
+        <viewAttribute id="NETOO"/>
+        <viewAttribute id="NETOO2"/>
+        <viewAttribute id="EAN12"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Rank_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMTP" source="NUMTP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG" source="LAENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT" source="BREIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE" source="HOEHE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM" source="MEABM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RANK" source="RANK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETOO" source="NETOO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN12" source="EAN12"/>
+      </input>
+      <input node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH_1" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ_1" source="UMREZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN_1" source="UMREN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11_1" source="EAN11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI_1" source="GEWEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW_1" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG_1" source="LAENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT_1" source="BREIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE_1" source="HOEHE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM_1" source="MEABM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETOO2" source="NETOO2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      </input>
+      <joinAttribute name="MATNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEINH"/>
+        <viewAttribute id="UMREZ"/>
+        <viewAttribute id="UMREN"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="PAL" length="34" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>decfloat(&quot;UMREZ&quot;)/decfloat(&quot;UMREN&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Projection_6$$$$MARM$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
+      </input>
+      <filter>(&quot;MEINH&quot; ='PAL')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEINH"/>
+        <viewAttribute id="UMREZ"/>
+        <viewAttribute id="UMREN"/>
+        <viewAttribute id="EAN11"/>
+        <viewAttribute id="NUMTP"/>
+        <viewAttribute id="LAENG"/>
+        <viewAttribute id="BREIT"/>
+        <viewAttribute id="HOEHE"/>
+        <viewAttribute id="MEABM"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="RANK"/>
+        <viewAttribute id="MEINH_1"/>
+        <viewAttribute id="UMREZ_1"/>
+        <viewAttribute id="UMREN_1"/>
+        <viewAttribute id="EAN11_1"/>
+        <viewAttribute id="GEWEI_1"/>
+        <viewAttribute id="BRGEW_1"/>
+        <viewAttribute id="LAENG_1"/>
+        <viewAttribute id="BREIT_1"/>
+        <viewAttribute id="HOEHE_1"/>
+        <viewAttribute id="MEABM_1"/>
+        <viewAttribute id="CAP"/>
+        <viewAttribute id="NETOO"/>
+        <viewAttribute id="NETOO2"/>
+        <viewAttribute id="EAN12"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMTP" source="NUMTP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG" source="LAENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT" source="BREIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE" source="HOEHE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM" source="MEABM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RANK" source="RANK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH_1" source="MEINH_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ_1" source="UMREZ_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN_1" source="UMREN_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11_1" source="EAN11_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI_1" source="GEWEI_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW_1" source="BRGEW_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG_1" source="LAENG_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT_1" source="BREIT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE_1" source="HOEHE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM_1" source="MEABM_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETOO" source="NETOO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETOO2" source="NETOO2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN12" source="EAN12"/>
+      </input>
+      <input node="#Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CAP" source="CAP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      </input>
+      <joinAttribute name="MATNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEINH"/>
+        <viewAttribute id="UMREZ"/>
+        <viewAttribute id="UMREN"/>
+        <viewAttribute id="EAN11"/>
+        <viewAttribute id="NUMTP"/>
+        <viewAttribute id="LAENG"/>
+        <viewAttribute id="BREIT"/>
+        <viewAttribute id="HOEHE"/>
+        <viewAttribute id="MEABM"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="RANK"/>
+        <viewAttribute id="MEINH_1"/>
+        <viewAttribute id="UMREZ_1"/>
+        <viewAttribute id="UMREN_1"/>
+        <viewAttribute id="EAN11_1"/>
+        <viewAttribute id="GEWEI_1"/>
+        <viewAttribute id="BRGEW_1"/>
+        <viewAttribute id="LAENG_1"/>
+        <viewAttribute id="BREIT_1"/>
+        <viewAttribute id="HOEHE_1"/>
+        <viewAttribute id="MEABM_1"/>
+        <viewAttribute id="CAP"/>
+        <viewAttribute id="PAL"/>
+        <viewAttribute id="NETOO"/>
+        <viewAttribute id="NETOO2"/>
+        <viewAttribute id="EAN12"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="CPALETT" length="34" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;PAL&quot;/&quot;CAP&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="CCAMADA" length="34" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;CAP&quot;/&quot;NETOO2&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMTP" source="NUMTP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG" source="LAENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT" source="BREIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE" source="HOEHE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM" source="MEABM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RANK" source="RANK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH_1" source="MEINH_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ_1" source="UMREZ_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN_1" source="UMREN_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11_1" source="EAN11_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI_1" source="GEWEI_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW_1" source="BRGEW_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG_1" source="LAENG_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT_1" source="BREIT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE_1" source="HOEHE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM_1" source="MEABM_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CAP" source="CAP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETOO" source="NETOO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETOO2" source="NETOO2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN12" source="EAN12"/>
+      </input>
+      <input node="#Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAL" source="PAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      </input>
+      <joinAttribute name="MATNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <viewAttribute id="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <viewAttribute id="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+        <viewAttribute id="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_ESTACIONALIDAD"/>
+        <viewAttribute id="MATERIAL_CORTO"/>
+        <viewAttribute id="MATERIAL_ID_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_BLOQUEO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_MATERIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SECTOR" source="MATERIAL_ATTR_SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_MARGEN_ROTACION" source="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_SKU_ESTRATEGICO" source="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO" source="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_PRODUCTO_NUEVO" source="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION" source="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO" source="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MATERIAL_ESTRATEGICO" source="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SEGUIMIENTO" source="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" source="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_AGRUPACION_ESPECIAL" source="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_ESTACIONALIDAD" source="MATERIAL_ATTR_ESTACIONALIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_CORTO" source="MATERIAL_CORTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ID_TEXT" source="MATERIAL_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_BLOQUEO" source="MATERIAL_ATTR_BLOQUEO"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEINH"/>
+        <viewAttribute id="UMREZ"/>
+        <viewAttribute id="UMREN"/>
+        <viewAttribute id="EAN11"/>
+        <viewAttribute id="NUMTP"/>
+        <viewAttribute id="LAENG"/>
+        <viewAttribute id="BREIT"/>
+        <viewAttribute id="HOEHE"/>
+        <viewAttribute id="MEABM"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="RANK"/>
+        <viewAttribute id="MEINH_1"/>
+        <viewAttribute id="UMREZ_1"/>
+        <viewAttribute id="UMREN_1"/>
+        <viewAttribute id="EAN11_1"/>
+        <viewAttribute id="GEWEI_1"/>
+        <viewAttribute id="BRGEW_1"/>
+        <viewAttribute id="LAENG_1"/>
+        <viewAttribute id="BREIT_1"/>
+        <viewAttribute id="HOEHE_1"/>
+        <viewAttribute id="MEABM_1"/>
+        <viewAttribute id="CAP"/>
+        <viewAttribute id="PAL"/>
+        <viewAttribute id="NETOO"/>
+        <viewAttribute id="CPALETT"/>
+        <viewAttribute id="CCAMADA"/>
+        <viewAttribute id="NETOO2"/>
+        <viewAttribute id="EAN12"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMTP" source="NUMTP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG" source="LAENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT" source="BREIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE" source="HOEHE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM" source="MEABM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RANK" source="RANK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH_1" source="MEINH_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ_1" source="UMREZ_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN_1" source="UMREN_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11_1" source="EAN11_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI_1" source="GEWEI_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW_1" source="BRGEW_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG_1" source="LAENG_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT_1" source="BREIT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE_1" source="HOEHE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM_1" source="MEABM_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CAP" source="CAP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAL" source="PAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETOO" source="NETOO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CPALETT" source="CPALETT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CCAMADA" source="CCAMADA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETOO2" source="NETOO2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN12" source="EAN12"/>
+      </input>
+      <input node="#Projection_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATERIAL"/>
+      </input>
+      <joinAttribute name="MATNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_8">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="GRUPO_MATERIAL_ID_TEXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="SOCIEDAD_FI_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_GRUPO_MATERIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ID_TEXT" source="GRUPO_MATERIAL_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI_1" source="SOCIEDAD_FI"/>
+      </input>
+      <filter>(&quot;SOCIEDAD_FI&quot; ='EC01')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEINH"/>
+        <viewAttribute id="UMREZ"/>
+        <viewAttribute id="UMREN"/>
+        <viewAttribute id="EAN11"/>
+        <viewAttribute id="NUMTP"/>
+        <viewAttribute id="LAENG"/>
+        <viewAttribute id="BREIT"/>
+        <viewAttribute id="HOEHE"/>
+        <viewAttribute id="MEABM"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="RANK"/>
+        <viewAttribute id="MEINH_1"/>
+        <viewAttribute id="UMREZ_1"/>
+        <viewAttribute id="UMREN_1"/>
+        <viewAttribute id="EAN11_1"/>
+        <viewAttribute id="GEWEI_1"/>
+        <viewAttribute id="BRGEW_1"/>
+        <viewAttribute id="LAENG_1"/>
+        <viewAttribute id="BREIT_1"/>
+        <viewAttribute id="HOEHE_1"/>
+        <viewAttribute id="MEABM_1"/>
+        <viewAttribute id="CAP"/>
+        <viewAttribute id="PAL"/>
+        <viewAttribute id="NETOO"/>
+        <viewAttribute id="CPALETT"/>
+        <viewAttribute id="CCAMADA"/>
+        <viewAttribute id="NETOO2"/>
+        <viewAttribute id="EAN12"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMTP" source="NUMTP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG" source="LAENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT" source="BREIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE" source="HOEHE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM" source="MEABM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RANK" source="RANK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH_1" source="MEINH_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ_1" source="UMREZ_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN_1" source="UMREN_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN11_1" source="EAN11_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI_1" source="GEWEI_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW_1" source="BRGEW_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAENG_1" source="LAENG_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BREIT_1" source="BREIT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE_1" source="HOEHE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEABM_1" source="MEABM_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CAP" source="CAP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAL" source="PAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETOO" source="NETOO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CPALETT" source="CPALETT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CCAMADA" source="CCAMADA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETOO2" source="NETOO2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN12" source="EAN12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+      </input>
+      <input node="#Projection_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+      </input>
+      <joinAttribute name="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_5">
+    <descriptions/>
+    <attributes>
+      <attribute id="MATNR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Código sap"/>
+        <keyMapping columnObjectName="Join_5" columnName="MATNR"/>
+      </attribute>
+      <attribute id="MEINH" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad de medida base (EAN 13 unitario)"/>
+        <keyMapping columnObjectName="Join_5" columnName="MEINH"/>
+      </attribute>
+      <attribute id="EAN11" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="EAN 13 UMB"/>
+        <keyMapping columnObjectName="Join_5" columnName="EAN11"/>
+      </attribute>
+      <attribute id="NUMTP" hidden="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NUMTP"/>
+        <keyMapping columnObjectName="Join_5" columnName="NUMTP"/>
+      </attribute>
+      <attribute id="MEABM" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad de dimensión"/>
+        <keyMapping columnObjectName="Join_5" columnName="MEABM"/>
+      </attribute>
+      <attribute id="GEWEI" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad de peso"/>
+        <keyMapping columnObjectName="Join_5" columnName="GEWEI"/>
+      </attribute>
+      <attribute id="MEINH_1" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad de medida DUN 14"/>
+        <keyMapping columnObjectName="Join_5" columnName="MEINH_1"/>
+      </attribute>
+      <attribute id="EAN11_1" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DUN 14 UMB"/>
+        <keyMapping columnObjectName="Join_5" columnName="EAN11_1"/>
+      </attribute>
+      <attribute id="GEWEI_1" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad de peso"/>
+        <keyMapping columnObjectName="Join_5" columnName="GEWEI_1"/>
+      </attribute>
+      <attribute id="MEABM_1" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad de dimensión"/>
+        <keyMapping columnObjectName="Join_5" columnName="MEABM_1"/>
+      </attribute>
+      <attribute id="EAN12" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="EAN 12 UMB"/>
+        <keyMapping columnObjectName="Join_5" columnName="EAN12"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nombre producto"/>
+        <keyMapping columnObjectName="Join_5" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_GRUPO_MATERIAL" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo de artículo"/>
+        <keyMapping columnObjectName="Join_5" columnName="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_TIPO_MATERIAL" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo material"/>
+        <keyMapping columnObjectName="Join_5" columnName="MATERIAL_ATTR_TIPO_MATERIAL"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descripción Grupo de articulo"/>
+        <localVariable>#GM</localVariable>
+        <keyMapping columnObjectName="Join_5" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Categoría"/>
+        <localVariable>#CT</localVariable>
+        <keyMapping columnObjectName="Join_5" columnName="CATEGORIA_TEXT"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad negocio"/>
+        <localVariable>#UN</localVariable>
+        <keyMapping columnObjectName="Join_5" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MARCA" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Marca"/>
+        <localVariable>#MC</localVariable>
+        <keyMapping columnObjectName="Join_5" columnName="MATERIAL_ATTR_MARCA"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="UMREZ" hidden="true" order="3" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="UMREZ"/>
+        <measureMapping columnObjectName="Join_5" columnName="UMREZ"/>
+      </measure>
+      <measure id="UMREN" hidden="true" order="4" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="UMREN"/>
+        <measureMapping columnObjectName="Join_5" columnName="UMREN"/>
+      </measure>
+      <measure id="LAENG" order="7" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Largo UM"/>
+        <measureMapping columnObjectName="Join_5" columnName="LAENG"/>
+      </measure>
+      <measure id="BREIT" order="8" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Ancho UM"/>
+        <measureMapping columnObjectName="Join_5" columnName="BREIT"/>
+      </measure>
+      <measure id="HOEHE" order="9" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Alto UM"/>
+        <measureMapping columnObjectName="Join_5" columnName="HOEHE"/>
+      </measure>
+      <measure id="VOLUM" hidden="true" order="11" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="VOLUM"/>
+        <measureMapping columnObjectName="Join_5" columnName="VOLUM"/>
+      </measure>
+      <measure id="BRGEW" order="12" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Peso bruto UM"/>
+        <measureMapping columnObjectName="Join_5" columnName="BRGEW"/>
+      </measure>
+      <measure id="RANK" hidden="true" order="14" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="RANK"/>
+        <measureMapping columnObjectName="Join_5" columnName="RANK"/>
+      </measure>
+      <measure id="UMREZ_1" hidden="true" order="16" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="UMREZ"/>
+        <measureMapping columnObjectName="Join_5" columnName="UMREZ_1"/>
+      </measure>
+      <measure id="UMREN_1" hidden="true" order="17" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="UMREN"/>
+        <measureMapping columnObjectName="Join_5" columnName="UMREN_1"/>
+      </measure>
+      <measure id="BRGEW_1" order="20" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Peso bruto UM"/>
+        <measureMapping columnObjectName="Join_5" columnName="BRGEW_1"/>
+      </measure>
+      <measure id="LAENG_1" order="21" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Largo UM "/>
+        <measureMapping columnObjectName="Join_5" columnName="LAENG_1"/>
+      </measure>
+      <measure id="BREIT_1" order="22" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Ancho UM"/>
+        <measureMapping columnObjectName="Join_5" columnName="BREIT_1"/>
+      </measure>
+      <measure id="HOEHE_1" order="23" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Alto UM"/>
+        <measureMapping columnObjectName="Join_5" columnName="HOEHE_1"/>
+      </measure>
+      <measure id="CAP" hidden="true" order="25" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="CAP"/>
+        <measureMapping columnObjectName="Join_5" columnName="CAP"/>
+      </measure>
+      <measure id="PAL" hidden="true" order="26" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="PAL"/>
+        <measureMapping columnObjectName="Join_5" columnName="PAL"/>
+      </measure>
+      <measure id="NETOO" order="27" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Peso neto UM"/>
+        <measureMapping columnObjectName="Join_5" columnName="NETOO"/>
+      </measure>
+      <measure id="CPALETT" order="28" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Cajas por pallet"/>
+        <measureMapping columnObjectName="Join_5" columnName="CPALETT"/>
+      </measure>
+      <measure id="CCAMADA" order="29" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Cajas por camada"/>
+        <measureMapping columnObjectName="Join_5" columnName="CCAMADA"/>
+      </measure>
+      <measure id="NETOO2" order="30" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Peso neto UM"/>
+        <measureMapping columnObjectName="Join_5" columnName="NETOO2"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="60"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="760"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="230" y="760"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="230" y="579"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Rank_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="680"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="50" y="570"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="210" y="469"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="460"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="350"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="230" y="340"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="250"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="210" y="220"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="150"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

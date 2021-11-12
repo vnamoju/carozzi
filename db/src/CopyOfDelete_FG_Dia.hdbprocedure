@@ -1,0 +1,12 @@
+PROCEDURE "SCP_CAROZZI_SAC::CopyOfDelete_FG_Dia"
+LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+AS
+BEGIN
+   /************************************
+       Write your procedure logic  
+   *************************************/ 
+
+EXECUTE IMMEDIATE ('rename table "SCP_CAROZZI_SAC"."A" to "SCP_CAROZZI_SAC"."B"');
+
+END 

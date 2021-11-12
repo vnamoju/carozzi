@@ -1,0 +1,138 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/RT_MARM.hdbreptask:workspace" Description="" Type="REALTIME" DropTargetTableIfExists="FALSE" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="false" RemoteSourceName="HANA_ERP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;MARM&quot;" SourceDisplayName="MARM">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="MARM">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="MATNR" Datatype="NVARCHAR" Length="18" Precision="18" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="MEINH" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="UMREZ" Datatype="DECIMAL" Length="5" Precision="5" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="UMREN" Datatype="DECIMAL" Length="5" Precision="5" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="EANNR" Datatype="NVARCHAR" Length="13" Precision="13" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="EAN11" Datatype="NVARCHAR" Length="18" Precision="18" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="NUMTP" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="LAENG" Datatype="DECIMAL" Length="13" Precision="13" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="BREIT" Datatype="DECIMAL" Length="13" Precision="13" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="HOEHE" Datatype="DECIMAL" Length="13" Precision="13" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="MEABM" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VOLUM" Datatype="DECIMAL" Length="13" Precision="13" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VOLEH" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="BRGEW" Datatype="DECIMAL" Length="13" Precision="13" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="GEWEI" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="MESUB" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ATINN" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="MESRT" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="XFHDW" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="XBEWW" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="KZWSO" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="MSEHI" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="BFLME_MARM" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="GTIN_VARIANT" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="NEST_FTR" Datatype="DECIMAL" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="MAX_STACK" Datatype="SMALLINT" Length="0" Precision="0" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CAPAUSE" Datatype="DECIMAL" Length="15" Precision="15" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="TY2TQ" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+      <Annotations Key="sap.im.properties" Value="">
+        <Annotation Key="truncateTable" Value="FALSE">
+        </Annotation>
+      </Annotations>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="MARM" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;MARM&quot;" FilterExpression="" ReplicationBehavior="InitAndRealtime" VTObjectName="MARM">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MATNR" ProjectionExpression="&quot;MATNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MEINH" ProjectionExpression="&quot;MEINH&quot;">
+        </TargetColumn>
+        <TargetColumn Name="UMREZ" ProjectionExpression="&quot;UMREZ&quot;">
+        </TargetColumn>
+        <TargetColumn Name="UMREN" ProjectionExpression="&quot;UMREN&quot;">
+        </TargetColumn>
+        <TargetColumn Name="EANNR" ProjectionExpression="&quot;EANNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="EAN11" ProjectionExpression="&quot;EAN11&quot;">
+        </TargetColumn>
+        <TargetColumn Name="NUMTP" ProjectionExpression="&quot;NUMTP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="LAENG" ProjectionExpression="&quot;LAENG&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BREIT" ProjectionExpression="&quot;BREIT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="HOEHE" ProjectionExpression="&quot;HOEHE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MEABM" ProjectionExpression="&quot;MEABM&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VOLUM" ProjectionExpression="&quot;VOLUM&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VOLEH" ProjectionExpression="&quot;VOLEH&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BRGEW" ProjectionExpression="&quot;BRGEW&quot;">
+        </TargetColumn>
+        <TargetColumn Name="GEWEI" ProjectionExpression="&quot;GEWEI&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MESUB" ProjectionExpression="&quot;MESUB&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ATINN" ProjectionExpression="&quot;ATINN&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MESRT" ProjectionExpression="&quot;MESRT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="XFHDW" ProjectionExpression="&quot;XFHDW&quot;">
+        </TargetColumn>
+        <TargetColumn Name="XBEWW" ProjectionExpression="&quot;XBEWW&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KZWSO" ProjectionExpression="&quot;KZWSO&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MSEHI" ProjectionExpression="&quot;MSEHI&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BFLME_MARM" ProjectionExpression="&quot;BFLME_MARM&quot;">
+        </TargetColumn>
+        <TargetColumn Name="GTIN_VARIANT" ProjectionExpression="&quot;GTIN_VARIANT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="NEST_FTR" ProjectionExpression="&quot;NEST_FTR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MAX_STACK" ProjectionExpression="&quot;MAX_STACK&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CAPAUSE" ProjectionExpression="&quot;CAPAUSE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="TY2TQ" ProjectionExpression="&quot;TY2TQ&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

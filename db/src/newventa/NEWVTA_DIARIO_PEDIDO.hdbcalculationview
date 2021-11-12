@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="NEWVTA_DIARIO_PEDIDO" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="NEWVTA_DIARIO_PEDIDO"/>
+  <metadata changedAt="2021-06-23 16:07:50.519"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="38"/>
+  <dataSources>
+    <DataSource id="VBAK2">
+      <resourceUri>VBAK2</resourceUri>
+    </DataSource>
+    <DataSource id="VBAP2">
+      <resourceUri>VBAP2</resourceUri>
+    </DataSource>
+    <DataSource id="VBFA2">
+      <resourceUri>VBFA2</resourceUri>
+    </DataSource>
+    <DataSource id="VBEP2">
+      <resourceUri>VBEP2</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="AUDAT"/>
+        <viewAttribute id="AUART"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VTWEG"/>
+        <viewAttribute id="VKGRP"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="VDATU"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="AEDAT"/>
+        <viewAttribute id="BUKRS_VF"/>
+        <viewAttribute id="LIFSK"/>
+        <viewAttribute id="KOKRS"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="inicio_mes" length="8" expressionLanguage="COLUMN_ENGINE">
+          <formula>replace(leftstr(string(now()),7),'-','')+'01'</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="inicio_mes_anterior_date" length="6" expressionLanguage="COLUMN_ENGINE">
+          <formula>addmonths(daydate(&quot;inicio_mes&quot;),-1)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="inicio_mes_anterior" length="6" expressionLanguage="COLUMN_ENGINE">
+          <formula>replace(&quot;inicio_mes_anterior_date&quot;,'-','')</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="VBAK2"/>
+    <filter>(&quot;AUART&quot;!='ZKFE' and  &quot;AUART&quot;!='ZKFF'and &quot;AUART&quot;!='ZKFN' and &quot;AUART&quot;!='ZKMN') and 
+ ( &quot;VKORG&quot;='4101')and
+ (&quot;LIFSK&quot;!='12') and
+ (&quot;ERDAT&quot;&gt;=&quot;inicio_mes&quot;)</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="KWMENG"/>
+        <viewAttribute id="LSMENG"/>
+        <viewAttribute id="KBMENG"/>
+        <viewAttribute id="KLMENG"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="SPART"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="VBAP2"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="VBELV"/>
+        <viewAttribute id="POSNV"/>
+        <viewAttribute id="VBTYP_N"/>
+        <viewAttribute id="ERDAT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="VBFA2"/>
+    <filter>&quot;VBTYP_N&quot;='M'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="AUDAT"/>
+        <viewAttribute id="AUART"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VTWEG"/>
+        <viewAttribute id="VKGRP"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="VDATU"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="AEDAT"/>
+        <viewAttribute id="BUKRS_VF"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="KWMENG"/>
+        <viewAttribute id="LSMENG"/>
+        <viewAttribute id="KBMENG"/>
+        <viewAttribute id="KLMENG"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="LIFSK"/>
+        <viewAttribute id="KOKRS"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="POSNR"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDAT" source="AUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUART" source="AUART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERK" source="WAERK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKGRP" source="VKGRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GSBER" source="GSBER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VDATU" source="VDATU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AEDAT" source="AEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS_VF" source="BUKRS_VF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LIFSK" source="LIFSK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOKRS" source="KOKRS"/>
+      </input>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KWMENG" source="KWMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LSMENG" source="LSMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KBMENG" source="KBMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLMENG" source="KLMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="VBELN"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="AUDAT"/>
+        <viewAttribute id="AUART"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VTWEG"/>
+        <viewAttribute id="VKGRP"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="VDATU"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="AEDAT"/>
+        <viewAttribute id="BUKRS_VF"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="KWMENG"/>
+        <viewAttribute id="LSMENG"/>
+        <viewAttribute id="KBMENG"/>
+        <viewAttribute id="KLMENG"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="LIFSK"/>
+        <viewAttribute id="KOKRS"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="ERDAT_1"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDAT" source="AUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUART" source="AUART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERK" source="WAERK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKGRP" source="VKGRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GSBER" source="GSBER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VDATU" source="VDATU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AEDAT" source="AEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS_VF" source="BUKRS_VF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KWMENG" source="KWMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LSMENG" source="LSMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KBMENG" source="KBMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLMENG" source="KLMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LIFSK" source="LIFSK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOKRS" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+      </input>
+      <input node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT_1" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNV"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="VBELN"/>
+    <joinAttribute name="POSNR"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="BMENG"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="VBEP2"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="AUDAT"/>
+        <viewAttribute id="AUART"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VTWEG"/>
+        <viewAttribute id="VKGRP"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="VDATU"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="AEDAT"/>
+        <viewAttribute id="BUKRS_VF"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="KWMENG"/>
+        <viewAttribute id="LSMENG"/>
+        <viewAttribute id="KBMENG"/>
+        <viewAttribute id="KLMENG"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="LIFSK"/>
+        <viewAttribute id="KOKRS"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="ERDAT_1"/>
+        <viewAttribute id="BMENG"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDAT" source="AUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUART" source="AUART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERK" source="WAERK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKGRP" source="VKGRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GSBER" source="GSBER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VDATU" source="VDATU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AEDAT" source="AEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS_VF" source="BUKRS_VF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KWMENG" source="KWMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LSMENG" source="LSMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KBMENG" source="KBMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLMENG" source="KLMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LIFSK" source="LIFSK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOKRS" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT_1" source="ERDAT_1"/>
+      </input>
+      <input node="Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BMENG" source="BMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="VBELN"/>
+    <joinAttribute name="POSNR"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_3">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_3" columnName="MANDT"/>
+      </attribute>
+      <attribute id="ERDAT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ERDAT"/>
+        <keyMapping columnObjectName="Join_3" columnName="ERDAT"/>
+      </attribute>
+      <attribute id="AUDAT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AUDAT"/>
+        <keyMapping columnObjectName="Join_3" columnName="AUDAT"/>
+      </attribute>
+      <attribute id="AUART" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AUART"/>
+        <keyMapping columnObjectName="Join_3" columnName="AUART"/>
+      </attribute>
+      <attribute id="WAERK" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WAERK"/>
+        <keyMapping columnObjectName="Join_3" columnName="WAERK"/>
+      </attribute>
+      <attribute id="VKORG" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKORG"/>
+        <keyMapping columnObjectName="Join_3" columnName="VKORG"/>
+      </attribute>
+      <attribute id="VTWEG" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VTWEG"/>
+        <keyMapping columnObjectName="Join_3" columnName="VTWEG"/>
+      </attribute>
+      <attribute id="VKGRP" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKGRP"/>
+        <keyMapping columnObjectName="Join_3" columnName="VKGRP"/>
+      </attribute>
+      <attribute id="VKBUR" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKBUR"/>
+        <keyMapping columnObjectName="Join_3" columnName="VKBUR"/>
+      </attribute>
+      <attribute id="GSBER" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GSBER"/>
+        <keyMapping columnObjectName="Join_3" columnName="GSBER"/>
+      </attribute>
+      <attribute id="VDATU" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VDATU"/>
+        <keyMapping columnObjectName="Join_3" columnName="VDATU"/>
+      </attribute>
+      <attribute id="KUNNR" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KUNNR"/>
+        <keyMapping columnObjectName="Join_3" columnName="KUNNR"/>
+      </attribute>
+      <attribute id="AEDAT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AEDAT"/>
+        <keyMapping columnObjectName="Join_3" columnName="AEDAT"/>
+      </attribute>
+      <attribute id="BUKRS_VF" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUKRS_VF"/>
+        <keyMapping columnObjectName="Join_3" columnName="BUKRS_VF"/>
+      </attribute>
+      <attribute id="MATNR" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATNR"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATNR"/>
+      </attribute>
+      <attribute id="MATKL" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATKL"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATKL"/>
+      </attribute>
+      <attribute id="GEWEI" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GEWEI"/>
+        <keyMapping columnObjectName="Join_3" columnName="GEWEI"/>
+      </attribute>
+      <attribute id="WERKS" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WERKS"/>
+        <keyMapping columnObjectName="Join_3" columnName="WERKS"/>
+      </attribute>
+      <attribute id="LIFSK" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LIFSK"/>
+        <keyMapping columnObjectName="Join_3" columnName="LIFSK"/>
+      </attribute>
+      <attribute id="KOKRS" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KOKRS"/>
+        <keyMapping columnObjectName="Join_3" columnName="KOKRS"/>
+      </attribute>
+      <attribute id="SPART" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPART"/>
+        <keyMapping columnObjectName="Join_3" columnName="SPART"/>
+      </attribute>
+      <attribute id="VBELN" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VBELN"/>
+        <keyMapping columnObjectName="Join_3" columnName="VBELN"/>
+      </attribute>
+      <attribute id="POSNR" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="POSNR"/>
+        <keyMapping columnObjectName="Join_3" columnName="POSNR"/>
+      </attribute>
+      <attribute id="ERDAT_1" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ERDAT"/>
+        <keyMapping columnObjectName="Join_3" columnName="ERDAT_1"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="NTGEW" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NTGEW"/>
+        <measureMapping columnObjectName="Join_3" columnName="NTGEW"/>
+      </measure>
+      <measure id="KWMENG" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="KWMENG"/>
+        <measureMapping columnObjectName="Join_3" columnName="KWMENG"/>
+      </measure>
+      <measure id="LSMENG" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="LSMENG"/>
+        <measureMapping columnObjectName="Join_3" columnName="LSMENG"/>
+      </measure>
+      <measure id="KBMENG" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="KBMENG"/>
+        <measureMapping columnObjectName="Join_3" columnName="KBMENG"/>
+      </measure>
+      <measure id="KLMENG" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="KLMENG"/>
+        <measureMapping columnObjectName="Join_3" columnName="KLMENG"/>
+      </measure>
+      <measure id="BMENG" order="30" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="BMENG"/>
+        <measureMapping columnObjectName="Join_3" columnName="BMENG"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="176" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="390" y="170"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="370" y="84"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

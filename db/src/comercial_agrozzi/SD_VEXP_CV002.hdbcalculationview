@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="SD_VEXP_CV002" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="Contratos Real/Plan"/>
+  <metadata changedAt="2021-04-05 21:38:22.908"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="56"/>
+  <dataSources>
+    <DataSource id="ZTSD_PROEMBEXP">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M2$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M3$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M4$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M5$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M6$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M7$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M8$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M9$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M10$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M11$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M12$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M13$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="M14$$$$ZTSD_PROEMBEXP$$">
+      <resourceUri>ZTSD_PROEMBEXP</resourceUri>
+    </DataSource>
+    <DataSource id="LIKP">
+      <resourceUri>LIKP</resourceUri>
+    </DataSource>
+    <DataSource id="SD_JER_CV001">
+      <resourceUri>SD_JER_CV001</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="PER01"/>
+        <viewAttribute id="PES01"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#ZTSD_PROEMBEXP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES01"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER02"/>
+        <viewAttribute id="PES02"/>
+        <viewAttribute id="UNIDAD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M2$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER02" source="PER02"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES02" source="PES02"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER03"/>
+        <viewAttribute id="PES03"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M3$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER03" source="PER03"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES03" source="PES03"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER04"/>
+        <viewAttribute id="PES04"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M4$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER04" source="PER04"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES04" source="PES04"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER05"/>
+        <viewAttribute id="PES05"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M5$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER05" source="PER05"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES05" source="PES05"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER06"/>
+        <viewAttribute id="PES06"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M6$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER06" source="PER06"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES06" source="PES06"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M7">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER07"/>
+        <viewAttribute id="PES07"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M7$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER07" source="PER07"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES07" source="PES07"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M8">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER08"/>
+        <viewAttribute id="PES08"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M8$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER08" source="PER08"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES08" source="PES08"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M9">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER09"/>
+        <viewAttribute id="PES09"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M9$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER09" source="PER09"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES09" source="PES09"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M10">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER10"/>
+        <viewAttribute id="PES10"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M10$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER10" source="PER10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES10" source="PES10"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M11">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER11"/>
+        <viewAttribute id="PES11"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M11$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER11" source="PER11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES11" source="PES11"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M12">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER12"/>
+        <viewAttribute id="PES12"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M12$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER12" source="PER12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES12" source="PES12"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M13">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER13"/>
+        <viewAttribute id="PES13"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M13$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER13" source="PER13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES13" source="PES13"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="M14">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="PER14"/>
+        <viewAttribute id="PES14"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M14$$$$ZTSD_PROEMBEXP$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER14" source="PER14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES14" source="PES14"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VBELN" transparentFilter="false"/>
+        <viewAttribute id="UNIDAD" transparentFilter="false"/>
+        <viewAttribute id="PER01" transparentFilter="false"/>
+        <viewAttribute id="PES01" transparentFilter="false"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#M1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES01"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER02"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES02"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER03"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES03"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER04"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES04"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER05"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES05"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER06"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES06"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER07"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES07"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER08"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES08"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER09"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES09"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M10">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES10"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M11">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES11"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M12">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES12"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M13">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES13"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#M14">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01" source="PER14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES14"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="LFDAT"/>
+        <viewAttribute id="VBTYP"/>
+        <viewAttribute id="NTGEW"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="6" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;LFDAT&quot;,6)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#LIKP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LFDAT" source="LFDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+      </input>
+      <filter>(&quot;VBTYP&quot; ='J')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="PD"/>
+        <viewAttribute id="CM"/>
+        <viewAttribute id="PD_1"/>
+        <viewAttribute id="CM_1"/>
+        <viewAttribute id="VBTYP_N"/>
+        <viewAttribute id="VBTYP_V"/>
+        <viewAttribute id="ENT"/>
+        <viewAttribute id="VBELV"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#SD_JER_CV001">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PD" source="PD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="CM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PD_1" source="PD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CM_1" source="CM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_N" source="VBTYP_N"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_V" source="VBTYP_V"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENT" source="ENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELV" source="VBELV"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="LFDAT"/>
+        <viewAttribute id="VBTYP"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="PD"/>
+        <viewAttribute id="CM"/>
+        <viewAttribute id="VBELV"/>
+        <viewAttribute id="ENT"/>
+        <viewAttribute hidden="true" id="JOIN$VBELN$ENT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="LFDAT" source="LFDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBELN$ENT" source="VBELN"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PD" source="PD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="CM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELV" source="VBELV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENT" source="ENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBELN$ENT" source="ENT"/>
+      </input>
+      <joinAttribute name="JOIN$VBELN$ENT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VBTYP"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="PD"/>
+        <viewAttribute id="CM"/>
+        <viewAttribute id="VBELV"/>
+        <viewAttribute id="ENT"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="VALOR" length="34" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;NTGEW&quot;/1000</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP" source="VBTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PD" source="PD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="CM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELV" source="VBELV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENT" source="ENT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UNIDAD" transparentFilter="false"/>
+        <viewAttribute id="VBELN" transparentFilter="false"/>
+        <viewAttribute id="PD" transparentFilter="false"/>
+        <viewAttribute id="ENT" transparentFilter="false"/>
+        <viewAttribute id="VBELV" transparentFilter="false"/>
+        <viewAttribute id="PES01" transparentFilter="false"/>
+        <viewAttribute id="VALOR" transparentFilter="false"/>
+        <viewAttribute id="PER01_1" transparentFilter="false"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Union_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ENT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VBELV" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PES01" source="PES01"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALOR" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01_1" source="PER01"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Aggregation_1">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIDAD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="CM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PD" source="PD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENT" source="ENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELV" source="VBELV"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PES01" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR" source="VALOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PER01_1" source="PERIO"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Union_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="UNIDAD" order="1" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="UNIDAD"/>
+        <keyMapping columnObjectName="Union_2" columnName="UNIDAD"/>
+      </attribute>
+      <attribute id="VBELN" order="2" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="VBELN"/>
+        <keyMapping columnObjectName="Union_2" columnName="VBELN"/>
+      </attribute>
+      <attribute id="PD" order="3" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="PD"/>
+        <keyMapping columnObjectName="Union_2" columnName="PD"/>
+      </attribute>
+      <attribute id="ENT" order="4" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="ENT"/>
+        <keyMapping columnObjectName="Union_2" columnName="ENT"/>
+      </attribute>
+      <attribute id="VBELV" order="5" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="CF"/>
+        <keyMapping columnObjectName="Union_2" columnName="VBELV"/>
+      </attribute>
+      <attribute id="PER01_1" order="8" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="PER01"/>
+        <keyMapping columnObjectName="Union_2" columnName="PER01_1"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="PES01" order="6" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="PES01"/>
+        <measureMapping columnObjectName="Union_2" columnName="PES01"/>
+      </measure>
+      <measure id="VALOR" order="7" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR"/>
+        <measureMapping columnObjectName="Union_2" columnName="VALOR"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="890" y="100"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="830"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="190" y="830"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="350" y="830"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="510" y="830"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="660" y="830"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="810" y="830"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="960" y="830"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1110" y="830"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1270" y="830"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1420" y="830"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M11" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1570" y="830"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="false" modelObjectName="M12" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1720" y="848"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M13" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1870" y="839"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M14" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="2020" y="839"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="850" y="440"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1220" y="700"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1390" y="690"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1220" y="590"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1220" y="500"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="930" y="240"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

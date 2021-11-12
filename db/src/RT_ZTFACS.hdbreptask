@@ -1,0 +1,42 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/RT_ZTFACS.hdbreptask:workspace" Description="" Type="REALTIME" DropTargetTableIfExists="FALSE" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="false" RemoteSourceName="HANA_ERP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZTFACS&quot;" SourceDisplayName="ZTFACS">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="ZTFACS">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="IDENT" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="FECHA" Datatype="NVARCHAR" Length="8" Precision="8" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="DIA_HABIL_DIA" Datatype="SMALLINT" Length="0" Precision="0" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="DIA_HABIL_MES" Datatype="SMALLINT" Length="0" Precision="0" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+      <Annotations Key="sap.im.properties" Value="">
+        <Annotation Key="truncateTable" Value="FALSE">
+        </Annotation>
+      </Annotations>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="ZTFACS" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZTFACS&quot;" FilterExpression="" ReplicationBehavior="InitAndRealtime" VTObjectName="ZTFACS">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="IDENT" ProjectionExpression="&quot;IDENT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="FECHA" ProjectionExpression="&quot;FECHA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="DIA_HABIL_DIA" ProjectionExpression="&quot;DIA_HABIL_DIA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="DIA_HABIL_MES" ProjectionExpression="&quot;DIA_HABIL_MES&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="MODELO_FG_SELLOUTCL_02" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="Modelo Sellout Mensual"/>
+  <metadata changedAt="2020-10-02 11:03:21.818"/>
+  <localVariables>
+    <variable id="Sociedad">
+      <descriptions defaultDescription="Sociedad"/>
+      <variableProperties datatype="VARCHAR" defaultValue="EC01" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZKOKRSx"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="Cadena">
+      <descriptions defaultDescription="Cadena"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZTXCADENA"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="Ejercicio">
+      <descriptions defaultDescription="Ejercicio"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZGJAHR"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="Fecha_aaaa_mm">
+      <descriptions defaultDescription="Fecha (aaaamm)"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZAAAAMM"/>
+        </valueDomain>
+        <selection multiLine="true" type="Interval"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="19"/>
+  <dataSources>
+    <DataSource id="FG_SELLOUTCL_MM">
+      <resourceUri>FG_SELLOUTCL_MM</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="FG_SELLOUTCL_MM">
+    <descriptions/>
+    <attributes>
+      <attribute id="ZCDSKU" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21. Material Id Cadenas"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZCDSKU"/>
+      </attribute>
+      <attribute id="ZGJAHR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio"/>
+        <localVariable>#Ejercicio</localVariable>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZGJAHR"/>
+      </attribute>
+      <attribute id="ZPERIO" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZPERIO"/>
+      </attribute>
+      <attribute id="ZWAERS" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Moneda"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZWAERS"/>
+      </attribute>
+      <attribute id="ZMEINH" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UMB"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZMEINH"/>
+      </attribute>
+      <attribute id="ZMATNR" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZMATNR"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_BLOQUEO" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="28.Estado Material"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="MATERIAL_ATTR_BLOQUEO"/>
+      </attribute>
+      <attribute id="MATERIAL_ID_TEXT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material IDescr"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_ESTACIONALIDAD" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="26.Estacionalidad"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="MATERIAL_ATTR_ESTACIONALIDAD"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_AGRUPACION_ESPECIAL" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="37.Agrupacion especial"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="27.Clasificacion Ventas Valor"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MARCA" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="27.Marca"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="MATERIAL_ATTR_MARCA"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_SECTOR" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="36.Sector"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="MATERIAL_ATTR_SECTOR"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_TIPO_MATERIAL" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="29.Tipo Material"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="MATERIAL_ATTR_TIPO_MATERIAL"/>
+      </attribute>
+      <attribute id="ZCDCADENAx" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Cadena"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZCDCADENAx"/>
+      </attribute>
+      <attribute id="ZCDLOCALx" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="43.Local"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZCDLOCALx"/>
+      </attribute>
+      <attribute id="ZKOKRSx" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="10.Sociedad CO"/>
+        <localVariable>#Sociedad</localVariable>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZKOKRSx"/>
+      </attribute>
+      <attribute id="ZAAAAMM" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio/Mes"/>
+        <localVariable>#Fecha_aaaa_mm</localVariable>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZAAAAMM"/>
+      </attribute>
+      <attribute id="CDREMO" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="52.Sala Física"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="CDREMO"/>
+      </attribute>
+      <attribute id="ZTXFORMAT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="42.Formato IDescr"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZTXFORMAT"/>
+      </attribute>
+      <attribute id="ZTXCADENA" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Cadena Descr"/>
+        <localVariable>#Cadena</localVariable>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZTXCADENA"/>
+      </attribute>
+      <attribute id="ZCADENA_EXT" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCADENA_EXT"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZCADENA_EXT"/>
+      </attribute>
+      <attribute id="ZTXLOCAL" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="43.Local Descr"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZTXLOCAL"/>
+      </attribute>
+      <attribute id="ZZONSCAN" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="44.Zona Scantrack"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZZONSCAN"/>
+      </attribute>
+      <attribute id="ZCDOFICI" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZCDOFICI"/>
+      </attribute>
+      <attribute id="ZCDDIRECC" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="51.Direccion Local"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZCDDIRECC"/>
+      </attribute>
+      <attribute id="ZCDAGENCIA" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="13.Agencia"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZCDAGENCIA"/>
+      </attribute>
+      <attribute id="ZTXAGENCIA" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="13.Agencia Descr"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZTXAGENCIA"/>
+      </attribute>
+      <attribute id="ZRUTGEST" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Rut Gestor"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZRUTGEST"/>
+      </attribute>
+      <attribute id="ZTXGEST" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Nombre Gestor"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZTXGEST"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_CATEGORIA" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="22.Categoria"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="22.Categoria Descr"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="CATEGORIA_TEXT"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio Descr"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="24.Area de Negocio"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ID_TEXT" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="30.Grupo Material IDescr"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="GRUPO_MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="UMV" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UMV"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZMEINH_V"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID_TEXT" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina IDescr"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="OFICINA_VENTA_ID_TEXT"/>
+      </attribute>
+      <attribute id="COMUNA_TEXT" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="51.Comuna"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="COMUNA_TEXT"/>
+      </attribute>
+      <attribute id="PROVINCIA_TEXT" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="51.Provincia"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="PROVINCIA_TEXT"/>
+      </attribute>
+      <attribute id="region" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="51.Region IDescr"/>
+        <keyMapping columnObjectName="FG_SELLOUTCL_MM" columnName="region"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="ZVOLVT" order="37" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Venta Un"/>
+        <measureMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZVOLVT"/>
+      </measure>
+      <measure id="ZVALCOST" order="38" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor Costo"/>
+        <measureMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZVALCOST"/>
+      </measure>
+      <measure id="ZVALVT" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor Venta"/>
+        <measureMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZVALVT"/>
+      </measure>
+      <measure id="VOLVT_UMB" order="40" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Venta UMB"/>
+        <measureMapping columnObjectName="FG_SELLOUTCL_MM" columnName="VOLVT_UMB"/>
+      </measure>
+      <measure id="ZVALVTSIVA" order="41" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Venta s/IVA"/>
+        <measureMapping columnObjectName="FG_SELLOUTCL_MM" columnName="ZVALVTSIVA"/>
+      </measure>
+      <measure id="VOLVT_UMV" order="42" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Venta UMV"/>
+        <measureMapping columnObjectName="FG_SELLOUTCL_MM" columnName="VOLVT_UMV"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

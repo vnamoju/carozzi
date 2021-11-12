@@ -1,0 +1,30 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/SALES_PACKAGE/ZBW_RUBROS_EXT.hdbreptask:workspace" Description="" Type="REALTIME" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="false" RemoteSourceName="HANA_ERP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZBW_RUBROS_EXT&quot;" SourceDisplayName="ZBW_RUBROS_EXT">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="ZBW_RUBROS_EXT" DropTargetTableIfExists="TRUE">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="ZCDRUBRO" Datatype="NVARCHAR" Length="12" Precision="12" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="ZDESRUBRO" Datatype="NVARCHAR" Length="30" Precision="30" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="ZBW_RUBROS_EXT" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;ZBW_RUBROS_EXT&quot;" FilterExpression="" ReplicationBehavior="InitAndRealtime" VTObjectName="ZBW_RUBROS_EXT">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZCDRUBRO" ProjectionExpression="&quot;ZCDRUBRO&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZDESRUBRO" ProjectionExpression="&quot;ZDESRUBRO&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

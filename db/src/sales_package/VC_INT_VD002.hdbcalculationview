@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="VC_INT_VD002" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="Venta Interna (Sell In)"/>
+  <metadata changedAt="2021-02-08 12:02:10.518"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="51"/>
+  <dataSources>
+    <DataSource id="ZBW_VENTA_DIREC_INT">
+      <resourceUri>ZBW_VENTA_DIREC_INT</resourceUri>
+    </DataSource>
+    <DataSource id="KNA1">
+      <resourceUri>KNA1</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MATERIAL">
+      <resourceUri>DIM_MATERIAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_GRUPO_MATERIAL">
+      <resourceUri>DIM_GRUPO_MATERIAL</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="FKDAT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="KUNAG"/>
+        <viewAttribute id="AEDAT"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="BRTWR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="NETWR_1"/>
+        <viewAttribute id="FBUDA"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CLIENTE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_REGION"/>
+        <viewAttribute id="CLIENTE_ATTR_PROVINCIA"/>
+        <viewAttribute id="CLIENTE_ATTR_COMUNA"/>
+        <viewAttribute id="CLIENTE_ATTR_PAIS"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="SHKZG"/>
+        <viewAttribute id="STAFO"/>
+        <viewAttribute id="FKLMG"/>
+        <viewAttribute id="UMVKN"/>
+        <viewAttribute id="UMVKZ"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="ZDIV_COM"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="0VTYPE"/>
+        <viewAttribute id="VENDEDOR_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="VENDEDOR_INT" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;VKBUR&quot;+'/'+&quot;PERNR&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#ZBW_VENTA_DIREC_INT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERK" source="WAERK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKDAT" source="FKDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNAG" source="KUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AEDAT" source="AEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRTWR" source="BRTWR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETWR_1" source="NETWR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FBUDA" source="FBUDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_1" source="CLIENTE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="CLIENTE_ATTR_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="CLIENTE_ATTR_PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="CLIENTE_ATTR_COMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="CLIENTE_ATTR_PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHKZG" source="SHKZG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STAFO" source="STAFO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKLMG" source="FKLMG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMVKN" source="UMVKN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMVKZ" source="UMVKZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV_COM" source="ZDIV_COM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VTYPE" source="0VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_TEXT" source="VENDEDOR_TEXT"/>
+      </input>
+      <filter>(&quot;FKDAT&quot; >='20190101') AND (&quot;BUKRS&quot; ='EC01') AND (not in (&quot;MATKL&quot;,'07121','07131','07132','07133','07134','07136','07138','07139','07140','07141','07142','07143','07144','07201','07202','07203','07204','07205','07301','07302','07401','07402','07403','07404','07701'))</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="STCD1"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="FKDAT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="KUNAG"/>
+        <viewAttribute id="AEDAT"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="BRTWR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="NETWR_1"/>
+        <viewAttribute id="FBUDA"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CLIENTE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_REGION"/>
+        <viewAttribute id="CLIENTE_ATTR_PROVINCIA"/>
+        <viewAttribute id="CLIENTE_ATTR_COMUNA"/>
+        <viewAttribute id="CLIENTE_ATTR_PAIS"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="SHKZG"/>
+        <viewAttribute id="STAFO"/>
+        <viewAttribute id="FKLMG"/>
+        <viewAttribute id="UMVKN"/>
+        <viewAttribute id="UMVKZ"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="ZDIV_COM"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="0VTYPE"/>
+        <viewAttribute id="VENDEDOR_TEXT"/>
+        <viewAttribute id="VENDEDOR_INT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERK" source="WAERK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKDAT" source="FKDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNAG" source="KUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AEDAT" source="AEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRTWR" source="BRTWR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETWR_1" source="NETWR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FBUDA" source="FBUDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_1" source="CLIENTE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="CLIENTE_ATTR_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="CLIENTE_ATTR_PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="CLIENTE_ATTR_COMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="CLIENTE_ATTR_PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHKZG" source="SHKZG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STAFO" source="STAFO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKLMG" source="FKLMG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMVKN" source="UMVKN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMVKZ" source="UMVKZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV_COM" source="ZDIV_COM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VTYPE" source="0VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_TEXT" source="VENDEDOR_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_INT" source="VENDEDOR_INT"/>
+      </input>
+      <input node="#KNA1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCD1" source="STCD1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNAG" source="KUNNR"/>
+      </input>
+      <joinAttribute name="KUNAG"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <viewAttribute id="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <viewAttribute id="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+        <viewAttribute id="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_ESTACIONALIDAD"/>
+        <viewAttribute id="MATERIAL_CORTO"/>
+        <viewAttribute id="MATERIAL_ID_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_BLOQUEO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_MATERIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SECTOR" source="MATERIAL_ATTR_SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_MARGEN_ROTACION" source="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_SKU_ESTRATEGICO" source="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO" source="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_PRODUCTO_NUEVO" source="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION" source="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO" source="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MATERIAL_ESTRATEGICO" source="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SEGUIMIENTO" source="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" source="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_AGRUPACION_ESPECIAL" source="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_ESTACIONALIDAD" source="MATERIAL_ATTR_ESTACIONALIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_CORTO" source="MATERIAL_CORTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ID_TEXT" source="MATERIAL_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_BLOQUEO" source="MATERIAL_ATTR_BLOQUEO"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="STCD1"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="FKDAT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="KUNAG"/>
+        <viewAttribute id="AEDAT"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="BRTWR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="NETWR_1"/>
+        <viewAttribute id="FBUDA"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CLIENTE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_REGION"/>
+        <viewAttribute id="CLIENTE_ATTR_PROVINCIA"/>
+        <viewAttribute id="CLIENTE_ATTR_COMUNA"/>
+        <viewAttribute id="CLIENTE_ATTR_PAIS"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="SHKZG"/>
+        <viewAttribute id="STAFO"/>
+        <viewAttribute id="FKLMG"/>
+        <viewAttribute id="UMVKN"/>
+        <viewAttribute id="UMVKZ"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="ZDIV_COM"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="0VTYPE"/>
+        <viewAttribute id="VENDEDOR_TEXT"/>
+        <viewAttribute id="VENDEDOR_INT"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCD1" source="STCD1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERK" source="WAERK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKDAT" source="FKDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNAG" source="KUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AEDAT" source="AEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRTWR" source="BRTWR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETWR_1" source="NETWR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FBUDA" source="FBUDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_1" source="CLIENTE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="CLIENTE_ATTR_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="CLIENTE_ATTR_PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="CLIENTE_ATTR_COMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="CLIENTE_ATTR_PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHKZG" source="SHKZG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STAFO" source="STAFO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKLMG" source="FKLMG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMVKN" source="UMVKN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMVKZ" source="UMVKZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV_COM" source="ZDIV_COM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VTYPE" source="0VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_TEXT" source="VENDEDOR_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_INT" source="VENDEDOR_INT"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATERIAL"/>
+      </input>
+      <joinAttribute name="MATNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="GRUPO_MATERIAL_ID_TEXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_GRUPO_MATERIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ID_TEXT" source="GRUPO_MATERIAL_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="STCD1"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="FKDAT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="KUNAG"/>
+        <viewAttribute id="AEDAT"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="BRTWR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="NETWR_1"/>
+        <viewAttribute id="FBUDA"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CLIENTE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_REGION"/>
+        <viewAttribute id="CLIENTE_ATTR_PROVINCIA"/>
+        <viewAttribute id="CLIENTE_ATTR_COMUNA"/>
+        <viewAttribute id="CLIENTE_ATTR_PAIS"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="SHKZG"/>
+        <viewAttribute id="STAFO"/>
+        <viewAttribute id="FKLMG"/>
+        <viewAttribute id="UMVKN"/>
+        <viewAttribute id="UMVKZ"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="ZDIV_COM"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="0VTYPE"/>
+        <viewAttribute id="VENDEDOR_TEXT"/>
+        <viewAttribute id="VENDEDOR_INT"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="CATEGORIA_TEXT_1"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT_1"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA_1"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCD1" source="STCD1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERK" source="WAERK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKDAT" source="FKDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNAG" source="KUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AEDAT" source="AEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRTWR" source="BRTWR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETWR_1" source="NETWR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FBUDA" source="FBUDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_1" source="CLIENTE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="CLIENTE_ATTR_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="CLIENTE_ATTR_PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="CLIENTE_ATTR_COMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="CLIENTE_ATTR_PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHKZG" source="SHKZG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STAFO" source="STAFO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKLMG" source="FKLMG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMVKN" source="UMVKN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMVKZ" source="UMVKZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV_COM" source="ZDIV_COM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VTYPE" source="0VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_TEXT" source="VENDEDOR_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_INT" source="VENDEDOR_INT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT_1" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT_1" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA_1" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO_1" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+      </input>
+      <joinAttribute name="BUKRS"/>
+      <joinAttribute name="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_3">
+    <descriptions/>
+    <attributes>
+      <attribute id="STCD1" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="STCD1"/>
+        <keyMapping columnObjectName="Join_3" columnName="STCD1"/>
+      </attribute>
+      <attribute id="WAERK" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WAERK"/>
+        <keyMapping columnObjectName="Join_3" columnName="WAERK"/>
+      </attribute>
+      <attribute id="VKORG" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKORG"/>
+        <keyMapping columnObjectName="Join_3" columnName="VKORG"/>
+      </attribute>
+      <attribute id="FKDAT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FKDAT"/>
+        <keyMapping columnObjectName="Join_3" columnName="FKDAT"/>
+      </attribute>
+      <attribute id="BUKRS" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUKRS"/>
+        <keyMapping columnObjectName="Join_3" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="ERDAT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ERDAT"/>
+        <keyMapping columnObjectName="Join_3" columnName="ERDAT"/>
+      </attribute>
+      <attribute id="KUNAG" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KUNAG"/>
+        <keyMapping columnObjectName="Join_3" columnName="KUNAG"/>
+      </attribute>
+      <attribute id="AEDAT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AEDAT"/>
+        <keyMapping columnObjectName="Join_3" columnName="AEDAT"/>
+      </attribute>
+      <attribute id="SPART" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPART"/>
+        <keyMapping columnObjectName="Join_3" columnName="SPART"/>
+      </attribute>
+      <attribute id="MATNR" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATNR"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATNR"/>
+      </attribute>
+      <attribute id="MATKL" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATKL"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATKL"/>
+      </attribute>
+      <attribute id="MEINS" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MEINS"/>
+        <keyMapping columnObjectName="Join_3" columnName="MEINS"/>
+      </attribute>
+      <attribute id="VKBUR" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKBUR"/>
+        <keyMapping columnObjectName="Join_3" columnName="VKBUR"/>
+      </attribute>
+      <attribute id="WERKS" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WERKS"/>
+        <keyMapping columnObjectName="Join_3" columnName="WERKS"/>
+      </attribute>
+      <attribute id="FBUDA" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FBUDA"/>
+        <keyMapping columnObjectName="Join_3" columnName="FBUDA"/>
+      </attribute>
+      <attribute id="PERNR" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERNR"/>
+        <keyMapping columnObjectName="Join_3" columnName="PERNR"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <keyMapping columnObjectName="Join_3" columnName="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_CATEGORIA" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <keyMapping columnObjectName="Join_3" columnName="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CATEGORIA_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="CATEGORIA_TEXT"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIDAD_NEGOCIO_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <keyMapping columnObjectName="Join_3" columnName="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CANAL_COMERCIAL" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <keyMapping columnObjectName="Join_3" columnName="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+      </attribute>
+      <attribute id="CANAL_COMERCIAL_TEXT" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_COMERCIAL_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="CANAL_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="CLIENTE_TEXT_1" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_TEXT_1"/>
+        <keyMapping columnObjectName="Join_3" columnName="CLIENTE_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_REGION" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_REGION"/>
+        <keyMapping columnObjectName="Join_3" columnName="CLIENTE_ATTR_REGION"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_PROVINCIA" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_PROVINCIA"/>
+        <keyMapping columnObjectName="Join_3" columnName="CLIENTE_ATTR_PROVINCIA"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_COMUNA" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_COMUNA"/>
+        <keyMapping columnObjectName="Join_3" columnName="CLIENTE_ATTR_COMUNA"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_PAIS" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ATTR_PAIS"/>
+        <keyMapping columnObjectName="Join_3" columnName="CLIENTE_ATTR_PAIS"/>
+      </attribute>
+      <attribute id="CADENA" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CADENA"/>
+        <keyMapping columnObjectName="Join_3" columnName="CADENA"/>
+      </attribute>
+      <attribute id="SUB_CADENA" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_CADENA"/>
+        <keyMapping columnObjectName="Join_3" columnName="SUB_CADENA"/>
+      </attribute>
+      <attribute id="REGION_TEXT" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REGION_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="REGION_TEXT"/>
+      </attribute>
+      <attribute id="PROVINCIA_TEXT" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROVINCIA_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="PROVINCIA_TEXT"/>
+      </attribute>
+      <attribute id="COMUNA_TEXT" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COMUNA_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="COMUNA_TEXT"/>
+      </attribute>
+      <attribute id="SHKZG" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHKZG"/>
+        <keyMapping columnObjectName="Join_3" columnName="SHKZG"/>
+      </attribute>
+      <attribute id="STAFO" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="STAFO"/>
+        <keyMapping columnObjectName="Join_3" columnName="STAFO"/>
+      </attribute>
+      <attribute id="VBELN" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VBELN"/>
+        <keyMapping columnObjectName="Join_3" columnName="VBELN"/>
+      </attribute>
+      <attribute id="POSNR" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="POSNR"/>
+        <keyMapping columnObjectName="Join_3" columnName="POSNR"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="ZDIV_COM" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZDIV_COM"/>
+        <keyMapping columnObjectName="Join_3" columnName="ZDIV_COM"/>
+      </attribute>
+      <attribute id="ZFUENTE" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZFUENTE"/>
+        <keyMapping columnObjectName="Join_3" columnName="ZFUENTE"/>
+      </attribute>
+      <attribute id="0VTYPE" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0VTYPE"/>
+        <keyMapping columnObjectName="Join_3" columnName="0VTYPE"/>
+      </attribute>
+      <attribute id="VENDEDOR_TEXT" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VENDEDOR_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="VENDEDOR_TEXT"/>
+      </attribute>
+      <attribute id="VENDEDOR_INT" order="57" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VENDEDOR_INT"/>
+        <keyMapping columnObjectName="Join_3" columnName="VENDEDOR_INT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_GRUPO_MATERIAL" order="58" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT_1" order="59" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CATEGORIA_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="CATEGORIA_TEXT_1"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT_1" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIDAD_NEGOCIO_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="UNIDAD_NEGOCIO_TEXT_1"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_CATEGORIA_1" order="61" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <keyMapping columnObjectName="Join_3" columnName="GRUPO_MATERIAL_ATTR_CATEGORIA_1"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO_1" order="62" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <keyMapping columnObjectName="Join_3" columnName="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO_1"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="ZCLIENTE_INT" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cliente Interno"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="20">
+          <formula>&quot;VKBUR&quot;+'/'+&quot;KUNAG&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="ZSEMANA" hidden="false" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Semana"/>
+        <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
+          <formula>week(&quot;FKDAT&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="ZANO" hidden="false" order="4" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Año"/>
+        <keyCalculation datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;STAFO&quot;,4)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="ZMES" hidden="false" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes"/>
+        <keyCalculation datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+          <formula>rightstr(&quot;STAFO&quot;,2)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="BRGEW" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="BRGEW"/>
+        <measureMapping columnObjectName="Join_3" columnName="BRGEW"/>
+      </measure>
+      <measure id="BRTWR" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="BRTWR"/>
+        <measureMapping columnObjectName="Join_3" columnName="BRTWR"/>
+      </measure>
+      <measure id="NTGEW" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NTGEW"/>
+        <measureMapping columnObjectName="Join_3" columnName="NTGEW"/>
+      </measure>
+      <measure id="VOLUM" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VOLUM"/>
+        <measureMapping columnObjectName="Join_3" columnName="VOLUM"/>
+      </measure>
+      <measure id="NETWR_1" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NETWR_1"/>
+        <measureMapping columnObjectName="Join_3" columnName="NETWR_1"/>
+      </measure>
+      <measure id="FKLMG" order="47" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="FKLMG"/>
+        <measureMapping columnObjectName="Join_3" columnName="FKLMG"/>
+      </measure>
+      <measure id="UMVKN" order="48" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="UMVKN"/>
+        <measureMapping columnObjectName="Join_3" columnName="UMVKN"/>
+      </measure>
+      <measure id="UMVKZ" order="49" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="UMVKZ"/>
+        <measureMapping columnObjectName="Join_3" columnName="UMVKZ"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="ZVENTE_NETA" hidden="false" order="2" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="34" scale="2">
+        <descriptions defaultDescription="Venta Neta"/>
+        <formula>&quot;NETWR_1&quot; * 100</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="390"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="309"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="317"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="220"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="228"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="220" y="130"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

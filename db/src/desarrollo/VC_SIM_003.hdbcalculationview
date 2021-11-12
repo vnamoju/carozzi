@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="VC_SIM_003" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="Consumos Reales"/>
+  <metadata changedAt="2021-09-01 15:44:39.154"/>
+  <localVariables>
+    <variable id="ACON">
+      <descriptions defaultDescription="Año de consulta"/>
+      <variableProperties mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="LFGJA"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="42"/>
+  <dataSources>
+    <DataSource id="MARD">
+      <resourceUri>MARD</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MATERIAL">
+      <resourceUri>DIM_MATERIAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_GRUPO_MATERIAL">
+      <resourceUri>DIM_GRUPO_MATERIAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CENTRO">
+      <resourceUri>DIM_CENTRO</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="LGORT"/>
+        <viewAttribute id="PSTAT"/>
+        <viewAttribute id="LVORM"/>
+        <viewAttribute id="LFGJA"/>
+        <viewAttribute id="LFMON"/>
+        <viewAttribute id="SPERR"/>
+        <viewAttribute id="LABST"/>
+        <viewAttribute id="UMLME"/>
+        <viewAttribute id="INSME"/>
+        <viewAttribute id="EINME"/>
+        <viewAttribute id="SPEME"/>
+        <viewAttribute id="RETME"/>
+        <viewAttribute id="VMLAB"/>
+        <viewAttribute id="VMUML"/>
+        <viewAttribute id="VMINS"/>
+        <viewAttribute id="VMEIN"/>
+        <viewAttribute id="VMSPE"/>
+        <viewAttribute id="VMRET"/>
+        <viewAttribute id="KZILL"/>
+        <viewAttribute id="KZILQ"/>
+        <viewAttribute id="KZILE"/>
+        <viewAttribute id="KZILS"/>
+        <viewAttribute id="KZVLL"/>
+        <viewAttribute id="KZVLQ"/>
+        <viewAttribute id="KZVLE"/>
+        <viewAttribute id="KZVLS"/>
+        <viewAttribute id="DISKZ"/>
+        <viewAttribute id="LSOBS"/>
+        <viewAttribute id="LMINB"/>
+        <viewAttribute id="LBSTF"/>
+        <viewAttribute id="HERKL"/>
+        <viewAttribute id="EXPPG"/>
+        <viewAttribute id="EXVER"/>
+        <viewAttribute id="LGPBE"/>
+        <viewAttribute id="KLABS"/>
+        <viewAttribute id="KINSM"/>
+        <viewAttribute id="KEINM"/>
+        <viewAttribute id="KSPEM"/>
+        <viewAttribute id="DLINL"/>
+        <viewAttribute id="PRCTL"/>
+        <viewAttribute id="ERSDA"/>
+        <viewAttribute id="VKLAB"/>
+        <viewAttribute id="VKUML"/>
+        <viewAttribute id="LWMKB"/>
+        <viewAttribute id="BSKRF"/>
+        <viewAttribute id="MDRUE"/>
+        <viewAttribute id="MDJIN"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="MARD"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <viewAttribute id="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <viewAttribute id="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+        <viewAttribute id="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_ESTACIONALIDAD"/>
+        <viewAttribute id="MATERIAL_CORTO"/>
+        <viewAttribute id="MATERIAL_ID_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_BLOQUEO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_MATERIAL"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="GRUPO_MATERIAL_ID_TEXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="SOCIEDAD_FI_1"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_GRUPO_MATERIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI_1" source="SOCIEDAD_FI"/>
+      </input>
+    <filter>(&quot;SOCIEDAD_FI&quot; ='EC01')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="LGORT"/>
+        <viewAttribute id="PSTAT"/>
+        <viewAttribute id="LVORM"/>
+        <viewAttribute id="LFGJA"/>
+        <viewAttribute id="LFMON"/>
+        <viewAttribute id="SPERR"/>
+        <viewAttribute id="LABST"/>
+        <viewAttribute id="UMLME"/>
+        <viewAttribute id="INSME"/>
+        <viewAttribute id="EINME"/>
+        <viewAttribute id="SPEME"/>
+        <viewAttribute id="RETME"/>
+        <viewAttribute id="VMLAB"/>
+        <viewAttribute id="VMUML"/>
+        <viewAttribute id="VMINS"/>
+        <viewAttribute id="VMEIN"/>
+        <viewAttribute id="VMSPE"/>
+        <viewAttribute id="VMRET"/>
+        <viewAttribute id="KZILL"/>
+        <viewAttribute id="KZILQ"/>
+        <viewAttribute id="KZILE"/>
+        <viewAttribute id="KZILS"/>
+        <viewAttribute id="KZVLL"/>
+        <viewAttribute id="KZVLQ"/>
+        <viewAttribute id="KZVLE"/>
+        <viewAttribute id="KZVLS"/>
+        <viewAttribute id="DISKZ"/>
+        <viewAttribute id="LSOBS"/>
+        <viewAttribute id="LMINB"/>
+        <viewAttribute id="LBSTF"/>
+        <viewAttribute id="HERKL"/>
+        <viewAttribute id="EXPPG"/>
+        <viewAttribute id="EXVER"/>
+        <viewAttribute id="LGPBE"/>
+        <viewAttribute id="KLABS"/>
+        <viewAttribute id="KINSM"/>
+        <viewAttribute id="KEINM"/>
+        <viewAttribute id="KSPEM"/>
+        <viewAttribute id="DLINL"/>
+        <viewAttribute id="PRCTL"/>
+        <viewAttribute id="ERSDA"/>
+        <viewAttribute id="VKLAB"/>
+        <viewAttribute id="VKUML"/>
+        <viewAttribute id="LWMKB"/>
+        <viewAttribute id="BSKRF"/>
+        <viewAttribute id="MDRUE"/>
+        <viewAttribute id="MDJIN"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PSTAT" source="PSTAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LVORM" source="LVORM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LFGJA" source="LFGJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LFMON" source="LFMON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPERR" source="SPERR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMLME" source="UMLME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="INSME" source="INSME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EINME" source="EINME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPEME" source="SPEME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RETME" source="RETME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMLAB" source="VMLAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMUML" source="VMUML"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMINS" source="VMINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMEIN" source="VMEIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMSPE" source="VMSPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMRET" source="VMRET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILL" source="KZILL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILQ" source="KZILQ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILE" source="KZILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILS" source="KZILS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLL" source="KZVLL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLQ" source="KZVLQ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLE" source="KZVLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLS" source="KZVLS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISKZ" source="DISKZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LSOBS" source="LSOBS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LMINB" source="LMINB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LBSTF" source="LBSTF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HERKL" source="HERKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXPPG" source="EXPPG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXVER" source="EXVER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LGPBE" source="LGPBE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLABS" source="KLABS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KINSM" source="KINSM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KEINM" source="KEINM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSPEM" source="KSPEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DLINL" source="DLINL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRCTL" source="PRCTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKLAB" source="VKLAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKUML" source="VKUML"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LWMKB" source="LWMKB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BSKRF" source="BSKRF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MDRUE" source="MDRUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MDJIN" source="MDJIN"/>
+      </input>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATERIAL"/>
+      </input>
+    <joinAttribute name="MATNR"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="LGORT"/>
+        <viewAttribute id="PSTAT"/>
+        <viewAttribute id="LVORM"/>
+        <viewAttribute id="LFGJA"/>
+        <viewAttribute id="LFMON"/>
+        <viewAttribute id="SPERR"/>
+        <viewAttribute id="LABST"/>
+        <viewAttribute id="UMLME"/>
+        <viewAttribute id="INSME"/>
+        <viewAttribute id="EINME"/>
+        <viewAttribute id="SPEME"/>
+        <viewAttribute id="RETME"/>
+        <viewAttribute id="VMLAB"/>
+        <viewAttribute id="VMUML"/>
+        <viewAttribute id="VMINS"/>
+        <viewAttribute id="VMEIN"/>
+        <viewAttribute id="VMSPE"/>
+        <viewAttribute id="VMRET"/>
+        <viewAttribute id="KZILL"/>
+        <viewAttribute id="KZILQ"/>
+        <viewAttribute id="KZILE"/>
+        <viewAttribute id="KZILS"/>
+        <viewAttribute id="KZVLL"/>
+        <viewAttribute id="KZVLQ"/>
+        <viewAttribute id="KZVLE"/>
+        <viewAttribute id="KZVLS"/>
+        <viewAttribute id="DISKZ"/>
+        <viewAttribute id="LSOBS"/>
+        <viewAttribute id="LMINB"/>
+        <viewAttribute id="LBSTF"/>
+        <viewAttribute id="HERKL"/>
+        <viewAttribute id="EXPPG"/>
+        <viewAttribute id="EXVER"/>
+        <viewAttribute id="LGPBE"/>
+        <viewAttribute id="KLABS"/>
+        <viewAttribute id="KINSM"/>
+        <viewAttribute id="KEINM"/>
+        <viewAttribute id="KSPEM"/>
+        <viewAttribute id="DLINL"/>
+        <viewAttribute id="PRCTL"/>
+        <viewAttribute id="ERSDA"/>
+        <viewAttribute id="VKLAB"/>
+        <viewAttribute id="VKUML"/>
+        <viewAttribute id="LWMKB"/>
+        <viewAttribute id="BSKRF"/>
+        <viewAttribute id="MDRUE"/>
+        <viewAttribute id="MDJIN"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PSTAT" source="PSTAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LVORM" source="LVORM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LFGJA" source="LFGJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LFMON" source="LFMON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPERR" source="SPERR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMLME" source="UMLME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="INSME" source="INSME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EINME" source="EINME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPEME" source="SPEME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RETME" source="RETME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMLAB" source="VMLAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMUML" source="VMUML"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMINS" source="VMINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMEIN" source="VMEIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMSPE" source="VMSPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMRET" source="VMRET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILL" source="KZILL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILQ" source="KZILQ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILE" source="KZILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILS" source="KZILS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLL" source="KZVLL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLQ" source="KZVLQ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLE" source="KZVLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLS" source="KZVLS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISKZ" source="DISKZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LSOBS" source="LSOBS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LMINB" source="LMINB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LBSTF" source="LBSTF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HERKL" source="HERKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXPPG" source="EXPPG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXVER" source="EXVER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LGPBE" source="LGPBE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLABS" source="KLABS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KINSM" source="KINSM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KEINM" source="KEINM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSPEM" source="KSPEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DLINL" source="DLINL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRCTL" source="PRCTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKLAB" source="VKLAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKUML" source="VKUML"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LWMKB" source="LWMKB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BSKRF" source="BSKRF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MDRUE" source="MDRUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MDJIN" source="MDJIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </input>
+      <input node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+      </input>
+    <joinAttribute name="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CENTRO"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_CENTRO"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="LGORT"/>
+        <viewAttribute id="PSTAT"/>
+        <viewAttribute id="LVORM"/>
+        <viewAttribute id="LFGJA"/>
+        <viewAttribute id="LFMON"/>
+        <viewAttribute id="SPERR"/>
+        <viewAttribute id="LABST"/>
+        <viewAttribute id="UMLME"/>
+        <viewAttribute id="INSME"/>
+        <viewAttribute id="EINME"/>
+        <viewAttribute id="SPEME"/>
+        <viewAttribute id="RETME"/>
+        <viewAttribute id="VMLAB"/>
+        <viewAttribute id="VMUML"/>
+        <viewAttribute id="VMINS"/>
+        <viewAttribute id="VMEIN"/>
+        <viewAttribute id="VMSPE"/>
+        <viewAttribute id="VMRET"/>
+        <viewAttribute id="KZILL"/>
+        <viewAttribute id="KZILQ"/>
+        <viewAttribute id="KZILE"/>
+        <viewAttribute id="KZILS"/>
+        <viewAttribute id="KZVLL"/>
+        <viewAttribute id="KZVLQ"/>
+        <viewAttribute id="KZVLE"/>
+        <viewAttribute id="KZVLS"/>
+        <viewAttribute id="DISKZ"/>
+        <viewAttribute id="LSOBS"/>
+        <viewAttribute id="LMINB"/>
+        <viewAttribute id="LBSTF"/>
+        <viewAttribute id="HERKL"/>
+        <viewAttribute id="EXPPG"/>
+        <viewAttribute id="EXVER"/>
+        <viewAttribute id="LGPBE"/>
+        <viewAttribute id="KLABS"/>
+        <viewAttribute id="KINSM"/>
+        <viewAttribute id="KEINM"/>
+        <viewAttribute id="KSPEM"/>
+        <viewAttribute id="DLINL"/>
+        <viewAttribute id="PRCTL"/>
+        <viewAttribute id="ERSDA"/>
+        <viewAttribute id="VKLAB"/>
+        <viewAttribute id="VKUML"/>
+        <viewAttribute id="LWMKB"/>
+        <viewAttribute id="BSKRF"/>
+        <viewAttribute id="MDRUE"/>
+        <viewAttribute id="MDJIN"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PSTAT" source="PSTAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LVORM" source="LVORM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LFGJA" source="LFGJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LFMON" source="LFMON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPERR" source="SPERR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMLME" source="UMLME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="INSME" source="INSME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EINME" source="EINME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPEME" source="SPEME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RETME" source="RETME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMLAB" source="VMLAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMUML" source="VMUML"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMINS" source="VMINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMEIN" source="VMEIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMSPE" source="VMSPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMRET" source="VMRET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILL" source="KZILL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILQ" source="KZILQ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILE" source="KZILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZILS" source="KZILS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLL" source="KZVLL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLQ" source="KZVLQ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLE" source="KZVLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KZVLS" source="KZVLS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISKZ" source="DISKZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LSOBS" source="LSOBS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LMINB" source="LMINB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LBSTF" source="LBSTF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HERKL" source="HERKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXPPG" source="EXPPG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EXVER" source="EXVER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LGPBE" source="LGPBE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLABS" source="KLABS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KINSM" source="KINSM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KEINM" source="KEINM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSPEM" source="KSPEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DLINL" source="DLINL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRCTL" source="PRCTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKLAB" source="VKLAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKUML" source="VKUML"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LWMKB" source="LWMKB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BSKRF" source="BSKRF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MDRUE" source="MDRUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MDJIN" source="MDJIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+      </input>
+      <input node="Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="CENTRO"/>
+      </input>
+    <joinAttribute name="WERKS"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_3">
+    <descriptions/>
+    <attributes>
+      <attribute id="MATNR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATNR"/>
+      </attribute>
+      <attribute id="WERKS" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro"/>
+        <keyMapping columnObjectName="Join_3" columnName="WERKS"/>
+      </attribute>
+      <attribute id="LGORT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Almacén"/>
+        <keyMapping columnObjectName="Join_3" columnName="LGORT"/>
+      </attribute>
+      <attribute id="PSTAT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Stat.actual."/>
+        <keyMapping columnObjectName="Join_3" columnName="PSTAT"/>
+      </attribute>
+      <attribute id="LVORM" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PB NivAlmacén"/>
+        <keyMapping columnObjectName="Join_3" columnName="LVORM"/>
+      </attribute>
+      <attribute id="LFGJA" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ej.período act."/>
+        <localVariable>ACON</localVariable>
+        <keyMapping columnObjectName="Join_3" columnName="LFGJA"/>
+      </attribute>
+      <attribute id="LFMON" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Período actual"/>
+        <keyMapping columnObjectName="Join_3" columnName="LFMON"/>
+      </attribute>
+      <attribute id="SPERR" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Bloq.inventario"/>
+        <keyMapping columnObjectName="Join_3" columnName="SPERR"/>
+      </attribute>
+      <attribute id="KZILL" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Stock almacén"/>
+        <keyMapping columnObjectName="Join_3" columnName="KZILL"/>
+      </attribute>
+      <attribute id="KZILQ" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Stock ctrl-cal"/>
+        <keyMapping columnObjectName="Join_3" columnName="KZILQ"/>
+      </attribute>
+      <attribute id="KZVLE" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Utiliz.restring"/>
+        <keyMapping columnObjectName="Join_3" columnName="KZVLE"/>
+      </attribute>
+      <attribute id="KZILE" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Utilización lim"/>
+        <keyMapping columnObjectName="Join_3" columnName="KZILE"/>
+      </attribute>
+      <attribute id="KZILS" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Stock bloqueado"/>
+        <keyMapping columnObjectName="Join_3" columnName="KZILS"/>
+      </attribute>
+      <attribute id="KZVLL" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Stock almacén"/>
+        <keyMapping columnObjectName="Join_3" columnName="KZVLL"/>
+      </attribute>
+      <attribute id="KZVLQ" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Stock ctrl-cal"/>
+        <keyMapping columnObjectName="Join_3" columnName="KZVLQ"/>
+      </attribute>
+      <attribute id="KZVLS" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Stock bloqueado"/>
+        <keyMapping columnObjectName="Join_3" columnName="KZVLS"/>
+      </attribute>
+      <attribute id="DISKZ" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ind.pl.nc."/>
+        <keyMapping columnObjectName="Join_3" columnName="DISKZ"/>
+      </attribute>
+      <attribute id="LSOBS" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ClsAprEsp alm."/>
+        <keyMapping columnObjectName="Join_3" columnName="LSOBS"/>
+      </attribute>
+      <attribute id="HERKL" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="País de origen"/>
+        <keyMapping columnObjectName="Join_3" columnName="HERKL"/>
+      </attribute>
+      <attribute id="EXPPG" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Preferencia"/>
+        <keyMapping columnObjectName="Join_3" columnName="EXPPG"/>
+      </attribute>
+      <attribute id="EXVER" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ind-exportación"/>
+        <keyMapping columnObjectName="Join_3" columnName="EXVER"/>
+      </attribute>
+      <attribute id="LGPBE" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ubicación"/>
+        <keyMapping columnObjectName="Join_3" columnName="LGPBE"/>
+      </attribute>
+      <attribute id="DLINL" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fe.últ.invent."/>
+        <keyMapping columnObjectName="Join_3" columnName="DLINL"/>
+      </attribute>
+      <attribute id="PRCTL" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CeBe"/>
+        <keyMapping columnObjectName="Join_3" columnName="PRCTL"/>
+      </attribute>
+      <attribute id="ERSDA" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Creado el"/>
+        <keyMapping columnObjectName="Join_3" columnName="ERSDA"/>
+      </attribute>
+      <attribute id="LWMKB" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Área picking"/>
+        <keyMapping columnObjectName="Join_3" columnName="LWMKB"/>
+      </attribute>
+      <attribute id="MDRUE" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="El reg.MARDH p.per.a"/>
+        <keyMapping columnObjectName="Join_3" columnName="MDRUE"/>
+      </attribute>
+      <attribute id="MDJIN" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio del indica"/>
+        <keyMapping columnObjectName="Join_3" columnName="MDJIN"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material texto"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_GRUPO_MATERIAL" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo de articulo"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo de articulo texto"/>
+        <keyMapping columnObjectName="Join_3" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="CENTRO_TEXT" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro texto"/>
+        <keyMapping columnObjectName="Join_3" columnName="CENTRO_TEXT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="PERIO" hidden="false" order="54" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Periodo"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="6">
+          <formula>&quot;LFGJA&quot;+&quot;LFMON&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="LABST" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Libre utiliz."/>
+        <measureMapping columnObjectName="Join_3" columnName="LABST"/>
+      </measure>
+      <measure id="UMLME" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Trasladar"/>
+        <measureMapping columnObjectName="Join_3" columnName="UMLME"/>
+      </measure>
+      <measure id="INSME" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="En ctrl.calidad"/>
+        <measureMapping columnObjectName="Join_3" columnName="INSME"/>
+      </measure>
+      <measure id="EINME" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="No libre"/>
+        <measureMapping columnObjectName="Join_3" columnName="EINME"/>
+      </measure>
+      <measure id="SPEME" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Bloqueado"/>
+        <measureMapping columnObjectName="Join_3" columnName="SPEME"/>
+      </measure>
+      <measure id="RETME" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Devoluciones"/>
+        <measureMapping columnObjectName="Join_3" columnName="RETME"/>
+      </measure>
+      <measure id="VMLAB" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Libre utiliz."/>
+        <measureMapping columnObjectName="Join_3" columnName="VMLAB"/>
+      </measure>
+      <measure id="VMUML" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="En traslado"/>
+        <measureMapping columnObjectName="Join_3" columnName="VMUML"/>
+      </measure>
+      <measure id="VMINS" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="En insp.cal."/>
+        <measureMapping columnObjectName="Join_3" columnName="VMINS"/>
+      </measure>
+      <measure id="VMEIN" order="18" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="No libre PA"/>
+        <measureMapping columnObjectName="Join_3" columnName="VMEIN"/>
+      </measure>
+      <measure id="VMSPE" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Bloqueado"/>
+        <measureMapping columnObjectName="Join_3" columnName="VMSPE"/>
+      </measure>
+      <measure id="VMRET" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Devoluciones"/>
+        <measureMapping columnObjectName="Join_3" columnName="VMRET"/>
+      </measure>
+      <measure id="LMINB" order="31" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Punto de pedido"/>
+        <measureMapping columnObjectName="Join_3" columnName="LMINB"/>
+      </measure>
+      <measure id="LBSTF" order="32" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Ctd.reposición"/>
+        <measureMapping columnObjectName="Join_3" columnName="LBSTF"/>
+      </measure>
+      <measure id="KLABS" order="37" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Consig. libre"/>
+        <measureMapping columnObjectName="Join_3" columnName="KLABS"/>
+      </measure>
+      <measure id="KINSM" order="38" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cosig.ctrl cal."/>
+        <measureMapping columnObjectName="Join_3" columnName="KINSM"/>
+      </measure>
+      <measure id="KEINM" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Consi no libre"/>
+        <measureMapping columnObjectName="Join_3" columnName="KEINM"/>
+      </measure>
+      <measure id="KSPEM" order="40" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ConsigBloqueada"/>
+        <measureMapping columnObjectName="Join_3" columnName="KSPEM"/>
+      </measure>
+      <measure id="VKLAB" order="44" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Val.almacén VK"/>
+        <measureMapping columnObjectName="Join_3" columnName="VKLAB"/>
+      </measure>
+      <measure id="VKUML" order="45" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Traslado VV"/>
+        <measureMapping columnObjectName="Join_3" columnName="VKUML"/>
+      </measure>
+      <measure id="BSKRF" order="47" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Fact.correc.st."/>
+        <measureMapping columnObjectName="Join_3" columnName="BSKRF"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="60" y="90"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="false" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="70" y="510"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="260" y="480"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="408"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="70" y="399"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="80" y="300"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="290"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="100" y="180"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

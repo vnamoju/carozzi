@@ -1,0 +1,57 @@
+PROCEDURE "SCP_CAROZZI_SAC.Costos_Molitalia::FILTER_COSTOS_PERU" ( OUT VT_COSTOS 
+"RT_ZVCOSTOS.VT_SAPABAP1_ZVCOSTOS")
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+
+    DECLARE KADKYINI NVARCHAR(100);
+    DECLARE KADKYFIN NVARCHAR(100);
+    
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   
+   KADKYINI = CONCAT(CONCAT(SUBSTRING (to_nvarchar (ADD_MONTHS (TO_DATE (CURRENT_DATE, 'YYYY-MM-DD'), -1)),1,4),
+   SUBSTRING (to_nvarchar (ADD_MONTHS (TO_DATE (CURRENT_DATE, 'YYYY-MM-DD'), -1)),6,2)),'00');
+   KADKYFIN = CONCAT(CONCAT(SUBSTRING (to_nvarchar (ADD_MONTHS (TO_DATE (CURRENT_DATE, 'YYYY-MM-DD'), -1)),1,4),
+   SUBSTRING (to_nvarchar (ADD_MONTHS (TO_DATE (CURRENT_DATE, 'YYYY-MM-DD'), -1)),6,2)),'32');
+   
+    VT_COSTOS = SELECT 
+            	"KALNR",
+            	"KKZMA",
+            	"KALKA",
+            	"KADKY",
+            	"TVERS",
+            	"BWVAR",
+            	"BWKEY",
+            	"KOKRS",
+            	"VERID",
+            	"LOSGR",
+            	"MEINS",
+            	"KLVAR",
+            	"POPER",
+            	"BDATJ",
+            	"MATNR",
+            	"BZOBJ",
+            	"KKZMA2",
+            	"LEDNR",
+            	"POSNR",
+            	"ZCOMP",
+            	"KSTAR",
+            	"BUKRS",
+            	"WRTFW_KPF",
+            	"FWAER",
+            	"MENGE",
+            	"MEEHT",
+            	"PEINH",
+            	"KOSTL",
+            	"OPREIS",
+            	"PMEHT"
+                FROM "RT_ZVCOSTOS.VT_SAPABAP1_ZVCOSTOS"
+                WHERE "KADKY" > KADKYINI
+                AND "KADKY" < KADKYFIN
+                AND "KOKRS" = 'GC01';
+   
+END

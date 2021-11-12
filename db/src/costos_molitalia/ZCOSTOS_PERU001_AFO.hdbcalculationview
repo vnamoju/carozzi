@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="ZCOSTOS_PERU001_AFO" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="Consulta Global Costos Molitalia"/>
+  <localVariables>
+    <variable id="VAR_FECHA">
+      <descriptions defaultDescription="Periodo Meses"/>
+      <variableProperties datatype="NVARCHAR" length="6" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="0CALMONTH"/>
+        </valueDomain>
+        <selection multiLine="false" type="Interval"/>
+        <defaultRange lowValue="201909" operator="BT" including="true"/>
+      </variableProperties>
+    </variable>
+    <variable id="VAR_GRUPO_MAT">
+      <descriptions defaultDescription="Grupo Materiales"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="" length="9">
+        <valueDomain type="AttributeValue">
+          <attribute name="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="VAR_MATERIAL">
+      <descriptions defaultDescription="Material"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="" length="18">
+        <valueDomain type="AttributeValue">
+          <attribute name="MATERIAL"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="VAR_CENTRO">
+      <descriptions defaultDescription="Centro"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="" length="4">
+        <valueDomain type="AttributeValue">
+          <attribute name="Centro"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="ZCOSTOS_PERU001_VISTA">
+      <resourceUri>ZCOSTOS_PERU001_VISTA</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_GRUPO_MATERIAL">
+      <resourceUri>DIM_GRUPO_MATERIAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CENTRO">
+      <resourceUri>DIM_CENTRO</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CUENTA">
+      <resourceUri>DIM_CUENTA</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="CANT_CON"/>
+        <viewAttribute id="COMPONENTE"/>
+        <viewAttribute id="CONSUM_COMP"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MEEHT"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="OWAER"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="PROD_TOTAL"/>
+        <viewAttribute id="TAM_LOTE_PT"/>
+        <viewAttribute id="TIPO_RG"/>
+        <viewAttribute id="VALOR"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="ZCOSTOS_PERU001_VISTA"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="CANT_CON"/>
+        <viewAttribute id="COMPONENTE"/>
+        <viewAttribute id="CONSUM_COMP"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MEEHT"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="OWAER"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="PROD_TOTAL"/>
+        <viewAttribute id="TAM_LOTE_PT"/>
+        <viewAttribute id="TIPO_RG"/>
+        <viewAttribute id="VALOR"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUFNR" source="AUFNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWKEY" source="BWKEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT_CON" source="CANT_CON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENTE" source="COMPONENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUM_COMP" source="CONSUM_COMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOSTL" source="KOSTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SECTOR" source="MATERIAL_ATTR_SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OWAER" source="OWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROD_TOTAL" source="PROD_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TAM_LOTE_PT" source="TAM_LOTE_PT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RG" source="TIPO_RG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR" source="VALOR"/>
+      </input>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+      </input>
+    <joinAttribute name="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_GRUPO_MATERIAL"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="CANT_CON"/>
+        <viewAttribute id="COMPONENTE"/>
+        <viewAttribute id="CONSUM_COMP"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MEEHT"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="OWAER"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="PROD_TOTAL"/>
+        <viewAttribute id="TAM_LOTE_PT"/>
+        <viewAttribute id="TIPO_RG"/>
+        <viewAttribute id="VALOR"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUFNR" source="AUFNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWKEY" source="BWKEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT_CON" source="CANT_CON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENTE" source="COMPONENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUM_COMP" source="CONSUM_COMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOSTL" source="KOSTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SECTOR" source="MATERIAL_ATTR_SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OWAER" source="OWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROD_TOTAL" source="PROD_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TAM_LOTE_PT" source="TAM_LOTE_PT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RG" source="TIPO_RG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR" source="VALOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+      </input>
+      <input node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWKEY" source="CENTRO"/>
+      </input>
+    <joinAttribute name="BWKEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <viewAttributes>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CENTRO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_CENTRO"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="CANT_CON"/>
+        <viewAttribute id="COMPONENTE"/>
+        <viewAttribute id="CONSUM_COMP"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MEEHT"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="OWAER"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="PROD_TOTAL"/>
+        <viewAttribute id="TAM_LOTE_PT"/>
+        <viewAttribute id="TIPO_RG"/>
+        <viewAttribute id="VALOR"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUFNR" source="AUFNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWKEY" source="BWKEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT_CON" source="CANT_CON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENTE" source="COMPONENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUM_COMP" source="CONSUM_COMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOSTL" source="KOSTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SECTOR" source="MATERIAL_ATTR_SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OWAER" source="OWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROD_TOTAL" source="PROD_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TAM_LOTE_PT" source="TAM_LOTE_PT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RG" source="TIPO_RG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR" source="VALOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+      </input>
+      <input node="Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="Cuenta"/>
+      </input>
+    <joinAttribute name="KSTAR"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <viewAttributes>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="Cuenta"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_CUENTA"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Join_3">
+    <attributes>
+      <attribute id="0CALMONTH" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Periodo / Meses"/>
+        <localVariable>VAR_FECHA</localVariable>
+        <keyMapping columnObjectName="Join_3" columnName="0CALMONTH"/>
+      </attribute>
+      <attribute id="Orden" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Orden"/>
+        <keyMapping columnObjectName="Join_3" columnName="AUFNR"/>
+      </attribute>
+      <attribute id="Centro" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro"/>
+        <localVariable>VAR_CENTRO</localVariable>
+        <keyMapping columnObjectName="Join_3" columnName="BWKEY"/>
+      </attribute>
+      <attribute id="COMPONENTE" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Componente"/>
+        <keyMapping columnObjectName="Join_3" columnName="COMPONENTE"/>
+      </attribute>
+      <attribute id="KLVAR" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Variante de Cálculo"/>
+        <keyMapping columnObjectName="Join_3" columnName="KLVAR"/>
+      </attribute>
+      <attribute id="KOSTL" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro de Coste"/>
+        <keyMapping columnObjectName="Join_3" columnName="KOSTL"/>
+      </attribute>
+      <attribute id="KSTAR" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta Contable"/>
+        <keyMapping columnObjectName="Join_3" columnName="KSTAR"/>
+      </attribute>
+      <attribute id="MATERIAL" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material"/>
+        <localVariable>VAR_MATERIAL</localVariable>
+        <keyMapping columnObjectName="Join_3" columnName="MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_GRUPO_MATERIAL" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo de Material"/>
+        <localVariable>VAR_GRUPO_MAT</localVariable>
+        <keyMapping columnObjectName="Join_3" columnName="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MARCA" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Marca"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATERIAL_ATTR_MARCA"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_SECTOR" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sector"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATERIAL_ATTR_SECTOR"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_TIPO_MATERIAL" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo de Material"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATERIAL_ATTR_TIPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Text Material"/>
+        <keyMapping columnObjectName="Join_3" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="MEEHT" order="16" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="true">
+        <descriptions defaultDescription="UM - Consumo Comp."/>
+        <keyMapping columnObjectName="Join_3" columnName="MEEHT"/>
+      </attribute>
+      <attribute id="MEINS" order="17" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="true">
+        <descriptions defaultDescription="UM - Prod. Total"/>
+        <keyMapping columnObjectName="Join_3" columnName="MEINS"/>
+      </attribute>
+      <attribute id="OWAER" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UM - Valor"/>
+        <keyMapping columnObjectName="Join_3" columnName="OWAER"/>
+      </attribute>
+      <attribute id="POSNR" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Posición"/>
+        <keyMapping columnObjectName="Join_3" columnName="POSNR"/>
+      </attribute>
+      <attribute id="TIPO_RG" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo de Registro"/>
+        <keyMapping columnObjectName="Join_3" columnName="TIPO_RG"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="CENTRO_TEXT" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CENTRO_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="CENTRO_TEXT"/>
+      </attribute>
+      <attribute id="CUENTA_TEXT" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUENTA_TEXT"/>
+        <keyMapping columnObjectName="Join_3" columnName="CUENTA_TEXT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="CANT_CON" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cantidad Consumo"/>
+        <fixedCurrency>MEEHT</fixedCurrency>
+        <measureMapping columnObjectName="Join_3" columnName="CANT_CON"/>
+      </measure>
+      <measure id="CONSUM_COMP" order="6" semanticType="amount" aggregationType="sum" measureType="amount">
+        <descriptions defaultDescription="Consumo Componente"/>
+        <unitCurrencyAttribute attributeName="MEEHT"/>
+        <measureMapping columnObjectName="Join_3" columnName="CONSUM_COMP"/>
+      </measure>
+      <measure id="PROD_TOTAL" order="20" semanticType="amount" aggregationType="sum" measureType="amount">
+        <descriptions defaultDescription="Producción Total"/>
+        <unitCurrencyAttribute attributeName="MEINS"/>
+        <measureMapping columnObjectName="Join_3" columnName="PROD_TOTAL"/>
+      </measure>
+      <measure id="TAM_LOTE_PT" order="21" aggregationType="max" measureType="simple">
+        <descriptions defaultDescription="Tamaño Lote PT"/>
+        <measureMapping columnObjectName="Join_3" columnName="TAM_LOTE_PT"/>
+      </measure>
+      <measure id="VALOR" order="23" semanticType="amount" aggregationType="sum" measureType="amount">
+        <descriptions defaultDescription="Valor"/>
+        <unitCurrencyAttribute attributeName="OWAER"/>
+        <measureMapping columnObjectName="Join_3" columnName="VALOR"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="45" y="317"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="86" y="273"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="203" y="351"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="160" y="203"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="257" y="277"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="149"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="367" y="207"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

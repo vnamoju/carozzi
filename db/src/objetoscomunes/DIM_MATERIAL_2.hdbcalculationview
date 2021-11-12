@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_MATERIAL_2" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" defaultMember="" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MATERIAL"/>
+  <metadata changedAt="2018-11-13 09:50:31.767"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="42"/>
+  <dataSources>
+    <DataSource id="MARA">
+      <resourceUri>MARA</resourceUri>
+    </DataSource>
+    <DataSource id="MAKT">
+      <resourceUri>MAKT</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MTART"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="ROTMG"/>
+        <viewAttribute id="TOKEN"/>
+        <viewAttribute id="TANEG"/>
+        <viewAttribute id="PRNEW"/>
+        <viewAttribute id="GMROI"/>
+        <viewAttribute id="MATMR"/>
+        <viewAttribute id="ZZMEST"/>
+        <viewAttribute id="ZZFLAGSEG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#MARA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTART" source="MTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROTMG" source="ROTMG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOKEN" source="TOKEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TANEG" source="TANEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRNEW" source="PRNEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GMROI" source="GMROI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATMR" source="MATMR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZMEST" source="ZZMEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLAGSEG" source="ZZFLAGSEG"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="MAKTX"/>
+        <viewAttribute id="MAKTG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#MAKT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAKTX" source="MAKTX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAKTG" source="MAKTG"/>
+      </input>
+      <filter>(&quot;SPRAS&quot; ='S')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MTART"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="ROTMG"/>
+        <viewAttribute id="TOKEN"/>
+        <viewAttribute id="TANEG"/>
+        <viewAttribute id="PRNEW"/>
+        <viewAttribute id="GMROI"/>
+        <viewAttribute id="MATMR"/>
+        <viewAttribute id="ZZMEST"/>
+        <viewAttribute id="ZZFLAGSEG"/>
+        <viewAttribute id="MAKTX"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTART" source="MTART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ROTMG" source="ROTMG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOKEN" source="TOKEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TANEG" source="TANEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRNEW" source="PRNEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GMROI" source="GMROI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATMR" source="MATMR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZMEST" source="ZZMEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLAGSEG" source="ZZFLAGSEG"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MAKTX" source="MAKTX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="MATNR"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="MATERIAL" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL"/>
+        <keyMapping columnObjectName="Join_1" columnName="MATNR"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_TIPO_MATERIAL" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <keyMapping columnObjectName="Join_1" columnName="MTART"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_GRUPO_MATERIAL" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <keyMapping columnObjectName="Join_1" columnName="MATKL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_SECTOR" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_SECTOR"/>
+        <keyMapping columnObjectName="Join_1" columnName="SPART"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_IND_MARGEN_ROTACION" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <keyMapping columnObjectName="Join_1" columnName="ROTMG"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_IND_SKU_ESTRATEGICO" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <keyMapping columnObjectName="Join_1" columnName="TOKEN"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <keyMapping columnObjectName="Join_1" columnName="TANEG"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_IND_PRODUCTO_NUEVO" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <keyMapping columnObjectName="Join_1" columnName="PRNEW"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <keyMapping columnObjectName="Join_1" columnName="GMROI"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <keyMapping columnObjectName="Join_1" columnName="MATMR"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MATERIAL_ESTRATEGICO" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZZMEST"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_SEGUIMIENTO" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZZFLAGSEG"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_TEXT"/>
+        <keyMapping columnObjectName="Join_1" columnName="MAKTX"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="MATERIAL_CORTO" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_CORTO"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="18">
+          <formula>if(LEFTSTR(&quot;MATERIAL&quot;,1)='0',STRING(int(&quot;MATERIAL&quot;)) ,&quot;MATERIAL&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="MATERIAL_ID_TEXT" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_ID_TEXT"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="72">
+          <formula>&quot;MATERIAL_CORTO&quot;+' - '+&quot;MATERIAL_TEXT&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="249" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="110" y="310"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="290" y="310"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="240" y="190"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

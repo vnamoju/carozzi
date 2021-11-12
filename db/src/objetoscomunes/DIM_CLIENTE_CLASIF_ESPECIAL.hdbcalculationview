@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_CLIENTE_CLASIF_ESPECIAL" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="CLIENTE"/>
+  <metadata changedAt="2021-01-07 10:12:10.692"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="53"/>
+  <dataSources>
+    <DataSource id="KNB1">
+      <resourceUri>KNB1</resourceUri>
+    </DataSource>
+    <DataSource id="Z1CLASIFCLIE">
+      <resourceUri>Z1CLASIFCLIE</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute aggregationType="max" id="ZCDCANAL"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#KNB1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCANAL" source="ZCDCANAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="CLASIF_ESPECIAL_TEXTO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1CLASIFCLIE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASIF_ESPECIAL_TEXTO" source="DESCRIPCION"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="ZCDCANAL"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="DESCRIPCION"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Aggregation_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCANAL" source="ZCDCANAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPCION" source="CLASIF_ESPECIAL_TEXTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+      </input>
+      <joinAttribute name="BUKRS"/>
+      <joinAttribute name="ZZCDCLASIF"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="KUNNR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KUNNR"/>
+        <keyMapping columnObjectName="Join_1" columnName="KUNNR"/>
+      </attribute>
+      <attribute id="ZCDCANAL" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCDCANAL"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZCDCANAL"/>
+      </attribute>
+      <attribute id="BUKRS" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUKRS"/>
+        <keyMapping columnObjectName="Join_1" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="ZZCDCLASIF" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZCDCLASIF"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZZCDCLASIF"/>
+      </attribute>
+      <attribute id="ZZCDCLASIF_TEXTO" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZCDCLASIF_TEXTO"/>
+        <keyMapping columnObjectName="Join_1" columnName="DESCRIPCION"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="165"/>
+        <rectangleSize height="71" width="141"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

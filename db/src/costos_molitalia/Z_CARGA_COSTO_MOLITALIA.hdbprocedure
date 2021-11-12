@@ -1,0 +1,12 @@
+PROCEDURE "SCP_CAROZZI_SAC.Costos_Molitalia::Z_CARGA_COSTO_MOLITALIA" ( )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   EXEC 'START TASK "SCP_CAROZZI_SAC"."SCP_CAROZZI_SAC.Costos_Molitalia::FG_SCP_COSTO_PERU_001"';
+   
+END

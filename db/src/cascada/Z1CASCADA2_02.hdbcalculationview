@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="Z1CASCADA2_02" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED">
+  <origin/>
+  <descriptions defaultDescription="x"/>
+  <metadata changedAt="2020-05-26 11:50:57.035"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="36"/>
+  <dataSources>
+    <DataSource id="Z1CASCADA2">
+      <resourceUri>Z1CASCADA2</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Sociedad_CO"/>
+        <viewAttribute id="Cliente_Padre"/>
+        <viewAttribute id="Cliente"/>
+        <viewAttribute id="Sociedad_FI"/>
+        <viewAttribute id="OrgVenta"/>
+        <viewAttribute id="Oficina"/>
+        <viewAttribute id="Division"/>
+        <viewAttribute id="Grupo_Articulo"/>
+        <viewAttribute id="Pais"/>
+        <viewAttribute aggregationType="sum" id="Valor"/>
+        <viewAttribute aggregationType="sum" id="Volumen"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="Ejercicio"/>
+        <viewAttribute id="Periodo"/>
+        <viewAttribute id="Mes_Anio"/>
+        <viewAttribute id="ARTNR"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute aggregationType="sum" id="KILOS"/>
+        <viewAttribute id="MEINH"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1CASCADA2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Sociedad_CO" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cliente_Padre" source="HKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cliente" source="KNDNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Sociedad_FI" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OrgVenta" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Oficina" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="WWDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Grupo_Articulo" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pais" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Valor" source="WOGBTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Volumen" source="MEGBTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Ejercicio" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Periodo" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Mes_Anio" source="MES_ANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ARTNR" source="ARTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KILOS" source="KILOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+      </input>
+      <filter>&quot;Ejercicio&quot;>=(leftstr(now(),4)-2)</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="KOKRS"/>
+        <viewAttribute id="HKUNNR"/>
+        <viewAttribute id="KNDNR"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="WWDIV"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="WOGBTR"/>
+        <viewAttribute id="MEGBTR"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="MES_ANO"/>
+        <viewAttribute id="ARTNR"/>
+        <viewAttribute id="Cuenta"/>
+        <viewAttribute id="KILOS"/>
+        <viewAttribute id="MEINH"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="VALOR_CUENTA" length="18" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>if (&quot;BUKRS&quot; = 'EC01' or &quot;BUKRS&quot; = '1100', &quot;WOGBTR&quot; *100,&quot;WOGBTR&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOKRS" source="Sociedad_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HKUNNR" source="Cliente_Padre"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KNDNR" source="Cliente"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="Sociedad_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="OrgVenta"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="Oficina"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WWDIV" source="Division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="Grupo_Articulo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="Pais"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WOGBTR" source="Valor"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEGBTR" source="Volumen"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="Ejercicio"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="Periodo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MES_ANO" source="Mes_Anio"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ARTNR" source="ARTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cuenta" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KILOS" source="KILOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="VKBUR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Oficina"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VKBUR"/>
+      </attribute>
+      <attribute id="WWDIV" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Div.Comercial"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WWDIV"/>
+      </attribute>
+      <attribute id="MATKL" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo Articulo"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATKL"/>
+      </attribute>
+      <attribute id="LAND1x" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Pais"/>
+        <keyMapping columnObjectName="Projection_1" columnName="LAND1"/>
+      </attribute>
+      <attribute id="GJAHR" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GJAHR"/>
+      </attribute>
+      <attribute id="PERIO" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Periodo"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PERIO"/>
+      </attribute>
+      <attribute id="MES_ANO" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MES_ANO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MES_ANO"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO_ID" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sociedad_CO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KOKRS"/>
+      </attribute>
+      <attribute id="ARTNR" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ARTNR"/>
+      </attribute>
+      <attribute id="UMB" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UMB"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MEINH"/>
+      </attribute>
+      <attribute id="Cuenta_1" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta_1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Cuenta"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI_ID" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA_ID" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORGANIZACION_VENTA_ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VKORG"/>
+      </attribute>
+      <attribute id="VKBUR$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="VKBUR"/>
+      </attribute>
+      <attribute id="MANDT$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="VKORG$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="VKORG"/>
+      </attribute>
+      <attribute id="KOKRS$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="KOKRS"/>
+      </attribute>
+      <attribute id="MATKL$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATKL"/>
+      </attribute>
+      <attribute id="BUKRS$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="ARTNR$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="ARTNR"/>
+      </attribute>
+      <attribute id="KNDNR$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="KNDNR"/>
+      </attribute>
+      <attribute id="LAND1$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="LAND1"/>
+      </attribute>
+      <attribute id="WWDIV$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="WWDIV"/>
+      </attribute>
+      <attribute id="Cuenta$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Cuenta"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="FECHA_PROCESO" hidden="false" order="15" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha Proceso"/>
+        <keyCalculation datatype="DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>replace(leftstr(string(now()),10),'-','')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="HORA_UTC" hidden="false" order="16" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Hora UTC"/>
+        <keyCalculation datatype="TIME" expressionLanguage="COLUMN_ENGINE">
+          <formula>utcnow()</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="MEGBTR" order="1" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cantidad"/>
+        <measureMapping columnObjectName="Projection_1" columnName="MEGBTR"/>
+      </measure>
+      <measure id="WOGBTR" order="2" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor"/>
+        <measureMapping columnObjectName="Projection_1" columnName="WOGBTR"/>
+      </measure>
+      <measure id="VALOR_CUENTA" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_CUENTA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALOR_CUENTA"/>
+      </measure>
+      <measure id="KILOS" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="KILOS"/>
+        <measureMapping columnObjectName="Projection_1" columnName="KILOS"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="test">
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="test" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY_ENFORCED">
+            <descriptions defaultDescription="test"/>
+            <levels/>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+    <sharedDimensions>
+      <logicalJoin associatedObjectUri="DIM_OFICINA_VENTA">
+        <attributes>
+          <attributeRef>#VKBUR$local</attributeRef>
+          <attributeRef>#MANDT$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>OFICINA_VENTA</attributeName>
+          <attributeName>MANDT</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="leftOuter" optimizeJoinColumns="true"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="OFICINA_VENTA" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_ORGANIZACION_VENTA">
+        <attributes>
+          <attributeRef>#VKORG$local</attributeRef>
+          <attributeRef>#MANDT$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>ORGANIZACION_VENTA</attributeName>
+          <attributeName>MANDT</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="leftOuter" optimizeJoinColumns="true"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_ORGANIZACION_VENTA_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="ORGANIZACION_VENTA" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_SOCIEDAD_CO">
+        <attributes>
+          <attributeRef>#KOKRS$local</attributeRef>
+          <attributeRef>#MANDT$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>SOCIEDAD_CO</attributeName>
+          <attributeName>MANDT</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="leftOuter" optimizeJoinColumns="true"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_SOCIEDAD_CO_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference alias="DIM_SOCIEDAD_CO_PLAN_CUENTA" attributeName="PLAN_CUENTA" hidden="true"/>
+          <attributeReference attributeName="SOCIEDAD_CO" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_GRUPO_MATERIAL">
+        <attributes>
+          <attributeRef>#MATKL$local</attributeRef>
+          <attributeRef>#BUKRS$local</attributeRef>
+          <attributeRef>#MANDT$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>GRUPO_MATERIAL</attributeName>
+          <attributeName>SOCIEDAD_FI</attributeName>
+          <attributeName>MANDT</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="leftOuter" optimizeJoinColumns="true"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_GRUPO_MATERIAL_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference alias="DIM_GRUPO_MATERIAL_SOCIEDAD_FI" attributeName="SOCIEDAD_FI" hidden="true"/>
+          <attributeReference attributeName="GRUPO_MATERIAL" hidden="true"/>
+          <attributeReference attributeName="GRUPO_MATERIAL_ATTR_CATEGORIA" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_MATERIAL">
+        <attributes>
+          <attributeRef>#MANDT$local</attributeRef>
+          <attributeRef>#ARTNR$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>MATERIAL</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="leftOuter" optimizeJoinColumns="true"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_MATERIAL_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="MATERIAL" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_TEXT" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_IND_MARGEN_ROTACION" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_IND_SKU_ESTRATEGICO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_IND_PRODUCTO_NUEVO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_MATERIAL_ESTRATEGICO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_SEGUIMIENTO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_CORTO" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_CLIENTE2">
+        <attributes>
+          <attributeRef>#KNDNR$local</attributeRef>
+          <attributeRef>#BUKRS$local</attributeRef>
+          <attributeRef>#VKORG$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>KUNNR</attributeName>
+          <attributeName>BUKRS</attributeName>
+          <attributeName>VKORG</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="leftOuter" optimizeJoinColumns="true"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_CLIENTE2_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="KUNNR" hidden="true"/>
+          <attributeReference attributeName="BUKRS" hidden="true"/>
+          <attributeReference attributeName="VKORG" hidden="true"/>
+          <attributeReference attributeName="LAND1" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ID_TEXT_1" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ID_TEXT_2" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_CORTO" hidden="true"/>
+          <attributeReference attributeName="NAME1" hidden="true"/>
+          <attributeReference attributeName="NAME4" hidden="true"/>
+          <attributeReference attributeName="Nivel6_text" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_PAIS">
+        <attributes>
+          <attributeRef>#LAND1$local</attributeRef>
+          <attributeRef>#MANDT$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>PAIS</attributeName>
+          <attributeName>MANDT</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="leftOuter" optimizeJoinColumns="true"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_PAIS_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="PAIS" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_DIVISION_COMERCIAL">
+        <attributes>
+          <attributeRef>#WWDIV$local</attributeRef>
+          <attributeRef>#MANDT$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>DIVISION_COMERCIAL</attributeName>
+          <attributeName>MANDT</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinOperator="Equal" joinType="leftOuter" optimizeJoinColumns="true"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_DIVISION_COMERCIAL_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="DIVISION_COMERCIAL" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_CUENTA">
+        <attributes>
+          <attributeRef>#Cuenta$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>Cuenta</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_CUENTA_SPRAS" attributeName="SPRAS" hidden="true"/>
+          <attributeReference attributeName="KTOPL" hidden="true"/>
+          <attributeReference attributeName="JER_CUENTA_J1" hidden="true"/>
+          <attributeReference attributeName="JER_CUENTA_N1" hidden="true"/>
+          <attributeReference attributeName="JER_CUENTA_N2" hidden="true"/>
+          <attributeReference attributeName="JER_CUENTA_N3" hidden="true"/>
+          <attributeReference attributeName="JER_CUENTA_N4" hidden="true"/>
+          <attributeReference attributeName="JER_CUENTA_N5" hidden="true"/>
+          <attributeReference attributeName="JER_CUENTA_N6" hidden="true"/>
+          <attributeReference attributeName="Cuenta" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+    </sharedDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="176" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="480"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="false" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="180" y="400"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape modelObjectName="Projection_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+        <upperLeftCorner x="794" y="343"/>
+      </shape>
+      <shape modelObjectName="DIM_OFICINA_VENTA" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="28" y="130"/>
+      </shape>
+      <shape modelObjectName="DIM_ORGANIZACION_VENTA" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="10" y="789"/>
+      </shape>
+      <shape modelObjectName="DIM_SOCIEDAD_CO" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1118" y="22"/>
+      </shape>
+      <shape modelObjectName="DIM_GRUPO_MATERIAL" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1125" y="288"/>
+      </shape>
+      <shape modelObjectName="DIM_MATERIAL" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1203" y="567"/>
+      </shape>
+      <shape modelObjectName="DIM_CLIENTE2" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="29" y="178"/>
+      </shape>
+      <shape modelObjectName="DIM_PAIS" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1281" y="39"/>
+      </shape>
+      <shape modelObjectName="DIM_DIVISION_COMERCIAL" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="-41" y="635"/>
+      </shape>
+      <shape modelObjectName="DIM_CUENTA" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1775" y="30"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

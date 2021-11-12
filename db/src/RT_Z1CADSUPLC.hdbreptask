@@ -1,0 +1,74 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/RT_Z1BOUNINEG.hdbreptask:workspace" Description="" Type="REALTIME" DropTargetTableIfExists="FALSE" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="false" RemoteSourceName="HANA_ERP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;Z1CADSUPLC&quot;" SourceDisplayName="Z1CADSUPLC">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="Z1CADSUPLC">
+      <TargetColumns>
+        <TargetColumn Name="BUKRS" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="ZCDCAD" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="ZCDSCAD" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="ZCDCADLC" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="ZKUNNR" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZPAIS" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZREGION" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZPROVINCIA" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZCOMUNA" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZBKBUR" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZCLASIF1" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZNOMLOC" Datatype="NVARCHAR" Length="50" Precision="50" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZSCANTRACK" Datatype="NVARCHAR" Length="25" Precision="25" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+      <Annotations Key="sap.im.properties" Value="">
+        <Annotation Key="truncateTable" Value="FALSE">
+        </Annotation>
+      </Annotations>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="Z1CADSUPLC" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;Z1CADSUPLC&quot;" FilterExpression="" ReplicationBehavior="InitAndRealtime" VTObjectName="Z1CADSUPLC">
+      <TargetColumns>
+        <TargetColumn Name="BUKRS" ProjectionExpression="&quot;BUKRS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZCDCAD" ProjectionExpression="&quot;ZCDCAD&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZCDSCAD" ProjectionExpression="&quot;ZCDSCAD&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZCDCADLC" ProjectionExpression="&quot;ZCDCADLC&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZKUNNR" ProjectionExpression="&quot;ZKUNNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZPAIS" ProjectionExpression="&quot;ZPAIS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZREGION" ProjectionExpression="&quot;ZREGION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZPROVINCIA" ProjectionExpression="&quot;ZPROVINCIA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZCOMUNA" ProjectionExpression="&quot;ZCOMUNA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZBKBUR" ProjectionExpression="&quot;ZBKBUR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZCLASIF1" ProjectionExpression="&quot;ZCLASIF1&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZNOMLOC" ProjectionExpression="&quot;ZNOMLOC&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZSCANTRACK" ProjectionExpression="&quot;ZSCANTRACK&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

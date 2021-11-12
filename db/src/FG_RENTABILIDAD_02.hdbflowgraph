@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="63320bc1dc51f80bd95b87f079bda645" name="FG_RENTABILIDAD_02" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="3f6e8d1c9a882717d231cd22a5e0ec39" key="sap.afm.layout">
+    <annotations xmi:id="ee0a946a620af18ca0b0e808209cfaaa" key="x" value="10"/>
+    <annotations xmi:id="b2f746ec178dab1e7c81dc389f73b73e" key="y" value="10"/>
+    <annotations xmi:id="15dfca5149b0c812a7f83714d9d077a0" key="width" value="100"/>
+    <annotations xmi:id="c91650efaa79c7d2657a2cb6729fc2e7" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="dba4a7e3696580f9d935edb2c7a8e367" key="sap.afm.palette">
+    <annotations xmi:id="01f37dbb435a036427d9ced69c08e439" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="5fab983a869c31d0da5b20275367e899" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="9751ff72a23c726557e4c68d9a374d91" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="71ed8ee21e295b4a2a9b4147c2816e46" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="18876c34541b60f29de4be0cf7ed37f9" key="sap.im.taskPartitions">
+    <annotations xmi:id="b2b4f5ca8bb31fba8ca629745cf8e76c" key="sap.im.partition">
+      <annotations xmi:id="ad50cff8f008e8ab6f97c900be40d39a" key="name" value="01"/>
+      <annotations xmi:id="1d7fdcecb41f495bb90aff92899c243c" key="value" value="'001'"/>
+    </annotations>
+    <annotations xmi:id="055b66ef5c8a3c3ecfb2a37df12de392" key="sap.im.partition">
+      <annotations xmi:id="49bac353abf1c2b3cc7506520c053134" key="name" value="02"/>
+      <annotations xmi:id="a2936197d594813f478e8066802296dd" key="value" value="'002'"/>
+    </annotations>
+    <annotations xmi:id="49b1e576c7cd24484849003c1dc76f63" key="sap.im.partition">
+      <annotations xmi:id="399fca1e400393fb7c6dab88018c9229" key="name" value="03"/>
+      <annotations xmi:id="0b81b9fb9afb2778c41a25b2fc252e9a" key="value" value="'003'"/>
+    </annotations>
+    <annotations xmi:id="730895e3896830674274184c83c9f0c7" key="sap.im.partition">
+      <annotations xmi:id="5f384fc0b7e552c73a259af7ada29478" key="name" value="04"/>
+      <annotations xmi:id="93d869d9ee5ebbc9e319b6b7a6cdda38" key="value" value="'004'"/>
+    </annotations>
+    <annotations xmi:id="dbd7c8d1a75a017876a7bf4d7eaac469" key="sap.im.partition">
+      <annotations xmi:id="8bfc4a9c566ea391d5b5eae8c6b52e35" key="name" value="05"/>
+      <annotations xmi:id="420961edb622d417002d1e2ececa6341" key="value" value="'005'"/>
+    </annotations>
+    <annotations xmi:id="d4009ac07651538132ba93ead97df170" key="sap.im.partition">
+      <annotations xmi:id="b372d979d78f388652b7a4ed7c4e5e0b" key="name" value="06"/>
+      <annotations xmi:id="9c26f00476cc8a0992bd1b5cbea29559" key="value" value="'006'"/>
+    </annotations>
+    <annotations xmi:id="08118bf58109a6beccaf886697e28123" key="sap.im.partition">
+      <annotations xmi:id="acb8c5e51549edba4abf12eb6dd8412c" key="name" value="07"/>
+      <annotations xmi:id="e3d6b2852f4dcb92f9ced1335ad49e6e" key="value" value="'007'"/>
+    </annotations>
+    <annotations xmi:id="7047c2cf66f76f057b107abe386d1599" key="sap.im.partition">
+      <annotations xmi:id="eb1a48c81979a81d045b81e095864519" key="name" value="08"/>
+      <annotations xmi:id="edc088bc229fb22a2481b7ff334e3cb8" key="value" value="'008'"/>
+    </annotations>
+    <annotations xmi:id="b1694659dc3faf0110978d61df8f2df6" key="sap.im.partition">
+      <annotations xmi:id="65b463797a935994734f6cb4cf9493ec" key="name" value="09"/>
+      <annotations xmi:id="2a6d8f7e46adaba5cdeae781e5bc5b9b" key="value" value="'009'"/>
+    </annotations>
+    <annotations xmi:id="eb13bc3150781565f57135d86aabb5b0" key="sap.im.partition">
+      <annotations xmi:id="197a96c07d4d4bb606c0cc97bc9ea493" key="name" value="10"/>
+      <annotations xmi:id="ea70b1e63603c7ddb4cbe1008052b686" key="value" value="'010'"/>
+    </annotations>
+    <annotations xmi:id="9a381f50a0d5a97c3f92060c5ea1774e" key="sap.im.partition">
+      <annotations xmi:id="9bfc45782820601ce25a3448401b5c8a" key="name" value="11"/>
+      <annotations xmi:id="d4fde224ed18e5187d6d6b2add9e21ff" key="value" value="'011'"/>
+    </annotations>
+    <annotations xmi:id="15baa56e549b0672dd529a37caa6ea87" key="sap.im.partition">
+      <annotations xmi:id="6522ca0490aa0f9fab03e68b92a25dff" key="name" value="12"/>
+      <annotations xmi:id="9742a2faaca220742c68070203f436a2" key="value" value="'012'"/>
+    </annotations>
+    <annotations xmi:id="b0d445332998341744d7a4d49f293794" key="sap.im.partition">
+      <annotations xmi:id="e4964105413e056cc585cb991609840e" key="name" value="HLP_RENTABILIDAD_02H"/>
+      <annotations xmi:id="991a61ad300600cafb23df7acb2f0483" key="value" value=""/>
+    </annotations>
+    <annotations xmi:id="e0bb6f310cd3eea66cba9e7ac35a7a55" key="source" value="RENTABILIDAD_02H"/>
+    <annotations xmi:id="842f435dbc56117041aa41fb451b7129" key="type" value="list"/>
+    <annotations xmi:id="f57be9013541e4e330da19393c85b065" key="attribute" value="PERIODO"/>
+  </annotations>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="f425abb3e162dd83560f9a165124274b" name="FG_RENTABILIDAD_02" type="TEMPLATE_TABLE" catalogObjectName="FG_RENTABILIDAD_02" dataLayout="COLUMN" truncateTable="true">
+    <annotations xmi:id="4c940bd2b348242b2d2c80964f51f523" key="sap.afm.layout">
+      <annotations xmi:id="207212303113ce5a27301b429b680543" key="x" value="650"/>
+      <annotations xmi:id="d8f45a5964fe662b6ea32c1543ae960b" key="y" value="187"/>
+      <annotations xmi:id="531bc89e8ccb465c938b7a722ef797b6" key="width" value="100"/>
+      <annotations xmi:id="cf3883608790aeeec9bed029eab04327" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="bcc5b1c65a65bfd378ea62a00220c452" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="4ba94ab6f6f97acd8f5758aab1463161" key="sap.afm.nodeInputs">
+      <annotations xmi:id="914fec31186fb8a092c44fa946a3db76" key="FG_RENTABILIDAD_02_Input" value="Filter1_Output"/>
+    </annotations>
+    <annotations xmi:id="e016cfac1fe5bb894111c3b415fb1101" key="sap.afm.nodeOutputs">
+      <annotations/>
+    </annotations>
+    <inputs name="FG_RENTABILIDAD_02_Input" kind="TABLE" xmi:id="b3dd84388d904279040deae4955e9e25">
+      <attributes xmi:id="5d9c6f0daa1a322685c1dd15de6d0694" name="SOCIEDAD_CO" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="8b56719ae0b4a91d53738916cf7720e3" name="PERIODO" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+      <attributes xmi:id="4c88cf253a47e9a414200ae43cc3db24" name="EJERCICIO" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="a99cddd2972975d906d2a97e6af23389" name="MONEDA_LOCAL" type="NVARCHAR" nullable="true" length="5" scale="0"/>
+      <attributes xmi:id="bee9fd66b116a1984b80c369cd692a4f" name="UNIDAD_MEDIDA" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+      <attributes xmi:id="ad18582a953a5dd6aa8b92c2dcb5654f" name="UMV" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+      <attributes xmi:id="1e3e71e798beb3c998f735a58c777399" name="EJERCICIO_PERIODO" type="VARCHAR" nullable="true" length="6" scale="0"/>
+      <attributes xmi:id="d3794a92f2293c0eb0551639200fe76a" name="ORGANIZACION_VENTA" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="bf4fbe5d23ae8745f5e767233e26b033" name="CUENTA" type="NVARCHAR" nullable="true" length="10" scale="0"/>
+      <attributes xmi:id="cd28f6dbd3102159206d4e7f8a4798b3" name="SOCIEDAD_FIx" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="2bdc6f2ddb91eaa1c021e4d37df2dd5f" name="DIVISION_COMERCIALx" type="NVARCHAR" nullable="true" length="2" scale="0"/>
+      <attributes xmi:id="7cd9e6d872a07c6efc78608f5809db64" name="GRUPO_MATERIALx" type="NVARCHAR" nullable="true" length="15" scale="0"/>
+      <attributes xmi:id="788bbe203c245811bf3c83f6290b6341" name="MATERIALx" type="NVARCHAR" nullable="true" length="18" scale="0"/>
+      <attributes xmi:id="988fd714cbb77f29ba360020d96ad32f" name="CLIENTEx" type="NVARCHAR" nullable="true" length="10" scale="0"/>
+      <attributes xmi:id="ad73d9b3101923a417bdd3099e473ebd" name="VENDEDORx" type="NVARCHAR" nullable="true" length="8" scale="0"/>
+      <attributes xmi:id="8f942f1eaca1794d7b68e03f21a0280e" name="OFICINA_VENTAx" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="d788816f898087a0109f59b9caca9ea9" name="SECTORx" type="NVARCHAR" nullable="true" length="2" scale="0"/>
+      <attributes xmi:id="ee0259bd31c5aea773c346670660f740" name="AREA_NEGOCIOx" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="b146e31108dc64616bcd7b3501d35f1a" name="CANAL_DISTRIBUCIONx" type="NVARCHAR" nullable="true" length="2" scale="0"/>
+      <attributes xmi:id="a1c30a08179319bf4b875b424bab3aa5" name="PAIS_ID" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+      <attributes xmi:id="dd0de505269d76f0c58135757c580f65" name="MATERIAL_ATTR_TIPO_MATERIAL" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="461d98b637e151368a56ec3b569e912a" name="MATERIAL_ATTR_MARCA" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="3e51bcf4bf0dfd6a3ff9e97ffaab1a6c" name="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="1349cf4a6c0bfa0be862700d07ba0dc7" name="MATERIAL_ATTR_AGRUPACION_ESPECIAL" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="719c9ba3e34dd1dd442e0eaf9e7335d2" name="MATERIAL_ATTR_ESTACIONALIDAD" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="755e5aaf41049052a9e1f2b6a941ec15" name="MATERIAL_ATTR_BLOQUEO" type="NVARCHAR" nullable="true" length="2" scale="0"/>
+      <attributes xmi:id="4015124ff15a9fa81236ba277d30ab8c" name="MATERIAL_ID_TEXT" type="NVARCHAR" nullable="true" length="72" scale="0"/>
+      <attributes xmi:id="901dd7acc440750964328e4f396ad661" name="VENDEDOR_ID_TEXT" type="VARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="64987891582e3e3185b05116b2015091" name="CLIENTE_ATTR_CANAL_COMERCIAL" type="NVARCHAR" nullable="true" length="12" scale="0"/>
+      <attributes xmi:id="480521ae5c9ef83b2c992763009acae0" name="CANAL_COMERCIAL_TEXT" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="11d0aceff58239fba3effb650c61fb6a" name="CANAL_JER_NIVEL1" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="41496ec60da30f3b0fd725a1cee8ae26" name="CANAL_JER_NIVEL2" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="b972584c1b3832c475fb205e663280fa" name="CANAL_JER_NIVEL3" type="VARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="8b1874b95e2c75733a18e40aa950f442" name="CANAL_JER_NIVEL4" type="VARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="9b7bd1264715b8ee0128c141fd6dc9cb" name="CANAL_JER_NIVEL5" type="VARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="08b538aa742c1c1f84051a5e98214f5d" name="CLIENTE_ATTR_LATITUD" type="DECIMAL" nullable="true" length="20" scale="13"/>
+      <attributes xmi:id="e5256e2b68456682d62682883637027d" name="CLIENTE_ATTR_LONGITUD" type="DECIMAL" nullable="true" length="20" scale="13"/>
+      <attributes xmi:id="50a19fdf7e2474067e777099cbfc760f" name="SALA_FISICA" type="NVARCHAR" nullable="true" length="10" scale="0"/>
+      <attributes xmi:id="20b7cd3195ab2df733bcb303faf96d2c" name="CLIENTE_JER_NIVEL6_1" type="VARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="5134f59988506a25c0ab973dec8fd5f0" name="CLIENTE_JER_NIVEL7" type="VARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="f2371efc30be7127e1480a5ccb56bdee" name="REGION_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="1f2d08780b25f8c30a06449b5a401bde" name="PROVINCIA_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="15f2de1c354fefbf40137013c663aa14" name="COMUNA_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="2bdcf38515cf54638fc5c8c3ef8c0fce" name="CLIENTE_JER_NIVEL1" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="f7fcfb6f9bd9199ed4de7eb67153fe52" name="CLIENTE_JER_NIVEL2" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="adfb465d062a04d352d2cc18c935620c" name="CLIENTE_JER_NIVEL3" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="6fa208d9e87ad5ed465e2e9caf5ad1c4" name="CLIENTE_JER_NIVEL4" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="0363749d483cfc2e9433f945b12d1af1" name="CLIENTE_JER_NIVEL5" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="06327c8f557114c0b715de19cd7b7ceb" name="CLIENTE_JER_NIVEL6" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="23da4d6c12c6759028d33a16c65559ee" name="CLIENTE_ATTR_CLIENTE_PADRE" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="9438ea48d4dd834fe394b0f3fd3dc26d" name="CLIENTE_ID_TEXT_1" type="VARCHAR" nullable="true" length="70" scale="0"/>
+      <attributes xmi:id="fbf15a912533eba55c865792ac12e229" name="CLIENTE_ID_TEXT_2" type="VARCHAR" nullable="true" length="70" scale="0"/>
+      <attributes xmi:id="78af23631f6232e7b885f51c456bfeaa" name="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1" type="NVARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="4145593b20d3d6c23ab0d95ebf0fb03f" name="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2" type="NVARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="7527c7e5cd126c49b4acca50e8403b5b" name="SECTOR_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="babf98f469ad8b91dbdb8e8d13641d29" name="DIVISION_COMERCIAL_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="28fb62b6c56e9e5dfd0c33d0b2f16cb0" name="OFICINA_JER_NIVEL1" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="b4ebdabd4769a93122c8fe682d8617db" name="OFICINA_JER_NIVEL2" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="0783bfb98ecfe84767d9c6d7346660ce" name="OFICINA_JER_NIVEL3" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="f217bd03b8bc679b0db8f213d44cc06f" name="OFICINA_JER_NIVEL4" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="babff0be3496a5a46182e77eb0f65059" name="OFICINA_JER_NIVEL5" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="5380017f08acb3608f2634b0d607fe6c" name="OFICINA_VENTA_ID_TEXT" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="fe9d978c185e85f3e4393030aacc3385" name="JER_CUENTA_N2_TEXT" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="f7f232e6a41b38d8e5d951f34e2f6aa2" name="CUENTA_ID_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="4432b1dd3d776c3b5872913ceb4b30a0" name="JER_CUENTA_N3_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="619c5f603ae89b24a0cf552558e8c17c" name="JER_CUENTA_N4_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="d4478647e12880f10ee1838e19ab18b4" name="JER_CUENTA_N5_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="85f550fb43330036c943a90b5a3cc0df" name="JER_CUENTA_N6_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="564d9754dc6b0fb97a08994a7515d6fe" name="JER_CUENTA_N7_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="d70ac05d8c47f7c9e940fa6372b742d5" name="JER_CUENTA_N8_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="3487fec2441ef7db111703743290c2ee" name="AREA_NEGOCIO_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="882ad0ec68d326855411da424722baca" name="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="3d03f65ca3d2762351324db050f1242c" name="GRUPO_MATERIAL_ATTR_CATEGORIA" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="898de5e00f553bdaaa227dd1f5e6610e" name="CATEGORIA_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="44682cbd4d5af8500a6b4867d7b13193" name="UNIDAD_NEGOCIO_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="47931e1e5a8760ec238053938a237069" name="GRUPO_MATERIAL_ID_TEXT" type="VARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="1dfd57376db586c553e7c82dc593a8ee" name="CANAL_DISTRIBUCION_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="1f7f84e33f1a40b1b6fb60e3323163c9" name="PAIS_TEXT" type="NVARCHAR" nullable="true" length="15" scale="0"/>
+      <attributes xmi:id="c5956fd6937ad28e99f2aea91f90f52e" name="DESCRIPT" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="34c3da909bb2401508feca67a27f9de8" name="DESCRIPT_1" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="92e379bcdc93f1c6a2b8694af4d5c091" name="FECHA_PROCESO" type="DATE" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="cacf971c9fb490ab86394e291bf8b519" name="HORA_UTC" type="TIME" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="82a1f745105c337be788a191ae3228cc" name="VALOR_PPTO" type="DECIMAL" nullable="true" length="15" scale="2"/>
+      <attributes xmi:id="e0c58fd59ae483c457ea5031aa6fbec3" name="VOLUMEN_PPTO" type="DECIMAL" nullable="true" length="15" scale="3"/>
+      <attributes xmi:id="4e10f94e6c072bd5140528bd51148b54" name="VOLUMEN_REAL" type="DECIMAL" nullable="true" length="15" scale="3"/>
+      <attributes xmi:id="3f8046d2eec90795cc3e44267e771635" name="VOLUMEN_UMV_REAL" type="DECIMAL" nullable="true" length="15" scale="3"/>
+      <attributes xmi:id="8ff4d66a5705ee99464dd126bd6f41f7" name="VALOR_REAL_ML" type="DECIMAL" nullable="true" length="15" scale="2"/>
+      <attributes xmi:id="886e21bcf5c852869f634a6ef06b8dd1" name="VALOR_REAL_MT" type="DECIMAL" nullable="true" length="15" scale="2"/>
+      <attributes xmi:id="a47a2953a857d1ede385bcd96ac4a55f" name="Volumen_KG" type="DECIMAL" nullable="true" length="18" scale="3"/>
+      <attributes xmi:id="53e2e3a7b08054d9aad401460f9575b5" name="ZZCDCLASIF" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+      <attributes xmi:id="5d90a770523fa25def0f10a3cb4eb592" name="ZZCDCLASIF_TEXTO" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+    </inputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:FilterNode" xmi:id="f92affaad54eee09c3af0aac880ae5bf" name="Filter1" expression="&quot;Filter1_Input&quot;.&quot;EJERCICIO&quot; > LEFT(NOW(),4) - 3">
+    <annotations xmi:id="6aaec89067c5441c9ea7156dd8641650" key="sap.afm.description" value=""/>
+    <annotations xmi:id="1c7e18c15b8b71d9073f439feba8c15c" key="sap.afm.displayName" value="Filter"/>
+    <annotations xmi:id="e8787ea864c0c76bbd8112a826f4b6a0" key="sap.afm.layout">
+      <annotations xmi:id="f5f40001cef394e2f1f10d627d051239" key="x" value="379"/>
+      <annotations xmi:id="380bc83299e30d61cef30bba51533ab8" key="y" value="169"/>
+      <annotations xmi:id="c0eaf529d6e8202d6477212c1cdeeac9" key="width" value="100"/>
+      <annotations xmi:id="c39205d5b9fd95d9c67fe80a867aee83" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="ced87e65f8f6080a7c04aac3936dfe0a" key="sap.afm.nodeType" value="FilterNode"/>
+    <annotations xmi:id="68b4c86e0b28474e77bfa5610404a528" key="sap.afm.nodeInputs">
+      <annotations xmi:id="6d0dcd14015ff360884b9fe33aa8f6af" key="Filter1_Input" value="RENTABILIDAD_02_Output"/>
+    </annotations>
+    <annotations xmi:id="83291c24d23e2d874b81e0c0cee63ac3" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="22abfbdfa73e27254a5b91d1aae90b54" key="Filter1_Output" value="FG_RENTABILIDAD_02_Input"/>
+    </annotations>
+    <inputs name="Filter1_Input" xmi:id="e93092323fdc2411f8cec0c410ee2342" kind="TABLE">
+      <attributes xmi:id="34bd4d78b93561169fc63d1ceb1e3b9c" name="SOCIEDAD_CO" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="dfde0e67e7455d06d8cb013a3c7c6dd4" name="PERIODO" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+      <attributes xmi:id="ed9ad99693d6dcd1afcf5df55356d96e" name="EJERCICIO" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="8163fe0b1a228db14ab727692edd5835" name="MONEDA_LOCAL" type="NVARCHAR" nullable="true" length="5" scale="0"/>
+      <attributes xmi:id="7ed7f376c820788b922f5cb4bfc77d7d" name="UNIDAD_MEDIDA" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+      <attributes xmi:id="593c136361e62833b6e02c0b71d606ef" name="UMV" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+      <attributes xmi:id="4d8f1ce6340342955530d58c0a5d1508" name="EJERCICIO_PERIODO" type="VARCHAR" nullable="true" length="6" scale="0"/>
+      <attributes xmi:id="0f7428c02072ffbf6f510d03f988e2f2" name="ORGANIZACION_VENTA" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="9ffa636fd4d930706758a5d73188f673" name="CUENTA" type="NVARCHAR" nullable="true" length="10" scale="0"/>
+      <attributes xmi:id="228179f10ea18f8441ccb0ac427aaea3" name="SOCIEDAD_FIx" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="5e9d1c696bd04252d59cf805a775d3f7" name="DIVISION_COMERCIALx" type="NVARCHAR" nullable="true" length="2" scale="0"/>
+      <attributes xmi:id="56a628e78c6071f6eac0f731d8ca4f92" name="GRUPO_MATERIALx" type="NVARCHAR" nullable="true" length="15" scale="0"/>
+      <attributes xmi:id="629fb796882de6a6f9d5ad7774af165a" name="MATERIALx" type="NVARCHAR" nullable="true" length="18" scale="0"/>
+      <attributes xmi:id="d5139d62faa5e8463331d3d2d26986fe" name="CLIENTEx" type="NVARCHAR" nullable="true" length="10" scale="0"/>
+      <attributes xmi:id="959a35f0cc4b740f44da43f40bbb7041" name="VENDEDORx" type="NVARCHAR" nullable="true" length="8" scale="0"/>
+      <attributes xmi:id="49b9fee714b70c3d36eed513569426ae" name="OFICINA_VENTAx" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="e50090f08300d60ae7c0a06330f74ab6" name="SECTORx" type="NVARCHAR" nullable="true" length="2" scale="0"/>
+      <attributes xmi:id="b8aabbe06e66d9ef84b39be7117ba4ab" name="AREA_NEGOCIOx" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="294e4df13e5c6bb3abe3b93f594f8d43" name="CANAL_DISTRIBUCIONx" type="NVARCHAR" nullable="true" length="2" scale="0"/>
+      <attributes xmi:id="d4890e465e9ba683ff475a79f206b894" name="PAIS_ID" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+      <attributes xmi:id="399f49936ee57a6a4f8caa96118c9c50" name="MATERIAL_ATTR_TIPO_MATERIAL" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="18e33a5924b8de9e441f9620c3bb967b" name="MATERIAL_ATTR_MARCA" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="d06df79738c7582131158d8049dfa77c" name="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="60d0fa52bf9fd801e548497513b65283" name="MATERIAL_ATTR_AGRUPACION_ESPECIAL" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="cc9e2ce7e925ff1598de2c65c12b327d" name="MATERIAL_ATTR_ESTACIONALIDAD" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="28d9171f4f3f475d864397f06db9099f" name="MATERIAL_ATTR_BLOQUEO" type="NVARCHAR" nullable="true" length="2" scale="0"/>
+      <attributes xmi:id="1858bdae73680d81630d04034513cb69" name="MATERIAL_ID_TEXT" type="NVARCHAR" nullable="true" length="72" scale="0"/>
+      <attributes xmi:id="0470cd335be954555a62fe51aaa8e5a7" name="VENDEDOR_ID_TEXT" type="VARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="1895506a69c0993f1138f8f9def29acb" name="CLIENTE_ATTR_CANAL_COMERCIAL" type="NVARCHAR" nullable="true" length="12" scale="0"/>
+      <attributes xmi:id="bd44304dc09ad50b9a7846b6e20b63cc" name="CANAL_COMERCIAL_TEXT" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="98b834e339c924e023c47d314977448d" name="CANAL_JER_NIVEL1" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="80a88fe03f0526241714ba8b31535637" name="CANAL_JER_NIVEL2" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="aec94af1315914a69c4558c9abea8b67" name="CANAL_JER_NIVEL3" type="VARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="2e12611fc62ee793b996c9542e804979" name="CANAL_JER_NIVEL4" type="VARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="af21a175323e8876363e20dff8577a6c" name="CANAL_JER_NIVEL5" type="VARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="e9e7d5480aa208e99fa1c9653fc852a8" name="CLIENTE_ATTR_LATITUD" type="DECIMAL" nullable="true" length="20" scale="13"/>
+      <attributes xmi:id="688fb22a8f957bda8d1084e950f03b67" name="CLIENTE_ATTR_LONGITUD" type="DECIMAL" nullable="true" length="20" scale="13"/>
+      <attributes xmi:id="2d6a47c91599d3bb1c11473c57bff4b3" name="SALA_FISICA" type="NVARCHAR" nullable="true" length="10" scale="0"/>
+      <attributes xmi:id="9150f7ea68f565bd7f94b119cc645ad8" name="CLIENTE_JER_NIVEL6_1" type="VARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="d7786c8b1765f5e32bf715b44df47a12" name="CLIENTE_JER_NIVEL7" type="VARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="06b25f8da6269ae563905b43f31c485a" name="REGION_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="004096490b549d1e10454e2f3bf2b92c" name="PROVINCIA_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="d1fc5830f3e920964fd79f05ade43708" name="COMUNA_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="8f36dd3a4d55b6b127c0c680b6bd44f2" name="CLIENTE_JER_NIVEL1" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="0a6162e12ab81405b4d084f148491f1c" name="CLIENTE_JER_NIVEL2" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="cab298afedf8852b1066c3042c711ede" name="CLIENTE_JER_NIVEL3" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="477f8fa86386606148eed379dd5d3fb7" name="CLIENTE_JER_NIVEL4" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="5be0d23d71bf18454327cc2461a06fb0" name="CLIENTE_JER_NIVEL5" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="1fa615790c81d9078232616ba364fe2b" name="CLIENTE_JER_NIVEL6" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="2bcd20eb5d8a61ea29fc58405f6e18d8" name="CLIENTE_ATTR_CLIENTE_PADRE" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="cf8f8f3a2e86b14590f60705bab02de5" name="CLIENTE_ID_TEXT_1" type="VARCHAR" nullable="true" length="70" scale="0"/>
+      <attributes xmi:id="ecfcfd89da96f9ece5fabd28d9736465" name="CLIENTE_ID_TEXT_2" type="VARCHAR" nullable="true" length="70" scale="0"/>
+      <attributes xmi:id="bca9c80e6d4d11d22db1d77f8f2a4252" name="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1" type="NVARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="2890d8a29b7341d396b9a3f7aee0945d" name="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2" type="NVARCHAR" nullable="true" length="50" scale="0"/>
+      <attributes xmi:id="ad00acd9c504fe2812dfbfc3d15d0bab" name="SECTOR_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="67c9c68d6411dd47d071478e31955696" name="DIVISION_COMERCIAL_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="44dacfc6411d0f07d631ebc8accaf111" name="OFICINA_JER_NIVEL1" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="40b0e98fdfef6a2939be0c0b7e75c5be" name="OFICINA_JER_NIVEL2" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="b9e97896b4c6cf3b10c05a5d51f63d19" name="OFICINA_JER_NIVEL3" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="ee5d1be9ead698f9a581a2895ddc17de" name="OFICINA_JER_NIVEL4" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="4ae0bb3be2abf37d0d44fcd3c6dc77b8" name="OFICINA_JER_NIVEL5" type="NVARCHAR" nullable="true" length="24" scale="0"/>
+      <attributes xmi:id="5cd3ecc7e4b0006cf14ebe7416745df9" name="OFICINA_VENTA_ID_TEXT" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="52690aab8d93578f0751a7da02b1c4a7" name="JER_CUENTA_N2_TEXT" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="d0c423d234167f254d9c1a7c63be8d71" name="CUENTA_ID_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="962847dabf2108c10f932b6fed766298" name="JER_CUENTA_N3_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="7dbe1ed71c63a2999da14307914f8e4c" name="JER_CUENTA_N4_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="b2afa5cd3327491a1859fd263105a4cd" name="JER_CUENTA_N5_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="34870f8288e7486d411f340817f086ff" name="JER_CUENTA_N6_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="5d6dfaf806f342d0aa3914173b0eac3a" name="JER_CUENTA_N7_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="f6ed039403e228c17198207523a586b9" name="JER_CUENTA_N8_TEXT" type="VARCHAR" nullable="true" length="35" scale="0"/>
+      <attributes xmi:id="8fd5c7d1c2666a18f7d0d3239a415b75" name="AREA_NEGOCIO_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="2dc3257b2810c94ad537c1310fb720a0" name="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="0fb5d2e445c6a388cc7c7cd3bba5dad3" name="GRUPO_MATERIAL_ATTR_CATEGORIA" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="461a9b30cff14f60a932a6882353d52b" name="CATEGORIA_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="379c8260dcc94d522712945d3a5eae79" name="UNIDAD_NEGOCIO_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="a9e85e6bbd48c1bf07249e36b6c2a35d" name="GRUPO_MATERIAL_ID_TEXT" type="VARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="33667b63664072cf761fa94d9d348174" name="CANAL_DISTRIBUCION_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0"/>
+      <attributes xmi:id="0529c64a618f6bb335a954baef9ec7d9" name="PAIS_TEXT" type="NVARCHAR" nullable="true" length="15" scale="0"/>
+      <attributes xmi:id="d080b0dee7b9a2c0fe9c7e2c01955a06" name="DESCRIPT" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="4786c376ac611f2efe4c74beee0ec3b8" name="DESCRIPT_1" type="NVARCHAR" nullable="true" length="40" scale="0"/>
+      <attributes xmi:id="4901cfa068004394ae1e2a9096fb91b5" name="FECHA_PROCESO" type="DATE" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="269dd5e7d20cf7c0a4191ea0dd232fee" name="HORA_UTC" type="TIME" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="cf637f6b39884335c2c6ddaeef6700df" name="VALOR_PPTO" type="DECIMAL" nullable="true" length="15" scale="2"/>
+      <attributes xmi:id="2fe314c18225c767d3c23f31a555ae91" name="VOLUMEN_PPTO" type="DECIMAL" nullable="true" length="15" scale="3"/>
+      <attributes xmi:id="82bc5465da067b1ec4089e5f3d17de84" name="VOLUMEN_REAL" type="DECIMAL" nullable="true" length="15" scale="3"/>
+      <attributes xmi:id="caff4f3b68f081542534d2a31cbfb564" name="VOLUMEN_UMV_REAL" type="DECIMAL" nullable="true" length="15" scale="3"/>
+      <attributes xmi:id="beb3a11da259f038a0d52b011b463299" name="VALOR_REAL_ML" type="DECIMAL" nullable="true" length="15" scale="2"/>
+      <attributes xmi:id="6d76f2b09165291803d4339529b168ee" name="VALOR_REAL_MT" type="DECIMAL" nullable="true" length="15" scale="2"/>
+      <attributes xmi:id="145c50c1577469cc4abf2ee605e3f187" name="Volumen_KG" type="DECIMAL" nullable="true" length="18" scale="3"/>
+      <attributes xmi:id="c185205123edcc16b4ab36f983896141" name="ZZCDCLASIF" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+      <attributes xmi:id="38031dfb0832c5ea0c76ca02dc928c4f" name="ZZCDCLASIF_TEXTO" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+    </inputs>
+    <outputs name="Filter1_Output" xmi:id="45f9550a383b935492e3084af0fd7931" kind="TABLE">
+      <attributes xmi:id="0a2fbdf3034c52844a5ae4e9cf3eb973" name="SOCIEDAD_CO" type="NVARCHAR" nullable="true" length="4" scale="0" expression="SOCIEDAD_CO"/>
+      <attributes xmi:id="397c0c465818b2a9a655f39bab66fd12" name="PERIODO" type="NVARCHAR" nullable="true" length="3" scale="0" expression="PERIODO"/>
+      <attributes xmi:id="8d6625cb121d8b90a5db1914041fabb0" name="EJERCICIO" type="NVARCHAR" nullable="true" length="4" scale="0" expression="EJERCICIO"/>
+      <attributes xmi:id="871dfbdfbb9d20ac196343bf624f65f7" name="MONEDA_LOCAL" type="NVARCHAR" nullable="true" length="5" scale="0" expression="MONEDA_LOCAL"/>
+      <attributes xmi:id="33da89f898d8e386171a30d936a7e943" name="UNIDAD_MEDIDA" type="NVARCHAR" nullable="true" length="3" scale="0" expression="UNIDAD_MEDIDA"/>
+      <attributes xmi:id="4088913e0fe1705ea0f959a93817e342" name="UMV" type="NVARCHAR" nullable="true" length="3" scale="0" expression="UMV"/>
+      <attributes xmi:id="ed267c90e4b6351d0d5ddf0586283f80" name="EJERCICIO_PERIODO" type="VARCHAR" nullable="true" length="6" scale="0" expression="EJERCICIO_PERIODO"/>
+      <attributes xmi:id="21c5140e4289fde08864286d7c56b7bc" name="ORGANIZACION_VENTA" type="NVARCHAR" nullable="true" length="4" scale="0" expression="ORGANIZACION_VENTA"/>
+      <attributes xmi:id="136631f5d05539534f529094cbba354d" name="CUENTA" type="NVARCHAR" nullable="true" length="10" scale="0" expression="CUENTA"/>
+      <attributes xmi:id="36b69a77cb62471bf3335de6ea7cd583" name="SOCIEDAD_FIx" type="NVARCHAR" nullable="true" length="4" scale="0" expression="SOCIEDAD_FIx"/>
+      <attributes xmi:id="37044cfa9feb52ab3b71702ce9f759a6" name="DIVISION_COMERCIALx" type="NVARCHAR" nullable="true" length="2" scale="0" expression="DIVISION_COMERCIALx"/>
+      <attributes xmi:id="101d8fe0dc60a903a8d0d7512235810d" name="GRUPO_MATERIALx" type="NVARCHAR" nullable="true" length="15" scale="0" expression="GRUPO_MATERIALx"/>
+      <attributes xmi:id="94554b608c1c27838b57bef139ff272d" name="MATERIALx" type="NVARCHAR" nullable="true" length="18" scale="0" expression="MATERIALx"/>
+      <attributes xmi:id="84266cd53d0c23e2a8f67264c9b5e8a2" name="CLIENTEx" type="NVARCHAR" nullable="true" length="10" scale="0" expression="CLIENTEx"/>
+      <attributes xmi:id="41ac2449c02a5af342bd061cb43a1dcc" name="VENDEDORx" type="NVARCHAR" nullable="true" length="8" scale="0" expression="VENDEDORx"/>
+      <attributes xmi:id="7da830cd617dd23343238791a72afd82" name="OFICINA_VENTAx" type="NVARCHAR" nullable="true" length="4" scale="0" expression="OFICINA_VENTAx"/>
+      <attributes xmi:id="d5c3a2a04256746fb2771e8558000427" name="SECTORx" type="NVARCHAR" nullable="true" length="2" scale="0" expression="SECTORx"/>
+      <attributes xmi:id="cde01eabab89f624965c83205526bff3" name="AREA_NEGOCIOx" type="NVARCHAR" nullable="true" length="4" scale="0" expression="AREA_NEGOCIOx"/>
+      <attributes xmi:id="caf694a1b4702f1473e8b7dcf0e3bb4a" name="CANAL_DISTRIBUCIONx" type="NVARCHAR" nullable="true" length="2" scale="0" expression="CANAL_DISTRIBUCIONx"/>
+      <attributes xmi:id="7501e0f9b1230e42acfdc94bbfc403eb" name="PAIS_ID" type="NVARCHAR" nullable="true" length="3" scale="0" expression="PAIS_ID"/>
+      <attributes xmi:id="acce63920182f66822091cceade81a12" name="MATERIAL_ATTR_TIPO_MATERIAL" type="NVARCHAR" nullable="true" length="4" scale="0" expression="MATERIAL_ATTR_TIPO_MATERIAL"/>
+      <attributes xmi:id="cc3a66025f40d035f236f0e281997be9" name="MATERIAL_ATTR_MARCA" type="NVARCHAR" nullable="true" length="30" scale="0" expression="MATERIAL_ATTR_MARCA"/>
+      <attributes xmi:id="08620c2589c8f8283cb54c74e76cc01f" name="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" type="NVARCHAR" nullable="true" length="30" scale="0" expression="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+      <attributes xmi:id="55c5136a21bb375b13a3e3669ea26815" name="MATERIAL_ATTR_AGRUPACION_ESPECIAL" type="NVARCHAR" nullable="true" length="30" scale="0" expression="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+      <attributes xmi:id="9277c388c728088da34ce2ef0d6f692f" name="MATERIAL_ATTR_ESTACIONALIDAD" type="NVARCHAR" nullable="true" length="30" scale="0" expression="MATERIAL_ATTR_ESTACIONALIDAD"/>
+      <attributes xmi:id="d5ebfee2acd1fc7092992b429da6b155" name="MATERIAL_ATTR_BLOQUEO" type="NVARCHAR" nullable="true" length="2" scale="0" expression="MATERIAL_ATTR_BLOQUEO"/>
+      <attributes xmi:id="659b0bd1570cf0f8738b05c9b087129b" name="MATERIAL_ID_TEXT" type="NVARCHAR" nullable="true" length="72" scale="0" expression="MATERIAL_ID_TEXT"/>
+      <attributes xmi:id="4dd325f29a8dcb8c4e4202df661305ef" name="VENDEDOR_ID_TEXT" type="VARCHAR" nullable="true" length="50" scale="0" expression="VENDEDOR_ID_TEXT"/>
+      <attributes xmi:id="b4eab4b5711e3d226aa5fc7b43728371" name="CLIENTE_ATTR_CANAL_COMERCIAL" type="NVARCHAR" nullable="true" length="12" scale="0" expression="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+      <attributes xmi:id="dd2c51853dc8955ffc3e4b14a326261c" name="CANAL_COMERCIAL_TEXT" type="NVARCHAR" nullable="true" length="30" scale="0" expression="CANAL_COMERCIAL_TEXT"/>
+      <attributes xmi:id="4e7db7b68c5675da2ff321e6b582ae88" name="CANAL_JER_NIVEL1" type="NVARCHAR" nullable="true" length="24" scale="0" expression="CANAL_JER_NIVEL1"/>
+      <attributes xmi:id="ad7e7aa830cda636b70bfd2410c6497e" name="CANAL_JER_NIVEL2" type="NVARCHAR" nullable="true" length="24" scale="0" expression="CANAL_JER_NIVEL2"/>
+      <attributes xmi:id="f44fb11b5828880879481b20f61a498f" name="CANAL_JER_NIVEL3" type="VARCHAR" nullable="true" length="50" scale="0" expression="CANAL_JER_NIVEL3"/>
+      <attributes xmi:id="d597afbc744f1053f4197542297112b8" name="CANAL_JER_NIVEL4" type="VARCHAR" nullable="true" length="24" scale="0" expression="CANAL_JER_NIVEL4"/>
+      <attributes xmi:id="ed939f64b53e0eda6946eafb1f2d6f4b" name="CANAL_JER_NIVEL5" type="VARCHAR" nullable="true" length="24" scale="0" expression="CANAL_JER_NIVEL5"/>
+      <attributes xmi:id="ef5ef4918f372b3101453121c800834c" name="CLIENTE_ATTR_LATITUD" type="DECIMAL" nullable="true" length="20" scale="13" expression="CLIENTE_ATTR_LATITUD"/>
+      <attributes xmi:id="c75acd216df4848f751e5f625576c77a" name="CLIENTE_ATTR_LONGITUD" type="DECIMAL" nullable="true" length="20" scale="13" expression="CLIENTE_ATTR_LONGITUD"/>
+      <attributes xmi:id="1744c3fbeef59f71695e58b67bf1b22c" name="SALA_FISICA" type="NVARCHAR" nullable="true" length="10" scale="0" expression="SALA_FISICA"/>
+      <attributes xmi:id="30ecee8cec75bc4afa7135871c4f6285" name="CLIENTE_JER_NIVEL6_1" type="VARCHAR" nullable="true" length="50" scale="0" expression="CLIENTE_JER_NIVEL6_1"/>
+      <attributes xmi:id="7f43469ca5c4a21c660728d5781512f7" name="CLIENTE_JER_NIVEL7" type="VARCHAR" nullable="true" length="50" scale="0" expression="CLIENTE_JER_NIVEL7"/>
+      <attributes xmi:id="e461b6459f14357b8218b198de0e82d8" name="REGION_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0" expression="REGION_TEXT"/>
+      <attributes xmi:id="e79f5a8360eca0612a00f632bc55dee9" name="PROVINCIA_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0" expression="PROVINCIA_TEXT"/>
+      <attributes xmi:id="ab5f475133233d4f252a1bc6bfc328a2" name="COMUNA_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0" expression="COMUNA_TEXT"/>
+      <attributes xmi:id="8387079eeafeabd152cbe7c55a7c4574" name="CLIENTE_JER_NIVEL1" type="NVARCHAR" nullable="true" length="40" scale="0" expression="CLIENTE_JER_NIVEL1"/>
+      <attributes xmi:id="a9d486e8b9165162e18f3516d90845d6" name="CLIENTE_JER_NIVEL2" type="NVARCHAR" nullable="true" length="40" scale="0" expression="CLIENTE_JER_NIVEL2"/>
+      <attributes xmi:id="b10f71cacd70b324653c0e355953c8c2" name="CLIENTE_JER_NIVEL3" type="NVARCHAR" nullable="true" length="40" scale="0" expression="CLIENTE_JER_NIVEL3"/>
+      <attributes xmi:id="9f57b820ca77775d17bf4c4bf99bbc22" name="CLIENTE_JER_NIVEL4" type="NVARCHAR" nullable="true" length="40" scale="0" expression="CLIENTE_JER_NIVEL4"/>
+      <attributes xmi:id="be3dedccf95d9b9baf47fca17f57b60f" name="CLIENTE_JER_NIVEL5" type="NVARCHAR" nullable="true" length="40" scale="0" expression="CLIENTE_JER_NIVEL5"/>
+      <attributes xmi:id="6077141f2d6cf1823ce8438e2b312d35" name="CLIENTE_JER_NIVEL6" type="NVARCHAR" nullable="true" length="40" scale="0" expression="CLIENTE_JER_NIVEL6"/>
+      <attributes xmi:id="d00b1207415db1ea9f9ff64b39a242a7" name="CLIENTE_ATTR_CLIENTE_PADRE" type="VARCHAR" nullable="true" length="35" scale="0" expression="CLIENTE_ATTR_CLIENTE_PADRE"/>
+      <attributes xmi:id="cbd07a01cc7fb11f919eca994f0c2c69" name="CLIENTE_ID_TEXT_1" type="VARCHAR" nullable="true" length="70" scale="0" expression="CLIENTE_ID_TEXT_1"/>
+      <attributes xmi:id="f4b77172765bc6b06d26c5737d1917df" name="CLIENTE_ID_TEXT_2" type="VARCHAR" nullable="true" length="70" scale="0" expression="CLIENTE_ID_TEXT_2"/>
+      <attributes xmi:id="793c6ad93c6dd4580d92c65a315c3769" name="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1" type="NVARCHAR" nullable="true" length="50" scale="0" expression="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1"/>
+      <attributes xmi:id="96d5bb81c9d487a76e7f35977bb681af" name="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2" type="NVARCHAR" nullable="true" length="50" scale="0" expression="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2"/>
+      <attributes xmi:id="ba171a1cb6a1aa86095e023ab20f7147" name="SECTOR_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0" expression="SECTOR_TEXT"/>
+      <attributes xmi:id="26fae70d0867d2d183c6ff37477a4205" name="DIVISION_COMERCIAL_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0" expression="DIVISION_COMERCIAL_TEXT"/>
+      <attributes xmi:id="c248d22c848e4b0651b0e682f9dc18f7" name="OFICINA_JER_NIVEL1" type="NVARCHAR" nullable="true" length="24" scale="0" expression="OFICINA_JER_NIVEL1"/>
+      <attributes xmi:id="68735a7e0f34024475f03eba7b53375f" name="OFICINA_JER_NIVEL2" type="NVARCHAR" nullable="true" length="24" scale="0" expression="OFICINA_JER_NIVEL2"/>
+      <attributes xmi:id="2ebb93b99eb70a05aa4824ac985dc452" name="OFICINA_JER_NIVEL3" type="NVARCHAR" nullable="true" length="24" scale="0" expression="OFICINA_JER_NIVEL3"/>
+      <attributes xmi:id="f5c0d6c3a0e14ff5c60bd455b756a5a3" name="OFICINA_JER_NIVEL4" type="NVARCHAR" nullable="true" length="24" scale="0" expression="OFICINA_JER_NIVEL4"/>
+      <attributes xmi:id="2e8ac023715b6539bebda8d2a2a9bc9b" name="OFICINA_JER_NIVEL5" type="NVARCHAR" nullable="true" length="24" scale="0" expression="OFICINA_JER_NIVEL5"/>
+      <attributes xmi:id="5abb0f321664739d910b4ae8eeb76f15" name="OFICINA_VENTA_ID_TEXT" type="NVARCHAR" nullable="true" length="30" scale="0" expression="OFICINA_VENTA_ID_TEXT"/>
+      <attributes xmi:id="3f4aa88220c763368b0e0c0ed26acf0e" name="JER_CUENTA_N2_TEXT" type="NVARCHAR" nullable="true" length="40" scale="0" expression="JER_CUENTA_N2_TEXT"/>
+      <attributes xmi:id="6e64f98ae4f340cca2dc7e1e57c6b55f" name="CUENTA_ID_TEXT" type="VARCHAR" nullable="true" length="35" scale="0" expression="CUENTA_ID_TEXT"/>
+      <attributes xmi:id="edd55f285019e5064ae95d5cc5c6dc1d" name="JER_CUENTA_N3_TEXT" type="VARCHAR" nullable="true" length="35" scale="0" expression="JER_CUENTA_N3_TEXT"/>
+      <attributes xmi:id="51c8bcfce5a6e27fea7105d219115b48" name="JER_CUENTA_N4_TEXT" type="VARCHAR" nullable="true" length="35" scale="0" expression="JER_CUENTA_N4_TEXT"/>
+      <attributes xmi:id="6053ad03888e3b2162a44d2f4a46028d" name="JER_CUENTA_N5_TEXT" type="VARCHAR" nullable="true" length="35" scale="0" expression="JER_CUENTA_N5_TEXT"/>
+      <attributes xmi:id="35e294bb3220422a916b4f29b270a38d" name="JER_CUENTA_N6_TEXT" type="VARCHAR" nullable="true" length="35" scale="0" expression="JER_CUENTA_N6_TEXT"/>
+      <attributes xmi:id="5077169ce4710994fae104499508f6ea" name="JER_CUENTA_N7_TEXT" type="VARCHAR" nullable="true" length="35" scale="0" expression="JER_CUENTA_N7_TEXT"/>
+      <attributes xmi:id="dd62b2a4bad4d2c672675d1a506fd9dd" name="JER_CUENTA_N8_TEXT" type="VARCHAR" nullable="true" length="35" scale="0" expression="JER_CUENTA_N8_TEXT"/>
+      <attributes xmi:id="1be34c2777b59104cb6ee157d6ee4bf3" name="AREA_NEGOCIO_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0" expression="AREA_NEGOCIO_TEXT"/>
+      <attributes xmi:id="dbe927ac72356e5dd8bdb2f17202d1a9" name="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" type="NVARCHAR" nullable="true" length="4" scale="0" expression="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+      <attributes xmi:id="5df63d9a3d6ac0643d8820b6995ac788" name="GRUPO_MATERIAL_ATTR_CATEGORIA" type="NVARCHAR" nullable="true" length="4" scale="0" expression="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+      <attributes xmi:id="9c2b37f02eeae25d222c049d9f66ac03" name="CATEGORIA_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0" expression="CATEGORIA_TEXT"/>
+      <attributes xmi:id="4932ac20d65241e38450e259469b6215" name="UNIDAD_NEGOCIO_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0" expression="UNIDAD_NEGOCIO_TEXT"/>
+      <attributes xmi:id="452d9c4b280c7a12040a88ea8fad7c0a" name="GRUPO_MATERIAL_ID_TEXT" type="VARCHAR" nullable="true" length="32" scale="0" expression="GRUPO_MATERIAL_ID_TEXT"/>
+      <attributes xmi:id="5a8b81ec288cc6124f5114cc2c8caa3d" name="CANAL_DISTRIBUCION_TEXT" type="NVARCHAR" nullable="true" length="20" scale="0" expression="CANAL_DISTRIBUCION_TEXT"/>
+      <attributes xmi:id="f46a7cb01c9fea19ea4bb74b2c63894e" name="PAIS_TEXT" type="NVARCHAR" nullable="true" length="15" scale="0" expression="PAIS_TEXT"/>
+      <attributes xmi:id="efa1b0afce4219841682f61db266f344" name="DESCRIPT" type="NVARCHAR" nullable="true" length="40" scale="0" expression="DESCRIPT"/>
+      <attributes xmi:id="b6e481913b0109e0d8a1282aa9555fa6" name="DESCRIPT_1" type="NVARCHAR" nullable="true" length="40" scale="0" expression="DESCRIPT_1"/>
+      <attributes xmi:id="db01f9df0b02ed2630acd7158b30b7f9" name="FECHA_PROCESO" type="DATE" nullable="true" length="0" scale="0" expression="FECHA_PROCESO"/>
+      <attributes xmi:id="7329fe5cc277d69f06a23921f60602bd" name="HORA_UTC" type="TIME" nullable="true" length="0" scale="0" expression="HORA_UTC"/>
+      <attributes xmi:id="c32df056b1ca454c93a9439edd38edd9" name="VALOR_PPTO" type="DECIMAL" nullable="true" length="15" scale="2" expression="VALOR_PPTO"/>
+      <attributes xmi:id="20dc0e2e585bf65fab14d3b2de356870" name="VOLUMEN_PPTO" type="DECIMAL" nullable="true" length="15" scale="3" expression="VOLUMEN_PPTO"/>
+      <attributes xmi:id="8e830bb06d595d119e83d1371e4278c4" name="VOLUMEN_REAL" type="DECIMAL" nullable="true" length="15" scale="3" expression="VOLUMEN_REAL"/>
+      <attributes xmi:id="dec9828d1aa938d51285180eabfb019f" name="VOLUMEN_UMV_REAL" type="DECIMAL" nullable="true" length="15" scale="3" expression="VOLUMEN_UMV_REAL"/>
+      <attributes xmi:id="6c0e53067e6fa95f3b821047d5faf83d" name="VALOR_REAL_ML" type="DECIMAL" nullable="true" length="15" scale="2" expression="VALOR_REAL_ML"/>
+      <attributes xmi:id="5e58ec7b80d0f8bfc79e50503fbae250" name="VALOR_REAL_MT" type="DECIMAL" nullable="true" length="15" scale="2" expression="VALOR_REAL_MT"/>
+      <attributes xmi:id="0daded8c43723adc3c96a917e67398fa" name="Volumen_KG" type="DECIMAL" nullable="true" length="18" scale="3" expression="Volumen_KG"/>
+      <attributes xmi:id="3a81f3d075590061f077b229cf107273" name="ZZCDCLASIF" type="NVARCHAR" nullable="true" length="3" scale="0" expression="ZZCDCLASIF"/>
+      <attributes xmi:id="9470ffb0a69cd0bba1191fd36d181cfe" name="ZZCDCLASIF_TEXTO" type="NVARCHAR" nullable="true" length="30" scale="0" expression="ZZCDCLASIF_TEXTO"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="2f9214e8f3f7734a7eb3b821f298e9df" name="RENTABILIDAD_02H" type="CALCULATION_VIEW" catalogObjectName="SCP_CAROZZI_SAC.Rentabilidad::RENTABILIDAD_02H" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="cad5e609344c2ab44990733401a2f65c" key="sap.afm.description" value=""/>
+    <annotations xmi:id="25248b89648fbd503a43e2f6ffb5cfdd" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="278522aed70524da87eeccbd3973e518" key="sap.afm.layout">
+      <annotations xmi:id="6aefd3890ccea9c0c8e59df1e76e980e" key="x" value="229"/>
+      <annotations xmi:id="4cf9f7de31195cec0a96594b8b235918" key="y" value="200"/>
+      <annotations xmi:id="ffc3a795d8d1bbf64215541fa851ab00" key="width" value="100"/>
+      <annotations xmi:id="f1f97e83871ce50fc07d586dbe9a61ab" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="431af21017ba6c5fff12aac51b0b3238" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="4189d30e9dc932abd5cd1abef0531a11" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="1574795d1dc81e9a376ad4f5f8b276c7" key="sap.afm.nodeOutputs"/>
+    <annotations xmi:id="ee03968160601f910d6a059cad82f2f9" key="sap.im.customParameters" value=""/>
+    <outputs name="RENTABILIDAD_02H_Output" kind="TABLE" xmi:id="e3f14d25f023f14642ae1640be62ba02">
+      <attributes name="SOCIEDAD_CO" type="NVARCHAR" length="4" scale="0" nullable="true" xmi:id="540a7b953a313464534b4a5cda809601"/>
+      <attributes name="PERIODO" type="NVARCHAR" length="3" scale="0" nullable="true" xmi:id="7431afdbf41d1a06df88febe80aae7df"/>
+      <attributes name="EJERCICIO" type="NVARCHAR" length="4" scale="0" nullable="true" xmi:id="3eb67029410bcc0848505c0324d062d5"/>
+      <attributes name="MONEDA_LOCAL" type="NVARCHAR" length="5" scale="0" nullable="true" xmi:id="4f8ed6c0a04528ac40126da78a2853e8"/>
+      <attributes name="UNIDAD_MEDIDA" type="NVARCHAR" length="3" scale="0" nullable="true" xmi:id="a7f52a6814596c553901fb48d9f4be87"/>
+      <attributes name="UMV" type="NVARCHAR" length="3" scale="0" nullable="true" xmi:id="327de3fcb706d91d89da82d0d4702e0f"/>
+      <attributes name="EJERCICIO_PERIODO" type="VARCHAR" length="6" scale="0" nullable="true" xmi:id="2586f0cc5d5ee25f2e21a61ad3140b42"/>
+      <attributes name="ORGANIZACION_VENTA" type="NVARCHAR" length="4" scale="0" nullable="true" xmi:id="47d66e5b4de33f92411f3aed1b270c73"/>
+      <attributes name="CUENTA" type="NVARCHAR" length="10" scale="0" nullable="true" xmi:id="6ec77200e12d943b3bee98c275ea5dd0"/>
+      <attributes name="SOCIEDAD_FIx" type="NVARCHAR" length="4" scale="0" nullable="true" xmi:id="9c0c0046367367d2e0e10fd30e3290f2"/>
+      <attributes name="DIVISION_COMERCIALx" type="NVARCHAR" length="2" scale="0" nullable="true" xmi:id="2fbed20789f5a092d1b975abceea84d9"/>
+      <attributes name="GRUPO_MATERIALx" type="NVARCHAR" length="15" scale="0" nullable="true" xmi:id="b777e65b1a491afc38e07e6840abb9fc"/>
+      <attributes name="MATERIALx" type="NVARCHAR" length="18" scale="0" nullable="true" xmi:id="1565cd6754468076dd7b9a7bf09844f2"/>
+      <attributes name="CLIENTEx" type="NVARCHAR" length="10" scale="0" nullable="true" xmi:id="ce8af3206dfd7e3dee379af89d3b710b"/>
+      <attributes name="VENDEDORx" type="NVARCHAR" length="8" scale="0" nullable="true" xmi:id="9da207f899cff86aefdb1041d9e9c5be"/>
+      <attributes name="OFICINA_VENTAx" type="NVARCHAR" length="4" scale="0" nullable="true" xmi:id="ab2cdef94d71a880d79b3174f9003920"/>
+      <attributes name="SECTORx" type="NVARCHAR" length="2" scale="0" nullable="true" xmi:id="ad266b6f7aa1a7f847e236a9fe7ec6b3"/>
+      <attributes name="AREA_NEGOCIOx" type="NVARCHAR" length="4" scale="0" nullable="true" xmi:id="64495e6cad751ec94440f71066fe03c2"/>
+      <attributes name="CANAL_DISTRIBUCIONx" type="NVARCHAR" length="2" scale="0" nullable="true" xmi:id="b07083813c3a2ffcd44ad11a83581e12"/>
+      <attributes name="PAIS_ID" type="NVARCHAR" length="3" scale="0" nullable="true" xmi:id="29bed1057dd87b5df1840472e53b21be"/>
+      <attributes name="MATERIAL_ATTR_TIPO_MATERIAL" type="NVARCHAR" length="4" scale="0" nullable="true" xmi:id="f93d68768ac48c2b5f39737190a0b3ce"/>
+      <attributes name="MATERIAL_ATTR_MARCA" type="NVARCHAR" length="30" scale="0" nullable="true" xmi:id="3fa591638e5c58d3fe43c6a29b2a8fdb"/>
+      <attributes name="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" type="NVARCHAR" length="30" scale="0" nullable="true" xmi:id="fd212cabbf0f01122b409920893f4f75"/>
+      <attributes name="MATERIAL_ATTR_AGRUPACION_ESPECIAL" type="NVARCHAR" length="30" scale="0" nullable="true" xmi:id="1ca4a6299a76bda27ff86a08117458d2"/>
+      <attributes name="MATERIAL_ATTR_ESTACIONALIDAD" type="NVARCHAR" length="30" scale="0" nullable="true" xmi:id="765cdc07e044fdb0088caaaf1050d6c2"/>
+      <attributes name="MATERIAL_ATTR_BLOQUEO" type="NVARCHAR" length="2" scale="0" nullable="true" xmi:id="5a982418bde3880fcbecbe3833358e85"/>
+      <attributes name="MATERIAL_ID_TEXT" type="NVARCHAR" length="72" scale="0" nullable="true" xmi:id="f2ab1ea6e678eb4d843c010c9b369063"/>
+      <attributes name="VENDEDOR_ID_TEXT" type="VARCHAR" length="50" scale="0" nullable="true" xmi:id="25ce4d03f36c8ade7f29d2b0f1fb47f5"/>
+      <attributes name="CLIENTE_ATTR_CANAL_COMERCIAL" type="NVARCHAR" length="12" scale="0" nullable="true" xmi:id="ff79224d11c292d30bab3ea63bfb065c"/>
+      <attributes name="CANAL_COMERCIAL_TEXT" type="NVARCHAR" length="30" scale="0" nullable="true" xmi:id="9a8530ec74b95dafd989928a20b6df16"/>
+      <attributes name="CANAL_JER_NIVEL1" type="NVARCHAR" length="24" scale="0" nullable="true" xmi:id="17f979ec1a08ef216fed24b5eeb932b7"/>
+      <attributes name="CANAL_JER_NIVEL2" type="NVARCHAR" length="24" scale="0" nullable="true" xmi:id="168528bfbb853c9e7e334669fff96758"/>
+      <attributes name="CANAL_JER_NIVEL3" type="VARCHAR" length="50" scale="0" nullable="true" xmi:id="a19a142b9394e36c9860c894906e01a4"/>
+      <attributes name="CANAL_JER_NIVEL4" type="VARCHAR" length="24" scale="0" nullable="true" xmi:id="7aa7765d349e812bf784b6175dcc7d90"/>
+      <attributes name="CANAL_JER_NIVEL5" type="VARCHAR" length="24" scale="0" nullable="true" xmi:id="19234fa0d978e1979468955a554531f4"/>
+      <attributes name="CLIENTE_ATTR_LATITUD" type="DECIMAL" length="20" scale="13" nullable="true" xmi:id="02d5a4c9fdad965ed5d5ad4c0c6d9fbe"/>
+      <attributes name="CLIENTE_ATTR_LONGITUD" type="DECIMAL" length="20" scale="13" nullable="true" xmi:id="9a1714e1d4c811896470c79ec6998afd"/>
+      <attributes name="SALA_FISICA" type="NVARCHAR" length="10" scale="0" nullable="true" xmi:id="54df4a586a6f1af78536827c9eed7d75"/>
+      <attributes name="CLIENTE_JER_NIVEL6_1" type="VARCHAR" length="50" scale="0" nullable="true" xmi:id="2846512917c4c4c2b3fe89f345c4c25f"/>
+      <attributes name="CLIENTE_JER_NIVEL7" type="VARCHAR" length="50" scale="0" nullable="true" xmi:id="3756ae39b680a7885a5712c8a3f3ea5d"/>
+      <attributes name="REGION_TEXT" type="NVARCHAR" length="20" scale="0" nullable="true" xmi:id="5f82a6afa827e2fd77fc83c751b5c8d0"/>
+      <attributes name="PROVINCIA_TEXT" type="NVARCHAR" length="20" scale="0" nullable="true" xmi:id="f525e09cc48bd744cb4714839f7b0013"/>
+      <attributes name="COMUNA_TEXT" type="NVARCHAR" length="20" scale="0" nullable="true" xmi:id="2691da951ef89beb5b06efa6011ef478"/>
+      <attributes name="CLIENTE_JER_NIVEL1" type="NVARCHAR" length="40" scale="0" nullable="true" xmi:id="323b71e6a73770493448afb8e5673f6c"/>
+      <attributes name="CLIENTE_JER_NIVEL2" type="NVARCHAR" length="40" scale="0" nullable="true" xmi:id="ee069d2e9999ed1c9714621ce263ff2e"/>
+      <attributes name="CLIENTE_JER_NIVEL3" type="NVARCHAR" length="40" scale="0" nullable="true" xmi:id="8e000330d3b2c1a614538ea6ce2de39f"/>
+      <attributes name="CLIENTE_JER_NIVEL4" type="NVARCHAR" length="40" scale="0" nullable="true" xmi:id="4a81ed1248402de338f195b55709b340"/>
+      <attributes name="CLIENTE_JER_NIVEL5" type="NVARCHAR" length="40" scale="0" nullable="true" xmi:id="0839957277e39f0cc0be002dd4d6cf3c"/>
+      <attributes name="CLIENTE_JER_NIVEL6" type="NVARCHAR" length="40" scale="0" nullable="true" xmi:id="9d83e0f6386e7063319377870bbe4c43"/>
+      <attributes name="CLIENTE_ATTR_CLIENTE_PADRE" type="VARCHAR" length="35" scale="0" nullable="true" xmi:id="014e783c3302b31bc1c7d69f6f499a1b"/>
+      <attributes xmi:id="96de56ef134843eda7b4849b9b37217e" name="ZZCDCLASIF" type="NVARCHAR" nullable="true" length="3" scale="0"/>
+      <attributes xmi:id="92e942f626833eb1233c8f9dc2dd1440" name="ZZCDCLASIF_TEXTO" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes name="CLIENTE_ID_TEXT_1" type="VARCHAR" length="70" scale="0" nullable="true" xmi:id="dc7b05ce36c4c480fbb4d931f34853e8"/>
+      <attributes name="CLIENTE_ID_TEXT_2" type="VARCHAR" length="70" scale="0" nullable="true" xmi:id="b47bfcd8ab05eb15ca04267a7ab706ef"/>
+      <attributes name="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1" type="NVARCHAR" length="50" scale="0" nullable="true" xmi:id="d3ed972b8c5103d1741d23ed94b2c17c"/>
+      <attributes name="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2" type="NVARCHAR" length="50" scale="0" nullable="true" xmi:id="8525f36d1d781754a0f01c34999fa6ee"/>
+      <attributes name="SECTOR_TEXT" type="NVARCHAR" length="20" scale="0" nullable="true" xmi:id="fc1f00588c9abf6d6bdc532486d3e0a2"/>
+      <attributes name="DIVISION_COMERCIAL_TEXT" type="NVARCHAR" length="20" scale="0" nullable="true" xmi:id="f5ea6ee2865b606d05c91e5d16bf2c7d"/>
+      <attributes name="OFICINA_JER_NIVEL1" type="NVARCHAR" length="24" scale="0" nullable="true" xmi:id="b449ce1b09aa4b7716913f382ab556fd"/>
+      <attributes name="OFICINA_JER_NIVEL2" type="NVARCHAR" length="24" scale="0" nullable="true" xmi:id="d8f505555cba0951265be668b6d41f7b"/>
+      <attributes name="OFICINA_JER_NIVEL3" type="NVARCHAR" length="24" scale="0" nullable="true" xmi:id="2c59348eb92759d4dd650f24babac6aa"/>
+      <attributes name="OFICINA_JER_NIVEL4" type="NVARCHAR" length="24" scale="0" nullable="true" xmi:id="32ee432e688665ec3273c176669a0dda"/>
+      <attributes name="OFICINA_JER_NIVEL5" type="NVARCHAR" length="24" scale="0" nullable="true" xmi:id="6503a2c3427ca5a6050804ee22189f6f"/>
+      <attributes name="OFICINA_VENTA_ID_TEXT" type="NVARCHAR" length="30" scale="0" nullable="true" xmi:id="352ea1cc3801303c3a60bb27b8cb9fb1"/>
+      <attributes name="JER_CUENTA_N2_TEXT" type="NVARCHAR" length="40" scale="0" nullable="true" xmi:id="b44b829fc2a364d90c4b88775cdd1fb9"/>
+      <attributes name="CUENTA_ID_TEXT" type="VARCHAR" length="35" scale="0" nullable="true" xmi:id="65ca29905690d70cae7548a912ff78b4"/>
+      <attributes name="JER_CUENTA_N3_TEXT" type="VARCHAR" length="35" scale="0" nullable="true" xmi:id="83607abe7b9f0b9f02280ac1ddc066d2"/>
+      <attributes name="JER_CUENTA_N4_TEXT" type="VARCHAR" length="35" scale="0" nullable="true" xmi:id="6b639969365c423d8ac6f6074ffd9bbc"/>
+      <attributes name="JER_CUENTA_N5_TEXT" type="VARCHAR" length="35" scale="0" nullable="true" xmi:id="93e046ef8ab99cf6195d65e0ed8d1152"/>
+      <attributes name="JER_CUENTA_N6_TEXT" type="VARCHAR" length="35" scale="0" nullable="true" xmi:id="21e9ed15cf2323509500ef918ca8a758"/>
+      <attributes name="JER_CUENTA_N7_TEXT" type="VARCHAR" length="35" scale="0" nullable="true" xmi:id="3ee07c7dfb3b375aec7ee0b9ec901432"/>
+      <attributes name="JER_CUENTA_N8_TEXT" type="VARCHAR" length="35" scale="0" nullable="true" xmi:id="bddc0c5e7b7c99562b906983f4343150"/>
+      <attributes name="AREA_NEGOCIO_TEXT" type="NVARCHAR" length="20" scale="0" nullable="true" xmi:id="92ed9a81b4c1be117cedac691307d9ad"/>
+      <attributes name="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" type="NVARCHAR" length="4" scale="0" nullable="true" xmi:id="3ae66af83d91a1bb4151bb7b7c18321c"/>
+      <attributes name="GRUPO_MATERIAL_ATTR_CATEGORIA" type="NVARCHAR" length="4" scale="0" nullable="true" xmi:id="811cb9672030b9968a5a69a3159b6ad2"/>
+      <attributes name="CATEGORIA_TEXT" type="NVARCHAR" length="20" scale="0" nullable="true" xmi:id="9b2acf43c18529dbb2a4055be2258630"/>
+      <attributes name="UNIDAD_NEGOCIO_TEXT" type="NVARCHAR" length="20" scale="0" nullable="true" xmi:id="4afe0ae4e4bcc9bf1a2b0be17b3f6c06"/>
+      <attributes name="GRUPO_MATERIAL_ID_TEXT" type="VARCHAR" length="32" scale="0" nullable="true" xmi:id="36480bf656c8b44d74f4258392e569ee"/>
+      <attributes name="CANAL_DISTRIBUCION_TEXT" type="NVARCHAR" length="20" scale="0" nullable="true" xmi:id="f3dd2137b6a81c464137999c45883536"/>
+      <attributes name="PAIS_TEXT" type="NVARCHAR" length="15" scale="0" nullable="true" xmi:id="0cf6d886dc057c720e2369d985729d05"/>
+      <attributes name="DESCRIPT" type="NVARCHAR" length="40" scale="0" nullable="true" xmi:id="6077bfba6070ad30e7733a7868bdc6a9"/>
+      <attributes name="DESCRIPT_1" type="NVARCHAR" length="40" scale="0" nullable="true" xmi:id="4f3c88b3e3b1831172a927abb4303ad7"/>
+      <attributes name="FECHA_PROCESO" type="DATE" length="0" scale="0" nullable="true" xmi:id="d4886c960b1efa2dd6e7c82d849b5e88"/>
+      <attributes name="HORA_UTC" type="TIME" length="0" scale="0" nullable="true" xmi:id="cf4def288f84d42a2172b488e69af4ec"/>
+      <attributes name="VALOR_PPTO" type="DECIMAL" length="15" scale="2" nullable="true" xmi:id="f242d4cd2f039dd20457d1a3aaa08581"/>
+      <attributes name="VOLUMEN_PPTO" type="DECIMAL" length="15" scale="3" nullable="true" xmi:id="cd1263688e2d13f4573bb011cfb0b0e6"/>
+      <attributes name="VOLUMEN_REAL" type="DECIMAL" length="15" scale="3" nullable="true" xmi:id="91b38bfc794ef53df6e599a33b4696fe"/>
+      <attributes name="VOLUMEN_UMV_REAL" type="DECIMAL" length="15" scale="3" nullable="true" xmi:id="bd8b1530159a885146a854650fb9f4b4"/>
+      <attributes name="VALOR_REAL_ML" type="DECIMAL" length="15" scale="2" nullable="true" xmi:id="edcb1809340a1712cf86b866be65f0a9"/>
+      <attributes name="VALOR_REAL_MT" type="DECIMAL" length="15" scale="2" nullable="true" xmi:id="02a5b4c5b3230acb8da7eabd8161008a"/>
+      <attributes name="Volumen_KG" type="DECIMAL" length="18" scale="3" nullable="true" xmi:id="e540809bbef23899615bd1805c7b7425"/>
+    </outputs>
+  </nodes>
+  <tableMappings xmi:id="f589098cc45dd67a7b8e75a6f50b72dd" source="45f9550a383b935492e3084af0fd7931" target="b3dd84388d904279040deae4955e9e25">
+    <attributeMappings source="0a2fbdf3034c52844a5ae4e9cf3eb973" target="5d9c6f0daa1a322685c1dd15de6d0694" xmi:id="a699e82f3a39cea3d2330136f8834cae"/>
+    <attributeMappings source="397c0c465818b2a9a655f39bab66fd12" target="8b56719ae0b4a91d53738916cf7720e3" xmi:id="e4464e8bbb83038c74e1db95ecdad163"/>
+    <attributeMappings source="8d6625cb121d8b90a5db1914041fabb0" target="4c88cf253a47e9a414200ae43cc3db24" xmi:id="0498608369128949ed733e5ba3fc6646"/>
+    <attributeMappings source="871dfbdfbb9d20ac196343bf624f65f7" target="a99cddd2972975d906d2a97e6af23389" xmi:id="4a71ce569e34fb551c625e0d471462c8"/>
+    <attributeMappings source="33da89f898d8e386171a30d936a7e943" target="bee9fd66b116a1984b80c369cd692a4f" xmi:id="c745ad01a5c882cc5c02fb0043af3bb6"/>
+    <attributeMappings source="4088913e0fe1705ea0f959a93817e342" target="ad18582a953a5dd6aa8b92c2dcb5654f" xmi:id="44e67e327c608ed546e6e0faf0de9f92"/>
+    <attributeMappings source="ed267c90e4b6351d0d5ddf0586283f80" target="1e3e71e798beb3c998f735a58c777399" xmi:id="720412cba848b30beb953192381cc512"/>
+    <attributeMappings source="21c5140e4289fde08864286d7c56b7bc" target="d3794a92f2293c0eb0551639200fe76a" xmi:id="a7a50d0311ca4caad9ee8fe03d216c22"/>
+    <attributeMappings source="136631f5d05539534f529094cbba354d" target="bf4fbe5d23ae8745f5e767233e26b033" xmi:id="2481b056d8ec2a30d4e9bf48b48da0ae"/>
+    <attributeMappings source="36b69a77cb62471bf3335de6ea7cd583" target="cd28f6dbd3102159206d4e7f8a4798b3" xmi:id="a0e6f00288f8bcb74a6d320fca5816bd"/>
+    <attributeMappings source="37044cfa9feb52ab3b71702ce9f759a6" target="2bdc6f2ddb91eaa1c021e4d37df2dd5f" xmi:id="99450a111350d74ad738fbabfb16d59c"/>
+    <attributeMappings source="101d8fe0dc60a903a8d0d7512235810d" target="7cd9e6d872a07c6efc78608f5809db64" xmi:id="2e9bde3a883dd5443e4d0843823bd047"/>
+    <attributeMappings source="94554b608c1c27838b57bef139ff272d" target="788bbe203c245811bf3c83f6290b6341" xmi:id="a7073a0c7dc9827b73f639f0c4130be7"/>
+    <attributeMappings source="84266cd53d0c23e2a8f67264c9b5e8a2" target="988fd714cbb77f29ba360020d96ad32f" xmi:id="1ad7185d179e3f4295bb6b1bedcacafb"/>
+    <attributeMappings source="41ac2449c02a5af342bd061cb43a1dcc" target="ad73d9b3101923a417bdd3099e473ebd" xmi:id="af77728155f377859bf7bad293c250e5"/>
+    <attributeMappings source="7da830cd617dd23343238791a72afd82" target="8f942f1eaca1794d7b68e03f21a0280e" xmi:id="95378f4c18f971d75d1c196e37feedde"/>
+    <attributeMappings source="d5c3a2a04256746fb2771e8558000427" target="d788816f898087a0109f59b9caca9ea9" xmi:id="54b1f89b7926147b0e31f89a50bab8c3"/>
+    <attributeMappings source="cde01eabab89f624965c83205526bff3" target="ee0259bd31c5aea773c346670660f740" xmi:id="0c4aa7e3f86bc3daec72401133ae016a"/>
+    <attributeMappings source="caf694a1b4702f1473e8b7dcf0e3bb4a" target="b146e31108dc64616bcd7b3501d35f1a" xmi:id="f53684e95f9dee11ca8aef70a667ffe8"/>
+    <attributeMappings source="7501e0f9b1230e42acfdc94bbfc403eb" target="a1c30a08179319bf4b875b424bab3aa5" xmi:id="c5f19d5147813c93937c6f2ba3fc08fe"/>
+    <attributeMappings source="acce63920182f66822091cceade81a12" target="dd0de505269d76f0c58135757c580f65" xmi:id="7aeb15dcb6936088c43ec34365301986"/>
+    <attributeMappings source="cc3a66025f40d035f236f0e281997be9" target="461d98b637e151368a56ec3b569e912a" xmi:id="8c39bc870f1e60286830bf6c572b0c40"/>
+    <attributeMappings source="08620c2589c8f8283cb54c74e76cc01f" target="3e51bcf4bf0dfd6a3ff9e97ffaab1a6c" xmi:id="4ac757cdb010c68546c47265c578fb8c"/>
+    <attributeMappings source="55c5136a21bb375b13a3e3669ea26815" target="1349cf4a6c0bfa0be862700d07ba0dc7" xmi:id="8e7e94eabd49d7a543044eb2bc8413e4"/>
+    <attributeMappings source="9277c388c728088da34ce2ef0d6f692f" target="719c9ba3e34dd1dd442e0eaf9e7335d2" xmi:id="e8fb759126ee5a205c6c2eaefdc5801b"/>
+    <attributeMappings source="d5ebfee2acd1fc7092992b429da6b155" target="755e5aaf41049052a9e1f2b6a941ec15" xmi:id="ee58e62125316dfd9fd529ce973ebc10"/>
+    <attributeMappings source="659b0bd1570cf0f8738b05c9b087129b" target="4015124ff15a9fa81236ba277d30ab8c" xmi:id="d80c12e996110dd460c297b31e396cb1"/>
+    <attributeMappings source="4dd325f29a8dcb8c4e4202df661305ef" target="901dd7acc440750964328e4f396ad661" xmi:id="69f775f6314bee49154a15ddba5dfb60"/>
+    <attributeMappings source="b4eab4b5711e3d226aa5fc7b43728371" target="64987891582e3e3185b05116b2015091" xmi:id="7127c54c62a021ba0643ac7d1f59eef3"/>
+    <attributeMappings source="dd2c51853dc8955ffc3e4b14a326261c" target="480521ae5c9ef83b2c992763009acae0" xmi:id="5ae132c1e7ee220be4a0888e0b7734eb"/>
+    <attributeMappings source="4e7db7b68c5675da2ff321e6b582ae88" target="11d0aceff58239fba3effb650c61fb6a" xmi:id="b75cb0cfb2ba650c0d05677c6126ce91"/>
+    <attributeMappings source="ad7e7aa830cda636b70bfd2410c6497e" target="41496ec60da30f3b0fd725a1cee8ae26" xmi:id="ff247a164c30f14f5f2dfea64e616827"/>
+    <attributeMappings source="f44fb11b5828880879481b20f61a498f" target="b972584c1b3832c475fb205e663280fa" xmi:id="8a34405223a6639f23e267a0b69b4fc1"/>
+    <attributeMappings source="d597afbc744f1053f4197542297112b8" target="8b1874b95e2c75733a18e40aa950f442" xmi:id="1d7bb6bb9c5dd02aac4b18dc76d262e2"/>
+    <attributeMappings source="ed939f64b53e0eda6946eafb1f2d6f4b" target="9b7bd1264715b8ee0128c141fd6dc9cb" xmi:id="464453dc5e600cc640cda42d3bb9c568"/>
+    <attributeMappings source="ef5ef4918f372b3101453121c800834c" target="08b538aa742c1c1f84051a5e98214f5d" xmi:id="c7bcc830ac9de21e7e54a1f9b0469b69"/>
+    <attributeMappings source="c75acd216df4848f751e5f625576c77a" target="e5256e2b68456682d62682883637027d" xmi:id="797bb29eb16b432a78a225ee8f239b34"/>
+    <attributeMappings source="1744c3fbeef59f71695e58b67bf1b22c" target="50a19fdf7e2474067e777099cbfc760f" xmi:id="8324c4fc2b3857a18ad6545793d45938"/>
+    <attributeMappings source="30ecee8cec75bc4afa7135871c4f6285" target="20b7cd3195ab2df733bcb303faf96d2c" xmi:id="9e83fa82f82c6eec831ca0b0e04e41d2"/>
+    <attributeMappings source="7f43469ca5c4a21c660728d5781512f7" target="5134f59988506a25c0ab973dec8fd5f0" xmi:id="52173bd496d52dd37604766d164c4c04"/>
+    <attributeMappings source="e461b6459f14357b8218b198de0e82d8" target="f2371efc30be7127e1480a5ccb56bdee" xmi:id="24f4c24c53b6eccaf68ed1aecd5c8a9b"/>
+    <attributeMappings source="e79f5a8360eca0612a00f632bc55dee9" target="1f2d08780b25f8c30a06449b5a401bde" xmi:id="c90a0b2cbba92640826c2cd4c5014c8f"/>
+    <attributeMappings source="ab5f475133233d4f252a1bc6bfc328a2" target="15f2de1c354fefbf40137013c663aa14" xmi:id="516a82b492ccd16cd056dee82424cad9"/>
+    <attributeMappings source="8387079eeafeabd152cbe7c55a7c4574" target="2bdcf38515cf54638fc5c8c3ef8c0fce" xmi:id="3f13019b60b548f0be5af0c82d18fc31"/>
+    <attributeMappings source="a9d486e8b9165162e18f3516d90845d6" target="f7fcfb6f9bd9199ed4de7eb67153fe52" xmi:id="f56b84ce6a0aba5d2b45df92f5723cfd"/>
+    <attributeMappings source="b10f71cacd70b324653c0e355953c8c2" target="adfb465d062a04d352d2cc18c935620c" xmi:id="a4a2b622ae4256a4514f1aea105b2bd7"/>
+    <attributeMappings source="9f57b820ca77775d17bf4c4bf99bbc22" target="6fa208d9e87ad5ed465e2e9caf5ad1c4" xmi:id="bfb429a4829516c5b54706b26dc9870c"/>
+    <attributeMappings source="be3dedccf95d9b9baf47fca17f57b60f" target="0363749d483cfc2e9433f945b12d1af1" xmi:id="9007c99bdf6959e0454064771e4fbdf4"/>
+    <attributeMappings source="6077141f2d6cf1823ce8438e2b312d35" target="06327c8f557114c0b715de19cd7b7ceb" xmi:id="e3da966dc6f1a01b97860f153196c061"/>
+    <attributeMappings source="d00b1207415db1ea9f9ff64b39a242a7" target="23da4d6c12c6759028d33a16c65559ee" xmi:id="e21dde802db917009fdd9c0802f85519"/>
+    <attributeMappings source="cbd07a01cc7fb11f919eca994f0c2c69" target="9438ea48d4dd834fe394b0f3fd3dc26d" xmi:id="ed4c92b52315e2d7f36e2a7b54f9dfb3"/>
+    <attributeMappings source="f4b77172765bc6b06d26c5737d1917df" target="fbf15a912533eba55c865792ac12e229" xmi:id="29dd065bf7373b001d8a57b278e904d2"/>
+    <attributeMappings source="793c6ad93c6dd4580d92c65a315c3769" target="78af23631f6232e7b885f51c456bfeaa" xmi:id="2be9dfd0d97344341d4db133851dd0c7"/>
+    <attributeMappings source="96d5bb81c9d487a76e7f35977bb681af" target="4145593b20d3d6c23ab0d95ebf0fb03f" xmi:id="3753513a5c5729ca381dbab568e152db"/>
+    <attributeMappings source="ba171a1cb6a1aa86095e023ab20f7147" target="7527c7e5cd126c49b4acca50e8403b5b" xmi:id="c2963da825f2d0cf83f1cf40afe06349"/>
+    <attributeMappings source="26fae70d0867d2d183c6ff37477a4205" target="babf98f469ad8b91dbdb8e8d13641d29" xmi:id="9a7c8ebbc43eef9e95cd5556bad070d3"/>
+    <attributeMappings source="c248d22c848e4b0651b0e682f9dc18f7" target="28fb62b6c56e9e5dfd0c33d0b2f16cb0" xmi:id="dd2a2cb4199a4f06b7cc75c0fd05c447"/>
+    <attributeMappings source="68735a7e0f34024475f03eba7b53375f" target="b4ebdabd4769a93122c8fe682d8617db" xmi:id="2d6148b4a74815e7320c9bf4b5f93e86"/>
+    <attributeMappings source="2ebb93b99eb70a05aa4824ac985dc452" target="0783bfb98ecfe84767d9c6d7346660ce" xmi:id="9f06fbbb2679e16a66712cbc77f7c858"/>
+    <attributeMappings source="f5c0d6c3a0e14ff5c60bd455b756a5a3" target="f217bd03b8bc679b0db8f213d44cc06f" xmi:id="732ef317b37cbe3dd5dc84409de6e30b"/>
+    <attributeMappings source="2e8ac023715b6539bebda8d2a2a9bc9b" target="babff0be3496a5a46182e77eb0f65059" xmi:id="c0ad7a9604ea59912ff649fd12897233"/>
+    <attributeMappings source="5abb0f321664739d910b4ae8eeb76f15" target="5380017f08acb3608f2634b0d607fe6c" xmi:id="960e18f2ef5bc8af5e4c1c812f1c817e"/>
+    <attributeMappings source="3f4aa88220c763368b0e0c0ed26acf0e" target="fe9d978c185e85f3e4393030aacc3385" xmi:id="5ce1fb2a3b9f70d327b5b0d1c9bb0113"/>
+    <attributeMappings source="6e64f98ae4f340cca2dc7e1e57c6b55f" target="f7f232e6a41b38d8e5d951f34e2f6aa2" xmi:id="52add7d77e64fb96f1f526756cdb7eca"/>
+    <attributeMappings source="edd55f285019e5064ae95d5cc5c6dc1d" target="4432b1dd3d776c3b5872913ceb4b30a0" xmi:id="f89ebe8d3bcbf6b72e26f54148deafe5"/>
+    <attributeMappings source="51c8bcfce5a6e27fea7105d219115b48" target="619c5f603ae89b24a0cf552558e8c17c" xmi:id="8dea219a2222b0d5233e2f6c8c8b7a78"/>
+    <attributeMappings source="6053ad03888e3b2162a44d2f4a46028d" target="d4478647e12880f10ee1838e19ab18b4" xmi:id="e1823c8355d5315f1cc6c21437518cfb"/>
+    <attributeMappings source="35e294bb3220422a916b4f29b270a38d" target="85f550fb43330036c943a90b5a3cc0df" xmi:id="04a7535a8c7f6e620486a520be03229b"/>
+    <attributeMappings source="5077169ce4710994fae104499508f6ea" target="564d9754dc6b0fb97a08994a7515d6fe" xmi:id="3acbfba1c78951108ea13c3f49c55463"/>
+    <attributeMappings source="dd62b2a4bad4d2c672675d1a506fd9dd" target="d70ac05d8c47f7c9e940fa6372b742d5" xmi:id="de8c60002c5cac4d43fe887be1154075"/>
+    <attributeMappings source="1be34c2777b59104cb6ee157d6ee4bf3" target="3487fec2441ef7db111703743290c2ee" xmi:id="49ec54bdad5bc64d2fbaa3919d14da74"/>
+    <attributeMappings source="dbe927ac72356e5dd8bdb2f17202d1a9" target="882ad0ec68d326855411da424722baca" xmi:id="e97e9338d47d35796c41a844dd8f6cae"/>
+    <attributeMappings source="5df63d9a3d6ac0643d8820b6995ac788" target="3d03f65ca3d2762351324db050f1242c" xmi:id="930041b4a2069500442a39003143abc7"/>
+    <attributeMappings source="9c2b37f02eeae25d222c049d9f66ac03" target="898de5e00f553bdaaa227dd1f5e6610e" xmi:id="bff56328e9f92e9d236f841d70f37ba1"/>
+    <attributeMappings source="4932ac20d65241e38450e259469b6215" target="44682cbd4d5af8500a6b4867d7b13193" xmi:id="6fe3a002083a7dfdc04370165e2463c8"/>
+    <attributeMappings source="452d9c4b280c7a12040a88ea8fad7c0a" target="47931e1e5a8760ec238053938a237069" xmi:id="d247da8df02f2a631a0d89f897d279e9"/>
+    <attributeMappings source="5a8b81ec288cc6124f5114cc2c8caa3d" target="1dfd57376db586c553e7c82dc593a8ee" xmi:id="34d4cefb88fb2f1f59aca502f85ce48a"/>
+    <attributeMappings source="f46a7cb01c9fea19ea4bb74b2c63894e" target="1f7f84e33f1a40b1b6fb60e3323163c9" xmi:id="652c4d834b8d47b297d519175698c172"/>
+    <attributeMappings source="efa1b0afce4219841682f61db266f344" target="c5956fd6937ad28e99f2aea91f90f52e" xmi:id="7b299553964accaffde686609925f764"/>
+    <attributeMappings source="b6e481913b0109e0d8a1282aa9555fa6" target="34c3da909bb2401508feca67a27f9de8" xmi:id="241802e1256df55c2598f997380b3f69"/>
+    <attributeMappings source="db01f9df0b02ed2630acd7158b30b7f9" target="92e379bcdc93f1c6a2b8694af4d5c091" xmi:id="2a5f7ebe1c687b97a14f0b1ea6a9d4b7"/>
+    <attributeMappings source="7329fe5cc277d69f06a23921f60602bd" target="cacf971c9fb490ab86394e291bf8b519" xmi:id="4959d16c22a1cd950d7f9d6a37bb8b2e"/>
+    <attributeMappings source="c32df056b1ca454c93a9439edd38edd9" target="82a1f745105c337be788a191ae3228cc" xmi:id="9f6704c9b413430afdfcdf38fd03821a"/>
+    <attributeMappings source="20dc0e2e585bf65fab14d3b2de356870" target="e0c58fd59ae483c457ea5031aa6fbec3" xmi:id="e0b35f64bec64d4a22f0cc02908ef05e"/>
+    <attributeMappings source="8e830bb06d595d119e83d1371e4278c4" target="4e10f94e6c072bd5140528bd51148b54" xmi:id="c9541e4a31e1bc5671096c954513b67f"/>
+    <attributeMappings source="dec9828d1aa938d51285180eabfb019f" target="3f8046d2eec90795cc3e44267e771635" xmi:id="cc3c71df407ed1e618dd33738b7957b7"/>
+    <attributeMappings source="6c0e53067e6fa95f3b821047d5faf83d" target="8ff4d66a5705ee99464dd126bd6f41f7" xmi:id="c67175f9635f6a29996892685568d6e4"/>
+    <attributeMappings source="5e58ec7b80d0f8bfc79e50503fbae250" target="886e21bcf5c852869f634a6ef06b8dd1" xmi:id="bcf90fe78e585d941d0458c8559bf6d6"/>
+    <attributeMappings source="0daded8c43723adc3c96a917e67398fa" target="a47a2953a857d1ede385bcd96ac4a55f" xmi:id="90504f5f5b5e685b56b15cf2984a25d2"/>
+    <attributeMappings xmi:id="d4e43619489b3e8d89ddc9c59c270b13" source="3a81f3d075590061f077b229cf107273" target="53e2e3a7b08054d9aad401460f9575b5"/>
+    <attributeMappings xmi:id="7894327538024c8b5f104904cbd75a3e" source="9470ffb0a69cd0bba1191fd36d181cfe" target="5d90a770523fa25def0f10a3cb4eb592"/>
+  </tableMappings>
+  <tableMappings xmi:id="74064a51864c9319b3cd0df34452e4ca" source="e3f14d25f023f14642ae1640be62ba02" target="e93092323fdc2411f8cec0c410ee2342">
+    <attributeMappings source="540a7b953a313464534b4a5cda809601" target="34bd4d78b93561169fc63d1ceb1e3b9c" xmi:id="ba20262e631046c213b1ab80f061d004"/>
+    <attributeMappings source="7431afdbf41d1a06df88febe80aae7df" target="dfde0e67e7455d06d8cb013a3c7c6dd4" xmi:id="6a6bc5bbebf8b9a70ca08734c8475804"/>
+    <attributeMappings source="3eb67029410bcc0848505c0324d062d5" target="ed9ad99693d6dcd1afcf5df55356d96e" xmi:id="f1971498396264d159505d2256c38569"/>
+    <attributeMappings source="4f8ed6c0a04528ac40126da78a2853e8" target="8163fe0b1a228db14ab727692edd5835" xmi:id="27084a014816faa3e12e90a48b541b98"/>
+    <attributeMappings source="a7f52a6814596c553901fb48d9f4be87" target="7ed7f376c820788b922f5cb4bfc77d7d" xmi:id="8047476ecbd5386618e0a1a6bdc978ed"/>
+    <attributeMappings source="327de3fcb706d91d89da82d0d4702e0f" target="593c136361e62833b6e02c0b71d606ef" xmi:id="0a49cc20b6ab01f0b879672fb334508f"/>
+    <attributeMappings source="2586f0cc5d5ee25f2e21a61ad3140b42" target="4d8f1ce6340342955530d58c0a5d1508" xmi:id="9cbe06d7c5e6ba82cc0f93e1c207b303"/>
+    <attributeMappings source="47d66e5b4de33f92411f3aed1b270c73" target="0f7428c02072ffbf6f510d03f988e2f2" xmi:id="97ab4c8a65800515086b2ff92372ef27"/>
+    <attributeMappings source="6ec77200e12d943b3bee98c275ea5dd0" target="9ffa636fd4d930706758a5d73188f673" xmi:id="20f546f1d3bf47673ec685539a6e7b74"/>
+    <attributeMappings source="9c0c0046367367d2e0e10fd30e3290f2" target="228179f10ea18f8441ccb0ac427aaea3" xmi:id="b5a2fad5b3a4d426a940b57c406d7053"/>
+    <attributeMappings source="2fbed20789f5a092d1b975abceea84d9" target="5e9d1c696bd04252d59cf805a775d3f7" xmi:id="cc6cc85ea936bc6207b1bfa5dbcdec3d"/>
+    <attributeMappings source="b777e65b1a491afc38e07e6840abb9fc" target="56a628e78c6071f6eac0f731d8ca4f92" xmi:id="eb440ec8486a84be9e66cba417a43d28"/>
+    <attributeMappings source="1565cd6754468076dd7b9a7bf09844f2" target="629fb796882de6a6f9d5ad7774af165a" xmi:id="fefaca56bcd255f251dcc0cb101e8b82"/>
+    <attributeMappings source="ce8af3206dfd7e3dee379af89d3b710b" target="d5139d62faa5e8463331d3d2d26986fe" xmi:id="35c8a7c22551b9b6fa1fa3a11f25f127"/>
+    <attributeMappings source="9da207f899cff86aefdb1041d9e9c5be" target="959a35f0cc4b740f44da43f40bbb7041" xmi:id="85f5723f40f429e700935c8a2248340a"/>
+    <attributeMappings source="ab2cdef94d71a880d79b3174f9003920" target="49b9fee714b70c3d36eed513569426ae" xmi:id="173b3ae3f0bd088e3ce1f9a31cfb686f"/>
+    <attributeMappings source="ad266b6f7aa1a7f847e236a9fe7ec6b3" target="e50090f08300d60ae7c0a06330f74ab6" xmi:id="45e727f73f1e17f830515cb09d9abaf7"/>
+    <attributeMappings source="64495e6cad751ec94440f71066fe03c2" target="b8aabbe06e66d9ef84b39be7117ba4ab" xmi:id="0bb36f8b0f7681e576384609ea9619bb"/>
+    <attributeMappings source="b07083813c3a2ffcd44ad11a83581e12" target="294e4df13e5c6bb3abe3b93f594f8d43" xmi:id="04f35ee1896a7b662358c619c31edd87"/>
+    <attributeMappings source="29bed1057dd87b5df1840472e53b21be" target="d4890e465e9ba683ff475a79f206b894" xmi:id="1d4369bd3cac36161b76912d65dfe6b6"/>
+    <attributeMappings source="f93d68768ac48c2b5f39737190a0b3ce" target="399f49936ee57a6a4f8caa96118c9c50" xmi:id="b820bee7389bde6a2e174aa8d727124d"/>
+    <attributeMappings source="3fa591638e5c58d3fe43c6a29b2a8fdb" target="18e33a5924b8de9e441f9620c3bb967b" xmi:id="846b655269729a08829356c6457db8c3"/>
+    <attributeMappings source="fd212cabbf0f01122b409920893f4f75" target="d06df79738c7582131158d8049dfa77c" xmi:id="77351bba9fbf107f7fa7bf483dd1778a"/>
+    <attributeMappings source="1ca4a6299a76bda27ff86a08117458d2" target="60d0fa52bf9fd801e548497513b65283" xmi:id="ef7d3df96fb85847df71b340d992903b"/>
+    <attributeMappings source="765cdc07e044fdb0088caaaf1050d6c2" target="cc9e2ce7e925ff1598de2c65c12b327d" xmi:id="81b111f4bd31a26c9e4fbf9f3944f91f"/>
+    <attributeMappings source="5a982418bde3880fcbecbe3833358e85" target="28d9171f4f3f475d864397f06db9099f" xmi:id="4cd12a18b04e10f926c80a991032540d"/>
+    <attributeMappings source="f2ab1ea6e678eb4d843c010c9b369063" target="1858bdae73680d81630d04034513cb69" xmi:id="2928918e28c1c3de7a203aa4faf041c7"/>
+    <attributeMappings source="25ce4d03f36c8ade7f29d2b0f1fb47f5" target="0470cd335be954555a62fe51aaa8e5a7" xmi:id="a62c8ad4739ac164ba2f8d91c7c0e29f"/>
+    <attributeMappings source="ff79224d11c292d30bab3ea63bfb065c" target="1895506a69c0993f1138f8f9def29acb" xmi:id="5e0bdcd05df4a5414220c872a56bf357"/>
+    <attributeMappings source="9a8530ec74b95dafd989928a20b6df16" target="bd44304dc09ad50b9a7846b6e20b63cc" xmi:id="9ca28e2555df6b28f13ea6cb9733267c"/>
+    <attributeMappings source="17f979ec1a08ef216fed24b5eeb932b7" target="98b834e339c924e023c47d314977448d" xmi:id="9a6085538ade6079415eabbe0c97985a"/>
+    <attributeMappings source="168528bfbb853c9e7e334669fff96758" target="80a88fe03f0526241714ba8b31535637" xmi:id="5c2687de8fb04a020e56347040a91193"/>
+    <attributeMappings source="a19a142b9394e36c9860c894906e01a4" target="aec94af1315914a69c4558c9abea8b67" xmi:id="a7ef17fef3047233b56a07d4b8aa699c"/>
+    <attributeMappings source="7aa7765d349e812bf784b6175dcc7d90" target="2e12611fc62ee793b996c9542e804979" xmi:id="2c53ecd9b644a82b23998deade7d8bc9"/>
+    <attributeMappings source="19234fa0d978e1979468955a554531f4" target="af21a175323e8876363e20dff8577a6c" xmi:id="6e727ee771f69204a48c7d4ba77444c6"/>
+    <attributeMappings source="02d5a4c9fdad965ed5d5ad4c0c6d9fbe" target="e9e7d5480aa208e99fa1c9653fc852a8" xmi:id="18135917ad10d05d93eb1c5de5f4f048"/>
+    <attributeMappings source="9a1714e1d4c811896470c79ec6998afd" target="688fb22a8f957bda8d1084e950f03b67" xmi:id="fa5b928a0521d74e1fc225afca3ddb9f"/>
+    <attributeMappings source="54df4a586a6f1af78536827c9eed7d75" target="2d6a47c91599d3bb1c11473c57bff4b3" xmi:id="3d373693e01ca6543388c964a29b29d1"/>
+    <attributeMappings source="2846512917c4c4c2b3fe89f345c4c25f" target="9150f7ea68f565bd7f94b119cc645ad8" xmi:id="21dea510d4bbc0fbcba140cac37d9357"/>
+    <attributeMappings source="3756ae39b680a7885a5712c8a3f3ea5d" target="d7786c8b1765f5e32bf715b44df47a12" xmi:id="f641973d5ea96446fc6554eb5ad998d7"/>
+    <attributeMappings source="5f82a6afa827e2fd77fc83c751b5c8d0" target="06b25f8da6269ae563905b43f31c485a" xmi:id="5ee83158821aa0d8b3c7f5f2aa387bcc"/>
+    <attributeMappings source="f525e09cc48bd744cb4714839f7b0013" target="004096490b549d1e10454e2f3bf2b92c" xmi:id="7174615234050dfd5cb4b28cbeeb1406"/>
+    <attributeMappings source="2691da951ef89beb5b06efa6011ef478" target="d1fc5830f3e920964fd79f05ade43708" xmi:id="8948ec15270eca77c32e1137ea882b1c"/>
+    <attributeMappings source="323b71e6a73770493448afb8e5673f6c" target="8f36dd3a4d55b6b127c0c680b6bd44f2" xmi:id="859911b47f7febb21bbfeba0d3741ae2"/>
+    <attributeMappings source="ee069d2e9999ed1c9714621ce263ff2e" target="0a6162e12ab81405b4d084f148491f1c" xmi:id="116f46ce034054d8b53ef3cdb19960e5"/>
+    <attributeMappings source="8e000330d3b2c1a614538ea6ce2de39f" target="cab298afedf8852b1066c3042c711ede" xmi:id="aa55ae60c6370dd7d284b7ce6c712c41"/>
+    <attributeMappings source="4a81ed1248402de338f195b55709b340" target="477f8fa86386606148eed379dd5d3fb7" xmi:id="3111cd81632b3b3789d44460281334e2"/>
+    <attributeMappings source="0839957277e39f0cc0be002dd4d6cf3c" target="5be0d23d71bf18454327cc2461a06fb0" xmi:id="c717e8fcc3ec107d93a75aa640634614"/>
+    <attributeMappings source="9d83e0f6386e7063319377870bbe4c43" target="1fa615790c81d9078232616ba364fe2b" xmi:id="c709e7b5b73a4cf66d5728b7cbb3cc06"/>
+    <attributeMappings source="014e783c3302b31bc1c7d69f6f499a1b" target="2bcd20eb5d8a61ea29fc58405f6e18d8" xmi:id="ea87c6c7fd7fb07f32784adf5c255882"/>
+    <attributeMappings source="dc7b05ce36c4c480fbb4d931f34853e8" target="cf8f8f3a2e86b14590f60705bab02de5" xmi:id="8b42ab2942d89d967c4d78b05aada592"/>
+    <attributeMappings source="b47bfcd8ab05eb15ca04267a7ab706ef" target="ecfcfd89da96f9ece5fabd28d9736465" xmi:id="d9651c01d859047a33d00320964278b2"/>
+    <attributeMappings source="d3ed972b8c5103d1741d23ed94b2c17c" target="bca9c80e6d4d11d22db1d77f8f2a4252" xmi:id="ea45639f37c6c77218954284a53cc91c"/>
+    <attributeMappings source="8525f36d1d781754a0f01c34999fa6ee" target="2890d8a29b7341d396b9a3f7aee0945d" xmi:id="bfbd4ecedf1ded896d978cc5988eb1f1"/>
+    <attributeMappings source="fc1f00588c9abf6d6bdc532486d3e0a2" target="ad00acd9c504fe2812dfbfc3d15d0bab" xmi:id="77db5a86cb83ec1bd7f0f997cd740a4d"/>
+    <attributeMappings source="f5ea6ee2865b606d05c91e5d16bf2c7d" target="67c9c68d6411dd47d071478e31955696" xmi:id="98ec6240b434ef581619bf5ea9a1d5fc"/>
+    <attributeMappings source="b449ce1b09aa4b7716913f382ab556fd" target="44dacfc6411d0f07d631ebc8accaf111" xmi:id="881d8437fcd32f03ed47a0cf05357762"/>
+    <attributeMappings source="d8f505555cba0951265be668b6d41f7b" target="40b0e98fdfef6a2939be0c0b7e75c5be" xmi:id="eba2771c7d894f6aa1931f54cc8ec68d"/>
+    <attributeMappings source="2c59348eb92759d4dd650f24babac6aa" target="b9e97896b4c6cf3b10c05a5d51f63d19" xmi:id="2bac2d6ef0fe22cf80775bc18510ab8c"/>
+    <attributeMappings source="32ee432e688665ec3273c176669a0dda" target="ee5d1be9ead698f9a581a2895ddc17de" xmi:id="7deb2a92f21ee681c130778af7309f5e"/>
+    <attributeMappings source="6503a2c3427ca5a6050804ee22189f6f" target="4ae0bb3be2abf37d0d44fcd3c6dc77b8" xmi:id="2f5ffa1d68832ee300333f668b0177a7"/>
+    <attributeMappings source="352ea1cc3801303c3a60bb27b8cb9fb1" target="5cd3ecc7e4b0006cf14ebe7416745df9" xmi:id="b84a0ddbd3b9ac85d9c182c2b4dafd7d"/>
+    <attributeMappings source="b44b829fc2a364d90c4b88775cdd1fb9" target="52690aab8d93578f0751a7da02b1c4a7" xmi:id="fe28bca122ae6c3341c3683775b93ee5"/>
+    <attributeMappings source="65ca29905690d70cae7548a912ff78b4" target="d0c423d234167f254d9c1a7c63be8d71" xmi:id="f9a20242aec93c444906e3b2f5ee1958"/>
+    <attributeMappings source="83607abe7b9f0b9f02280ac1ddc066d2" target="962847dabf2108c10f932b6fed766298" xmi:id="67158fdc518510a3d0ba0311905f34d9"/>
+    <attributeMappings source="6b639969365c423d8ac6f6074ffd9bbc" target="7dbe1ed71c63a2999da14307914f8e4c" xmi:id="fc89af63987e4a4017785aa05115abc6"/>
+    <attributeMappings source="93e046ef8ab99cf6195d65e0ed8d1152" target="b2afa5cd3327491a1859fd263105a4cd" xmi:id="e7123ad7156e0b556a9097449f9199a6"/>
+    <attributeMappings source="21e9ed15cf2323509500ef918ca8a758" target="34870f8288e7486d411f340817f086ff" xmi:id="a8274980903f2900b37d32f5aed2e003"/>
+    <attributeMappings source="3ee07c7dfb3b375aec7ee0b9ec901432" target="5d6dfaf806f342d0aa3914173b0eac3a" xmi:id="7b8575466df24912ff17e2eac672d095"/>
+    <attributeMappings source="bddc0c5e7b7c99562b906983f4343150" target="f6ed039403e228c17198207523a586b9" xmi:id="e8c7318b585773e38f3fd5ae2ddaebdc"/>
+    <attributeMappings source="92ed9a81b4c1be117cedac691307d9ad" target="8fd5c7d1c2666a18f7d0d3239a415b75" xmi:id="ad832fee5b73e1218d4a238f0c60d183"/>
+    <attributeMappings source="3ae66af83d91a1bb4151bb7b7c18321c" target="2dc3257b2810c94ad537c1310fb720a0" xmi:id="fb5532ac4c099380bfa556c68ef987ac"/>
+    <attributeMappings source="811cb9672030b9968a5a69a3159b6ad2" target="0fb5d2e445c6a388cc7c7cd3bba5dad3" xmi:id="c02aab81ee70b22e82ad2f741e13b9ae"/>
+    <attributeMappings source="9b2acf43c18529dbb2a4055be2258630" target="461a9b30cff14f60a932a6882353d52b" xmi:id="ba5d3d0ab4432c1bbd72d49cd23dc385"/>
+    <attributeMappings source="4afe0ae4e4bcc9bf1a2b0be17b3f6c06" target="379c8260dcc94d522712945d3a5eae79" xmi:id="366a9a466b815da3df197814fc110765"/>
+    <attributeMappings source="36480bf656c8b44d74f4258392e569ee" target="a9e85e6bbd48c1bf07249e36b6c2a35d" xmi:id="18e7a285dfcc22519efedc15bab6189e"/>
+    <attributeMappings source="f3dd2137b6a81c464137999c45883536" target="33667b63664072cf761fa94d9d348174" xmi:id="d2f1526977d934472dd3507fec19c239"/>
+    <attributeMappings source="0cf6d886dc057c720e2369d985729d05" target="0529c64a618f6bb335a954baef9ec7d9" xmi:id="e37cb1caed7e7f99a50f4927e57a8456"/>
+    <attributeMappings source="6077bfba6070ad30e7733a7868bdc6a9" target="d080b0dee7b9a2c0fe9c7e2c01955a06" xmi:id="52a3cd7fc4b2a93b73093198e95a191e"/>
+    <attributeMappings source="4f3c88b3e3b1831172a927abb4303ad7" target="4786c376ac611f2efe4c74beee0ec3b8" xmi:id="7d7a691ddbc342cc57c92fcf800a5bbe"/>
+    <attributeMappings source="d4886c960b1efa2dd6e7c82d849b5e88" target="4901cfa068004394ae1e2a9096fb91b5" xmi:id="742bb3ad4bdf0cd63904fe36afe5e0af"/>
+    <attributeMappings source="cf4def288f84d42a2172b488e69af4ec" target="269dd5e7d20cf7c0a4191ea0dd232fee" xmi:id="9d2455bd09c89e8a90055905e18099ed"/>
+    <attributeMappings source="f242d4cd2f039dd20457d1a3aaa08581" target="cf637f6b39884335c2c6ddaeef6700df" xmi:id="c36bbf90085b0cf43974ef95bf83a0fe"/>
+    <attributeMappings source="cd1263688e2d13f4573bb011cfb0b0e6" target="2fe314c18225c767d3c23f31a555ae91" xmi:id="3f784b8bd29fe7df45216254bc504881"/>
+    <attributeMappings source="91b38bfc794ef53df6e599a33b4696fe" target="82bc5465da067b1ec4089e5f3d17de84" xmi:id="8467b73743a3686070c72f6013e9799c"/>
+    <attributeMappings source="bd8b1530159a885146a854650fb9f4b4" target="caff4f3b68f081542534d2a31cbfb564" xmi:id="2da4e984041fa211f75b3ca19dde32d4"/>
+    <attributeMappings source="edcb1809340a1712cf86b866be65f0a9" target="beb3a11da259f038a0d52b011b463299" xmi:id="52cac7ee4f262c9912085dba4d0cc2fd"/>
+    <attributeMappings source="02a5b4c5b3230acb8da7eabd8161008a" target="6d76f2b09165291803d4339529b168ee" xmi:id="075665f2d1cb40ae9c6e61fb914d7f54"/>
+    <attributeMappings source="e540809bbef23899615bd1805c7b7425" target="145c50c1577469cc4abf2ee605e3f187" xmi:id="a07e20dbd380eeb874bc979bb2d4b2d1"/>
+    <attributeMappings xmi:id="ce204ae23a776480abbd1ced5bef77cc" source="96de56ef134843eda7b4849b9b37217e" target="c185205123edcc16b4ab36f983896141"/>
+    <attributeMappings xmi:id="a0fd4109c9eb409977f64c57900de532" source="92e942f626833eb1233c8f9dc2dd1440" target="38031dfb0832c5ea0c76ca02dc928c4f"/>
+  </tableMappings>
+</flowgraph:ContainerNode>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="SELLOUT_HIST" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="SELLOUT_HIST"/>
+  <metadata changedAt="2020-08-07 09:23:54.018"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="23"/>
+  <dataSources>
+    <DataSource id="FG_SELLOUT_BW">
+      <resourceUri>FG_SELLOUT_BW</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="_BIC_ZCDCADENA"/>
+        <viewAttribute id="_BIC_ZSUSUPER"/>
+        <viewAttribute id="_BIC_ZCDPROSUP"/>
+        <viewAttribute id="Periodo"/>
+        <viewAttribute aggregationType="sum" id="valor"/>
+        <viewAttribute aggregationType="sum" id="valor_costo"/>
+        <viewAttribute id="CALMONTH_1"/>
+        <viewAttribute id="CALYEAR_1"/>
+        <viewAttribute id="UNIT_1"/>
+        <viewAttribute aggregationType="sum" id="BILL_QTY"/>
+        <viewAttribute aggregationType="sum" id="_BIC_ZCANTVTA_1"/>
+        <viewAttribute id="MATERIAL_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="KOKRS" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>'EC01'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#FG_SELLOUT_BW">
+        <mapping xsi:type="Calculation:AttributeMapping" target="_BIC_ZCDCADENA" source="_BIC_ZCDCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="_BIC_ZSUSUPER" source="_BIC_ZSUSUPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="_BIC_ZCDPROSUP" source="_BIC_ZCDPROSUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Periodo" source="Periodo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="valor" source="valor"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="valor_costo" source="valor_costo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH_1" source="CALMONTH_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALYEAR_1" source="CALYEAR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_1" source="UNIT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BILL_QTY" source="BILL_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="_BIC_ZCANTVTA_1" source="_BIC_ZCANTVTA_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_1" source="MATERIAL_1"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="_BIC_ZSUSUPER"/>
+        <viewAttribute id="_BIC_ZCDPROSUP"/>
+        <viewAttribute id="Periodo"/>
+        <viewAttribute id="valor"/>
+        <viewAttribute id="valor_costo"/>
+        <viewAttribute id="CALMONTH_1"/>
+        <viewAttribute id="CALYEAR_1"/>
+        <viewAttribute id="UNIT_1"/>
+        <viewAttribute id="BILL_QTY"/>
+        <viewAttribute id="_BIC_ZCANTVTA_1"/>
+        <viewAttribute id="MATERIAL_1"/>
+        <viewAttribute id="_BIC_ZCDCADENA"/>
+        <viewAttribute id="KOKRS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="_BIC_ZSUSUPER" source="_BIC_ZSUSUPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="_BIC_ZCDPROSUP" source="_BIC_ZCDPROSUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Periodo" source="Periodo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="valor" source="valor"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="valor_costo" source="valor_costo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH_1" source="CALMONTH_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALYEAR_1" source="CALYEAR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_1" source="UNIT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BILL_QTY" source="BILL_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="_BIC_ZCANTVTA_1" source="_BIC_ZCANTVTA_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_1" source="MATERIAL_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="_BIC_ZCDCADENA" source="_BIC_ZCDCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOKRS" source="KOKRS"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="_BIC_ZSUSUPER" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="_BIC_ZSUSUPER"/>
+        <keyMapping columnObjectName="Union_1" columnName="_BIC_ZSUSUPER"/>
+      </attribute>
+      <attribute id="_BIC_ZCDPROSUP" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="_BIC_ZCDPROSUP"/>
+        <keyMapping columnObjectName="Union_1" columnName="_BIC_ZCDPROSUP"/>
+      </attribute>
+      <attribute id="Periodo" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Periodo"/>
+        <keyMapping columnObjectName="Union_1" columnName="Periodo"/>
+      </attribute>
+      <attribute id="CALMONTH_1" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CALMONTH_1"/>
+        <keyMapping columnObjectName="Union_1" columnName="CALMONTH_1"/>
+      </attribute>
+      <attribute id="CALYEAR_1" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CALYEAR_1"/>
+        <keyMapping columnObjectName="Union_1" columnName="CALYEAR_1"/>
+      </attribute>
+      <attribute id="UNIT_1" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIT_1"/>
+        <keyMapping columnObjectName="Union_1" columnName="UNIT_1"/>
+      </attribute>
+      <attribute id="MATERIAL_1" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_1"/>
+        <keyMapping columnObjectName="Union_1" columnName="MATERIAL_1"/>
+      </attribute>
+      <attribute id="_BIC_ZCDCADENA" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="_BIC_ZCDCADENA"/>
+        <keyMapping columnObjectName="Union_1" columnName="_BIC_ZCDCADENA"/>
+      </attribute>
+      <attribute id="KOKRS" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KOKRS"/>
+        <keyMapping columnObjectName="Union_1" columnName="KOKRS"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="FECHA" hidden="false" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FECHA"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="8">
+          <formula>&quot;CALMONTH_1&quot;+'01'</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="valor" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="valor"/>
+        <measureMapping columnObjectName="Union_1" columnName="valor"/>
+      </measure>
+      <measure id="valor_costo" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="valor_costo"/>
+        <measureMapping columnObjectName="Union_1" columnName="valor_costo"/>
+      </measure>
+      <measure id="BILL_QTY" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="BILL_QTY"/>
+        <measureMapping columnObjectName="Union_1" columnName="BILL_QTY"/>
+      </measure>
+      <measure id="_BIC_ZCANTVTA_1" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="_BIC_ZCANTVTA_1"/>
+        <measureMapping columnObjectName="Union_1" columnName="_BIC_ZCANTVTA_1"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="320"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="190"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

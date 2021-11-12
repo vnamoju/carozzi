@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_SALA_FISICA" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_SALA_FISICA"/>
+  <metadata changedAt="2018-04-19 22:50:04.197" createdAt="2018-03-26 11:32:23.657"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="Z1VCLIENTEXREMO">
+      <resourceUri>Z1VCLIENTEXREMO</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="Z1VCLIENTEXREMO">
+    <descriptions defaultDescription="DIM_SALA_FISICA"/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Z1VCLIENTEXREMO" columnName="MANDT"/>
+      </attribute>
+      <attribute id="CLIENTE" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE"/>
+        <keyMapping columnObjectName="Z1VCLIENTEXREMO" columnName="KUNNR"/>
+      </attribute>
+      <attribute id="CADENA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CADENA"/>
+        <keyMapping columnObjectName="Z1VCLIENTEXREMO" columnName="CDCAD"/>
+      </attribute>
+      <attribute id="SUBCADENA" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBCADENA"/>
+        <keyMapping columnObjectName="Z1VCLIENTEXREMO" columnName="CDSCAD"/>
+      </attribute>
+      <attribute id="LOCAL" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LOCAL"/>
+        <keyMapping columnObjectName="Z1VCLIENTEXREMO" columnName="CDCADLC"/>
+      </attribute>
+      <attribute id="SALA_FISICA" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALA_FISICA"/>
+        <keyMapping columnObjectName="Z1VCLIENTEXREMO" columnName="CDREMO"/>
+      </attribute>
+      <attribute id="AGENCIA" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AGENCIA"/>
+        <keyMapping columnObjectName="Z1VCLIENTEXREMO" columnName="AGENCIA"/>
+      </attribute>
+      <attribute id="SUPERVISOR" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUPERVISOR"/>
+        <keyMapping columnObjectName="Z1VCLIENTEXREMO" columnName="SUPERVISOR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

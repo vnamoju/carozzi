@@ -1,0 +1,1404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="NEWVTA_DIARIO_PED_01" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription=""/>
+  <metadata changedAt="2021-06-09 17:01:07.295"/>
+  <localVariables>
+    <variable id="p_ejercicio" parameter="true">
+      <descriptions defaultDescription="p_ejercicio"/>
+      <variableProperties datatype="VARCHAR" defaultExpressionLanguage="COLUMN_ENGINE" length="4" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>leftstr(now(),4)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="p_mes" parameter="true">
+      <descriptions defaultDescription="p_mes"/>
+      <variableProperties datatype="VARCHAR" defaultExpressionLanguage="COLUMN_ENGINE" length="2" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>rightstr(leftstr(now(),6),2)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="46"/>
+  <dataSources>
+    <DataSource id="ZOFIDIV">
+      <resourceUri>ZOFIDIV</resourceUri>
+    </DataSource>
+    <DataSource id="S618">
+      <resourceUri>S618</resourceUri>
+    </DataSource>
+    <DataSource id="ZPPTO">
+      <resourceUri>ZPPTO</resourceUri>
+    </DataSource>
+    <DataSource id="VBAK2">
+      <resourceUri>VBAK2</resourceUri>
+    </DataSource>
+    <DataSource id="VBAP2">
+      <resourceUri>VBAP2</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_17">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OFICNA_VENTA"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="ZOFIDIV">
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICNA_VENTA" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="WWDIV"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="VRSIO"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="VWDAT"/>
+        <viewAttribute id="SPMON"/>
+        <viewAttribute aggregationType="sum" id="VOLUMEN_META_ORIGINAL"/>
+        <viewAttribute aggregationType="sum" id="VALOR_NETO_META_ORIGINAL"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="VENDEDOR"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="FECHA_CONTABILIZACION" length="8" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;SPMON&quot;  + '01'</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="EJERCICIO" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;SPMON&quot;,4)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIODO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>'0'+Rightstr(&quot;SPMON&quot;,2)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="VALOR_NETO_META" length="15" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>(&quot;VALOR_NETO_META_ORIGINAL&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="VOLUMEN_META" length="15" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>(&quot;VOLUMEN_META_ORIGINAL&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="EJERCICIO_INICIAL" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>string((int(leftstr(string(now()),4))-3))</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+    <restrictedViewAttributes/>
+      <input node="S618">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_MEDIDA" source="BASME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_META_ORIGINAL" source="FKIMG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_NETO_META_ORIGINAL" source="UMNETWR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="STWAE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="PVRTNR"/>
+      </input>
+    <filter>&quot;EJERCICIO&quot;&gt;=&quot;EJERCICIO_INICIAL&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="META" cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="BASME"/>
+        <viewAttribute id="VWDAT"/>
+        <viewAttribute id="SPMON"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="VOLUMEN_META_ORIGINAL"/>
+        <viewAttribute id="VALOR_NETO_META_ORIGINAL"/>
+        <viewAttribute id="VALOR_NETO_META"/>
+        <viewAttribute id="VOLUMEN_META"/>
+        <viewAttribute id="VENDEDOR"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Aggregation_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="ORGANIZACION_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="OFICINA_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BASME" source="UNIDAD_MEDIDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VWDAT" source="VWDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPMON" source="SPMON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="FECHA_CONTABILIZACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="MONEDA_LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_META_ORIGINAL" source="VOLUMEN_META_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_NETO_META_ORIGINAL" source="VALOR_NETO_META_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_NETO_META" source="VALOR_NETO_META"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_META" source="VOLUMEN_META"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="VENDEDOR"/>
+      </input>
+      <input node="Projection_17">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="DIVISION_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="OFICNA_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="ORGANIZACION_VENTA"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="OFICINA_VENTA"/>
+    <joinAttribute name="ORGANIZACION_VENTA"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="PPTO">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="CUENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute aggregationType="sum" id="VALOR"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="VOLUMEN_PPTO" length="15" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CUENTA&quot;='Volumen',&quot;VALOR&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="VALOR_NETO_PPTO" length="15" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(&quot;CUENTA&quot;='0000005001' OR
+&quot;CUENTA&quot;='0000005101' OR
+&quot;CUENTA&quot;='0000005102' OR
+&quot;CUENTA&quot;='0000005104' OR
+&quot;CUENTA&quot;='0000005105' OR
+&quot;CUENTA&quot;='0000005106' OR
+&quot;CUENTA&quot;='0000005107' OR
+&quot;CUENTA&quot;='0000005108' OR
+&quot;CUENTA&quot;='0000005002' OR
+&quot;CUENTA&quot;='0000005003' OR
+&quot;CUENTA&quot;='0000005004' OR
+&quot;CUENTA&quot;='0000005005' OR
+&quot;CUENTA&quot;='0000005006' OR
+&quot;CUENTA&quot;='0000005007' OR
+&quot;CUENTA&quot;='0000005051' OR
+&quot;CUENTA&quot;='0000005052' OR
+&quot;CUENTA&quot;='0000005012' OR
+&quot;CUENTA&quot;='0000005013' OR
+&quot;CUENTA&quot;='0000005014' OR
+&quot;CUENTA&quot;='0000005015' OR
+&quot;CUENTA&quot;='0000005016' OR
+&quot;CUENTA&quot;='0000005109' OR
+&quot;CUENTA&quot;='0000005110' OR
+&quot;CUENTA&quot;='0000005113' OR
+&quot;CUENTA&quot;='0000005120' OR
+&quot;CUENTA&quot;='0000005121' OR
+&quot;CUENTA&quot;='0000005122' OR
+&quot;CUENTA&quot;='0000005123' OR
+&quot;CUENTA&quot;='0000005114', &quot;VALOR&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="FECHA_CONTABILIZACION" length="8" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;EJERCICIO&quot;+rightstr(&quot;PERIODO&quot;,2)+'01'
+</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="SOCIEDAD_FI" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>string(&quot;SOCIEDAD_CO&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="EJERCICIO_INICIAL" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>string((int(leftstr(string(now()),4))-3))</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+    <restrictedViewAttributes/>
+      <input node="ZPPTO"/>
+    <filter>&quot;EJERCICIO&quot;&gt;=&quot;EJERCICIO_INICIAL&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_3">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="ERZET"/>
+        <viewAttribute id="ERNAM"/>
+        <viewAttribute id="ANGDT"/>
+        <viewAttribute id="BNDDT"/>
+        <viewAttribute id="AUDAT"/>
+        <viewAttribute id="VBTYP"/>
+        <viewAttribute id="TRVOG"/>
+        <viewAttribute id="AUART"/>
+        <viewAttribute id="AUGRU"/>
+        <viewAttribute id="GWLDT"/>
+        <viewAttribute id="SUBMI"/>
+        <viewAttribute id="LIFSK"/>
+        <viewAttribute id="FAKSK"/>
+        <viewAttribute id="NETWR"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VTWEG"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="VKGRP"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="GSKST"/>
+        <viewAttribute id="GUEBG"/>
+        <viewAttribute id="GUEEN"/>
+        <viewAttribute id="KNUMV"/>
+        <viewAttribute id="VDATU"/>
+        <viewAttribute id="VPRGR"/>
+        <viewAttribute id="AUTLF"/>
+        <viewAttribute id="VBKLA"/>
+        <viewAttribute id="VBKLT"/>
+        <viewAttribute id="KALSM"/>
+        <viewAttribute id="VSBED"/>
+        <viewAttribute id="FKARA"/>
+        <viewAttribute id="AWAHR"/>
+        <viewAttribute id="KTEXT"/>
+        <viewAttribute id="BSTNK"/>
+        <viewAttribute id="BSARK"/>
+        <viewAttribute id="BSTDK"/>
+        <viewAttribute id="BSTZD"/>
+        <viewAttribute id="IHREZ"/>
+        <viewAttribute id="BNAME"/>
+        <viewAttribute id="TELF1"/>
+        <viewAttribute id="MAHZA"/>
+        <viewAttribute id="MAHDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="STAFO"/>
+        <viewAttribute id="STWAE"/>
+        <viewAttribute id="AEDAT"/>
+        <viewAttribute id="KVGR1"/>
+        <viewAttribute id="KVGR2"/>
+        <viewAttribute id="KVGR3"/>
+        <viewAttribute id="KVGR4"/>
+        <viewAttribute id="KVGR5"/>
+        <viewAttribute id="KNUMA"/>
+        <viewAttribute id="KOKRS"/>
+        <viewAttribute id="PS_PSP_PNR"/>
+        <viewAttribute id="KURST"/>
+        <viewAttribute id="KKBER"/>
+        <viewAttribute id="KNKLI"/>
+        <viewAttribute id="GRUPP"/>
+        <viewAttribute id="SBGRP"/>
+        <viewAttribute id="CTLPC"/>
+        <viewAttribute id="CMWAE"/>
+        <viewAttribute id="CMFRE"/>
+        <viewAttribute id="CMNUP"/>
+        <viewAttribute id="CMNGV"/>
+        <viewAttribute id="AMTBL"/>
+        <viewAttribute id="HITYP_PR"/>
+        <viewAttribute id="ABRVW"/>
+        <viewAttribute id="ABDIS"/>
+        <viewAttribute id="VGBEL"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="BUKRS_VF"/>
+        <viewAttribute id="TAXK1"/>
+        <viewAttribute id="TAXK2"/>
+        <viewAttribute id="TAXK3"/>
+        <viewAttribute id="TAXK4"/>
+        <viewAttribute id="TAXK5"/>
+        <viewAttribute id="TAXK6"/>
+        <viewAttribute id="TAXK7"/>
+        <viewAttribute id="TAXK8"/>
+        <viewAttribute id="TAXK9"/>
+        <viewAttribute id="XBLNR"/>
+        <viewAttribute id="ZUONR"/>
+        <viewAttribute id="VGTYP"/>
+        <viewAttribute id="KALSM_CH"/>
+        <viewAttribute id="AGRZR"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="QMNUM"/>
+        <viewAttribute id="VBELN_GRP"/>
+        <viewAttribute id="SCHEME_GRP"/>
+        <viewAttribute id="ABRUF_PART"/>
+        <viewAttribute id="ABHOD"/>
+        <viewAttribute id="ABHOV"/>
+        <viewAttribute id="ABHOB"/>
+        <viewAttribute id="RPLNR"/>
+        <viewAttribute id="VZEIT"/>
+        <viewAttribute id="STCEG_L"/>
+        <viewAttribute id="LANDTX"/>
+        <viewAttribute id="XEGDR"/>
+        <viewAttribute id="ENQUEUE_GRP"/>
+        <viewAttribute id="DAT_FZAU"/>
+        <viewAttribute id="FMBDAT"/>
+        <viewAttribute id="VSNMR_V"/>
+        <viewAttribute id="HANDLE"/>
+        <viewAttribute id="PROLI"/>
+        <viewAttribute id="CONT_DG"/>
+        <viewAttribute id="CRM_GUID"/>
+        <viewAttribute id="UPD_TMSTMP"/>
+        <viewAttribute id="MSR_ID"/>
+        <viewAttribute id="TM_CTRL_KEY"/>
+        <viewAttribute id="HANDOVERLOC"/>
+        <viewAttribute id="PSM_BUDAT"/>
+        <viewAttribute id="SWENR"/>
+        <viewAttribute id="SMENR"/>
+        <viewAttribute id="PHASE"/>
+        <viewAttribute id="MTLAUR"/>
+        <viewAttribute id="STAGE"/>
+        <viewAttribute id="HB_CONT_REASON"/>
+        <viewAttribute id="HB_EXPDATE"/>
+        <viewAttribute id="HB_RESDATE"/>
+        <viewAttribute id="LOGSYSB"/>
+        <viewAttribute id="KALCD"/>
+        <viewAttribute id="MULTI"/>
+        <viewAttribute id="SPPAYM"/>
+        <viewAttribute id="ZCOMEX001"/>
+        <viewAttribute id="ZCOMEX002"/>
+        <viewAttribute id="ZCOMEX003"/>
+        <viewAttribute id="ZCOMEX004"/>
+        <viewAttribute id="ZCOMEX005"/>
+        <viewAttribute id="ZCOMEX006"/>
+        <viewAttribute id="ZCOMEX007"/>
+        <viewAttribute id="ZCOMEX008"/>
+        <viewAttribute id="ZCOMEX009"/>
+        <viewAttribute id="ZCOMEX010"/>
+        <viewAttribute id="ZCOMEX011"/>
+        <viewAttribute id="ZCOMEX012"/>
+        <viewAttribute id="ZCOMEX013"/>
+        <viewAttribute id="ZCOMEX014"/>
+        <viewAttribute id="ZCOMEX015"/>
+        <viewAttribute id="ZCOMEX016"/>
+        <viewAttribute id="ZCOMEX017"/>
+        <viewAttribute id="ZCOMEX018"/>
+        <viewAttribute id="ZCOMEX019"/>
+        <viewAttribute id="ZCOMEX020"/>
+        <viewAttribute id="ZCOMEX021"/>
+        <viewAttribute id="ZCOMEX022"/>
+        <viewAttribute id="ZCOMEX023"/>
+        <viewAttribute id="ZCOMEX024"/>
+        <viewAttribute id="ZCOMEX025"/>
+        <viewAttribute id="ZCOMEX026"/>
+        <viewAttribute id="ZCOMEX027"/>
+        <viewAttribute id="ZCOMEX028"/>
+        <viewAttribute id="ZCOMEX029"/>
+        <viewAttribute id="ZCOMEX030"/>
+        <viewAttribute id="ZCOMEX031"/>
+        <viewAttribute id="ZCOMEX032"/>
+        <viewAttribute id="ZCOMEX033"/>
+        <viewAttribute id="ZCOMEX034"/>
+        <viewAttribute id="ZCOMEX035"/>
+        <viewAttribute id="ZCOMEX036"/>
+        <viewAttribute id="ZCOMEX037"/>
+        <viewAttribute id="ZCOMEX038"/>
+        <viewAttribute id="ZCOMEX039"/>
+        <viewAttribute id="ZCOMEX040"/>
+        <viewAttribute id="ZCOMEX041"/>
+        <viewAttribute id="ZCOMEX042"/>
+        <viewAttribute id="ZCOMEX043"/>
+        <viewAttribute id="ZCOMEX044"/>
+        <viewAttribute id="EBELN"/>
+        <viewAttribute id="MBLNR"/>
+        <viewAttribute id="MJAHR"/>
+        <viewAttribute id="ATTNO"/>
+        <viewAttribute id="WRKCD"/>
+        <viewAttribute id="XSTAT"/>
+        <viewAttribute id="YSTAT"/>
+        <viewAttribute id="ZVFDO"/>
+        <viewAttribute id="ZZNO_OR"/>
+        <viewAttribute id="ZZHKONT"/>
+        <viewAttribute id="ZZKOSTL"/>
+        <viewAttribute id="ZZSOLICITANTE"/>
+        <viewAttribute id="ZZRETIRA"/>
+        <viewAttribute id="ZZRECEPTOR"/>
+        <viewAttribute id="ZZKUNNR"/>
+        <viewAttribute id="ZZMATKL"/>
+        <viewAttribute id="ZZBNAME"/>
+        <viewAttribute id="ZZGDEV"/>
+        <viewAttribute id="ZCOMEX045"/>
+        <viewAttribute id="ZCOMEX046"/>
+        <viewAttribute id="ZZ802"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="division" length="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>if (&quot;VKORG&quot;='4101', 'PE','')</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="ejercicio" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;ERDAT&quot;,4)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="inicio_mes" length="6" expressionLanguage="COLUMN_ENGINE">
+          <formula>replace(leftstr(string(now()),7),'-','')+'01'</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="mes" length="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>rightstr(leftstr(&quot;ERDAT&quot;,6),2)
+</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+    <restrictedViewAttributes/>
+      <input node="VBAK2"/>
+    <filter>(&quot;AUART&quot;!='ZKFE' and  &quot;AUART&quot;!='ZKFF'and &quot;AUART&quot;!='ZKFN' and &quot;AUART&quot;!='ZKMN') and 
+ (&quot;VKORG&quot;='1101' or &quot;VKORG&quot;='1000' or &quot;VKORG&quot;='4101')and
+ (&quot;LIFSK&quot;!='12') and
+ (&quot;ERDAT&quot;&gt;=&quot;inicio_mes&quot;)</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MATWA"/>
+        <viewAttribute id="PMATN"/>
+        <viewAttribute id="CHARG"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="ARKTX"/>
+        <viewAttribute id="PSTYV"/>
+        <viewAttribute id="POSAR"/>
+        <viewAttribute id="LFREL"/>
+        <viewAttribute id="FKREL"/>
+        <viewAttribute id="UEPOS"/>
+        <viewAttribute id="GRPOS"/>
+        <viewAttribute id="ABGRU"/>
+        <viewAttribute id="PRODH"/>
+        <viewAttribute id="ZWERT"/>
+        <viewAttribute id="ZMENG"/>
+        <viewAttribute id="ZIEME"/>
+        <viewAttribute id="UMZIZ"/>
+        <viewAttribute id="UMZIN"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="SMENG"/>
+        <viewAttribute id="ABLFZ"/>
+        <viewAttribute id="ABDAT"/>
+        <viewAttribute id="ABSFZ"/>
+        <viewAttribute id="POSEX"/>
+        <viewAttribute id="KDMAT"/>
+        <viewAttribute id="KBVER"/>
+        <viewAttribute id="KEVER"/>
+        <viewAttribute id="VKGRU"/>
+        <viewAttribute id="VKAUS"/>
+        <viewAttribute id="GRKOR"/>
+        <viewAttribute id="FMENG"/>
+        <viewAttribute id="UEBTK"/>
+        <viewAttribute id="UEBTO"/>
+        <viewAttribute id="UNTTO"/>
+        <viewAttribute id="FAKSP"/>
+        <viewAttribute id="ATPKZ"/>
+        <viewAttribute id="RKFKF"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="NETWR"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="ANTLF"/>
+        <viewAttribute id="KZTLF"/>
+        <viewAttribute id="CHSPL"/>
+        <viewAttribute id="KWMENG"/>
+        <viewAttribute id="LSMENG"/>
+        <viewAttribute id="KBMENG"/>
+        <viewAttribute id="KLMENG"/>
+        <viewAttribute id="VRKME"/>
+        <viewAttribute id="UMVKZ"/>
+        <viewAttribute id="UMVKN"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="GEWEI"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="VOLEH"/>
+        <viewAttribute id="VBELV"/>
+        <viewAttribute id="POSNV"/>
+        <viewAttribute id="VGBEL"/>
+        <viewAttribute id="VGPOS"/>
+        <viewAttribute id="VOREF"/>
+        <viewAttribute id="UPFLU"/>
+        <viewAttribute id="ERLRE"/>
+        <viewAttribute id="LPRIO"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="LGORT"/>
+        <viewAttribute id="VSTEL"/>
+        <viewAttribute id="ROUTE"/>
+        <viewAttribute id="STKEY"/>
+        <viewAttribute id="STDAT"/>
+        <viewAttribute id="STLNR"/>
+        <viewAttribute id="STPOS"/>
+        <viewAttribute id="AWAHR"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="ERNAM"/>
+        <viewAttribute id="ERZET"/>
+        <viewAttribute id="TAXM1"/>
+        <viewAttribute id="TAXM2"/>
+        <viewAttribute id="TAXM3"/>
+        <viewAttribute id="TAXM4"/>
+        <viewAttribute id="TAXM5"/>
+        <viewAttribute id="TAXM6"/>
+        <viewAttribute id="TAXM7"/>
+        <viewAttribute id="TAXM8"/>
+        <viewAttribute id="TAXM9"/>
+        <viewAttribute id="VBEAF"/>
+        <viewAttribute id="VBEAV"/>
+        <viewAttribute id="VGREF"/>
+        <viewAttribute id="NETPR"/>
+        <viewAttribute id="KPEIN"/>
+        <viewAttribute id="KMEIN"/>
+        <viewAttribute id="SHKZG"/>
+        <viewAttribute id="SKTOF"/>
+        <viewAttribute id="MTVFP"/>
+        <viewAttribute id="SUMBD"/>
+        <viewAttribute id="KONDM"/>
+        <viewAttribute id="KTGRM"/>
+        <viewAttribute id="BONUS"/>
+        <viewAttribute id="PROVG"/>
+        <viewAttribute id="EANNR"/>
+        <viewAttribute id="PRSOK"/>
+        <viewAttribute id="BWTAR"/>
+        <viewAttribute id="BWTEX"/>
+        <viewAttribute id="XCHPF"/>
+        <viewAttribute id="XCHAR"/>
+        <viewAttribute id="LFMNG"/>
+        <viewAttribute id="STAFO"/>
+        <viewAttribute id="WAVWR"/>
+        <viewAttribute id="KZWI1"/>
+        <viewAttribute id="KZWI2"/>
+        <viewAttribute id="KZWI3"/>
+        <viewAttribute id="KZWI4"/>
+        <viewAttribute id="KZWI5"/>
+        <viewAttribute id="KZWI6"/>
+        <viewAttribute id="STCUR"/>
+        <viewAttribute id="AEDAT"/>
+        <viewAttribute id="EAN11"/>
+        <viewAttribute id="FIXMG"/>
+        <viewAttribute id="PRCTR"/>
+        <viewAttribute id="MVGR1"/>
+        <viewAttribute id="MVGR2"/>
+        <viewAttribute id="MVGR3"/>
+        <viewAttribute id="MVGR4"/>
+        <viewAttribute id="MVGR5"/>
+        <viewAttribute id="KMPMG"/>
+        <viewAttribute id="SUGRD"/>
+        <viewAttribute id="SOBKZ"/>
+        <viewAttribute id="VPZUO"/>
+        <viewAttribute id="PAOBJNR"/>
+        <viewAttribute id="PS_PSP_PNR"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="VPMAT"/>
+        <viewAttribute id="VPWRK"/>
+        <viewAttribute id="PRBME"/>
+        <viewAttribute id="UMREF"/>
+        <viewAttribute id="KNTTP"/>
+        <viewAttribute id="KZVBR"/>
+        <viewAttribute id="SERNR"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="ABGRS"/>
+        <viewAttribute id="BEDAE"/>
+        <viewAttribute id="CMPRE"/>
+        <viewAttribute id="CMTFG"/>
+        <viewAttribute id="CMPNT"/>
+        <viewAttribute id="CMKUA"/>
+        <viewAttribute id="CUOBJ"/>
+        <viewAttribute id="CUOBJ_CH"/>
+        <viewAttribute id="CEPOK"/>
+        <viewAttribute id="KOUPD"/>
+        <viewAttribute id="SERAIL"/>
+        <viewAttribute id="ANZSN"/>
+        <viewAttribute id="NACHL"/>
+        <viewAttribute id="MAGRV"/>
+        <viewAttribute id="MPROK"/>
+        <viewAttribute id="VGTYP"/>
+        <viewAttribute id="PROSA"/>
+        <viewAttribute id="UEPVW"/>
+        <viewAttribute id="KALNR"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="SPOSN"/>
+        <viewAttribute id="KOWRR"/>
+        <viewAttribute id="STADAT"/>
+        <viewAttribute id="EXART"/>
+        <viewAttribute id="PREFE"/>
+        <viewAttribute id="KNUMH"/>
+        <viewAttribute id="CLINT"/>
+        <viewAttribute id="CHMVS"/>
+        <viewAttribute id="STLTY"/>
+        <viewAttribute id="STLKN"/>
+        <viewAttribute id="STPOZ"/>
+        <viewAttribute id="STMAN"/>
+        <viewAttribute id="ZSCHL_K"/>
+        <viewAttribute id="KALSM_K"/>
+        <viewAttribute id="KALVAR"/>
+        <viewAttribute id="KOSCH"/>
+        <viewAttribute id="UPMAT"/>
+        <viewAttribute id="UKONM"/>
+        <viewAttribute id="MFRGR"/>
+        <viewAttribute id="PLAVO"/>
+        <viewAttribute id="KANNR"/>
+        <viewAttribute id="CMPRE_FLT"/>
+        <viewAttribute id="ABFOR"/>
+        <viewAttribute id="ABGES"/>
+        <viewAttribute id="J_1BCFOP"/>
+        <viewAttribute id="J_1BTAXLW1"/>
+        <viewAttribute id="J_1BTAXLW2"/>
+        <viewAttribute id="J_1BTXSDC"/>
+        <viewAttribute id="WKTNR"/>
+        <viewAttribute id="WKTPS"/>
+        <viewAttribute id="SKOPF"/>
+        <viewAttribute id="KZBWS"/>
+        <viewAttribute id="WGRU1"/>
+        <viewAttribute id="WGRU2"/>
+        <viewAttribute id="KNUMA_PI"/>
+        <viewAttribute id="KNUMA_AG"/>
+        <viewAttribute id="KZFME"/>
+        <viewAttribute id="LSTANR"/>
+        <viewAttribute id="TECHS"/>
+        <viewAttribute id="MWSBP"/>
+        <viewAttribute id="BERID"/>
+        <viewAttribute id="PCTRF"/>
+        <viewAttribute id="LOGSYS_EXT"/>
+        <viewAttribute id="J_1BTAXLW3"/>
+        <viewAttribute id="J_1BTAXLW4"/>
+        <viewAttribute id="J_1BTAXLW5"/>
+        <viewAttribute id="STOCKLOC"/>
+        <viewAttribute id="SLOCTYPE"/>
+        <viewAttribute id="MSR_RET_REASON"/>
+        <viewAttribute id="MSR_REFUND_CODE"/>
+        <viewAttribute id="MSR_APPROV_BLOCK"/>
+        <viewAttribute id="NRAB_KNUMH"/>
+        <viewAttribute id="TRMRISK_RELEVANT"/>
+        <viewAttribute id="SGT_RCAT"/>
+        <viewAttribute id="HANDOVERLOC"/>
+        <viewAttribute id="HANDOVERDATE"/>
+        <viewAttribute id="HANDOVERTIME"/>
+        <viewAttribute id="TC_AUT_DET"/>
+        <viewAttribute id="MANUAL_TC_REASON"/>
+        <viewAttribute id="FISCAL_INCENTIVE"/>
+        <viewAttribute id="TAX_SUBJECT_ST"/>
+        <viewAttribute id="FISCAL_INCENTIVE_ID"/>
+        <viewAttribute id="SPCSTO"/>
+        <viewAttribute id="_BEV1_SRFUND"/>
+        <viewAttribute id="AUFPL_OLC"/>
+        <viewAttribute id="APLZL_OLC"/>
+        <viewAttribute id="FERC_IND"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="FONDS"/>
+        <viewAttribute id="FISTL"/>
+        <viewAttribute id="FKBER"/>
+        <viewAttribute id="GRANT_NBR"/>
+        <viewAttribute id="IUID_RELEVANT"/>
+        <viewAttribute id="PRS_OBJNR"/>
+        <viewAttribute id="PRS_SD_SPSNR"/>
+        <viewAttribute id="PRS_WORK_PERIOD"/>
+        <viewAttribute id="PARGB"/>
+        <viewAttribute id="AUFPL_OAA"/>
+        <viewAttribute id="APLZL_OAA"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="VBAP2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="_BEV1_SRFUND" source="/BEV1/SRFUND"/></input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Pedidos" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="AUDAT"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VTWEG"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="KOKRS"/>
+        <viewAttribute id="SMENG"/>
+        <viewAttribute id="KBMENG"/>
+        <viewAttribute id="KLMENG"/>
+        <viewAttribute id="VBEAF"/>
+        <viewAttribute id="VBEAV"/>
+        <viewAttribute id="VGREF"/>
+        <viewAttribute id="NETPR"/>
+        <viewAttribute id="KMEIN"/>
+        <viewAttribute id="SHKZG"/>
+        <viewAttribute id="VKGRP"/>
+        <viewAttribute id="NETWR"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="BUKRS_VF"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="VRKME"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="ejercicio"/>
+        <viewAttribute id="ejercicio_mes"/>
+        <viewAttribute id="mes"/>
+      <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+      <viewAttribute hidden="true" id="JOIN$VBELN$VBELN"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Aggregation_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUDAT" source="AUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOKRS" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKGRP" source="VKGRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETWR" source="NETWR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS_VF" source="BUKRS_VF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ejercicio" source="ejercicio"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ejercicio_mes" source="inicio_mes"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="mes" source="mes"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBELN$VBELN" source="VBELN"/>
+      </input>
+      <input node="Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SMENG" source="SMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KBMENG" source="KBMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLMENG" source="KLMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBEAF" source="VBEAF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBEAV" source="VBEAV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VGREF" source="VGREF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETPR" source="NETPR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KMEIN" source="KMEIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHKZG" source="SHKZG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERK" source="WAERK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VRKME" source="VRKME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBELN$VBELN" source="VBELN"/>
+      </input>
+    <joinAttribute name="JOIN$MANDT$MANDT"/>
+    <joinAttribute name="JOIN$VBELN$VBELN"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="VOLUMEN_PPTO"/>
+        <viewAttribute id="VALOR_NETO_PPTO"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="VALOR_NETO_META"/>
+        <viewAttribute id="VOLUMEN_META"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="VENDEDOR"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="CANAL_DISTRIBUCION"/>
+        <viewAttribute id="SECTOR"/>
+        <viewAttribute id="GRUPO_VENDEDOR"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="VRKME"/>
+        <viewAttribute id="NETWR"/>
+        <viewAttribute id="KBMENG"/>
+        <viewAttribute id="KLMENG"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="Pedidos">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MANDT" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="ejercicio"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="VKBUR"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VOLUMEN_PPTO" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALOR_NETO_PPTO" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIVISION_COMERCIAL" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="mes"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="WAERK"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALOR_NETO_META" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VOLUMEN_META" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="BUKRS_VF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="KOKRS"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VENDEDOR" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_DISTRIBUCION" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SECTOR" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_VENDEDOR" source="VKGRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_MEDIDA" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VRKME" source="VRKME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETWR" source="NETWR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KBMENG" source="KBMENG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLMENG" source="KLMENG"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="META">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="ORGANIZACION_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="OFICINA_VENTA"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VOLUMEN_PPTO" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALOR_NETO_PPTO" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="DIVISION_COMERCIAL"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CLIENTE" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="MONEDA_LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_NETO_META" source="VALOR_NETO_META"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_META" source="VOLUMEN_META"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="FECHA_CONTABILIZACION"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CANAL_DISTRIBUCION" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SECTOR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GRUPO_VENDEDOR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIDAD_MEDIDA" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MATNR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VRKME" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NETWR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="KBMENG" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="KLMENG" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PPTO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="ORGANIZACION_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="OFICINA_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_PPTO" source="VOLUMEN_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_NETO_PPTO" source="VALOR_NETO_PPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="DIVISION_COMERCIAL"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CLIENTE" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="MONEDA_LOCAL"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALOR_NETO_META" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VOLUMEN_META" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VENDEDOR" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="FECHA_CONTABILIZACION"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CANAL_DISTRIBUCION" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SECTOR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GRUPO_VENDEDOR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIDAD_MEDIDA" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MATNR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VRKME" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NETWR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="KBMENG" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="KLMENG" null="true" value=""/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_4">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute aggregationType="sum" id="VOLUMEN_PPTO"/>
+        <viewAttribute aggregationType="sum" id="VALOR_NETO_PPTO"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute aggregationType="sum" id="VALOR_NETO_META"/>
+        <viewAttribute aggregationType="sum" id="VOLUMEN_META"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="VENDEDOR"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="CANAL_DISTRIBUCION"/>
+        <viewAttribute id="SECTOR"/>
+        <viewAttribute id="GRUPO_VENDEDOR"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="VRKME"/>
+        <viewAttribute aggregationType="sum" id="NETWR"/>
+        <viewAttribute aggregationType="sum" id="KBMENG"/>
+        <viewAttribute aggregationType="sum" id="KLMENG"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="EJERCICIO_PERIODO" length="6" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;EJERCICIO&quot; + rightstr(&quot;PERIODO&quot;,2)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="EJERCICIO_PERIODO_SOCIEDAD" length="11" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;EJERCICIO&quot;+&quot;PERIODO&quot;+&quot;SOCIEDAD_CO&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="ejercicio_1" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(replace(string(now()),'-',''),4)-1</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="Fecha_1" expressionLanguage="COLUMN_ENGINE">
+          <formula>addmonths(leftstr(replace(string(now()),'-',''),6),-1)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="Fecha_desde_aa" expressionLanguage="COLUMN_ENGINE">
+          <formula>addmonths(leftstr(replace(string(now()),'-',''),6),-13)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="Fecha_hasta_aa" expressionLanguage="COLUMN_ENGINE">
+          <formula>addmonths(leftstr(replace(string(now()),'-',''),6),-10)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+    <restrictedViewAttributes/>
+      <input node="Union_1"/>
+    <filter>( &quot;FECHA_CONTABILIZACION&quot;&gt;=&quot;Fecha_1&quot; or
+(&quot;FECHA_CONTABILIZACION&quot;&gt;=&quot;Fecha_desde_aa&quot; and
+&quot;FECHA_CONTABILIZACION&quot;&lt;&quot;Fecha_hasta_aa&quot;))</filter>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Aggregation_4">
+    <descriptions/>
+    <attributes>
+      <attribute id="EJERCICIO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="EJERCICIO"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="EJERCICIO"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ID" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_ID"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_VENTA_ID"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="OFICINA_VENTA"/>
+      </attribute>
+      <attribute id="PERIODO" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERIODO"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="PERIODO"/>
+      </attribute>
+      <attribute id="MONEDA_LOCAL" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONEDA_LOCAL"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="MONEDA_LOCAL"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO_ID" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_CO_ID"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="SOCIEDAD_CO"/>
+      </attribute>
+      <attribute id="VENDEDOR_ID" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="VENDEDOR"/>
+      </attribute>
+      <attribute id="EJERCICIO_PERIODO" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="EJERCICIO_PERIODO"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="EJERCICIO_PERIODO"/>
+      </attribute>
+      <attribute id="FECHA_CONTABILIZACION" order="13" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FECHA_CONTABILIZACION"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="FECHA_CONTABILIZACION"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA_ID" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORGANIZACION_VENTA_ID"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="ORGANIZACION_VENTA"/>
+      </attribute>
+      <attribute id="SECTOR_ID" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="SECTOR"/>
+      </attribute>
+      <attribute id="GRUPO_VENDEDOR_ID" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="GRUPO_VENDEDOR"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI_ID" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI_ID"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="SOCIEDAD_FI"/>
+      </attribute>
+      <attribute id="CANAL_DISTRIBUCION_ID" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="CANAL_DISTRIBUCION"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL_ID" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="DIVISION_COMERCIAL"/>
+      </attribute>
+      <attribute id="UNIDAD_MEDIDA" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIDAD_MEDIDA"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="UNIDAD_MEDIDA"/>
+      </attribute>
+      <attribute id="GRUPO_VENDEDOR" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="GRUPO_VENDEDOR"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="SOCIEDAD_CO"/>
+      </attribute>
+      <attribute id="MATNR" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATNR"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="MATNR"/>
+      </attribute>
+      <attribute id="VRKME" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VRKME"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="VRKME"/>
+      </attribute>
+      <attribute id="CLIENTEx" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTEx"/>
+        <keyMapping columnObjectName="Aggregation_4" columnName="CLIENTE"/>
+      </attribute>
+      <attribute id="MANDT$local">
+        <keyMapping columnObjectName="Aggregation_4" columnName="MANDT"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA$local">
+        <keyMapping columnObjectName="Aggregation_4" columnName="OFICINA_VENTA"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI$local">
+        <keyMapping columnObjectName="Aggregation_4" columnName="SOCIEDAD_FI"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL$local">
+        <keyMapping columnObjectName="Aggregation_4" columnName="GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="VENDEDOR$local">
+        <keyMapping columnObjectName="Aggregation_4" columnName="VENDEDOR"/>
+      </attribute>
+      <attribute id="CLIENTE$local">
+        <keyMapping columnObjectName="Aggregation_4" columnName="CLIENTE"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA$local">
+        <keyMapping columnObjectName="Aggregation_4" columnName="ORGANIZACION_VENTA"/>
+      </attribute>
+      <attribute id="CANAL_DISTRIBUCION$local">
+        <keyMapping columnObjectName="Aggregation_4" columnName="CANAL_DISTRIBUCION"/>
+      </attribute>
+      <attribute id="SECTOR$local">
+        <keyMapping columnObjectName="Aggregation_4" columnName="SECTOR"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL$local">
+        <keyMapping columnObjectName="Aggregation_4" columnName="DIVISION_COMERCIAL"/>
+      </attribute>
+      <attribute id="MATNR$local">
+        <keyMapping columnObjectName="Aggregation_4" columnName="MATNR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="VOLUMEN_PPTO" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VOLUMEN_PPTO"/>
+        <measureMapping columnObjectName="Aggregation_4" columnName="VOLUMEN_PPTO"/>
+      </measure>
+      <measure id="VALOR_NETO_PPTO" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_NETO_PPTO"/>
+        <measureMapping columnObjectName="Aggregation_4" columnName="VALOR_NETO_PPTO"/>
+      </measure>
+      <measure id="VALOR_NETO_META" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_NETO_META"/>
+        <measureMapping columnObjectName="Aggregation_4" columnName="VALOR_NETO_META"/>
+      </measure>
+      <measure id="VOLUMEN_META" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VOLUMEN_META"/>
+        <measureMapping columnObjectName="Aggregation_4" columnName="VOLUMEN_META"/>
+      </measure>
+      <measure id="NETWR" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NETWR"/>
+        <measureMapping columnObjectName="Aggregation_4" columnName="NETWR"/>
+      </measure>
+      <measure id="KBMENG" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="KBMENG"/>
+        <measureMapping columnObjectName="Aggregation_4" columnName="KBMENG"/>
+      </measure>
+      <measure id="KLMENG" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="KLMENG"/>
+        <measureMapping columnObjectName="Aggregation_4" columnName="KLMENG"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+    <sharedDimensions>
+      <logicalJoin associatedObjectUri="DIM_OFICINA_VENTA">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>OFICINA_VENTA$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>OFICINA_VENTA</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="OFICINA_VENTA" hidden="true"/>
+          <attributeReference attributeName="OFICINA_VENTA_TEXT" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_GRUPO_MATERIAL">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>SOCIEDAD_FI$local</attributeRef>
+          <attributeRef>GRUPO_MATERIAL$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>SOCIEDAD_FI</attributeName>
+          <attributeName>GRUPO_MATERIAL</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_GRUPO_MATERIAL_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference alias="DIM_GRUPO_MATERIAL_SOCIEDAD_FI" attributeName="SOCIEDAD_FI" hidden="true"/>
+          <attributeReference attributeName="GRUPO_MATERIAL" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_VENDEDOR">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>VENDEDOR$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>VENDEDOR</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_VENDEDOR_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="VENDEDOR" hidden="true"/>
+          <attributeReference attributeName="ENDDA" hidden="true"/>
+          <attributeReference attributeName="VENDEDOR_TEXT" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_CLIENTE">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>CLIENTE$local</attributeRef>
+          <attributeRef>SOCIEDAD_FI$local</attributeRef>
+          <attributeRef>ORGANIZACION_VENTA$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>CLIENTE</attributeName>
+          <attributeName>CLIENTE_ATTR_SOCIEDAD_FI</attributeName>
+          <attributeName>ORGANIZACION_VENTA</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_CLIENTE_ORGANIZACION_VENTA" attributeName="ORGANIZACION_VENTA" hidden="true"/>
+          <attributeReference alias="DIM_CLIENTE_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="CLIENTE" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_SOCIEDAD_FI" hidden="true"/>
+          <attributeReference attributeName="SPRAS" hidden="true"/>
+          <attributeReference attributeName="CADENA" hidden="true"/>
+          <attributeReference attributeName="SUB_CADENA" hidden="true"/>
+          <attributeReference attributeName="LOCAL" hidden="true"/>
+          <attributeReference attributeName="SALA_FISICA" hidden="true"/>
+          <attributeReference attributeName="AGENCIA" hidden="true"/>
+          <attributeReference attributeName="SUPERVISOR" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_CORTO" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_CLIENTE_PADRE_CORTO" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_1" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_CLIENTE_PADRE_TEXT_2" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_TEXT_1" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_TEXT_2" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_PROVINCIA" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_COMUNA" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_PAIS" hidden="true"/>
+          <attributeReference attributeName="SUBCADENA_TEXT" hidden="true"/>
+          <attributeReference attributeName="CADENA_TEXT" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2" hidden="true"/>
+          <attributeReference attributeName="CANAL_JER_NIVEL5" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_CLIENTE_PADRE" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_REGION" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_LATITUD" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_LONGITUD" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_JER_NIVEL6_1" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_JER_NIVEL7" hidden="true"/>
+          <attributeReference attributeName="REGION_TEXT" hidden="true"/>
+          <attributeReference attributeName="PROVINCIA_TEXT" hidden="true"/>
+          <attributeReference attributeName="COMUNA_TEXT" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_JER_NIVEL6" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_JER_NIVEL1_1" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_JER_NIVEL2_1" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_JER_NIVEL3_1" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_JER_NIVEL4_1" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_JER_NIVEL5_1" hidden="true"/>
+          <attributeReference attributeName="CANAL_JER_NIVEL4" hidden="true"/>
+          <attributeReference attributeName="CANAL_JER_NIVEL3" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ID_TEXT_2" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ID_TEXT_1" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_CANAL_DISTRIBUCION">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>CANAL_DISTRIBUCION$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>CANAL_DISTRIBUCION</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_CANAL_DISTRIBUCION_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="CANAL_DISTRIBUCION" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_SECTOR">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>SECTOR$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>SECTOR</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_SECTOR_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="SECTOR" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_AREA_NEGOCIO">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_AREA_NEGOCIO_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="AREA_NEGOCIO" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_DIVISION_COMERCIAL">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>DIVISION_COMERCIAL$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>DIVISION_COMERCIAL</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_DIVISION_COMERCIAL_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="DIVISION_COMERCIAL" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_MATERIAL">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>MATNR$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>MATERIAL</attributeName>
+        </associatedAttributeNames>
+        <properties joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_MATERIAL_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="MATERIAL" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_SECTOR" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_IND_MARGEN_ROTACION" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_IND_SKU_ESTRATEGICO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_IND_PRODUCTO_NUEVO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_MATERIAL_ESTRATEGICO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_SEGUIMIENTO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_CORTO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_ATTR_BLOQUEO" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_TEXT" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+    </sharedDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="330" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_17" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="484" y="673"/>
+        <rectangleSize height="68" width="177"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="330" y="673"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="META" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="330" y="577"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Aggregation_2" modelObjectNameSpace="META" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_17" modelObjectNameSpace="META" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="PPTO" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="484" y="577"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="673"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="673"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Pedidos" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="577"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Aggregation_3" modelObjectNameSpace="Pedidos" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Aggregation_1" modelObjectNameSpace="Pedidos" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="330" y="443"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="330" y="365"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape modelObjectName="Aggregation_4" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+        <upperLeftCorner x="778" y="189"/>
+      </shape>
+      <shape modelObjectName="DIM_OFICINA_VENTA" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="977" y="22"/>
+      </shape>
+      <shape modelObjectName="DIM_GRUPO_MATERIAL" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="752" y="121"/>
+      </shape>
+      <shape modelObjectName="DIM_VENDEDOR" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1156" y="398"/>
+      </shape>
+      <shape modelObjectName="DIM_CLIENTE" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="51" y="75"/>
+      </shape>
+      <shape modelObjectName="DIM_CANAL_DISTRIBUCION" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1092" y="773"/>
+      </shape>
+      <shape modelObjectName="DIM_SECTOR" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1104" y="831"/>
+      </shape>
+      <shape modelObjectName="DIM_AREA_NEGOCIO" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="909" y="1399"/>
+      </shape>
+      <shape modelObjectName="DIM_DIVISION_COMERCIAL" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="16" y="1429"/>
+      </shape>
+      <shape modelObjectName="DIM_MATERIAL" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1088" y="247"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

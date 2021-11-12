@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_CADENA_SUBCADENA" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_CADENA_SUBCADENA"/>
+  <metadata changedAt="2019-02-08 10:13:57.992"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="22"/>
+  <dataSources>
+    <DataSource id="Z1CADSUP">
+      <resourceUri>Z1CADSUP</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="Z1CADSUP">
+    <descriptions/>
+    <attributes>
+      <attribute id="SOCIEDAD_FI" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI"/>
+        <keyMapping columnObjectName="Z1CADSUP" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="CADENA" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CADENA"/>
+        <keyMapping columnObjectName="Z1CADSUP" columnName="ZCDCAD"/>
+      </attribute>
+      <attribute id="SUBCADENA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBCADENA"/>
+        <keyMapping columnObjectName="Z1CADSUP" columnName="ZCDSCAD"/>
+      </attribute>
+      <attribute id="ZKUNNR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZKUNNR"/>
+        <keyMapping columnObjectName="Z1CADSUP" columnName="ZKUNNR"/>
+      </attribute>
+      <attribute id="CADENA_TEXT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CADENA_TEXT"/>
+        <keyMapping columnObjectName="Z1CADSUP" columnName="ZNOMCAD"/>
+      </attribute>
+      <attribute id="SUBCADENA_TEXT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBCADENA_TEXT"/>
+        <keyMapping columnObjectName="Z1CADSUP" columnName="ZNOMSCAD"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

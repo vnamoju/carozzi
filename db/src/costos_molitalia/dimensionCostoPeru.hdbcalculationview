@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="dimensionCostoPeru" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="dimensionCostoPeru"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="TABLE_FUNCTION_dimensionCostoPeru" type="TABLE_FUNCTION">
+      <resourceUri>TABLE_FUNCTION_dimensionCostoPeru</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="TABLE_FUNCTION_dimensionCostoPeru">
+    <descriptions/>
+    <attributes>
+      <attribute id="MATNR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="MATNR"/>
+      </attribute>
+      <attribute id="ZCOMP" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="ZCOMP"/>
+      </attribute>
+      <attribute id="KSTAR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="KSTAR"/>
+      </attribute>
+      <attribute id="AUFNR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="AUFNR"/>
+      </attribute>
+      <attribute id="KLVAR" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="KLVAR"/>
+      </attribute>
+      <attribute id="GJAHR" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="GJAHR"/>
+      </attribute>
+      <attribute id="FECHA_CALC" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="FECHA_CALC"/>
+      </attribute>
+      <attribute id="BWKEY" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="BWKEY"/>
+      </attribute>
+      <attribute id="POSNR" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="POSNR"/>
+      </attribute>
+      <attribute id="0CALMONTH" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="0CALMONTH"/>
+      </attribute>
+      <attribute id="TIP_MAT" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TIP_MAT"/>
+      </attribute>
+      <attribute id="SECTOR" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="SECTOR"/>
+      </attribute>
+      <attribute id="MARCA" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="MARCA"/>
+      </attribute>
+      <attribute id="GPO_MAT" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="GPO_MAT"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="MEINS" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="MEINS"/>
+      </attribute>
+      <attribute id="OWAER" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="OWAER"/>
+      </attribute>
+      <attribute id="TEXT_VALOR_STANDARD" order="59" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TEXT_VALOR_STANDARD"/>
+      </attribute>
+      <attribute id="TEXT_CONSUMO_STANDARD" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TEXT_CONSUMO_STANDARD"/>
+      </attribute>
+      <attribute id="MATERIAL_ID_TEXT" order="62" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="MATERIAL_ID_TEXT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="PRODMES" order="5" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="PRODMES" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="VALOR_STANDARD" order="6" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="VALOR_STANDARD" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="CONSUMO_STANDARD" order="7" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="CONSUMO_STANDARD" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="PRODORD" order="8" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="PRODORD" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TAM_LOTE_STANDARD" order="9" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TAM_LOTE_STANDARD" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="VAL" order="10" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="VAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="ZTR_COSTO" order="11" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="ZTR_COSTO" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="CANT" order="12" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="CANT" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="OPREIS" order="13" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="OPREIS" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="PERIO" order="16" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="PERIO" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="VOL_PRODUCCION" order="28" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="VOL_PRODUCCION" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="EXISTE_TL" order="29" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="EXISTE_TL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TAM_LOTE" order="30" aggregationType="max" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TAM_LOTE" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="CONSUMO_STAND_TOTAL" order="31" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="CONSUMO_STAND_TOTAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="VALOR_STANDARD_TOTAL" order="32" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="VALOR_STANDARD_TOTAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="PRECIO_STANDARD" order="33" aggregationType="max" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="PRECIO_STANDARD" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="CONSUMO_REAL" order="34" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="CONSUMO_REAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="CONSUMO_REAL_TOTAL_SIN_UM" order="35" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="CONSUMO_REAL_TOTAL_SIN_UM" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="VALOR_REAL" order="36" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="VALOR_REAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="VALOR_REAL_TOTAL" order="37" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="VALOR_REAL_TOTAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="PRECIO_REAL" order="38" aggregationType="max" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="PRECIO_REAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="DESV_CONS_VOL" order="39" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="DESV_CONS_VOL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="DESV_CONS_TOTAL_VAL" order="40" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="DESV_CONS_TOTAL_VAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="DESV_CONS_XVOL" order="41" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="DESV_CONS_XVOL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="DESV_CONS_XTOTAL" order="42" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="DESV_CONS_XTOTAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="CALC_DESV_CONS_PREC" order="43" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="CALC_DESV_CONS_PREC" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="VOLGLO" order="44" aggregationType="max" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="VOLGLO" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TOTEST" order="45" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TOTEST" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TOTVALEST" order="46" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TOTVALEST" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TOTPRECIOEST" order="47" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TOTPRECIOEST" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TOTCONSUMEST" order="48" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TOTCONSUMEST" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TESTPRECIO" order="49" aggregationType="max" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TESTPRECIO" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TOTCONSUNREAL" order="50" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TOTCONSUNREAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="SCONSUMO_REAL_TOTAL" order="51" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="SCONSUMO_REAL_TOTAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TESTCONSREAL" order="52" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TESTCONSREAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="LOTMGLO" order="53" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="LOTMGLO" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TESTREAL" order="54" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TESTREAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TESTVALOR_REAL" order="55" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TESTVALOR_REAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TESTVALOR_REALTOTAL" order="56" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TESTVALOR_REALTOTAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TESTPRECIOREAL" order="57" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TESTPRECIOREAL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="TESTDESV_CONS_VOL" order="58" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="TESTDESV_CONS_VOL" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+      <measure id="DELETE_PRECIO_STANDARD" order="61" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_dimensionCostoPeru" columnName="DELETE_PRECIO_STANDARD" alias="TABLE_FUNCTION_dimensionCostoPeru"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/></shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

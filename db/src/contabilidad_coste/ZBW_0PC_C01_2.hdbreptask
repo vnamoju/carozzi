@@ -1,0 +1,322 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/Contabilidad_Coste/ZBW_0PC_C01_2.hdbreptask:workspace" Description="" Type="REALTIME" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="false" RemoteSourceName="HANA_BWP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;_SYS_BIC&quot;.&quot;ZBW_0PC_C01_2&quot;" SourceDisplayName="ZBW_0PC_C01_2">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="ZBW_0PC_C01_2" DropTargetTableIfExists="TRUE">
+      <TargetColumns>
+        <TargetColumn Name="0ABCPROCESS" Datatype="NVARCHAR" Length="12" Precision="12" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0ABCPROCESS.DESCRIPTION" Datatype="NVARCHAR" Length="20" Precision="20" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0ACTTYPE" Datatype="NVARCHAR" Length="6" Precision="6" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0ACTTYPE.DESCRIPTION" Datatype="NVARCHAR" Length="20" Precision="20" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0ACT_UNIT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0ACT_UNIT.DESCRIPTION" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT" Datatype="NVARCHAR" Length="18" Precision="18" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT_0MATL_GROUP" Datatype="NVARCHAR" Length="9" Precision="9" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT_0MATL_GROUP.DESCRIPTION" Datatype="NVARCHAR" Length="20" Precision="20" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCENTER" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCENTER.DESCRIPTION" Datatype="NVARCHAR" Length="20" Precision="20" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COSTELMNT" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0COSTELMNT.DESCRIPTION" Datatype="NVARCHAR" Length="20" Precision="20" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0CO_AREA" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0CO_AREA.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0CURRENCY" Datatype="NVARCHAR" Length="5" Precision="5" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0CURRENCY.DESCRIPTION" Datatype="NVARCHAR" Length="15" Precision="15" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0CURTYPE" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0CURTYPE.DESCRIPTION" Datatype="NVARCHAR" Length="60" Precision="60" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0DB_CR_IND" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0DB_CR_IND.DESCRIPTION" Datatype="NVARCHAR" Length="60" Precision="60" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0FISCPER" Datatype="NVARCHAR" Length="7" Precision="7" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0FISCPER3" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0FISVARNT" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0FISCYEAR" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL" Datatype="NVARCHAR" Length="18" Precision="18" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_GROUP" Datatype="NVARCHAR" Length="9" Precision="9" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_GROUP.DESCRIPTION" Datatype="NVARCHAR" Length="20" Precision="20" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_TYPE" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_TYPE.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0PROD_HIER" Datatype="NVARCHAR" Length="18" Precision="18" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0PROD_HIER.DESCRIPTION" Datatype="NVARCHAR" Length="20" Precision="20" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0METYPE" Datatype="NVARCHAR" Length="6" Precision="6" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0METYPE.DESCRIPTION" Datatype="NVARCHAR" Length="20" Precision="20" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0ORDERITEM" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PIOBJSV" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PIOBJSV.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PIOVALUE" Datatype="NVARCHAR" Length="28" Precision="28" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT_COMP" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT_COMP.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER" Datatype="NVARCHAR" Length="12" Precision="12" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0CUSTOMER" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0CUSTOMER.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0DOC_NUMBER" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0DOC_NUMBER.DESCRIPTION" Datatype="NVARCHAR" Length="20" Precision="20" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0PROYECT" Datatype="NVARCHAR" Length="24" Precision="24" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0PROYECT.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0WBS_ELEMT" Datatype="NVARCHAR" Length="24" Precision="24" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0WBS_ELEMT.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODPROCNR" Datatype="NVARCHAR" Length="12" Precision="12" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODPROCNR.DESCRIPTION" Datatype="NVARCHAR" Length="60" Precision="60" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODVERS" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0PRODVERS.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0UNIT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0UNIT.DESCRIPTION" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0VALUATION" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0VALUATION.DESCRIPTION" Datatype="NVARCHAR" Length="60" Precision="60" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0VERSION" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0VERSION.DESCRIPTION" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0VTDETAIL" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0VTDETAIL.DESCRIPTION" Datatype="NVARCHAR" Length="20" Precision="20" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0VTYPE" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0VTYPE.DESCRIPTION" Datatype="NVARCHAR" Length="20" Precision="20" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0AMOUNT" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0AMOUNTFX" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0AMOUNTVR" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0CONTCOST" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0QUENTITY" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0QUANTITYFX" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0QUANTITYVR" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="0QUANTOUT" Datatype="NVARCHAR" Length="40" Precision="40" Scale="0" Nullable="TRUE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="ZBW_0PC_C01_2" RemoteObjectUniqueName="&quot;_SYS_BIC&quot;.&quot;ZBW_0PC_C01_2&quot;" FilterExpression="" ReplicationBehavior="InitAndRealtime" VTObjectName="ZBW_0PC_C01_2">
+      <TargetColumns>
+        <TargetColumn Name="0ABCPROCESS" ProjectionExpression="&quot;0ABCPROCESS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0ABCPROCESS.DESCRIPTION" ProjectionExpression="&quot;0ABCPROCESS.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0ACTTYPE" ProjectionExpression="&quot;0ACTTYPE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0ACTTYPE.DESCRIPTION" ProjectionExpression="&quot;0ACTTYPE.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0ACT_UNIT" ProjectionExpression="&quot;0ACT_UNIT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0ACT_UNIT.DESCRIPTION" ProjectionExpression="&quot;0ACT_UNIT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT" ProjectionExpression="&quot;0COMPONENT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT.DESCRIPTION" ProjectionExpression="&quot;0COMPONENT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT_0MATL_GROUP" ProjectionExpression="&quot;0COMPONENT_0MATL_GROUP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COMPONENT_0MATL_GROUP.DESCRIPTION" ProjectionExpression="&quot;0COMPONENT_0MATL_GROUP.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCENTER" ProjectionExpression="&quot;0COSTCENTER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COSTCENTER.DESCRIPTION" ProjectionExpression="&quot;0COSTCENTER.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COSTELMNT" ProjectionExpression="&quot;0COSTELMNT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0COSTELMNT.DESCRIPTION" ProjectionExpression="&quot;0COSTELMNT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0CO_AREA" ProjectionExpression="&quot;0CO_AREA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0CO_AREA.DESCRIPTION" ProjectionExpression="&quot;0CO_AREA.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0CURRENCY" ProjectionExpression="&quot;0CURRENCY&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0CURRENCY.DESCRIPTION" ProjectionExpression="&quot;0CURRENCY.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0CURTYPE" ProjectionExpression="&quot;0CURTYPE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0CURTYPE.DESCRIPTION" ProjectionExpression="&quot;0CURTYPE.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0DB_CR_IND" ProjectionExpression="&quot;0DB_CR_IND&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0DB_CR_IND.DESCRIPTION" ProjectionExpression="&quot;0DB_CR_IND.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0FISCPER" ProjectionExpression="&quot;0FISCPER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0FISCPER3" ProjectionExpression="&quot;0FISCPER3&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0FISVARNT" ProjectionExpression="&quot;0FISVARNT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0FISCYEAR" ProjectionExpression="&quot;0FISCYEAR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL" ProjectionExpression="&quot;0MATERIAL&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL.DESCRIPTION" ProjectionExpression="&quot;0MATERIAL.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_GROUP" ProjectionExpression="&quot;0MATERIAL_0MATL_GROUP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_GROUP.DESCRIPTION" ProjectionExpression="&quot;0MATERIAL_0MATL_GROUP.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_TYPE" ProjectionExpression="&quot;0MATERIAL_0MATL_TYPE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0MATL_TYPE.DESCRIPTION" ProjectionExpression="&quot;0MATERIAL_0MATL_TYPE.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0PROD_HIER" ProjectionExpression="&quot;0MATERIAL_0PROD_HIER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0MATERIAL_0PROD_HIER.DESCRIPTION" ProjectionExpression="&quot;0MATERIAL_0PROD_HIER.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0METYPE" ProjectionExpression="&quot;0METYPE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0METYPE.DESCRIPTION" ProjectionExpression="&quot;0METYPE.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0ORDERITEM" ProjectionExpression="&quot;0ORDERITEM&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PIOBJSV" ProjectionExpression="&quot;0PIOBJSV&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PIOBJSV.DESCRIPTION" ProjectionExpression="&quot;0PIOBJSV.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PIOVALUE" ProjectionExpression="&quot;0PIOVALUE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT" ProjectionExpression="&quot;0PLANT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT.DESCRIPTION" ProjectionExpression="&quot;0PLANT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT_COMP" ProjectionExpression="&quot;0PLANT_COMP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PLANT_COMP.DESCRIPTION" ProjectionExpression="&quot;0PLANT_COMP.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER" ProjectionExpression="&quot;0PRODORDER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER.DESCRIPTION" ProjectionExpression="&quot;0PRODORDER.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0CUSTOMER" ProjectionExpression="&quot;0PRODORDER_0CUSTOMER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0CUSTOMER.DESCRIPTION" ProjectionExpression="&quot;0PRODORDER_0CUSTOMER.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0DOC_NUMBER" ProjectionExpression="&quot;0PRODORDER_0DOC_NUMBER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0DOC_NUMBER.DESCRIPTION" ProjectionExpression="&quot;0PRODORDER_0DOC_NUMBER.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0PROYECT" ProjectionExpression="&quot;0PRODORDER_0PROYECT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0PROYECT.DESCRIPTION" ProjectionExpression="&quot;0PRODORDER_0PROYECT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0WBS_ELEMT" ProjectionExpression="&quot;0PRODORDER_0WBS_ELEMT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODORDER_0WBS_ELEMT.DESCRIPTION" ProjectionExpression="&quot;0PRODORDER_0WBS_ELEMT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODPROCNR" ProjectionExpression="&quot;0PRODPROCNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODPROCNR.DESCRIPTION" ProjectionExpression="&quot;0PRODPROCNR.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODVERS" ProjectionExpression="&quot;0PRODVERS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0PRODVERS.DESCRIPTION" ProjectionExpression="&quot;0PRODVERS.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0UNIT" ProjectionExpression="&quot;0UNIT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0UNIT.DESCRIPTION" ProjectionExpression="&quot;0UNIT.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0VALUATION" ProjectionExpression="&quot;0VALUATION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0VALUATION.DESCRIPTION" ProjectionExpression="&quot;0VALUATION.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0VERSION" ProjectionExpression="&quot;0VERSION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0VERSION.DESCRIPTION" ProjectionExpression="&quot;0VERSION.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0VTDETAIL" ProjectionExpression="&quot;0VTDETAIL&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0VTDETAIL.DESCRIPTION" ProjectionExpression="&quot;0VTDETAIL.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0VTYPE" ProjectionExpression="&quot;0VTYPE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0VTYPE.DESCRIPTION" ProjectionExpression="&quot;0VTYPE.DESCRIPTION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0AMOUNT" ProjectionExpression="&quot;0AMOUNT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0AMOUNTFX" ProjectionExpression="&quot;0AMOUNTFX&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0AMOUNTVR" ProjectionExpression="&quot;0AMOUNTVR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0CONTCOST" ProjectionExpression="&quot;0CONTCOST&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0QUENTITY" ProjectionExpression="&quot;0QUENTITY&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0QUANTITYFX" ProjectionExpression="&quot;0QUANTITYFX&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0QUANTITYVR" ProjectionExpression="&quot;0QUANTITYVR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="0QUANTOUT" ProjectionExpression="&quot;0QUANTOUT&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

@@ -1,0 +1,90 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/Costos_Molitalia/RT_Z2CSTREAL.hdbreptask:workspace" Description="" Type="REALTIME" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="true" RemoteSourceName="HANA_ERP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;Z2CSTREAL&quot;" SourceDisplayName="Z2CSTREAL">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="SAPABAP1_Z2CSTREAL" DropTargetTableIfExists="TRUE">
+      <TargetColumns>
+        <TargetColumn Name="KOKRS" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="PERIO" Datatype="DECIMAL" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="GJAHR" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="MATNR" Datatype="NVARCHAR" Length="18" Precision="18" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="KSTAR" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="AUFNR" Datatype="NVARCHAR" Length="12" Precision="12" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="COMPO" Datatype="NVARCHAR" Length="18" Precision="18" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="MTART" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="WERKS" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="MEINS" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CANT" Datatype="DECIMAL" Length="15" Precision="15" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VAL" Datatype="DECIMAL" Length="15" Precision="15" Scale="2" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CANTTON" Datatype="DECIMAL" Length="15" Precision="15" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VALTON" Datatype="DECIMAL" Length="15" Precision="15" Scale="2" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="PRODMES" Datatype="DECIMAL" Length="15" Precision="15" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="PRODORD" Datatype="DECIMAL" Length="15" Precision="15" Scale="3" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="MEINB" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="OWAER" Datatype="NVARCHAR" Length="5" Precision="5" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="SAPABAP1_Z2CSTREAL" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;Z2CSTREAL&quot;" FilterExpression="" ReplicationBehavior="InitLoadOnly" VTObjectName="SAPABAP1_Z2CSTREAL">
+      <TargetColumns>
+        <TargetColumn Name="KOKRS" ProjectionExpression="&quot;KOKRS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PERIO" ProjectionExpression="&quot;PERIO&quot;">
+        </TargetColumn>
+        <TargetColumn Name="GJAHR" ProjectionExpression="&quot;GJAHR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MATNR" ProjectionExpression="&quot;MATNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KSTAR" ProjectionExpression="&quot;KSTAR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="AUFNR" ProjectionExpression="&quot;AUFNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="COMPO" ProjectionExpression="&quot;COMPO&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MTART" ProjectionExpression="&quot;MTART&quot;">
+        </TargetColumn>
+        <TargetColumn Name="WERKS" ProjectionExpression="&quot;WERKS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MEINS" ProjectionExpression="&quot;MEINS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CANT" ProjectionExpression="&quot;CANT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VAL" ProjectionExpression="&quot;VAL&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CANTTON" ProjectionExpression="&quot;CANTTON&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VALTON" ProjectionExpression="&quot;VALTON&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PRODMES" ProjectionExpression="&quot;PRODMES&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PRODORD" ProjectionExpression="&quot;PRODORD&quot;">
+        </TargetColumn>
+        <TargetColumn Name="MEINB" ProjectionExpression="&quot;MEINB&quot;">
+        </TargetColumn>
+        <TargetColumn Name="OWAER" ProjectionExpression="&quot;OWAER&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CALENDARIO" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="CALENDARIO"/>
+  <metadata changedAt="2018-04-19 22:49:46.617" createdAt="2018-03-26 11:31:45.525"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="21"/>
+  <dataSources>
+    <DataSource id="ZTFACS">
+      <resourceUri>ZTFACS</resourceUri>
+    </DataSource>
+    <DataSource id="ZSOCCAL">
+      <resourceUri>ZSOCCAL</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="IDENT"/>
+        <viewAttribute id="FECHA"/>
+        <viewAttribute id="DIA_HABIL_DIA"/>
+        <viewAttribute id="DIA_HABIL_MES"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#ZTFACS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDENT" source="IDENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA" source="FECHA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIA_HABIL_DIA" source="DIA_HABIL_DIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIA_HABIL_MES" source="DIA_HABIL_MES"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="IDENT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#ZSOCCAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IDENT" source="IDENT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="FECHA"/>
+        <viewAttribute id="DIA_HABIL_DIA"/>
+        <viewAttribute id="DIA_HABIL_MES"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+        <viewAttribute hidden="true" id="JOIN$IDENT$IDENT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA" source="FECHA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIA_HABIL_DIA" source="DIA_HABIL_DIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIA_HABIL_MES" source="DIA_HABIL_MES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$IDENT$IDENT" source="IDENT"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$IDENT$IDENT" source="IDENT"/>
+      </input>
+      <joinAttribute name="JOIN$MANDT$MANDT"/>
+      <joinAttribute name="JOIN$IDENT$IDENT"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions defaultDescription="CALENDARIO"/>
+    <attributes>
+      <attribute id="FECHA" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FECHA"/>
+        <keyMapping columnObjectName="Join_1" columnName="FECHA"/>
+      </attribute>
+      <attribute id="DIA_HABIL_DIA" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIA_HABIL_DIA"/>
+        <keyMapping columnObjectName="Join_1" columnName="DIA_HABIL_DIA"/>
+      </attribute>
+      <attribute id="DIA_HABIL_MES" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIA_HABIL_MES"/>
+        <keyMapping columnObjectName="Join_1" columnName="DIA_HABIL_MES"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI"/>
+        <keyMapping columnObjectName="Join_1" columnName="SOCIEDAD_FI"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="10" y="310"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="189" y="309"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="100" y="200"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

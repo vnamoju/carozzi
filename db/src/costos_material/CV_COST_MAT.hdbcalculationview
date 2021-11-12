@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_COST_MAT" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="Costos por material"/>
+  <metadata changedAt="2021-05-06 16:28:51.527"/>
+  <localVariables>
+    <variable id="FECHA">
+      <descriptions defaultDescription="Fecha (aaaamm)"/>
+      <variableProperties datatype="VARCHAR" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZCALMONTH"/>
+        </valueDomain>
+        <selection multiLine="false" type="Interval"/>
+      </variableProperties>
+    </variable>
+    <variable id="CENTRO">
+      <descriptions defaultDescription="Centro"/>
+      <variableProperties datatype="VARCHAR" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="WERKS_P"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="46"/>
+  <dataSources>
+    <DataSource id="DIM_MATERIAL">
+      <resourceUri>DIM_MATERIAL</resourceUri>
+    </DataSource>
+    <DataSource id="ZCALC_COST2">
+      <resourceUri>ZCALC_COST2</resourceUri>
+    </DataSource>
+    <DataSource id="TCKH1">
+      <resourceUri>TCKH1</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_GRUPO_MATERIAL">
+      <resourceUri>DIM_GRUPO_MATERIAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CENTRO">
+      <resourceUri>DIM_CENTRO</resourceUri>
+    </DataSource>
+    <DataSource id="TEXT_MAT$$$$DIM_MATERIAL$$">
+      <resourceUri>DIM_MATERIAL</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="TXT_COMPONENTE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_MATERIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ELEMT"/>
+        <viewAttribute id="MONEDA"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="LTEXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="UNIDAD"/>
+        <viewAttribute id="MEDIDAS"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="PRECIO"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="WERKS_P"/>
+        <viewAttribute id="COSTO"/>
+        <viewAttribute id="ZCOMPONENTE"/>
+        <viewAttribute id="CORR"/>
+        <viewAttribute id="FECHA_CALCULO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#ZCALC_COST2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEMT" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA" source="FWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOSTL" source="KOSTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LTEXT" source="LTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD" source="MEEHT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEDIDAS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRECIO" source="VMVER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS_P" source="WERKS_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COSTO" source="W_COSTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMPONENTE" source="ZCOMPONENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORR" source="CORR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CALCULO" source="FECHA_CALCULO"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="BASE1" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ELEMT"/>
+        <viewAttribute id="FWAER"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="LTEXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEEHT"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="VMVER"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="WERKS_P"/>
+        <viewAttribute id="W_COSTO"/>
+        <viewAttribute id="ZCOMPONENTE"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="CORR"/>
+        <viewAttribute id="FECHA_CALCULO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEMT" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FWAER" source="MONEDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOSTL" source="KOSTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LTEXT" source="LTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="UNIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEDIDAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMVER" source="PRECIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS_P" source="WERKS_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="W_COSTO" source="COSTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMPONENTE" source="ZCOMPONENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORR" source="CORR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CALCULO" source="FECHA_CALCULO"/>
+      </input>
+      <input node="#TXT_COMPONENTE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMPONENTE" source="MATERIAL"/>
+      </input>
+      <joinAttribute name="ZCOMPONENTE"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="TXT_ELEMT" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="ELEHK"/>
+        <viewAttribute id="ELEMT"/>
+        <viewAttribute id="TXELE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#TCKH1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEHK" source="ELEHK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEMT" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXELE" source="TXELE"/>
+      </input>
+      <filter>&quot;SPRAS&quot; = 'S' and &quot;ELEHK&quot; = '02'</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="BASE2" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ELEMT"/>
+        <viewAttribute id="FWAER"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="LTEXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEEHT"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="VMVER"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="WERKS_P"/>
+        <viewAttribute id="W_COSTO"/>
+        <viewAttribute id="ZCOMPONENTE"/>
+        <viewAttribute id="COMPONENTE_TEXT"/>
+        <viewAttribute id="TXELE"/>
+        <viewAttribute id="CORR"/>
+        <viewAttribute id="FECHA_CALCULO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#BASE1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEMT" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FWAER" source="FWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOSTL" source="KOSTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LTEXT" source="LTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMVER" source="VMVER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS_P" source="WERKS_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="W_COSTO" source="W_COSTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMPONENTE" source="ZCOMPONENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENTE_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORR" source="CORR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CALCULO" source="FECHA_CALCULO"/>
+      </input>
+      <input node="#TXT_ELEMT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXELE" source="TXELE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEMT" source="ELEMT"/>
+      </input>
+      <joinAttribute name="ELEMT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="TXT_GROUP_MAT">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_GRUPO_MATERIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="BASE3" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ELEMT"/>
+        <viewAttribute id="FWAER"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="LTEXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEEHT"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="VMVER"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="WERKS_P"/>
+        <viewAttribute id="W_COSTO"/>
+        <viewAttribute id="ZCOMPONENTE"/>
+        <viewAttribute id="COMPONENTE_TEXT"/>
+        <viewAttribute id="TXELE"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CORR"/>
+        <viewAttribute id="FECHA_CALCULO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#BASE2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEMT" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FWAER" source="FWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOSTL" source="KOSTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LTEXT" source="LTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMVER" source="VMVER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS_P" source="WERKS_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="W_COSTO" source="W_COSTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMPONENTE" source="ZCOMPONENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENTE_TEXT" source="COMPONENTE_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXELE" source="TXELE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORR" source="CORR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CALCULO" source="FECHA_CALCULO"/>
+      </input>
+      <input node="#TXT_GROUP_MAT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="GRUPO_MATERIAL"/>
+      </input>
+      <joinAttribute name="MATKL"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="TEXT_CENTRO">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CENTRO"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_CENTRO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO" source="CENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="BASE4" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ELEMT"/>
+        <viewAttribute id="FWAER"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="LTEXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEEHT"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="VMVER"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="WERKS_P"/>
+        <viewAttribute id="W_COSTO"/>
+        <viewAttribute id="ZCOMPONENTE"/>
+        <viewAttribute id="COMPONENTE_TEXT"/>
+        <viewAttribute id="TXELE"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CORR"/>
+        <viewAttribute id="FECHA_CALCULO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#BASE3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEMT" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FWAER" source="FWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOSTL" source="KOSTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LTEXT" source="LTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMVER" source="VMVER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS_P" source="WERKS_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="W_COSTO" source="W_COSTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMPONENTE" source="ZCOMPONENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENTE_TEXT" source="COMPONENTE_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXELE" source="TXELE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORR" source="CORR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CALCULO" source="FECHA_CALCULO"/>
+      </input>
+      <input node="#TEXT_CENTRO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="CENTRO"/>
+      </input>
+      <joinAttribute name="WERKS"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="TEXT_MAT">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MANDT_1"/>
+        <viewAttribute id="MATERIAL_1"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+        <viewAttribute id="MANDT_2"/>
+        <viewAttribute id="MATERIAL_2"/>
+        <viewAttribute id="MATERIAL_TEXT_2"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#TEXT_MAT$$$$DIM_MATERIAL$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT_1" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_1" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT_2" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_2" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_2" source="MATERIAL_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="BASE5" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ELEMT"/>
+        <viewAttribute id="FWAER"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="LTEXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEEHT"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="VMVER"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="WERKS_P"/>
+        <viewAttribute id="W_COSTO"/>
+        <viewAttribute id="ZCOMPONENTE"/>
+        <viewAttribute id="COMPONENTE_TEXT"/>
+        <viewAttribute id="TXELE"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="CORR"/>
+        <viewAttribute id="FECHA_CALCULO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#BASE4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEMT" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FWAER" source="FWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOSTL" source="KOSTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LTEXT" source="LTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMVER" source="VMVER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS_P" source="WERKS_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="W_COSTO" source="W_COSTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMPONENTE" source="ZCOMPONENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENTE_TEXT" source="COMPONENTE_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXELE" source="TXELE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORR" source="CORR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CALCULO" source="FECHA_CALCULO"/>
+      </input>
+      <input node="#TEXT_MAT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATERIAL"/>
+      </input>
+      <joinAttribute name="MATNR"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="BASE5">
+    <descriptions/>
+    <attributes>
+      <attribute id="GJAHR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Año"/>
+        <keyMapping columnObjectName="BASE5" columnName="GJAHR"/>
+      </attribute>
+      <attribute id="PERIO" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes"/>
+        <keyMapping columnObjectName="BASE5" columnName="PERIO"/>
+      </attribute>
+      <attribute id="KLVAR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Variante"/>
+        <keyMapping columnObjectName="BASE5" columnName="KLVAR"/>
+      </attribute>
+      <attribute id="ELEMT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Elemento"/>
+        <keyMapping columnObjectName="BASE5" columnName="ELEMT"/>
+      </attribute>
+      <attribute id="FWAER" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Moneda"/>
+        <keyMapping columnObjectName="BASE5" columnName="FWAER"/>
+      </attribute>
+      <attribute id="KOSTL" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro Gasto"/>
+        <keyMapping columnObjectName="BASE5" columnName="KOSTL"/>
+      </attribute>
+      <attribute id="KSTAR" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta"/>
+        <keyMapping columnObjectName="BASE5" columnName="KSTAR"/>
+      </attribute>
+      <attribute id="LTEXT" hidden="true" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LTEXT"/>
+        <keyMapping columnObjectName="BASE5" columnName="LTEXT"/>
+      </attribute>
+      <attribute id="MATKL" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="G. Material"/>
+        <keyMapping columnObjectName="BASE5" columnName="MATKL"/>
+      </attribute>
+      <attribute id="MATNR" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material"/>
+        <keyMapping columnObjectName="BASE5" columnName="MATNR"/>
+      </attribute>
+      <attribute id="MEEHT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="U. Medida Interlocutor"/>
+        <keyMapping columnObjectName="BASE5" columnName="MEEHT"/>
+      </attribute>
+      <attribute id="MEINS" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="U. Medida"/>
+        <keyMapping columnObjectName="BASE5" columnName="MEINS"/>
+      </attribute>
+      <attribute id="WERKS" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro Interlocutor"/>
+        <keyMapping columnObjectName="BASE5" columnName="WERKS"/>
+      </attribute>
+      <attribute id="WERKS_P" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro"/>
+        <localVariable>#CENTRO</localVariable>
+        <keyMapping columnObjectName="BASE5" columnName="WERKS_P"/>
+      </attribute>
+      <attribute id="ZCOMPONENTE" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Componente"/>
+        <keyMapping columnObjectName="BASE5" columnName="ZCOMPONENTE"/>
+      </attribute>
+      <attribute id="COMPONENTE_TEXT" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Componente TXT"/>
+        <keyMapping columnObjectName="BASE5" columnName="COMPONENTE_TEXT"/>
+      </attribute>
+      <attribute id="TXELE" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Elemento TXT"/>
+        <keyMapping columnObjectName="BASE5" columnName="TXELE"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad Negocio TEXT"/>
+        <keyMapping columnObjectName="BASE5" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="G. Material TXT"/>
+        <keyMapping columnObjectName="BASE5" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="CENTRO_TEXT" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro TXT"/>
+        <keyMapping columnObjectName="BASE5" columnName="CENTRO_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material TXT"/>
+        <keyMapping columnObjectName="BASE5" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="CORR" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Correlativo"/>
+        <keyMapping columnObjectName="BASE5" columnName="CORR"/>
+      </attribute>
+      <attribute id="FECHA_CALCULO" hidden="false" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha Calculo"/>
+        <keyMapping columnObjectName="BASE5" columnName="FECHA_CALCULO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="ZCALMONTH" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha"/>
+        <localVariable>#FECHA</localVariable>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="7">
+          <formula>&quot;GJAHR&quot;+rightstr(&quot;PERIO&quot;,2) </formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="ZPUESTO" hidden="false" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Puesto Trabajo"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="30">
+          <formula>if(isnull(&quot;LTEXT&quot;),&quot;ZCOMPONENTE&quot;,&quot;LTEXT&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="W_COSTO" order="25" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions defaultDescription="Costo"/>
+        <measureMapping columnObjectName="BASE5" columnName="W_COSTO"/>
+      </measure>
+      <measure id="VMVER" order="26" aggregationType="avg" engineAggregation="avg" measureType="simple">
+        <descriptions defaultDescription="Precio"/>
+        <measureMapping columnObjectName="BASE5" columnName="VMVER"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="ZLOTE" hidden="false" order="24" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Tamaño Lote"/>
+        <formula>1000</formula>
+      </measure>
+      <measure id="ZCANTIDAD" hidden="false" order="27" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="17" scale="2">
+        <descriptions defaultDescription="Cantidad"/>
+        <formula>if(&quot;VMVER&quot; = 0, 0,&quot;W_COSTO&quot;/&quot;VMVER&quot;)&#xD;
+</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="70" y="30"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="TXT_COMPONENTE" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="240" y="646"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="60" y="640"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="BASE1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="70" y="522"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="TXT_ELEMT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="240" y="537"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="BASE2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="70" y="420"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="TXT_GROUP_MAT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="240" y="429"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="BASE3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="70" y="320"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="TEXT_CENTRO" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="329"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="BASE4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="70" y="210"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="TEXT_MAT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="218"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="BASE5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="70" y="120"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

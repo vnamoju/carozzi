@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="VC_SIM_001" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="Simulacion alnce y consumos"/>
+  <metadata changedAt="2021-07-27 12:38:08.749"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="MBEW">
+      <resourceUri>MBEW</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="BWTAR"/>
+        <viewAttribute id="LVORM"/>
+        <viewAttribute id="VPRSV"/>
+        <viewAttribute id="VMVER"/>
+        <viewAttribute id="LBKUM"/>
+        <viewAttribute id="SALK3"/>
+        <viewAttribute id="VERPR"/>
+        <viewAttribute id="STPRS"/>
+        <viewAttribute id="PEINH"/>
+        <viewAttribute id="BKLAS"/>
+        <viewAttribute id="SALKV"/>
+        <viewAttribute id="VMKUM"/>
+        <viewAttribute id="VMSAL"/>
+        <viewAttribute id="VMVPR"/>
+        <viewAttribute id="VMSTP"/>
+        <viewAttribute id="VMPEI"/>
+        <viewAttribute id="VMBKL"/>
+        <viewAttribute id="VMSAV"/>
+        <viewAttribute id="VJKUM"/>
+        <viewAttribute id="VJSAL"/>
+        <viewAttribute id="VJVPR"/>
+        <viewAttribute id="VJVER"/>
+        <viewAttribute id="VJSTP"/>
+        <viewAttribute id="VJPEI"/>
+        <viewAttribute id="VJBKL"/>
+        <viewAttribute id="VJSAV"/>
+        <viewAttribute id="LFGJA"/>
+        <viewAttribute id="LFMON"/>
+        <viewAttribute id="BWTTY"/>
+        <viewAttribute id="STPRV"/>
+        <viewAttribute id="LAEPR"/>
+        <viewAttribute id="ZKPRS"/>
+        <viewAttribute id="ZKDAT"/>
+        <viewAttribute id="TIMESTAMP"/>
+        <viewAttribute id="BWPRS"/>
+        <viewAttribute id="BWPRH"/>
+        <viewAttribute id="VJBWS"/>
+        <viewAttribute id="VJBWH"/>
+        <viewAttribute id="VVJSL"/>
+        <viewAttribute id="VVJLB"/>
+        <viewAttribute id="VVMLB"/>
+        <viewAttribute id="VVSAL"/>
+        <viewAttribute id="ZPLPR"/>
+        <viewAttribute id="ZPLP1"/>
+        <viewAttribute id="ZPLP2"/>
+        <viewAttribute id="ZPLP3"/>
+        <viewAttribute id="ZPLD1"/>
+        <viewAttribute id="ZPLD2"/>
+        <viewAttribute id="ZPLD3"/>
+        <viewAttribute id="PPERZ"/>
+        <viewAttribute id="PPERL"/>
+        <viewAttribute id="PPERV"/>
+        <viewAttribute id="KALKZ"/>
+        <viewAttribute id="KALKL"/>
+        <viewAttribute id="KALKV"/>
+        <viewAttribute id="KALSC"/>
+        <viewAttribute id="XLIFO"/>
+        <viewAttribute id="MYPOL"/>
+        <viewAttribute id="BWPH1"/>
+        <viewAttribute id="BWPS1"/>
+        <viewAttribute id="ABWKZ"/>
+        <viewAttribute id="PSTAT"/>
+        <viewAttribute id="KALN1"/>
+        <viewAttribute id="KALNR"/>
+        <viewAttribute id="BWVA1"/>
+        <viewAttribute id="BWVA2"/>
+        <viewAttribute id="BWVA3"/>
+        <viewAttribute id="VERS1"/>
+        <viewAttribute id="VERS2"/>
+        <viewAttribute id="VERS3"/>
+        <viewAttribute id="HRKFT"/>
+        <viewAttribute id="KOSGR"/>
+        <viewAttribute id="PPRDZ"/>
+        <viewAttribute id="PPRDL"/>
+        <viewAttribute id="PPRDV"/>
+        <viewAttribute id="PDATZ"/>
+        <viewAttribute id="PDATL"/>
+        <viewAttribute id="PDATV"/>
+        <viewAttribute id="EKALR"/>
+        <viewAttribute id="VPLPR"/>
+        <viewAttribute id="MLMAA"/>
+        <viewAttribute id="MLAST"/>
+        <viewAttribute id="LPLPR"/>
+        <viewAttribute id="VKSAL"/>
+        <viewAttribute id="HKMAT"/>
+        <viewAttribute id="SPERW"/>
+        <viewAttribute id="KZIWL"/>
+        <viewAttribute id="WLINL"/>
+        <viewAttribute id="ABCIW"/>
+        <viewAttribute id="BWSPA"/>
+        <viewAttribute id="LPLPX"/>
+        <viewAttribute id="VPLPX"/>
+        <viewAttribute id="FPLPX"/>
+        <viewAttribute id="LBWST"/>
+        <viewAttribute id="VBWST"/>
+        <viewAttribute id="FBWST"/>
+        <viewAttribute id="EKLAS"/>
+        <viewAttribute id="QKLAS"/>
+        <viewAttribute id="MTUSE"/>
+        <viewAttribute id="MTORG"/>
+        <viewAttribute id="OWNPR"/>
+        <viewAttribute id="XBEWM"/>
+        <viewAttribute id="BWPEI"/>
+        <viewAttribute id="MBRUE"/>
+        <viewAttribute id="OKLAS"/>
+        <viewAttribute id="OIPPINV"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="MBEW"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MATNR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATNR"/>
+      </attribute>
+      <attribute id="BWKEY" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ámbito valorac."/>
+        <keyMapping columnObjectName="Projection_1" columnName="BWKEY"/>
+      </attribute>
+      <attribute id="BWTAR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Clase de Valoracion"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BWTAR"/>
+      </attribute>
+      <attribute id="LVORM" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PetBorradoClVal"/>
+        <keyMapping columnObjectName="Projection_1" columnName="LVORM"/>
+      </attribute>
+      <attribute id="VPRSV" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ctrl precios"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VPRSV"/>
+      </attribute>
+      <attribute id="BKLAS" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cat.valoración"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BKLAS"/>
+      </attribute>
+      <attribute id="VMVPR" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Prec.medio var."/>
+        <keyMapping columnObjectName="Projection_1" columnName="VMVPR"/>
+      </attribute>
+      <attribute id="VMBKL" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Clase valor.PA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VMBKL"/>
+      </attribute>
+      <attribute id="VJVPR" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ctrl.precios AA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VJVPR"/>
+      </attribute>
+      <attribute id="VJBKL" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Clase Valor EA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VJBKL"/>
+      </attribute>
+      <attribute id="LFGJA" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ej.período act."/>
+        <keyMapping columnObjectName="Projection_1" columnName="LFGJA"/>
+      </attribute>
+      <attribute id="LFMON" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Período actual"/>
+        <keyMapping columnObjectName="Projection_1" columnName="LFMON"/>
+      </attribute>
+      <attribute id="BWTTY" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo valoración"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BWTTY"/>
+      </attribute>
+      <attribute id="LAEPR" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Últ.modif.prec."/>
+        <keyMapping columnObjectName="Projection_1" columnName="LAEPR"/>
+      </attribute>
+      <attribute id="ZKDAT" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Válido de"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ZKDAT"/>
+      </attribute>
+      <attribute id="ZPLD1" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FechaPrcPlan 1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ZPLD1"/>
+      </attribute>
+      <attribute id="ZPLD2" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FechaPrcPlan 2"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ZPLD2"/>
+      </attribute>
+      <attribute id="ZPLD3" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FePrcPlan 3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ZPLD3"/>
+      </attribute>
+      <attribute id="PPERZ" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Per.cálc.próx."/>
+        <keyMapping columnObjectName="Projection_1" columnName="PPERZ"/>
+      </attribute>
+      <attribute id="PPERL" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Per.cálc.act."/>
+        <keyMapping columnObjectName="Projection_1" columnName="PPERL"/>
+      </attribute>
+      <attribute id="PPERV" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Per.últ.cálc."/>
+        <keyMapping columnObjectName="Projection_1" columnName="PPERV"/>
+      </attribute>
+      <attribute id="KALKZ" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cálculo futuro"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KALKZ"/>
+      </attribute>
+      <attribute id="KALKL" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cálculo actual"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KALKL"/>
+      </attribute>
+      <attribute id="KALKV" order="57" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cálculo anter."/>
+        <keyMapping columnObjectName="Projection_1" columnName="KALKV"/>
+      </attribute>
+      <attribute id="KALSC" order="58" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cálculo coste"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KALSC"/>
+      </attribute>
+      <attribute id="XLIFO" order="59" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Relev.LIFO/FIFO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="XLIFO"/>
+      </attribute>
+      <attribute id="MYPOL" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Pool LIFO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MYPOL"/>
+      </attribute>
+      <attribute id="ABWKZ" order="63" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ind.devaluación"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ABWKZ"/>
+      </attribute>
+      <attribute id="PSTAT" order="64" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Stat.actual."/>
+        <keyMapping columnObjectName="Projection_1" columnName="PSTAT"/>
+      </attribute>
+      <attribute id="KALN1" order="65" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Número CCP"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KALN1"/>
+      </attribute>
+      <attribute id="KALNR" order="66" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nº CC"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KALNR"/>
+      </attribute>
+      <attribute id="BWVA1" order="67" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Var.valoración"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BWVA1"/>
+      </attribute>
+      <attribute id="BWVA2" order="68" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Var.valoración"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BWVA2"/>
+      </attribute>
+      <attribute id="BWVA3" order="69" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Var.valoración"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BWVA3"/>
+      </attribute>
+      <attribute id="VERS1" order="70" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Versión del CC"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VERS1"/>
+      </attribute>
+      <attribute id="VERS2" order="71" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Versión del CC"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VERS2"/>
+      </attribute>
+      <attribute id="VERS3" order="72" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Versión del CC"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VERS3"/>
+      </attribute>
+      <attribute id="HRKFT" order="73" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo orígenes"/>
+        <keyMapping columnObjectName="Projection_1" columnName="HRKFT"/>
+      </attribute>
+      <attribute id="KOSGR" order="74" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo GG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KOSGR"/>
+      </attribute>
+      <attribute id="PPRDZ" order="75" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Período contab."/>
+        <keyMapping columnObjectName="Projection_1" columnName="PPRDZ"/>
+      </attribute>
+      <attribute id="PPRDL" order="76" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Per. actual"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PPRDL"/>
+      </attribute>
+      <attribute id="PPRDV" order="77" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Per. anterior"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PPRDV"/>
+      </attribute>
+      <attribute id="PDATZ" order="78" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejerc.fut."/>
+        <keyMapping columnObjectName="Projection_1" columnName="PDATZ"/>
+      </attribute>
+      <attribute id="PDATL" order="79" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio act."/>
+        <keyMapping columnObjectName="Projection_1" columnName="PDATL"/>
+      </attribute>
+      <attribute id="PDATV" order="80" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejerc.anterior"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PDATV"/>
+      </attribute>
+      <attribute id="EKALR" order="81" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC c/EstrCuant."/>
+        <keyMapping columnObjectName="Projection_1" columnName="EKALR"/>
+      </attribute>
+      <attribute id="MLMAA" order="83" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LM act."/>
+        <keyMapping columnObjectName="Projection_1" columnName="MLMAA"/>
+      </attribute>
+      <attribute id="MLAST" order="84" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Determ.precio"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MLAST"/>
+      </attribute>
+      <attribute id="HKMAT" order="87" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Origen material"/>
+        <keyMapping columnObjectName="Projection_1" columnName="HKMAT"/>
+      </attribute>
+      <attribute id="SPERW" order="88" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Bloq.inventario"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SPERW"/>
+      </attribute>
+      <attribute id="KZIWL" order="89" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Art.val.invent."/>
+        <keyMapping columnObjectName="Projection_1" columnName="KZIWL"/>
+      </attribute>
+      <attribute id="WLINL" order="90" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fe.últ.invent."/>
+        <keyMapping columnObjectName="Projection_1" columnName="WLINL"/>
+      </attribute>
+      <attribute id="ABCIW" order="91" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Invent.cíclico"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ABCIW"/>
+      </attribute>
+      <attribute id="LBWST" order="96" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Estr.valor.actual"/>
+        <keyMapping columnObjectName="Projection_1" columnName="LBWST"/>
+      </attribute>
+      <attribute id="VBWST" order="97" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Estr.valorac.ant."/>
+        <keyMapping columnObjectName="Projection_1" columnName="VBWST"/>
+      </attribute>
+      <attribute id="FBWST" order="98" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Estrat.valor.fut."/>
+        <keyMapping columnObjectName="Projection_1" columnName="FBWST"/>
+      </attribute>
+      <attribute id="EKLAS" order="99" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CatValorPedClte"/>
+        <keyMapping columnObjectName="Projection_1" columnName="EKLAS"/>
+      </attribute>
+      <attribute id="QKLAS" order="100" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cat.valor.proy."/>
+        <keyMapping columnObjectName="Projection_1" columnName="QKLAS"/>
+      </attribute>
+      <attribute id="MTUSE" order="101" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Utiliz.material"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MTUSE"/>
+      </attribute>
+      <attribute id="MTORG" order="102" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Origen material"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MTORG"/>
+      </attribute>
+      <attribute id="OWNPR" order="103" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Procuc.propia"/>
+        <keyMapping columnObjectName="Projection_1" columnName="OWNPR"/>
+      </attribute>
+      <attribute id="XBEWM" order="104" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UM valorada"/>
+        <keyMapping columnObjectName="Projection_1" columnName="XBEWM"/>
+      </attribute>
+      <attribute id="MBRUE" order="106" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="El reg.MBEWH p.per.a"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MBRUE"/>
+      </attribute>
+      <attribute id="OKLAS" order="107" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CatValProveedor"/>
+        <keyMapping columnObjectName="Projection_1" columnName="OKLAS"/>
+      </attribute>
+      <attribute id="OIPPINV" order="108" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Invent.pag.ant."/>
+        <keyMapping columnObjectName="Projection_1" columnName="OIPPINV"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="VMVER" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio variable PA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VMVER"/>
+      </measure>
+      <measure id="LBKUM" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Stock total"/>
+        <measureMapping columnObjectName="Projection_1" columnName="LBKUM"/>
+      </measure>
+      <measure id="SALK3" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor total"/>
+        <measureMapping columnObjectName="Projection_1" columnName="SALK3"/>
+      </measure>
+      <measure id="VERPR" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Prec.medio var."/>
+        <measureMapping columnObjectName="Projection_1" columnName="VERPR"/>
+      </measure>
+      <measure id="STPRS" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio estándar"/>
+        <measureMapping columnObjectName="Projection_1" columnName="STPRS"/>
+      </measure>
+      <measure id="PEINH" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cantidad base"/>
+        <measureMapping columnObjectName="Projection_1" columnName="PEINH"/>
+      </measure>
+      <measure id="SALKV" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Val/PrecPromVar"/>
+        <measureMapping columnObjectName="Projection_1" columnName="SALKV"/>
+      </measure>
+      <measure id="VMKUM" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="StockTotal PA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VMKUM"/>
+      </measure>
+      <measure id="VMSAL" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor total PA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VMSAL"/>
+      </measure>
+      <measure id="VMSTP" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio std.PA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VMSTP"/>
+      </measure>
+      <measure id="VMPEI" order="18" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cantid-base PA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VMPEI"/>
+      </measure>
+      <measure id="VMSAV" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor per.ant."/>
+        <measureMapping columnObjectName="Projection_1" columnName="VMSAV"/>
+      </measure>
+      <measure id="VJKUM" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Stock total EA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VJKUM"/>
+      </measure>
+      <measure id="VJSAL" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor total AA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VJSAL"/>
+      </measure>
+      <measure id="VJVER" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PrecioVariab.EA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VJVER"/>
+      </measure>
+      <measure id="VJSTP" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio.std.AA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VJSTP"/>
+      </measure>
+      <measure id="VJPEI" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Ctd. base AAnt"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VJPEI"/>
+      </measure>
+      <measure id="VJSAV" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor año ant."/>
+        <measureMapping columnObjectName="Projection_1" columnName="VJSAV"/>
+      </measure>
+      <measure id="STPRV" order="32" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio anterior"/>
+        <measureMapping columnObjectName="Projection_1" columnName="STPRV"/>
+      </measure>
+      <measure id="ZKPRS" order="34" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio futuro"/>
+        <measureMapping columnObjectName="Projection_1" columnName="ZKPRS"/>
+      </measure>
+      <measure id="TIMESTAMP" order="36" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cronomarcador"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TIMESTAMP"/>
+      </measure>
+      <measure id="BWPRS" order="37" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio fiscal 1"/>
+        <measureMapping columnObjectName="Projection_1" columnName="BWPRS"/>
+      </measure>
+      <measure id="BWPRH" order="38" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio contable"/>
+        <measureMapping columnObjectName="Projection_1" columnName="BWPRH"/>
+      </measure>
+      <measure id="VJBWS" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio fiscal 3"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VJBWS"/>
+      </measure>
+      <measure id="VJBWH" order="40" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio contab.3"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VJBWH"/>
+      </measure>
+      <measure id="VVJSL" order="41" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VVJSL"/>
+      </measure>
+      <measure id="VVJLB" order="42" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Stock total APA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VVJLB"/>
+      </measure>
+      <measure id="VVMLB" order="43" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="StockTotal APP"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VVMLB"/>
+      </measure>
+      <measure id="VVSAL" order="44" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VVSAL"/>
+      </measure>
+      <measure id="ZPLPR" order="45" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Prc.fut.prev."/>
+        <measureMapping columnObjectName="Projection_1" columnName="ZPLPR"/>
+      </measure>
+      <measure id="ZPLP1" order="46" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PrecioPrev.1"/>
+        <measureMapping columnObjectName="Projection_1" columnName="ZPLP1"/>
+      </measure>
+      <measure id="ZPLP2" order="47" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio plan 2"/>
+        <measureMapping columnObjectName="Projection_1" columnName="ZPLP2"/>
+      </measure>
+      <measure id="ZPLP3" order="48" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio plan 3"/>
+        <measureMapping columnObjectName="Projection_1" columnName="ZPLP3"/>
+      </measure>
+      <measure id="BWPH1" order="61" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio cont.2"/>
+        <measureMapping columnObjectName="Projection_1" columnName="BWPH1"/>
+      </measure>
+      <measure id="BWPS1" order="62" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio fiscal 2"/>
+        <measureMapping columnObjectName="Projection_1" columnName="BWPS1"/>
+      </measure>
+      <measure id="VPLPR" order="82" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Prc.plan.ant."/>
+        <measureMapping columnObjectName="Projection_1" columnName="VPLPR"/>
+      </measure>
+      <measure id="LPLPR" order="85" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Pr.plan act."/>
+        <measureMapping columnObjectName="Projection_1" columnName="LPLPR"/>
+      </measure>
+      <measure id="VKSAL" order="86" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor total PV"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VKSAL"/>
+      </measure>
+      <measure id="BWSPA" order="92" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Margen valorac."/>
+        <measureMapping columnObjectName="Projection_1" columnName="BWSPA"/>
+      </measure>
+      <measure id="LPLPX" order="93" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio plan act.fijo"/>
+        <measureMapping columnObjectName="Projection_1" columnName="LPLPX"/>
+      </measure>
+      <measure id="VPLPX" order="94" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio plan ant.fijo"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VPLPX"/>
+      </measure>
+      <measure id="FPLPX" order="95" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Prec.plan futur.fijo"/>
+        <measureMapping columnObjectName="Projection_1" columnName="FPLPX"/>
+      </measure>
+      <measure id="BWPEI" order="105" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cantidad base"/>
+        <measureMapping columnObjectName="Projection_1" columnName="BWPEI"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="82"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="250"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,25 @@
+PROCEDURE "SCP_CAROZZI_SAC.Costos_Material::ZDELETE_COST_MAT" (IN ZFECHA VARCHAR(8), 
+                                                                                 ZWERK VARCHAR(4))
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+
+
+    IF (ZFECHA <> '' AND ZWERK <> '')
+    THEN
+    
+   delete from "ZBW_SCP_COST_MAT"
+   WHERE "ZBW_SCP_COST_MAT"."FECHA_CALCULO" = ZFECHA
+          AND "ZBW_SCP_COST_MAT"."WERKS_P" = ZWERK;  
+ 
+   ELSEIF (ZFECHA <> '' AND ZWERK = '')
+   THEN
+   
+   delete from "ZBW_SCP_COST_MAT"
+   WHERE "ZBW_SCP_COST_MAT"."FECHA_CALCULO" = ZFECHA;
+
+    END IF;
+END
+

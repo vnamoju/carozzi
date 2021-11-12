@@ -1,0 +1,78 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/RT_Z1VCLIENTEXREMO.hdbreptask:workspace" Description="" Type="REALTIME" DropTargetTableIfExists="FALSE" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="true" RemoteSourceName="HANA_ERP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_">
+    <SourceObject RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;Z1VCLIENTEXREMO&quot;" SourceDisplayName="Z1VCLIENTEXREMO">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="Z1VCLIENTEXREMO">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="KUNNR" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="CDCAD" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="CDSCAD" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="CDCADLC" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="CDREMO" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="VKBUR" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="DESCRIPCION" Datatype="NVARCHAR" Length="60" Precision="60" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="AGENCIA" Datatype="NVARCHAR" Length="25" Precision="25" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="SUPERVISOR" Datatype="NVARCHAR" Length="25" Precision="25" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="FLAG_MERCA" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="TIPO_VTA" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="KUNNR_CENTRALIZADO" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ZFCREACION" Datatype="NVARCHAR" Length="6" Precision="6" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+      <Annotations Key="sap.im.properties" Value="">
+        <Annotation Key="truncateTable" Value="FALSE">
+        </Annotation>
+      </Annotations>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="Z1VCLIENTEXREMO" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;Z1VCLIENTEXREMO&quot;" FilterExpression="" ReplicationBehavior="InitAndRealtimeWithTableLevel" VTObjectName="Z1VCLIENTEXREMO">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KUNNR" ProjectionExpression="&quot;KUNNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CDCAD" ProjectionExpression="&quot;CDCAD&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CDSCAD" ProjectionExpression="&quot;CDSCAD&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CDCADLC" ProjectionExpression="&quot;CDCADLC&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CDREMO" ProjectionExpression="&quot;CDREMO&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VKBUR" ProjectionExpression="&quot;VKBUR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="DESCRIPCION" ProjectionExpression="&quot;DESCRIPCION&quot;">
+        </TargetColumn>
+        <TargetColumn Name="AGENCIA" ProjectionExpression="&quot;AGENCIA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="SUPERVISOR" ProjectionExpression="&quot;SUPERVISOR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="FLAG_MERCA" ProjectionExpression="&quot;FLAG_MERCA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="TIPO_VTA" ProjectionExpression="&quot;TIPO_VTA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KUNNR_CENTRALIZADO" ProjectionExpression="&quot;KUNNR_CENTRALIZADO&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ZFCREACION" ProjectionExpression="&quot;ZFCREACION&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

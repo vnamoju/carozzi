@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="JERARQUIA" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="JERARQUIA"/>
+  <metadata changedAt="2019-11-15 16:00:28.428"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="26"/>
+  <dataSources>
+    <DataSource id="SETNODE">
+      <resourceUri>SETNODE</resourceUri>
+    </DataSource>
+    <DataSource id="SETHEADERT">
+      <resourceUri>SETHEADERT</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SUBCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="LINEID"/>
+        <viewAttribute id="SUBSETCLS"/>
+        <viewAttribute id="SUBSETSCLS"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SEQNR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#SETNODE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASS" source="SUBCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LINEID" source="LINEID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETCLS" source="SUBSETCLS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETSCLS" source="SUBSETSCLS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SUBCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="LANGU"/>
+        <viewAttribute id="DESCRIPT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#SETHEADERT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASS" source="SUBCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGU" source="LANGU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DESCRIPT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="SUBCLASS"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="LINEID"/>
+        <viewAttribute id="SUBSETCLS"/>
+        <viewAttribute id="SUBSETSCLS"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SEQNR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASS" source="SUBCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LINEID" source="LINEID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETCLS" source="SUBSETCLS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETSCLS" source="SUBSETSCLS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SETCLASS"/>
+      <joinAttribute name="SETNAME"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="DESCRIPT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCRIPT"/>
+        <keyMapping columnObjectName="Join_1" columnName="DESCRIPT"/>
+      </attribute>
+      <attribute id="MANDT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="SETCLASS" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETCLASS"/>
+        <keyMapping columnObjectName="Join_1" columnName="SETCLASS"/>
+      </attribute>
+      <attribute id="SUBCLASS" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBCLASS"/>
+        <keyMapping columnObjectName="Join_1" columnName="SUBCLASS"/>
+      </attribute>
+      <attribute id="SETNAME" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="SETNAME"/>
+      </attribute>
+      <attribute id="LINEID" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LINEID"/>
+        <keyMapping columnObjectName="Join_1" columnName="LINEID"/>
+      </attribute>
+      <attribute id="SUBSETCLS" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETCLS"/>
+        <keyMapping columnObjectName="Join_1" columnName="SUBSETCLS"/>
+      </attribute>
+      <attribute id="SUBSETSCLS" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETSCLS"/>
+        <keyMapping columnObjectName="Join_1" columnName="SUBSETSCLS"/>
+      </attribute>
+      <attribute id="SUBSETNAME" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="SUBSETNAME"/>
+      </attribute>
+      <attribute id="SEQNR" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SEQNR"/>
+        <keyMapping columnObjectName="Join_1" columnName="SEQNR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="150" y="220"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="100" y="380"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="270" y="426"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

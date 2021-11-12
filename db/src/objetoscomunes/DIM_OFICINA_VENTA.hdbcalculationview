@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DIM_OFICINA_VENTA" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="DIM_OFICINA_VENTA"/>
+  <metadata changedAt="2018-05-15 17:23:50.427"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="45"/>
+  <dataSources>
+    <DataSource id="TVKBT">
+      <resourceUri>TVKBT</resourceUri>
+    </DataSource>
+    <DataSource id="JERARQUIAS">
+      <resourceUri>JERARQUIAS</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="BEZEI"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="TVKBT"/>
+    <filter>(&quot;SPRAS&quot; ='S')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="Nivel1"/>
+        <viewAttribute id="Nivel2"/>
+        <viewAttribute id="Nivel3"/>
+        <viewAttribute id="Nivel4"/>
+        <viewAttribute id="Nivel5"/>
+        <viewAttribute id="ID_NODO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="JERARQUIAS"/>
+    <filter>(in (&quot;Nivel1&quot;,'JER_OFICINAS_5100','JER_OFICINAS_EC01','JER_OFICINAS_GC01','JER_OFICINAS_4100'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="BEZEI"/>
+        <viewAttribute id="Nivel1"/>
+        <viewAttribute id="Nivel2"/>
+        <viewAttribute id="Nivel3"/>
+        <viewAttribute id="Nivel4"/>
+        <viewAttribute id="Nivel5"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BEZEI" source="BEZEI"/>
+      </input>
+      <input node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel1" source="Nivel1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel2" source="Nivel2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel3" source="Nivel3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel4" source="Nivel4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel5" source="Nivel5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="ID_NODO"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="VKBUR"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_2" columnName="MANDT"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_VENTA"/>
+        <keyMapping columnObjectName="Join_2" columnName="VKBUR"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_TEXT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_VENTA_TEXT"/>
+        <keyMapping columnObjectName="Join_2" columnName="BEZEI"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL1" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL1"/>
+        <keyMapping columnObjectName="Join_2" columnName="Nivel1"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL2" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL2"/>
+        <keyMapping columnObjectName="Join_2" columnName="Nivel2"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL3" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL3"/>
+        <keyMapping columnObjectName="Join_2" columnName="Nivel3"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL4" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL4"/>
+        <keyMapping columnObjectName="Join_2" columnName="Nivel4"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL5" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL5"/>
+        <keyMapping columnObjectName="Join_2" columnName="Nivel5"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="OFICINA_VENTA_ID_TEXT" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_VENTA_ID_TEXT"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="30">
+          <formula>&quot;OFICINA_VENTA&quot;+' - '+&quot;OFICINA_VENTA_TEXT&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="176" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

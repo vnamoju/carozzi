@@ -1,0 +1,38 @@
+<RepTask RepVersion="2.1" DropTargetTableIfExists="FALSE" Type="REALTIME" Description="" Name="file:/SCP_CAROZZI_SAC/RT_T25A5.hdbreptask:workspace">
+  <SourceObjects VirtualTableNamePrefix="VT_" VirtualTableSchema="SCP_CAROZZI_SAC" RemoteSourceName="HANA_ERP" VTFullyQualifiedName="false" TTFullyQualifiedName="false" SourceType="REMOTE_OBJ">
+    <SourceObject SourceDisplayName="T25A5" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;T25A5&quot;">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="T25A5">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="3" Length="3" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="SPRAS" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="1" Length="1" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="WWDIV" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="2" Length="2" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="BEZEK" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="20" Length="20" Datatype="NVARCHAR">
+        </TargetColumn>
+      </TargetColumns>
+      <Annotations Value="" Key="sap.im.properties">
+        <Annotation Value="FALSE" Key="truncateTable">
+        </Annotation>
+      </Annotations>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;T25A5&quot;" ObjectName="T25A5" VTObjectName="T25A5" ReplicationBehavior="InitAndRealtime" FilterExpression="">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="SPRAS" ProjectionExpression="&quot;SPRAS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="WWDIV" ProjectionExpression="&quot;WWDIV&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BEZEK" ProjectionExpression="&quot;BEZEK&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

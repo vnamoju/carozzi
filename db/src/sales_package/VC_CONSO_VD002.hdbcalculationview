@@ -1,0 +1,1633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="VC_CONSO_VD002" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="Modelo Venta Directa"/>
+  <metadata changedAt="2021-08-30 12:39:09.697"/>
+  <localVariables>
+    <variable id="SOCIEDAD">
+      <descriptions defaultDescription="Sociedad"/>
+      <variableProperties datatype="VARCHAR" defaultValue="EC01" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZBUKRS"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="ANOMES">
+      <descriptions defaultDescription="Año/Mes"/>
+      <variableProperties datatype="VARCHAR" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZPERIODO"/>
+        </valueDomain>
+        <selection multiLine="false" type="Interval"/>
+      </variableProperties>
+    </variable>
+    <variable id="DISTRIBUIDOR">
+      <descriptions defaultDescription="Distribuidor"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZDISTRIB"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="52"/>
+  <dataSources>
+    <DataSource id="VC_EXT_VD002">
+      <resourceUri>VC_EXT_VD002</resourceUri>
+    </DataSource>
+    <DataSource id="VC_INT_VD002">
+      <resourceUri>VC_INT_VD002</resourceUri>
+    </DataSource>
+    <DataSource id="ZBW_ZVTDIEX_8">
+      <resourceUri>ZBW_ZVTDIEX_8</resourceUri>
+    </DataSource>
+    <DataSource id="Z1SCP_CLIENHIST">
+      <resourceUri>Z1SCP_CLIENHIST</resourceUri>
+    </DataSource>
+    <DataSource id="Z1SCP_POP">
+      <resourceUri>Z1SCP_POP</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="SELL_OUT">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="FECHA"/>
+        <viewAttribute id="ZBLART"/>
+        <viewAttribute id="ZBUDAT"/>
+        <viewAttribute id="ZBUKRS"/>
+        <viewAttribute id="ZDATUM"/>
+        <viewAttribute id="ZDISTRIB"/>
+        <viewAttribute id="ZDIV"/>
+        <viewAttribute id="ZEQUIS"/>
+        <viewAttribute id="ZEROS"/>
+        <viewAttribute id="ZINTPOS"/>
+        <viewAttribute id="ZKUNNR"/>
+        <viewAttribute id="ZMATKL"/>
+        <viewAttribute id="ZMATNR"/>
+        <viewAttribute id="ZMATNR_1"/>
+        <viewAttribute id="ZMEINH"/>
+        <viewAttribute id="ZMEINS"/>
+        <viewAttribute id="ZMONTO_MENGE"/>
+        <viewAttribute id="ZMONTO_NETOS"/>
+        <viewAttribute id="ZPERIODO"/>
+        <viewAttribute id="ZPERNR"/>
+        <viewAttribute id="ZSUDISTR"/>
+        <viewAttribute id="ZVBELN"/>
+        <viewAttribute id="ZVTYPE"/>
+        <viewAttribute id="ZWAERS"/>
+        <viewAttribute id="ZVENDEDOR"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="RUBRO_TEX"/>
+        <viewAttribute id="RUBRO"/>
+        <viewAttribute id="STCDL"/>
+        <viewAttribute id="XFONO"/>
+        <viewAttribute id="STRAS"/>
+        <viewAttribute id="XPAIS"/>
+        <viewAttribute id="XREGI"/>
+        <viewAttribute id="XPROV"/>
+        <viewAttribute id="XCOMU"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="NAMEL"/>
+        <viewAttribute id="CNAME"/>
+        <viewAttribute id="CNAME_1"/>
+        <viewAttribute id="VENDEDOR_ASIG"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="ZWEEK"/>
+        <viewAttribute id="ZMES"/>
+        <viewAttribute id="ZANO"/>
+        <viewAttribute id="ZCLIENTE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#VC_EXT_VD002">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA" source="FECHA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBLART" source="ZBLART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUDAT" source="ZBUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUKRS" source="ZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDATUM" source="ZDATUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="ZDISTRIB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV" source="ZDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEQUIS" source="ZEQUIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEROS" source="ZEROS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZINTPOS" source="ZINTPOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKUNNR" source="ZKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATKL" source="ZMATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="ZMATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR_1" source="ZMATNR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH" source="ZMEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINS" source="ZMEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_MENGE" source="ZMONTO_MENGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_NETOS" source="ZMONTO_NETOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERIODO" source="ZPERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERNR" source="ZPERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUDISTR" source="ZSUDISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVBELN" source="ZVBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVTYPE" source="ZVTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWAERS" source="ZWAERS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVENDEDOR" source="ZVENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO_TEX" source="RUBRO_TEX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO" source="RUBRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCDL" source="STCDL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XFONO" source="XFONO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STRAS" source="STRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPAIS" source="XPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XREGI" source="XREGI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPROV" source="XPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XCOMU" source="XCOMU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAMEL" source="NAMEL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME" source="CNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME_1" source="CNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_ASIG" source="VENDEDOR_ASIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWEEK" source="ZWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMES" source="ZMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANO" source="ZANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE" source="ZCLIENTE"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="SELL_IN">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="STCD1"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="FKDAT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ERDAT"/>
+        <viewAttribute id="KUNAG"/>
+        <viewAttribute id="AEDAT"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="BRGEW"/>
+        <viewAttribute id="BRTWR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="NTGEW"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="VOLUM"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="NETWR_1"/>
+        <viewAttribute id="FBUDA"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
+        <viewAttribute id="CLIENTE_TEXT_1"/>
+        <viewAttribute id="CLIENTE_ATTR_REGION"/>
+        <viewAttribute id="CLIENTE_ATTR_PROVINCIA"/>
+        <viewAttribute id="CLIENTE_ATTR_COMUNA"/>
+        <viewAttribute id="CLIENTE_ATTR_PAIS"/>
+        <viewAttribute id="CADENA"/>
+        <viewAttribute id="SUB_CADENA"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="SHKZG"/>
+        <viewAttribute id="STAFO"/>
+        <viewAttribute id="FKLMG"/>
+        <viewAttribute id="UMVKN"/>
+        <viewAttribute id="UMVKZ"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="ZDIV_COM"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="0VTYPE"/>
+        <viewAttribute id="VENDEDOR_TEXT"/>
+        <viewAttribute id="ZCLIENTE_INT"/>
+        <viewAttribute id="VENDEDOR_INT"/>
+        <viewAttribute id="ZVENTE_NETA"/>
+        <viewAttribute id="ZSEMANA"/>
+        <viewAttribute id="ZANO"/>
+        <viewAttribute id="ZMES"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="CATEGORIA_TEXT_1"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT_1"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA_1"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#VC_INT_VD002">
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCD1" source="STCD1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERK" source="WAERK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKDAT" source="FKDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ERDAT" source="ERDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNAG" source="KUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AEDAT" source="AEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRTWR" source="BRTWR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETWR_1" source="NETWR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FBUDA" source="FBUDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_CANAL_COMERCIAL" source="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_TEXT_1" source="CLIENTE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_REGION" source="CLIENTE_ATTR_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PROVINCIA" source="CLIENTE_ATTR_PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_COMUNA" source="CLIENTE_ATTR_COMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE_ATTR_PAIS" source="CLIENTE_ATTR_PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CADENA" source="CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_CADENA" source="SUB_CADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHKZG" source="SHKZG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STAFO" source="STAFO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKLMG" source="FKLMG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMVKN" source="UMVKN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UMVKZ" source="UMVKZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV_COM" source="ZDIV_COM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VTYPE" source="0VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_TEXT" source="VENDEDOR_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE_INT" source="ZCLIENTE_INT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_INT" source="VENDEDOR_INT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVENTE_NETA" source="ZVENTE_NETA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSEMANA" source="ZSEMANA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANO" source="ZANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMES" source="ZMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT_1" source="CATEGORIA_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT_1" source="UNIDAD_NEGOCIO_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA_1" source="GRUPO_MATERIAL_ATTR_CATEGORIA_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO_1" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO_1"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="HISTORY" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="0MATERIAL_DESCRIPTION"/>
+        <viewAttribute id="0VTYPE"/>
+        <viewAttribute id="ZCDDISTR"/>
+        <viewAttribute id="ZDPRODIS"/>
+        <viewAttribute id="ZDIV_COM"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="ZGRP_ART_DESCRIPTION"/>
+        <viewAttribute id="ZGRP_ART_0G_CWWNEG"/>
+        <viewAttribute id="ZGRP_ART_ZCAT_COM2"/>
+        <viewAttribute id="ZGRP_ART_ZCAT_COM2_DESCRIPTION"/>
+        <viewAttribute id="ZGRP_ART_ZCAT_GES"/>
+        <viewAttribute id="ZGRP_ART_ZCAT_GES_DESCRIPTION"/>
+        <viewAttribute id="ZSUCLIDIS"/>
+        <viewAttribute id="ZSUCLIDIS_DESCRIPTION"/>
+        <viewAttribute id="ZSUCLIDIS_0COUNTRY"/>
+        <viewAttribute id="ZSUCLIDIS_0COUNTRY_CDE"/>
+        <viewAttribute id="ZSUCLIDIS_0COUNTRY_CDE_DESCRIPTION"/>
+        <viewAttribute id="ZSUCLIDIS_0REGION"/>
+        <viewAttribute id="ZSUCLIDIS_0REGION_DESCRIPTION"/>
+        <viewAttribute id="ZSUCLIDIS_ZCOMUNA"/>
+        <viewAttribute id="ZSUCLIDIS_ZCOMUNA_DESCRIPTION"/>
+        <viewAttribute id="ZSUCLIDIS_ZRUBRO"/>
+        <viewAttribute id="ZSUCLIDIS_ZRUBRO_DESCRIPTION"/>
+        <viewAttribute id="ZSUCLIDIS_ZRUT"/>
+        <viewAttribute id="ZSUCLIDIS_ZVENDEDOR"/>
+        <viewAttribute id="ZSUCLIDIS_ZVENDEDOR_DESCRIPTION"/>
+        <viewAttribute id="ZSUDISTR"/>
+        <viewAttribute id="ZVENDEDOR_DESCRIPTION"/>
+        <viewAttribute id="WAERK"/>
+        <viewAttribute id="BRTWR"/>
+        <viewAttribute id="FKLMG"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="FKDAT"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="NETWR_1"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="KUNAG"/>
+        <viewAttribute id="0CALWEEK"/>
+        <viewAttribute id="0CALYEAR"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZCATEGORIA_TEXT" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;ZGRP_ART_ZCAT_GES_DESCRIPTION&quot;,20)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZUNIDAD_NEGOCIO_TEXT" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;ZGRP_ART_ZCAT_COM2_DESCRIPTION&quot;,20)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZGRUPO_ART_TEXT" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;ZGRP_ART_DESCRIPTION&quot;,20)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZPROVINCIA_TEXT" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;ZSUCLIDIS_0COUNTRY_CDE_DESCRIPTION&quot;,20)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZREGION_TEXT" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;ZSUCLIDIS_0REGION_DESCRIPTION&quot;,20)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZCOMUNA_TEXT" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;ZSUCLIDIS_ZCOMUNA_DESCRIPTION&quot;,20)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="MATERIAL_TEXT" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;0MATERIAL_DESCRIPTION&quot;,20)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZVENDEDOR_HISTO" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;ZCDDISTR&quot;+'/'+&quot;PERNR&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZCLIENTE_HISTO" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;ZCDDISTR&quot;+'/'+&quot;KUNAG&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="ZSEMANA" expressionLanguage="COLUMN_ENGINE">
+          <formula>rightstr(&quot;0CALWEEK&quot;,2)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="ZMES" expressionLanguage="COLUMN_ENGINE">
+          <formula>rightstr(&quot;0CALMONTH&quot;,2)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="ZANO" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;0CALYEAR&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#ZBW_ZVTDIEX_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL_DESCRIPTION" source="0MATERIAL.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0VTYPE" source="0VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDDISTR" source="ZCDDISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDPRODIS" source="ZDPRODIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV_COM" source="ZDIV_COM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART_DESCRIPTION" source="ZGRP_ART.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART_0G_CWWNEG" source="ZGRP_ART_0G_CWWNEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART_ZCAT_COM2" source="ZGRP_ART_ZCAT_COM2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART_ZCAT_COM2_DESCRIPTION" source="ZGRP_ART_ZCAT_COM2.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART_ZCAT_GES" source="ZGRP_ART_ZCAT_GES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART_ZCAT_GES_DESCRIPTION" source="ZGRP_ART_ZCAT_GES.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS" source="ZSUCLIDIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_DESCRIPTION" source="ZSUCLIDIS.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_0COUNTRY" source="ZSUCLIDIS_0COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_0COUNTRY_CDE" source="ZSUCLIDIS_0COUNTRY_CDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_0COUNTRY_CDE_DESCRIPTION" source="ZSUCLIDIS_0COUNTRY_CDE.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_0REGION" source="ZSUCLIDIS_0REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_0REGION_DESCRIPTION" source="ZSUCLIDIS_0REGION.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_ZCOMUNA" source="ZSUCLIDIS_ZCOMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_ZCOMUNA_DESCRIPTION" source="ZSUCLIDIS_ZCOMUNA.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_ZRUBRO" source="ZSUCLIDIS_ZRUBRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_ZRUBRO_DESCRIPTION" source="ZSUCLIDIS_ZRUBRO.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_ZRUT" source="ZSUCLIDIS_ZRUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_ZVENDEDOR" source="ZSUCLIDIS_ZVENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUCLIDIS_ZVENDEDOR_DESCRIPTION" source="ZSUCLIDIS_ZVENDEDOR.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUDISTR" source="ZSUDISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVENDEDOR_DESCRIPTION" source="ZVENDEDOR.DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERK" source="WAERK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRTWR" source="BRTWR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKLMG" source="FKLMG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKBUR" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FKDAT" source="FKDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETWR_1" source="NETWR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNAG" source="KUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALWEEK" source="0CALWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALYEAR" source="0CALYEAR"/>
+      </input>
+      <filter>(&quot;ZANO&quot; =2030)</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ZBLART"/>
+        <viewAttribute id="ZBUDAT"/>
+        <viewAttribute id="ZBUKRS"/>
+        <viewAttribute id="ZDATUM"/>
+        <viewAttribute id="ZDISTRIB"/>
+        <viewAttribute id="ZDIV"/>
+        <viewAttribute id="ZEQUIS"/>
+        <viewAttribute id="ZEROS"/>
+        <viewAttribute id="ZINTPOS"/>
+        <viewAttribute id="ZKUNNR"/>
+        <viewAttribute id="ZMATKL"/>
+        <viewAttribute id="ZMATNR"/>
+        <viewAttribute id="ZMATNR_1"/>
+        <viewAttribute id="ZMEINH"/>
+        <viewAttribute id="ZMEINS"/>
+        <viewAttribute id="ZMONTO_MENGE"/>
+        <viewAttribute id="ZMONTO_NETOS"/>
+        <viewAttribute id="ZPERIODO"/>
+        <viewAttribute id="ZPERNR"/>
+        <viewAttribute id="ZSUDISTR"/>
+        <viewAttribute id="ZVBELN"/>
+        <viewAttribute id="ZVTYPE"/>
+        <viewAttribute id="ZWAERS"/>
+        <viewAttribute id="ZVENDEDOR"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="RUBRO_TEX"/>
+        <viewAttribute id="RUBRO"/>
+        <viewAttribute id="STCDL"/>
+        <viewAttribute id="XFONO"/>
+        <viewAttribute id="STRAS"/>
+        <viewAttribute id="XPAIS"/>
+        <viewAttribute id="XREGI"/>
+        <viewAttribute id="XPROV"/>
+        <viewAttribute id="XCOMU"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="NAMEL"/>
+        <viewAttribute id="CNAME"/>
+        <viewAttribute id="CNAME_1"/>
+        <viewAttribute id="VENDEDOR_ASIG"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="ZWEEK"/>
+        <viewAttribute id="ZMES"/>
+        <viewAttribute id="ZANO"/>
+        <viewAttribute id="ZCLIENTE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#SELL_OUT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBLART" source="ZBLART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUDAT" source="ZBUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUKRS" source="ZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDATUM" source="ZDATUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="ZDISTRIB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV" source="ZDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEQUIS" source="ZEQUIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEROS" source="ZEROS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZINTPOS" source="ZINTPOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKUNNR" source="ZKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATKL" source="ZMATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="ZMATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR_1" source="ZMATNR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH" source="ZMEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINS" source="ZMEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_MENGE" source="ZMONTO_MENGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_NETOS" source="ZMONTO_NETOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERIODO" source="ZPERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERNR" source="ZPERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUDISTR" source="ZSUDISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVBELN" source="ZVBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVTYPE" source="ZVTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWAERS" source="ZWAERS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVENDEDOR" source="ZVENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO_TEX" source="RUBRO_TEX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO" source="RUBRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCDL" source="STCDL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XFONO" source="XFONO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STRAS" source="STRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPAIS" source="XPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XREGI" source="XREGI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPROV" source="XPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XCOMU" source="XCOMU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAMEL" source="NAMEL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME" source="CNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME_1" source="CNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_ASIG" source="VENDEDOR_ASIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWEEK" source="ZWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMES" source="ZMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANO" source="ZANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE" source="ZCLIENTE"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#SELL_IN">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZBLART" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUDAT" source="FKDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZDATUM" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV" source="ZDIV_COM"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZEQUIS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZEROS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZINTPOS" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKUNNR" source="KUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATKL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZMATNR_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZMEINH" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_MENGE" source="FKLMG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_NETOS" source="ZVENTE_NETA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERIODO" source="STAFO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZSUDISTR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZVBELN" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVTYPE" source="0VTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWAERS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVENDEDOR" source="VENDEDOR_INT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="RUBRO_TEX" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="RUBRO" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCDL" source="STCD1"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="XFONO" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="STRAS" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPAIS" source="CLIENTE_ATTR_PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XREGI" source="CLIENTE_ATTR_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPROV" source="CLIENTE_ATTR_PROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XCOMU" source="CLIENTE_ATTR_COMUNA"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PERNR" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAMEL" source="CLIENTE_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME" source="VENDEDOR_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CNAME_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VENDEDOR_ASIG" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWEEK" source="ZSEMANA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMES" source="ZMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANO" source="ZANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE" source="ZCLIENTE_INT"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#HISTORY">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZBLART" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUDAT" source="FKDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZDATUM" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="ZCDDISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV" source="ZDIV_COM"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZEQUIS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZEROS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZINTPOS" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKUNNR" source="KUNAG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR_1" source="ZDPRODIS"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZMEINH" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_MENGE" source="FKLMG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_NETOS" source="NETWR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERIODO" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZSUDISTR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZVBELN" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVTYPE" source="0VTYPE"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ZWAERS" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVENDEDOR" source="ZVENDEDOR_HISTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GRUPO_MATERIAL_TEXT" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="ZCATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="ZUNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="ZPROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="ZREGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="ZCOMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="RUBRO_TEX" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO" source="ZSUCLIDIS_ZRUBRO_DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCDL" source="ZSUCLIDIS_ZRUT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="XFONO" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="STRAS" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPAIS" source="ZSUCLIDIS_0COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XREGI" source="ZSUCLIDIS_0REGION"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="XPROV" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XCOMU" source="ZSUCLIDIS_ZCOMUNA"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PERNR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NAMEL" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME" source="ZVENDEDOR_DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME_1" source="ZSUCLIDIS_ZVENDEDOR_DESCRIPTION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_ASIG" source="ZSUCLIDIS_ZVENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWEEK" source="ZSEMANA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMES" source="ZMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANO" source="ZANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE" source="ZCLIENTE_HISTO"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="VD_COSOLIDATION">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ZBLART"/>
+        <viewAttribute id="ZBUDAT"/>
+        <viewAttribute id="ZBUKRS"/>
+        <viewAttribute id="ZDATUM"/>
+        <viewAttribute id="ZDISTRIB"/>
+        <viewAttribute id="ZDIV"/>
+        <viewAttribute id="ZEQUIS"/>
+        <viewAttribute id="ZEROS"/>
+        <viewAttribute id="ZINTPOS"/>
+        <viewAttribute id="ZKUNNR"/>
+        <viewAttribute id="ZMATKL"/>
+        <viewAttribute id="ZMATNR"/>
+        <viewAttribute id="ZMATNR_1"/>
+        <viewAttribute id="ZMEINH"/>
+        <viewAttribute id="ZMEINS"/>
+        <viewAttribute id="ZMONTO_MENGE"/>
+        <viewAttribute id="ZMONTO_NETOS"/>
+        <viewAttribute id="ZPERIODO"/>
+        <viewAttribute id="ZPERNR"/>
+        <viewAttribute id="ZSUDISTR"/>
+        <viewAttribute id="ZVBELN"/>
+        <viewAttribute id="ZVTYPE"/>
+        <viewAttribute id="ZWAERS"/>
+        <viewAttribute id="ZVENDEDOR"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="RUBRO_TEX"/>
+        <viewAttribute id="RUBRO"/>
+        <viewAttribute id="STCDL"/>
+        <viewAttribute id="XFONO"/>
+        <viewAttribute id="STRAS"/>
+        <viewAttribute id="XPAIS"/>
+        <viewAttribute id="XREGI"/>
+        <viewAttribute id="XPROV"/>
+        <viewAttribute id="XCOMU"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="NAMEL"/>
+        <viewAttribute id="CNAME"/>
+        <viewAttribute id="CNAME_1"/>
+        <viewAttribute id="VENDEDOR_ASIG"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="ZWEEK"/>
+        <viewAttribute id="ZMES"/>
+        <viewAttribute id="ZANO"/>
+        <viewAttribute id="ZCLIENTE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="PROD_MAY" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;ZMONTO_NETOS&quot; >0,&quot;ZMATNR&quot;,'0')</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="PROD_MEN" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;ZMONTO_NETOS&quot;&lt;0,&quot;ZMATNR&quot;,'0')</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZGEN_CLIENT" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;ZMONTO_MENGE&quot;>0,&quot;ZCLIENTE&quot;,'')</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Union_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBLART" source="ZBLART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUDAT" source="ZBUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUKRS" source="ZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDATUM" source="ZDATUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="ZDISTRIB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV" source="ZDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEQUIS" source="ZEQUIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEROS" source="ZEROS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZINTPOS" source="ZINTPOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKUNNR" source="ZKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATKL" source="ZMATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="ZMATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR_1" source="ZMATNR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH" source="ZMEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINS" source="ZMEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_MENGE" source="ZMONTO_MENGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_NETOS" source="ZMONTO_NETOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERIODO" source="ZPERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERNR" source="ZPERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUDISTR" source="ZSUDISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVBELN" source="ZVBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVTYPE" source="ZVTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWAERS" source="ZWAERS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVENDEDOR" source="ZVENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO_TEX" source="RUBRO_TEX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO" source="RUBRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCDL" source="STCDL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XFONO" source="XFONO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STRAS" source="STRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPAIS" source="XPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XREGI" source="XREGI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPROV" source="XPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XCOMU" source="XCOMU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAMEL" source="NAMEL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME" source="CNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME_1" source="CNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_ASIG" source="VENDEDOR_ASIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWEEK" source="ZWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMES" source="ZMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANO" source="ZANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE" source="ZCLIENTE"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="VD_CLIENT">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ZCLIENTE"/>
+        <viewAttribute id="ZMONTO_NETOS"/>
+        <viewAttribute id="ZPERIODO"/>
+        <viewAttribute id="ZDISTRIB"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZCLAS" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;ZMONTO_NETOS&quot;>0,&quot;ZCLIENTE&quot;,'X')</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#VD_COSOLIDATION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE" source="ZCLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_NETOS" source="ZMONTO_NETOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERIODO" source="ZPERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="ZDISTRIB"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="BRAND_CLIENT" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ZCLIENTE"/>
+        <viewAttribute id="ZMONTO_NETOS"/>
+        <viewAttribute id="ZCLAS"/>
+        <viewAttribute id="ZPERIODO"/>
+        <viewAttribute id="ZDISTRIB"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#VD_CLIENT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE" source="ZCLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_NETOS" source="ZMONTO_NETOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLAS" source="ZCLAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERIODO" source="ZPERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="ZDISTRIB"/>
+      </input>
+      <filter>(&quot;ZCLAS&quot; !='X')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="VD_COBERAGE" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ZBLART"/>
+        <viewAttribute id="ZBUDAT"/>
+        <viewAttribute id="ZBUKRS"/>
+        <viewAttribute id="ZDATUM"/>
+        <viewAttribute id="ZDISTRIB"/>
+        <viewAttribute id="ZDIV"/>
+        <viewAttribute id="ZEQUIS"/>
+        <viewAttribute id="ZEROS"/>
+        <viewAttribute id="ZINTPOS"/>
+        <viewAttribute id="ZKUNNR"/>
+        <viewAttribute id="ZMATKL"/>
+        <viewAttribute id="ZMATNR"/>
+        <viewAttribute id="ZMATNR_1"/>
+        <viewAttribute id="ZMEINH"/>
+        <viewAttribute id="ZMEINS"/>
+        <viewAttribute id="ZMONTO_MENGE"/>
+        <viewAttribute id="ZMONTO_NETOS"/>
+        <viewAttribute id="ZPERIODO"/>
+        <viewAttribute id="ZPERNR"/>
+        <viewAttribute id="ZSUDISTR"/>
+        <viewAttribute id="ZVBELN"/>
+        <viewAttribute id="ZVTYPE"/>
+        <viewAttribute id="ZWAERS"/>
+        <viewAttribute id="ZVENDEDOR"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="RUBRO_TEX"/>
+        <viewAttribute id="RUBRO"/>
+        <viewAttribute id="STCDL"/>
+        <viewAttribute id="XFONO"/>
+        <viewAttribute id="STRAS"/>
+        <viewAttribute id="XPAIS"/>
+        <viewAttribute id="XREGI"/>
+        <viewAttribute id="XPROV"/>
+        <viewAttribute id="XCOMU"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="NAMEL"/>
+        <viewAttribute id="CNAME"/>
+        <viewAttribute id="CNAME_1"/>
+        <viewAttribute id="VENDEDOR_ASIG"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="ZWEEK"/>
+        <viewAttribute id="ZMES"/>
+        <viewAttribute id="ZANO"/>
+        <viewAttribute id="ZCLIENTE"/>
+        <viewAttribute id="PROD_MAY"/>
+        <viewAttribute id="PROD_MEN"/>
+        <viewAttribute id="ZGEN_CLIENT"/>
+        <viewAttribute id="ZCLAS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#VD_COSOLIDATION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBLART" source="ZBLART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUDAT" source="ZBUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUKRS" source="ZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDATUM" source="ZDATUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="ZDISTRIB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV" source="ZDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEQUIS" source="ZEQUIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEROS" source="ZEROS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZINTPOS" source="ZINTPOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKUNNR" source="ZKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATKL" source="ZMATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="ZMATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR_1" source="ZMATNR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH" source="ZMEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINS" source="ZMEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_MENGE" source="ZMONTO_MENGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_NETOS" source="ZMONTO_NETOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERIODO" source="ZPERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERNR" source="ZPERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUDISTR" source="ZSUDISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVBELN" source="ZVBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVTYPE" source="ZVTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWAERS" source="ZWAERS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVENDEDOR" source="ZVENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO_TEX" source="RUBRO_TEX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO" source="RUBRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCDL" source="STCDL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XFONO" source="XFONO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STRAS" source="STRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPAIS" source="XPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XREGI" source="XREGI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPROV" source="XPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XCOMU" source="XCOMU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAMEL" source="NAMEL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME" source="CNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME_1" source="CNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_ASIG" source="VENDEDOR_ASIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWEEK" source="ZWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMES" source="ZMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANO" source="ZANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE" source="ZCLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROD_MAY" source="PROD_MAY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROD_MEN" source="PROD_MEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGEN_CLIENT" source="ZGEN_CLIENT"/>
+      </input>
+      <input node="#BRAND_CLIENT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLAS" source="ZCLAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE" source="ZCLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERIODO" source="ZPERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="ZDISTRIB"/>
+      </input>
+      <joinAttribute name="ZCLIENTE"/>
+      <joinAttribute name="ZPERIODO"/>
+      <joinAttribute name="ZDISTRIB"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DISTR"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="DISTR_H"/>
+        <viewAttribute id="KUNNR_H"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1SCP_CLIENHIST">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTR" source="DISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTR_H" source="DISTR_H"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR_H" source="KUNNR_H"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ZBLART"/>
+        <viewAttribute id="ZBUDAT"/>
+        <viewAttribute id="ZBUKRS"/>
+        <viewAttribute id="ZDATUM"/>
+        <viewAttribute id="ZDISTRIB"/>
+        <viewAttribute id="ZDIV"/>
+        <viewAttribute id="ZEQUIS"/>
+        <viewAttribute id="ZEROS"/>
+        <viewAttribute id="ZINTPOS"/>
+        <viewAttribute id="ZKUNNR"/>
+        <viewAttribute id="ZMATKL"/>
+        <viewAttribute id="ZMATNR"/>
+        <viewAttribute id="ZMATNR_1"/>
+        <viewAttribute id="ZMEINH"/>
+        <viewAttribute id="ZMEINS"/>
+        <viewAttribute id="ZMONTO_MENGE"/>
+        <viewAttribute id="ZMONTO_NETOS"/>
+        <viewAttribute id="ZPERIODO"/>
+        <viewAttribute id="ZPERNR"/>
+        <viewAttribute id="ZSUDISTR"/>
+        <viewAttribute id="ZVBELN"/>
+        <viewAttribute id="ZVTYPE"/>
+        <viewAttribute id="ZWAERS"/>
+        <viewAttribute id="ZVENDEDOR"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="RUBRO_TEX"/>
+        <viewAttribute id="RUBRO"/>
+        <viewAttribute id="STCDL"/>
+        <viewAttribute id="XFONO"/>
+        <viewAttribute id="STRAS"/>
+        <viewAttribute id="XPAIS"/>
+        <viewAttribute id="XREGI"/>
+        <viewAttribute id="XPROV"/>
+        <viewAttribute id="XCOMU"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="NAMEL"/>
+        <viewAttribute id="CNAME"/>
+        <viewAttribute id="CNAME_1"/>
+        <viewAttribute id="VENDEDOR_ASIG"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="ZWEEK"/>
+        <viewAttribute id="ZMES"/>
+        <viewAttribute id="ZANO"/>
+        <viewAttribute id="ZCLIENTE"/>
+        <viewAttribute id="PROD_MAY"/>
+        <viewAttribute id="PROD_MEN"/>
+        <viewAttribute id="ZGEN_CLIENT"/>
+        <viewAttribute id="ZCLAS"/>
+        <viewAttribute id="DISTR_H"/>
+        <viewAttribute id="KUNNR_H"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#VD_COBERAGE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBLART" source="ZBLART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUDAT" source="ZBUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUKRS" source="ZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDATUM" source="ZDATUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="ZDISTRIB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV" source="ZDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEQUIS" source="ZEQUIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEROS" source="ZEROS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZINTPOS" source="ZINTPOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKUNNR" source="ZKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATKL" source="ZMATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="ZMATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR_1" source="ZMATNR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH" source="ZMEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINS" source="ZMEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_MENGE" source="ZMONTO_MENGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_NETOS" source="ZMONTO_NETOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERIODO" source="ZPERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERNR" source="ZPERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUDISTR" source="ZSUDISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVBELN" source="ZVBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVTYPE" source="ZVTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWAERS" source="ZWAERS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVENDEDOR" source="ZVENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO_TEX" source="RUBRO_TEX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO" source="RUBRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCDL" source="STCDL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XFONO" source="XFONO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STRAS" source="STRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPAIS" source="XPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XREGI" source="XREGI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPROV" source="XPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XCOMU" source="XCOMU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAMEL" source="NAMEL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME" source="CNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME_1" source="CNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_ASIG" source="VENDEDOR_ASIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWEEK" source="ZWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMES" source="ZMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANO" source="ZANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE" source="ZCLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROD_MAY" source="PROD_MAY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROD_MEN" source="PROD_MEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGEN_CLIENT" source="ZGEN_CLIENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLAS" source="ZCLAS"/>
+      </input>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTR_H" source="DISTR_H"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR_H" source="KUNNR_H"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="DISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKUNNR" source="KUNNR"/>
+      </input>
+      <joinAttribute name="ZDISTRIB"/>
+      <joinAttribute name="ZKUNNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="WAERS"/>
+        <viewAttribute id="AMOUNT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1SCP_POP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERS" source="WAERS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinOrder="OUTSIDE_IN">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ZBLART"/>
+        <viewAttribute id="ZBUDAT"/>
+        <viewAttribute id="ZBUKRS"/>
+        <viewAttribute id="ZDATUM"/>
+        <viewAttribute id="ZDISTRIB"/>
+        <viewAttribute id="ZDIV"/>
+        <viewAttribute id="ZEQUIS"/>
+        <viewAttribute id="ZEROS"/>
+        <viewAttribute id="ZINTPOS"/>
+        <viewAttribute id="ZKUNNR"/>
+        <viewAttribute id="ZMATKL"/>
+        <viewAttribute id="ZMATNR"/>
+        <viewAttribute id="ZMATNR_1"/>
+        <viewAttribute id="ZMEINH"/>
+        <viewAttribute id="ZMEINS"/>
+        <viewAttribute id="ZMONTO_MENGE"/>
+        <viewAttribute id="ZMONTO_NETOS"/>
+        <viewAttribute id="ZPERIODO"/>
+        <viewAttribute id="ZPERNR"/>
+        <viewAttribute id="ZSUDISTR"/>
+        <viewAttribute id="ZVBELN"/>
+        <viewAttribute id="ZVTYPE"/>
+        <viewAttribute id="ZWAERS"/>
+        <viewAttribute id="ZVENDEDOR"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="REGION_TEXT"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="RUBRO_TEX"/>
+        <viewAttribute id="RUBRO"/>
+        <viewAttribute id="STCDL"/>
+        <viewAttribute id="XFONO"/>
+        <viewAttribute id="STRAS"/>
+        <viewAttribute id="XPAIS"/>
+        <viewAttribute id="XREGI"/>
+        <viewAttribute id="XPROV"/>
+        <viewAttribute id="XCOMU"/>
+        <viewAttribute id="PERNR"/>
+        <viewAttribute id="NAMEL"/>
+        <viewAttribute id="CNAME"/>
+        <viewAttribute id="CNAME_1"/>
+        <viewAttribute id="VENDEDOR_ASIG"/>
+        <viewAttribute id="ZFUENTE"/>
+        <viewAttribute id="ZWEEK"/>
+        <viewAttribute id="ZMES"/>
+        <viewAttribute id="ZANO"/>
+        <viewAttribute id="ZCLIENTE"/>
+        <viewAttribute id="PROD_MAY"/>
+        <viewAttribute id="PROD_MEN"/>
+        <viewAttribute id="ZGEN_CLIENT"/>
+        <viewAttribute id="ZCLAS"/>
+        <viewAttribute id="DISTR_H"/>
+        <viewAttribute id="KUNNR_H"/>
+        <viewAttribute id="AMOUNT"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="UNEG" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO&quot;),'MPOP',&quot;GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="UNEGTXT" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;UNIDAD_NEGOCIO_TEXT&quot;),'MATERIAL POP',&quot;UNIDAD_NEGOCIO_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBLART" source="ZBLART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUDAT" source="ZBUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBUKRS" source="ZBUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDATUM" source="ZDATUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDISTRIB" source="ZDISTRIB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDIV" source="ZDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEQUIS" source="ZEQUIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZEROS" source="ZEROS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZINTPOS" source="ZINTPOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKUNNR" source="ZKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATKL" source="ZMATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="ZMATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR_1" source="ZMATNR_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH" source="ZMEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINS" source="ZMEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_MENGE" source="ZMONTO_MENGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMONTO_NETOS" source="ZMONTO_NETOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERIODO" source="ZPERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPERNR" source="ZPERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSUDISTR" source="ZSUDISTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVBELN" source="ZVBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVTYPE" source="ZVTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWAERS" source="ZWAERS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVENDEDOR" source="ZVENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO_TEX" source="RUBRO_TEX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RUBRO" source="RUBRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STCDL" source="STCDL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XFONO" source="XFONO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STRAS" source="STRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPAIS" source="XPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XREGI" source="XREGI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XPROV" source="XPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="XCOMU" source="XCOMU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERNR" source="PERNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAMEL" source="NAMEL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME" source="CNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNAME_1" source="CNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR_ASIG" source="VENDEDOR_ASIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFUENTE" source="ZFUENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZWEEK" source="ZWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZMES" source="ZMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZANO" source="ZANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLIENTE" source="ZCLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROD_MAY" source="PROD_MAY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROD_MEN" source="PROD_MEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGEN_CLIENT" source="ZGEN_CLIENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLAS" source="ZCLAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTR_H" source="DISTR_H"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR_H" source="KUNNR_H"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="ZBLART" hidden="true" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZBLART"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZBLART"/>
+      </attribute>
+      <attribute id="ZBUDAT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha Factura"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZBUDAT"/>
+      </attribute>
+      <attribute id="ZBUKRS" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="10.Sociedad CO"/>
+        <localVariable>#SOCIEDAD</localVariable>
+        <keyMapping columnObjectName="Join_2" columnName="ZBUKRS"/>
+      </attribute>
+      <attribute id="ZDATUM" hidden="true" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZDATUM"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZDATUM"/>
+      </attribute>
+      <attribute id="ZDISTRIB" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Distribuidor"/>
+        <localVariable>#DISTRIBUIDOR</localVariable>
+        <keyMapping columnObjectName="Join_2" columnName="ZDISTRIB"/>
+      </attribute>
+      <attribute id="ZDIV" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="13.División"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZDIV"/>
+      </attribute>
+      <attribute id="ZEQUIS" hidden="true" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZEQUIS"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZEQUIS"/>
+      </attribute>
+      <attribute id="ZEROS" hidden="true" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZEROS"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZEROS"/>
+      </attribute>
+      <attribute id="ZINTPOS" hidden="true" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZINTPOS"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZINTPOS"/>
+      </attribute>
+      <attribute id="ZKUNNR" hidden="true" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZKUNNR"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZKUNNR"/>
+      </attribute>
+      <attribute id="ZMATKL" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Articulo"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZMATKL"/>
+      </attribute>
+      <attribute id="ZMATNR" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZMATNR"/>
+      </attribute>
+      <attribute id="ZMATNR_1" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material Distribuidor"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZMATNR_1"/>
+      </attribute>
+      <attribute id="ZMEINH" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZMEINH"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZMEINH"/>
+      </attribute>
+      <attribute id="ZMEINS" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZMEINS"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZMEINS"/>
+      </attribute>
+      <attribute id="ZPERIODO" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Año/Mes"/>
+        <localVariable>#ANOMES</localVariable>
+        <keyMapping columnObjectName="Join_2" columnName="ZPERIODO"/>
+      </attribute>
+      <attribute id="ZPERNR" hidden="true" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZPERNR"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZPERNR"/>
+      </attribute>
+      <attribute id="ZSUDISTR" hidden="true" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZSUDISTR"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZSUDISTR"/>
+      </attribute>
+      <attribute id="ZVBELN" hidden="true" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZVBELN"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZVBELN"/>
+      </attribute>
+      <attribute id="ZVTYPE" hidden="true" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZVTYPE"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZVTYPE"/>
+      </attribute>
+      <attribute id="ZWAERS" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZWAERS"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZWAERS"/>
+      </attribute>
+      <attribute id="ZVENDEDOR" hidden="false" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Vendedor"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZVENDEDOR"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material Descr"/>
+        <keyMapping columnObjectName="Join_2" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Articulo Descr"/>
+        <keyMapping columnObjectName="Join_2" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="22.Categoria Descr"/>
+        <keyMapping columnObjectName="Join_2" columnName="CATEGORIA_TEXT"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" hidden="true" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad de Negocio Txt"/>
+        <keyMapping columnObjectName="Join_2" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" hidden="true" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad de Negocio"/>
+        <keyMapping columnObjectName="Join_2" columnName="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_CATEGORIA" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="22.Categoria"/>
+        <keyMapping columnObjectName="Join_2" columnName="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="24. Area de Negocio"/>
+        <keyMapping columnObjectName="Join_2" columnName="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+      </attribute>
+      <attribute id="PROVINCIA_TEXT" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="50.Provincia Descr"/>
+        <keyMapping columnObjectName="Join_2" columnName="PROVINCIA_TEXT"/>
+      </attribute>
+      <attribute id="REGION_TEXT" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="49.Región Descr"/>
+        <keyMapping columnObjectName="Join_2" columnName="REGION_TEXT"/>
+      </attribute>
+      <attribute id="COMUNA_TEXT" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="51.Comuna Descr"/>
+        <keyMapping columnObjectName="Join_2" columnName="COMUNA_TEXT"/>
+      </attribute>
+      <attribute id="RUBRO_TEX" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="47.Rubro Descr"/>
+        <keyMapping columnObjectName="Join_2" columnName="RUBRO_TEX"/>
+      </attribute>
+      <attribute id="RUBRO" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="47.Rubro"/>
+        <keyMapping columnObjectName="Join_2" columnName="RUBRO"/>
+      </attribute>
+      <attribute id="STCDL" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="42.RUT Cliente"/>
+        <keyMapping columnObjectName="Join_2" columnName="STCDL"/>
+      </attribute>
+      <attribute id="XFONO" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="55.Contacto"/>
+        <keyMapping columnObjectName="Join_2" columnName="XFONO"/>
+      </attribute>
+      <attribute id="STRAS" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="56.Dirección Cliente"/>
+        <keyMapping columnObjectName="Join_2" columnName="STRAS"/>
+      </attribute>
+      <attribute id="XPAIS" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.País"/>
+        <keyMapping columnObjectName="Join_2" columnName="XPAIS"/>
+      </attribute>
+      <attribute id="XREGI" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="49.Región"/>
+        <keyMapping columnObjectName="Join_2" columnName="XREGI"/>
+      </attribute>
+      <attribute id="XPROV" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="50.Provincia"/>
+        <keyMapping columnObjectName="Join_2" columnName="XPROV"/>
+      </attribute>
+      <attribute id="XCOMU" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="51.Comuna"/>
+        <keyMapping columnObjectName="Join_2" columnName="XCOMU"/>
+      </attribute>
+      <attribute id="PERNR" hidden="true" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERNR"/>
+        <keyMapping columnObjectName="Join_2" columnName="PERNR"/>
+      </attribute>
+      <attribute id="NAMEL" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="42.Cliente Descr"/>
+        <keyMapping columnObjectName="Join_2" columnName="NAMEL"/>
+      </attribute>
+      <attribute id="CNAME" hidden="true" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Vendedor Txt"/>
+        <keyMapping columnObjectName="Join_2" columnName="CNAME"/>
+      </attribute>
+      <attribute id="CNAME_1" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Vendedor Asignado Descr"/>
+        <keyMapping columnObjectName="Join_2" columnName="CNAME_1"/>
+      </attribute>
+      <attribute id="VENDEDOR_ASIG" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Vendedor Asignado"/>
+        <keyMapping columnObjectName="Join_2" columnName="VENDEDOR_ASIG"/>
+      </attribute>
+      <attribute id="ZFUENTE" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="01.Fuente"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZFUENTE"/>
+      </attribute>
+      <attribute id="ZWEEK" hidden="true" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Semana"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZWEEK"/>
+      </attribute>
+      <attribute id="ZMES" order="57" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZMES"/>
+      </attribute>
+      <attribute id="ZANO" order="58" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Año"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZANO"/>
+      </attribute>
+      <attribute id="ZCLIENTE" order="59" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="42.Cliente"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZCLIENTE"/>
+      </attribute>
+      <attribute id="PROD_MAY" hidden="true" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROD_MAY"/>
+        <keyMapping columnObjectName="Join_2" columnName="PROD_MAY"/>
+      </attribute>
+      <attribute id="PROD_MEN" hidden="true" order="61" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROD_MEN"/>
+        <keyMapping columnObjectName="Join_2" columnName="PROD_MEN"/>
+      </attribute>
+      <attribute id="ZGEN_CLIENT" hidden="true" order="62" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZGEN_CLIENT"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZGEN_CLIENT"/>
+      </attribute>
+      <attribute id="ZCLAS" hidden="true" order="63" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCLAS"/>
+        <keyMapping columnObjectName="Join_2" columnName="ZCLAS"/>
+      </attribute>
+      <attribute id="DISTR_H" order="64" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Distribuidor (Historia)"/>
+        <keyMapping columnObjectName="Join_2" columnName="DISTR_H"/>
+      </attribute>
+      <attribute id="KUNNR_H" order="65" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="42.Cliente (Historia)"/>
+        <keyMapping columnObjectName="Join_2" columnName="KUNNR_H"/>
+      </attribute>
+      <attribute id="UNEG" order="67" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio"/>
+        <keyMapping columnObjectName="Join_2" columnName="UNEG"/>
+      </attribute>
+      <attribute id="UNEGTXT" order="68" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio Descr"/>
+        <keyMapping columnObjectName="Join_2" columnName="UNEGTXT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="ZSEM" hidden="false" order="69" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Semana"/>
+        <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
+          <formula>week(&quot;ZBUDAT&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="VENTEXT" hidden="false" order="70" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Vendedor Descr"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="50">
+          <formula>replace(&quot;CNAME&quot;,'Ã','Ñ')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="ZMONTO_MENGE" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="UMB"/>
+        <measureMapping columnObjectName="Join_2" columnName="ZMONTO_MENGE"/>
+      </measure>
+      <measure id="ZMONTO_NETOS" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Ventas Netas"/>
+        <measureMapping columnObjectName="Join_2" columnName="ZMONTO_NETOS"/>
+      </measure>
+      <measure id="AMOUNT" hidden="true" order="66" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="AMOUNT"/>
+        <measureMapping columnObjectName="Join_2" columnName="AMOUNT"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="COUNTM" hidden="true" order="1" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Cont mayor"/>
+        <exceptionAggregation exceptionAggregationType="countDistinct">
+          <attribute attributeName="PROD_MAY"/>
+          <attribute attributeName="PROD_MEN"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+      <measure id="COUNTN" hidden="true" order="2" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Cont Menor"/>
+        <exceptionAggregation exceptionAggregationType="countDistinct">
+          <attribute attributeName="PROD_MEN"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+      <measure id="ZCANT_VENDOR" hidden="false" order="3" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Cantidad de Vendores"/>
+        <exceptionAggregation exceptionAggregationType="countDistinct">
+          <attribute attributeName="ZVENDEDOR"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+      <measure id="ZCANT_DAY" hidden="false" order="4" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Cantidad de Días"/>
+        <exceptionAggregation exceptionAggregationType="countDistinct">
+          <attribute attributeName="ZBUDAT"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+      <measure id="ZCOUNT_PROD" hidden="false" order="5" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Cantidad de Producto"/>
+        <formula>if(&quot;ZMONTO_NETOS&quot;>0,if(&quot;COUNTN&quot;=1,&quot;COUNTM&quot;,&quot;COUNTM&quot;-&quot;COUNTN&quot;),0)</formula>
+      </measure>
+      <measure id="ZCOBER" hidden="false" order="6" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Cobertura"/>
+        <exceptionAggregation exceptionAggregationType="countDistinct">
+          <attribute attributeName="ZCLAS"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="170" y="40"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="SELL_OUT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="0" y="720"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="SELL_IN" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="170" y="720"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="HISTORY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="340" y="720"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="170" y="570"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="VD_COSOLIDATION" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="170" y="490"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="VD_CLIENT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="360" y="490"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="BRAND_CLIENT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="360" y="420"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="VD_COBERAGE" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="170" y="339"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="360" y="330"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="170" y="239"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="360" y="200"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="170" y="120"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

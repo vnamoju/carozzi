@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="PROO" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="PROO"/>
+  <metadata changedAt="2021-06-18 13:07:29.499"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="39"/>
+  <dataSources>
+    <DataSource id="CE4SPA2">
+      <resourceUri>CE4SPA2</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="AKTBO"/>
+        <viewAttribute id="PAOBJNR"/>
+        <viewAttribute id="PASUBNR"/>
+        <viewAttribute id="BISDAT"/>
+        <viewAttribute id="KNT_FRM_KZ"/>
+        <viewAttribute id="UNUSED_CE3"/>
+        <viewAttribute id="KNDNR"/>
+        <viewAttribute id="ARTNR"/>
+        <viewAttribute id="FKART"/>
+        <viewAttribute id="KAUFN"/>
+        <viewAttribute id="KDPOS"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="KOKRS"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="GSBER"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="VTWEG"/>
+        <viewAttribute id="SPART"/>
+        <viewAttribute id="PRCTR"/>
+        <viewAttribute id="PPRCTR"/>
+        <viewAttribute id="KSTRG"/>
+        <viewAttribute id="PSPNR"/>
+        <viewAttribute id="MEINH"/>
+        <viewAttribute id="KDGRP"/>
+        <viewAttribute id="BZIRK"/>
+        <viewAttribute id="VKGRP"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="HIE01"/>
+        <viewAttribute id="HIE02"/>
+        <viewAttribute id="HIE03"/>
+        <viewAttribute id="WWZTR"/>
+        <viewAttribute id="WWVEN"/>
+        <viewAttribute id="NIELS"/>
+        <viewAttribute id="WWREG"/>
+        <viewAttribute id="WWNEG"/>
+        <viewAttribute id="WWDIV"/>
+        <viewAttribute id="WWNPE"/>
+        <viewAttribute id="KMVTNR"/>
+        <viewAttribute id="VVPNV_ME"/>
+        <viewAttribute id="VVUVE_ME"/>
+        <viewAttribute id="VVUAL_ME"/>
+        <viewAttribute id="PAOBJNR_INT"/>
+        <viewAttribute id="WERKS_1"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="ALGO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>1
+</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="CE4SPA2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS_1" source="WERKS"/>
+      </input>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="AKTBO" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AKTBO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="AKTBO"/>
+      </attribute>
+      <attribute id="PAOBJNR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PAOBJNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PAOBJNR"/>
+      </attribute>
+      <attribute id="PASUBNR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PASUBNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PASUBNR"/>
+      </attribute>
+      <attribute id="BISDAT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BISDAT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BISDAT"/>
+      </attribute>
+      <attribute id="KNT_FRM_KZ" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KNT_FRM_KZ"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KNT_FRM_KZ"/>
+      </attribute>
+      <attribute id="UNUSED_CE3" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNUSED_CE3"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNUSED_CE3"/>
+      </attribute>
+      <attribute id="KNDNR" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KNDNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KNDNR"/>
+      </attribute>
+      <attribute id="ARTNR" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ARTNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ARTNR"/>
+      </attribute>
+      <attribute id="FKART" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FKART"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FKART"/>
+      </attribute>
+      <attribute id="KAUFN" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KAUFN"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KAUFN"/>
+      </attribute>
+      <attribute id="KDPOS" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KDPOS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KDPOS"/>
+      </attribute>
+      <attribute id="AUFNR" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AUFNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="AUFNR"/>
+      </attribute>
+      <attribute id="BUKRS" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUKRS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="KOKRS" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KOKRS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KOKRS"/>
+      </attribute>
+      <attribute id="WERKS" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WERKS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WERKS"/>
+      </attribute>
+      <attribute id="GSBER" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GSBER"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GSBER"/>
+      </attribute>
+      <attribute id="VKORG" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKORG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VKORG"/>
+      </attribute>
+      <attribute id="VTWEG" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VTWEG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VTWEG"/>
+      </attribute>
+      <attribute id="SPART" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPART"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SPART"/>
+      </attribute>
+      <attribute id="PRCTR" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PRCTR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PRCTR"/>
+      </attribute>
+      <attribute id="PPRCTR" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PPRCTR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PPRCTR"/>
+      </attribute>
+      <attribute id="KSTRG" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KSTRG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KSTRG"/>
+      </attribute>
+      <attribute id="PSPNR" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PSPNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PSPNR"/>
+      </attribute>
+      <attribute id="MEINH" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MEINH"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MEINH"/>
+      </attribute>
+      <attribute id="KDGRP" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KDGRP"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KDGRP"/>
+      </attribute>
+      <attribute id="BZIRK" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BZIRK"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BZIRK"/>
+      </attribute>
+      <attribute id="VKGRP" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKGRP"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VKGRP"/>
+      </attribute>
+      <attribute id="LAND1" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LAND1"/>
+        <keyMapping columnObjectName="Projection_1" columnName="LAND1"/>
+      </attribute>
+      <attribute id="MATKL" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATKL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATKL"/>
+      </attribute>
+      <attribute id="VKBUR" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKBUR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VKBUR"/>
+      </attribute>
+      <attribute id="HIE01" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HIE01"/>
+        <keyMapping columnObjectName="Projection_1" columnName="HIE01"/>
+      </attribute>
+      <attribute id="HIE02" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HIE02"/>
+        <keyMapping columnObjectName="Projection_1" columnName="HIE02"/>
+      </attribute>
+      <attribute id="HIE03" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HIE03"/>
+        <keyMapping columnObjectName="Projection_1" columnName="HIE03"/>
+      </attribute>
+      <attribute id="WWZTR" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WWZTR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WWZTR"/>
+      </attribute>
+      <attribute id="WWVEN" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WWVEN"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WWVEN"/>
+      </attribute>
+      <attribute id="NIELS" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NIELS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="NIELS"/>
+      </attribute>
+      <attribute id="WWREG" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WWREG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WWREG"/>
+      </attribute>
+      <attribute id="WWNEG" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WWNEG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WWNEG"/>
+      </attribute>
+      <attribute id="WWDIV" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WWDIV"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WWDIV"/>
+      </attribute>
+      <attribute id="WWNPE" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WWNPE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WWNPE"/>
+      </attribute>
+      <attribute id="KMVTNR" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KMVTNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KMVTNR"/>
+      </attribute>
+      <attribute id="VVPNV_ME" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VVPNV_ME"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VVPNV_ME"/>
+      </attribute>
+      <attribute id="VVUVE_ME" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VVUVE_ME"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VVUVE_ME"/>
+      </attribute>
+      <attribute id="VVUAL_ME" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VVUAL_ME"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VVUAL_ME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="PAOBJNR_INT" order="46" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PAOBJNR_INT"/>
+        <measureMapping columnObjectName="Projection_1" columnName="PAOBJNR_INT"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/></shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="90" y="290"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

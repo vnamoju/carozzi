@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="SD_JER_CV001" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="Jerarquia Contratos"/>
+  <metadata changedAt="2021-04-05 19:27:06.257"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="32"/>
+  <dataSources>
+    <DataSource id="VBFA">
+      <resourceUri>VBFA</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_2$$$$VBFA$$">
+      <resourceUri>VBFA</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_3$$$$VBFA$$">
+      <resourceUri>VBFA</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="PD"/>
+        <viewAttribute id="CM"/>
+        <viewAttribute id="VBTYP_N"/>
+        <viewAttribute id="VBTYP_V"/>
+        <viewAttribute id="POSNN"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#VBFA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PD" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="VBELV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_N" source="VBTYP_N"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_V" source="VBTYP_V"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNN" source="POSNN"/>
+      </input>
+      <filter>(&quot;VBTYP_N&quot; ='C') AND (&quot;VBTYP_V&quot; ='G') AND (not isNull(&quot;POSNN&quot;))</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="PD"/>
+        <viewAttribute id="ENT"/>
+        <viewAttribute id="VBTYP_N"/>
+        <viewAttribute id="VBTYP_V"/>
+        <viewAttribute id="POSNN"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_2$$$$VBFA$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PD" source="VBELV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENT" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_N" source="VBTYP_N"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_V" source="VBTYP_V"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNN" source="POSNN"/>
+      </input>
+      <filter>(&quot;VBTYP_N&quot; ='J') AND (&quot;VBTYP_V&quot; ='C') AND (not isNull(&quot;POSNN&quot;))</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="PD"/>
+        <viewAttribute id="CM"/>
+        <viewAttribute id="VBTYP_N"/>
+        <viewAttribute id="VBTYP_V"/>
+        <viewAttribute id="ENT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PD" source="PD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="CM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_N" source="VBTYP_N"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_V" source="VBTYP_V"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENT" source="ENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PD" source="PD"/>
+      </input>
+      <joinAttribute name="PD"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VBELV"/>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="VBTYP_N"/>
+        <viewAttribute id="VBTYP_V"/>
+        <viewAttribute id="POSNN"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_3$$$$VBFA$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELV" source="VBELV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_N" source="VBTYP_N"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_V" source="VBTYP_V"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNN" source="POSNN"/>
+      </input>
+      <filter>(&quot;VBTYP_N&quot; ='G') AND (&quot;VBTYP_V&quot; ='G') AND (not isNull(&quot;POSNN&quot;))</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="PD"/>
+        <viewAttribute id="CM"/>
+        <viewAttribute id="VBTYP_N"/>
+        <viewAttribute id="VBTYP_V"/>
+        <viewAttribute id="ENT"/>
+        <viewAttribute id="CF"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PD" source="PD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="CM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_N" source="VBTYP_N"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBTYP_V" source="VBTYP_V"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ENT" source="ENT"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CF" source="VBELV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="VBELN"/>
+      </input>
+      <joinAttribute name="CM"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="PD" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PD"/>
+        <keyMapping columnObjectName="Join_2" columnName="PD"/>
+      </attribute>
+      <attribute id="CM" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CM"/>
+        <keyMapping columnObjectName="Join_2" columnName="CM"/>
+      </attribute>
+      <attribute id="VBTYP_N" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VBTYP_N"/>
+        <keyMapping columnObjectName="Join_2" columnName="VBTYP_N"/>
+      </attribute>
+      <attribute id="VBTYP_V" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VBTYP_V"/>
+        <keyMapping columnObjectName="Join_2" columnName="VBTYP_V"/>
+      </attribute>
+      <attribute id="ENT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ENT"/>
+        <keyMapping columnObjectName="Join_2" columnName="ENT"/>
+      </attribute>
+      <attribute id="VBELV" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CF"/>
+        <keyMapping columnObjectName="Join_2" columnName="CF"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="10" y="420"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="160" y="420"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="21" y="300"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="306"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="21" y="190"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

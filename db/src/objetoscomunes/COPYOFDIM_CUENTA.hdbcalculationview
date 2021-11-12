@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="COPYOFDIM_CUENTA" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_CUENTA"/>
+  <metadata changedAt="2019-11-11 16:53:23.923"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="29"/>
+  <dataSources>
+    <DataSource id="CSKU">
+      <resourceUri>CSKU</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_JER_CLASES_DE_COSTOS">
+      <resourceUri>DIM_JER_CLASES_DE_COSTOS</resourceUri>
+    </DataSource>
+    <DataSource id="CopyOfProjection_3$$$$DIM_JER_CLASES_DE_COSTOS$$">
+      <resourceUri>DIM_JER_CLASES_DE_COSTOS</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="KTOPL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="KTEXT"/>
+        <viewAttribute id="LTEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CSKU">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTOPL" source="KTOPL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTEXT" source="KTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LTEXT" source="LTEXT"/>
+      </input>
+      <filter>(&quot;SPRAS&quot; ='S') AND (&quot;KTOPL&quot; ='CARO')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N6_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="MANDT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_JER_CLASES_DE_COSTOS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="KTOPL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="KTEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N6_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="MANDT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTOPL" source="KTOPL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTEXT" source="KTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="LTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="VALFROM"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="KSTAR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="CopyOfProjection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N6_TEXT"/>
+        <viewAttribute id="SEQNR"/>
+        <viewAttribute id="MANDT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CopyOfProjection_3$$$$DIM_JER_CLASES_DE_COSTOS$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+      <filter>(&quot;VALFROM&quot; ='0000099999')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="KTOPL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="J1"/>
+        <viewAttribute id="N1"/>
+        <viewAttribute id="N2"/>
+        <viewAttribute id="N3"/>
+        <viewAttribute id="N4"/>
+        <viewAttribute id="N5"/>
+        <viewAttribute id="N6"/>
+        <viewAttribute id="N1_TEXT"/>
+        <viewAttribute id="N2_TEXT"/>
+        <viewAttribute id="N3_TEXT"/>
+        <viewAttribute id="N4_TEXT"/>
+        <viewAttribute id="N5_TEXT"/>
+        <viewAttribute id="N6_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTOPL" source="KTOPL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#CopyOfProjection_3">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SPRAS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="KTOPL" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="J1" source="J1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1" source="N1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2" source="N2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3" source="N3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4" source="N4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5" source="N5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6" source="N6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N1_TEXT" source="N1_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N2_TEXT" source="N2_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N3_TEXT" source="N3_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N4_TEXT" source="N4_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N5_TEXT" source="N5_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="N6_TEXT" source="N6_TEXT"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="SPRAS" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SPRAS"/>
+        <keyMapping columnObjectName="Union_1" columnName="SPRAS"/>
+      </attribute>
+      <attribute id="KTOPL" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KTOPL"/>
+        <keyMapping columnObjectName="Union_1" columnName="KTOPL"/>
+      </attribute>
+      <attribute id="CUENTA_TEXT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUENTA_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="CUENTA_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_J1" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_J1"/>
+        <keyMapping columnObjectName="Union_1" columnName="J1"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N1" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N1"/>
+        <keyMapping columnObjectName="Union_1" columnName="N1"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N2" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N2"/>
+        <keyMapping columnObjectName="Union_1" columnName="N2"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N3" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N3"/>
+        <keyMapping columnObjectName="Union_1" columnName="N3"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N4" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N4"/>
+        <keyMapping columnObjectName="Union_1" columnName="N4"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N5" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N5"/>
+        <keyMapping columnObjectName="Union_1" columnName="N5"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N6" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N6"/>
+        <keyMapping columnObjectName="Union_1" columnName="N6"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N1_TEXT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N1_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N1_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N2_TEXT" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N2_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N2_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N3_TEXT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N3_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N3_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N4_TEXT" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N4_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N4_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N5_TEXT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N5_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N5_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N6_TEXT" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N6_TEXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="N6_TEXT"/>
+      </attribute>
+      <attribute id="Cuenta" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta"/>
+        <keyMapping columnObjectName="Union_1" columnName="KSTAR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="10" y="340"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="170" y="330"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="90" y="210"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="CopyOfProjection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="320" y="273"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="280" y="140"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

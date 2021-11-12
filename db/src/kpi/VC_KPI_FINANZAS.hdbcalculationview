@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="VC_KPI_FINANZAS" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="KPIs Finanzas"/>
+  <metadata changedAt="2021-05-10 15:40:37.612"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="50"/>
+  <dataSources>
+    <DataSource id="SAPABAP1_COEPAZ">
+      <resourceUri>SAPABAP1_COEPAZ</resourceUri>
+    </DataSource>
+    <DataSource id="COSP">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="PLAN_2$$$$COSP$$">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="PLAN_3$$$$COSP$$">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="PLAN_5$$$$COSP$$">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="PLAN_6$$$$COSP$$">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="PLAN_7$$$$COSP$$">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="PLAN_8$$$$COSP$$">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="PLAN_4$$$$COSP$$">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="PLAN_9$$$$COSP$$">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="PLAN_10$$$$COSP$$">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="PLAN_11$$$$COSP$$">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="PLAN_12$$$$COSP$$">
+      <resourceUri>COSP</resourceUri>
+    </DataSource>
+    <DataSource id="CSKU">
+      <resourceUri>CSKU</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="WOGBTR"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SAPABAP1_COEPAZ"/>
+    <filter>(in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_1" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="WTG001"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="KSTAR_1"/>
+        <viewAttribute id="KSTAR_2"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>001</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="COSP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR_1" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR_2" source="KSTAR"/>
+      </input>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_2" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WTG002"/>
+        <viewAttribute id="WRTTP"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>002</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PLAN_2$$$$COSP$$"/>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_3" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="WTG003"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>003</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PLAN_3$$$$COSP$$"/>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_5" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="WTG005"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>005</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PLAN_5$$$$COSP$$"/>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_6" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="WTG006"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>006</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PLAN_6$$$$COSP$$"/>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_7" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="WTG007"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>007</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PLAN_7$$$$COSP$$"/>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_8" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="WTG008"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>008</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PLAN_8$$$$COSP$$"/>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_4" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="WTG004"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>004</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PLAN_4$$$$COSP$$"/>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_9" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="WTG009"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>009</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PLAN_9$$$$COSP$$"/>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_10" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="WTG010"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>010</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PLAN_10$$$$COSP$$"/>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_11" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="WTG011"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>011</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PLAN_11$$$$COSP$$"/>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PLAN_12" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="WTG012"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIO" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>012</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PLAN_12$$$$COSP$$"/>
+    <filter>(&quot;WRTTP&quot; ='01') and (in (&quot;KSTAR&quot;,'0000005511','0000005516','0000005517','0000005641','0000005642','0000005653','0000005659','0000005660','0000005663','0000005664','0000005669','0000005670'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="WTG001"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="PERIO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG001"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG002"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG003"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG005"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG006"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG007"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG008"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG004"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG009"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_10">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG010"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_11">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG011"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="PLAN_12">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG012"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="WOGBTR"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="WTG001"/>
+        <viewAttribute id="MANDT_1"/>
+        <viewAttribute id="OBJNR_1"/>
+        <viewAttribute id="VERSN_1"/>
+        <viewAttribute id="KSTAR_1"/>
+        <viewAttribute id="WTG001_1"/>
+        <viewAttribute id="GJAHR_1"/>
+        <viewAttribute id="PERIO_1"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WOGBTR" source="WOGBTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WTG001" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MANDT_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="OBJNR_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VERSN_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="KSTAR_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WTG001_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GJAHR_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PERIO_1" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Union_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WOGBTR" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG001"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT_1" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR_1" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN_1" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR_1" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001_1" source="WTG001"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR_1" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO_1" source="PERIO"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_13">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="KTOPL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="KTEXT"/>
+        <viewAttribute id="LTEXT"/>
+        <viewAttribute id="MCTXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CSKU"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PERIO"/>
+        <viewAttribute id="WOGBTR"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="WTG001"/>
+        <viewAttribute id="KTEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Union_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WOGBTR" source="WOGBTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WTG001" source="WTG001"/>
+      </input>
+      <input node="Projection_13">
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTEXT" source="KTEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+      </input>
+    <joinAttribute name="KSTAR"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="PERIO" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes"/>
+        <keyMapping columnObjectName="Join_1" columnName="PERIO"/>
+      </attribute>
+      <attribute id="OBJNR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OBJNR"/>
+        <keyMapping columnObjectName="Join_1" columnName="OBJNR"/>
+      </attribute>
+      <attribute id="GJAHR" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Año"/>
+        <keyMapping columnObjectName="Join_1" columnName="GJAHR"/>
+      </attribute>
+      <attribute id="VERSN" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Version"/>
+        <keyMapping columnObjectName="Join_1" columnName="VERSN"/>
+      </attribute>
+      <attribute id="KSTAR" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta"/>
+        <keyMapping columnObjectName="Join_1" columnName="KSTAR"/>
+      </attribute>
+      <attribute id="KTEXT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta Text"/>
+        <keyMapping columnObjectName="Join_1" columnName="KTEXT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="ZCENTROG" hidden="false" order="13" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro de Gastos"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="5">
+          <formula>replace(rightstr(&quot;OBJNR&quot;,5),'1CG22','CG22')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="ZFECHA" hidden="false" order="14" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="10">
+          <formula>to_date(concat(&quot;GJAHR&quot;, right(&quot;PERIO&quot;,2)))</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="WOGBTR" hidden="true" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WOGBTR"/>
+        <measureMapping columnObjectName="Join_1" columnName="WOGBTR"/>
+      </measure>
+      <measure id="WTG001" hidden="true" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WTG001"/>
+        <measureMapping columnObjectName="Join_1" columnName="WTG001"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="ZACTUAL" hidden="false" order="10" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="34">
+        <descriptions defaultDescription="Actual"/>
+        <formula>&quot;WOGBTR&quot; * 100</formula>
+      </measure>
+      <measure id="ZBUDGET" hidden="false" order="11" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="34">
+        <descriptions defaultDescription="Budget"/>
+        <formula>&quot;WTG001&quot; * 100</formula>
+      </measure>
+      <measure id="ZDIF" hidden="false" order="12" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="34">
+        <descriptions defaultDescription="Desv"/>
+        <formula>&quot;ZACTUAL&quot;-&quot;ZBUDGET&quot; </formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="310"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="220" y="275"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="220" y="340"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="220" y="410"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="390" y="270"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="400" y="340"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="400" y="427"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="400" y="500"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="220" y="480"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="560" y="269"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="560" y="340"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_11" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="560" y="427"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PLAN_12" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="570" y="500"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="359" y="-20"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="200"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_13" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="190" y="180"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="10" y="110"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Union_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_13" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

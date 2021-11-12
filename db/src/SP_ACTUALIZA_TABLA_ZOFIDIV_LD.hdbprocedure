@@ -1,0 +1,26 @@
+PROCEDURE "SCP_CAROZZI_SAC::SP_ACTUALIZA_TABLA_ZOFIDIV_LD"
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+--   READS SQL DATA 
+AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+UPSERT "ZOFIDIV_LD" ("VKBUR_LD")
+SELECT "VKBUR" FROM "ZOFIDIV" GROUP BY
+"VKBUR";
+
+
+MERGE INTO "ZOFIDIV_LD"
+USING (
+SELECT MIN("ZLATT") "ZLATT",
+MIN("ZLENG") "ZLENG", "VKBUR"
+FROM "ZOFIDIV" GROUP BY "VKBUR")
+ON "VKBUR" = "VKBUR_LD"
+WHEN MATCHED THEN UPDATE
+SET "VKBUR_XY" = new ST_GEOMETRY('POINT(' || "ZLENG" || ' ' ||"ZLATT" ||
+')', 4326).ST_Transform(3857);
+
+END

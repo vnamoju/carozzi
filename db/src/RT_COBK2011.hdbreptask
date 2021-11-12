@@ -1,0 +1,221 @@
+<RepTask Name="file:/SCP_CAROZZI_SAC/RT_COBK.hdbreptask:workspace" Description="" Type="REALTIME" DropTargetTableIfExists="FALSE" RepVersion="2.1">
+  <SourceObjects SourceType="REMOTE_OBJ" TTFullyQualifiedName="false" VTFullyQualifiedName="false" RemoteSourceName="HANA_ERP" VirtualTableSchema="SCP_CAROZZI_SAC" VirtualTableNamePrefix="VT_2011">
+    <SourceObject RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;COBK&quot;" SourceDisplayName="COBK">
+      <Partitions Type="list" Attribute="PERAB" Level="task">
+        <Partition Name="1" Value="&#x27;001&#x27;">
+        </Partition>
+        <Partition Name="2" Value="&#x27;002&#x27;">
+        </Partition>
+        <Partition Name="3" Value="&#x27;003&#x27;">
+        </Partition>
+        <Partition Name="4" Value="&#x27;004&#x27;">
+        </Partition>
+        <Partition Name="5" Value="&#x27;005&#x27;">
+        </Partition>
+        <Partition Name="6" Value="&#x27;006&#x27;">
+        </Partition>
+        <Partition Name="7" Value="&#x27;007&#x27;">
+        </Partition>
+        <Partition Name="8" Value="&#x27;008&#x27;">
+        </Partition>
+        <Partition Name="9" Value="&#x27;009&#x27;">
+        </Partition>
+        <Partition Name="10" Value="&#x27;010&#x27;">
+        </Partition>
+        <Partition Name="11" Value="&#x27;011&#x27;">
+        </Partition>
+        <Partition Name="12" Value="&#x27;012&#x27;">
+        </Partition>
+        <Partition Name="13" Value="&#x27;013&#x27;">
+        </Partition>
+        <Partition Name="14" Value="&#x27;014&#x27;">
+        </Partition>
+        <Partition Name="HLP__SAPABAP1___COBK_" value="">
+        </Partition>
+      </Partitions>
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="COBK_2011" DropTargetTableIfExists="TRUE">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="KOKRS" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="BELNR" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="TRUE">
+        </TargetColumn>
+        <TargetColumn Name="GJAHR" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VERSN" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VRGNG" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="TIMESTMP" Datatype="DECIMAL" Length="16" Precision="16" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="PERAB" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="PERBI" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="BLDAT" Datatype="NVARCHAR" Length="8" Precision="8" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="BUDAT" Datatype="NVARCHAR" Length="8" Precision="8" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CPUDT" Datatype="NVARCHAR" Length="8" Precision="8" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="USNAM" Datatype="NVARCHAR" Length="12" Precision="12" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="BLTXT" Datatype="NVARCHAR" Length="50" Precision="50" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="STFLG" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="STOKZ" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="REFBT" Datatype="NVARCHAR" Length="1" Precision="1" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="REFBN" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="REFBK" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="REFGJ" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="BLART" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ORGVG" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="SUMBZ" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="DELBZ" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="WSDAT" Datatype="NVARCHAR" Length="8" Precision="8" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="KURST" Datatype="NVARCHAR" Length="4" Precision="4" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VARNR" Datatype="NVARCHAR" Length="5" Precision="5" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="KWAER" Datatype="NVARCHAR" Length="5" Precision="5" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CTYP1" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CTYP2" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CTYP3" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CTYP4" Datatype="NVARCHAR" Length="2" Precision="2" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="AWTYP" Datatype="NVARCHAR" Length="5" Precision="5" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="AWORG" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="LOGSYSTEM" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="CPUTM" Datatype="NVARCHAR" Length="6" Precision="6" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ALEBZ" Datatype="NVARCHAR" Length="3" Precision="3" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="ALEBN" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="AWSYS" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="AWREF_REV" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="AWORG_REV" Datatype="NVARCHAR" Length="10" Precision="10" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+        <TargetColumn Name="VALDT" Datatype="NVARCHAR" Length="8" Precision="8" Scale="0" Nullable="FALSE" PartOfPrimaryKey="FALSE">
+        </TargetColumn>
+      </TargetColumns>
+      <Annotations Key="sap.im.properties" Value="">
+        <Annotation Key="truncateTable" Value="TRUE"/>
+      </Annotations>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping ObjectName="COBK_2011" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;COBK&quot;" FilterExpression="GJAHR = &#x27;2011&#x27; " ReplicationBehavior="InitLoadOnly" VTObjectName="COBK">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KOKRS" ProjectionExpression="&quot;KOKRS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BELNR" ProjectionExpression="&quot;BELNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="GJAHR" ProjectionExpression="&quot;GJAHR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VERSN" ProjectionExpression="&quot;VERSN&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VRGNG" ProjectionExpression="&quot;VRGNG&quot;">
+        </TargetColumn>
+        <TargetColumn Name="TIMESTMP" ProjectionExpression="&quot;TIMESTMP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PERAB" ProjectionExpression="&quot;PERAB&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PERBI" ProjectionExpression="&quot;PERBI&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BLDAT" ProjectionExpression="&quot;BLDAT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BUDAT" ProjectionExpression="&quot;BUDAT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CPUDT" ProjectionExpression="&quot;CPUDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="USNAM" ProjectionExpression="&quot;USNAM&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BLTXT" ProjectionExpression="&quot;BLTXT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="STFLG" ProjectionExpression="&quot;STFLG&quot;">
+        </TargetColumn>
+        <TargetColumn Name="STOKZ" ProjectionExpression="&quot;STOKZ&quot;">
+        </TargetColumn>
+        <TargetColumn Name="REFBT" ProjectionExpression="&quot;REFBT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="REFBN" ProjectionExpression="&quot;REFBN&quot;">
+        </TargetColumn>
+        <TargetColumn Name="REFBK" ProjectionExpression="&quot;REFBK&quot;">
+        </TargetColumn>
+        <TargetColumn Name="REFGJ" ProjectionExpression="&quot;REFGJ&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BLART" ProjectionExpression="&quot;BLART&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ORGVG" ProjectionExpression="&quot;ORGVG&quot;">
+        </TargetColumn>
+        <TargetColumn Name="SUMBZ" ProjectionExpression="&quot;SUMBZ&quot;">
+        </TargetColumn>
+        <TargetColumn Name="DELBZ" ProjectionExpression="&quot;DELBZ&quot;">
+        </TargetColumn>
+        <TargetColumn Name="WSDAT" ProjectionExpression="&quot;WSDAT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KURST" ProjectionExpression="&quot;KURST&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VARNR" ProjectionExpression="&quot;VARNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KWAER" ProjectionExpression="&quot;KWAER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CTYP1" ProjectionExpression="&quot;CTYP1&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CTYP2" ProjectionExpression="&quot;CTYP2&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CTYP3" ProjectionExpression="&quot;CTYP3&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CTYP4" ProjectionExpression="&quot;CTYP4&quot;">
+        </TargetColumn>
+        <TargetColumn Name="AWTYP" ProjectionExpression="&quot;AWTYP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="AWORG" ProjectionExpression="&quot;AWORG&quot;">
+        </TargetColumn>
+        <TargetColumn Name="LOGSYSTEM" ProjectionExpression="&quot;LOGSYSTEM&quot;">
+        </TargetColumn>
+        <TargetColumn Name="CPUTM" ProjectionExpression="&quot;CPUTM&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ALEBZ" ProjectionExpression="&quot;ALEBZ&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ALEBN" ProjectionExpression="&quot;ALEBN&quot;">
+        </TargetColumn>
+        <TargetColumn Name="AWSYS" ProjectionExpression="&quot;AWSYS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="AWREF_REV" ProjectionExpression="&quot;AWREF_REV&quot;">
+        </TargetColumn>
+        <TargetColumn Name="AWORG_REV" ProjectionExpression="&quot;AWORG_REV&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VALDT" ProjectionExpression="&quot;VALDT&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

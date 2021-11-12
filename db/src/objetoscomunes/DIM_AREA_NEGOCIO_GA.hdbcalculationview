@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DIM_AREA_NEGOCIO_GA" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="DIM_AREA_NEGOCIO"/>
+  <metadata changedAt="2021-06-01 10:24:57.975"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="47"/>
+  <dataSources>
+    <DataSource id="T25A4">
+      <resourceUri>T25A4</resourceUri>
+    </DataSource>
+    <DataSource id="K9RECD3000001">
+      <resourceUri>K9RECD3000001</resourceUri>
+    </DataSource>
+    <DataSource id="K9RECD3000006">
+      <resourceUri>K9RECD3000006</resourceUri>
+    </DataSource>
+    <DataSource id="K9RECD3000014">
+      <resourceUri>K9RECD3000014</resourceUri>
+    </DataSource>
+    <DataSource id="K9RECD3000016">
+      <resourceUri>K9RECD3000016</resourceUri>
+    </DataSource>
+    <DataSource id="K9RECD3000020">
+      <resourceUri>K9RECD3000020</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="WWNEG"/>
+        <viewAttribute id="BEZEK"/>
+        <viewAttribute id="SPRAS"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="T25A4"/>
+    <filter>(&quot;SPRAS&quot; ='S')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOUR1_FROM"/>
+        <viewAttribute id="TARGET1"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="Soc_fi" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>'EC01'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="K9RECD3000001"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOUR1_FROM"/>
+        <viewAttribute id="TARGET1"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="Soc_fi" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>'1100'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="K9RECD3000006"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOUR1_FROM"/>
+        <viewAttribute id="TARGET1"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="Soc_fi" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>'4100'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="K9RECD3000014"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOUR1_FROM"/>
+        <viewAttribute id="TARGET1"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="Soc_fi" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>'5100'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="K9RECD3000016"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOUR1_FROM"/>
+        <viewAttribute id="TARGET1"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="Soc_fi" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>'1300'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="K9RECD3000020"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOUR1_FROM"/>
+        <viewAttribute id="TARGET1"/>
+        <viewAttribute id="Soc_fi"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOUR1_FROM" source="SOUR1_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TARGET1" source="TARGET1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Soc_fi" source="Soc_fi"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOUR1_FROM" source="SOUR1_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TARGET1" source="TARGET1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Soc_fi" source="Soc_fi"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOUR1_FROM" source="SOUR1_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TARGET1" source="TARGET1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Soc_fi" source="Soc_fi"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOUR1_FROM" source="SOUR1_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TARGET1" source="TARGET1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Soc_fi" source="Soc_fi"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOUR1_FROM" source="SOUR1_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TARGET1" source="TARGET1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Soc_fi" source="Soc_fi"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BEZEK"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOUR1_FROM"/>
+        <viewAttribute id="TARGET1"/>
+        <viewAttribute id="Soc_fi"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Union_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOUR1_FROM" source="SOUR1_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TARGET1" source="TARGET1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Soc_fi" source="Soc_fi"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BEZEK" source="BEZEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TARGET1" source="WWNEG"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="TARGET1"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="Soc_fi" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Soc_fi"/>
+        <keyMapping columnObjectName="Join_1" columnName="Soc_fi"/>
+      </attribute>
+      <attribute id="GRART" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRART"/>
+        <keyMapping columnObjectName="Join_1" columnName="SOUR1_FROM"/>
+      </attribute>
+      <attribute id="AREANEG" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AREANEG"/>
+        <keyMapping columnObjectName="Join_1" columnName="TARGET1"/>
+      </attribute>
+      <attribute id="AREANEG_TEXT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AREANEG_TEXT"/>
+        <keyMapping columnObjectName="Join_1" columnName="BEZEK"/>
+      </attribute>
+      <attribute id="MANDT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_1" columnName="MANDT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="407" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="484" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="431"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="431"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="330" y="431"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="484" y="431"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="638" y="431"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="330" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="407" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Union_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="VCOBK" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="VCOBK"/>
+  <metadata changedAt="2019-11-04 16:02:51.729"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="COBK">
+      <resourceUri>COBK</resourceUri>
+    </DataSource>
+    <DataSource id="COBK2">
+      <resourceUri>COBK2</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KOKRS"/>
+        <viewAttribute id="BELNR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="VRGNG"/>
+        <viewAttribute id="TIMESTMP"/>
+        <viewAttribute id="PERAB"/>
+        <viewAttribute id="PERBI"/>
+        <viewAttribute id="BLDAT"/>
+        <viewAttribute id="BUDAT"/>
+        <viewAttribute id="CPUDT"/>
+        <viewAttribute id="USNAM"/>
+        <viewAttribute id="BLTXT"/>
+        <viewAttribute id="STFLG"/>
+        <viewAttribute id="STOKZ"/>
+        <viewAttribute id="REFBT"/>
+        <viewAttribute id="REFBN"/>
+        <viewAttribute id="REFBK"/>
+        <viewAttribute id="REFGJ"/>
+        <viewAttribute id="BLART"/>
+        <viewAttribute id="ORGVG"/>
+        <viewAttribute id="SUMBZ"/>
+        <viewAttribute id="DELBZ"/>
+        <viewAttribute id="WSDAT"/>
+        <viewAttribute id="KURST"/>
+        <viewAttribute id="VARNR"/>
+        <viewAttribute id="KWAER"/>
+        <viewAttribute id="CTYP1"/>
+        <viewAttribute id="CTYP2"/>
+        <viewAttribute id="CTYP3"/>
+        <viewAttribute id="CTYP4"/>
+        <viewAttribute id="AWTYP"/>
+        <viewAttribute id="AWORG"/>
+        <viewAttribute id="LOGSYSTEM"/>
+        <viewAttribute id="CPUTM"/>
+        <viewAttribute id="ALEBZ"/>
+        <viewAttribute id="ALEBN"/>
+        <viewAttribute id="AWSYS"/>
+        <viewAttribute id="AWREF_REV"/>
+        <viewAttribute id="AWORG_REV"/>
+        <viewAttribute id="VALDT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="COBK">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOKRS" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BELNR" source="BELNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VRGNG" source="VRGNG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTMP" source="TIMESTMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERAB" source="PERAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERBI" source="PERBI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BLDAT" source="BLDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUDAT" source="BUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CPUDT" source="CPUDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USNAM" source="USNAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BLTXT" source="BLTXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STFLG" source="STFLG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STOKZ" source="STOKZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REFBT" source="REFBT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REFBN" source="REFBN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REFBK" source="REFBK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REFGJ" source="REFGJ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BLART" source="BLART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGVG" source="ORGVG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUMBZ" source="SUMBZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELBZ" source="DELBZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WSDAT" source="WSDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KURST" source="KURST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VARNR" source="VARNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KWAER" source="KWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP1" source="CTYP1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP2" source="CTYP2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP3" source="CTYP3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP4" source="CTYP4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AWTYP" source="AWTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AWORG" source="AWORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOGSYSTEM" source="LOGSYSTEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CPUTM" source="CPUTM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALEBZ" source="ALEBZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALEBN" source="ALEBN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AWSYS" source="AWSYS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AWREF_REV" source="AWREF_REV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AWORG_REV" source="AWORG_REV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALDT" source="VALDT"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="COBK2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOKRS" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BELNR" source="BELNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VERSN" source="VERSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VRGNG" source="VRGNG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTMP" source="TIMESTMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERAB" source="PERAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERBI" source="PERBI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BLDAT" source="BLDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUDAT" source="BUDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CPUDT" source="CPUDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USNAM" source="USNAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BLTXT" source="BLTXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STFLG" source="STFLG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STOKZ" source="STOKZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REFBT" source="REFBT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REFBN" source="REFBN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REFBK" source="REFBK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REFGJ" source="REFGJ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BLART" source="BLART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGVG" source="ORGVG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUMBZ" source="SUMBZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELBZ" source="DELBZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WSDAT" source="WSDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KURST" source="KURST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VARNR" source="VARNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KWAER" source="KWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP1" source="CTYP1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP2" source="CTYP2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP3" source="CTYP3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CTYP4" source="CTYP4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AWTYP" source="AWTYP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AWORG" source="AWORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOGSYSTEM" source="LOGSYSTEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CPUTM" source="CPUTM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALEBZ" source="ALEBZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALEBN" source="ALEBN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AWSYS" source="AWSYS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AWREF_REV" source="AWREF_REV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AWORG_REV" source="AWORG_REV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALDT" source="VALDT"/>
+      </input>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Union_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="KOKRS" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KOKRS"/>
+        <keyMapping columnObjectName="Union_1" columnName="KOKRS"/>
+      </attribute>
+      <attribute id="BELNR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BELNR"/>
+        <keyMapping columnObjectName="Union_1" columnName="BELNR"/>
+      </attribute>
+      <attribute id="GJAHR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GJAHR"/>
+        <keyMapping columnObjectName="Union_1" columnName="GJAHR"/>
+      </attribute>
+      <attribute id="VERSN" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VERSN"/>
+        <keyMapping columnObjectName="Union_1" columnName="VERSN"/>
+      </attribute>
+      <attribute id="VRGNG" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VRGNG"/>
+        <keyMapping columnObjectName="Union_1" columnName="VRGNG"/>
+      </attribute>
+      <attribute id="TIMESTMP" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIMESTMP"/>
+        <keyMapping columnObjectName="Union_1" columnName="TIMESTMP"/>
+      </attribute>
+      <attribute id="PERAB" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERAB"/>
+        <keyMapping columnObjectName="Union_1" columnName="PERAB"/>
+      </attribute>
+      <attribute id="PERBI" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERBI"/>
+        <keyMapping columnObjectName="Union_1" columnName="PERBI"/>
+      </attribute>
+      <attribute id="BLDAT" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BLDAT"/>
+        <keyMapping columnObjectName="Union_1" columnName="BLDAT"/>
+      </attribute>
+      <attribute id="BUDAT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUDAT"/>
+        <keyMapping columnObjectName="Union_1" columnName="BUDAT"/>
+      </attribute>
+      <attribute id="CPUDT" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CPUDT"/>
+        <keyMapping columnObjectName="Union_1" columnName="CPUDT"/>
+      </attribute>
+      <attribute id="USNAM" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USNAM"/>
+        <keyMapping columnObjectName="Union_1" columnName="USNAM"/>
+      </attribute>
+      <attribute id="BLTXT" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BLTXT"/>
+        <keyMapping columnObjectName="Union_1" columnName="BLTXT"/>
+      </attribute>
+      <attribute id="STFLG" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="STFLG"/>
+        <keyMapping columnObjectName="Union_1" columnName="STFLG"/>
+      </attribute>
+      <attribute id="STOKZ" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="STOKZ"/>
+        <keyMapping columnObjectName="Union_1" columnName="STOKZ"/>
+      </attribute>
+      <attribute id="REFBT" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REFBT"/>
+        <keyMapping columnObjectName="Union_1" columnName="REFBT"/>
+      </attribute>
+      <attribute id="REFBN" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REFBN"/>
+        <keyMapping columnObjectName="Union_1" columnName="REFBN"/>
+      </attribute>
+      <attribute id="REFBK" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REFBK"/>
+        <keyMapping columnObjectName="Union_1" columnName="REFBK"/>
+      </attribute>
+      <attribute id="REFGJ" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REFGJ"/>
+        <keyMapping columnObjectName="Union_1" columnName="REFGJ"/>
+      </attribute>
+      <attribute id="BLART" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BLART"/>
+        <keyMapping columnObjectName="Union_1" columnName="BLART"/>
+      </attribute>
+      <attribute id="ORGVG" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORGVG"/>
+        <keyMapping columnObjectName="Union_1" columnName="ORGVG"/>
+      </attribute>
+      <attribute id="SUMBZ" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUMBZ"/>
+        <keyMapping columnObjectName="Union_1" columnName="SUMBZ"/>
+      </attribute>
+      <attribute id="DELBZ" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DELBZ"/>
+        <keyMapping columnObjectName="Union_1" columnName="DELBZ"/>
+      </attribute>
+      <attribute id="WSDAT" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WSDAT"/>
+        <keyMapping columnObjectName="Union_1" columnName="WSDAT"/>
+      </attribute>
+      <attribute id="KURST" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KURST"/>
+        <keyMapping columnObjectName="Union_1" columnName="KURST"/>
+      </attribute>
+      <attribute id="VARNR" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VARNR"/>
+        <keyMapping columnObjectName="Union_1" columnName="VARNR"/>
+      </attribute>
+      <attribute id="KWAER" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KWAER"/>
+        <keyMapping columnObjectName="Union_1" columnName="KWAER"/>
+      </attribute>
+      <attribute id="CTYP1" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CTYP1"/>
+        <keyMapping columnObjectName="Union_1" columnName="CTYP1"/>
+      </attribute>
+      <attribute id="CTYP2" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CTYP2"/>
+        <keyMapping columnObjectName="Union_1" columnName="CTYP2"/>
+      </attribute>
+      <attribute id="CTYP3" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CTYP3"/>
+        <keyMapping columnObjectName="Union_1" columnName="CTYP3"/>
+      </attribute>
+      <attribute id="CTYP4" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CTYP4"/>
+        <keyMapping columnObjectName="Union_1" columnName="CTYP4"/>
+      </attribute>
+      <attribute id="AWTYP" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AWTYP"/>
+        <keyMapping columnObjectName="Union_1" columnName="AWTYP"/>
+      </attribute>
+      <attribute id="AWORG" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AWORG"/>
+        <keyMapping columnObjectName="Union_1" columnName="AWORG"/>
+      </attribute>
+      <attribute id="LOGSYSTEM" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LOGSYSTEM"/>
+        <keyMapping columnObjectName="Union_1" columnName="LOGSYSTEM"/>
+      </attribute>
+      <attribute id="CPUTM" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CPUTM"/>
+        <keyMapping columnObjectName="Union_1" columnName="CPUTM"/>
+      </attribute>
+      <attribute id="ALEBZ" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ALEBZ"/>
+        <keyMapping columnObjectName="Union_1" columnName="ALEBZ"/>
+      </attribute>
+      <attribute id="ALEBN" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ALEBN"/>
+        <keyMapping columnObjectName="Union_1" columnName="ALEBN"/>
+      </attribute>
+      <attribute id="AWSYS" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AWSYS"/>
+        <keyMapping columnObjectName="Union_1" columnName="AWSYS"/>
+      </attribute>
+      <attribute id="AWREF_REV" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AWREF_REV"/>
+        <keyMapping columnObjectName="Union_1" columnName="AWREF_REV"/>
+      </attribute>
+      <attribute id="AWORG_REV" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AWORG_REV"/>
+        <keyMapping columnObjectName="Union_1" columnName="AWORG_REV"/>
+      </attribute>
+      <attribute id="VALDT" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VALDT"/>
+        <keyMapping columnObjectName="Union_1" columnName="VALDT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/></shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="110" y="220"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

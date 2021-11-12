@@ -1,0 +1,38 @@
+<RepTask RepVersion="2.1" DropTargetTableIfExists="FALSE" Type="REALTIME" Description="" Name="file:/SCP_CAROZZI_SAC/RT_TKA02.hdbreptask:workspace">
+  <SourceObjects VirtualTableNamePrefix="VT_" VirtualTableSchema="SCP_CAROZZI_SAC" RemoteSourceName="HANA_ERP" VTFullyQualifiedName="false" TTFullyQualifiedName="false" SourceType="REMOTE_OBJ">
+    <SourceObject SourceDisplayName="TKA02" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;TKA02&quot;">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SCP_CAROZZI_SAC">
+    <TargetObject Type="TABLE" ObjectName="TKA02">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="3" Length="3" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="BUKRS" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="4" Length="4" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="GSBER" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="4" Length="4" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="KOKRS" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="4" Length="4" Datatype="NVARCHAR">
+        </TargetColumn>
+      </TargetColumns>
+      <Annotations Value="" Key="sap.im.properties">
+        <Annotation Value="FALSE" Key="truncateTable">
+        </Annotation>
+      </Annotations>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;TKA02&quot;" ObjectName="TKA02" VTObjectName="TKA02" ReplicationBehavior="InitAndRealtime" FilterExpression="">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BUKRS" ProjectionExpression="&quot;BUKRS&quot;">
+        </TargetColumn>
+        <TargetColumn Name="GSBER" ProjectionExpression="&quot;GSBER&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KOKRS" ProjectionExpression="&quot;KOKRS&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

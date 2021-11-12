@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="COPYOFMODELO_FG_VZ1CASCADA1_01" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription=""/>
+  <metadata changedAt="2020-08-20 09:49:47.023"/>
+  <localVariables>
+    <variable id="V_SOCIEDAD_CO">
+      <descriptions defaultDescription="Sociedad CO"/>
+      <variableProperties datatype="VARCHAR" defaultValue="EC01" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="SOCIEDAD_CO_ID"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="DIVISION_COMERCIAL">
+      <descriptions defaultDescription="Division Comercial"/>
+      <variableProperties datatype="VARCHAR" defaultValue="" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="DIVISION_COMERCIAL_ID"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="UNIDAD_NEGOCIO">
+      <descriptions defaultDescription="Unidad de Negocio"/>
+      <variableProperties datatype="VARCHAR" defaultValue="" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="UNIDAD_NEGOCIO_TEXT"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="EJERCICIO_MES">
+      <descriptions defaultDescription="Ejercicio Mes (aaaamm)"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="MES_ANO"/>
+        </valueDomain>
+        <selection multiLine="true" type="Interval"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="21"/>
+  <dataSources>
+    <DataSource id="FG_VZ1CASCADA1">
+      <resourceUri>FG_VZ1CASCADA1</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="FG_VZ1CASCADA1">
+    <descriptions/>
+    <attributes>
+      <attribute id="CLIENTE_ID" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="40.Cliente"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="KNDNR"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA_ID" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="11.Org Venta"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="VKORG"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="VKBUR"/>
+      </attribute>
+      <attribute id="VENDEDOR_ID" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Vendedor"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="KMVTNR"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL_ID" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="13.Division"/>
+        <localVariable>#DIVISION_COMERCIAL</localVariable>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="WWDIV"/>
+      </attribute>
+      <attribute id="GRUPO_ARTICULO_ID" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Articulo"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="MATKL"/>
+      </attribute>
+      <attribute id="PAIS" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="LAND1"/>
+      </attribute>
+      <attribute id="EJERCICIO" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="GJAHR"/>
+      </attribute>
+      <attribute id="MES" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="PERIO"/>
+      </attribute>
+      <attribute id="MES_ANO" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes/ Ejercicio"/>
+        <localVariable>#EJERCICIO_MES</localVariable>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="MES_ANO"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO_ID" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="10.Sociedad CO"/>
+        <localVariable>#V_SOCIEDAD_CO</localVariable>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="KOKRS"/>
+      </attribute>
+      <attribute id="MATERIAL_ID" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="ARTNR"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_TEXT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina Descr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="OFICINA_VENTA_TEXT"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL1" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL1"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="OFICINA_JER_NIVEL1"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL2" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL2"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="OFICINA_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL3" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL3"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="OFICINA_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL4" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL4"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="OFICINA_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL5" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL5"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="OFICINA_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID_TEXT" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina IDescr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="OFICINA_VENTA_ID_TEXT"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA_TEXT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="11.Org Venta Descr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="ORGANIZACION_VENTA_TEXT"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO_TEXT" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="10.Sociedad CO Descr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="SOCIEDAD_CO_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Articulo Descr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="22.Categoria Descr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CATEGORIA_TEXT"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio Descr"/>
+        <localVariable>#UNIDAD_NEGOCIO</localVariable>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ID_TEXT" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Articulo IDescr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="GRUPO_MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_TIPO_MATERIAL" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="29.Tipo Material"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="MATERIAL_ATTR_TIPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_SECTOR" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="30.Sector"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="MATERIAL_ATTR_SECTOR"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MARCA" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="25.Marca"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="MATERIAL_ATTR_MARCA"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="27.Clasificacion Ventas Valor"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_ESTACIONALIDAD" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="26.Estacionalidad"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="MATERIAL_ATTR_ESTACIONALIDAD"/>
+      </attribute>
+      <attribute id="MATERIAL_ID_TEXT" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material IDescr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="VENDEDOR_TEXT" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Vendedor Descr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="VENDEDOR_TEXT"/>
+      </attribute>
+      <attribute id="VENDEDOR_ID_TEXT" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Vendedor IDescr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="VENDEDOR_ID_TEXT"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CANAL_COMERCIAL" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="46.Canal Comercial"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_ATTR_CANAL_COMERCIAL"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL1" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Jerarquía de Clientes"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_JER_NIVEL1"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL2" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="42.Jer. Clientes - Sociedad"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL3" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="43.Jer. Clientes - Cluster"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL4" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="44.Jer. Clientes - Cadena/Cliente"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL5" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="45.Jer. Clientes - Formato"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="CANAL_COMERCIAL_TEXT" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="46.Canal Comercial Descr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CANAL_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL1" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL1"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CANAL_JER_NIVEL1"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL2" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="46.Jer.Canales - Macro Canal"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CANAL_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL3" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="47.Jer.Canales - Canal"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CANAL_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL4" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL4"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CANAL_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL5" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_JER_NIVEL5"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CANAL_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Cliente Padre"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_ATTR_CLIENTE_PADRE"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_PAIS" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_ATTR_PAIS"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL6" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL6"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_JER_NIVEL6"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL7" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_JER_NIVEL7"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_JER_NIVEL7"/>
+      </attribute>
+      <attribute id="REGION_TEXT" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="49.Region"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="REGION_TEXT"/>
+      </attribute>
+      <attribute id="PROVINCIA_TEXT" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="50.Provincia"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="PROVINCIA_TEXT"/>
+      </attribute>
+      <attribute id="COMUNA_TEXT" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="51.Comuna"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="COMUNA_TEXT"/>
+      </attribute>
+      <attribute id="CLIENTE_ID_TEXT_1" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="40.Cliente IDescr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_ID_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ID_TEXT_2" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="40.Cliente IDescr (fantasia)"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_ID_TEXT_2"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1" order="57" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Cliente Padre IDescr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2" order="58" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Cliente Padre IDescr (fantasia)"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2"/>
+      </attribute>
+      <attribute id="PAIS_TEXT" order="59" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais Descr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="PAIS_TEXT"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL_TEXT" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="13.Division Descr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="DIVISION_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="CUENTA_TEXT" order="61" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta Descr"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="CUENTA_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N1_TEXT" order="62" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N1_TEXT"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="JER_CUENTA_N1_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N2_TEXT" order="63" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N2_TEXT"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="JER_CUENTA_N2_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N3_TEXT" order="64" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N3_TEXT"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="JER_CUENTA_N3_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N4_TEXT" order="65" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N4_TEXT"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="JER_CUENTA_N4_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N5_TEXT" order="66" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N5_TEXT"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="JER_CUENTA_N5_TEXT"/>
+      </attribute>
+      <attribute id="JER_CUENTA_N6_TEXT" order="67" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_N6_TEXT"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="JER_CUENTA_N6_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" order="70" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="24.Area Negocios"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_BLOQUEO" order="72" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="28.Estado Material"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="MATERIAL_ATTR_BLOQUEO"/>
+      </attribute>
+      <attribute id="FECHA_PROCESO" order="73" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FECHA_PROCESO"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="FECHA_PROCESO"/>
+      </attribute>
+      <attribute id="HORA_UTC" order="74" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HORA_UTC"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="HORA_UTC"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" order="75" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+      </attribute>
+      <attribute id="Cuenta" order="76" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="Cuenta_1"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_AGRUPACION_ESPECIAL" order="77" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="37.Agrupacion especial"/>
+        <keyMapping columnObjectName="FG_VZ1CASCADA1" columnName="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="CLIENTE_ATTR_LATITUD" order="48" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Latitud"/>
+        <measureMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_ATTR_LATITUD"/>
+      </measure>
+      <measure id="CLIENTE_ATTR_LONGITUD" order="49" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Longitud"/>
+        <measureMapping columnObjectName="FG_VZ1CASCADA1" columnName="CLIENTE_ATTR_LONGITUD"/>
+      </measure>
+      <measure id="VOLUMEN" order="68" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen"/>
+        <measureMapping columnObjectName="FG_VZ1CASCADA1" columnName="MEGBTR"/>
+      </measure>
+      <measure id="VALOR_CUENTA" order="69" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor Cuenta"/>
+        <measureMapping columnObjectName="FG_VZ1CASCADA1" columnName="VALOR_CUENTA"/>
+      </measure>
+      <measure id="KILOS" order="71" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Kilos"/>
+        <measureMapping columnObjectName="FG_VZ1CASCADA1" columnName="KILOS"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="Jer_Cuentas">
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N1_TEXT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N2_TEXT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N3_TEXT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N4_TEXT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N5_TEXT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#JER_CUENTA_N6_TEXT</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Jer_Cuentas" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="Jer_Cuentas"/>
+            <levels>
+              <level levelAttribute="#JER_CUENTA_N1_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#JER_CUENTA_N1_TEXT"/>
+              <level levelAttribute="#JER_CUENTA_N2_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#JER_CUENTA_N2_TEXT"/>
+              <level levelAttribute="#JER_CUENTA_N3_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#JER_CUENTA_N3_TEXT"/>
+              <level levelAttribute="#JER_CUENTA_N4_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="#JER_CUENTA_N4_TEXT"/>
+              <level levelAttribute="#JER_CUENTA_N5_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="5" orderAttribute="#JER_CUENTA_N5_TEXT"/>
+              <level levelAttribute="#JER_CUENTA_N6_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="6" orderAttribute="#JER_CUENTA_N6_TEXT"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+      <localDimension id="Jer_Clientes">
+        <attributeRef xsi:type="DataFoundation:Attribute">#CLIENTE_JER_NIVEL1</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#CLIENTE_JER_NIVEL2</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#CLIENTE_JER_NIVEL3</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#CLIENTE_JER_NIVEL4</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#CLIENTE_JER_NIVEL5</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#CLIENTE_JER_NIVEL6</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#CLIENTE_JER_NIVEL7</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Jer_Clientes" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="Jer_Clientes"/>
+            <levels>
+              <level levelAttribute="#CLIENTE_JER_NIVEL1" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#CLIENTE_JER_NIVEL1"/>
+              <level levelAttribute="#CLIENTE_JER_NIVEL2" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#CLIENTE_JER_NIVEL2"/>
+              <level levelAttribute="#CLIENTE_JER_NIVEL3" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#CLIENTE_JER_NIVEL3"/>
+              <level levelAttribute="#CLIENTE_JER_NIVEL4" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="#CLIENTE_JER_NIVEL4"/>
+              <level levelAttribute="#CLIENTE_JER_NIVEL5" levelType="MDLEVEL_TYPE_REGULAR" order="5" orderAttribute="#CLIENTE_JER_NIVEL5"/>
+              <level levelAttribute="#CLIENTE_JER_NIVEL6" levelType="MDLEVEL_TYPE_REGULAR" order="6" orderAttribute="#CLIENTE_JER_NIVEL6"/>
+              <level levelAttribute="#CLIENTE_JER_NIVEL7" levelType="MDLEVEL_TYPE_REGULAR" order="7" orderAttribute="#CLIENTE_JER_NIVEL7"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

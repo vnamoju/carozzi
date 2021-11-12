@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="VC_DEMO_REP" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="Demo Repositorio"/>
+  <metadata changedAt="2021-07-13 15:43:06.895"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="47"/>
+  <dataSources>
+    <DataSource id="DEMO_REPOSITORIO">
+      <resourceUri>DEMO_REPOSITORIO</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Código_sap"/>
+        <viewAttribute id="Nombre_producto"/>
+        <viewAttribute id="Nombre_comercial_con_marca"/>
+        <viewAttribute id="Nombre_comercial_sin_marca"/>
+        <viewAttribute id="Marca"/>
+        <viewAttribute id="Sub_marca___linea_de_producto"/>
+        <viewAttribute id="División"/>
+        <viewAttribute id="Categoría"/>
+        <viewAttribute id="Grupo_de_artículo"/>
+        <viewAttribute id="Vida_Útil"/>
+        <viewAttribute id="País_de_origen"/>
+        <viewAttribute id="Resolución_sanitaria_de_la_planta_donde_se_elabora"/>
+        <viewAttribute id="Público_objetivo_o_edad_de_consumo"/>
+        <viewAttribute id="Grupo_vulnerable"/>
+        <viewAttribute id="Teléfono_SAC"/>
+        <viewAttribute id="Unidad_de_medida_base_(EAN_13_unitario)"/>
+        <viewAttribute id="EAN_13_UMB"/>
+        <viewAttribute id="EAN_12_UMB"/>
+        <viewAttribute id="Largo_UM_1"/>
+        <viewAttribute id="Ancho_UM_1"/>
+        <viewAttribute id="Alto_UM_1"/>
+        <viewAttribute id="Peso_neto_UM_1"/>
+        <viewAttribute id="Peso_bruto_UM_1"/>
+        <viewAttribute id="Unidad_de_medida_de_contenido"/>
+        <viewAttribute id="EAN_UMB_2"/>
+        <viewAttribute id="Largo_UM_2"/>
+        <viewAttribute id="Ancho_UM_2"/>
+        <viewAttribute id="Alto_UM_2"/>
+        <viewAttribute id="Peso_neto_UM_2"/>
+        <viewAttribute id="Peso_bruto_UM_2"/>
+        <viewAttribute id="Q_empaque_EAN_13_X_DUN_14"/>
+        <viewAttribute id="Q__empaque_EAN_13_intermedio_X_DUN_14"/>
+        <viewAttribute id="Unidad_de_medida_3_DUN_14"/>
+        <viewAttribute id="DUN_14_UMB_3"/>
+        <viewAttribute id="Largo_UM_3"/>
+        <viewAttribute id="Ancho_UM_3"/>
+        <viewAttribute id="Alto_UM_3"/>
+        <viewAttribute id="Peso_neto_UM_3"/>
+        <viewAttribute id="Peso_bruto_UM_3"/>
+        <viewAttribute id="Cajas_por_camada"/>
+        <viewAttribute id="Cajas_por_pallet"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DEMO_REPOSITORIO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Código_sap" source="Código sap"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nombre_producto" source="Nombre producto"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nombre_comercial_con_marca" source="Nombre comercial con marca"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nombre_comercial_sin_marca" source="Nombre comercial sin marca"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Marca" source="Marca"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Sub_marca___linea_de_producto" source="Sub marca / linea de producto"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="División" source="División"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Categoría" source="Categoría"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Grupo_de_artículo" source="Grupo de artículo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Vida_Útil" source="Vida Útil"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="País_de_origen" source="País de origen"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Resolución_sanitaria_de_la_planta_donde_se_elabora" source="Resolución sanitaria de la planta donde se elabora"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Público_objetivo_o_edad_de_consumo" source="Público objetivo o edad de consumo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Grupo_vulnerable" source="Grupo vulnerable"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Teléfono_SAC" source="Teléfono SAC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Unidad_de_medida_base_(EAN_13_unitario)" source="Unidad de medida base (EAN 13 unitario)"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN_13_UMB" source="EAN 13 UMB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN_12_UMB" source="EAN 12 UMB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Largo_UM_1" source="Largo UM 1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Ancho_UM_1" source="Ancho UM 1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Alto_UM_1" source="Alto UM 1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Peso_neto_UM_1" source="Peso neto UM 1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Peso_bruto_UM_1" source="Peso bruto UM 1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Unidad_de_medida_de_contenido" source="Unidad de medida de contenido"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EAN_UMB_2" source="EAN UMB 2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Largo_UM_2" source="Largo UM 2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Ancho_UM_2" source="Ancho UM 2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Alto_UM_2" source="Alto UM 2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Peso_neto_UM_2" source="Peso neto UM 2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Peso_bruto_UM_2" source="Peso bruto UM 2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Q_empaque_EAN_13_X_DUN_14" source="Q empaque EAN 13 X DUN 14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Q__empaque_EAN_13_intermedio_X_DUN_14" source="Q empaque EAN 13 intermedio X DUN 14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Unidad_de_medida_3_DUN_14" source="Unidad de medida 3 DUN 14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DUN_14_UMB_3" source="DUN 14 UMB 3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Largo_UM_3" source="Largo UM 3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Ancho_UM_3" source="Ancho UM 3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Alto_UM_3" source="Alto UM 3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Peso_neto_UM_3" source="Peso neto UM 3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Peso_bruto_UM_3" source="Peso bruto UM 3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cajas_por_camada" source="Cajas por camada"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cajas_por_pallet" source="Cajas por pallet"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="Código_sap" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Código_sap"/>
+      </attribute>
+      <attribute id="Nombre_producto" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Nombre_producto"/>
+      </attribute>
+      <attribute id="Nombre_comercial_con_marca" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Nombre_comercial_con_marca"/>
+      </attribute>
+      <attribute id="Nombre_comercial_sin_marca" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Nombre_comercial_sin_marca"/>
+      </attribute>
+      <attribute id="Marca" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Marca"/>
+      </attribute>
+      <attribute id="Sub_marca___linea_de_producto" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Sub_marca___linea_de_producto"/>
+      </attribute>
+      <attribute id="División" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="División"/>
+      </attribute>
+      <attribute id="Categoría" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Categoría"/>
+      </attribute>
+      <attribute id="Grupo_de_artículo" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Grupo_de_artículo"/>
+      </attribute>
+      <attribute id="Vida_Útil" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Vida_Útil"/>
+      </attribute>
+      <attribute id="País_de_origen" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="País_de_origen"/>
+      </attribute>
+      <attribute id="Resolución_sanitaria_de_la_planta_donde_se_elabora" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Resolución_sanitaria_de_la_planta_donde_se_elabora"/>
+      </attribute>
+      <attribute id="Público_objetivo_o_edad_de_consumo" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Público_objetivo_o_edad_de_consumo"/>
+      </attribute>
+      <attribute id="Grupo_vulnerable" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Grupo_vulnerable"/>
+      </attribute>
+      <attribute id="Teléfono_SAC" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Teléfono_SAC"/>
+      </attribute>
+      <attribute id="Unidad_de_medida_base_(EAN_13_unitario)" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Unidad_de_medida_base_(EAN_13_unitario)"/>
+      </attribute>
+      <attribute id="EAN_13_UMB" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="EAN_13_UMB"/>
+      </attribute>
+      <attribute id="EAN_12_UMB" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="EAN_12_UMB"/>
+      </attribute>
+      <attribute id="Largo_UM_1" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Largo_UM_1"/>
+      </attribute>
+      <attribute id="Ancho_UM_1" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Ancho_UM_1"/>
+      </attribute>
+      <attribute id="Alto_UM_1" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Alto_UM_1"/>
+      </attribute>
+      <attribute id="Peso_neto_UM_1" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Peso_neto_UM_1"/>
+      </attribute>
+      <attribute id="Peso_bruto_UM_1" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Peso_bruto_UM_1"/>
+      </attribute>
+      <attribute id="Unidad_de_medida_de_contenido" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Unidad_de_medida_de_contenido"/>
+      </attribute>
+      <attribute id="EAN_UMB_2" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="EAN_UMB_2"/>
+      </attribute>
+      <attribute id="Largo_UM_2" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Largo_UM_2"/>
+      </attribute>
+      <attribute id="Ancho_UM_2" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Ancho_UM_2"/>
+      </attribute>
+      <attribute id="Alto_UM_2" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Alto_UM_2"/>
+      </attribute>
+      <attribute id="Peso_neto_UM_2" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Peso_neto_UM_2"/>
+      </attribute>
+      <attribute id="Peso_bruto_UM_2" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Peso_bruto_UM_2"/>
+      </attribute>
+      <attribute id="Q_empaque_EAN_13_X_DUN_14" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Q_empaque_EAN_13_X_DUN_14"/>
+      </attribute>
+      <attribute id="Q__empaque_EAN_13_intermedio_X_DUN_14" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Q__empaque_EAN_13_intermedio_X_DUN_14"/>
+      </attribute>
+      <attribute id="Unidad_de_medida_3_DUN_14" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Unidad_de_medida_3_DUN_14"/>
+      </attribute>
+      <attribute id="DUN_14_UMB_3" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="DUN_14_UMB_3"/>
+      </attribute>
+      <attribute id="Largo_UM_3" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Largo_UM_3"/>
+      </attribute>
+      <attribute id="Ancho_UM_3" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Ancho_UM_3"/>
+      </attribute>
+      <attribute id="Alto_UM_3" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="Alto_UM_3"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Peso_neto_UM_3" order="38" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="Peso_neto_UM_3"/>
+      </measure>
+      <measure id="Peso_bruto_UM_3" order="39" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="Peso_bruto_UM_3"/>
+      </measure>
+      <measure id="Cajas_por_camada" order="40" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="Cajas_por_camada"/>
+      </measure>
+      <measure id="Cajas_por_pallet" order="41" aggregationType="sum" engineAggregation="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="Cajas_por_pallet"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="210" y="310"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

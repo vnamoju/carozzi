@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="JERARQUIA_CANAL_COMERCIAL" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="JERARQUIA_CLIENTE"/>
+  <metadata changedAt="2021-03-04 17:07:03.326"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="38"/>
+  <dataSources>
+    <DataSource id="JERARQUIAS_V2_CANALCOMERCIAL">
+      <resourceUri>JERARQUIAS_V2_CANALCOMERCIAL</resourceUri>
+    </DataSource>
+    <DataSource id="Z1RUBROS">
+      <resourceUri>Z1RUBROS</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_4$$$$JERARQUIAS_V2_CANALCOMERCIAL$$">
+      <resourceUri>JERARQUIAS_V2_CANALCOMERCIAL</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SETNAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#JERARQUIAS_V2_CANALCOMERCIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+      </input>
+      <filter>(in (&quot;SETNAME&quot;,'JER_CANALES_5100','JER_CANALES_EC01','JER_CANALES_GC01','JER_CANALES_1100','JER_CANALES_1300'))</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZCDRUBRO"/>
+        <viewAttribute id="ZDESRUBRO"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="ID_TEXT" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;ZCDRUBRO&quot; + ' - '+ &quot;ZDESRUBRO&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Z1RUBROS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDRUBRO" source="ZCDRUBRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZDESRUBRO" source="ZDESRUBRO"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="ZCDRUBRO"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDRUBRO" source="ZCDRUBRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDRUBRO" source="HOJA_3"/>
+      </input>
+      <joinAttribute name="ZCDRUBRO"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="ZCDRUBRO"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SETNAME" length="24" expressionLanguage="COLUMN_ENGINE">
+          <formula>'JER_CANALES_EC01'</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME" length="24" expressionLanguage="COLUMN_ENGINE">
+          <formula>'Sin Asignar'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDRUBRO" source="ZCDRUBRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+      <filter>ISNULL(&quot;MANDT&quot;)</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_4$$$$JERARQUIAS_V2_CANALCOMERCIAL$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+      </input>
+      <filter>(in (&quot;SETNAME&quot;,'JER_CANALES_5100','JER_CANALES_EC01','JER_CANALES_GC01','JER_CANALES_1100','JER_CANALES_1300'))</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute datatype="NVARCHAR" id="MANDT" length="3" transparentFilter="false"/>
+        <viewAttribute id="SETNAME" transparentFilter="false"/>
+        <viewAttribute id="SUBSETNAME" transparentFilter="false"/>
+        <viewAttribute id="SUBSETNAME_1" transparentFilter="false"/>
+        <viewAttribute id="SUBSATNAME_2" transparentFilter="false"/>
+        <viewAttribute id="SUBSETNAME_3" transparentFilter="false"/>
+        <viewAttribute id="HOJA_3" transparentFilter="false"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_4">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MANDT" null="false" value="900"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_3">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MANDT" null="false" value="900"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SUBSATNAME_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SUBSETNAME_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="ZCDRUBRO"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Union_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="SETNAME" order="2" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="SETNAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="SETNAME"/>
+      </attribute>
+      <attribute id="SUBSETNAME" order="3" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="SUBSETNAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="SUBSETNAME"/>
+      </attribute>
+      <attribute id="SUBSETNAME_1" order="4" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="SUBSETNAME_1"/>
+        <keyMapping columnObjectName="Union_1" columnName="SUBSETNAME_1"/>
+      </attribute>
+      <attribute id="SUBSATNAME_2" order="5" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="SUBSATNAME_2"/>
+        <keyMapping columnObjectName="Union_1" columnName="SUBSATNAME_2"/>
+      </attribute>
+      <attribute id="SUBSETNAME_3" order="6" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="SUBSETNAME_3"/>
+        <keyMapping columnObjectName="Union_1" columnName="SUBSETNAME_3"/>
+      </attribute>
+      <attribute id="HOJA_3" order="7" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="HOJA_3"/>
+        <keyMapping columnObjectName="Union_1" columnName="HOJA_3"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="SOCIEDAD_FI" hidden="false" order="8" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="4">
+          <formula>if (rightstr( &quot;SETNAME&quot;,4)='GC01','5100',rightstr( &quot;SETNAME&quot;,4))</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="260" y="470"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="70" y="475"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="359"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="281"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="281"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

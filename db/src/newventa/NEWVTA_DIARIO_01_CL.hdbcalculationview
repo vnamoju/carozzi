@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="NEWVTA_DIARIO_01_CL" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" analyticViewCompatibilityMode="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription=""/>
+  <metadata changedAt="2021-06-18 13:08:01.823"/>
+  <localVariables>
+    <variable id="p_fecha" parameter="true">
+      <descriptions defaultDescription="p_fecha"/>
+      <variableProperties datatype="DATE" defaultExpressionLanguage="COLUMN_ENGINE" mandatory="false">
+        <valueDomain type="Date"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>replace(leftstr(string(now()),10),'-','')</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="V_SOCIEDAD_CO">
+      <descriptions defaultDescription="V_SOCIEDAD_CO"/>
+      <variableProperties datatype="VARCHAR" defaultValue="EC01" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="16"/>
+  <dataSources>
+    <DataSource id="VCOBK">
+      <resourceUri>VCOBK</resourceUri>
+    </DataSource>
+    <DataSource id="VCOEP">
+      <resourceUri>VCOEP</resourceUri>
+    </DataSource>
+    <DataSource id="CE4SPA2">
+      <resourceUri>CE4SPA2</resourceUri>
+    </DataSource>
+    <DataSource id="CE41100">
+      <resourceUri>CE41100</resourceUri>
+    </DataSource>
+    <DataSource id="CE41300">
+      <resourceUri>CE41300</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Cabecera" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="BELNR"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="VERSN"/>
+        <viewAttribute id="VRGNG"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="PERAB"/>
+        <viewAttribute id="BUDAT"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="Ejercicio_1" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(replace(string(now()),'-',''),4)-1
+
+</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="Fecha_1" expressionLanguage="COLUMN_ENGINE">
+          <formula>addmonths(leftstr(replace(string(now()),'-',''),6),-1)
+
+
+
+
+</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="Fecha_desde_aa" expressionLanguage="COLUMN_ENGINE">
+          <formula>addmonths(leftstr(replace(string(now()),'-',''),6),-13)
+
+
+
+
+</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="Fecha_hasta_aa" expressionLanguage="COLUMN_ENGINE">
+          <formula>addmonths(leftstr(replace(string(now()),'-',''),6),-10)
+
+
+
+
+</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="VCOBK">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="BUDAT"/></input>
+    <filter>(&quot;SOCIEDAD_CO&quot;='EC01') and (&quot;FECHA_CONTABILIZACION&quot;&gt;=&quot;Fecha_1&quot; or
+(&quot;FECHA_CONTABILIZACION&quot;&gt;=&quot;Fecha_desde_aa&quot; and &quot;FECHA_CONTABILIZACION&quot;&lt;&quot;Fecha_hasta_aa&quot;))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="BELNR"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="PAOBJNR"/>
+        <viewAttribute id="WRTTP"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="CUENTA"/>
+        <viewAttribute id="VALOR_ML_ORIGINAL"/>
+        <viewAttribute id="VOLUMEN_ORIGINAL"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="OBJPACORTO_INT"/>
+        <viewAttribute id="VALOR_MT_ORIGINAL"/>
+        <viewAttribute id="MONEDA_TRANSACCIONAL"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="PERIO"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="Mes_act" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>'0'+leftstr(midstr(now(),6),2)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="Fecha_11" expressionLanguage="COLUMN_ENGINE">
+          <formula>addmonths(now(),-11)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="Mes_act_1" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>'0'+rightstr(leftstr(string(&quot;Fecha_11&quot;),7),2)
+</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="Ejercicio_1" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(replace(string(now()),'-',''),4)-1
+
+</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="Ejercicio_act" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(replace(string(now()),'-',''),4)
+
+</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="Fecha_13" expressionLanguage="COLUMN_ENGINE">
+          <formula>addmonths(now(),-13)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="Mes_ant" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>'0'+rightstr(leftstr(string(&quot;Fecha_13&quot;),7),2)
+</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="VCOEP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_ML_ORIGINAL" source="WOGBTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_ORIGINAL" source="MEGBTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_MEDIDA" source="MEINH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_MT_ORIGINAL" source="WTGBTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_TRANSACCIONAL" source="TWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="OWAER"/></input>
+    <filter>&quot;SOCIEDAD_CO&quot;='EC01' and ((&quot;EJERCICIO&quot;=&quot;Ejercicio_1&quot; or  &quot;EJERCICIO&quot;=&quot;Ejercicio_act&quot;) and ( &quot;PERIODO&quot;=&quot;Mes_ant&quot; or &quot;PERIODO&quot;=&quot;Mes_act&quot; or &quot;PERIODO&quot;=&quot;Mes_act_1&quot;))   and
+(&quot;CUENTA&quot;='0000005001' or &quot;CUENTA&quot;='0000005101'or &quot;CUENTA&quot;='0000005102' OR
+&quot;CUENTA&quot;='0000005051' OR
+&quot;CUENTA&quot;='0000005120' OR
+&quot;CUENTA&quot;='0000005104' OR
+&quot;CUENTA&quot;='0000005105' OR
+&quot;CUENTA&quot;='0000005106' OR
+&quot;CUENTA&quot;='0000005107' OR
+&quot;CUENTA&quot;='0000005108' OR
+&quot;CUENTA&quot;='0000005002' OR
+&quot;CUENTA&quot;='0000005003' OR
+&quot;CUENTA&quot;='0000005004' OR
+&quot;CUENTA&quot;='0000005005' OR
+&quot;CUENTA&quot;='0000005006' OR
+&quot;CUENTA&quot;='0000005007' OR
+&quot;CUENTA&quot;='0000005012' OR
+&quot;CUENTA&quot;='0000005013' OR
+&quot;CUENTA&quot;='0000005014' OR
+&quot;CUENTA&quot;='0000005015' OR
+&quot;CUENTA&quot;='0000005016' OR
+&quot;CUENTA&quot;='0000005109' OR
+&quot;CUENTA&quot;='0000005110' OR
+&quot;CUENTA&quot;='0000005113' OR
+&quot;CUENTA&quot;='0000005114' OR
+&quot;CUENTA&quot;='0000005201' OR 
+&quot;CUENTA&quot;='0000005213' OR
+&quot;CUENTA&quot;='0000005214' OR
+&quot;CUENTA&quot;='0000005215' OR
+&quot;CUENTA&quot;='0000005216' OR
+&quot;CUENTA&quot;='0000005217' OR
+&quot;CUENTA&quot;='0000005218' OR
+&quot;CUENTA&quot;='0000005107'
+)</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner" optimizeJoinColumns="false">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="CUENTA"/>
+        <viewAttribute id="VALOR_ML_ORIGINAL"/>
+        <viewAttribute id="VOLUMEN_ORIGINAL"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="PERAB"/>
+        <viewAttribute id="OBJPACORTO_INT"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="MONEDA_TRANSACCIONAL"/>
+        <viewAttribute id="VALOR_MT_ORIGINAL"/>
+      <viewAttribute hidden="true" id="JOIN$BELNR$BELNR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Cabecera">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="FECHA_CONTABILIZACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERAB" source="PERAB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BELNR$BELNR" source="BELNR"/>
+      </input>
+      <input node="Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA" source="CUENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_ML_ORIGINAL" source="VALOR_ML_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_ORIGINAL" source="VOLUMEN_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJNR" source="OBJNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_MEDIDA" source="UNIDAD_MEDIDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJPACORTO_INT" source="OBJPACORTO_INT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="MONEDA_LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_TRANSACCIONAL" source="MONEDA_TRANSACCIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_MT_ORIGINAL" source="VALOR_MT_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BELNR$BELNR" source="BELNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="SOCIEDAD_CO"/>
+    <joinAttribute name="JOIN$BELNR$BELNR"/>
+    <joinAttribute name="EJERCICIO"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="SOCIEDAD_EC01">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="CUENTA"/>
+        <viewAttribute aggregationType="sum" id="VALOR_ML_ORIGINAL"/>
+        <viewAttribute aggregationType="sum" id="VOLUMEN_ORIGINAL"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="OBJPACORTO_INT"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="MONEDA_TRANSACCIONAL"/>
+        <viewAttribute aggregationType="sum" id="VALOR_MT_ORIGINAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_1"/>
+    <filter>in(&quot;SOCIEDAD_CO&quot;,'EC01')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PAOBJNR"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="VENDEDOR"/>
+        <viewAttribute id="PAOBJNR_INT"/>
+        <viewAttribute id="CANAL_DISTRIBUCION"/>
+        <viewAttribute id="SECTOR"/>
+        <viewAttribute id="GRUPO_VENDEDOR"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="AREA_NEGOCIO"/>
+        <viewAttribute id="CENTRO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CE4SPA2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="WWDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="KNDNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="KMVTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_DISTRIBUCION" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SECTOR" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_VENDEDOR" source="VKGRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AREA_NEGOCIO" source="WWNEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO" source="WERKS"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_1" joinType="referential" optimizeJoinColumns="true">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="CUENTA"/>
+        <viewAttribute id="VALOR_ML_ORIGINAL"/>
+        <viewAttribute id="VOLUMEN_ORIGINAL"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="VENDEDOR"/>
+        <viewAttribute id="CANAL_DISTRIBUCION"/>
+        <viewAttribute id="SECTOR"/>
+        <viewAttribute id="GRUPO_VENDEDOR"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="AREA_NEGOCIO"/>
+        <viewAttribute id="CENTRO"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="MONEDA_TRANSACCIONAL"/>
+        <viewAttribute id="VALOR_MT_ORIGINAL"/>
+      <viewAttribute hidden="true" id="JOIN$OBJPACORTO_INT$PAOBJNR_INT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SOCIEDAD_EC01">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="FECHA_CONTABILIZACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA" source="CUENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_ML_ORIGINAL" source="VALOR_ML_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_ORIGINAL" source="VOLUMEN_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_MEDIDA" source="UNIDAD_MEDIDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="MONEDA_LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_TRANSACCIONAL" source="MONEDA_TRANSACCIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_MT_ORIGINAL" source="VALOR_MT_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$OBJPACORTO_INT$PAOBJNR_INT" source="OBJPACORTO_INT"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="ORGANIZACION_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="OFICINA_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="DIVISION_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="CLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_DISTRIBUCION" source="CANAL_DISTRIBUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SECTOR" source="SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_VENDEDOR" source="GRUPO_VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AREA_NEGOCIO" source="AREA_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO" source="CENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$OBJPACORTO_INT$PAOBJNR_INT" source="PAOBJNR_INT"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="JOIN$OBJPACORTO_INT$PAOBJNR_INT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="SOCIEDAD_1100">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="CUENTA"/>
+        <viewAttribute aggregationType="sum" id="VALOR_ML_ORIGINAL"/>
+        <viewAttribute aggregationType="sum" id="VOLUMEN_ORIGINAL"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="OBJPACORTO_INT"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="MONEDA_TRANSACCIONAL"/>
+        <viewAttribute aggregationType="sum" id="VALOR_MT_ORIGINAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_1"/>
+    <filter>in(&quot;SOCIEDAD_CO&quot;,'1100')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PAOBJNR"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+        <viewAttribute id="VENDEDOR"/>
+        <viewAttribute id="PAOBJNR_INT"/>
+        <viewAttribute id="CANAL_DISTRIBUCION"/>
+        <viewAttribute id="SECTOR"/>
+        <viewAttribute id="GRUPO_VENDEDOR"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="AREA_NEGOCIO"/>
+        <viewAttribute id="CENTRO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CE41100">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="KNDNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="WWDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="KMVTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_DISTRIBUCION" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SECTOR" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_VENDEDOR" source="VKGRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AREA_NEGOCIO" source="WWNEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO" source="WERKS"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="C1_1" joinType="referential" optimizeJoinColumns="true">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="CUENTA"/>
+        <viewAttribute id="VALOR_ML_ORIGINAL"/>
+        <viewAttribute id="VOLUMEN_ORIGINAL"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+        <viewAttribute id="VENDEDOR"/>
+        <viewAttribute id="CANAL_DISTRIBUCION"/>
+        <viewAttribute id="SECTOR"/>
+        <viewAttribute id="GRUPO_VENDEDOR"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="AREA_NEGOCIO"/>
+        <viewAttribute id="CENTRO"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="MONEDA_TRANSACCIONAL"/>
+        <viewAttribute id="VALOR_MT_ORIGINAL"/>
+      <viewAttribute hidden="true" id="JOIN$OBJPACORTO_INT$PAOBJNR_INT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SOCIEDAD_1100">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="FECHA_CONTABILIZACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA" source="CUENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_ML_ORIGINAL" source="VALOR_ML_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_ORIGINAL" source="VOLUMEN_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_MEDIDA" source="UNIDAD_MEDIDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="MONEDA_LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_TRANSACCIONAL" source="MONEDA_TRANSACCIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_MT_ORIGINAL" source="VALOR_MT_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$OBJPACORTO_INT$PAOBJNR_INT" source="OBJPACORTO_INT"/>
+      </input>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="CLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="ORGANIZACION_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="OFICINA_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="DIVISION_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_DISTRIBUCION" source="CANAL_DISTRIBUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SECTOR" source="SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_VENDEDOR" source="GRUPO_VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AREA_NEGOCIO" source="AREA_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO" source="CENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$OBJPACORTO_INT$PAOBJNR_INT" source="PAOBJNR_INT"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="JOIN$OBJPACORTO_INT$PAOBJNR_INT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="SOCIEDAD_1300">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="CUENTA"/>
+        <viewAttribute aggregationType="sum" id="VALOR_ML_ORIGINAL"/>
+        <viewAttribute aggregationType="sum" id="VOLUMEN_ORIGINAL"/>
+        <viewAttribute id="OBJNR"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="OBJPACORTO_INT"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="MONEDA_TRANSACCIONAL"/>
+        <viewAttribute aggregationType="sum" id="VALOR_MT_ORIGINAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_1"/>
+    <filter>in(&quot;SOCIEDAD_CO&quot;,'1300')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CopyOfProjection_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PAOBJNR"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+        <viewAttribute id="VENDEDOR"/>
+        <viewAttribute id="PAOBJNR_INT"/>
+        <viewAttribute id="CANAL_DISTRIBUCION"/>
+        <viewAttribute id="SECTOR"/>
+        <viewAttribute id="GRUPO_VENDEDOR"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="AREA_NEGOCIO"/>
+        <viewAttribute id="CENTRO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CE41300">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="KNDNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="WWDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="KMVTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_DISTRIBUCION" source="VTWEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SECTOR" source="SPART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_VENDEDOR" source="VKGRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AREA_NEGOCIO" source="WWNEG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO" source="WERKS"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_41" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="CUENTA"/>
+        <viewAttribute id="VALOR_ML_ORIGINAL"/>
+        <viewAttribute id="VOLUMEN_ORIGINAL"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="MONEDA_TRANSACCIONAL"/>
+        <viewAttribute id="VALOR_MT_ORIGINAL"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+        <viewAttribute id="VENDEDOR"/>
+        <viewAttribute id="CANAL_DISTRIBUCION"/>
+        <viewAttribute id="SECTOR"/>
+        <viewAttribute id="GRUPO_VENDEDOR"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="AREA_NEGOCIO"/>
+        <viewAttribute id="CENTRO"/>
+      <viewAttribute hidden="true" id="JOIN$OBJPACORTO_INT$PAOBJNR_INT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SOCIEDAD_1300">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="FECHA_CONTABILIZACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA" source="CUENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_ML_ORIGINAL" source="VALOR_ML_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_ORIGINAL" source="VOLUMEN_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_MEDIDA" source="UNIDAD_MEDIDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="MONEDA_LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_TRANSACCIONAL" source="MONEDA_TRANSACCIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_MT_ORIGINAL" source="VALOR_MT_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$OBJPACORTO_INT$PAOBJNR_INT" source="OBJPACORTO_INT"/>
+      </input>
+      <input node="CopyOfProjection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="CLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="ORGANIZACION_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="OFICINA_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="DIVISION_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_DISTRIBUCION" source="CANAL_DISTRIBUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SECTOR" source="SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_VENDEDOR" source="GRUPO_VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AREA_NEGOCIO" source="AREA_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO" source="CENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$OBJPACORTO_INT$PAOBJNR_INT" source="PAOBJNR_INT"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="JOIN$OBJPACORTO_INT$PAOBJNR_INT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="EJERCICIO"/>
+        <viewAttribute id="FECHA_CONTABILIZACION"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+        <viewAttribute id="CUENTA"/>
+        <viewAttribute id="VALOR_ML_ORIGINAL"/>
+        <viewAttribute id="VOLUMEN_ORIGINAL"/>
+        <viewAttribute id="ORGANIZACION_VENTA"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="DIVISION_COMERCIAL"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="CLIENTE"/>
+        <viewAttribute id="UNIDAD_MEDIDA"/>
+        <viewAttribute id="VENDEDOR"/>
+        <viewAttribute id="CANAL_DISTRIBUCION"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="SECTOR"/>
+        <viewAttribute id="AREA_NEGOCIO"/>
+        <viewAttribute id="GRUPO_VENDEDOR"/>
+        <viewAttribute id="CENTRO"/>
+        <viewAttribute id="MONEDA_LOCAL"/>
+        <viewAttribute id="MONEDA_TRANSACCIONAL"/>
+        <viewAttribute id="VALOR_MT_ORIGINAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="FECHA_CONTABILIZACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA" source="CUENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_ML_ORIGINAL" source="VALOR_ML_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_ORIGINAL" source="VOLUMEN_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="ORGANIZACION_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="OFICINA_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="DIVISION_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="CLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_MEDIDA" source="UNIDAD_MEDIDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_DISTRIBUCION" source="CANAL_DISTRIBUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SECTOR" source="SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AREA_NEGOCIO" source="AREA_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_VENDEDOR" source="GRUPO_VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO" source="CENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="MONEDA_LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_TRANSACCIONAL" source="MONEDA_TRANSACCIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_MT_ORIGINAL" source="VALOR_MT_ORIGINAL"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="FECHA_CONTABILIZACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA" source="CUENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_ML_ORIGINAL" source="VALOR_ML_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_ORIGINAL" source="VOLUMEN_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="ORGANIZACION_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="OFICINA_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="DIVISION_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="CLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_MEDIDA" source="UNIDAD_MEDIDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_DISTRIBUCION" source="CANAL_DISTRIBUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SECTOR" source="SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AREA_NEGOCIO" source="AREA_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_VENDEDOR" source="GRUPO_VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO" source="CENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="MONEDA_LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_TRANSACCIONAL" source="MONEDA_TRANSACCIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_MT_ORIGINAL" source="VALOR_MT_ORIGINAL"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Join_41">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EJERCICIO" source="EJERCICIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CONTABILIZACION" source="FECHA_CONTABILIZACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA" source="CUENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_ML_ORIGINAL" source="VALOR_ML_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VOLUMEN_ORIGINAL" source="VOLUMEN_ORIGINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORGANIZACION_VENTA" source="ORGANIZACION_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA" source="OFICINA_VENTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_COMERCIAL" source="DIVISION_COMERCIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="PERIODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLIENTE" source="CLIENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_MEDIDA" source="UNIDAD_MEDIDA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VENDEDOR" source="VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_DISTRIBUCION" source="CANAL_DISTRIBUCION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SECTOR" source="SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AREA_NEGOCIO" source="AREA_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_VENDEDOR" source="GRUPO_VENDEDOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO" source="CENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_LOCAL" source="MONEDA_LOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONEDA_TRANSACCIONAL" source="MONEDA_TRANSACCIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_MT_ORIGINAL" source="VALOR_MT_ORIGINAL"/>
+      </input>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Union_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_CO"/>
+        <keyMapping columnObjectName="Union_1" columnName="SOCIEDAD_CO"/>
+      </attribute>
+      <attribute id="EJERCICIO" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="EJERCICIO"/>
+        <keyMapping columnObjectName="Union_1" columnName="EJERCICIO"/>
+      </attribute>
+      <attribute id="FECHA_CONTABILIZACION" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FECHA_CONTABILIZACION"/>
+        <keyMapping columnObjectName="Union_1" columnName="FECHA_CONTABILIZACION"/>
+      </attribute>
+      <attribute id="SOCIEDAD_FI" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI"/>
+        <keyMapping columnObjectName="Union_1" columnName="SOCIEDAD_FI"/>
+      </attribute>
+      <attribute id="CUENTA" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUENTA"/>
+        <keyMapping columnObjectName="Union_1" columnName="CUENTA"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORGANIZACION_VENTA"/>
+        <keyMapping columnObjectName="Union_1" columnName="ORGANIZACION_VENTA"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL"/>
+        <keyMapping columnObjectName="Union_1" columnName="GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_VENTA"/>
+        <keyMapping columnObjectName="Union_1" columnName="OFICINA_VENTA"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_COMERCIAL"/>
+        <keyMapping columnObjectName="Union_1" columnName="DIVISION_COMERCIAL"/>
+      </attribute>
+      <attribute id="PERIODO" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERIODO"/>
+        <keyMapping columnObjectName="Union_1" columnName="PERIODO"/>
+      </attribute>
+      <attribute id="CLIENTE" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE"/>
+        <keyMapping columnObjectName="Union_1" columnName="CLIENTE"/>
+      </attribute>
+      <attribute id="UNIDAD_MEDIDA" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIDAD_MEDIDA"/>
+        <keyMapping columnObjectName="Union_1" columnName="UNIDAD_MEDIDA"/>
+      </attribute>
+      <attribute id="VENDEDOR" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VENDEDOR"/>
+        <keyMapping columnObjectName="Union_1" columnName="VENDEDOR"/>
+      </attribute>
+      <attribute id="CANAL_DISTRIBUCION" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CANAL_DISTRIBUCION"/>
+        <keyMapping columnObjectName="Union_1" columnName="CANAL_DISTRIBUCION"/>
+      </attribute>
+      <attribute id="PAIS" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PAIS"/>
+        <keyMapping columnObjectName="Union_1" columnName="PAIS"/>
+      </attribute>
+      <attribute id="SECTOR" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SECTOR"/>
+        <keyMapping columnObjectName="Union_1" columnName="SECTOR"/>
+      </attribute>
+      <attribute id="AREA_NEGOCIO" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="AREA_NEGOCIO"/>
+        <keyMapping columnObjectName="Union_1" columnName="AREA_NEGOCIO"/>
+      </attribute>
+      <attribute id="GRUPO_VENDEDOR" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_VENDEDOR"/>
+        <keyMapping columnObjectName="Union_1" columnName="GRUPO_VENDEDOR"/>
+      </attribute>
+      <attribute id="CENTRO" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CENTRO"/>
+        <keyMapping columnObjectName="Union_1" columnName="CENTRO"/>
+      </attribute>
+      <attribute id="MONEDA_LOCAL" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONEDA_LOCAL"/>
+        <keyMapping columnObjectName="Union_1" columnName="MONEDA_LOCAL"/>
+      </attribute>
+      <attribute id="MONEDA_TRANSACCIONAL" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONEDA_TRANSACCIONAL"/>
+        <keyMapping columnObjectName="Union_1" columnName="MONEDA_TRANSACCIONAL"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="parametro_fecha" hidden="false" order="32" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="parametro_fecha"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="12">
+          <formula>'$$p_fecha$$'</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="VALOR_ML_ORIGINAL" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_ML_ORIGINAL"/>
+        <measureMapping columnObjectName="Union_1" columnName="VALOR_ML_ORIGINAL"/>
+      </measure>
+      <measure id="VOLUMEN_ORIGINAL" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VOLUMEN_ORIGINAL"/>
+        <measureMapping columnObjectName="Union_1" columnName="VOLUMEN_ORIGINAL"/>
+      </measure>
+      <measure id="VALOR_MT_ORIGINAL" order="31" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALOR_MT_ORIGINAL"/>
+        <measureMapping columnObjectName="Union_1" columnName="VALOR_MT_ORIGINAL"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="VALOR_NETO_REAL" hidden="false" order="1" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="2">
+        <descriptions defaultDescription="VALOR_NETO_REAL"/>
+        <formula>IF(&quot;CUENTA&quot;='0000005001' OR
+&quot;CUENTA&quot;='0000005101' OR
+&quot;CUENTA&quot;='0000005102' OR
+&quot;CUENTA&quot;='0000005104' OR
+&quot;CUENTA&quot;='0000005105' OR
+&quot;CUENTA&quot;='0000005106' OR
+&quot;CUENTA&quot;='0000005107' OR
+&quot;CUENTA&quot;='0000005108' OR
+&quot;CUENTA&quot;='0000005002' OR
+&quot;CUENTA&quot;='0000005003' OR
+&quot;CUENTA&quot;='0000005004' OR
+&quot;CUENTA&quot;='0000005005' OR
+&quot;CUENTA&quot;='0000005006' OR
+&quot;CUENTA&quot;='0000005007' OR
+&quot;CUENTA&quot;='0000005012' OR
+&quot;CUENTA&quot;='0000005013' OR
+&quot;CUENTA&quot;='0000005014' OR
+&quot;CUENTA&quot;='0000005015' OR
+&quot;CUENTA&quot;='0000005016' OR
+&quot;CUENTA&quot;='0000005109' OR
+&quot;CUENTA&quot;='0000005110' OR
+&quot;CUENTA&quot;='0000005113' OR
+&quot;CUENTA&quot;='0000005114' OR
+&quot;CUENTA&quot;='0000005120' OR
+&quot;CUENTA&quot;='0000005121' OR
+&quot;CUENTA&quot;='0000005122' OR
+&quot;CUENTA&quot;='0000005123',
+ IF(&quot;MONEDA_LOCAL&quot;='PESOS',&quot;VALOR_ML_ORIGINAL&quot;* -100,&quot;VALOR_ML_ORIGINAL&quot;* -1)
+ ,0)</formula>
+      </measure>
+      <measure id="VOLUMEN_REAL" hidden="false" order="2" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="3">
+        <descriptions defaultDescription="VOLUMEN_REAL"/>
+        <formula>IF(&quot;CUENTA&quot;='0000005201', &quot;VOLUMEN_ORIGINAL&quot;, 0)
+ 
+</formula>
+      </measure>
+      <measure id="VALOR_COSTO_REAL" hidden="false" order="3" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="2">
+        <descriptions defaultDescription="VALOR_COSTO_REAL"/>
+        <formula>IF(&quot;CUENTA&quot;='0000005201',IF(&quot;MONEDA_LOCAL&quot;='PESOS',&quot;VALOR_ML_ORIGINAL&quot;* -100,&quot;VALOR_ML_ORIGINAL&quot;* -1), 0)</formula>
+      </measure>
+      <measure id="VALOR_DIFERENCIA_DE_PRECIO_REAL" hidden="false" order="4" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="2">
+        <descriptions defaultDescription="VALOR_DIFERENCIA_DE_PRECIO_REAL"/>
+        <formula>IF(&quot;CUENTA&quot;='0000005107',IF(&quot;MONEDA_LOCAL&quot;='PESOS',&quot;VALOR_ML_ORIGINAL&quot;* -100,&quot;VALOR_ML_ORIGINAL&quot;* -1),0)</formula>
+      </measure>
+      <measure id="VALOR_REAL_ML" hidden="false" order="5" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="2">
+        <descriptions defaultDescription="VALOR_REAL_ML"/>
+        <formula> IF(&quot;MONEDA_LOCAL&quot;='PESOS',&quot;VALOR_ML_ORIGINAL&quot;* -100,&quot;VALOR_ML_ORIGINAL&quot;* -1)</formula>
+      </measure>
+      <measure id="VALOR_REAL_MT" hidden="false" order="6" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="2">
+        <descriptions defaultDescription="VALOR_REAL_MT"/>
+        <formula> IF(&quot;MONEDA_TRANSACCIONAL&quot;='PESOS',&quot;VALOR_MT_ORIGINAL&quot;* -100,&quot;VALOR_MT_ORIGINAL&quot;* -1)</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="714" y="120"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Cabecera" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="561" y="701"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="715" y="701"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="638" y="605"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Cabecera" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_5" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="SOCIEDAD_EC01" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="330" y="527"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="484" y="527"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="484" y="431"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="SOCIEDAD_EC01" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="SOCIEDAD_1100" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="946" y="527"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1090" y="520"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="946" y="431"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="SOCIEDAD_1100" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="SOCIEDAD_1300" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1254" y="527"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="CopyOfProjection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1408" y="527"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_41" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1254" y="431"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="SOCIEDAD_1300" modelObjectNameSpace="Join_41" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="CopyOfProjection_2" modelObjectNameSpace="Join_41" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="714" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

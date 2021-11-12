@@ -1,0 +1,114 @@
+<RepTask RepVersion="2.1" Type="REALTIME" Description="" Name="file:/SCP_CAROZZI_SAC/SALES_PACKAGE/RT_VBPA.hdbreptask:workspace">
+  <SourceObjects VirtualTableNamePrefix="VT_" VirtualTableSchema="SLINARES" RemoteSourceName="HANA_ERP" VTFullyQualifiedName="false" TTFullyQualifiedName="false" SourceType="REMOTE_OBJ">
+    <SourceObject SourceDisplayName="VBPA" RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;VBPA&quot;">
+    </SourceObject>
+  </SourceObjects>
+  <TargetObjects SchemaName="SLINARES">
+    <TargetObject Type="TABLE" DropTargetTableIfExists="TRUE" ObjectName="VBPA">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="3" Length="3" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="VBELN" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="10" Length="10" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="POSNR" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="6" Length="6" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="PARVW" PartOfPrimaryKey="TRUE" Nullable="FALSE" Scale="0" Precision="2" Length="2" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="KUNNR" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="10" Length="10" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="LIFNR" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="10" Length="10" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="PERNR" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="8" Length="8" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="PARNR" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="10" Length="10" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="ADRNR" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="10" Length="10" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="ABLAD" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="25" Length="25" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="LAND1" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="3" Length="3" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="ADRDA" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="1" Length="1" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="XCPDK" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="1" Length="1" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="HITYP" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="1" Length="1" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="PRFRE" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="1" Length="1" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="BOKRE" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="1" Length="1" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="HISTUNR" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="2" Length="2" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="KNREF" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="30" Length="30" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="LZONE" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="10" Length="10" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="HZUOR" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="2" Length="2" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="STCEG" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="20" Length="20" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="PARVW_FF" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="1" Length="1" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="ADRNP" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="10" Length="10" Datatype="NVARCHAR">
+        </TargetColumn>
+        <TargetColumn Name="KALE" PartOfPrimaryKey="FALSE" Nullable="FALSE" Scale="0" Precision="1" Length="1" Datatype="NVARCHAR">
+        </TargetColumn>
+      </TargetColumns>
+    </TargetObject>
+  </TargetObjects>
+  <Mappings>
+    <Mapping RemoteObjectUniqueName="&quot;SAPABAP1&quot;.&quot;VBPA&quot;" ObjectName="VBPA" VTObjectName="VBPA" ReplicationBehavior="InitAndRealtime" FilterExpression="">
+      <TargetColumns>
+        <TargetColumn Name="MANDT" ProjectionExpression="&quot;MANDT&quot;">
+        </TargetColumn>
+        <TargetColumn Name="VBELN" ProjectionExpression="&quot;VBELN&quot;">
+        </TargetColumn>
+        <TargetColumn Name="POSNR" ProjectionExpression="&quot;POSNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PARVW" ProjectionExpression="&quot;PARVW&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KUNNR" ProjectionExpression="&quot;KUNNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="LIFNR" ProjectionExpression="&quot;LIFNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PERNR" ProjectionExpression="&quot;PERNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PARNR" ProjectionExpression="&quot;PARNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ADRNR" ProjectionExpression="&quot;ADRNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ABLAD" ProjectionExpression="&quot;ABLAD&quot;">
+        </TargetColumn>
+        <TargetColumn Name="LAND1" ProjectionExpression="&quot;LAND1&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ADRDA" ProjectionExpression="&quot;ADRDA&quot;">
+        </TargetColumn>
+        <TargetColumn Name="XCPDK" ProjectionExpression="&quot;XCPDK&quot;">
+        </TargetColumn>
+        <TargetColumn Name="HITYP" ProjectionExpression="&quot;HITYP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PRFRE" ProjectionExpression="&quot;PRFRE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="BOKRE" ProjectionExpression="&quot;BOKRE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="HISTUNR" ProjectionExpression="&quot;HISTUNR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KNREF" ProjectionExpression="&quot;KNREF&quot;">
+        </TargetColumn>
+        <TargetColumn Name="LZONE" ProjectionExpression="&quot;LZONE&quot;">
+        </TargetColumn>
+        <TargetColumn Name="HZUOR" ProjectionExpression="&quot;HZUOR&quot;">
+        </TargetColumn>
+        <TargetColumn Name="STCEG" ProjectionExpression="&quot;STCEG&quot;">
+        </TargetColumn>
+        <TargetColumn Name="PARVW_FF" ProjectionExpression="&quot;PARVW_FF&quot;">
+        </TargetColumn>
+        <TargetColumn Name="ADRNP" ProjectionExpression="&quot;ADRNP&quot;">
+        </TargetColumn>
+        <TargetColumn Name="KALE" ProjectionExpression="&quot;KALE&quot;">
+        </TargetColumn>
+      </TargetColumns>
+    </Mapping>
+  </Mappings>
+</RepTask>

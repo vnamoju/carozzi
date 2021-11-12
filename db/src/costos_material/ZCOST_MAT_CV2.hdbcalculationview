@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="ZCOST_MAT_CV2" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="Vista Costo material"/>
+  <metadata changedAt="2020-04-23 10:16:10.897"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="60"/>
+  <dataSources>
+    <DataSource id="ZBW_SCP_COST_MAT">
+      <resourceUri>ZBW_SCP_COST_MAT</resourceUri>
+    </DataSource>
+    <DataSource id="ZCOST_CAL_HIS">
+      <resourceUri>ZCOST_CAL_HIS</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_GRUPO_MATERIAL">
+      <resourceUri>DIM_GRUPO_MATERIAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MATERIAL">
+      <resourceUri>DIM_MATERIAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CENTRO">
+      <resourceUri>DIM_CENTRO</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_5$$$$DIM_MATERIAL$$">
+      <resourceUri>DIM_MATERIAL</resourceUri>
+    </DataSource>
+    <DataSource id="VC_TCKH1">
+      <resourceUri>VC_TCKH1</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="PROYECCION_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="0CCOMPSTRUC"/>
+        <viewAttribute id="0CO_AREA"/>
+        <viewAttribute id="CANTIDAD_R"/>
+        <viewAttribute id="CORR"/>
+        <viewAttribute id="DIFERENCIA_R"/>
+        <viewAttribute id="ELEMT"/>
+        <viewAttribute id="FECHA_CALCULO"/>
+        <viewAttribute id="FWAER"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KOSTL"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATKL"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="MEEHT"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="PORC_R"/>
+        <viewAttribute id="VALOR_R"/>
+        <viewAttribute id="VALOR_TOTAL"/>
+        <viewAttribute id="VMVER"/>
+        <viewAttribute id="WERKS"/>
+        <viewAttribute id="WERKS_P"/>
+        <viewAttribute id="W_COSTO"/>
+        <viewAttribute id="ZCOMPONENTE"/>
+        <viewAttribute id="ZLOSGR"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="PERIODO_MES" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>10</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="0CALMONTH" length="6" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;FECHA_CALCULO&quot;, 6)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="ZPORC_R_T" length="15" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>decfloat(&quot;PORC_R&quot;)*100</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ZCOMPSTRUC" length="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>'00'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#ZBW_SCP_COST_MAT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CCOMPSTRUC" source="0CCOMPSTRUC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CO_AREA" source="0CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANTIDAD_R" source="CANTIDAD_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORR" source="CORR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIFERENCIA_R" source="DIFERENCIA_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEMT" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECHA_CALCULO" source="FECHA_CALCULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FWAER" source="FWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KOSTL" source="KOSTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATKL" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PORC_R" source="PORC_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_R" source="VALOR_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALOR_TOTAL" source="VALOR_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMVER" source="VMVER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WERKS_P" source="WERKS_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="W_COSTO" source="W_COSTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMPONENTE" source="ZCOMPONENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLOSGR" source="ZLOSGR"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="HISTORICO">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="0CCOMPSTRUC"/>
+        <viewAttribute id="0COMPONENT"/>
+        <viewAttribute id="0COSTCENTER"/>
+        <viewAttribute id="0COSTCOMP"/>
+        <viewAttribute id="0COSTELMNT"/>
+        <viewAttribute id="0CO_AREA"/>
+        <viewAttribute id="0LOC_CURRCY"/>
+        <viewAttribute id="0MATERIAL"/>
+        <viewAttribute id="0NETPRICE"/>
+        <viewAttribute id="0PLANT"/>
+        <viewAttribute id="0UNIT"/>
+        <viewAttribute id="ZCOUNTER"/>
+        <viewAttribute id="ZFEC_CALC"/>
+        <viewAttribute id="ZGRP_ART"/>
+        <viewAttribute id="ZLOTE"/>
+        <viewAttribute id="ZPLANT_P"/>
+        <viewAttribute id="ZPORC_R"/>
+        <viewAttribute id="ZVALOR_R"/>
+        <viewAttribute id="ZVALOR_T"/>
+        <viewAttribute id="ZVAR_CAL"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="GRUPO_ART" length="9" expressionLanguage="COLUMN_ENGINE">
+          <formula>'0'+&quot;ZGRP_ART&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#ZCOST_CAL_HIS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CCOMPSTRUC" source="0CCOMPSTRUC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT" source="0COMPONENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCENTER" source="0COSTCENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCOMP" source="0COSTCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTELMNT" source="0COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CO_AREA" source="0CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0LOC_CURRCY" source="0LOC_CURRCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL" source="0MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0NETPRICE" source="0NETPRICE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT" source="0PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0UNIT" source="0UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOUNTER" source="ZCOUNTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFEC_CALC" source="ZFEC_CALC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART" source="ZGRP_ART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLOTE" source="ZLOTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPLANT_P" source="ZPLANT_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPORC_R" source="ZPORC_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_R" source="ZVALOR_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_T" source="ZVALOR_T"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVAR_CAL" source="ZVAR_CAL"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="0CCOMPSTRUC"/>
+        <viewAttribute id="0COMPONENT"/>
+        <viewAttribute id="0COSTCENTER"/>
+        <viewAttribute id="0COSTCOMP"/>
+        <viewAttribute id="0COSTELMNT"/>
+        <viewAttribute id="0CO_AREA"/>
+        <viewAttribute id="0LOC_CURRCY"/>
+        <viewAttribute id="0MATERIAL"/>
+        <viewAttribute id="0NETPRICE"/>
+        <viewAttribute id="0PLANT"/>
+        <viewAttribute id="0UNIT"/>
+        <viewAttribute id="ZCOUNTER"/>
+        <viewAttribute id="ZFEC_CALC"/>
+        <viewAttribute id="ZGRP_ART"/>
+        <viewAttribute id="ZLOTE"/>
+        <viewAttribute id="ZPLANT_P"/>
+        <viewAttribute id="ZPORC_R"/>
+        <viewAttribute id="ZVALOR_R"/>
+        <viewAttribute id="ZVALOR_T"/>
+        <viewAttribute id="ZVAR_CAL"/>
+        <viewAttribute id="GRUPO_ART"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#PROYECCION_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CCOMPSTRUC" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT" source="ZCOMPONENTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCENTER" source="KOSTL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCOMP" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTELMNT" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CO_AREA" source="0CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0LOC_CURRCY" source="FWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0NETPRICE" source="VMVER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT" source="WERKS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0UNIT" source="MEEHT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOUNTER" source="CORR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFEC_CALC" source="FECHA_CALCULO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLOTE" source="ZLOSGR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPLANT_P" source="WERKS_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPORC_R" source="ZPORC_R_T"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_R" source="VALOR_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_T" source="W_COSTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVAR_CAL" source="KLVAR"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GRUPO_ART" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#HISTORICO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CCOMPSTRUC" source="0CCOMPSTRUC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT" source="0COMPONENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCENTER" source="0COSTCENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCOMP" source="0COSTCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTELMNT" source="0COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CO_AREA" source="0CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0LOC_CURRCY" source="0LOC_CURRCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL" source="0MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0NETPRICE" source="0NETPRICE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT" source="0PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0UNIT" source="0UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOUNTER" source="ZCOUNTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFEC_CALC" source="ZFEC_CALC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART" source="ZGRP_ART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLOTE" source="ZLOTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPLANT_P" source="ZPLANT_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPORC_R" source="ZPORC_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_R" source="ZVALOR_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_T" source="ZVALOR_T"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVAR_CAL" source="ZVAR_CAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_ART" source="GRUPO_ART"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="PROYECCION_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="CATEGORIA_TEXT"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <viewAttribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <viewAttribute id="GRUPO_MATERIAL_ID_TEXT"/>
+        <viewAttribute id="SOCIEDAD_FI"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_GRUPO_MATERIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL" source="GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORIA_TEXT" source="CATEGORIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS" source="GRUPO_MATERIAL_ATTR_AREA_NEGOCIOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_CATEGORIA" source="GRUPO_MATERIAL_ATTR_CATEGORIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" source="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_ID_TEXT" source="GRUPO_MATERIAL_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="0CCOMPSTRUC"/>
+        <viewAttribute id="0COMPONENT"/>
+        <viewAttribute id="0COSTCENTER"/>
+        <viewAttribute id="0COSTCOMP"/>
+        <viewAttribute id="0COSTELMNT"/>
+        <viewAttribute id="0CO_AREA"/>
+        <viewAttribute id="0LOC_CURRCY"/>
+        <viewAttribute id="0MATERIAL"/>
+        <viewAttribute id="0NETPRICE"/>
+        <viewAttribute id="0PLANT"/>
+        <viewAttribute id="0UNIT"/>
+        <viewAttribute id="ZCOUNTER"/>
+        <viewAttribute id="ZFEC_CALC"/>
+        <viewAttribute id="ZGRP_ART"/>
+        <viewAttribute id="ZLOTE"/>
+        <viewAttribute id="ZPLANT_P"/>
+        <viewAttribute id="ZPORC_R"/>
+        <viewAttribute id="ZVALOR_R"/>
+        <viewAttribute id="ZVALOR_T"/>
+        <viewAttribute id="ZVAR_CAL"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_ART"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Union_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CCOMPSTRUC" source="0CCOMPSTRUC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT" source="0COMPONENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCENTER" source="0COSTCENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCOMP" source="0COSTCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTELMNT" source="0COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CO_AREA" source="0CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0LOC_CURRCY" source="0LOC_CURRCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL" source="0MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0NETPRICE" source="0NETPRICE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT" source="0PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0UNIT" source="0UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOUNTER" source="ZCOUNTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFEC_CALC" source="ZFEC_CALC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART" source="ZGRP_ART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLOTE" source="ZLOTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPLANT_P" source="ZPLANT_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPORC_R" source="ZPORC_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_R" source="ZVALOR_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_T" source="ZVALOR_T"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVAR_CAL" source="ZVAR_CAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_ART" source="GRUPO_ART"/>
+      </input>
+      <input node="#PROYECCION_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART" source="GRUPO_MATERIAL"/>
+      </input>
+      <joinAttribute name="ZGRP_ART"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+        <viewAttribute id="MATERIAL_ATTR_ESTACIONALIDAD"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <viewAttribute id="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <viewAttribute id="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_CORTO"/>
+        <viewAttribute id="MATERIAL_ID_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="ID_MATERIAL" length="18" expressionLanguage="COLUMN_ENGINE">
+          <formula>ltrim(&quot;MATERIAL&quot;,'0')</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#DIM_MATERIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" source="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_ESTACIONALIDAD" source="MATERIAL_ATTR_ESTACIONALIDAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_MARGEN_ROTACION" source="MATERIAL_ATTR_IND_MARGEN_ROTACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_PRODUCTO_NUEVO" source="MATERIAL_ATTR_IND_PRODUCTO_NUEVO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_SKU_ESTRATEGICO" source="MATERIAL_ATTR_IND_SKU_ESTRATEGICO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO" source="MATERIAL_ATTR_IND_SKU_TOP_AREA_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION" source="MATERIAL_ATTR_MARGEN_SOBRE_ROTACION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MATERIAL_ESTRATEGICO" source="MATERIAL_ATTR_MATERIAL_ESTRATEGICO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO" source="MATERIAL_ATTR_PRODUCTO_REPRESENTATIVO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SECTOR" source="MATERIAL_ATTR_SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SEGUIMIENTO" source="MATERIAL_ATTR_SEGUIMIENTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_CORTO" source="MATERIAL_CORTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ID_TEXT" source="MATERIAL_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions>
+        <comment text=""/>
+      </descriptions>
+      <viewAttributes>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_CORTO"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="0CCOMPSTRUC"/>
+        <viewAttribute id="0COMPONENT"/>
+        <viewAttribute id="0COSTCENTER"/>
+        <viewAttribute id="0COSTCOMP"/>
+        <viewAttribute id="0COSTELMNT"/>
+        <viewAttribute id="0CO_AREA"/>
+        <viewAttribute id="0LOC_CURRCY"/>
+        <viewAttribute id="0MATERIAL"/>
+        <viewAttribute id="0NETPRICE"/>
+        <viewAttribute id="0PLANT"/>
+        <viewAttribute id="0UNIT"/>
+        <viewAttribute id="ZCOUNTER"/>
+        <viewAttribute id="ZFEC_CALC"/>
+        <viewAttribute id="ZGRP_ART"/>
+        <viewAttribute id="ZLOTE"/>
+        <viewAttribute id="ZPLANT_P"/>
+        <viewAttribute id="ZPORC_R"/>
+        <viewAttribute id="ZVALOR_R"/>
+        <viewAttribute id="ZVALOR_T"/>
+        <viewAttribute id="ZVAR_CAL"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_ART"/>
+        <viewAttribute id="ID_MATERIAL"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CCOMPSTRUC" source="0CCOMPSTRUC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT" source="0COMPONENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCENTER" source="0COSTCENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCOMP" source="0COSTCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTELMNT" source="0COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CO_AREA" source="0CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0LOC_CURRCY" source="0LOC_CURRCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL" source="0MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0NETPRICE" source="0NETPRICE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT" source="0PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0UNIT" source="0UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOUNTER" source="ZCOUNTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFEC_CALC" source="ZFEC_CALC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART" source="ZGRP_ART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLOTE" source="ZLOTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPLANT_P" source="ZPLANT_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPORC_R" source="ZPORC_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_R" source="ZVALOR_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_T" source="ZVALOR_T"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVAR_CAL" source="ZVAR_CAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_ART" source="GRUPO_ART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_CORTO" source="MATERIAL_CORTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_MATERIAL" source="ID_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL" source="MATERIAL"/>
+      </input>
+      <joinAttribute name="0MATERIAL"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CENTRO"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_CENTRO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO" source="CENTRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_CORTO"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="0CCOMPSTRUC"/>
+        <viewAttribute id="0COMPONENT"/>
+        <viewAttribute id="0COSTCENTER"/>
+        <viewAttribute id="0COSTCOMP"/>
+        <viewAttribute id="0COSTELMNT"/>
+        <viewAttribute id="0CO_AREA"/>
+        <viewAttribute id="0LOC_CURRCY"/>
+        <viewAttribute id="0MATERIAL"/>
+        <viewAttribute id="0NETPRICE"/>
+        <viewAttribute id="0PLANT"/>
+        <viewAttribute id="0UNIT"/>
+        <viewAttribute id="ZCOUNTER"/>
+        <viewAttribute id="ZFEC_CALC"/>
+        <viewAttribute id="ZGRP_ART"/>
+        <viewAttribute id="ZLOTE"/>
+        <viewAttribute id="ZPLANT_P"/>
+        <viewAttribute id="ZPORC_R"/>
+        <viewAttribute id="ZVALOR_R"/>
+        <viewAttribute id="ZVALOR_T"/>
+        <viewAttribute id="ZVAR_CAL"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_ART"/>
+        <viewAttribute id="ID_MATERIAL"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_CORTO" source="MATERIAL_CORTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CCOMPSTRUC" source="0CCOMPSTRUC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT" source="0COMPONENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCENTER" source="0COSTCENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCOMP" source="0COSTCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTELMNT" source="0COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CO_AREA" source="0CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0LOC_CURRCY" source="0LOC_CURRCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL" source="0MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0NETPRICE" source="0NETPRICE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT" source="0PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0UNIT" source="0UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOUNTER" source="ZCOUNTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFEC_CALC" source="ZFEC_CALC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART" source="ZGRP_ART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLOTE" source="ZLOTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPLANT_P" source="ZPLANT_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPORC_R" source="ZPORC_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_R" source="ZVALOR_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_T" source="ZVALOR_T"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVAR_CAL" source="ZVAR_CAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_ART" source="GRUPO_ART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_MATERIAL" source="ID_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+      </input>
+      <input node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT" source="CENTRO"/>
+      </input>
+      <joinAttribute name="0PLANT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_5$$$$DIM_MATERIAL$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_CORTO"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="0CCOMPSTRUC"/>
+        <viewAttribute id="0COMPONENT"/>
+        <viewAttribute id="0COSTCENTER"/>
+        <viewAttribute id="0COSTCOMP"/>
+        <viewAttribute id="0COSTELMNT"/>
+        <viewAttribute id="0CO_AREA"/>
+        <viewAttribute id="0LOC_CURRCY"/>
+        <viewAttribute id="0MATERIAL"/>
+        <viewAttribute id="0NETPRICE"/>
+        <viewAttribute id="0PLANT"/>
+        <viewAttribute id="0UNIT"/>
+        <viewAttribute id="ZCOUNTER"/>
+        <viewAttribute id="ZFEC_CALC"/>
+        <viewAttribute id="ZGRP_ART"/>
+        <viewAttribute id="ZLOTE"/>
+        <viewAttribute id="ZPLANT_P"/>
+        <viewAttribute id="ZPORC_R"/>
+        <viewAttribute id="ZVALOR_R"/>
+        <viewAttribute id="ZVALOR_T"/>
+        <viewAttribute id="ZVAR_CAL"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_ART"/>
+        <viewAttribute id="ID_MATERIAL"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_CORTO" source="MATERIAL_CORTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CCOMPSTRUC" source="0CCOMPSTRUC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT" source="0COMPONENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCENTER" source="0COSTCENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCOMP" source="0COSTCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTELMNT" source="0COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CO_AREA" source="0CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0LOC_CURRCY" source="0LOC_CURRCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL" source="0MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0NETPRICE" source="0NETPRICE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT" source="0PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0UNIT" source="0UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOUNTER" source="ZCOUNTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFEC_CALC" source="ZFEC_CALC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART" source="ZGRP_ART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLOTE" source="ZLOTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPLANT_P" source="ZPLANT_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPORC_R" source="ZPORC_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_R" source="ZVALOR_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_T" source="ZVALOR_T"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVAR_CAL" source="ZVAR_CAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_ART" source="GRUPO_ART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_MATERIAL" source="ID_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+      </input>
+      <input node="#Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT" source="MATERIAL"/>
+      </input>
+      <joinAttribute name="0COMPONENT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ELEHK"/>
+        <viewAttribute id="ELEMT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="TXELE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#VC_TCKH1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEHK" source="ELEHK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ELEMT" source="ELEMT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXELE" source="TXELE"/>
+      </input>
+      <filter>&quot;SPRAS&quot; = 'S' and &quot;ELEHK&quot; = '02'</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_CORTO"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="0CCOMPSTRUC"/>
+        <viewAttribute id="0COMPONENT"/>
+        <viewAttribute id="0COSTCENTER"/>
+        <viewAttribute id="0COSTCOMP"/>
+        <viewAttribute id="0COSTELMNT"/>
+        <viewAttribute id="0CO_AREA"/>
+        <viewAttribute id="0LOC_CURRCY"/>
+        <viewAttribute id="0MATERIAL"/>
+        <viewAttribute id="0NETPRICE"/>
+        <viewAttribute id="0PLANT"/>
+        <viewAttribute id="0UNIT"/>
+        <viewAttribute id="ZCOUNTER"/>
+        <viewAttribute id="ZFEC_CALC"/>
+        <viewAttribute id="ZGRP_ART"/>
+        <viewAttribute id="ZLOTE"/>
+        <viewAttribute id="ZPLANT_P"/>
+        <viewAttribute id="ZPORC_R"/>
+        <viewAttribute id="ZVALOR_R"/>
+        <viewAttribute id="ZVALOR_T"/>
+        <viewAttribute id="ZVAR_CAL"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="GRUPO_ART"/>
+        <viewAttribute id="ID_MATERIAL"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+        <viewAttribute id="TXELE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_CORTO" source="MATERIAL_CORTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CCOMPSTRUC" source="0CCOMPSTRUC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COMPONENT" source="0COMPONENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCENTER" source="0COSTCENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCOMP" source="0COSTCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTELMNT" source="0COSTELMNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CO_AREA" source="0CO_AREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0LOC_CURRCY" source="0LOC_CURRCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0MATERIAL" source="0MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0NETPRICE" source="0NETPRICE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0PLANT" source="0PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0UNIT" source="0UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOUNTER" source="ZCOUNTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZFEC_CALC" source="ZFEC_CALC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZGRP_ART" source="ZGRP_ART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLOTE" source="ZLOTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPLANT_P" source="ZPLANT_P"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPORC_R" source="ZPORC_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_R" source="ZVALOR_R"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVALOR_T" source="ZVALOR_T"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZVAR_CAL" source="ZVAR_CAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_ART" source="GRUPO_ART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_MATERIAL" source="ID_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIDAD_NEGOCIO_TEXT" source="UNIDAD_NEGOCIO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+      </input>
+      <input node="#Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXELE" source="TXELE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0COSTCOMP" source="ELEMT"/>
+      </input>
+      <joinAttribute name="0COSTCOMP"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_5">
+    <descriptions/>
+    <attributes>
+      <attribute id="MATERIAL" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL"/>
+        <keyMapping columnObjectName="Join_5" columnName="MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_CORTO" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_CORTO"/>
+        <keyMapping columnObjectName="Join_5" columnName="MATERIAL_CORTO"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_TEXT"/>
+        <keyMapping columnObjectName="Join_5" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="0CALMONTH" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0CALMONTH"/>
+        <keyMapping columnObjectName="Join_5" columnName="0CALMONTH"/>
+      </attribute>
+      <attribute id="0CCOMPSTRUC" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0CCOMPSTRUC"/>
+        <keyMapping columnObjectName="Join_5" columnName="0CCOMPSTRUC"/>
+      </attribute>
+      <attribute id="0COMPONENT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0COMPONENT"/>
+        <keyMapping columnObjectName="Join_5" columnName="0COMPONENT"/>
+      </attribute>
+      <attribute id="0COSTCENTER" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0COSTCENTER"/>
+        <keyMapping columnObjectName="Join_5" columnName="0COSTCENTER"/>
+      </attribute>
+      <attribute id="0COSTCOMP" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0COSTCOMP"/>
+        <keyMapping columnObjectName="Join_5" columnName="0COSTCOMP"/>
+      </attribute>
+      <attribute id="0COSTELMNT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0COSTELMNT"/>
+        <keyMapping columnObjectName="Join_5" columnName="0COSTELMNT"/>
+      </attribute>
+      <attribute id="0CO_AREA" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0CO_AREA"/>
+        <keyMapping columnObjectName="Join_5" columnName="0CO_AREA"/>
+      </attribute>
+      <attribute id="0LOC_CURRCY" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0LOC_CURRCY"/>
+        <keyMapping columnObjectName="Join_5" columnName="0LOC_CURRCY"/>
+      </attribute>
+      <attribute id="0MATERIAL" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0MATERIAL"/>
+        <keyMapping columnObjectName="Join_5" columnName="0MATERIAL"/>
+      </attribute>
+      <attribute id="0PLANT" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0PLANT"/>
+        <keyMapping columnObjectName="Join_5" columnName="0PLANT"/>
+      </attribute>
+      <attribute id="0UNIT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0UNIT"/>
+        <keyMapping columnObjectName="Join_5" columnName="0UNIT"/>
+      </attribute>
+      <attribute id="ZCOUNTER" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCOUNTER"/>
+        <keyMapping columnObjectName="Join_5" columnName="ZCOUNTER"/>
+      </attribute>
+      <attribute id="ZFEC_CALC" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZFEC_CALC"/>
+        <keyMapping columnObjectName="Join_5" columnName="ZFEC_CALC"/>
+      </attribute>
+      <attribute id="ZGRP_ART" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZGRP_ART"/>
+        <keyMapping columnObjectName="Join_5" columnName="ZGRP_ART"/>
+      </attribute>
+      <attribute id="ZPLANT_P" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZPLANT_P"/>
+        <keyMapping columnObjectName="Join_5" columnName="ZPLANT_P"/>
+      </attribute>
+      <attribute id="ZVAR_CAL" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZVAR_CAL"/>
+        <keyMapping columnObjectName="Join_5" columnName="ZVAR_CAL"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_MATERIAL_TEXT"/>
+        <keyMapping columnObjectName="Join_5" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_ART" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUPO_ART"/>
+        <keyMapping columnObjectName="Join_5" columnName="GRUPO_ART"/>
+      </attribute>
+      <attribute id="ID_MATERIAL" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_MATERIAL"/>
+        <keyMapping columnObjectName="Join_5" columnName="ID_MATERIAL"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIDAD_NEGOCIO_TEXT"/>
+        <keyMapping columnObjectName="Join_5" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="CENTRO_TEXT" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CENTRO_TEXT"/>
+        <keyMapping columnObjectName="Join_5" columnName="CENTRO_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT_1" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_TEXT_1"/>
+        <keyMapping columnObjectName="Join_5" columnName="MATERIAL_TEXT_1"/>
+      </attribute>
+      <attribute id="TXELE" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TXELE"/>
+        <keyMapping columnObjectName="Join_5" columnName="TXELE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="0NETPRICE" order="13" aggregationType="max" measureType="simple">
+        <descriptions defaultDescription="0NETPRICE"/>
+        <measureMapping columnObjectName="Join_5" columnName="0NETPRICE"/>
+      </measure>
+      <measure id="ZLOTE" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZLOTE"/>
+        <measureMapping columnObjectName="Join_5" columnName="ZLOTE"/>
+      </measure>
+      <measure id="ZPORC_R" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZPORC_R"/>
+        <measureMapping columnObjectName="Join_5" columnName="ZPORC_R"/>
+      </measure>
+      <measure id="ZVALOR_R" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZVALOR_R"/>
+        <measureMapping columnObjectName="Join_5" columnName="ZVALOR_R"/>
+      </measure>
+      <measure id="ZVALOR_T" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ZVALOR_T"/>
+        <measureMapping columnObjectName="Join_5" columnName="ZVALOR_T"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="324" y="87"/>
+        <rectangleSize/>
+      </shape>
+      <shape expanded="true" modelObjectName="PROYECCION_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="761"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="HISTORICO" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="761"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="645"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PROYECCION_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="645"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="175" y="549"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="329" y="549"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="453"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="404" y="453"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="325" y="357"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="479" y="357"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="401" y="261"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="247" y="261"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="324" y="165"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_CADENA_SUBCADENA_LOCAL" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_CADENA_SUBCADENA"/>
+  <metadata changedAt="2019-02-08 10:44:46.745"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="24"/>
+  <dataSources>
+    <DataSource id="Z1CADSUPLC">
+      <resourceUri>Z1CADSUPLC</resourceUri>
+    </DataSource>
+    <DataSource id="Z1CADSUP">
+      <resourceUri>Z1CADSUP</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZCDCAD"/>
+        <viewAttribute id="ZCDSCAD"/>
+        <viewAttribute id="ZCDCADLC"/>
+        <viewAttribute id="ZKUNNR"/>
+        <viewAttribute id="ZPAIS"/>
+        <viewAttribute id="ZREGION"/>
+        <viewAttribute id="ZPROVINCIA"/>
+        <viewAttribute id="ZCOMUNA"/>
+        <viewAttribute id="ZBKBUR"/>
+        <viewAttribute id="ZCLASIF1"/>
+        <viewAttribute id="ZNOMLOC"/>
+        <viewAttribute id="ZSCANTRACK"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1CADSUPLC">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCAD" source="ZCDCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDSCAD" source="ZCDSCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADLC" source="ZCDCADLC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKUNNR" source="ZKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPAIS" source="ZPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZREGION" source="ZREGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPROVINCIA" source="ZPROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMUNA" source="ZCOMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBKBUR" source="ZBKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLASIF1" source="ZCLASIF1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZNOMLOC" source="ZNOMLOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSCANTRACK" source="ZSCANTRACK"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZCDCAD"/>
+        <viewAttribute id="ZCDSCAD"/>
+        <viewAttribute id="ZKUNNR"/>
+        <viewAttribute id="ZNOMCAD"/>
+        <viewAttribute id="ZNOMSCAD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1CADSUP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCAD" source="ZCDCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDSCAD" source="ZCDSCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZKUNNR" source="ZKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZNOMCAD" source="ZNOMCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZNOMSCAD" source="ZNOMSCAD"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZCDCAD"/>
+        <viewAttribute id="ZCDSCAD"/>
+        <viewAttribute id="ZNOMCAD"/>
+        <viewAttribute id="ZNOMSCAD"/>
+        <viewAttribute id="ZCDCADLC"/>
+        <viewAttribute id="ZPAIS"/>
+        <viewAttribute id="ZREGION"/>
+        <viewAttribute id="ZPROVINCIA"/>
+        <viewAttribute id="ZCOMUNA"/>
+        <viewAttribute id="ZBKBUR"/>
+        <viewAttribute id="ZCLASIF1"/>
+        <viewAttribute id="ZNOMLOC"/>
+        <viewAttribute id="ZSCANTRACK"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCAD" source="ZCDCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDSCAD" source="ZCDSCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZNOMCAD" source="ZNOMCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZNOMSCAD" source="ZNOMSCAD"/>
+      </input>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADLC" source="ZCDCADLC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPAIS" source="ZPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZREGION" source="ZREGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZPROVINCIA" source="ZPROVINCIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMUNA" source="ZCOMUNA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZBKBUR" source="ZBKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCLASIF1" source="ZCLASIF1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZNOMLOC" source="ZNOMLOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZSCANTRACK" source="ZSCANTRACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCAD" source="ZCDCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDSCAD" source="ZCDSCAD"/>
+      </input>
+      <joinAttribute name="BUKRS"/>
+      <joinAttribute name="ZCDCAD"/>
+      <joinAttribute name="ZCDSCAD"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="SOCIEDAD_FI" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_FI"/>
+        <keyMapping columnObjectName="Join_1" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="CADENA" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CADENA"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZCDCAD"/>
+      </attribute>
+      <attribute id="SUBCADENA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBCADENA"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZCDSCAD"/>
+      </attribute>
+      <attribute id="CADENA_TEXT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CADENA_TEXT"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZNOMCAD"/>
+      </attribute>
+      <attribute id="SUBCADENA_TEXT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBCADENA_TEXT"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZNOMSCAD"/>
+      </attribute>
+      <attribute id="LOCAL_CADENA" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LOCAL_CADENA"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZCDCADLC"/>
+      </attribute>
+      <attribute id="PAIS" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PAIS"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZPAIS"/>
+      </attribute>
+      <attribute id="REGION" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REGION"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZREGION"/>
+      </attribute>
+      <attribute id="PROVINCIA" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROVINCIA"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZPROVINCIA"/>
+      </attribute>
+      <attribute id="COMUNA" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COMUNA"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZCOMUNA"/>
+      </attribute>
+      <attribute id="OFICINA" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZBKBUR"/>
+      </attribute>
+      <attribute id="CLASIFIC" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASIFIC"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZCLASIF1"/>
+      </attribute>
+      <attribute id="LOCAL_CADENA_TEXT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LOCAL_CADENA_TEXT"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZNOMLOC"/>
+      </attribute>
+      <attribute id="SCANTRACK" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SCANTRACK"/>
+        <keyMapping columnObjectName="Join_1" columnName="ZSCANTRACK"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="20" y="130"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="260"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="150" y="140"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="259"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

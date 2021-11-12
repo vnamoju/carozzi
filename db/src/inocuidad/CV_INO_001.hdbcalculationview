@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_INO_001" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="Modelo de Inocuidad"/>
+  <metadata changedAt="2020-12-17 16:22:32.422"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="44"/>
+  <dataSources>
+    <DataSource id="INOCUIDAD">
+      <resourceUri>INOCUIDAD</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+        <viewAttribute id="Acción_Correctiva"/>
+        <viewAttribute id="Año_Mes"/>
+        <viewAttribute id="Contador"/>
+        <viewAttribute id="Equipo"/>
+        <viewAttribute id="Fecha"/>
+        <viewAttribute id="Formulario"/>
+        <viewAttribute id="Hora_Ingreso"/>
+        <viewAttribute id="Item"/>
+        <viewAttribute id="Planta"/>
+        <viewAttribute id="Pregunta"/>
+        <viewAttribute id="Respuesta"/>
+        <viewAttribute id="Sección"/>
+        <viewAttribute id="Seguimiento_Cerrada"/>
+        <viewAttribute id="Seguimiento_Pendiente"/>
+        <viewAttribute id="Usuario"/>
+        <viewAttribute id="Área"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="INOCUIDAD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Acción_Correctiva" source="Acción Correctiva"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Año_Mes" source="Año Mes"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Hora_Ingreso" source="Hora Ingreso"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Seguimiento_Cerrada" source="Seguimiento Cerrada"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Seguimiento_Pendiente" source="Seguimiento Pendiente"/></input>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="Acción_Correctiva" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Acción_Correctiva"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Acción_Correctiva"/>
+      </attribute>
+      <attribute id="Año_Mes" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Año_Mes"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Año_Mes"/>
+      </attribute>
+      <attribute id="Equipo" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Equipo"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Equipo"/>
+      </attribute>
+      <attribute id="Fecha" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Fecha"/>
+      </attribute>
+      <attribute id="Formulario" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Formulario"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Formulario"/>
+      </attribute>
+      <attribute id="Hora_Ingreso" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Hora_Ingreso"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Hora_Ingreso"/>
+      </attribute>
+      <attribute id="Item" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Item"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Item"/>
+      </attribute>
+      <attribute id="Planta" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Planta"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Planta"/>
+      </attribute>
+      <attribute id="Pregunta" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Pregunta"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Pregunta"/>
+      </attribute>
+      <attribute id="Respuesta" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Respuesta"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Respuesta"/>
+      </attribute>
+      <attribute id="Sección" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sección"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Sección"/>
+      </attribute>
+      <attribute id="Seguimiento_Cerrada" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Seguimiento_Cerrada"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Seguimiento_Cerrada"/>
+      </attribute>
+      <attribute id="Seguimiento_Pendiente" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Seguimiento_Pendiente"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Seguimiento_Pendiente"/>
+      </attribute>
+      <attribute id="Usuario" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Usuario"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Usuario"/>
+      </attribute>
+      <attribute id="Área" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Área"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Área"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Contador" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Contador"/>
+        <measureMapping columnObjectName="Projection_1" columnName="Contador"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="49" y="262"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

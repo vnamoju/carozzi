@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_CLIENTE2" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="CLIENTE"/>
+  <metadata changedAt="2021-01-07 14:27:02.851"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="49"/>
+  <dataSources>
+    <DataSource id="KNA1">
+      <resourceUri>KNA1</resourceUri>
+    </DataSource>
+    <DataSource id="KNVV">
+      <resourceUri>KNVV</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_CLIENTE_CLASIF_ESPECIAL">
+      <resourceUri>DIM_CLIENTE_CLASIF_ESPECIAL</resourceUri>
+    </DataSource>
+    <DataSource id="JERARQUIA_CLIENTE">
+      <resourceUri>JERARQUIA_CLIENTE</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="NAME4"/>
+        <viewAttribute id="COUNC"/>
+        <viewAttribute id="CITYC"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="SPRAS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#KNA1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME4" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNC" source="COUNC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITYC" source="CITYC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="VKORG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#KNVV">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_8" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="NAME4"/>
+        <viewAttribute id="LAND1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME4" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+      </input>
+      <input node="#Aggregation_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="KUNNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute aggregationType="max" id="ZCDCANAL"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="ZZCDCLASIF_TEXTO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_CLIENTE_CLASIF_ESPECIAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCANAL" source="ZCDCANAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF_TEXTO" source="ZZCDCLASIF_TEXTO"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ZCDCANAL"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="NAME4"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="ZZCDCLASIF_TEXTO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME4" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+      </input>
+      <input node="#Aggregation_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCANAL" source="ZCDCANAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF_TEXTO" source="ZZCDCLASIF_TEXTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="KUNNR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ID_NODO"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="Nivel1_text"/>
+        <viewAttribute id="Nivel2_text"/>
+        <viewAttribute id="Nivel3_text"/>
+        <viewAttribute id="Nivel4_text"/>
+        <viewAttribute id="Nivel5_text"/>
+        <viewAttribute id="Nivel6_text"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#JERARQUIA_CLIENTE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_NODO" source="ID_NODO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel1_text" source="Nivel1_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel2_text" source="Nivel2_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel3_text" source="Nivel3_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel4_text" source="Nivel4_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel5_text" source="Nivel5_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel6_text" source="Nivel6_text"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ZCDCANAL"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="Nivel1_text"/>
+        <viewAttribute id="Nivel2_text"/>
+        <viewAttribute id="Nivel3_text"/>
+        <viewAttribute id="Nivel4_text"/>
+        <viewAttribute id="Nivel5_text"/>
+        <viewAttribute id="Nivel6_text"/>
+        <viewAttribute id="VKORG"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="NAME4"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="ZZCDCLASIF"/>
+        <viewAttribute id="ZZCDCLASIF_TEXTO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCANAL" source="ZCDCANAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME4" source="NAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAND1" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF" source="ZZCDCLASIF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZCDCLASIF_TEXTO" source="ZZCDCLASIF_TEXTO"/>
+      </input>
+      <input node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel1_text" source="Nivel1_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel2_text" source="Nivel2_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel3_text" source="Nivel3_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel4_text" source="Nivel4_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel5_text" source="Nivel5_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Nivel6_text" source="Nivel6_text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="ID_NODO"/>
+      </input>
+      <joinAttribute name="BUKRS"/>
+      <joinAttribute name="KUNNR"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_4">
+    <descriptions/>
+    <attributes>
+      <attribute id="ZCDCANAL" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCDCANAL"/>
+        <keyMapping columnObjectName="Join_4" columnName="ZCDCANAL"/>
+      </attribute>
+      <attribute id="BUKRS" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUKRS"/>
+        <keyMapping columnObjectName="Join_4" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="Nivel1_text" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel1_text"/>
+        <keyMapping columnObjectName="Join_4" columnName="Nivel1_text"/>
+      </attribute>
+      <attribute id="Nivel2_text" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel2_text"/>
+        <keyMapping columnObjectName="Join_4" columnName="Nivel2_text"/>
+      </attribute>
+      <attribute id="Nivel3_text" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel3_text"/>
+        <keyMapping columnObjectName="Join_4" columnName="Nivel3_text"/>
+      </attribute>
+      <attribute id="Nivel4_text" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel4_text"/>
+        <keyMapping columnObjectName="Join_4" columnName="Nivel4_text"/>
+      </attribute>
+      <attribute id="Nivel5_text" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel5_text"/>
+        <keyMapping columnObjectName="Join_4" columnName="Nivel5_text"/>
+      </attribute>
+      <attribute id="Nivel6_text" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel6_text"/>
+        <keyMapping columnObjectName="Join_4" columnName="Nivel6_text"/>
+      </attribute>
+      <attribute id="VKORG" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VKORG"/>
+        <keyMapping columnObjectName="Join_4" columnName="VKORG"/>
+      </attribute>
+      <attribute id="MANDT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_4" columnName="MANDT"/>
+      </attribute>
+      <attribute id="KUNNR" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KUNNR"/>
+        <keyMapping columnObjectName="Join_4" columnName="KUNNR"/>
+      </attribute>
+      <attribute id="NAME1" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NAME1"/>
+        <keyMapping columnObjectName="Join_4" columnName="NAME1"/>
+      </attribute>
+      <attribute id="NAME4" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NAME4"/>
+        <keyMapping columnObjectName="Join_4" columnName="NAME4"/>
+      </attribute>
+      <attribute id="LAND1" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LAND1"/>
+        <keyMapping columnObjectName="Join_4" columnName="LAND1"/>
+      </attribute>
+      <attribute id="ZZCDCLASIF" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZCDCLASIF"/>
+        <keyMapping columnObjectName="Join_4" columnName="ZZCDCLASIF"/>
+      </attribute>
+      <attribute id="ZZCDCLASIF_TEXTO" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZCDCLASIF_TEXTO"/>
+        <keyMapping columnObjectName="Join_4" columnName="ZZCDCLASIF_TEXTO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="CLIENTE_ID_TEXT_1" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ID_TEXT_1"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="70">
+          <formula>&quot;CLIENTE_CORTO&quot;+' - '+&quot;NAME1&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CLIENTE_ID_TEXT_2" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_ID_TEXT_2"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="70">
+          <formula>&quot;CLIENTE_CORTO&quot;+' - '+&quot;NAME4&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CLIENTE_CORTO" hidden="false" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLIENTE_CORTO"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
+          <formula>if(leftstr(&quot;KUNNR&quot;,1)='0',string(int(&quot;KUNNR&quot;)),&quot;KUNNR&quot;)&#xD;
+&#xD;
+</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

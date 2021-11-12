@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="Z1CASCADA2" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection">
+  <origin/>
+  <descriptions defaultDescription="x"/>
+  <metadata changedAt="2020-05-07 15:20:00.289"/>
+  <localVariables>
+    <variable id="ejercicio_3" parameter="true">
+      <descriptions defaultDescription="ejercicio_3"/>
+      <variableProperties datatype="NVARCHAR" defaultExpressionLanguage="COLUMN_ENGINE" length="4" mandatory="false">
+        <valueDomain type="Date"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>string((int(leftstr(string(now()),4))-3))</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="historico" parameter="true">
+      <descriptions defaultDescription="Histórico S/N"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="N" length="1" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="37"/>
+  <dataSources>
+    <DataSource id="Z1CASCADA2">
+      <resourceUri>Z1CASCADA2</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Sociedad_CO"/>
+        <viewAttribute id="Cliente_Padre"/>
+        <viewAttribute id="Cliente"/>
+        <viewAttribute id="Sociedad_FI"/>
+        <viewAttribute id="OrgVenta"/>
+        <viewAttribute id="Oficina"/>
+        <viewAttribute id="Vendedor"/>
+        <viewAttribute id="Division"/>
+        <viewAttribute id="Grupo_Articulo"/>
+        <viewAttribute id="Pais"/>
+        <viewAttribute aggregationType="sum" id="Valor"/>
+        <viewAttribute aggregationType="sum" id="Volumen"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="Ejercicio"/>
+        <viewAttribute id="Periodo"/>
+        <viewAttribute id="Mes_Anio"/>
+        <viewAttribute id="ARTNR"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="GJAHR"/>
+        <viewAttribute aggregationType="sum" id="KILOS"/>
+        <viewAttribute id="MEINH"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Z1CASCADA2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Sociedad_CO" source="KOKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cliente_Padre" source="HKUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cliente" source="KNDNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Sociedad_FI" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OrgVenta" source="VKORG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Oficina" source="VKBUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Vendedor" source="KMVTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="WWDIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Grupo_Articulo" source="MATKL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pais" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Valor" source="WOGBTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Volumen" source="MEGBTR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Ejercicio" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Periodo" source="PERIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Mes_Anio" source="MES_ANO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ARTNR" source="ARTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GJAHR" source="GJAHR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KILOS" source="KILOS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
+      </input>
+      <filter>&quot;Ejercicio&quot;>'$$ejercicio_3$$' or '$$historico$$' = 'S'</filter>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Aggregation_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="Sociedad_CO" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sociedad_CO"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Sociedad_CO"/>
+      </attribute>
+      <attribute id="Cliente_Padre" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cliente_Padre"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Cliente_Padre"/>
+      </attribute>
+      <attribute id="Cliente" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cliente"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Cliente"/>
+      </attribute>
+      <attribute id="Sociedad_FI" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sociedad_FI"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Sociedad_FI"/>
+      </attribute>
+      <attribute id="OrgVenta" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OrgVenta"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="OrgVenta"/>
+      </attribute>
+      <attribute id="Oficina" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Oficina"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Oficina"/>
+      </attribute>
+      <attribute id="Vendedor" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Vendedor"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Vendedor"/>
+      </attribute>
+      <attribute id="Division" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Division"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Division"/>
+      </attribute>
+      <attribute id="Grupo_Articulo" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo_Articulo"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Grupo_Articulo"/>
+      </attribute>
+      <attribute id="Pais" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Pais"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Pais"/>
+      </attribute>
+      <attribute id="MANDT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="Ejercicio" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Ejercicio"/>
+      </attribute>
+      <attribute id="Periodo" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Periodo"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Periodo"/>
+      </attribute>
+      <attribute id="Mes_Anio" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes_Anio"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="Mes_Anio"/>
+      </attribute>
+      <attribute id="ARTNR" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ARTNR"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="ARTNR"/>
+      </attribute>
+      <attribute id="KSTAR" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KSTAR"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="KSTAR"/>
+      </attribute>
+      <attribute id="GJAHR" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GJAHR"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="GJAHR"/>
+      </attribute>
+      <attribute id="MEINH" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MEINH"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="MEINH"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="FECHA_PROCESO" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha Proceso"/>
+        <keyCalculation datatype="DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>replace(leftstr(string(now()),10),'-','')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="HORA_UTC" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Hora UTC"/>
+        <keyCalculation datatype="TIME" expressionLanguage="COLUMN_ENGINE">
+          <formula>utcnow()</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Valor" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor"/>
+        <measureMapping columnObjectName="Aggregation_1" columnName="Valor"/>
+      </measure>
+      <measure id="Volumen" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen"/>
+        <measureMapping columnObjectName="Aggregation_1" columnName="Volumen"/>
+      </measure>
+      <measure id="KILOS" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="KILOS"/>
+        <measureMapping columnObjectName="Aggregation_1" columnName="KILOS"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="test">
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="test" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY_ENFORCED">
+            <descriptions defaultDescription="test"/>
+            <levels/>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="176" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="210"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

@@ -1,0 +1,32 @@
+PROCEDURE "SCP_CAROZZI_SAC::Delete_FG_Dia"
+LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+AS
+BEGIN
+   /************************************
+       Write your procedure logic  
+   **************************************/  
+   
+/*drop table "SCP_CAROZZI_SAC"."BK_FG_RENTABILIDAD_02";*/
+/*rename table "SCP_CAROZZI_SAC"."FG_RENTABILIDAD_02" to "SCP_CAROZZI_SAC"."BK_FG_RENTABILIDAD_02";*/
+/*create table "SCP_CAROZZI_SAC"."FG_RENTABILIDAD_02" like "SCP_CAROZZI_SAC"."BK_FG_RENTABILIDAD_02";*/
+
+/****************************************************/
+/*drop table "SCP_CAROZZI_SAC"."BK_FG_RENTABILIDAD_02";*/
+/*create table "SCP_CAROZZI_SAC"."BK_FG_RENTABILIDAD_02" as (select * from "SCP_CAROZZI_SAC"."FG_RENTABILIDAD_02");*/  
+/*delete from "SCP_CAROZZI_SAC"."FG_RENTABILIDAD_02";*/
+/*****************************************************/
+/***drop table "SCP_CAROZZI_SAC"."BK_FG_VZ1CASCADA1";*/
+/***create table "SCP_CAROZZI_SAC"."BK_FG_VZ1CASCADA1" as (select * from "SCP_CAROZZI_SAC"."FG_VZ1CASCADA1"); */ 
+/*delete from "SCP_CAROZZI_SAC"."FG_VZ1CASCADA1";*/
+/****************************************************/
+/* drop table "SCP_CAROZZI_SAC"."BK_FG_NEWVTA_MES_03";*/
+/*create table "SCP_CAROZZI_SAC"."BK_FG_NEWVTA_MES_03" as (select * from "SCP_CAROZZI_SAC"."FG_NEWVTA_MES_03");*/  
+/*delete from "SCP_CAROZZI_SAC"."FG_NEWVTA_MES_03";/
+/*****************************************************/
+/*delete from "SCP_CAROZZI_SAC"."FG_SELLOUTCL_DD";*/
+/*delete from "SCP_CAROZZI_SAC"."FG_SELLOUTCL_MM";*/  
+/*delete from "SCP_CAROZZI_SAC"."FG_NEWVTA_DIARIO_04H";*/
+
+ 
+END 

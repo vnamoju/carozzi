@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DIM_SELLLOCAL" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="DIM_SELLLOCAL"/>
+  <metadata changedAt="2020-09-03 11:57:22.481"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="51"/>
+  <dataSources>
+    <DataSource id="Z1CADENAS">
+      <resourceUri>Z1CADENAS</resourceUri>
+    </DataSource>
+    <DataSource id="Z1CADLOC">
+      <resourceUri>Z1CADLOC</resourceUri>
+    </DataSource>
+    <DataSource id="Z1CADFORM">
+      <resourceUri>Z1CADFORM</resourceUri>
+    </DataSource>
+    <DataSource id="Z1VCLIENTEXREMO">
+      <resourceUri>Z1VCLIENTEXREMO</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_OFICINA_VENTA">
+      <resourceUri>DIM_OFICINA_VENTA</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_COMUNA">
+      <resourceUri>DIM_COMUNA</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_PROVINCIA">
+      <resourceUri>DIM_PROVINCIA</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_REGION">
+      <resourceUri>DIM_REGION</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ZCADENA_EXT"/>
+        <viewAttribute id="ZTXCADENA"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZCDCADENA"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Z1CADENAS"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZCDCADENA"/>
+        <viewAttribute id="ZCDLOCAL"/>
+        <viewAttribute id="ZTXLOCAL"/>
+        <viewAttribute id="ZCDFORMAT"/>
+        <viewAttribute id="ZZONSCAN"/>
+        <viewAttribute id="ZLATITUD"/>
+        <viewAttribute id="ZLONGITU"/>
+        <viewAttribute id="ZCCDPAIS"/>
+        <viewAttribute id="ZCDREGION"/>
+        <viewAttribute id="ZCCDPROV"/>
+        <viewAttribute id="ZCCDOMUN"/>
+        <viewAttribute id="ZCDOFICI"/>
+        <viewAttribute id="ZCDDIRECC"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Z1CADLOC"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="leftOuter" optimizeJoinColumns="false">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ZTXCADENA"/>
+        <viewAttribute id="ZCDLOCAL"/>
+        <viewAttribute id="ZCADENA_EXT"/>
+        <viewAttribute id="ZTXLOCAL"/>
+        <viewAttribute id="ZCDFORMAT"/>
+        <viewAttribute id="ZZONSCAN"/>
+        <viewAttribute id="ZLATITUD"/>
+        <viewAttribute id="ZLONGITU"/>
+        <viewAttribute id="ZCCDPAIS"/>
+        <viewAttribute id="ZCDREGION"/>
+        <viewAttribute id="ZCCDPROV"/>
+        <viewAttribute id="ZCCDOMUN"/>
+        <viewAttribute id="ZCDOFICI"/>
+        <viewAttribute id="ZCDDIRECC"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZCDCADENA"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXCADENA" source="ZTXCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCADENA_EXT" source="ZCADENA_EXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
+      </input>
+      <input node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDLOCAL" source="ZCDLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXLOCAL" source="ZTXLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDFORMAT" source="ZCDFORMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZONSCAN" source="ZZONSCAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATITUD" source="ZLATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLONGITU" source="ZLONGITU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPAIS" source="ZCCDPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDREGION" source="ZCDREGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPROV" source="ZCCDPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDOMUN" source="ZCCDOMUN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDOFICI" source="ZCDOFICI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDDIRECC" source="ZCDDIRECC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="ZCDCADENA"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZCDCADENA"/>
+        <viewAttribute id="ZCDFORMAT"/>
+        <viewAttribute id="ZTXFORMAT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Z1CADFORM"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="ZTXFORMAT"/>
+        <viewAttribute id="ZTXCADENA"/>
+        <viewAttribute id="ZCADENA_EXT"/>
+        <viewAttribute id="ZCDLOCAL"/>
+        <viewAttribute id="ZTXLOCAL"/>
+        <viewAttribute id="ZZONSCAN"/>
+        <viewAttribute id="ZLATITUD"/>
+        <viewAttribute id="ZLONGITU"/>
+        <viewAttribute id="ZCCDPAIS"/>
+        <viewAttribute id="ZCDREGION"/>
+        <viewAttribute id="ZCCDPROV"/>
+        <viewAttribute id="ZCCDOMUN"/>
+        <viewAttribute id="ZCDOFICI"/>
+        <viewAttribute id="ZCDDIRECC"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZCDCADENA"/>
+        <viewAttribute id="ZCDFORMAT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXCADENA" source="ZTXCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCADENA_EXT" source="ZCADENA_EXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDLOCAL" source="ZCDLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXLOCAL" source="ZTXLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZONSCAN" source="ZZONSCAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATITUD" source="ZLATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLONGITU" source="ZLONGITU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPAIS" source="ZCCDPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDREGION" source="ZCDREGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPROV" source="ZCCDPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDOMUN" source="ZCCDOMUN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDOFICI" source="ZCDOFICI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDDIRECC" source="ZCDDIRECC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDFORMAT" source="ZCDFORMAT"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXFORMAT" source="ZTXFORMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDFORMAT" source="ZCDFORMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
+      </input>
+    <joinAttribute name="ZCDFORMAT"/>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="ZCDCADENA"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="CDCAD"/>
+        <viewAttribute id="CDSCAD"/>
+        <viewAttribute id="CDCADLC"/>
+        <viewAttribute id="CDREMO"/>
+        <viewAttribute id="VKBUR"/>
+        <viewAttribute id="DESCRIPCION"/>
+        <viewAttribute id="FLAG_MERCA"/>
+        <viewAttribute id="TIPO_VTA"/>
+        <viewAttribute id="KUNNR_CENTRALIZADO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Z1VCLIENTEXREMO"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDREMO"/>
+        <viewAttribute id="ZTXFORMAT"/>
+        <viewAttribute id="ZTXCADENA"/>
+        <viewAttribute id="ZCADENA_EXT"/>
+        <viewAttribute id="ZCDLOCAL"/>
+        <viewAttribute id="ZTXLOCAL"/>
+        <viewAttribute id="ZZONSCAN"/>
+        <viewAttribute id="ZLATITUD"/>
+        <viewAttribute id="ZLONGITU"/>
+        <viewAttribute id="ZCCDPAIS"/>
+        <viewAttribute id="ZCDREGION"/>
+        <viewAttribute id="ZCCDPROV"/>
+        <viewAttribute id="ZCCDOMUN"/>
+        <viewAttribute id="ZCDOFICI"/>
+        <viewAttribute id="ZCDDIRECC"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZCDCADENA"/>
+        <viewAttribute id="ZCDFORMAT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXFORMAT" source="ZTXFORMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXCADENA" source="ZTXCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCADENA_EXT" source="ZCADENA_EXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDLOCAL" source="ZCDLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXLOCAL" source="ZTXLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZONSCAN" source="ZZONSCAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATITUD" source="ZLATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLONGITU" source="ZLONGITU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPAIS" source="ZCCDPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDREGION" source="ZCDREGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPROV" source="ZCCDPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDOMUN" source="ZCCDOMUN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDOFICI" source="ZCDOFICI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDDIRECC" source="ZCDDIRECC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDFORMAT" source="ZCDFORMAT"/>
+      </input>
+      <input node="Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDREMO" source="CDREMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDLOCAL" source="CDCADLC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="CDCAD"/>
+      </input>
+    <joinAttribute name="ZCDLOCAL"/>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="ZCDCADENA"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="OFICINA_VENTA_ID_TEXT"/>
+        <viewAttribute id="OFICINA_VENTA"/>
+        <viewAttribute id="OFICINA_JER_NIVEL2"/>
+        <viewAttribute id="OFICINA_JER_NIVEL3"/>
+        <viewAttribute id="OFICINA_JER_NIVEL4"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_OFICINA_VENTA"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDREMO"/>
+        <viewAttribute id="ZTXFORMAT"/>
+        <viewAttribute id="ZTXCADENA"/>
+        <viewAttribute id="ZCADENA_EXT"/>
+        <viewAttribute id="ZCDLOCAL"/>
+        <viewAttribute id="ZTXLOCAL"/>
+        <viewAttribute id="ZZONSCAN"/>
+        <viewAttribute id="ZLATITUD"/>
+        <viewAttribute id="ZLONGITU"/>
+        <viewAttribute id="ZCCDPAIS"/>
+        <viewAttribute id="ZCDREGION"/>
+        <viewAttribute id="ZCCDPROV"/>
+        <viewAttribute id="ZCCDOMUN"/>
+        <viewAttribute id="ZCDOFICI"/>
+        <viewAttribute id="ZCDDIRECC"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZCDCADENA"/>
+        <viewAttribute id="ZCDFORMAT"/>
+        <viewAttribute id="OFICINA_VENTA_ID_TEXT"/>
+        <viewAttribute id="OFICINA_JER_NIVEL2"/>
+        <viewAttribute id="OFICINA_JER_NIVEL3"/>
+        <viewAttribute id="OFICINA_JER_NIVEL4"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDREMO" source="CDREMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXFORMAT" source="ZTXFORMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXCADENA" source="ZTXCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCADENA_EXT" source="ZCADENA_EXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDLOCAL" source="ZCDLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXLOCAL" source="ZTXLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZONSCAN" source="ZZONSCAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATITUD" source="ZLATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLONGITU" source="ZLONGITU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPAIS" source="ZCCDPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDREGION" source="ZCDREGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPROV" source="ZCCDPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDOMUN" source="ZCCDOMUN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDOFICI" source="ZCDOFICI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDDIRECC" source="ZCDDIRECC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDFORMAT" source="ZCDFORMAT"/>
+      </input>
+      <input node="Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA_ID_TEXT" source="OFICINA_VENTA_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL2" source="OFICINA_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL3" source="OFICINA_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL4" source="OFICINA_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDOFICI" source="OFICINA_VENTA"/>
+      </input>
+    <joinAttribute name="ZCDOFICI"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="COMUNA"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_COMUNA"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDREMO"/>
+        <viewAttribute id="ZTXFORMAT"/>
+        <viewAttribute id="ZTXCADENA"/>
+        <viewAttribute id="ZCADENA_EXT"/>
+        <viewAttribute id="ZCDLOCAL"/>
+        <viewAttribute id="ZTXLOCAL"/>
+        <viewAttribute id="ZZONSCAN"/>
+        <viewAttribute id="ZLATITUD"/>
+        <viewAttribute id="ZLONGITU"/>
+        <viewAttribute id="ZCCDPAIS"/>
+        <viewAttribute id="ZCDREGION"/>
+        <viewAttribute id="ZCCDPROV"/>
+        <viewAttribute id="ZCCDOMUN"/>
+        <viewAttribute id="ZCDOFICI"/>
+        <viewAttribute id="ZCDDIRECC"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZCDCADENA"/>
+        <viewAttribute id="ZCDFORMAT"/>
+        <viewAttribute id="OFICINA_VENTA_ID_TEXT"/>
+        <viewAttribute id="OFICINA_JER_NIVEL2"/>
+        <viewAttribute id="OFICINA_JER_NIVEL3"/>
+        <viewAttribute id="OFICINA_JER_NIVEL4"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDREMO" source="CDREMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXFORMAT" source="ZTXFORMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXCADENA" source="ZTXCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCADENA_EXT" source="ZCADENA_EXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDLOCAL" source="ZCDLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXLOCAL" source="ZTXLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZONSCAN" source="ZZONSCAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATITUD" source="ZLATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLONGITU" source="ZLONGITU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPAIS" source="ZCCDPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDREGION" source="ZCDREGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPROV" source="ZCCDPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDOMUN" source="ZCCDOMUN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDOFICI" source="ZCDOFICI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDDIRECC" source="ZCDDIRECC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDFORMAT" source="ZCDFORMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA_ID_TEXT" source="OFICINA_VENTA_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL2" source="OFICINA_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL3" source="OFICINA_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL4" source="OFICINA_JER_NIVEL4"/>
+      </input>
+      <input node="Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDREGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDOMUN" source="COMUNA"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="ZCCDPAIS"/>
+    <joinAttribute name="ZCDREGION"/>
+    <joinAttribute name="ZCCDOMUN"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="PROVINCIA"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_PROVINCIA"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_8">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PAIS"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_REGION"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDREMO"/>
+        <viewAttribute id="ZTXFORMAT"/>
+        <viewAttribute id="ZTXCADENA"/>
+        <viewAttribute id="ZCADENA_EXT"/>
+        <viewAttribute id="ZCDLOCAL"/>
+        <viewAttribute id="ZTXLOCAL"/>
+        <viewAttribute id="ZZONSCAN"/>
+        <viewAttribute id="ZLATITUD"/>
+        <viewAttribute id="ZLONGITU"/>
+        <viewAttribute id="ZCCDPAIS"/>
+        <viewAttribute id="ZCDREGION"/>
+        <viewAttribute id="ZCCDPROV"/>
+        <viewAttribute id="ZCCDOMUN"/>
+        <viewAttribute id="ZCDOFICI"/>
+        <viewAttribute id="ZCDDIRECC"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZCDCADENA"/>
+        <viewAttribute id="ZCDFORMAT"/>
+        <viewAttribute id="OFICINA_VENTA_ID_TEXT"/>
+        <viewAttribute id="OFICINA_JER_NIVEL2"/>
+        <viewAttribute id="OFICINA_JER_NIVEL3"/>
+        <viewAttribute id="OFICINA_JER_NIVEL4"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDREMO" source="CDREMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXFORMAT" source="ZTXFORMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXCADENA" source="ZTXCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCADENA_EXT" source="ZCADENA_EXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDLOCAL" source="ZCDLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXLOCAL" source="ZTXLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZONSCAN" source="ZZONSCAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATITUD" source="ZLATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLONGITU" source="ZLONGITU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPAIS" source="ZCCDPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDREGION" source="ZCDREGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPROV" source="ZCCDPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDOMUN" source="ZCCDOMUN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDOFICI" source="ZCDOFICI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDDIRECC" source="ZCDDIRECC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDFORMAT" source="ZCDFORMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA_ID_TEXT" source="OFICINA_VENTA_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL2" source="OFICINA_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL3" source="OFICINA_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL4" source="OFICINA_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+      </input>
+      <input node="Projection_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDREGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPROV" source="PROVINCIA"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="ZCCDPAIS"/>
+    <joinAttribute name="ZCDREGION"/>
+    <joinAttribute name="ZCCDPROV"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_7" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDREMO"/>
+        <viewAttribute id="ZTXFORMAT"/>
+        <viewAttribute id="ZTXCADENA"/>
+        <viewAttribute id="ZCADENA_EXT"/>
+        <viewAttribute id="ZCDLOCAL"/>
+        <viewAttribute id="ZTXLOCAL"/>
+        <viewAttribute id="ZZONSCAN"/>
+        <viewAttribute id="ZLATITUD"/>
+        <viewAttribute id="ZLONGITU"/>
+        <viewAttribute id="ZCCDPAIS"/>
+        <viewAttribute id="ZCDREGION"/>
+        <viewAttribute id="ZCCDPROV"/>
+        <viewAttribute id="ZCCDOMUN"/>
+        <viewAttribute id="ZCDOFICI"/>
+        <viewAttribute id="ZCDDIRECC"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ZCDCADENA"/>
+        <viewAttribute id="ZCDFORMAT"/>
+        <viewAttribute id="OFICINA_VENTA_ID_TEXT"/>
+        <viewAttribute id="OFICINA_JER_NIVEL2"/>
+        <viewAttribute id="OFICINA_JER_NIVEL3"/>
+        <viewAttribute id="OFICINA_JER_NIVEL4"/>
+        <viewAttribute id="COMUNA_TEXT"/>
+        <viewAttribute id="PROVINCIA_TEXT"/>
+        <viewAttribute id="REGION_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDREMO" source="CDREMO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXFORMAT" source="ZTXFORMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXCADENA" source="ZTXCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCADENA_EXT" source="ZCADENA_EXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDLOCAL" source="ZCDLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTXLOCAL" source="ZTXLOCAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZZONSCAN" source="ZZONSCAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLATITUD" source="ZLATITUD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZLONGITU" source="ZLONGITU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPAIS" source="ZCCDPAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDREGION" source="ZCDREGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPROV" source="ZCCDPROV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDOMUN" source="ZCCDOMUN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDOFICI" source="ZCDOFICI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDDIRECC" source="ZCDDIRECC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDFORMAT" source="ZCDFORMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_VENTA_ID_TEXT" source="OFICINA_VENTA_ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL2" source="OFICINA_JER_NIVEL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL3" source="OFICINA_JER_NIVEL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OFICINA_JER_NIVEL4" source="OFICINA_JER_NIVEL4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMUNA_TEXT" source="COMUNA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROVINCIA_TEXT" source="PROVINCIA_TEXT"/>
+      </input>
+      <input node="Projection_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_TEXT" source="REGION_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCCDPAIS" source="PAIS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDREGION" source="REGION"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="ZCCDPAIS"/>
+    <joinAttribute name="ZCDREGION"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_7">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDREMO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDREMO"/>
+        <keyMapping columnObjectName="Join_7" columnName="CDREMO"/>
+      </attribute>
+      <attribute id="ZTXFORMAT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZTXFORMAT"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZTXFORMAT"/>
+      </attribute>
+      <attribute id="ZTXCADENA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZTXCADENA"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZTXCADENA"/>
+      </attribute>
+      <attribute id="ZCADENA_EXT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCADENA_EXT"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZCADENA_EXT"/>
+      </attribute>
+      <attribute id="ZCDLOCAL" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCDLOCAL"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZCDLOCAL"/>
+      </attribute>
+      <attribute id="ZTXLOCAL" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZTXLOCAL"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZTXLOCAL"/>
+      </attribute>
+      <attribute id="ZZONSCAN" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZZONSCAN"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZZONSCAN"/>
+      </attribute>
+      <attribute id="ZLATITUD" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZLATITUD"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZLATITUD"/>
+      </attribute>
+      <attribute id="ZLONGITU" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZLONGITU"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZLONGITU"/>
+      </attribute>
+      <attribute id="ZCCDPAIS" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCCDPAIS"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZCCDPAIS"/>
+      </attribute>
+      <attribute id="ZCDREGION" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCDREGION"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZCDREGION"/>
+      </attribute>
+      <attribute id="ZCCDPROV" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCCDPROV"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZCCDPROV"/>
+      </attribute>
+      <attribute id="ZCCDOMUN" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCCDOMUN"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZCCDOMUN"/>
+      </attribute>
+      <attribute id="ZCDOFICI" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCDOFICI"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZCDOFICI"/>
+      </attribute>
+      <attribute id="ZCDDIRECC" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCDDIRECC"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZCDDIRECC"/>
+      </attribute>
+      <attribute id="MANDT" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_7" columnName="MANDT"/>
+      </attribute>
+      <attribute id="ZCDCADENA" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCDCADENA"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZCDCADENA"/>
+      </attribute>
+      <attribute id="ZCDFORMAT" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZCDFORMAT"/>
+        <keyMapping columnObjectName="Join_7" columnName="ZCDFORMAT"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID_TEXT" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_VENTA_ID_TEXT"/>
+        <keyMapping columnObjectName="Join_7" columnName="OFICINA_VENTA_ID_TEXT"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL2" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL2"/>
+        <keyMapping columnObjectName="Join_7" columnName="OFICINA_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL3" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL3"/>
+        <keyMapping columnObjectName="Join_7" columnName="OFICINA_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL4" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL4"/>
+        <keyMapping columnObjectName="Join_7" columnName="OFICINA_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="COMUNA_TEXT" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COMUNA_TEXT"/>
+        <keyMapping columnObjectName="Join_7" columnName="COMUNA_TEXT"/>
+      </attribute>
+      <attribute id="PROVINCIA_TEXT" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROVINCIA_TEXT"/>
+        <keyMapping columnObjectName="Join_7" columnName="PROVINCIA_TEXT"/>
+      </attribute>
+      <attribute id="REGION_TEXT" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REGION_TEXT"/>
+        <keyMapping columnObjectName="Join_7" columnName="REGION_TEXT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="398" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="837"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="837"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="741"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="741"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="175" y="645"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="329" y="645"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="404" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="324" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_5" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="478" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="399" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_6" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="553" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="321" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="475" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_7" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="398" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_8" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

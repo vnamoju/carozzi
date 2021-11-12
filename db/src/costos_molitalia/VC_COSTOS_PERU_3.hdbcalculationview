@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="VC_COSTOS_PERU_3" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="Control de Costos Molitalia"/>
+  <metadata changedAt="2020-02-18 12:41:11.441"/>
+  <localVariables>
+    <variable id="FECHA_IN" parameter="true">
+      <descriptions defaultDescription="Año/Mes Comparativo"/>
+      <variableProperties datatype="NVARCHAR" length="6" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <externalLikeStructureName>VC_COSTOS_PERU_3</externalLikeStructureName>
+          <externalLikeStructureType>CALCULATION_VIEW</externalLikeStructureType>
+          <externalLikeElementName>0CALMONTH</externalLikeElementName>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="FECHA2_IN" parameter="true">
+      <descriptions defaultDescription="Periodo de Meses"/>
+      <variableProperties datatype="NVARCHAR" length="6" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <externalLikeStructureName>VC_COSTOS_PERU_3</externalLikeStructureName>
+          <externalLikeStructureType>CALCULATION_VIEW</externalLikeStructureType>
+          <externalLikeElementName>0CALMONTH</externalLikeElementName>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="ZKLVAR" parameter="true">
+      <descriptions defaultDescription="Variante de Calculo"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="DISC" length="4" mandatory="true">
+        <valueDomain type="AttributeValue">
+          <externalLikeStructureName>ZDIM_PERU002_VISTA</externalLikeStructureName>
+          <externalLikeStructureType>CALCULATION_VIEW</externalLikeStructureType>
+          <externalLikeElementName>KLVAR</externalLikeElementName>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="ZMATERIAL">
+      <descriptions defaultDescription="Material"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="" length="18" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="MATNR"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="ZCOMPONETE">
+      <descriptions defaultDescription="Componente"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="" length="18" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZCOMP"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="ZTIPO_MAT">
+      <descriptions defaultDescription="Tipo de Material"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="" length="4" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="Z_grupo_material">
+      <descriptions defaultDescription="Grupo de Material"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="" length="9" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="60"/>
+  <dataSources>
+    <DataSource id="ZDIM_PERU002_VISTA">
+      <resourceUri>ZDIM_PERU002_VISTA</resourceUri>
+    </DataSource>
+    <DataSource id="Aggregation_1$$$$ZDIM_PERU002_VISTA$$">
+      <resourceUri>ZDIM_PERU002_VISTA</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_2$$$$ZDIM_PERU002_VISTA$$">
+      <resourceUri>ZDIM_PERU002_VISTA</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_4$$$$ZDIM_PERU002_VISTA$$">
+      <resourceUri>ZDIM_PERU002_VISTA</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="CANT"/>
+        <viewAttribute id="CANT_LOTE"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="ZCOMP"/>
+        <viewAttribute id="ZTR_COSTO_TEMP"/>
+        <viewAttribute id="Z_VAL_SCP"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="OWAER"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="FEVOR"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="TXT"/>
+        <viewAttribute id="MEEHT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="ZDIM_PERU002_VISTA"/>
+    <filter>(match(&quot;0CALMONTH&quot;,'$$FECHA_IN$$') OR match(&quot;0CALMONTH&quot;,if('$$FECHA2_IN$$' ='','*','$$FECHA2_IN$$')))
+AND (match(&quot;KLVAR&quot;,'$$ZKLVAR$$'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute aggregationType="max" id="PRODMES"/>
+        <viewAttribute id="ZCOMP"/>
+        <viewAttribute id="ZTR_COSTO_TEMP"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Aggregation_1$$$$ZDIM_PERU002_VISTA$$"/>
+    <filter>(match(&quot;0CALMONTH&quot;,'$$FECHA_IN$$') OR match(&quot;0CALMONTH&quot;,if('$$FECHA2_IN$$' ='','*','$$FECHA2_IN$$')))
+AND (&quot;KLVAR&quot; = '')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="CANT"/>
+        <viewAttribute id="CANT_LOTE"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="ZCOMP"/>
+        <viewAttribute id="ZTR_COSTO_TEMP"/>
+        <viewAttribute id="Z_VAL_SCP"/>
+        <viewAttribute id="PRODMES"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="OWAER"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="FEVOR"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="TXT"/>
+        <viewAttribute id="MEEHT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWKEY" source="BWKEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT" source="CANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT_LOTE" source="CANT_LOTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMP" source="ZCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTR_COSTO_TEMP" source="ZTR_COSTO_TEMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Z_VAL_SCP" source="Z_VAL_SCP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUFNR" source="AUFNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OWAER" source="OWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SECTOR" source="MATERIAL_ATTR_SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FEVOR" source="FEVOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXT" source="TXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+      </input>
+      <input node="Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODMES" source="PRODMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWKEY" source="BWKEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMP" source="ZCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+      </input>
+    <joinAttribute name="BWKEY"/>
+    <joinAttribute name="KSTAR"/>
+    <joinAttribute name="MATNR"/>
+    <joinAttribute name="ZCOMP"/>
+    <joinAttribute name="0CALMONTH"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="CANT"/>
+        <viewAttribute id="CANT_LOTE"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="ZCOMP"/>
+        <viewAttribute id="ZTR_COSTO_TEMP"/>
+        <viewAttribute id="Z_VAL_SCP"/>
+        <viewAttribute id="PRODMES"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="OWAER"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="FEVOR"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="TXT"/>
+        <viewAttribute id="MEEHT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_2$$$$ZDIM_PERU002_VISTA$$"/>
+    <filter>(match(&quot;0CALMONTH&quot;,'$$FECHA_IN$$') OR match(&quot;0CALMONTH&quot;,if('$$FECHA2_IN$$' ='','*','$$FECHA2_IN$$')))
+AND (&quot;KLVAR&quot; = '')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="ZCOMP"/>
+        <viewAttribute id="CANT_LOTE"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="CANT"/>
+        <viewAttribute id="Z_VAL_SCP"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_4$$$$ZDIM_PERU002_VISTA$$"/>
+    <filter>(match(&quot;0CALMONTH&quot;,'$$FECHA_IN$$') OR match(&quot;0CALMONTH&quot;,if('$$FECHA2_IN$$' ='','*','$$FECHA2_IN$$')))
+AND (match(&quot;KLVAR&quot;,'$$ZKLVAR$$'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="CANT"/>
+        <viewAttribute id="CANT_LOTE"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="ZCOMP"/>
+        <viewAttribute id="ZTR_COSTO_TEMP"/>
+        <viewAttribute id="Z_VAL_SCP"/>
+        <viewAttribute id="PRODMES"/>
+        <viewAttribute id="CANT_LOTE_1"/>
+        <viewAttribute id="CANT_1"/>
+        <viewAttribute id="Z_VAL_SCP_1"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="OWAER"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="FEVOR"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="TXT"/>
+        <viewAttribute id="MEEHT"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="Z_LOTE_TOTAL" length="18" scale="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;CANT_LOTE_1&quot;),1000,&quot;CANT_LOTE_1&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWKEY" source="BWKEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT" source="CANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT_LOTE" source="CANT_LOTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMP" source="ZCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTR_COSTO_TEMP" source="ZTR_COSTO_TEMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Z_VAL_SCP" source="Z_VAL_SCP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODMES" source="PRODMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUFNR" source="AUFNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OWAER" source="OWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SECTOR" source="MATERIAL_ATTR_SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FEVOR" source="FEVOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXT" source="TXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+      </input>
+      <input node="Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT_LOTE_1" source="CANT_LOTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT_1" source="CANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Z_VAL_SCP_1" source="Z_VAL_SCP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWKEY" source="BWKEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMP" source="ZCOMP"/>
+      </input>
+    <joinAttribute name="0CALMONTH"/>
+    <joinAttribute name="BWKEY"/>
+    <joinAttribute name="KSTAR"/>
+    <joinAttribute name="MATNR"/>
+    <joinAttribute name="ZCOMP"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="CANT"/>
+        <viewAttribute id="CANT_LOTE"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="ZCOMP"/>
+        <viewAttribute id="ZTR_COSTO_TEMP"/>
+        <viewAttribute id="Z_VAL_SCP"/>
+        <viewAttribute id="PRODMES"/>
+        <viewAttribute id="CANT_1"/>
+        <viewAttribute id="Z_VAL_SCP_1"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="OWAER"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="FEVOR"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="TXT"/>
+        <viewAttribute id="MEEHT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWKEY" source="BWKEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT" source="CANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT_LOTE" source="CANT_LOTE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMP" source="ZCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTR_COSTO_TEMP" source="ZTR_COSTO_TEMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Z_VAL_SCP" source="Z_VAL_SCP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODMES" source="PRODMES"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CANT_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Z_VAL_SCP_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUFNR" source="AUFNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OWAER" source="OWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SECTOR" source="MATERIAL_ATTR_SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FEVOR" source="FEVOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXT" source="TXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="0CALMONTH" source="0CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BWKEY" source="BWKEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT" source="CANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT_LOTE" source="Z_LOTE_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KLVAR" source="KLVAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KSTAR" source="KSTAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZCOMP" source="ZCOMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ZTR_COSTO_TEMP" source="ZTR_COSTO_TEMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Z_VAL_SCP" source="Z_VAL_SCP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODMES" source="PRODMES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANT_1" source="CANT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Z_VAL_SCP_1" source="Z_VAL_SCP_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSNR" source="POSNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="AUFNR" source="AUFNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OWAER" source="OWAER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_GRUPO_MATERIAL" source="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_MARCA" source="MATERIAL_ATTR_MARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_SECTOR" source="MATERIAL_ATTR_SECTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ATTR_TIPO_MATERIAL" source="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT" source="MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_TEXT_1" source="MATERIAL_TEXT_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CENTRO_TEXT" source="CENTRO_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_TEXT" source="CUENTA_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FEVOR" source="FEVOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUPO_MATERIAL_TEXT" source="GRUPO_MATERIAL_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TXT" source="TXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEEHT" source="MEEHT"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="BWKEY"/>
+        <viewAttribute id="CANT"/>
+        <viewAttribute id="CANT_LOTE"/>
+        <viewAttribute id="KLVAR"/>
+        <viewAttribute id="KSTAR"/>
+        <viewAttribute id="MATNR"/>
+        <viewAttribute id="ZCOMP"/>
+        <viewAttribute id="ZTR_COSTO_TEMP"/>
+        <viewAttribute id="Z_VAL_SCP"/>
+        <viewAttribute id="PRODMES"/>
+        <viewAttribute id="CANT_1"/>
+        <viewAttribute id="Z_VAL_SCP_1"/>
+        <viewAttribute id="POSNR"/>
+        <viewAttribute id="AUFNR"/>
+        <viewAttribute id="MEINS"/>
+        <viewAttribute id="OWAER"/>
+        <viewAttribute id="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_ATTR_MARCA"/>
+        <viewAttribute id="MATERIAL_ATTR_SECTOR"/>
+        <viewAttribute id="MATERIAL_ATTR_TIPO_MATERIAL"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL_TEXT_1"/>
+        <viewAttribute id="CENTRO_TEXT"/>
+        <viewAttribute id="CUENTA_TEXT"/>
+        <viewAttribute id="FEVOR"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="TXT"/>
+        <viewAttribute id="MEEHT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Union_1"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_3">
+    <descriptions/>
+    <attributes>
+      <attribute id="0CALMONTH" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Periodo de Meses"/>
+        <keyMapping columnObjectName="Projection_3" columnName="0CALMONTH"/>
+      </attribute>
+      <attribute id="BWKEY" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro"/>
+        <keyMapping columnObjectName="Projection_3" columnName="BWKEY"/>
+      </attribute>
+      <attribute id="KLVAR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Variante de Calculo"/>
+        <keyMapping columnObjectName="Projection_3" columnName="KLVAR"/>
+      </attribute>
+      <attribute id="KSTAR" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta Contable"/>
+        <keyMapping columnObjectName="Projection_3" columnName="KSTAR"/>
+      </attribute>
+      <attribute id="MATNR" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material"/>
+        <localVariable>ZMATERIAL</localVariable>
+        <keyMapping columnObjectName="Projection_3" columnName="MATNR"/>
+      </attribute>
+      <attribute id="ZCOMP" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Componente"/>
+        <localVariable>ZCOMPONETE</localVariable>
+        <keyMapping columnObjectName="Projection_3" columnName="ZCOMP"/>
+      </attribute>
+      <attribute id="ZTR_COSTO_TEMP" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZTR_COSTO_TEMP"/>
+        <keyMapping columnObjectName="Projection_3" columnName="ZTR_COSTO_TEMP"/>
+      </attribute>
+      <attribute id="POSNR" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Posicion"/>
+        <keyMapping columnObjectName="Projection_3" columnName="POSNR"/>
+      </attribute>
+      <attribute id="AUFNR" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Orden"/>
+        <keyMapping columnObjectName="Projection_3" columnName="AUFNR"/>
+      </attribute>
+      <attribute id="MEINS" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad Medida"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MEINS"/>
+      </attribute>
+      <attribute id="OWAER" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OWAER"/>
+        <keyMapping columnObjectName="Projection_3" columnName="OWAER"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_GRUPO_MATERIAL" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material Grupo"/>
+        <localVariable>Z_grupo_material</localVariable>
+        <keyMapping columnObjectName="Projection_3" columnName="MATERIAL_ATTR_GRUPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MARCA" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Marca de Material"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MATERIAL_ATTR_MARCA"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_SECTOR" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sector"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MATERIAL_ATTR_SECTOR"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_TIPO_MATERIAL" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo Material"/>
+        <localVariable>ZTIPO_MAT</localVariable>
+        <keyMapping columnObjectName="Projection_3" columnName="MATERIAL_ATTR_TIPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material Text"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT_1" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Componente Text"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MATERIAL_TEXT_1"/>
+      </attribute>
+      <attribute id="CENTRO_TEXT" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro Text"/>
+        <keyMapping columnObjectName="Projection_3" columnName="CENTRO_TEXT"/>
+      </attribute>
+      <attribute id="CUENTA_TEXT" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta Contable Text"/>
+        <keyMapping columnObjectName="Projection_3" columnName="CUENTA_TEXT"/>
+      </attribute>
+      <attribute id="FEVOR" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Resp.ctrl.producción"/>
+        <keyMapping columnObjectName="Projection_3" columnName="FEVOR"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo de Mat. Text"/>
+        <keyMapping columnObjectName="Projection_3" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="TXT" order="57" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Resp.ctrl.producción Text"/>
+        <keyMapping columnObjectName="Projection_3" columnName="TXT"/>
+      </attribute>
+      <attribute id="MEEHT" order="58" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Un.actividad"/>
+        <keyMapping columnObjectName="Projection_3" columnName="MEEHT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="CANT" hidden="true" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CANT"/>
+        <measureMapping columnObjectName="Projection_3" columnName="CANT"/>
+      </measure>
+      <measure id="Z_VAL_SCP" hidden="true" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Z_VAL_SCP"/>
+        <measureMapping columnObjectName="Projection_3" columnName="Z_VAL_SCP"/>
+      </measure>
+      <measure id="PRODMES" order="10" aggregationType="max" measureType="simple">
+        <descriptions defaultDescription="Vol. Produccion"/>
+        <measureMapping columnObjectName="Projection_3" columnName="PRODMES"/>
+      </measure>
+      <measure id="CANT_LOTE" order="11" aggregationType="max" measureType="simple">
+        <descriptions defaultDescription="Tamaño de Lote"/>
+        <measureMapping columnObjectName="Projection_3" columnName="CANT_LOTE"/>
+      </measure>
+      <measure id="CANT_1" hidden="true" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CANT_1"/>
+        <measureMapping columnObjectName="Projection_3" columnName="CANT_1"/>
+      </measure>
+      <measure id="Z_VAL_SCP_1" hidden="true" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Z_VAL_SCP_1"/>
+        <measureMapping columnObjectName="Projection_3" columnName="Z_VAL_SCP_1"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="ZCOST_STANDAR" hidden="true" order="12" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="3">
+        <descriptions defaultDescription="ZCOST_STANDAR"/>
+        <formula>if(&quot;ZTR_COSTO_TEMP&quot; = '1', &quot;CANT&quot;, 0)</formula>
+      </measure>
+      <measure id="ZVALOR_STANDAR" hidden="true" order="13" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="3">
+        <descriptions defaultDescription="ZVALOR_STANDAR"/>
+        <formula>if(&quot;ZTR_COSTO_TEMP&quot; = '1', &quot;Z_VAL_SCP&quot;, 0)</formula>
+      </measure>
+      <measure id="ZCONSUMO_STANDAR" hidden="false" order="14" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="6">
+        <descriptions defaultDescription="Consumo Standar"/>
+        <formula>if(&quot;0CALMONTH&quot; = $$FECHA_IN$$,&quot;ZCOST_STANDAR&quot;, 0)</formula>
+      </measure>
+      <measure id="ZCONS_STAN_TOTAL" hidden="false" order="15" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="6">
+        <descriptions defaultDescription="Consumo Standar Total"/>
+        <formula>if(&quot;ZCONSUMO_STANDAR&quot; != 0,(&quot;ZCONSUMO_STANDAR&quot;*&quot;PRODMES&quot;)/&quot;CANT_LOTE&quot;,0)</formula>
+      </measure>
+      <measure id="ZVALOR_STANDAR_F" hidden="false" order="16" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="2">
+        <descriptions defaultDescription="Valor Estandar"/>
+        <formula>if(&quot;0CALMONTH&quot; = $$FECHA_IN$$,round(&quot;ZVALOR_STANDAR&quot;, 2), 0)</formula>
+      </measure>
+      <measure id="ZVAL_ESTAN_TOTAL" hidden="false" order="17" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="3">
+        <descriptions defaultDescription="Valor Estandar Total"/>
+        <formula>(&quot;ZVALOR_STANDAR_F&quot;*&quot;PRODMES&quot;)/&quot;CANT_LOTE&quot;</formula>
+      </measure>
+      <measure id="Z_PRECIO_STAN" hidden="false" order="18" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="15">
+        <descriptions defaultDescription="Precio Estandar(unit)"/>
+        <formula>if(&quot;ZVALOR_STANDAR_F&quot; != 0,round(&quot;ZVALOR_STANDAR_F&quot;/&quot;ZCONSUMO_STANDAR&quot;,15),0)</formula>
+      </measure>
+      <measure id="ZCONS_REAL_TOTAL" hidden="true" order="19" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="3">
+        <descriptions defaultDescription="Consumo Real Total"/>
+        <formula>if(&quot;ZTR_COSTO_TEMP&quot; = '2', &quot;CANT&quot;, 0)</formula>
+      </measure>
+      <measure id="ZCONS_REAL" hidden="false" order="20" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="6">
+        <descriptions defaultDescription="Consumo Real"/>
+        <formula>if(&quot;PRODMES&quot; != 0,(&quot;Z_CONS_REA_TOT_S_UM&quot;/&quot;PRODMES&quot;)*&quot;CANT_LOTE&quot;,0)</formula>
+      </measure>
+      <measure id="Z_CONS_REA_TOT_S_UM" hidden="false" order="21" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="6">
+        <descriptions defaultDescription="Consumo Real Total sin UM"/>
+        <formula>round(&quot;ZCONS_REAL_TOTAL&quot;,3)</formula>
+      </measure>
+      <measure id="ZVAL_REAL" hidden="false" order="22" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="3">
+        <descriptions defaultDescription="Valor Real"/>
+        <formula>if(&quot;PRODMES&quot; != 0 , (&quot;ZVALOR_REAL&quot;/&quot;PRODMES&quot;)*&quot;CANT_LOTE&quot;,0)</formula>
+      </measure>
+      <measure id="ZVALOR_REAL" hidden="false" order="23" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="2">
+        <descriptions defaultDescription="Valor Real Total"/>
+        <formula>if(&quot;ZTR_COSTO_TEMP&quot; = '2',round(&quot;Z_VAL_SCP&quot;, 2), 0)</formula>
+      </measure>
+      <measure id="ZPRECIO_REAL" hidden="false" order="24" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="10">
+        <descriptions defaultDescription="Precio Real"/>
+        <formula>if(&quot;Z_CONS_REA_TOT_S_UM&quot; != 0,round(&quot;ZVALOR_REAL&quot;, 2)/&quot;Z_CONS_REA_TOT_S_UM&quot;,0)</formula>
+      </measure>
+      <measure id="ZCALC_DESV_CONS_Vol" hidden="false" order="25" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="4">
+        <descriptions defaultDescription="Desv.Cons.xVolumen"/>
+        <formula>if(&quot;Z_CONS_REA_TOT_S_UM&quot; != 0 and &quot;ZCONS_STAN_TOTAL&quot; != 0,round((&quot;Z_CONS_REA_TOT_S_UM&quot;- &quot;ZCONS_STAN_TOTAL&quot;)*&quot;Z_PRECIO_STAN&quot;,3),0)</formula>
+      </measure>
+      <measure id="Z_CONS_STAND_2" hidden="true" order="28" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="3">
+        <descriptions defaultDescription="Consumo Standar del Real(Caso desviacion)"/>
+        <formula>if(&quot;ZTR_COSTO_TEMP&quot; = '2' and &quot;0CALMONTH&quot; = $$FECHA_IN$$, &quot;CANT_1&quot;,0)</formula>
+      </measure>
+      <measure id="Z_CONS_STAND_TOTA_2" hidden="true" order="29" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="3">
+        <descriptions defaultDescription="Consumo Standar Total 2(Real Caso Desviacion)"/>
+        <formula>if(&quot;Z_CONS_STAND_2&quot; != 0,(&quot;Z_CONS_STAND_2&quot;*&quot;PRODMES&quot;)/&quot;CANT_LOTE&quot;,0)</formula>
+      </measure>
+      <measure id="Z_VALOR_STAND_2" hidden="true" order="30" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="3">
+        <descriptions defaultDescription="Valor Standar 2(Caso de Desviacion)"/>
+        <formula>if(&quot;ZTR_COSTO_TEMP&quot; = '2' and &quot;0CALMONTH&quot; = $$FECHA_IN$$,round(&quot;Z_VAL_SCP_1&quot;,2),0)</formula>
+      </measure>
+      <measure id="Z_PRECIO_STAND_2" hidden="true" order="31" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="3">
+        <descriptions defaultDescription="PRECIO ESTANDAR 2(Tema de desviacion)"/>
+        <formula>if(&quot;Z_VALOR_STAND_2&quot; != 0, &quot;Z_VALOR_STAND_2&quot;/&quot;Z_CONS_STAND_2&quot;,0)</formula>
+      </measure>
+      <measure id="Z_CLAC_DESV_CONS_PRECIO" hidden="true" order="32" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="15">
+        <descriptions defaultDescription="Cálculo Desv.Cons.xPrecio(Hide)"/>
+        <formula>round(((&quot;Z_CONS_REA_TOT_S_UM&quot;)*(&quot;ZPRECIO_REAL&quot;-&quot;Z_PRECIO_STAN&quot;)),4)</formula>
+      </measure>
+      <measure id="Z_DESV_CONS_PRECIO" hidden="false" order="33" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="3">
+        <descriptions defaultDescription="Desv.Cons.xPrecio"/>
+        <formula>if(&quot;Z_CONS_REA_TOT_S_UM&quot; != 0 AND &quot;ZPRECIO_REAL&quot; != 0 AND &quot;Z_PRECIO_STAN&quot; != 0,round((&quot;ZPRECIO_REAL&quot;-&quot;Z_PRECIO_STAN&quot;),10)*&quot;Z_CONS_REA_TOT_S_UM&quot;,0)</formula>
+      </measure>
+      <measure id="Z_DESV_ESTRUCT" hidden="false" order="34" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="3">
+        <descriptions defaultDescription="Desv,Estructura"/>
+        <formula>&quot;Estructura_Cons_Volumen&quot;+&quot;DESV_ESTRUCT_CONS_PRECIO&quot;</formula>
+      </measure>
+      <measure id="Estructura_Cons_Volumen" hidden="false" order="35" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="3">
+        <descriptions defaultDescription="Desv. Estructura Cons.xVolumen"/>
+        <formula>if(&quot;Z_CONS_REA_TOT_S_UM&quot; = 0 AND &quot;ZCONS_STAN_TOTAL&quot; != 0,((&quot;Z_CONS_REA_TOT_S_UM&quot;- &quot;ZCONS_STAN_TOTAL&quot;)*&quot;Z_PRECIO_STAN&quot;),0)</formula>
+      </measure>
+      <measure id="DESV_ESTRUCT_CONS_PRECIO" hidden="false" order="36" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="3">
+        <descriptions defaultDescription="Desv. Estructura Cons.xPrecio"/>
+        <formula>if(&quot;Z_PRECIO_STAN&quot; = 0 AND &quot;ZPRECIO_REAL&quot; != 0,(round((&quot;ZPRECIO_REAL&quot;-&quot;Z_PRECIO_STAN&quot;),15)*&quot;Z_CONS_REA_TOT_S_UM&quot;),0)</formula>
+      </measure>
+      <measure id="Z_CALC_DESV_CONS_VOLUM" hidden="true" order="37" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="3">
+        <descriptions defaultDescription="Cálculo Desv.Cons.xVolumen"/>
+        <formula>round(&quot;Z_CONS_REA_TOT_S_UM&quot;- &quot;ZCONS_STAN_TOTAL&quot;,3)*&quot;Z_PRECIO_STAN&quot;</formula>
+      </measure>
+      <measure id="Z_DESV_CONS_TOTA_VALOR" hidden="false" order="38" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="3">
+        <descriptions defaultDescription="Desv.Cons.Total Valor"/>
+        <formula>round(&quot;ZVALOR_REAL&quot;- &quot;ZVAL_ESTAN_TOTAL&quot;,2)</formula>
+      </measure>
+      <measure id="z_desv_cons_xVolumen" hidden="false" order="39" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="4">
+        <descriptions defaultDescription="Desv.Cons.xVolumen%"/>
+        <formula>IF (&quot;ZCALC_DESV_CONS_Vol&quot; != 0 AND &quot;ZVAL_ESTAN_TOTAL&quot; != 0,round((&quot;ZCALC_DESV_CONS_Vol&quot;/&quot;ZVAL_ESTAN_TOTAL&quot;)*100,2),0)</formula>
+      </measure>
+      <measure id="Z_DESV_CONS_XPRECIO" hidden="false" order="40" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="18" scale="3">
+        <descriptions defaultDescription="Desv.Cons.xPrecio%"/>
+        <formula>IF(&quot;ZVAL_ESTAN_TOTAL&quot; != 0,round((&quot;Z_DESV_CONS_PRECIO&quot;/&quot;ZVAL_ESTAN_TOTAL&quot;)*100,2),0)</formula>
+      </measure>
+      <measure id="Z_DESV_CONS_XESTRUCT" hidden="false" order="41" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="3">
+        <descriptions defaultDescription="Desv.Cons.xEstructura%"/>
+        <formula>IF(&quot;ZVAL_ESTAN_TOTAL&quot; != 0,round((&quot;Z_DESV_ESTRUCT&quot;/&quot;ZVAL_ESTAN_TOTAL&quot;)*100,2),0)</formula>
+      </measure>
+      <measure id="Z_DESV_CONS_XTOTAL" hidden="false" order="42" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="3">
+        <descriptions defaultDescription="Desv.Cons.xTotal%"/>
+        <formula>IF (&quot;ZVAL_ESTAN_TOTAL&quot; != 0,round((&quot;Z_DESV_CONS_TOTA_VALOR&quot;/&quot;ZVAL_ESTAN_TOTAL&quot;)*100,2),0)</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="17" y="252"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="209" y="256"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="116" y="184"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Aggregation_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="400" y="420"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="560" y="458"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="630" y="370"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="436" y="149"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="460" y="66"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

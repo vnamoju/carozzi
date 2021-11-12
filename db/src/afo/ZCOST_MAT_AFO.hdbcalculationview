@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="ZCOST_MAT_AFO" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="ZCOST_MAT_AFO"/>
+  <localVariables>
+    <variable id="CENTRO">
+      <descriptions defaultDescription="CENTRO"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="" length="4">
+        <valueDomain type="AttributeValue">
+          <attribute name="ZPLANT_P"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="PERIODO">
+      <descriptions defaultDescription="PERIODO MES"/>
+      <variableProperties datatype="NVARCHAR" length="6">
+        <valueDomain type="AttributeValue">
+          <attribute name="0CALMONTH"/>
+        </valueDomain>
+        <selection multiLine="false" type="Interval"/>
+        <defaultRange operator="BT" including="true"/>
+      </variableProperties>
+    </variable>
+    <variable id="SOCIEDAD">
+      <descriptions defaultDescription="SOCIEDAD CO"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="" length="4">
+        <valueDomain type="AttributeValue">
+          <attribute name="0CO_AREA"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="UNIDAD_NEGOCIOS">
+      <descriptions defaultDescription="UNIDAD_NEGOCIOS"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="" length="20">
+        <valueDomain type="AttributeValue">
+          <attribute name="UNIDAD_NEGOCIO_TEXT"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="ZCOST_MAT_CV2">
+      <resourceUri>ZCOST_MAT_CV2</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+        <viewAttribute id="0CALMONTH"/>
+        <viewAttribute id="0CCOMPSTRUC"/>
+        <viewAttribute id="0COMPONENT"/>
+        <viewAttribute id="0COSTCENTER"/>
+        <viewAttribute id="0COSTCOMP"/>
+        <viewAttribute id="0COSTELMNT"/>
+        <viewAttribute id="0CO_AREA"/>
+        <viewAttribute id="0LOC_CURRCY"/>
+        <viewAttribute id="0MATERIAL"/>
+        <viewAttribute id="0NETPRICE"/>
+        <viewAttribute id="0PLANT"/>
+        <viewAttribute id="0UNIT"/>
+        <viewAttribute id="GRUPO_MATERIAL_TEXT"/>
+        <viewAttribute id="MATERIAL"/>
+        <viewAttribute id="MATERIAL_CORTO"/>
+        <viewAttribute id="MATERIAL_TEXT"/>
+        <viewAttribute id="ZCOUNTER"/>
+        <viewAttribute id="ZFEC_CALC"/>
+        <viewAttribute id="ZGRP_ART"/>
+        <viewAttribute id="ZLOTE"/>
+        <viewAttribute id="ZPLANT_P"/>
+        <viewAttribute id="ZPORC_R"/>
+        <viewAttribute id="ZVALOR_R"/>
+        <viewAttribute id="ZVALOR_T"/>
+        <viewAttribute id="ZVAR_CAL"/>
+        <viewAttribute id="GRUPO_ART"/>
+        <viewAttribute id="UNIDAD_NEGOCIO_TEXT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="ZCOST_MAT_CV2"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <attributes>
+      <attribute id="0CALMONTH" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Periodo Mes"/>
+        <localVariable>PERIODO</localVariable>
+        <keyMapping columnObjectName="Projection_1" columnName="0CALMONTH"/>
+      </attribute>
+      <attribute id="0CCOMPSTRUC" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Esquema Elem Cost"/>
+        <keyMapping columnObjectName="Projection_1" columnName="0CCOMPSTRUC"/>
+      </attribute>
+      <attribute id="0COMPONENT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Componente"/>
+        <keyMapping columnObjectName="Projection_1" columnName="0COMPONENT"/>
+      </attribute>
+      <attribute id="0COSTCENTER" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro de Costo"/>
+        <keyMapping columnObjectName="Projection_1" columnName="0COSTCENTER"/>
+      </attribute>
+      <attribute id="0COSTCOMP" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Elemento de Coste"/>
+        <keyMapping columnObjectName="Projection_1" columnName="0COSTCOMP"/>
+      </attribute>
+      <attribute id="0COSTELMNT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cuenta Contable"/>
+        <keyMapping columnObjectName="Projection_1" columnName="0COSTELMNT"/>
+      </attribute>
+      <attribute id="0CO_AREA" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sociedad CO"/>
+        <localVariable>SOCIEDAD</localVariable>
+        <keyMapping columnObjectName="Projection_1" columnName="0CO_AREA"/>
+      </attribute>
+      <attribute id="0LOC_CURRCY" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Moneda Local"/>
+        <keyMapping columnObjectName="Projection_1" columnName="0LOC_CURRCY"/>
+      </attribute>
+      <attribute id="0MATERIAL" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material"/>
+        <keyMapping columnObjectName="Projection_1" columnName="0MATERIAL"/>
+      </attribute>
+      <attribute id="0PLANT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Planta"/>
+        <keyMapping columnObjectName="Projection_1" columnName="0PLANT"/>
+      </attribute>
+      <attribute id="0UNIT" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad"/>
+        <keyMapping columnObjectName="Projection_1" columnName="0UNIT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_TEXT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo de articulos"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUPO_MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL" hidden="true" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_CORTO" hidden="true" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MATERIAL_CORTO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_CORTO"/>
+      </attribute>
+      <attribute id="MATERIAL_TEXT" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MATERIAL_TEXT"/>
+      </attribute>
+      <attribute id="ZCOUNTER" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Contador"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ZCOUNTER"/>
+      </attribute>
+      <attribute id="ZFEC_CALC" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha Calculo"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ZFEC_CALC"/>
+      </attribute>
+      <attribute id="ZGRP_ART" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Grupo de articulos ID"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ZGRP_ART"/>
+      </attribute>
+      <attribute id="ZPLANT_P" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Centro de calculo"/>
+        <localVariable>CENTRO</localVariable>
+        <keyMapping columnObjectName="Projection_1" columnName="ZPLANT_P"/>
+      </attribute>
+      <attribute id="ZVAR_CAL" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Variante de calculo"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ZVAR_CAL"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unidad de negocio"/>
+        <localVariable>UNIDAD_NEGOCIOS</localVariable>
+        <keyMapping columnObjectName="Projection_1" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="0NETPRICE" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Precio Costo"/>
+        <measureMapping columnObjectName="Projection_1" columnName="0NETPRICE"/>
+      </measure>
+      <measure id="ZLOTE" order="20" aggregationType="max" measureType="simple">
+        <descriptions defaultDescription="Tamaño Lote PT"/>
+        <measureMapping columnObjectName="Projection_1" columnName="ZLOTE"/>
+      </measure>
+      <measure id="ZPORC_R" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Porcentaje de rechazo"/>
+        <measureMapping columnObjectName="Projection_1" columnName="ZPORC_R"/>
+      </measure>
+      <measure id="ZVALOR_R" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor rechazo"/>
+        <measureMapping columnObjectName="Projection_1" columnName="ZVALOR_R"/>
+      </measure>
+      <measure id="ZVALOR_T" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor costo"/>
+        <measureMapping columnObjectName="Projection_1" columnName="ZVALOR_T"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="63" y="105"/>
+      
+        <rectangleSize width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="63" y="217"/>
+        <rectangleSize height="30" width="140"/>
+      </shape></shapes>
+</layout>
+</Calculation:scenario>

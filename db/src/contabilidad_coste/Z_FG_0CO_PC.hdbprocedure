@@ -1,0 +1,13 @@
+PROCEDURE "SCP_CAROZZI_SAC.Contabilidad_Coste::Z_FG_0CO_PC" ( )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   EXEC 'START TASK "SCP_CAROZZI_SAC"."SCP_CAROZZI_SAC.Contabilidad_Coste::R_FG_0CO_PC"';
+   
+   
+END

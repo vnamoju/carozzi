@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DIM_TIEMPO" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" dimensionType="TIME" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="TEST_RAT"/>
+  <metadata changedAt="2018-04-19 22:50:07.074" createdAt="2018-03-26 11:32:29.64"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="35"/>
+  <dataSources>
+    <DataSource id="M_TIME_DIMENSION">
+      <resourceUri>M_TIME_DIMENSION</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DATETIMESTAMP"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="DATETIME_SAP"/>
+        <viewAttribute id="DATE_SAP"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="QUARTER"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="WEEK"/>
+        <viewAttribute id="WEEK_YEAR"/>
+        <viewAttribute id="DAY_OF_WEEK"/>
+        <viewAttribute id="DAY"/>
+        <viewAttribute id="HOUR"/>
+        <viewAttribute id="MINUTE"/>
+        <viewAttribute id="SECOND"/>
+        <viewAttribute id="CALQUARTER"/>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CALWEEK"/>
+        <viewAttribute id="YEAR_INT"/>
+        <viewAttribute id="QUARTER_INT"/>
+        <viewAttribute id="MONTH_INT"/>
+        <viewAttribute id="WEEK_INT"/>
+        <viewAttribute id="WEEK_YEAR_INT"/>
+        <viewAttribute id="DAY_OF_WEEK_INT"/>
+        <viewAttribute id="DAY_INT"/>
+        <viewAttribute id="HOUR_INT"/>
+        <viewAttribute id="MINUTE_INT"/>
+        <viewAttribute id="SECOND_INT"/>
+        <viewAttribute id="MONTH_LAST_DAY"/>
+        <viewAttribute id="TZNTSTMPS"/>
+        <viewAttribute id="TZNTSTMPL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="M_TIME_DIMENSION"/>
+    <filter>(&quot;HOUR&quot; ='00') AND (&quot;MINUTE&quot; ='00') AND (&quot;SECOND&quot; ='00')</filter>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions defaultDescription="TEST_RAT"/>
+    <attributes>
+      <attribute id="TIEMPO_ATTR_DATETIMESTAMP" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_DATETIMESTAMP"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DATETIMESTAMP"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_DATE_SQL" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_DATE_SQL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DATE_SQL"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_DATETIME_SAP" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_DATETIME_SAP"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DATETIME_SAP"/>
+      </attribute>
+      <attribute id="TIEMPO" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DATE_SAP"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_YEAR" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_YEAR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="YEAR"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_QUARTER" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_QUARTER"/>
+        <keyMapping columnObjectName="Projection_1" columnName="QUARTER"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_MONTH" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_MONTH"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MONTH"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_WEEK" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_WEEK"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WEEK"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_WEEK_YEAR" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_WEEK_YEAR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WEEK_YEAR"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_DAY_OF_WEEK" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_DAY_OF_WEEK"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DAY_OF_WEEK"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_DAY" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_DAY"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DAY"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_CALQUARTER" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_CALQUARTER"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CALQUARTER"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_CALMONTH" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_CALMONTH"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CALMONTH"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_CALWEEK" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_CALWEEK"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CALWEEK"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_YEAR_INT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_YEAR_INT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="YEAR_INT"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_QUARTER_INT" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_QUARTER_INT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="QUARTER_INT"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_MONTH_INT" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_MONTH_INT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MONTH_INT"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_WEEK_INT" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_WEEK_INT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WEEK_INT"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_WEEK_YEAR_INT" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_WEEK_YEAR_INT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WEEK_YEAR_INT"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_DAY_OF_WEEK_INT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_DAY_OF_WEEK_INT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DAY_OF_WEEK_INT"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_DAY_INT" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_DAY_INT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DAY_INT"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_TZNTSTMPS" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_TZNTSTMPS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="TZNTSTMPS"/>
+      </attribute>
+      <attribute id="TIEMPO_ATTR_TZNTSMPL" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIEMPO_ATTR_TZNTSMPL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="TZNTSTMPL"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

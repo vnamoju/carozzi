@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="3.0" id="MODELO_FG_NEWVTA_MES_03" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="MODELO SELLIN MENSUAL"/>
+  <metadata changedAt="2021-02-01 11:40:21.93"/>
+  <localVariables>
+    <variable id="V_SOCIEDAD_CO">
+      <descriptions defaultDescription="V_SOCIEDAD_CO"/>
+      <variableProperties datatype="VARCHAR" defaultValue="EC01" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="SOCIEDAD_CO_ID"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="V_EJERCICIO_PERIODO">
+      <descriptions defaultDescription="Ejercicio Mes (aaaamm)"/>
+      <variableProperties datatype="VARCHAR" mandatory="false">
+        <valueDomain type="AttributeValue">
+          <attribute name="EJERCICIO_PERIODO"/>
+        </valueDomain>
+        <selection multiLine="true" type="Interval"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="23"/>
+  <dataSources>
+    <DataSource id="FG_NEWVTA_MES_03">
+      <resourceUri>FG_NEWVTA_MES_03</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="FG_NEWVTA_MES_03">
+    <descriptions/>
+    <attributes>
+      <attribute id="SOCIEDAD_CO_ID" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="10.Sociedad CO"/>
+        <localVariable>V_SOCIEDAD_CO</localVariable>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="SOCIEDAD_CO_ID"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA_ID" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="11.Org Venta"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="ORGANIZACION_VENTA_ID"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="OFICINA_VENTA_ID"/>
+      </attribute>
+      <attribute id="OFICINA_VENTA_ID_TEXT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="12.Oficina IDescr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="OFICINA_VENTA_ID_TEXT"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL_ID" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="13.Division"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="DIVISION_COMERCIAL_ID"/>
+      </attribute>
+      <attribute id="VENDEDOR_ID" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Vendedor"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VENDEDOR_ID"/>
+      </attribute>
+      <attribute id="MATERIAL_ID" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="MATERIAL_ID"/>
+      </attribute>
+      <attribute id="AREA_NEGOCIO_ID" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="24.Area Negocio"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="AREA_NEGOCIO_ID"/>
+      </attribute>
+      <attribute id="CANAL_DISTRIBUCION_ID" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="53.Canal Distribucion"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CANAL_DISTRIBUCION_ID"/>
+      </attribute>
+      <attribute id="CLIENTE_ID" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="40.Cliente"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_ID"/>
+      </attribute>
+      <attribute id="PAIS_ID" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="PAIS_ID"/>
+      </attribute>
+      <attribute id="MONEDA_LOCAL" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Moneda"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="MONEDA_LOCAL"/>
+      </attribute>
+      <attribute id="UNIDAD_MEDIDA" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UMB"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="UNIDAD_MEDIDA"/>
+      </attribute>
+      <attribute id="MONEDA_TRANSACCIONAL" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Moneda trans"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="MONEDA_TRANSACCIONAL"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL1" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL1"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="OFICINA_JER_NIVEL1"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL2" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL2"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="OFICINA_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL3" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL3"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="OFICINA_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL4" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL4"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="OFICINA_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="OFICINA_JER_NIVEL5" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="OFICINA_JER_NIVEL5"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="OFICINA_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="ORGANIZACION_VENTA_TEXT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="11.Org Venta Descr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="ORGANIZACION_VENTA_TEXT"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO_TEXT" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="10.Sociedad CO Descr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="SOCIEDAD_CO_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ID_TEXT" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Articulo IDescr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="GRUPO_MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="CATEGORIA_TEXT" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="22.Categoria"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CATEGORIA_TEXT"/>
+      </attribute>
+      <attribute id="UNIDAD_NEGOCIO_TEXT" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio Descr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="UNIDAD_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_TIPO_MATERIAL" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="29.Tipo Material"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="MATERIAL_ATTR_TIPO_MATERIAL"/>
+      </attribute>
+      <attribute id="MATERIAL_ID_TEXT" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="20.Material IDescr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="MATERIAL_ID_TEXT"/>
+      </attribute>
+      <attribute id="VENDEDOR_ID_TEXT" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="14.Vendedor IDescr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VENDEDOR_ID_TEXT"/>
+      </attribute>
+      <attribute id="CLIENTE_ID_TEXT_1" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="40.Cliente IDescr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_ID_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ID_TEXT_2" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="40.Cliente IDescr (fantasia)"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_ID_TEXT_2"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Cliente Padre IDescr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_1"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41.Cliente Padre IDescr (fantasia)"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_ATTR_CLIENTE_PADRE_ID_TEXT_2"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL2" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="42.Jer. Clientes - Sociedad"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL3" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="43.Jer. Clientes - Cluster"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL4" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="44.Jer. Clientes - Cadena/Cliente"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_JER_NIVEL4"/>
+      </attribute>
+      <attribute id="CLIENTE_JER_NIVEL5" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="45.Jer. Clientes - Formato"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_JER_NIVEL5"/>
+      </attribute>
+      <attribute id="CANAL_COMERCIAL_TEXT" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="46.Canal Comercial"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CANAL_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL2" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="46.Jer. Canales - Macro Canal"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CANAL_JER_NIVEL2"/>
+      </attribute>
+      <attribute id="CANAL_JER_NIVEL3" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="47.Jer. Canales - Canal"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CANAL_JER_NIVEL3"/>
+      </attribute>
+      <attribute id="CLIENTE_ATTR_CLIENTE_PADRE" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="41..Cliente Padre"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_ATTR_CLIENTE_PADRE"/>
+      </attribute>
+      <attribute id="REGION_TEXT" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="49.Region"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="REGION_TEXT"/>
+      </attribute>
+      <attribute id="PROVINCIA_TEXT" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="50.Provincia"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="PROVINCIA_TEXT"/>
+      </attribute>
+      <attribute id="COMUNA_TEXT" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="51.Comuna"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="COMUNA_TEXT"/>
+      </attribute>
+      <attribute id="PAIS_TEXT" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais Descr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="PAIS_TEXT"/>
+      </attribute>
+      <attribute id="CANAL_DISTRIBUCION_TEXT" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="53.Canal Distribucion Descr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CANAL_DISTRIBUCION_TEXT"/>
+      </attribute>
+      <attribute id="SECTOR_TEXT" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="36.Sector Descr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="SECTOR_TEXT"/>
+      </attribute>
+      <attribute id="AREA_NEGOCIO_TEXT" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="24.Area Negocio Descr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="AREA_NEGOCIO_TEXT"/>
+      </attribute>
+      <attribute id="DIVISION_COMERCIAL_TEXT" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="13.Division Descr"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="DIVISION_COMERCIAL_TEXT"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ID" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="23.Grupo Articulo"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="GRUPO_MATERIAL_ID"/>
+      </attribute>
+      <attribute id="Fecha_Proyeccion_date" order="53" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha_Proyeccion"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="Fecha_Proyeccion_date"/>
+      </attribute>
+      <attribute id="PERIODO" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="PERIODO"/>
+      </attribute>
+      <attribute id="EJERCICIO_PERIODO" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio Mes"/>
+        <localVariable>V_EJERCICIO_PERIODO</localVariable>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="EJERCICIO_PERIODO"/>
+      </attribute>
+      <attribute id="EJERCICIO" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Ejercicio"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="EJERCICIO"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_ESTACIONALIDAD" order="66" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="26.Estacionalidad"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="MATERIAL_ATTR_ESTACIONALIDAD"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_MARCA" order="67" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="25.Marca"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="MATERIAL_ATTR_MARCA"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN" order="68" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="27.Clasificacion Ventas Valor"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="MATERIAL_ATTR_CLASIF_MARGEN_VOLUMEN"/>
+      </attribute>
+      <attribute id="FECHA_PROCESO" order="69" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha Proceso"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="FECHA_PROCESO"/>
+      </attribute>
+      <attribute id="SALA_FISICA" order="70" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="52.Sala Fisica"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="SALA_FISICA"/>
+      </attribute>
+      <attribute id="HORA_UTC" order="71" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Hora UTC"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="HORA_UTC"/>
+      </attribute>
+      <attribute id="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO" order="72" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="21.Unidad Negocio"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="GRUPO_MATERIAL_ATTR_UNIDAD_NEGOCIO"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_BLOQUEO" order="73" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="28.Estado Material"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="MATERIAL_ATTR_BLOQUEO"/>
+      </attribute>
+      <attribute id="UMV" order="75" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UMV"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="UMV"/>
+      </attribute>
+      <attribute id="MATERIAL_ATTR_AGRUPACION_ESPECIAL" order="76" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="37.Agrupacion especial"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="MATERIAL_ATTR_AGRUPACION_ESPECIAL"/>
+      </attribute>
+      <attribute id="PAIS_N1" order="78" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais N1"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="PAIS_N1"/>
+      </attribute>
+      <attribute id="PAIS_N2" order="79" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="48.Pais N2"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="PAIS_N2"/>
+      </attribute>
+      <attribute id="ZZCDCLASIF_TEXTO" order="80" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="54.Clasificación Especial Clientes"/>
+        <keyMapping columnObjectName="FG_NEWVTA_MES_03" columnName="ZZCDCLASIF_TEXTO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="CLIENTE_ATTR_LATITUD" order="40" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Latitud"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_ATTR_LATITUD"/>
+      </measure>
+      <measure id="CLIENTE_ATTR_LONGITUD" order="41" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Longitud"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="CLIENTE_ATTR_LONGITUD"/>
+      </measure>
+      <measure id="DIA_HABIL_TRAN" order="51" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Dias habiles transcurridos"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="DIA_HABIL_TRAN"/>
+      </measure>
+      <measure id="DIA_HABIL_MES" order="52" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Dias habiles mes"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="DIA_HABIL_MES"/>
+      </measure>
+      <measure id="VOLUMEN_REAL" order="57" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VOLUMEN_REAL"/>
+      </measure>
+      <measure id="VOLUMEN_UMV_REAL" order="58" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen UMV"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VOLUMEN_UMV_REAL"/>
+      </measure>
+      <measure id="VALOR_COSTO_REAL" order="59" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor Costo"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VALOR_COSTO_REAL"/>
+      </measure>
+      <measure id="VALOR_DIFERENCIA_DE_PRECIO_REAL" order="60" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor Diferencia precio"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VALOR_DIFERENCIA_DE_PRECIO_REAL"/>
+      </measure>
+      <measure id="VOLUMEN_PPTO" order="61" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen Ppto"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VOLUMEN_PPTO"/>
+      </measure>
+      <measure id="VALOR_NETO_PPTO" order="62" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor Neto Ppto"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VALOR_NETO_PPTO"/>
+      </measure>
+      <measure id="VALOR_NETO_META" order="63" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor Neto Meta"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VALOR_NETO_META"/>
+      </measure>
+      <measure id="VOLUMEN_META" order="64" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen Meta"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VOLUMEN_META"/>
+      </measure>
+      <measure id="VALOR_NETO_REAL" order="65" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor Neto"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VALOR_NETO_REAL"/>
+      </measure>
+      <measure id="VOLUMEN_KG" order="74" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen KG"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="VOLUMEN_KG"/>
+      </measure>
+      <measure id="Volumen_CS" order="77" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Volumen Cajas"/>
+        <measureMapping columnObjectName="FG_NEWVTA_MES_03" columnName="Volumen_CS"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="Jer_Clientes">
+        <attributeRef xsi:type="DataFoundation:Attribute">CLIENTE_JER_NIVEL2</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">CLIENTE_JER_NIVEL3</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">CLIENTE_JER_NIVEL4</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">CLIENTE_JER_NIVEL5</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Jer_Clientes" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="Jer Clientes"/>
+            <levels>
+              <level levelAttribute="CLIENTE_JER_NIVEL2" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="CLIENTE_JER_NIVEL2"/>
+              <level levelAttribute="CLIENTE_JER_NIVEL3" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="CLIENTE_JER_NIVEL3"/>
+              <level levelAttribute="CLIENTE_JER_NIVEL4" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="CLIENTE_JER_NIVEL4"/>
+              <level levelAttribute="CLIENTE_JER_NIVEL5" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="CLIENTE_JER_NIVEL5"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+      <localDimension id="Jer_Paises">
+        <attributeRef xsi:type="DataFoundation:Attribute">PAIS_N1</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">PAIS_N2</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Jer_Paises" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="Jer_Paises"/>
+            <levels>
+              <level levelAttribute="PAIS_N1" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="PAIS_N1"/>
+              <level levelAttribute="PAIS_N2" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="PAIS_N2"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

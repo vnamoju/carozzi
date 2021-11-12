@@ -1,0 +1,2323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="JERARQUIAS_CUENTA" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="TEST_JER"/>
+  <metadata changedAt="2018-12-26 22:31:28.651"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="52"/>
+  <dataSources>
+    <DataSource id="DIM_JERARQUIA_CUENTA_TEXT">
+      <resourceUri>DIM_JERARQUIA_CUENTA_TEXT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_2$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+      <resourceUri>DIM_JERARQUIA_CUENTA_TEXT</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_SETLEAF">
+      <resourceUri>DIM_SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_3$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+      <resourceUri>DIM_JERARQUIA_CUENTA_TEXT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_4$$$$DIM_SETLEAF$$">
+      <resourceUri>DIM_SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_5$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+      <resourceUri>DIM_JERARQUIA_CUENTA_TEXT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_7$$$$DIM_SETLEAF$$">
+      <resourceUri>DIM_SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_8$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+      <resourceUri>DIM_JERARQUIA_CUENTA_TEXT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_9$$$$DIM_SETLEAF$$">
+      <resourceUri>DIM_SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_10$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+      <resourceUri>DIM_JERARQUIA_CUENTA_TEXT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_11$$$$DIM_SETLEAF$$">
+      <resourceUri>DIM_SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_12$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+      <resourceUri>DIM_JERARQUIA_CUENTA_TEXT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_13$$$$DIM_SETLEAF$$">
+      <resourceUri>DIM_SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_14$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+      <resourceUri>DIM_JERARQUIA_CUENTA_TEXT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_15$$$$DIM_SETLEAF$$">
+      <resourceUri>DIM_SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_16$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+      <resourceUri>DIM_JERARQUIA_CUENTA_TEXT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_17$$$$DIM_SETLEAF$$">
+      <resourceUri>DIM_SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_18$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+      <resourceUri>DIM_JERARQUIA_CUENTA_TEXT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_19$$$$DIM_SETLEAF$$">
+      <resourceUri>DIM_SETLEAF</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_20$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+      <resourceUri>DIM_JERARQUIA_CUENTA_TEXT</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_21$$$$DIM_SETLEAF$$">
+      <resourceUri>DIM_SETLEAF</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="JER_CUENTA_ID_1"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;SUBSETNAME&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SOCIEDAD_CO" length="5" expressionLanguage="COLUMN_ENGINE">
+          <formula>rightstr(&quot;JER_CUENTA_ID_1&quot;,4)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#DIM_JERARQUIA_CUENTA_TEXT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_1" source="SETNAME_OLD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID"/>
+      </input>
+      <filter>(&quot;SETCLASS&quot; ='0000') AND (in (&quot;JER_CUENTA_ID_1&quot;,'JER_CUENTAS_5100','JER_CUENTAS_EC01','JER_CUENTAS_GC01','JER_CUENTAS_1100'))</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_2$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID"/>
+      </input>
+      <filter>(&quot;SETCLASS&quot; ='0000')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="HOJA"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA" source="HOJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="JER_CUENTA_ID_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_SETLEAF">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME1"/>
+        <viewAttribute id="HOJA"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_1" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME1&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA1" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM&quot;),&quot;SUBSETNAME1&quot;,&quot;VALFROM&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA" source="HOJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+      </input>
+      <input node="#Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_3$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID"/>
+      </input>
+      <filter>(&quot;SETCLASS&quot; ='0000')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSETNAME_2"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_2" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_1"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_4$$$$DIM_SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSETNAME2"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSATNAME_2" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(ISNULL(&quot;ID_TEXT&quot;),&quot;SUBSETNAME2&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_2" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(ISNULL(&quot;SUBSATNAME_22&quot;),&quot;HOJA1&quot;,&quot;SUBSATNAME_22&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSATNAME_22" length="24" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(ISNULL(&quot;VALFROM&quot;),&quot;SUBSETNAME2&quot;,&quot;VALFROM&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME2" source="SUBSETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+      </input>
+      <input node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_1"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_5$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID"/>
+      </input>
+      <filter>(&quot;SETCLASS&quot; ='0000')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+      </input>
+      <input node="#Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+      <joinAttribute name="SUBSATNAME_2"/>
+      <joinAttribute name="MANDT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_7$$$$DIM_SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_3" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME3&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_3" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(ISNULL(&quot;SUBSETNAME_33&quot;),&quot;HOJA_2&quot;,&quot;SUBSETNAME_33&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_33" length="24" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM&quot;),&quot;SUBSETNAME3&quot;,&quot;VALFROM&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+      </input>
+      <input node="#Projection_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSATNAME_2"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_8">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_8$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID"/>
+      </input>
+      <filter>(&quot;SETCLASS&quot; ='0000')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_7" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_2"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+      </input>
+      <input node="#Projection_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_2" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_3"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_9">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_9$$$$DIM_SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_8" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME4"/>
+        <viewAttribute id="VALFROM_1"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_4" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;), &quot;SUBSETNAME4&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_4" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;SUBSETNAME_44&quot;),&quot;HOJA_3&quot;,&quot;SUBSETNAME_44&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_44" length="26" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM_1&quot;), &quot;SUBSETNAME4&quot;,&quot;VALFROM_1&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME4" source="SUBSETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+      </input>
+      <input node="#Projection_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_1" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+      <joinAttribute name="SUBSETNAME_3"/>
+      <joinAttribute name="MANDT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_10">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_10$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID"/>
+      </input>
+      <filter>(&quot;SETCLASS&quot; ='0000')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_9" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME4"/>
+        <viewAttribute id="VALFROM_1"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME_2"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME4" source="SUBSETNAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_1" source="VALFROM_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+      </input>
+      <input node="#Projection_10">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_2" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_4"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_11">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_11$$$$DIM_SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_10" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME4"/>
+        <viewAttribute id="VALFROM_1"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME5"/>
+        <viewAttribute id="VALFROM_2"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_5" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME5&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_5" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;SUBSETNAME_55&quot;),&quot;HOJA_4&quot;,&quot;SUBSETNAME_55&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_55" length="26" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM_2&quot;),&quot;SUBSETNAME5&quot;,&quot;VALFROM_2&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME4" source="SUBSETNAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_1" source="VALFROM_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME5" source="SUBSETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+      </input>
+      <input node="#Projection_11">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_2" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_4"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_12">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETCLASS"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_12$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID"/>
+      </input>
+      <filter>(&quot;SETCLASS&quot; ='0000')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_11" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME4"/>
+        <viewAttribute id="VALFROM_1"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME5"/>
+        <viewAttribute id="VALFROM_2"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+        <viewAttribute id="HOJA_5"/>
+        <viewAttribute id="SETNAME_6"/>
+        <viewAttribute id="SUBSETNAME6"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_10">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME4" source="SUBSETNAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_1" source="VALFROM_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME5" source="SUBSETNAME5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_2" source="VALFROM_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_5" source="HOJA_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+      </input>
+      <input node="#Projection_12">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_6" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME6" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_5"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_13">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_13$$$$DIM_SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_12" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME3"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="HOJA1"/>
+        <viewAttribute id="HOJA_2"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="HOJA_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME4"/>
+        <viewAttribute id="VALFROM_1"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME5"/>
+        <viewAttribute id="VALFROM_2"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+        <viewAttribute id="HOJA_5"/>
+        <viewAttribute id="SETNAME_6"/>
+        <viewAttribute id="VALFROM_3"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="SUBSETNAME6"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_6" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME6&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_66" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM_3&quot;),&quot;SUBSETNAME6&quot;,&quot;VALFROM_3&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_6" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;SUBSETNAME_66&quot;),&quot;HOJA_5&quot;,&quot;SUBSETNAME_66&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_11">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME4" source="SUBSETNAME4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_1" source="VALFROM_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME5" source="SUBSETNAME5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_2" source="VALFROM_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_5" source="HOJA_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_6" source="SETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME6" source="SUBSETNAME6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID_8"/>
+      </input>
+      <input node="#Projection_13">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_3" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_5"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_14">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="JER_CUENTA_ID_9"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_14$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_9" source="JER_CUENTA_ID"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_13" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+        <viewAttribute id="HOJA_5"/>
+        <viewAttribute id="SETNAME_6"/>
+        <viewAttribute id="SUBSETNAME_6"/>
+        <viewAttribute id="HOJA_6"/>
+        <viewAttribute id="SETNAME_7"/>
+        <viewAttribute id="SUBSETNAME7"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+        <viewAttribute id="JER_CUENTA_ID_99"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_12">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_5" source="HOJA_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_6" source="SETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_6" source="SUBSETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_6" source="HOJA_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID_8"/>
+      </input>
+      <input node="#Projection_14">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_7" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME7" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_99" source="JER_CUENTA_ID_9"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_6" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_6"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_15">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_15$$$$DIM_SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_14" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+        <viewAttribute id="HOJA_5"/>
+        <viewAttribute id="SETNAME_6"/>
+        <viewAttribute id="SUBSETNAME_6"/>
+        <viewAttribute id="HOJA_6"/>
+        <viewAttribute id="SETNAME_7"/>
+        <viewAttribute id="SUBSETNAME7"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+        <viewAttribute id="JER_CUENTA_ID_99"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_7" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME7&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_77" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM&quot;),&quot;SUBSETNAME7&quot;,&quot;VALFROM&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_7" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;SUBSETNAME_77&quot;),&quot;HOJA_6&quot;,&quot;SUBSETNAME_77&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="JER_CUENTA_ID_9" length="24" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;JER_CUENTA_ID_99&quot;,'')</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_13">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_5" source="HOJA_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_6" source="SETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_6" source="SUBSETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_6" source="HOJA_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_7" source="SETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME7" source="SUBSETNAME7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_99" source="JER_CUENTA_ID_99"/>
+      </input>
+      <input node="#Projection_15">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_6" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_6"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_16">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="JER_CUENTA_ID_10"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_16$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_10" source="JER_CUENTA_ID"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_15" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+        <viewAttribute id="HOJA_5"/>
+        <viewAttribute id="SETNAME_6"/>
+        <viewAttribute id="SUBSETNAME_6"/>
+        <viewAttribute id="HOJA_6"/>
+        <viewAttribute id="SUBSETNAME_7"/>
+        <viewAttribute id="HOJA_7"/>
+        <viewAttribute id="SETNAME_7"/>
+        <viewAttribute id="SETNAME_8"/>
+        <viewAttribute id="SUBSETNAME8"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+        <viewAttribute id="JER_CUENTA_ID_10"/>
+        <viewAttribute id="JER_CUENTA_ID_9"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_14">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_5" source="HOJA_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_6" source="SETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_6" source="SUBSETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_6" source="HOJA_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_7" source="SUBSETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_7" source="HOJA_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_7" source="SETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_9" source="JER_CUENTA_ID_9"/>
+      </input>
+      <input node="#Projection_16">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_8" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME8" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_10" source="JER_CUENTA_ID_10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_7" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_7"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_17">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_17$$$$DIM_SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_16" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+        <viewAttribute id="HOJA_5"/>
+        <viewAttribute id="SETNAME_6"/>
+        <viewAttribute id="SUBSETNAME_6"/>
+        <viewAttribute id="HOJA_6"/>
+        <viewAttribute id="SUBSETNAME_7"/>
+        <viewAttribute id="HOJA_7"/>
+        <viewAttribute id="SETNAME_7"/>
+        <viewAttribute id="SETNAME_8"/>
+        <viewAttribute id="SUBSETNAME8"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+        <viewAttribute id="JER_CUENTA_ID_10"/>
+        <viewAttribute id="JER_CUENTA_ID_9"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_8" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME8&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_88" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM&quot;),&quot;SUBSETNAME8&quot;,&quot;VALFROM&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_8" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;SUBSETNAME_88&quot;),&quot;HOJA_7&quot;,&quot;SUBSETNAME_88&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_15">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_5" source="HOJA_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_6" source="SETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_6" source="SUBSETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_6" source="HOJA_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_7" source="SUBSETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_7" source="HOJA_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_7" source="SETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_8" source="SETNAME_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME8" source="SUBSETNAME8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_10" source="JER_CUENTA_ID_10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_9" source="JER_CUENTA_ID_9"/>
+      </input>
+      <input node="#Projection_17">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_7" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+      <joinAttribute name="SUBSETNAME_7"/>
+      <joinAttribute name="MANDT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_18">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="JER_CUENTA_ID_11"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_18$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_11" source="JER_CUENTA_ID"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_17" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+        <viewAttribute id="HOJA_5"/>
+        <viewAttribute id="SETNAME_6"/>
+        <viewAttribute id="SUBSETNAME_6"/>
+        <viewAttribute id="HOJA_6"/>
+        <viewAttribute id="SUBSETNAME_7"/>
+        <viewAttribute id="HOJA_7"/>
+        <viewAttribute id="SETNAME_7"/>
+        <viewAttribute id="SETNAME_8"/>
+        <viewAttribute id="SUBSETNAME_8"/>
+        <viewAttribute id="HOJA_8"/>
+        <viewAttribute id="SETNAME_9"/>
+        <viewAttribute id="SUBSETNAME9"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+        <viewAttribute id="JER_CUENTA_ID_10"/>
+        <viewAttribute id="JER_CUENTA_ID_11"/>
+        <viewAttribute id="JER_CUENTA_ID_9"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_16">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_5" source="HOJA_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_6" source="SETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_6" source="SUBSETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_6" source="HOJA_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_7" source="SUBSETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_7" source="HOJA_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_7" source="SETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_8" source="SETNAME_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_8" source="SUBSETNAME_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_8" source="HOJA_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_10" source="JER_CUENTA_ID_10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_9" source="JER_CUENTA_ID_9"/>
+      </input>
+      <input node="#Projection_18">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_9" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME9" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_11" source="JER_CUENTA_ID_11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_8" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_8"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_19">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_19$$$$DIM_SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_18" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+        <viewAttribute id="HOJA_5"/>
+        <viewAttribute id="SETNAME_6"/>
+        <viewAttribute id="SUBSETNAME_6"/>
+        <viewAttribute id="HOJA_6"/>
+        <viewAttribute id="SUBSETNAME_7"/>
+        <viewAttribute id="HOJA_7"/>
+        <viewAttribute id="SETNAME_7"/>
+        <viewAttribute id="SETNAME_8"/>
+        <viewAttribute id="SUBSETNAME_8"/>
+        <viewAttribute id="HOJA_8"/>
+        <viewAttribute id="SETNAME_9"/>
+        <viewAttribute id="SUBSETNAME9"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+        <viewAttribute id="JER_CUENTA_ID_10"/>
+        <viewAttribute id="JER_CUENTA_ID_11"/>
+        <viewAttribute id="JER_CUENTA_ID_9"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_9" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME9&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_99" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM&quot;),&quot;SUBSETNAME9&quot;,&quot;VALFROM&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_9" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;SUBSETNAME_99&quot;),&quot;HOJA_8&quot;,&quot;SUBSETNAME_99&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_17">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_5" source="HOJA_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_6" source="SETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_6" source="SUBSETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_6" source="HOJA_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_7" source="SUBSETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_7" source="HOJA_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_7" source="SETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_8" source="SETNAME_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_8" source="SUBSETNAME_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_8" source="HOJA_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_9" source="SETNAME_9"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME9" source="SUBSETNAME9"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_10" source="JER_CUENTA_ID_10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_11" source="JER_CUENTA_ID_11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_9" source="JER_CUENTA_ID_9"/>
+      </input>
+      <input node="#Projection_19">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_8" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_8"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_20">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="JER_CUENTA_ID_12"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_20$$$$DIM_JERARQUIA_CUENTA_TEXT$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_12" source="JER_CUENTA_ID"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_19" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+        <viewAttribute id="HOJA_5"/>
+        <viewAttribute id="SETNAME_6"/>
+        <viewAttribute id="SUBSETNAME_6"/>
+        <viewAttribute id="HOJA_6"/>
+        <viewAttribute id="SUBSETNAME_7"/>
+        <viewAttribute id="HOJA_7"/>
+        <viewAttribute id="SETNAME_7"/>
+        <viewAttribute id="SETNAME_8"/>
+        <viewAttribute id="SUBSETNAME_8"/>
+        <viewAttribute id="HOJA_8"/>
+        <viewAttribute id="SETNAME_9"/>
+        <viewAttribute id="SUBSETNAME_9"/>
+        <viewAttribute id="HOJA_9"/>
+        <viewAttribute id="SETNAME_10"/>
+        <viewAttribute id="SUBSETNAME10"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+        <viewAttribute id="JER_CUENTA_ID_10"/>
+        <viewAttribute id="JER_CUENTA_ID_11"/>
+        <viewAttribute id="JER_CUENTA_ID_12"/>
+        <viewAttribute id="JER_CUENTA_ID_9"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_18">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_5" source="HOJA_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_6" source="SETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_6" source="SUBSETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_6" source="HOJA_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_7" source="SUBSETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_7" source="HOJA_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_7" source="SETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_8" source="SETNAME_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_8" source="SUBSETNAME_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_8" source="HOJA_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_9" source="SETNAME_9"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_9" source="SUBSETNAME_9"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_9" source="HOJA_9"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_10" source="JER_CUENTA_ID_10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_11" source="JER_CUENTA_ID_11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_9" source="JER_CUENTA_ID_9"/>
+      </input>
+      <input node="#Projection_20">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_10" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME10" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_12" source="JER_CUENTA_ID_12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_9" source="SETNAME"/>
+      </input>
+      <joinAttribute name="MANDT"/>
+      <joinAttribute name="SUBSETNAME_9"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_21">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_21$$$$DIM_SETLEAF$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_20" joinOrder="OUTSIDE_IN" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SETNAME"/>
+        <viewAttribute id="SUBSETNAME"/>
+        <viewAttribute id="SETNAME_1"/>
+        <viewAttribute id="SUBSETNAME_1"/>
+        <viewAttribute id="SETNAME_2"/>
+        <viewAttribute id="SUBSATNAME_2"/>
+        <viewAttribute id="SETNAME_3"/>
+        <viewAttribute id="SUBSETNAME_3"/>
+        <viewAttribute id="SETNAME_4"/>
+        <viewAttribute id="SUBSETNAME_4"/>
+        <viewAttribute id="HOJA_4"/>
+        <viewAttribute id="SETNAME_5"/>
+        <viewAttribute id="SUBSETNAME_5"/>
+        <viewAttribute id="HOJA_5"/>
+        <viewAttribute id="SETNAME_6"/>
+        <viewAttribute id="SUBSETNAME_6"/>
+        <viewAttribute id="HOJA_6"/>
+        <viewAttribute id="SUBSETNAME_7"/>
+        <viewAttribute id="HOJA_7"/>
+        <viewAttribute id="SETNAME_7"/>
+        <viewAttribute id="SETNAME_8"/>
+        <viewAttribute id="SUBSETNAME_8"/>
+        <viewAttribute id="HOJA_8"/>
+        <viewAttribute id="SETNAME_9"/>
+        <viewAttribute id="SUBSETNAME_9"/>
+        <viewAttribute id="HOJA_9"/>
+        <viewAttribute id="SETNAME_10"/>
+        <viewAttribute id="SUBSETNAME10"/>
+        <viewAttribute id="VALFROM"/>
+        <viewAttribute id="ID_TEXT"/>
+        <viewAttribute id="SOCIEDAD_CO"/>
+        <viewAttribute id="CUENTA_JER_Nivel2_ID"/>
+        <viewAttribute id="JER_CUENTA_ID_2"/>
+        <viewAttribute id="JER_CUENTA_ID_3"/>
+        <viewAttribute id="JER_CUENTA_ID_4"/>
+        <viewAttribute id="JER_CUENTA_ID_5"/>
+        <viewAttribute id="JER_CUENTA_ID_6"/>
+        <viewAttribute id="JER_CUENTA_ID_7"/>
+        <viewAttribute id="JER_CUENTA_ID_8"/>
+        <viewAttribute id="JER_CUENTA_ID_10"/>
+        <viewAttribute id="JER_CUENTA_ID_11"/>
+        <viewAttribute id="JER_CUENTA_ID_12"/>
+        <viewAttribute id="JER_CUENTA_ID_9"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_10" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME10&quot;,&quot;ID_TEXT&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_1010" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VALFROM&quot;),&quot;SUBSETNAME10&quot;,&quot;VALFROM&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="HOJA_10" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;SUBSETNAME_1010&quot;),&quot;HOJA_9&quot;,&quot;SUBSETNAME_1010&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Join_19">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SUBSATNAME_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SUBSETNAME_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_5" source="SUBSETNAME_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_5" source="HOJA_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_6" source="SETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_6" source="SUBSETNAME_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_6" source="HOJA_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_7" source="SUBSETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_7" source="HOJA_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_7" source="SETNAME_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_8" source="SETNAME_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_8" source="SUBSETNAME_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_8" source="HOJA_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_9" source="SETNAME_9"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_9" source="SUBSETNAME_9"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_9" source="HOJA_9"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_10" source="SETNAME_10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME10" source="SUBSETNAME10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_CO" source="SOCIEDAD_CO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUENTA_JER_Nivel2_ID" source="CUENTA_JER_Nivel2_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_2" source="JER_CUENTA_ID_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_3" source="JER_CUENTA_ID_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_4" source="JER_CUENTA_ID_4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_5" source="JER_CUENTA_ID_5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_6" source="JER_CUENTA_ID_6"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_7" source="JER_CUENTA_ID_7"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_8" source="JER_CUENTA_ID_8"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_10" source="JER_CUENTA_ID_10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_11" source="JER_CUENTA_ID_11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_12" source="JER_CUENTA_ID_12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JER_CUENTA_ID_9" source="JER_CUENTA_ID_9"/>
+      </input>
+      <input node="#Projection_21">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_9" source="SETNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+      <joinAttribute name="SUBSETNAME_9"/>
+      <joinAttribute name="MANDT"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_20">
+    <descriptions/>
+    <attributes>
+      <attribute id="MANDT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_20" columnName="MANDT"/>
+      </attribute>
+      <attribute id="Nivel1" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel1"/>
+        <keyMapping columnObjectName="Join_20" columnName="SETNAME"/>
+      </attribute>
+      <attribute id="Nivel2" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel2"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME"/>
+      </attribute>
+      <attribute id="SETNAME_1" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME_1"/>
+        <keyMapping columnObjectName="Join_20" columnName="SETNAME_1"/>
+      </attribute>
+      <attribute id="Nivel3" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel3"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME_1"/>
+      </attribute>
+      <attribute id="SETNAME_2" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME_2"/>
+        <keyMapping columnObjectName="Join_20" columnName="SETNAME_2"/>
+      </attribute>
+      <attribute id="Nivel4" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel4"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSATNAME_2"/>
+      </attribute>
+      <attribute id="SETNAME_3" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME_3"/>
+        <keyMapping columnObjectName="Join_20" columnName="SETNAME_3"/>
+      </attribute>
+      <attribute id="Nivel5" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel5"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME_3"/>
+      </attribute>
+      <attribute id="SETNAME_4" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME_4"/>
+        <keyMapping columnObjectName="Join_20" columnName="SETNAME_4"/>
+      </attribute>
+      <attribute id="Nivel6" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel6"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME_4"/>
+      </attribute>
+      <attribute id="HOJA_4" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HOJA_4"/>
+        <keyMapping columnObjectName="Join_20" columnName="HOJA_4"/>
+      </attribute>
+      <attribute id="SETNAME_5" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME_5"/>
+        <keyMapping columnObjectName="Join_20" columnName="SETNAME_5"/>
+      </attribute>
+      <attribute id="Nivel7" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel7"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME_5"/>
+      </attribute>
+      <attribute id="HOJA_5" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HOJA_5"/>
+        <keyMapping columnObjectName="Join_20" columnName="HOJA_5"/>
+      </attribute>
+      <attribute id="SETNAME_6" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME_6"/>
+        <keyMapping columnObjectName="Join_20" columnName="SETNAME_6"/>
+      </attribute>
+      <attribute id="Nivel8" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel8"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME_6"/>
+      </attribute>
+      <attribute id="HOJA_6" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HOJA_6"/>
+        <keyMapping columnObjectName="Join_20" columnName="HOJA_6"/>
+      </attribute>
+      <attribute id="Nivel9" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel9"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME_7"/>
+      </attribute>
+      <attribute id="HOJA_7" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HOJA_7"/>
+        <keyMapping columnObjectName="Join_20" columnName="HOJA_7"/>
+      </attribute>
+      <attribute id="SETNAME_7" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME_7"/>
+        <keyMapping columnObjectName="Join_20" columnName="SETNAME_7"/>
+      </attribute>
+      <attribute id="SETNAME_8" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME"/>
+        <keyMapping columnObjectName="Join_20" columnName="SETNAME_8"/>
+      </attribute>
+      <attribute id="Nivel10" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel10"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME_8"/>
+      </attribute>
+      <attribute id="HOJA_8" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HOJA_8"/>
+        <keyMapping columnObjectName="Join_20" columnName="HOJA_8"/>
+      </attribute>
+      <attribute id="SETNAME_9" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME"/>
+        <keyMapping columnObjectName="Join_20" columnName="SETNAME_9"/>
+      </attribute>
+      <attribute id="Nivel11" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel11"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME_9"/>
+      </attribute>
+      <attribute id="HOJA_9" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HOJA_9"/>
+        <keyMapping columnObjectName="Join_20" columnName="HOJA_9"/>
+      </attribute>
+      <attribute id="SETNAME_10" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SETNAME"/>
+        <keyMapping columnObjectName="Join_20" columnName="SETNAME_10"/>
+      </attribute>
+      <attribute id="SUBSETNAME10" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME10"/>
+      </attribute>
+      <attribute id="VALFROM" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="VALFROM"/>
+        <keyMapping columnObjectName="Join_20" columnName="VALFROM"/>
+      </attribute>
+      <attribute id="ID_TEXT" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_TEXT"/>
+        <keyMapping columnObjectName="Join_20" columnName="ID_TEXT"/>
+      </attribute>
+      <attribute id="Nivel12" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel12"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME_10"/>
+      </attribute>
+      <attribute id="SUBSETNAME_1010" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBSETNAME_1010"/>
+        <keyMapping columnObjectName="Join_20" columnName="SUBSETNAME_1010"/>
+      </attribute>
+      <attribute id="HOJA_10" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HOJA_10"/>
+        <keyMapping columnObjectName="Join_20" columnName="HOJA_10"/>
+      </attribute>
+      <attribute id="SOCIEDAD_CO" order="35" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOCIEDAD_CO"/>
+        <keyMapping columnObjectName="Join_20" columnName="SOCIEDAD_CO"/>
+      </attribute>
+      <attribute id="CUENTA_JER_Nivel2_ID" order="36" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUENTA_JER_Nivel2_ID"/>
+        <keyMapping columnObjectName="Join_20" columnName="CUENTA_JER_Nivel2_ID"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_2" order="37" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_ID_2"/>
+        <keyMapping columnObjectName="Join_20" columnName="JER_CUENTA_ID_2"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_3" order="38" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_ID_3"/>
+        <keyMapping columnObjectName="Join_20" columnName="JER_CUENTA_ID_3"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_4" order="39" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_ID_4"/>
+        <keyMapping columnObjectName="Join_20" columnName="JER_CUENTA_ID_4"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_5" order="40" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_ID_5"/>
+        <keyMapping columnObjectName="Join_20" columnName="JER_CUENTA_ID_5"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_6" order="41" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_ID_6"/>
+        <keyMapping columnObjectName="Join_20" columnName="JER_CUENTA_ID_6"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_7" order="42" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_ID_7"/>
+        <keyMapping columnObjectName="Join_20" columnName="JER_CUENTA_ID_7"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_8" order="43" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_ID_8"/>
+        <keyMapping columnObjectName="Join_20" columnName="JER_CUENTA_ID_8"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_10" order="44" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_ID_10"/>
+        <keyMapping columnObjectName="Join_20" columnName="JER_CUENTA_ID_10"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_11" order="45" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_ID_11"/>
+        <keyMapping columnObjectName="Join_20" columnName="JER_CUENTA_ID_11"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_12" order="46" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_ID_12"/>
+        <keyMapping columnObjectName="Join_20" columnName="JER_CUENTA_ID_12"/>
+      </attribute>
+      <attribute id="JER_CUENTA_ID_9" order="47" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="JER_CUENTA_ID_9"/>
+        <keyMapping columnObjectName="Join_20" columnName="JER_CUENTA_ID_9"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="1318" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="2085"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="2085"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="1989"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="1989"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="175" y="1893"/>
+        <rectangleSize height="72" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="329" y="1893"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="1797"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="404" y="1797"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="324" y="1701"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="478" y="1701"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="397" y="1605"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="551" y="1605"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="469" y="1509"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="623" y="1509"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="540" y="1413"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="694" y="1413"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="610" y="1317"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="764" y="1317"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="679" y="1221"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_11" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="833" y="1221"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="747" y="1125"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_12" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="901" y="1125"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_11" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="815" y="1029"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_13" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="969" y="1029"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_12" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="884" y="933"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_14" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1038" y="933"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_13" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="954" y="837"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_15" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1108" y="837"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_14" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1025" y="741"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_16" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1179" y="741"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_15" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1097" y="645"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_17" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1251" y="645"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_16" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1170" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_18" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1324" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_17" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1244" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_19" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1398" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_18" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1319" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_20" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1473" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_19" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1395" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_21" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1241" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_20" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1318" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

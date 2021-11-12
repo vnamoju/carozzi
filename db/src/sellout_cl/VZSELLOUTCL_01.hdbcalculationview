@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="VZSELLOUTCL_01" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED">
+  <origin/>
+  <descriptions defaultDescription=""/>
+  <metadata changedAt="2019-02-07 16:28:05.198"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="15"/>
+  <dataSources>
+    <DataSource id="VT_Z1SELLOUT">
+      <resourceUri>VT_Z1SELLOUT</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="FORLOC"/>
+        <viewAttribute id="CODSAL"/>
+        <viewAttribute id="CODSKU"/>
+        <viewAttribute id="TIPREG"/>
+        <viewAttribute id="FECREG"/>
+        <viewAttribute id="DIVCOM"/>
+        <viewAttribute id="MESREG"/>
+        <viewAttribute id="ANOREG"/>
+        <viewAttribute id="CODPRO"/>
+        <viewAttribute id="GRUART"/>
+        <viewAttribute aggregationType="sum" id="CANUDV_I"/>
+        <viewAttribute aggregationType="sum" id="CANUDV_E"/>
+        <viewAttribute aggregationType="sum" id="CANUMB"/>
+        <viewAttribute aggregationType="sum" id="VMORIG"/>
+        <viewAttribute aggregationType="sum" id="VALCOS_MO"/>
+        <viewAttribute id="UNIVEN_E"/>
+        <viewAttribute id="UNIUMB"/>
+        <viewAttribute id="UNIUMV_I"/>
+        <viewAttribute id="FLPACK"/>
+        <viewAttribute aggregationType="sum" id="CANINV"/>
+        <viewAttribute aggregationType="count" id="KIEINV"/>
+        <viewAttribute id="HABILI"/>
+        <viewAttribute aggregationType="sum" id="STKTRA"/>
+        <viewAttribute id="UNAME"/>
+        <viewAttribute id="WAERS"/>
+        <viewAttribute id="DATUM"/>
+        <viewAttribute id="UZEIT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="CODCAD"/>
+        <viewAttribute id="VKORG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#VT_Z1SELLOUT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORLOC" source="FORLOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CODSAL" source="CODSAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CODSKU" source="CODSKU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPREG" source="TIPREG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECREG" source="FECREG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVCOM" source="DIVCOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MESREG" source="MESREG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ANOREG" source="ANOREG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CODPRO" source="CODPRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUART" source="GRUART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANUDV_I" source="CANUDV_I"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANUDV_E" source="CANUDV_E"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANUMB" source="CANUMB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMORIG" source="VMORIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALCOS_MO" source="VALCOS_MO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIVEN_E" source="UNIVEN_E"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIUMB" source="UNIUMB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIUMV_I" source="UNIUMV_I"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FLPACK" source="FLPACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANINV" source="CANINV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KIEINV" source="KIEINV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HABILI" source="HABILI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STKTRA" source="STKTRA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNAME" source="UNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERS" source="WAERS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATUM" source="DATUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UZEIT" source="UZEIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CODCAD" source="CODCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="FORLOC"/>
+        <viewAttribute id="CODSAL"/>
+        <viewAttribute id="CODSKU"/>
+        <viewAttribute id="TIPREG"/>
+        <viewAttribute id="FECREG"/>
+        <viewAttribute id="DIVCOM"/>
+        <viewAttribute id="MESREG"/>
+        <viewAttribute id="ANOREG"/>
+        <viewAttribute id="CODPRO"/>
+        <viewAttribute id="GRUART"/>
+        <viewAttribute id="CANUDV_I"/>
+        <viewAttribute id="CANUDV_E"/>
+        <viewAttribute id="CANUMB"/>
+        <viewAttribute id="VMORIG"/>
+        <viewAttribute id="VALCOS_MO"/>
+        <viewAttribute id="UNIVEN_E"/>
+        <viewAttribute id="UNIUMB"/>
+        <viewAttribute id="UNIUMV_I"/>
+        <viewAttribute id="FLPACK"/>
+        <viewAttribute id="CANINV"/>
+        <viewAttribute id="KIEINV"/>
+        <viewAttribute id="HABILI"/>
+        <viewAttribute id="STKTRA"/>
+        <viewAttribute id="UNAME"/>
+        <viewAttribute id="WAERS"/>
+        <viewAttribute id="DATUM"/>
+        <viewAttribute id="UZEIT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="BUKRS"/>
+        <viewAttribute id="CODCAD"/>
+        <viewAttribute id="VKORG"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORLOC" source="FORLOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CODSAL" source="CODSAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CODSKU" source="CODSKU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIPREG" source="TIPREG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FECREG" source="FECREG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVCOM" source="DIVCOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MESREG" source="MESREG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ANOREG" source="ANOREG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CODPRO" source="CODPRO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRUART" source="GRUART"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANUDV_I" source="CANUDV_I"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANUDV_E" source="CANUDV_E"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANUMB" source="CANUMB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VMORIG" source="VMORIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALCOS_MO" source="VALCOS_MO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIVEN_E" source="UNIVEN_E"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIUMB" source="UNIUMB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIUMV_I" source="UNIUMV_I"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FLPACK" source="FLPACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CANINV" source="CANINV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KIEINV" source="KIEINV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HABILI" source="HABILI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STKTRA" source="STKTRA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNAME" source="UNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WAERS" source="WAERS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATUM" source="DATUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UZEIT" source="UZEIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUKRS" source="BUKRS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CODCAD" source="CODCAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="CODSKU" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CODSKU"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CODSKU"/>
+      </attribute>
+      <attribute id="TIPREG" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIPREG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="TIPREG"/>
+      </attribute>
+      <attribute id="FECREG" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FECREG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FECREG"/>
+      </attribute>
+      <attribute id="DIVCOM" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVCOM"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DIVCOM"/>
+      </attribute>
+      <attribute id="MESREG" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MESREG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MESREG"/>
+      </attribute>
+      <attribute id="ANOREG" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ANOREG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ANOREG"/>
+      </attribute>
+      <attribute id="UNIVEN_E" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIVEN_E"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNIVEN_E"/>
+      </attribute>
+      <attribute id="UNIUMB" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIUMB"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNIUMB"/>
+      </attribute>
+      <attribute id="UNIUMV_I" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNIUMV_I"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNIUMV_I"/>
+      </attribute>
+      <attribute id="FLPACK" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FLPACK"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FLPACK"/>
+      </attribute>
+      <attribute id="KIEINV" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KIEINV"/>
+        <keyMapping columnObjectName="Projection_1" columnName="KIEINV"/>
+      </attribute>
+      <attribute id="HABILI" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HABILI"/>
+        <keyMapping columnObjectName="Projection_1" columnName="HABILI"/>
+      </attribute>
+      <attribute id="UNAME" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UNAME"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UNAME"/>
+      </attribute>
+      <attribute id="WAERS" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WAERS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="WAERS"/>
+      </attribute>
+      <attribute id="DATUM" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DATUM"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DATUM"/>
+      </attribute>
+      <attribute id="UZEIT" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UZEIT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="UZEIT"/>
+      </attribute>
+      <attribute id="CODPRO" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CODPRO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CODPRO"/>
+      </attribute>
+      <attribute id="GRUART" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUART"/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUART"/>
+      </attribute>
+      <attribute id="CODCAD" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CODCAD"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CODCAD"/>
+      </attribute>
+      <attribute id="MANDT" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="BUKRS" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUKRS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="FORLOC" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FORLOC"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FORLOC"/>
+      </attribute>
+      <attribute id="CODSAL" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CODSAL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CODSAL"/>
+      </attribute>
+      <attribute id="GRUART$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="GRUART"/>
+      </attribute>
+      <attribute id="MANDT$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="MANDT"/>
+      </attribute>
+      <attribute id="BUKRS$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="BUKRS"/>
+      </attribute>
+      <attribute id="CODPRO$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CODPRO"/>
+      </attribute>
+      <attribute id="CODCAD$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CODCAD"/>
+      </attribute>
+      <attribute id="FORLOC$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="FORLOC"/>
+      </attribute>
+      <attribute id="CODSAL$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="CODSAL"/>
+      </attribute>
+      <attribute id="VKORG$local">
+        <descriptions defaultDescription="VKORG"/>
+        <keyMapping columnObjectName="Projection_1" columnName="VKORG"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="CANUDV_I" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CANUDV_I"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CANUDV_I"/>
+      </measure>
+      <measure id="CANUDV_E" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CANUDV_E"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CANUDV_E"/>
+      </measure>
+      <measure id="CANUMB" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CANUMB"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CANUMB"/>
+      </measure>
+      <measure id="VMORIG" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VMORIG"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VMORIG"/>
+      </measure>
+      <measure id="VALCOS_MO" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALCOS_MO"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VALCOS_MO"/>
+      </measure>
+      <measure id="CANINV" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CANINV"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CANINV"/>
+      </measure>
+      <measure id="STKTRA" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="STKTRA"/>
+        <measureMapping columnObjectName="Projection_1" columnName="STKTRA"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="test">
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="test" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY_ENFORCED">
+            <descriptions defaultDescription="test"/>
+            <levels/>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+    <sharedDimensions>
+      <logicalJoin associatedObjectUri="DIM_GRUPO_MATERIAL">
+        <attributes>
+          <attributeRef>#GRUART$local</attributeRef>
+          <attributeRef>#MANDT$local</attributeRef>
+          <attributeRef>#BUKRS$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>GRUPO_MATERIAL</attributeName>
+          <attributeName>MANDT</attributeName>
+          <attributeName>SOCIEDAD_FI</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_GRUPO_MATERIAL_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference alias="DIM_GRUPO_MATERIAL_SOCIEDAD_FI" attributeName="SOCIEDAD_FI" hidden="true"/>
+          <attributeReference attributeName="GRUPO_MATERIAL" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_MATERIAL">
+        <attributes>
+          <attributeRef>#MANDT$local</attributeRef>
+          <attributeRef>#CODPRO$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>MATERIAL</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_MATERIAL_MANDT" attributeName="MANDT"/>
+          <attributeReference attributeName="MATERIAL" hidden="true"/>
+          <attributeReference attributeName="MATERIAL_CORTO" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DIM_CLIENTE">
+        <attributes>
+          <attributeRef>#MANDT$local</attributeRef>
+          <attributeRef>#CODCAD$local</attributeRef>
+          <attributeRef>#FORLOC$local</attributeRef>
+          <attributeRef>#CODSAL$local</attributeRef>
+          <attributeRef>#BUKRS$local</attributeRef>
+          <attributeRef>#VKORG$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>CADENA</attributeName>
+          <attributeName>SUB_CADENA</attributeName>
+          <attributeName>LOCAL</attributeName>
+          <attributeName>CLIENTE_ATTR_SOCIEDAD_FI</attributeName>
+          <attributeName>ORGANIZACION_VENTA</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_CLIENTE_ORGANIZACION_VENTA" attributeName="ORGANIZACION_VENTA" hidden="true"/>
+          <attributeReference alias="DIM_CLIENTE_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference attributeName="CLIENTE_ATTR_SOCIEDAD_FI" hidden="true"/>
+          <attributeReference attributeName="SPRAS" hidden="true"/>
+          <attributeReference attributeName="CADENA" hidden="true"/>
+          <attributeReference attributeName="SUB_CADENA" hidden="true"/>
+          <attributeReference attributeName="LOCAL" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+    </sharedDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="176" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="360"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="260"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape modelObjectName="Projection_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+        <upperLeftCorner x="708" y="129"/>
+      </shape>
+      <shape modelObjectName="DIM_GRUPO_MATERIAL" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1098" y="443"/>
+      </shape>
+      <shape modelObjectName="DIM_MATERIAL" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1086" y="30"/>
+      </shape>
+      <shape modelObjectName="DIM_CLIENTE" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="7" y="72"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>
