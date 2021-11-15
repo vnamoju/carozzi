@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_CANAL_COMERCIAL" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
-  <origin/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DIM_CANAL_COMERCIAL" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
   <descriptions defaultDescription="DIM_CANAL_COMERCIAL"/>
   <metadata changedAt="2021-06-25 23:21:22.828"/>
   <localVariables/>
@@ -14,24 +14,24 @@
       <resourceUri>JERARQUIA_CANAL_COMERCIAL</resourceUri>
     </DataSource>
   </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
-      <descriptions/>
-      <viewAttributes>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="SOCIEDAD_FI"/>
         <viewAttribute id="CANAL_COMERCIAL"/>
         <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Z1RUBROS">
+    <calculatedViewAttributes/>
+      <input node="Z1RUBROS">
         <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="BUKRS"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL" source="ZCDRUBRO"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="ZDESRUBRO"/>
       </input>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="CANAL_JER_NIVEL2"/>
         <viewAttribute id="CANAL_JER_NIVEL3"/>
         <viewAttribute id="CANAL_JER_NIVEL4"/>
@@ -39,15 +39,15 @@
         <viewAttribute id="CANAL_COMERCIAL"/>
         <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
         <viewAttribute id="CANAL_JER_NIVEL1"/>
-        <viewAttribute id="HOJA_3" transparentFilter="false"/>
+        <viewAttribute id="HOJA_3"/>
         <viewAttribute id="SOCIEDAD_FI"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_1">
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL" source="CANAL_COMERCIAL"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
       </input>
-      <input node="#JERARQUIA_CANAL_COMERCIAL">
+      <input node="JERARQUIA_CANAL_COMERCIAL">
         <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL2" source="SUBSETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL3" source="SUBSETNAME_1"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL4" source="SUBSATNAME_2"/>
@@ -57,11 +57,11 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL" source="HOJA_3"/>
       </input>
-      <joinAttribute name="CANAL_COMERCIAL"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="CANAL_COMERCIAL"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="CANAL_COMERCIAL"/>
         <viewAttribute id="CANAL_COMERCIAL_TEXT"/>
         <viewAttribute id="CANAL_JER_NIVEL1"/>
@@ -69,23 +69,15 @@
         <viewAttribute id="CANAL_JER_NIVEL3"/>
         <viewAttribute id="CANAL_JER_NIVEL4"/>
         <viewAttribute id="CANAL_JER_NIVEL5"/>
-        <viewAttribute id="ID_NODO" transparentFilter="false"/>
+        <viewAttribute id="ID_NODO"/>
         <viewAttribute id="SOCIEDAD_FI"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_1">
-        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL" source="CANAL_COMERCIAL"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_COMERCIAL_TEXT" source="CANAL_COMERCIAL_TEXT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL1" source="CANAL_JER_NIVEL1"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL2" source="CANAL_JER_NIVEL2"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL3" source="CANAL_JER_NIVEL3"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL4" source="CANAL_JER_NIVEL4"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CANAL_JER_NIVEL5" source="CANAL_JER_NIVEL5"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ID_NODO" source="HOJA_3"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD_FI" source="SOCIEDAD_FI"/>
-      </input>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_NODO" source="HOJA_3"/></input>
     </calculationView>
-  </calculationViews>
+</calculationViews>
   <logicalModel id="Aggregation_1">
     <descriptions/>
     <attributes>
@@ -117,7 +109,7 @@
         <descriptions defaultDescription="CANAL_JER_NIVEL5"/>
         <keyMapping columnObjectName="Aggregation_1" columnName="CANAL_JER_NIVEL5"/>
       </attribute>
-      <attribute id="ID_NODO" order="8" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+      <attribute id="ID_NODO" order="8" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="ID_NODO"/>
         <keyMapping columnObjectName="Aggregation_1" columnName="ID_NODO"/>
       </attribute>
@@ -139,8 +131,8 @@
     <restrictedMeasures/>
     <localDimensions/>
   </logicalModel>
-  <layout>
-    <shapes>
+<layout>
+  <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
         <upperLeftCorner x="22" y="87"/>
         <rectangleSize height="0" width="0"/>
@@ -153,10 +145,18 @@
         <upperLeftCorner x="22" y="243"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="JERARQUIA_CANAL_COMERCIAL" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="22" y="165"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
     </shapes>
-  </layout>
+</layout>
 </Calculation:scenario>

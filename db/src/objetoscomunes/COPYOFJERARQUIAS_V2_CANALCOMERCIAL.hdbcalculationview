@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="COPYOFJERARQUIAS_V2_CANALCOMERCIAL" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
-  <origin/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="COPYOFJERARQUIAS_V2_CANALCOMERCIAL" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
   <descriptions defaultDescription="TEST_JER"/>
   <metadata changedAt="2020-01-13 12:21:11.463"/>
   <localVariables/>
@@ -41,43 +41,35 @@
       <resourceUri>SETLEAF</resourceUri>
     </DataSource>
   </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
-      <descriptions/>
-      <viewAttributes>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="VARCHAR" id="HOJA" length="50" expressionLanguage="COLUMN_ENGINE">
           <formula>&quot;SUBSETNAME&quot;</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#SETNODE">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
-      </input>
-      <filter>(in (&quot;SETNAME&quot;,'JER_CANALES_5100','JER_CANALES_EC01','JER_CANALES_GC01','JER_CANALES_1100'))</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
-      <descriptions/>
-      <viewAttributes>
+      <input node="SETNODE"/>
+    <filter>(in (&quot;SETNAME&quot;,'JER_CANALES_5100','JER_CANALES_EC01','JER_CANALES_GC01','JER_CANALES_1100'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_2$$$$SETNODE$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="Projection_2$$$$SETNODE$$"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
@@ -85,41 +77,36 @@
         <viewAttribute id="SUBSETNAME_1"/>
         <viewAttribute id="HOJA"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_1">
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="HOJA" source="HOJA"/>
       </input>
-      <input node="#Projection_2">
+      <input node="Projection_2">
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_1" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SETNAME"/>
       </input>
-      <joinAttribute name="MANDT"/>
-      <joinAttribute name="SUBSETNAME"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="SUBSETNAME"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="VALFROM"/>
         <viewAttribute id="ID_TEXT"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#DIM_CANALES_SETLEAF_AUX">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="DIM_CANALES_SETLEAF_AUX"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
@@ -129,7 +116,7 @@
         <viewAttribute id="VALFROM"/>
         <viewAttribute id="ID_TEXT"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_1" length="50" expressionLanguage="COLUMN_ENGINE">
           <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME1&quot;,&quot;ID_TEXT&quot;)</formula>
         </calculatedViewAttribute>
@@ -140,7 +127,7 @@
           <formula>if(isnull(&quot;ID_TEXT&quot;),&quot;SUBSETNAME1&quot;,&quot;ID_TEXT&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#Join_1">
+      <input node="Join_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
@@ -148,32 +135,28 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME1" source="SUBSETNAME_1"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="HOJA" source="HOJA"/>
       </input>
-      <input node="#Projection_6">
+      <input node="Projection_6">
         <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ID_TEXT" source="ID_TEXT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SETNAME"/>
       </input>
-      <joinAttribute name="MANDT"/>
-      <joinAttribute name="SUBSETNAME"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="SUBSETNAME"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_3$$$$SETNODE$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="Projection_3$$$$SETNODE$$"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
@@ -183,8 +166,8 @@
         <viewAttribute id="SUBSETNAME_2"/>
         <viewAttribute id="HOJA1"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_5">
+    <calculatedViewAttributes/>
+      <input node="Join_5">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
@@ -192,32 +175,28 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SUBSETNAME_1"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
       </input>
-      <input node="#Projection_3">
+      <input node="Projection_3">
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_2" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_2" source="SUBSETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SETNAME"/>
       </input>
-      <joinAttribute name="MANDT"/>
-      <joinAttribute name="SUBSETNAME_1"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="SUBSETNAME_1"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="VALFROM"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#SETLEAF">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="SETLEAF"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
@@ -228,7 +207,7 @@
         <viewAttribute id="VALFROM"/>
         <viewAttribute id="HOJA1"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="VARCHAR" id="SUBSATNAME_2" length="24" expressionLanguage="COLUMN_ENGINE">
           <formula>IF(ISNULL(&quot;VALFROM&quot;),&quot;SUBSETNAME2&quot;,&quot;VALFROM&quot;)</formula>
         </calculatedViewAttribute>
@@ -236,7 +215,7 @@
           <formula>IF(ISNULL(&quot;SUBSATNAME_2&quot;),&quot;HOJA1&quot;,&quot;SUBSATNAME_2&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#Join_2">
+      <input node="Join_2">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
@@ -246,31 +225,27 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME2" source="SUBSETNAME_2"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
       </input>
-      <input node="#Projection_4">
+      <input node="Projection_4">
         <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_1" source="SETNAME"/>
       </input>
-      <joinAttribute name="MANDT"/>
-      <joinAttribute name="SUBSETNAME_1"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="SUBSETNAME_1"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_5$$$$SETNODE$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="Projection_5$$$$SETNODE$$"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
@@ -283,8 +258,8 @@
         <viewAttribute id="HOJA1"/>
         <viewAttribute id="HOJA_2"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_3">
+    <calculatedViewAttributes/>
+      <input node="Join_3">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
@@ -295,32 +270,28 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
       </input>
-      <input node="#Projection_5">
+      <input node="Projection_5">
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_3" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME3" source="SUBSETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
       </input>
-      <joinAttribute name="SUBSATNAME_2"/>
-      <joinAttribute name="MANDT"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="SUBSATNAME_2"/>
+    <joinAttribute name="MANDT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="VALFROM"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_7$$$$SETLEAF$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="Projection_7$$$$SETLEAF$$"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
@@ -334,7 +305,7 @@
         <viewAttribute id="HOJA1"/>
         <viewAttribute id="HOJA_2"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_3" length="24" expressionLanguage="COLUMN_ENGINE">
           <formula>if(isnull(&quot;VALFROM&quot;),&quot;SUBSETNAME3&quot;,&quot;VALFROM&quot;)</formula>
         </calculatedViewAttribute>
@@ -342,7 +313,7 @@
           <formula>IF(ISNULL(&quot;SUBSETNAME_3&quot;),&quot;HOJA_2&quot;,&quot;SUBSETNAME_3&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#Join_4">
+      <input node="Join_4">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
@@ -355,31 +326,27 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="HOJA1" source="HOJA1"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_2" source="HOJA_2"/>
       </input>
-      <input node="#Projection_7">
+      <input node="Projection_7">
         <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSATNAME_2" source="SETNAME"/>
       </input>
-      <joinAttribute name="MANDT"/>
-      <joinAttribute name="SUBSATNAME_2"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_8">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="SUBSATNAME_2"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_8">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_8$$$$SETNODE$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="Projection_8$$$$SETNODE$$"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_7" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_7" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
@@ -397,12 +364,12 @@
         <viewAttribute id="SETNAME_4"/>
         <viewAttribute id="SUBSETNAME_2"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="VARCHAR" id="SOCIEDAD" length="4" expressionLanguage="COLUMN_ENGINE">
           <formula>rightstr(&quot;SETNAME&quot;,4)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#Join_6">
+      <input node="Join_6">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
@@ -418,32 +385,28 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SUBSETNAME_3"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_3" source="HOJA_3"/>
       </input>
-      <input node="#Projection_8">
+      <input node="Projection_8">
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_4" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_2" source="SUBSETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SETNAME"/>
       </input>
-      <joinAttribute name="MANDT"/>
-      <joinAttribute name="SUBSETNAME_3"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_9">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="SUBSETNAME_3"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_9">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="VALFROM"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_9$$$$SETLEAF$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="Projection_9$$$$SETLEAF$$"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_8" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_8" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
@@ -463,7 +426,7 @@
         <viewAttribute id="VALFROM_1"/>
         <viewAttribute id="SOCIEDAD"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_4" length="26" expressionLanguage="COLUMN_ENGINE">
           <formula>if(isnull(&quot;VALFROM_1&quot;), &quot;SUBSETNAME4&quot;,&quot;VALFROM_1&quot;)</formula>
         </calculatedViewAttribute>
@@ -471,7 +434,7 @@
           <formula>if(isnull(&quot;SUBSETNAME_4&quot;),&quot;HOJA_3&quot;,&quot;SUBSETNAME_4&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#Join_7">
+      <input node="Join_7">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
@@ -490,31 +453,27 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME4" source="SUBSETNAME_2"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD" source="SOCIEDAD"/>
       </input>
-      <input node="#Projection_9">
+      <input node="Projection_9">
         <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_1" source="VALFROM"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_3" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
       </input>
-      <joinAttribute name="SUBSETNAME_3"/>
-      <joinAttribute name="MANDT"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_10">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="SUBSETNAME_3"/>
+    <joinAttribute name="MANDT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_10">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_10$$$$SETNODE$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="Projection_10$$$$SETNODE$$"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_9" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_9" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
@@ -538,8 +497,8 @@
         <viewAttribute id="SUBSETNAME_2"/>
         <viewAttribute id="SOCIEDAD"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_8">
+    <calculatedViewAttributes/>
+      <input node="Join_8">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
@@ -561,32 +520,28 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="HOJA_4" source="HOJA_4"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD" source="SOCIEDAD"/>
       </input>
-      <input node="#Projection_10">
+      <input node="Projection_10">
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME_5" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_2" source="SUBSETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SETNAME"/>
       </input>
-      <joinAttribute name="MANDT"/>
-      <joinAttribute name="SUBSETNAME_4"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_11">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="SUBSETNAME_4"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_11">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="VALFROM"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_11$$$$SETLEAF$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM" source="VALFROM"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="Projection_11$$$$SETLEAF$$"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_10" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_10" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETNAME"/>
         <viewAttribute id="SUBSETNAME"/>
@@ -611,7 +566,7 @@
         <viewAttribute id="VALFROM_2"/>
         <viewAttribute id="SOCIEDAD"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="VARCHAR" id="SUBSETNAME_5" length="26" expressionLanguage="COLUMN_ENGINE">
           <formula>if(isnull(&quot;VALFROM_2&quot;),&quot;SUBSETNAME5&quot;,&quot;VALFROM_2&quot;)</formula>
         </calculatedViewAttribute>
@@ -619,7 +574,7 @@
           <formula>if(isnull(&quot;SUBSETNAME_5&quot;),&quot;HOJA_4&quot;,&quot;SUBSETNAME_5&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#Join_9">
+      <input node="Join_9">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
@@ -643,15 +598,15 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME5" source="SUBSETNAME_2"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SOCIEDAD" source="SOCIEDAD"/>
       </input>
-      <input node="#Projection_11">
+      <input node="Projection_11">
         <mapping xsi:type="Calculation:AttributeMapping" target="VALFROM_2" source="VALFROM"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME_4" source="SETNAME"/>
       </input>
-      <joinAttribute name="MANDT"/>
-      <joinAttribute name="SUBSETNAME_4"/>
-    </calculationView>
-  </calculationViews>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="SUBSETNAME_4"/>
+  </calculationView>
+</calculationViews>
   <logicalModel id="Join_10">
     <descriptions/>
     <attributes>
@@ -772,8 +727,8 @@
     <restrictedMeasures/>
     <localDimensions/>
   </logicalModel>
-  <layout>
-    <shapes>
+<layout>
+  <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
         <upperLeftCorner x="618" y="87"/>
         <rectangleSize height="0" width="0"/>
@@ -790,6 +745,14 @@
         <upperLeftCorner x="99" y="1029"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="253" y="1029"/>
         <rectangleSize height="-1" width="-1"/>
@@ -798,6 +761,14 @@
         <upperLeftCorner x="175" y="933"/>
         <rectangleSize height="72" width="140"/>
       </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_6" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="329" y="933"/>
         <rectangleSize height="-1" width="-1"/>
@@ -806,6 +777,14 @@
         <upperLeftCorner x="250" y="837"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="Join_5" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="404" y="837"/>
         <rectangleSize height="-1" width="-1"/>
@@ -814,6 +793,14 @@
         <upperLeftCorner x="324" y="741"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="478" y="741"/>
         <rectangleSize height="-1" width="-1"/>
@@ -822,6 +809,14 @@
         <upperLeftCorner x="397" y="645"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_5" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="551" y="645"/>
         <rectangleSize height="-1" width="-1"/>
@@ -830,6 +825,14 @@
         <upperLeftCorner x="470" y="549"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_7" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Projection_8" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="624" y="549"/>
         <rectangleSize height="-1" width="-1"/>
@@ -838,6 +841,14 @@
         <upperLeftCorner x="544" y="453"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_8" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Projection_9" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="698" y="453"/>
         <rectangleSize height="-1" width="-1"/>
@@ -846,6 +857,14 @@
         <upperLeftCorner x="619" y="357"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="Join_7" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_9" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Projection_10" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="773" y="357"/>
         <rectangleSize height="-1" width="-1"/>
@@ -854,6 +873,14 @@
         <upperLeftCorner x="695" y="261"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="Join_8" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_10" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Projection_11" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="541" y="261"/>
         <rectangleSize height="-1" width="-1"/>
@@ -862,6 +889,15 @@
         <upperLeftCorner x="618" y="165"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
-    </shapes>
-  </layout>
+    
+    <shape modelObjectName="Join_9" modelObjectNameSpace="Join_10" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_11" modelObjectNameSpace="Join_10" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
 </Calculation:scenario>

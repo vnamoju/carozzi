@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="SETNODE" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
-  <origin/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="SETNODE" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
   <descriptions defaultDescription="JERARQUIA"/>
   <metadata changedAt="2019-11-15 16:13:09.001"/>
   <localVariables/>
@@ -14,10 +14,10 @@
       <resourceUri>SETHEADERT</resourceUri>
     </DataSource>
   </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
-      <descriptions/>
-      <viewAttributes>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETCLASS"/>
         <viewAttribute id="SUBCLASS"/>
@@ -28,22 +28,12 @@
         <viewAttribute id="SUBSETNAME"/>
         <viewAttribute id="SEQNR"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#SETNODE">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASS" source="SUBCLASS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="LINEID" source="LINEID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETCLS" source="SUBSETCLS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETSCLS" source="SUBSETSCLS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="SETNODE"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETCLASS"/>
         <viewAttribute id="SUBCLASS"/>
@@ -51,19 +41,12 @@
         <viewAttribute id="LANGU"/>
         <viewAttribute id="DESCRIPT"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#SETHEADERT">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASS" source="SUBCLASS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="LANGU" source="LANGU"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="SETHEADERT"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="DESCRIPT"/>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="SETCLASS"/>
@@ -75,8 +58,8 @@
         <viewAttribute id="SUBSETNAME"/>
         <viewAttribute id="SEQNR"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_1">
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASS" source="SUBCLASS"/>
@@ -87,17 +70,17 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="SUBSETNAME" source="SUBSETNAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SEQNR" source="SEQNR"/>
       </input>
-      <input node="#Projection_2">
+      <input node="Projection_2">
         <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPT" source="DESCRIPT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETCLASS" source="SETCLASS"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SETNAME" source="SETNAME"/>
       </input>
-      <joinAttribute name="MANDT"/>
-      <joinAttribute name="SETCLASS"/>
-      <joinAttribute name="SETNAME"/>
-    </calculationView>
-  </calculationViews>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="SETCLASS"/>
+    <joinAttribute name="SETNAME"/>
+  </calculationView>
+</calculationViews>
   <logicalModel id="Join_1">
     <descriptions/>
     <attributes>
@@ -155,24 +138,33 @@
     <restrictedMeasures/>
     <localDimensions/>
   </logicalModel>
-  <layout>
-    <shapes>
+<layout>
+  <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="40" y="85"/>
-        <rectangleSize height="0" width="0"/>
+        <upperLeftCorner x="221.11302679000914" y="112"/>
+        <rectangleSize height="0" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="100" y="380"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="92.00000000000001" y="376.9999988079071"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="270" y="426"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="302.00000000000006" y="376.9999988079071"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="150" y="220"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="221.11302679000914" y="217"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
-    </shapes>
-  </layout>
+    
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
 </Calculation:scenario>
