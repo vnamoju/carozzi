@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="VC_DEMO_REP" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
-  <origin/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="VC_DEMO_REP" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
   <descriptions defaultDescription="Demo Repositorio"/>
   <metadata changedAt="2021-07-13 15:43:06.895"/>
   <localVariables/>
@@ -11,25 +11,25 @@
       <resourceUri>DEMO_REPOSITORIO</resourceUri>
     </DataSource>
   </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
-      <descriptions/>
-      <viewAttributes>
-        <viewAttribute id="Código_sap"/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="Codigo_sap"/>
         <viewAttribute id="Nombre_producto"/>
         <viewAttribute id="Nombre_comercial_con_marca"/>
         <viewAttribute id="Nombre_comercial_sin_marca"/>
         <viewAttribute id="Marca"/>
         <viewAttribute id="Sub_marca___linea_de_producto"/>
-        <viewAttribute id="División"/>
-        <viewAttribute id="Categoría"/>
-        <viewAttribute id="Grupo_de_artículo"/>
-        <viewAttribute id="Vida_Útil"/>
-        <viewAttribute id="País_de_origen"/>
-        <viewAttribute id="Resolución_sanitaria_de_la_planta_donde_se_elabora"/>
-        <viewAttribute id="Público_objetivo_o_edad_de_consumo"/>
+        <viewAttribute id="Division"/>
+        <viewAttribute id="Categoria"/>
+        <viewAttribute id="Grupo_de_articulo"/>
+        <viewAttribute id="Vida_Util"/>
+        <viewAttribute id="Pais_de_origen"/>
+        <viewAttribute id="Resolucion_sanitaria_de_la_planta_donde_se_elabora"/>
+        <viewAttribute id="Publico_objetivo_o_edad_de_consumo"/>
         <viewAttribute id="Grupo_vulnerable"/>
-        <viewAttribute id="Teléfono_SAC"/>
+        <viewAttribute id="Telefono_SAC"/>
         <viewAttribute id="Unidad_de_medida_base_(EAN_13_unitario)"/>
         <viewAttribute id="EAN_13_UMB"/>
         <viewAttribute id="EAN_12_UMB"/>
@@ -57,23 +57,20 @@
         <viewAttribute id="Cajas_por_camada"/>
         <viewAttribute id="Cajas_por_pallet"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#DEMO_REPOSITORIO">
-        <mapping xsi:type="Calculation:AttributeMapping" target="Código_sap" source="Código sap"/>
+    <calculatedViewAttributes/>
+      <input node="DEMO_REPOSITORIO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Codigo_sap" source="Codigo sap"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Nombre_producto" source="Nombre producto"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Nombre_comercial_con_marca" source="Nombre comercial con marca"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Nombre_comercial_sin_marca" source="Nombre comercial sin marca"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Marca" source="Marca"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Sub_marca___linea_de_producto" source="Sub marca / linea de producto"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="División" source="División"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Categoría" source="Categoría"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Grupo_de_artículo" source="Grupo de artículo"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Vida_Útil" source="Vida Útil"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="País_de_origen" source="País de origen"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Resolución_sanitaria_de_la_planta_donde_se_elabora" source="Resolución sanitaria de la planta donde se elabora"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Público_objetivo_o_edad_de_consumo" source="Público objetivo o edad de consumo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Grupo_de_articulo" source="Grupo de articulo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Vida_Util" source="Vida Util"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pais_de_origen" source="Pais de origen"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Resolucion_sanitaria_de_la_planta_donde_se_elabora" source="Resolucion sanitaria de la planta donde se elabora"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Publico_objetivo_o_edad_de_consumo" source="Publico objetivo o edad de consumo"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Grupo_vulnerable" source="Grupo vulnerable"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Teléfono_SAC" source="Teléfono SAC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Telefono_SAC" source="Telefono SAC"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Unidad_de_medida_base_(EAN_13_unitario)" source="Unidad de medida base (EAN 13 unitario)"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="EAN_13_UMB" source="EAN 13 UMB"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="EAN_12_UMB" source="EAN 12 UMB"/>
@@ -90,7 +87,7 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="Peso_neto_UM_2" source="Peso neto UM 2"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Peso_bruto_UM_2" source="Peso bruto UM 2"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Q_empaque_EAN_13_X_DUN_14" source="Q empaque EAN 13 X DUN 14"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Q__empaque_EAN_13_intermedio_X_DUN_14" source="Q empaque EAN 13 intermedio X DUN 14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Q__empaque_EAN_13_intermedio_X_DUN_14" source="Q  empaque EAN 13 intermedio X DUN 14"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Unidad_de_medida_3_DUN_14" source="Unidad de medida 3 DUN 14"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DUN_14_UMB_3" source="DUN 14 UMB 3"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="Largo_UM_3" source="Largo UM 3"/>
@@ -102,13 +99,13 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="Cajas_por_pallet" source="Cajas por pallet"/>
       </input>
     </calculationView>
-  </calculationViews>
+</calculationViews>
   <logicalModel id="Projection_1">
     <descriptions/>
     <attributes>
-      <attribute id="Código_sap" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Codigo_sap" order="1" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
-        <keyMapping columnObjectName="Projection_1" columnName="Código_sap"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Codigo_sap"/>
       </attribute>
       <attribute id="Nombre_producto" order="2" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
@@ -130,41 +127,41 @@
         <descriptions/>
         <keyMapping columnObjectName="Projection_1" columnName="Sub_marca___linea_de_producto"/>
       </attribute>
-      <attribute id="División" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Division" order="7" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
-        <keyMapping columnObjectName="Projection_1" columnName="División"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Division"/>
       </attribute>
-      <attribute id="Categoría" order="8" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Categoria" order="8" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
-        <keyMapping columnObjectName="Projection_1" columnName="Categoría"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Categoria"/>
       </attribute>
-      <attribute id="Grupo_de_artículo" order="9" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Grupo_de_articulo" order="9" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
-        <keyMapping columnObjectName="Projection_1" columnName="Grupo_de_artículo"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Grupo_de_articulo"/>
       </attribute>
-      <attribute id="Vida_Útil" order="10" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Vida_Util" order="10" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
-        <keyMapping columnObjectName="Projection_1" columnName="Vida_Útil"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Vida_Util"/>
       </attribute>
-      <attribute id="País_de_origen" order="11" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Pais_de_origen" order="11" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
-        <keyMapping columnObjectName="Projection_1" columnName="País_de_origen"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Pais_de_origen"/>
       </attribute>
-      <attribute id="Resolución_sanitaria_de_la_planta_donde_se_elabora" order="12" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Resolucion_sanitaria_de_la_planta_donde_se_elabora" order="12" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
-        <keyMapping columnObjectName="Projection_1" columnName="Resolución_sanitaria_de_la_planta_donde_se_elabora"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Resolucion_sanitaria_de_la_planta_donde_se_elabora"/>
       </attribute>
-      <attribute id="Público_objetivo_o_edad_de_consumo" order="13" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Publico_objetivo_o_edad_de_consumo" order="13" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
-        <keyMapping columnObjectName="Projection_1" columnName="Público_objetivo_o_edad_de_consumo"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Publico_objetivo_o_edad_de_consumo"/>
       </attribute>
       <attribute id="Grupo_vulnerable" order="14" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
         <keyMapping columnObjectName="Projection_1" columnName="Grupo_vulnerable"/>
       </attribute>
-      <attribute id="Teléfono_SAC" order="15" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Telefono_SAC" order="15" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
-        <keyMapping columnObjectName="Projection_1" columnName="Teléfono_SAC"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Telefono_SAC"/>
       </attribute>
       <attribute id="Unidad_de_medida_base_(EAN_13_unitario)" order="16" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions/>
@@ -264,19 +261,19 @@
       </layout>
     </privateDataFoundation>
     <baseMeasures>
-      <measure id="Peso_neto_UM_3" order="38" aggregationType="sum" engineAggregation="sum" measureType="simple">
+      <measure id="Peso_neto_UM_3" order="38" aggregationType="sum" measureType="simple">
         <descriptions/>
         <measureMapping columnObjectName="Projection_1" columnName="Peso_neto_UM_3"/>
       </measure>
-      <measure id="Peso_bruto_UM_3" order="39" aggregationType="sum" engineAggregation="sum" measureType="simple">
+      <measure id="Peso_bruto_UM_3" order="39" aggregationType="sum" measureType="simple">
         <descriptions/>
         <measureMapping columnObjectName="Projection_1" columnName="Peso_bruto_UM_3"/>
       </measure>
-      <measure id="Cajas_por_camada" order="40" aggregationType="sum" engineAggregation="sum" measureType="simple">
+      <measure id="Cajas_por_camada" order="40" aggregationType="sum" measureType="simple">
         <descriptions/>
         <measureMapping columnObjectName="Projection_1" columnName="Cajas_por_camada"/>
       </measure>
-      <measure id="Cajas_por_pallet" order="41" aggregationType="sum" engineAggregation="sum" measureType="simple">
+      <measure id="Cajas_por_pallet" order="41" aggregationType="sum" measureType="simple">
         <descriptions/>
         <measureMapping columnObjectName="Projection_1" columnName="Cajas_por_pallet"/>
       </measure>
@@ -285,16 +282,16 @@
     <restrictedMeasures/>
     <localDimensions/>
   </logicalModel>
-  <layout>
-    <shapes>
+<layout>
+  <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="40" y="85"/>
-        <rectangleSize height="0" width="0"/>
+        <upperLeftCorner x="92" y="112"/>
+        <rectangleSize height="0" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="210" y="310"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="92" y="217"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
     </shapes>
-  </layout>
+</layout>
 </Calculation:scenario>
