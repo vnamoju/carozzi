@@ -14,94 +14,95 @@
 <calculationViews>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
     <viewAttributes>
-        <viewAttribute id="Acción_Correctiva"/>
-        <viewAttribute id="Año_Mes"/>
-        <viewAttribute id="Contador"/>
-        <viewAttribute id="Equipo"/>
-        <viewAttribute id="Fecha"/>
-        <viewAttribute id="Formulario"/>
-        <viewAttribute id="Hora_Ingreso"/>
-        <viewAttribute id="Item"/>
-        <viewAttribute id="Planta"/>
-        <viewAttribute id="Pregunta"/>
-        <viewAttribute id="Respuesta"/>
-        <viewAttribute id="Sección"/>
-        <viewAttribute id="Seguimiento_Cerrada"/>
-        <viewAttribute id="Seguimiento_Pendiente"/>
-        <viewAttribute id="Usuario"/>
-        <viewAttribute id="Área"/>
-      </viewAttributes>
+      <viewAttribute id="Hora_Ingreso"/>
+      <viewAttribute id="Seguimiento_Cerrada"/>
+      <viewAttribute id="Seguimiento_Pendiente"/>
+      <viewAttribute id="Contador"/>
+      <viewAttribute id="Equipo"/>
+      <viewAttribute id="Fecha"/>
+      <viewAttribute id="Formulario"/>
+      <viewAttribute id="Item"/>
+      <viewAttribute id="Planta"/>
+      <viewAttribute id="Pregunta"/>
+      <viewAttribute id="Respuesta"/>
+      <viewAttribute id="Usuario"/>
+      <viewAttribute id="Area"/>
+      <viewAttribute id="Seccion"/>
+      <viewAttribute id="Accion_Correctiva"/>
+      <viewAttribute id="Ano_Mes"/>
+    </viewAttributes>
     <calculatedViewAttributes/>
-      <input node="INOCUIDAD">
-        <mapping xsi:type="Calculation:AttributeMapping" target="Acción_Correctiva" source="Acción Correctiva"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Año_Mes" source="Año Mes"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Hora_Ingreso" source="Hora Ingreso"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Seguimiento_Cerrada" source="Seguimiento Cerrada"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="Seguimiento_Pendiente" source="Seguimiento Pendiente"/></input>
-    </calculationView>
+    <input node="INOCUIDAD">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Hora_Ingreso" source="Hora Ingreso"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Seguimiento_Cerrada" source="Seguimiento Cerrada"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Seguimiento_Pendiente" source="Seguimiento Pendiente"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Accion_Correctiva" source="Accion Correctiva"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Ano_Mes" source="Ano Mes"/>
+    </input>
+  </calculationView>
 </calculationViews>
   <logicalModel id="Projection_1">
     <descriptions/>
     <attributes>
-      <attribute id="Acción_Correctiva" order="1" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="Acción_Correctiva"/>
-        <keyMapping columnObjectName="Projection_1" columnName="Acción_Correctiva"/>
-      </attribute>
-      <attribute id="Año_Mes" order="2" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="Año_Mes"/>
-        <keyMapping columnObjectName="Projection_1" columnName="Año_Mes"/>
-      </attribute>
-      <attribute id="Equipo" order="4" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="Equipo"/>
-        <keyMapping columnObjectName="Projection_1" columnName="Equipo"/>
-      </attribute>
-      <attribute id="Fecha" order="5" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="Fecha"/>
-        <keyMapping columnObjectName="Projection_1" columnName="Fecha"/>
-      </attribute>
-      <attribute id="Formulario" order="6" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="Formulario"/>
-        <keyMapping columnObjectName="Projection_1" columnName="Formulario"/>
-      </attribute>
-      <attribute id="Hora_Ingreso" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Hora_Ingreso" order="1" displayAttribute="false" attributeHierarchyActive="false">
         <descriptions defaultDescription="Hora_Ingreso"/>
         <keyMapping columnObjectName="Projection_1" columnName="Hora_Ingreso"/>
       </attribute>
-      <attribute id="Item" order="8" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="Item"/>
-        <keyMapping columnObjectName="Projection_1" columnName="Item"/>
-      </attribute>
-      <attribute id="Planta" order="9" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="Planta"/>
-        <keyMapping columnObjectName="Projection_1" columnName="Planta"/>
-      </attribute>
-      <attribute id="Pregunta" order="10" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="Pregunta"/>
-        <keyMapping columnObjectName="Projection_1" columnName="Pregunta"/>
-      </attribute>
-      <attribute id="Respuesta" order="11" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="Respuesta"/>
-        <keyMapping columnObjectName="Projection_1" columnName="Respuesta"/>
-      </attribute>
-      <attribute id="Sección" order="12" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="Sección"/>
-        <keyMapping columnObjectName="Projection_1" columnName="Sección"/>
-      </attribute>
-      <attribute id="Seguimiento_Cerrada" order="13" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Seguimiento_Cerrada" order="2" displayAttribute="false" attributeHierarchyActive="false">
         <descriptions defaultDescription="Seguimiento_Cerrada"/>
         <keyMapping columnObjectName="Projection_1" columnName="Seguimiento_Cerrada"/>
       </attribute>
-      <attribute id="Seguimiento_Pendiente" order="14" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Seguimiento_Pendiente" order="3" displayAttribute="false" attributeHierarchyActive="false">
         <descriptions defaultDescription="Seguimiento_Pendiente"/>
         <keyMapping columnObjectName="Projection_1" columnName="Seguimiento_Pendiente"/>
       </attribute>
-      <attribute id="Usuario" order="15" attributeHierarchyActive="false" displayAttribute="false">
+      <attribute id="Equipo" order="5" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Equipo"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Equipo"/>
+      </attribute>
+      <attribute id="Fecha" order="6" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Fecha"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Fecha"/>
+      </attribute>
+      <attribute id="Formulario" order="7" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Formulario"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Formulario"/>
+      </attribute>
+      <attribute id="Item" order="8" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Item"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Item"/>
+      </attribute>
+      <attribute id="Planta" order="9" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Planta"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Planta"/>
+      </attribute>
+      <attribute id="Pregunta" order="10" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Pregunta"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Pregunta"/>
+      </attribute>
+      <attribute id="Respuesta" order="11" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Respuesta"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Respuesta"/>
+      </attribute>
+      <attribute id="Usuario" order="12" displayAttribute="false" attributeHierarchyActive="false">
         <descriptions defaultDescription="Usuario"/>
         <keyMapping columnObjectName="Projection_1" columnName="Usuario"/>
       </attribute>
-      <attribute id="Área" order="16" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="Área"/>
-        <keyMapping columnObjectName="Projection_1" columnName="Área"/>
+      <attribute id="Area" order="13" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Area"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Area"/>
+      </attribute>
+      <attribute id="Seccion" order="14" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Seccion"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Seccion"/>
+      </attribute>
+      <attribute id="Accion_Correctiva" order="15" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Accion_Correctiva"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Accion_Correctiva"/>
+      </attribute>
+      <attribute id="Ano_Mes" order="16" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Ano_Mes"/>
+        <keyMapping columnObjectName="Projection_1" columnName="Ano_Mes"/>
       </attribute>
     </attributes>
     <calculatedAttributes/>
@@ -113,7 +114,7 @@
       </layout>
     </privateDataFoundation>
     <baseMeasures>
-      <measure id="Contador" order="3" aggregationType="sum" measureType="simple">
+      <measure id="Contador" order="4" aggregationType="sum" measureType="simple">
         <descriptions defaultDescription="Contador"/>
         <measureMapping columnObjectName="Projection_1" columnName="Contador"/>
       </measure>
@@ -125,11 +126,13 @@
 <layout>
   <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="40" y="85"/>
+        <upperLeftCorner x="92" y="105"/>
+      
+        <rectangleSize width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="49" y="262"/>
-        <rectangleSize height="30" width="140"/>
+        <upperLeftCorner x="92" y="217"/>
+        <rectangleSize height="30" width="160"/>
       </shape>
     </shapes>
 </layout>
