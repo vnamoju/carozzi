@@ -23,9 +23,9 @@ BEGIN
     
     -- Contamos las filas reales.
     --cambiar PERIO='001' por parameter3=valueParameter3
-    SELECT COUNT(*) INTO realRows FROM (SELECT * FROM "SCP_CAROZZI_SAC::VT_2021COEP_BLUEBOOT_TEST" WHERE parameter1=valueParameter1 AND PAOBJNR<>'0000000000' AND parameter2=valueParameter2 AND PERIO='001');
+    SELECT COUNT(*) INTO realRows FROM (SELECT * FROM "VT_2021COEP_BLUEBOOT_TEST" WHERE parameter1=valueParameter1 AND PAOBJNR<>'0000000000' AND parameter2=valueParameter2 AND PERIO='001');
     -- Contamos las filas virtuales.
-    SELECT COUNT(*) INTO virtualRows FROM (SELECT * FROM "SCP_CAROZZI_SAC::COEP_2021_BLUEBOOT_TEST");
+    SELECT COUNT(*) INTO virtualRows FROM (SELECT * FROM "COEP_2021_BLUEBOOT_TEST");
     
            
     -- Si hay la misma cantidad, no hay nada que hacer.
@@ -36,13 +36,13 @@ BEGIN
     -- En el caso de que las filas reales sean mayor a las virtuales,
     -- debemos insertar los datos que faltan.
     IF realRows > virtualRows THEN
-        INSERT INTO "SCP_CAROZZI_SAC::COEP_2021_BLUEBOOT_TEST"
-        SELECT * FROM "SCP_CAROZZI_SAC::VT_2021COEP_BLUEBOOT_TEST" 
+        INSERT INTO "COEP_2021_BLUEBOOT_TEST"
+        SELECT * FROM "VT_2021COEP_BLUEBOOT_TEST" 
         WHERE parameter1=valueParameter1 AND PAOBJNR<>'0000000000' 
         --cambiar PERIO='001' por parameter3=valueParameter3
         AND parameter2=valueParameter2 AND PERIO='001' 
         AND NOT EXISTS (
-            SELECT 1 FROM "SCP_CAROZZI_SAC::COEP_2021_BLUEBOOT_TEST" 
+            SELECT 1 FROM "COEP_2021_BLUEBOOT_TEST" 
             WHERE VT_2021COEP_BLUEBOOT_TEST.MANDT = COEP_2021_BLUEBOOT_TEST.MANDT
             AND VT_2021COEP_BLUEBOOT_TEST.KOKRS = COEP_2021_BLUEBOOT_TEST.KOKRS
             AND VT_2021COEP_BLUEBOOT_TEST.BELNR = COEP_2021_BLUEBOOT_TEST.BELNR
@@ -51,18 +51,18 @@ BEGIN
             
         -- Si se quiere devolver como parámetro de output, 
         -- sería algo como: insertedRows = :ROWCOUNT
-        SELECT CONCAT(CONCAT('Se insertaron ', ::ROWCOUNT), ' filas') FROM "SCP_CAROZZI_SAC::DUMMY";
+        SELECT CONCAT(CONCAT('Se insertaron ', ::ROWCOUNT), ' filas') FROM "SYS::DUMMY";
     END IF;
         
     -- En el caso de que las filas virtuales sean mayor a las reales,
     -- debemos eliminar los datos que sobran.
     IF realRows < virtualRows THEN
-        DELETE FROM "SCP_CAROZZI_SAC::COEP_2021_BLUEBOOT_TEST" 
+        DELETE FROM "COEP_2021_BLUEBOOT_TEST" 
         WHERE parameter1=valueParameter1 AND PAOBJNR<>'0000000000'
         --cambiar PERIO='001' por parameter3=valueParameter3
         AND parameter2=valueParameter2 AND PERIO='001' 
         AND NOT EXISTS (
-            SELECT 1 FROM "SCP_CAROZZI_SAC::VT_2021COEP_BLUEBOOT_TEST"
+            SELECT 1 FROM "VT_2021COEP_BLUEBOOT_TEST"
             WHERE VT_2021COEP_BLUEBOOT_TEST.MANDT = COEP_2021_BLUEBOOT_TEST.MANDT
             AND VT_2021COEP_BLUEBOOT_TEST.KOKRS = COEP_2021_BLUEBOOT_TEST.KOKRS
             AND VT_2021COEP_BLUEBOOT_TEST.BELNR = COEP_2021_BLUEBOOT_TEST.BELNR
@@ -71,6 +71,6 @@ BEGIN
         
         -- Si se quiere devolver como parámetro de output, 
         -- sería algo como: insertedRows = :ROWCOUNT
-        SELECT CONCAT(CONCAT('Se eliminaron ', ::ROWCOUNT), ' filas') FROM "SCP_CAROZZI_SAC::DUMMY";
+        SELECT CONCAT(CONCAT('Se eliminaron ', ::ROWCOUNT), ' filas') FROM "SYS::DUMMY";
     END IF;
 END

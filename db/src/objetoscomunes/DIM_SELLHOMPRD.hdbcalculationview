@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_SELLHOMPRD" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
-  <origin/>
-  <descriptions defaultDescription="Homologación de skus&#xD;&#xA;Homologación de skus"/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DIM_SELLHOMPRD" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="Homologación de skus
+Homologación de skus"/>
   <metadata changedAt="2020-09-14 09:35:01.561"/>
   <localVariables/>
   <variableMappings/>
@@ -20,10 +21,10 @@
       <resourceUri>MARA</resourceUri>
     </DataSource>
   </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
-      <descriptions/>
-      <viewAttributes>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="ZCDCADENA"/>
         <viewAttribute id="ZCDSKU"/>
@@ -31,19 +32,12 @@
         <viewAttribute id="ZMEINH"/>
         <viewAttribute id="ZMEINH_V"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Z1MPRDHOM">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ZCDSKU" source="ZCDSKU"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="ZMATNR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH" source="ZMEINH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH_V" source="ZMEINH_V"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="Z1MPRDHOM"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="UMREZ"/>
         <viewAttribute id="ZMEINH"/>
         <viewAttribute id="UMREN"/>
@@ -53,8 +47,8 @@
         <viewAttribute id="MANDT"/>
         <viewAttribute id="ZMEINH_V"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_1">
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH" source="ZMEINH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZCDSKU" source="ZCDSKU"/>
@@ -62,38 +56,32 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH_V" source="ZMEINH_V"/>
       </input>
-      <input node="#MARM">
+      <input node="MARM">
         <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="MATNR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH" source="MEINH"/>
       </input>
-      <joinAttribute name="MANDT"/>
-      <joinAttribute name="ZMATNR"/>
-      <joinAttribute name="ZMEINH"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="ZMATNR"/>
+    <joinAttribute name="ZMEINH"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="UMREZ"/>
         <viewAttribute id="UMREN"/>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="MATNR"/>
         <viewAttribute id="MEINH"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_2$$$$MARM$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MEINH" source="MEINH"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="Projection_2$$$$MARM$$"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="UMREZ"/>
         <viewAttribute id="ZMEINH"/>
         <viewAttribute id="UMREN"/>
@@ -105,8 +93,8 @@
         <viewAttribute id="UMREZ_1"/>
         <viewAttribute id="UMREN_1"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_1">
+    <calculatedViewAttributes/>
+      <input node="Join_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH" source="ZMEINH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
@@ -116,34 +104,30 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH_V" source="ZMEINH_V"/>
       </input>
-      <input node="#Projection_2">
+      <input node="Projection_2">
         <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ_1" source="UMREZ"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="UMREN_1" source="UMREN"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="MATNR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZMEINH_V" source="MEINH"/>
       </input>
-      <joinAttribute name="MANDT"/>
-      <joinAttribute name="ZMATNR"/>
-      <joinAttribute name="ZMEINH_V"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="ZMATNR"/>
+    <joinAttribute name="ZMEINH_V"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="MATNR"/>
         <viewAttribute id="MEINS"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#MARA">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="MARA"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="inner">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MEINS"/>
         <viewAttribute id="UMREZ"/>
         <viewAttribute id="UMREN"/>
@@ -155,8 +139,8 @@
         <viewAttribute id="UMREZ_1"/>
         <viewAttribute id="UMREN_1"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_2">
+    <calculatedViewAttributes/>
+      <input node="Join_2">
         <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZCDCADENA" source="ZCDCADENA"/>
@@ -167,13 +151,13 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ_1" source="UMREZ_1"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="UMREN_1" source="UMREN_1"/>
       </input>
-      <input node="#Projection_3">
+      <input node="Projection_3">
         <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ZMATNR" source="MATNR"/>
       </input>
-      <joinAttribute name="ZMATNR"/>
-    </calculationView>
-  </calculationViews>
+    <joinAttribute name="ZMATNR"/>
+  </calculationView>
+</calculationViews>
   <logicalModel id="Join_3">
     <descriptions/>
     <attributes>
@@ -231,36 +215,61 @@
     <restrictedMeasures/>
     <localDimensions/>
   </logicalModel>
-  <layout>
-    <shapes>
+<layout>
+  <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="99" y="87"/>
-        <rectangleSize height="0" width="0"/>
+        <upperLeftCorner x="337.8268736718046" y="112"/>
+        <rectangleSize height="0" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="22" y="357"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="91.99999999999991" y="676.9999976158142"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="22" y="261"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="91.99999999999991" y="536.9999976158142"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="MARM" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="220" y="267"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="301.9999999999999" y="536.9999976158142"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="99" y="180"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="118.6666666666666" y="376.9999988079071"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="410" y="195"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="405.8649461248091" y="376.9999988079071"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="310" y="92"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="337.8268736718046" y="217"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
-    </shapes>
-  </layout>
+    
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
 </Calculation:scenario>

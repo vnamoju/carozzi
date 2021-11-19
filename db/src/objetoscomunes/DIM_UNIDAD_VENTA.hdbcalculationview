@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DIM_UNIDAD_VENTA" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
-  <origin/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DIM_UNIDAD_VENTA" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
   <descriptions defaultDescription="DIM_UNIDAD_VENTA"/>
   <metadata changedAt="2020-04-06 18:24:31.733"/>
   <localVariables/>
@@ -11,10 +11,10 @@
       <resourceUri>DIM_UNIDAD_VENTA_MAX</resourceUri>
     </DataSource>
   </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
-      <descriptions/>
-      <viewAttributes>
+<calculationViews>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MANDT"/>
         <viewAttribute id="MATNR"/>
         <viewAttribute id="VKORG"/>
@@ -23,18 +23,11 @@
         <viewAttribute id="VTWEG"/>
         <viewAttribute id="VRKME"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#DIM_UNIDAD_VENTA_MAX">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="UMREN" source="UMREN"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="UMREZ" source="UMREZ"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="VRKME" source="VRKME"/>
-      </input>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="DIM_UNIDAD_VENTA_MAX"/>
     </calculationView>
-  </calculationViews>
+</calculationViews>
   <logicalModel id="Aggregation_1">
     <descriptions/>
     <attributes>
@@ -81,8 +74,8 @@
     <restrictedMeasures/>
     <localDimensions/>
   </logicalModel>
-  <layout>
-    <shapes>
+<layout>
+  <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
         <upperLeftCorner x="22" y="87"/>
         <rectangleSize height="0" width="0"/>
@@ -92,5 +85,5 @@
         <rectangleSize height="54" width="140"/>
       </shape>
     </shapes>
-  </layout>
+</layout>
 </Calculation:scenario>
